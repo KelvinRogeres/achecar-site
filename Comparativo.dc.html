@@ -43,7 +43,7 @@
         </div>
 
         <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ false }}">
-          <div role="tablist" aria-label="Veículos" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none"><sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ tb.on }}" onClick="{{ tb.go }}" style="flex:1 0 auto;height:40px;padding:0 16px;border-radius:999px;border:0;background:{{ tb.bg }};color:{{ tb.fg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:{{ tb.hov }}">{{ tb.t }}</button></sc-for></div>
+          <div role="tablist" aria-label="Veículos" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none"><sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ tb.on }}" aria-label="{{ tb.full }}" onClick="{{ tb.go }}" style="flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 12px 0 8px;border-radius:999px;border:0;background:{{ tb.bg }};color:{{ tb.fg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:{{ tb.hov }}"><span aria-hidden="true" style="width:20px;height:20px;flex:none;border-radius:50%;background:{{ tb.ck }};color:#fff;font:700 11px/20px Roboto;text-align:center">{{ tb.num }}</span><span style="min-width:0;overflow:hidden;text-overflow:ellipsis">{{ tb.t }}</span></button></sc-for></div>
         </sc-if>
 
         <sc-if value="{{ obShow }}" hint-placeholder-val="{{ false }}">
@@ -164,7 +164,7 @@
             <img src="assets/home/copiloto-mascote.webp" alt="" style="width:40px;height:auto;flex:none;display:block">
             <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 11px/1.3 Roboto;letter-spacing:.06em;color:#6D28D9;white-space:nowrap">{{ vdOver }}</span><span style="font:800 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">{{ vdHead }}</span><span style="font:400 15px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ vdWhy }}</span></div>
           </div>
-          <div role="table" aria-label="Resumo dos carros" style="display:flex;flex-direction:column;border:1px solid #E6E6EE;border-radius:14px;overflow:hidden">
+          <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><div role="table" aria-label="Resumo dos carros" style="display:flex;flex-direction:column;border:1px solid #E6E6EE;border-radius:14px;overflow:hidden">
             <div role="row" style="display:grid;grid-template-columns:{{ vdCols }};gap:12px;padding:10px 16px;background:#F6F6F9;font:400 12px Roboto;color:#5A6472"><span role="columnheader">Carro</span><span role="columnheader">Preço FIPE</span><span role="columnheader">Custo por mês</span><span role="columnheader">Nota geral</span></div>
             <sc-for list="{{ vdRows }}" as="r" hint-placeholder-count="3"><div role="row" style="display:grid;grid-template-columns:{{ vdCols }};gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #EEEEF2;background:{{ r.bg }}">
               <span role="cell" style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:22px;height:22px;flex:none;border-radius:50%;background:{{ r.nBg }};color:{{ r.nFg }};font:700 11px/22px Roboto;text-align:center">{{ r.n }}</span><span style="min-width:0;display:flex;flex-direction:column;gap:1px"><strong style="font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.t }}</strong><sc-if value="{{ r.isRec }}" hint-placeholder-val="{{ false }}"><span style="font:700 11px Roboto;color:#6D28D9">Recomendado</span></sc-if></span></span>
@@ -172,7 +172,19 @@
               <span role="cell" style="display:flex;flex-direction:column;gap:2px"><span style="font:{{ r.mw }} 14px Roboto">{{ r.month }}</span><sc-if value="{{ r.low }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/20px Roboto;white-space:nowrap">Menor custo</span></sc-if></span>
               <span role="cell" style="display:flex;align-items:center;gap:8px"><strong style="font:800 16px 'Merriweather Sans',sans-serif;color:{{ r.sc }}">{{ r.nota }}</strong><span style="flex:1;max-width:80px;height:6px;border-radius:3px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ r.w }};background:{{ r.sc }};border-radius:3px"></span></span></span>
             </div></sc-for>
-          </div>
+          </div></sc-if>
+          <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+            <ul aria-label="Resumo dos carros" style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ vdRows }}" as="r" hint-placeholder-count="3"><li style="display:flex;flex-direction:column;gap:10px;padding:12px 14px;border-radius:14px;background:{{ r.bg }};border:1px solid {{ r.bd }}">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0"><span aria-hidden="true" style="width:24px;height:24px;flex:none;border-radius:50%;background:{{ r.ck }};color:#fff;font:700 12px/24px Roboto;text-align:center">{{ r.cn }}</span><strong style="flex:1;min-width:0;font:700 15px/1.3 Roboto;color:#1D2433">{{ r.t }}</strong><sc-if value="{{ r.isRec }}" hint-placeholder-val="{{ false }}"><span style="flex:none;height:22px;padding:0 8px;border-radius:999px;background:#7D3EE3;color:#fff;font:700 11px/22px Roboto;white-space:nowrap">Recomendado</span></sc-if></div>
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                  <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:400 11px Roboto;color:#5A6472">Preço FIPE</span><span style="font:{{ r.pw }} 14px/1.25 Roboto;color:#1D2433;white-space:nowrap">{{ r.price }}</span><sc-if value="{{ r.cheap }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/20px Roboto;white-space:nowrap">Mais barato</span></sc-if></span>
+                  <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:400 11px Roboto;color:#5A6472">Custo por mês</span><span style="font:{{ r.mw }} 14px/1.25 Roboto;color:#1D2433;white-space:nowrap">{{ r.month }}</span><sc-if value="{{ r.low }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/20px Roboto;white-space:nowrap">Menor custo</span></sc-if></span>
+                  <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:400 11px Roboto;color:#5A6472">Nota geral</span><span style="display:flex;align-items:center;gap:6px"><strong style="font:800 16px/1.1 'Merriweather Sans',sans-serif;color:{{ r.sc }}">{{ r.nota }}</strong><span style="flex:1;max-width:44px;height:5px;border-radius:3px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ r.w }};background:{{ r.sc }};border-radius:3px"></span></span></span></span>
+                </div>
+              </li></sc-for>
+            </ul>
+          </sc-if>
           <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a href="{{ vdHref }}" style="display:flex;align-items:center;gap:4px;font:700 14px Roboto" style-hover="color:#4C1D95">Ver a ficha do {{ vdShort }}<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a><span style="font:400 12px Roboto;color:#5A6472">A nota pesa preço, custo de uso, espaço, desempenho e segurança. Mude as prioridades no resumo abaixo.</span></div>
         </section>
       </sc-if>
@@ -206,10 +218,11 @@
           </div>
         </section>
 
-        <section data-screen-label="Pontos" style="display:grid;grid-template-columns:{{ slotColsN }};gap:16px">
+        <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:-8px"><h2 style="margin:0;font:800 18px/1.3 'Merriweather Sans',sans-serif">Pontos de cada carro</h2><span style="display:flex;align-items:center;gap:2px;font:500 12px Roboto;color:#5A6472;white-space:nowrap">Deslize<span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">arrow_forward</span></span></div></sc-if>
+        <section data-screen-label="Pontos" aria-label="Pontos de cada carro" style="{{ ptsStyle }}">
           <sc-for list="{{ ptsCards }}" as="p" hint-placeholder-count="2">
-            <div style="background:#fff;border:1px solid #E6E6EE;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px">
-              <span style="font:800 16px 'Merriweather Sans',sans-serif">{{ p.name }}</span>
+            <div style="flex:{{ ptsFlex }};scroll-snap-align:start;box-sizing:border-box;background:#fff;border:1px solid #E6E6EE;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px">
+              <span style="display:flex;align-items:center;gap:10px;font:800 16px/1.3 'Merriweather Sans',sans-serif"><span aria-hidden="true" style="width:24px;height:24px;flex:none;border-radius:50%;background:{{ p.ck }};color:#fff;font:700 12px/24px Roboto;text-align:center">{{ p.num }}</span><span style="min-width:0">{{ p.name }}</span></span>
               <div style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:700 12px Roboto;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">thumb_up</span>Pontos positivos</span><sc-for list="{{ p.pros }}" as="t" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:flex-start;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#15803D;flex:none">check_circle</span>{{ t }}</span></sc-for></div>
               <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid #EEEEF2"><span style="display:flex;align-items:center;gap:6px;font:700 12px Roboto;color:#B45309"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">info</span>Pontos de atenção</span><sc-for list="{{ p.cons }}" as="t" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:flex-start;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#D97706;flex:none">error</span>{{ t }}</span></sc-for></div>
             </div>
@@ -235,17 +248,17 @@
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;padding:18px 24px;border-top:1px solid #E6E6EE;background:#FAFAFC">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="display:flex;align-items:center;gap:8px;font:800 16px 'Merriweather Sans',sans-serif;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#15803D">emoji_events</span>Placar: quem ganha em mais itens</span><span style="font:400 12px Roboto;color:#5A6472">{{ placarNote }}</span></div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+            <div style="display:grid;grid-template-columns:{{ placarCols }};gap:{{ placarGap }}">
               <sc-for list="{{ placar }}" as="p" hint-placeholder-count="2">
                 <div style="display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 {{ p.bw }} {{ p.bd }}">
-                  <div style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:44px;height:28px;flex:none;border-radius:6px;background:{{ p.thumb }}"></span><span style="flex:1;min-width:0;font:700 14px/1.3 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.t }}</span><sc-if value="{{ p.lead }}" hint-placeholder-val="{{ false }}"><span style="flex:none;padding:2px 8px;border-radius:999px;background:#DCFCE7;color:#166534;font:700 11px Roboto">Lidera</span></sc-if></div>
+                  <div style="display:flex;align-items:center;gap:{{ placarIn }};min-width:0"><sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><span style="width:44px;height:28px;flex:none;border-radius:6px;background:{{ p.thumb }}"></span></sc-if><sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="width:20px;height:20px;flex:none;border-radius:50%;background:{{ p.ck }};color:#fff;font:700 11px/20px Roboto;text-align:center">{{ p.num }}</span></sc-if><span style="flex:1;min-width:0;font:700 14px/1.3 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.t }}</span><sc-if value="{{ p.lead }}" hint-placeholder-val="{{ false }}"><sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><span style="flex:none;padding:2px 8px;border-radius:999px;background:#DCFCE7;color:#166534;font:700 11px Roboto">Lidera</span></sc-if><sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="Lidera" style="flex:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#15803D">emoji_events</span></sc-if></sc-if></div>
                   <div style="display:flex;align-items:baseline;gap:6px"><span style="font:800 26px/1 'Merriweather Sans',sans-serif;color:{{ p.nc }}">{{ p.w }}</span><span style="font:400 13px Roboto;color:#5A6472">{{ p.of }}</span></div>
                   <span style="display:block;height:6px;border-radius:3px;background:#EEEEF2"><span style="display:block;height:6px;border-radius:3px;background:{{ p.bar }};width:{{ p.pct }}"></span></span>
                 </div>
               </sc-for>
             </div>
           </div>
-          <div style="overflow-x:auto;border-top:1px solid #E6E6EE">
+          <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}"><div style="overflow-x:auto;border-top:1px solid #E6E6EE">
             <div role="table" style="min-width:{{ tblMin }}">
               <div role="row" style="display:grid;grid-template-columns:{{ tblCols }};gap:12px;padding:12px 24px;background:#F6F6F9;border-bottom:1px solid #E6E6EE">
                 <span role="columnheader" style="font:400 12px Roboto;color:#5A6472">Critério</span>
@@ -268,7 +281,34 @@
               </sc-for>
               <sc-if value="{{ noDiffs }}" hint-placeholder-val="{{ false }}"><div style="padding:24px;font:400 14px Roboto;color:#5A6472">Nenhuma diferença nas seções que você escolheu.</div></sc-if>
             </div>
+          </div></sc-if>
+          <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+          <div ref="{{ fichaRef }}" style="border-top:1px solid #E6E6EE">
+            <div style="padding:10px 16px;background:#F6F6F9;border-bottom:1px solid #E6E6EE"><div style="display:grid;grid-template-columns:{{ mCols }};gap:6px"><sc-for list="{{ stickCarsM }}" as="sc" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:6px;min-width:0;padding:7px 8px;border-radius:10px;background:#fff;box-shadow:inset 0 3px 0 {{ sc.ck }}, inset 0 0 0 1px #E6E6EE"><span aria-hidden="true" style="width:18px;height:18px;flex:none;border-radius:50%;background:{{ sc.ck }};color:#fff;font:700 11px/18px Roboto;text-align:center">{{ sc.num }}</span><span style="min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 12px/1.25 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.t }}</span><span style="font:400 10px/1.25 Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.d }}</span></span></span></sc-for></div></div>
+            <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;border-bottom:1px solid #EEEEF2">
+                <button type="button" onClick="{{ g.toggle }}" aria-expanded="{{ g.open }}" style="display:flex;align-items:center;gap:8px;padding:14px 16px;border:0;background:transparent;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FAFAFC"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">{{ g.icon }}</span><span style="flex:1;font:800 15px/1.3 'Merriweather Sans',sans-serif;color:#4C1D95">{{ g.t }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ g.count }}</span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">{{ g.chev }}</span></button>
+                <sc-if value="{{ g.open }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;flex-direction:column">
+                    <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+                      <div role="group" aria-label="{{ r.k }}" style="display:flex;flex-direction:column;gap:8px;padding:12px 16px 14px;border-top:1px solid #F0F0F4">
+                        <span style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap"><span style="font:600 13px/1.3 Roboto;color:#1D2433">{{ r.k }}</span><sc-if value="{{ r.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font:400 11px Roboto;color:#5A6472">{{ r.note }}</span></sc-if></span>
+                        <div style="display:grid;grid-template-columns:{{ mCols }};gap:6px">
+                          <sc-for list="{{ r.cells }}" as="cl" hint-placeholder-count="3"><span aria-label="{{ cl.carLbl }}: {{ cl.aria }}" style="display:flex;flex-direction:column;justify-content:space-between;gap:4px;min-width:0;min-height:44px;box-sizing:border-box;padding:9px 8px 8px;border-radius:10px;background:{{ cl.mbg }};box-shadow:inset 0 3px 0 {{ cl.ck }}">
+                            <span style="display:flex;align-items:center;gap:4px;min-width:0;font:{{ cl.w }} 13px/1.3 Roboto;color:{{ cl.c }};overflow-wrap:anywhere"><sc-if value="{{ cl.isBool }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="flex:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:{{ cl.bC }}">{{ cl.bIcon }}</span></sc-if><span style="min-width:0">{{ cl.t }}</span></span>
+                            <sc-if value="{{ cl.isBest }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display:flex;align-items:center;gap:2px;font:700 10px Roboto;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:13px;line-height:1">emoji_events</span>Melhor</span></sc-if>
+                            <sc-if value="{{ cl.isWorst }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display:flex;align-items:center;font:700 10px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;margin-left:-3px">arrow_drop_down</span>Pior</span></sc-if>
+                          </span></sc-for>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noDiffs }}" hint-placeholder-val="{{ false }}"><div style="padding:20px 16px;font:400 14px Roboto;color:#5A6472">Nenhuma diferença nas seções que você escolheu.</div></sc-if>
           </div>
+          </sc-if>
           <div style="display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid #EEEEF2;font:400 12px Roboto;color:#3F4654">
             <span style="font:700 12px Roboto;color:#4C1D95">Legenda</span>
             <span style="display:flex;align-items:center;gap:2px"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#15803D">arrow_drop_up</span>Melhor da linha</span>
@@ -512,6 +552,10 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ mStickOn }}" hint-placeholder-val="{{ false }}">
+    <div aria-hidden="true" style="position:fixed;left:0;right:0;top:{{ mStickTop }};z-index:39;background:rgba(246,246,249,.97);border-bottom:1px solid #E6E6EE;box-shadow:0 8px 20px rgba(29,36,51,.08);padding:8px {{ mStickPad }}"><div style="display:grid;grid-template-columns:{{ mCols }};gap:6px"><sc-for list="{{ stickCarsM }}" as="sc" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:6px;min-width:0;padding:7px 8px;border-radius:10px;background:#fff;box-shadow:inset 0 3px 0 {{ sc.ck }}, inset 0 0 0 1px #E6E6EE"><span aria-hidden="true" style="width:18px;height:18px;flex:none;border-radius:50%;background:{{ sc.ck }};color:#fff;font:700 11px/18px Roboto;text-align:center">{{ sc.num }}</span><span style="min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 12px/1.25 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.t }}</span><span style="font:400 10px/1.25 Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.d }}</span></span></span></sc-for></div></div>
+  </sc-if>
+
   <sc-if value="{{ stickOn }}" hint-placeholder-val="{{ false }}">
     <div aria-hidden="true" style="position:fixed;left:0;right:0;top:78px;z-index:41;background:#fff;border-bottom:1px solid #E6E6EE;box-shadow:0 8px 24px rgba(29,36,51,.08)">
       <div style="max-width:1152px;margin:0 auto;padding:12px clamp(16px, calc(2.2vw + 7px), 32px) 10px;box-sizing:border-box">
@@ -531,7 +575,9 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Vazio&quot;,&quot;Montando&quot;,&quot;Resultado&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;logado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Sim&quot;,&quot;Não&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
 class Component extends DCLogic {
   state = { quiz: null, profile: null, stick: false, closedG: {}, hiddenG: {}, refOpen: false, vw: window.innerWidth, items: [], saved: [], logged: false, modal: null, pick: null, prio: { econ: 2, espaco: 2, desemp: 2, seg: 2, custo: 2 }, prioDraft: null, personal: false, tab: 0, onlyDiff: false, toast: "", toastKind: "", undoFn: null, curSaved: null, menu: null, confirm: null, pending: null, copied: false };
-  cardsRef = React.createRef(); refRef = React.createRef();
+  hdrBottom = () => { let b = 0; document.querySelectorAll("[data-hdr], header").forEach((h) => { const r = h.getBoundingClientRect(); if (r.top <= 0 && r.bottom > b && r.bottom < 140) b = r.bottom; }); if (!b) { const el = document.elementFromPoint(window.innerWidth / 2, 2); let x = el; while (x && x !== document.body) { const cs = getComputedStyle(x); if (cs.position === "sticky" || cs.position === "fixed") { b = x.getBoundingClientRect().bottom; break; } x = x.parentElement; } } return Math.round(b || 0); };
+  cardsRef = React.createRef(); refRef = React.createRef(); fichaRef = React.createRef();
+  CK = ["#7D3EE3", "#1F4FB5", "#1D2433"];
   obScene = () => {
     const E = React.createElement, F = "'Material Symbols Rounded'";
     const anim = (k, inD, fl, flD) => ({ "data-ob-anim": "1", key: k, style: { animation: "obIn .6s cubic-bezier(.2,.8,.2,1) " + inD + "s both" + (fl ? ", obFloat " + fl + "s ease-in-out " + (inD + 0.6 + (flD || 0)) + "s infinite" : "") } });
@@ -602,7 +648,7 @@ class Component extends DCLogic {
   componentDidMount() {
     this.onR = () => this.setState({ vw: window.innerWidth }); window.addEventListener("resize", this.onR);
     this.onKey = (e) => { if (e.key === "Escape") this.setState({ modal: null, menu: null, refOpen: false }); }; document.addEventListener("keydown", this.onKey);
-    this.onScroll = () => { const el = this.cardsRef.current, on = !!el && this.state.items.length >= 2 && el.getBoundingClientRect().bottom < 96; if (on !== this.state.stick) this.setState({ stick: on }); }; window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onScroll = () => { const el = this.cardsRef.current, on = !!el && this.state.items.length >= 2 && el.getBoundingClientRect().bottom < 96; const f = this.fichaRef.current, hb = this.hdrBottom(), fr = f ? f.getBoundingClientRect() : null, mon = !!fr && this.state.items.length >= 2 && fr.top < hb && fr.bottom > hb + 160; if (on !== this.state.stick || mon !== !!this.state.mstick) this.setState({ stick: on, mstick: mon }); }; window.addEventListener("scroll", this.onScroll, { passive: true });
     this.onDoc = (e) => { if (this.state.refOpen && this.refRef.current && !this.refRef.current.contains(e.target)) this.setState({ refOpen: false }); if (this.state.menu != null && !e.target.closest('[role="menu"],[aria-label="Opções do comparativo"]')) this.setState({ menu: null }); }; document.addEventListener("pointerdown", this.onDoc, true);
     let items = [], saved = [], logged = false, curSaved = null;
     try { const d = JSON.parse(localStorage.getItem(this.K) || "null"); if (d) { items = d.items || []; curSaved = d.curSaved || null; } } catch (e) {}
@@ -726,7 +772,7 @@ class Component extends DCLogic {
       T.forEach(([f, hi, p, cn]) => { const r = rank(f, hi); if (r > 0) pros.push(p); if (r < 0) cons.push(cn); });
       if (!pros.length) pros.push("Fica no meio em todos os critérios, sem ponto fraco claro");
       if (!cons.length) cons.push("Nenhum critério em que fique atrás dos outros");
-      return { name: c.name + " " + c.ver, pros: pros.slice(0, 3), cons: cons.slice(0, 3) };
+      return { num: String(i + 1), ck: this.CK[i], name: c.name + " " + c.ver, pros: pros.slice(0, 3), cons: cons.slice(0, 3) };
     }) : [];
     const eq = (lv, need) => [lv >= need ? 1 : 0, lv >= need ? "Sim" : "Não", "bool"];
     const G = [
@@ -742,13 +788,13 @@ class Component extends DCLogic {
     const wins = cars.map(() => 0); let contested = 0;
     if (isResult) G.forEach(([, , , rows]) => rows.forEach(([, f, better]) => { if (!better) return; const raw = cars.map((c) => f(c)[0]); if (raw.every((x) => x === raw[0])) return; contested++; const b = better === "hi" ? Math.max(...raw) : Math.min(...raw); raw.forEach((x, i) => { if (x === b) wins[i]++; }); }));
     const topW = Math.max(0, ...wins);
-    const placar = isResult ? cars.map((c, i) => { const lead = wins[i] === topW && topW > 0; return { t: names[i], thumb: this.thumb ? this.thumb(c.m) : "#F6F6F9", w: String(wins[i]), of: "de " + contested + " itens", lead, nc: lead ? "#166534" : "#1D2433", bar: lead ? "#22C55E" : "#C9AEFF", pct: (contested ? Math.round((wins[i] / contested) * 100) : 0) + "%", bd: lead ? "#86EFAC" : "#E6E6EE", bw: lead ? "1.5px" : "1px" }; }) : [];
+    const placar = isResult ? cars.map((c, i) => { const lead = wins[i] === topW && topW > 0; return { num: String(i + 1), ck: this.CK[i], t: names[i], thumb: this.thumb ? this.thumb(c.m) : "#F6F6F9", w: String(wins[i]), of: "de " + contested + " itens", lead, nc: lead ? "#166534" : "#1D2433", bar: lead ? "#22C55E" : "#C9AEFF", pct: (contested ? Math.round((wins[i] / contested) * 100) : 0) + "%", bd: lead ? "#86EFAC" : "#E6E6EE", bw: lead ? "1.5px" : "1px" }; }) : [];
     const groups = isResult ? G.filter(([id]) => !s.hiddenG[id]).map(([id, t, icon, rows]) => {
       const built = rows.map(([k, f, better, note]) => {
         const vals = cars.map(f), raw = vals.map((v) => v[0]), allEq = raw.every((x) => x === raw[0]);
         const hiB = better && !allEq ? (better === "hi" ? Math.max(...raw) : Math.min(...raw)) : null, loB = better && !allEq ? (better === "hi" ? Math.min(...raw) : Math.max(...raw)) : null;
-        return { k, note: note || "", hasNote: !!note, diff: !allEq, cells: vals.map((v) => { const kind = v[2] || "", isBool = kind === "bool", na = kind === "na", best = hiB != null && v[0] === hiB, worst = loB != null && v[0] === loB && !best;
-          return { t: v[1], aria: (isBool ? (v[0] ? "Possui" : "Não possui") : v[1]) + (best ? ", melhor da linha" : worst ? ", pior da linha" : ""), isBool, isText: !isBool, bIcon: v[0] ? "check_circle" : "cancel", bC: v[0] ? "#15803D" : "#DC2626", hasInd: best || worst, ind: best ? "emoji_events" : "arrow_drop_down", indS: best ? "16px" : "22px", indC: best ? "#15803D" : "#DC2626", c: na ? "#5A6472" : best ? "#166534" : "#1D2433", w: best ? 700 : 400, bg: best ? "#DCFCE7" : "transparent", pad: best ? "4px 10px 4px 8px" : "4px 0" }; }) };
+        return { k, note: note || "", hasNote: !!note, diff: !allEq, cells: vals.map((v, ci) => { const kind = v[2] || "", isBool = kind === "bool", na = kind === "na", best = hiB != null && v[0] === hiB, worst = loB != null && v[0] === loB && !best;
+          return { t: v[1], aria: (isBool ? (v[0] ? "Possui" : "Não possui") : v[1]) + (best ? ", melhor da linha" : worst ? ", pior da linha" : ""), isBool, isText: !isBool, bIcon: v[0] ? "check_circle" : "cancel", bC: v[0] ? "#15803D" : "#DC2626", hasInd: best || worst, ind: best ? "emoji_events" : "arrow_drop_down", indS: best ? "16px" : "22px", indC: best ? "#15803D" : "#DC2626", c: na ? "#5A6472" : best ? "#166534" : "#1D2433", w: best ? 700 : 400, bg: best ? "#DCFCE7" : "transparent", pad: best ? "4px 10px 4px 8px" : "4px 0", ck: this.CK[ci], carLbl: names[ci], isBest: best, isWorst: worst, mbg: best ? "#DCFCE7" : "#F6F6F9" }; }) };
       }).filter((r) => !s.onlyDiff || r.diff);
       const open = !s.closedG[id];
       return { t, icon, rows: built, open, chev: open ? "expand_less" : "expand_more", count: built.length + (built.length === 1 ? " item" : " itens"), toggle: () => this.setState((x) => ({ closedG: { ...x.closedG, [id]: !x.closedG[id] } })) };
@@ -772,7 +818,7 @@ class Component extends DCLogic {
       vdHead: isResult ? "Fique com o " + rc.short + " " + rc.ver : "",
       vdWhy: isResult ? (() => { const alt = cheap && cheap !== rc ? cheap : null; if (!alt) return "É o mais barato e também o mais equilibrado. Não há motivo para pagar mais pelos outros."; const d = rc.fipe - alt.fipe; return "Custa " + this.brl(Math.abs(d)) + (d >= 0 ? " a mais" : " a menos") + " que o " + alt.short + ", mas compensa: tem nota " + this.dec(4 + 0.6 * scores[recI]) + " contra " + this.dec(4 + 0.6 * scores[cars.indexOf(alt)]) + ", com vantagem em " + (["espaço", "desempenho", "segurança"].filter((k, i) => [rc.sc.espaco > alt.sc.espaco, rc.sc.desemp > alt.sc.desemp, rc.sc.seg > alt.sc.seg][i]).join(", ") || "equilíbrio geral") + "." + (s.personal ? " Considera as prioridades que você marcou." : ""); })() : "",
       vdCols: mid ? "minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)" : "minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) 70px",
-      vdRows: isResult ? cars.map((x, i) => ({ x, i, sc0: scores[i] })).sort((p, q) => q.sc0 - p.sc0).map(({ x, i, sc0 }, k) => ({ n: String(k + 1), t: x.short + " " + x.ver, isRec: i === recI, bg: i === recI ? "#F7F4FF" : "#fff", nBg: i === recI ? "#7D3EE3" : "#EEEEF2", nFg: i === recI ? "#fff" : "#5A6472", price: this.brl(x.fipe), month: this.brl(x.mensal), cheap: x === cheap, low: x === low, pw: x === cheap ? 700 : 400, mw: x === low ? 700 : 400, nota: this.dec(4 + 0.6 * sc0), w: Math.round((4 + 0.6 * sc0) * 10) + "%", sc: i === recI ? "#7D3EE3" : "#9BA3B1" })) : [],
+      vdRows: isResult ? cars.map((x, i) => ({ x, i, sc0: scores[i] })).sort((p, q) => q.sc0 - p.sc0).map(({ x, i, sc0 }, k) => ({ cn: String(i + 1), ck: this.CK[i], bd: i === recI ? "#C9B3F5" : "#E6E6EE", n: String(k + 1), t: x.short + " " + x.ver, isRec: i === recI, bg: i === recI ? "#F7F4FF" : "#fff", nBg: i === recI ? "#7D3EE3" : "#EEEEF2", nFg: i === recI ? "#fff" : "#5A6472", price: this.brl(x.fipe), month: this.brl(x.mensal), cheap: x === cheap, low: x === low, pw: x === cheap ? 700 : 400, mw: x === low ? 700 : 400, nota: this.dec(4 + 0.6 * sc0), w: Math.round((4 + 0.6 * sc0) * 10) + "%", sc: i === recI ? "#7D3EE3" : "#9BA3B1" })) : [],
       vdHref: isResult ? "Versoes.dc.html?id=" + rc.m.id + "&marca=" + rc.m.brand + "&mk=" + rc.m.mk + "&modelo=" + encodeURIComponent(rc.m.model) : "#",
       vdFacts: isResult ? [{ icon: "sell", k: "Mais barato", v: cheap.short, d: sortedF[sortedF.length - 1] - cheap.fipe < 500 ? "Preços praticamente iguais" : this.brl(sortedF[sortedF.length - 1] - cheap.fipe) + " a menos que o mais caro" }, { icon: "savings", k: "Menor custo por mês", v: low.short, d: this.brl(low.mensal) + " com uso, IPVA, seguro e manutenção" }, { icon: "emoji_events", k: "Maior nota geral", v: rc.short, d: this.dec(4 + 0.6 * scores[recI]) + " de 10" }] : [],
       frameW: fw ? fw + "px" : "none", frameShadow: fw ? "0 0 0 1px #E6E6EE, 0 8px 24px rgba(29,36,51,.12)" : "none",
@@ -781,7 +827,7 @@ class Component extends DCLogic {
       isEmpty: n === 0, hasItems: n > 0, isResult, countTxt: n + (n === 1 ? " veículo" : " veículos") + " de 3",
       quick: this.QUICK.map((q, i) => ({ t: q.map((x) => this.mOf(x[0]).model).join(" × "), d: this.QUICK_D[i], thumbs: q.map((x) => this.thumb(this.mOf(x[0]))), go: () => { this.setItems(q.map(([mid, vi, year]) => ({ mid, vi, year })), "Comparativo montado. Troque qualquer veículo quando quiser."); window.scrollTo({ top: 0, behavior: "smooth" }); } })),
       openAdd: () => (n >= 3 ? this.toast("O comparativo já tem 3 veículos. Troque ou remova um para adicionar outro.", "info") : this.openPick("add")),
-      showTabs, tabs: cars.map((c, i) => { const on = i === Math.min(s.tab, n - 1); return { t: c.name, on, go: () => this.setState({ tab: i }), bg: on ? "#1D2433" : "#EEEEF2", fg: on ? "#fff" : "#5A6472", hov: on ? "#1D2433" : "#E3E3EA" }; }),
+      showTabs, tabs: cars.map((c, i) => { const on = i === Math.min(s.tab, n - 1); return { t: n >= 3 ? c.short : c.name, full: c.name, num: String(i + 1), ck: this.CK[i], on, go: () => this.setState({ tab: i }), bg: on ? "#1D2433" : "#EEEEF2", fg: on ? "#fff" : "#5A6472", hov: on ? "#1D2433" : "#E3E3EA" }; }),
       cards, canAdd: n > 0 && n < 3 && !showTabs, statCols: n >= 3 && wide && vw < (this.props.bpWide1200 ?? 1200) ? "minmax(0,1fr) minmax(0,1fr)" : "1.3fr 1fr 1fr", slotCols: wide ? "repeat(3,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)", slotColsN: wide ? "repeat(" + Math.max(n, 2) + ",minmax(0,1fr))" : "minmax(0,1fr)", slotMinH: wide && n ? "420px" : n ? "220px" : "180px",
       slotHint: n === 1 ? "Adicione pelo menos dois veículos para comparar lado a lado." : "Até 3 veículos no comparativo.",
       isSaved: !!curSavedObj, saveIcon: curSavedObj ? "bookmark_added" : "bookmark", saveTxt: curSavedObj ? "Salvo" : "Salvar", saveBd: curSavedObj ? "#86EFAC" : "#D5D8DE", saveBg: curSavedObj ? "#F0FDF4" : "#fff", saveFg: curSavedObj ? "#15803D" : "#1D2433",
@@ -797,7 +843,12 @@ class Component extends DCLogic {
       tblSub: (hiddenN ? (G.length - hiddenN) + " de " + G.length + " seções · " : "") + "🏆 melhor e ▼ pior de cada linha",
       pageTitle: n >= 2 ? "Comparativo" : "Compare antes de decidir", pageSub: n >= 2 ? n + (n === 1 ? " veículo" : " veículos") + " de 3 · preços FIPE out/2026 · custos estimados para 1.000\u00a0km/mês em\u00a0SP" : "Até três veículos lado a lado, com custo real de uso e o que pesa em cada um.",
       emptySlots: showTabs ? [] : Array.from({ length: 3 - n }, (_, i) => { const main = i === 0; return { t: n === 1 && main ? "Adicione mais um para comparar lado a lado" : "Adicione um veículo para comparar", go: () => this.openPick("add"), bg: main ? "#7D3EE3" : "#1D2433", fg: "#fff", hov: main ? "#6A2FCB" : "#0A0A0A" }; }),
-      stickOn: s.stick && isResult && mid, stickCars: cars.map((c) => ({ t: c.name, d: c.ver + " · " + c.it.year, thumb: this.thumb(c.m) })),
+      stickOn: s.stick && isResult && mid, mob: !mid, desk: mid, fichaRef: this.fichaRef, mCols: "repeat(" + n + ",minmax(0,1fr))",
+      mStickOn: !!s.mstick && isResult && !mid, mStickTop: this.hdrBottom() + "px", mStickPad: "calc(clamp(16px, calc(2.2vw + 7px), 32px) + 17px)",
+      stickCarsM: cars.map((c, i) => ({ num: String(i + 1), ck: this.CK[i], t: c.short, d: c.ver + " · " + c.it.year })),
+      placarCols: mid ? "repeat(auto-fit,minmax(min(100%,220px),1fr))" : "repeat(" + n + ",minmax(0,1fr))", placarGap: mid ? "10px" : "6px", placarIn: mid ? "10px" : "6px",
+      ptsStyle: mid ? "display:grid;grid-template-columns:" + (wide ? "repeat(" + Math.max(n, 2) + ",minmax(0,1fr))" : "minmax(0,1fr)") + ";gap:16px" : "display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 clamp(16px, calc(2.2vw + 7px), 32px);margin:0 calc(-1 * clamp(16px, calc(2.2vw + 7px), 32px));padding:2px clamp(16px, calc(2.2vw + 7px), 32px) 6px;scrollbar-width:none",
+      ptsFlex: mid ? "initial" : "0 0 86%", stickCars: cars.map((c) => ({ t: c.name, d: c.ver + " · " + c.it.year, thumb: this.thumb(c.m) })),
       how: [["1", "Escolha até 3 veículos", "Pela marca, modelo, ano e versão. Dá para trocar qualquer um a qualquer hora."], ["2", "Veja o que muda entre eles", "Ficha técnica, equipamentos e o custo real de uso lado a lado, com o melhor de cada linha marcado."], ["3", "Salve ou compartilhe", "Guarde na sua conta para voltar depois ou mande para quem vai decidir com você."]].map(([n2, t, d]) => ({ n: n2, t, d })),
       gnPad: mid ? "32px 40px" : "24px 20px", gnCols: vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1.2fr) minmax(0,1fr)" : "minmax(0,1fr)", gnArt: wide,
       gnPerks: ["Comparativos salvos sem prazo", "Aviso quando o preço FIPE mudar", "Copiloto que conhece os seus finalistas"],
