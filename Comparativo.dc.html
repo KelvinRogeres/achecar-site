@@ -735,8 +735,7 @@ class Component extends DCLogic {
     const BP = { "Desktop 1440": 1440, "Desktop 1024": 1024, "Mobile 390": 390, "Mobile 360": 360, "Mobile 320": 320 }, fw = BP[this.props.breakpoint];
     const s = this.state, vw = fw ? Math.min(fw, s.vw) : s.vw, wide = vw >= (this.props.bpDesktop1024 ?? 1024), mid = vw >= (this.props.bpTablet640 ?? 640), logged = this.isLogged();
     const cars = s.items.map(this.car), n = cars.length, isResult = n >= 2, names = cars.map((c) => c.short);
-    const uniq = (a) => new Set(a).size === a.length;
-    const tags = (() => { let t = cars.map((c) => c.m.model.split(" ")[0]); if (!uniq(t)) t = cars.map((c) => c.m.model); if (!uniq(t)) t = cars.map((c) => c.m.model + " " + String(c.ver).split(" ")[0]); if (!uniq(t)) t = cars.map((c) => c.m.model + " " + c.ver); return t; })();
+    const tags = (() => { const steps = [(c) => c.m.model.split(" ")[0], (c) => c.m.model, (c) => c.m.model + " " + String(c.ver).split(" ")[0], (c) => c.m.model + " " + c.ver, (c) => c.m.model + " " + c.ver + " " + c.it.year]; const lvl = cars.map(() => 0); for (let k = 0; k < steps.length - 1; k++) { const t = cars.map((c, i) => steps[lvl[i]](c)); let moved = false; t.forEach((x, i) => { if (t.filter((y) => y === x).length > 1) { lvl[i]++; moved = true; } }); if (!moved) break; } return cars.map((c, i) => steps[lvl[i]](c)); })();
     const bestIdx = (f) => { let b = 0; cars.forEach((c, i) => { if (f(c) > f(cars[b])) b = i; }); return b; };
     const W = s.personal ? s.prio : { econ: 1, espaco: 1, desemp: 1, seg: 1, custo: 1 };
     const scores = cars.map((c) => this.score(c, W)), recI = n ? scores.indexOf(Math.max(...scores)) : 0;
