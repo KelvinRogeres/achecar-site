@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB} input::placeholder{color:#5A6472} @keyframes obFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}} @keyframes obIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}} @keyframes obDot{0%,80%,100%{opacity:.25}40%{opacity:1}} @keyframes obGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.8;transform:scale(1.06)}} @media (prefers-reduced-motion: reduce){[data-ob-anim]{animation:none !important}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9;width:100%;max-width:{{ frameW }};margin:0 auto;box-shadow:{{ frameShadow }}">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+  <main data-screen-label="Comparativo" style="flex:1;width:100%;box-sizing:border-box;padding:{{ mainPad }}">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:4px;font:400 13px Roboto;color:#5A6472"><a href="Garagem.dc.html" style="color:#5A6472;white-space:nowrap" style-hover="color:#7D3EE3">Garagem</a><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span><span style="color:#1D2433;white-space:nowrap">Comparativo</span></div>
+
+      
+
+      <sc-if value="{{ true }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:6px;min-width:0">
+            <h1 style="margin:0;font:800 30px/1.2 'Merriweather Sans',sans-serif">{{ pageTitle }}</h1>
+            <span style="font:400 14px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ pageSub }}</span>
+          </div>
+          <sc-if value="{{ isResult }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ save }}" aria-pressed="{{ isSaved }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid {{ saveBd }};background:{{ saveBg }};color:{{ saveFg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ saveIcon }}</span>{{ saveTxt }}</button></sc-if>
+              <button type="button" onClick="{{ openShare }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">share</span>Compartilhar</button>
+              <button type="button" onClick="{{ openClear }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#5A6472;font:500 14px Roboto;cursor:pointer;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#EEEEF2;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">delete_sweep</span>Limpar</button>
+            </div>
+          </sc-if>
+        </div>
+
+        <sc-if value="{{ showTabs }}" hint-placeholder-val="{{ false }}">
+          <div role="tablist" aria-label="Veículos" style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none"><sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ tb.on }}" onClick="{{ tb.go }}" style="flex:1 0 auto;height:40px;padding:0 16px;border-radius:999px;border:0;background:{{ tb.bg }};color:{{ tb.fg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:{{ tb.hov }}">{{ tb.t }}</button></sc-for></div>
+        </sc-if>
+
+        <sc-if value="{{ obShow }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Onboarding do comparativo" style="border-radius:24px;background:#F5F1FE;border:1px solid #E3D8FC;padding:{{ obPad }};display:grid;grid-template-columns:{{ obCols }};gap:28px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+            <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 4px;border-radius:999px;background:#fff;border:1px solid #E6E6EE;color:#5B21B6;font:700 12px Roboto;white-space:nowrap"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;display:block">Comparativo guiado</span>
+            <h2 style="margin:0;font:800 26px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">Não sabe por onde começar? A gente monta o comparativo com você</h2>
+            <p style="margin:0;max-width:540px;font:400 15px/1.55 Roboto;color:#3F4654;text-wrap:pretty">O Copiloto conversa com você sobre rotina, orçamento e o que mais pesa na escolha. No fim, sugere os carros que fazem sentido e você escolhe quais comparar.</p>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:4px">
+              <button type="button" onClick="{{ obStart }}" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 22px;border:0;border-radius:999px;background:#7D3EE3;color:#fff;font:700 15px Roboto;white-space:nowrap;cursor:pointer;box-shadow:0 4px 12px rgba(77,26,153,.25);transition:background .15s ease-out, box-shadow .15s ease-out" style-hover="background:#6A2FCB;box-shadow:0 8px 20px rgba(77,26,153,.32)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">chat_bubble</span>Conversar com o Copiloto</button>
+              <button type="button" onClick="{{ openAdd }}" style="height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #C9B3F5;background:#fff;color:#5B21B6;font:700 15px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="background:#F7F4FF;border-color:#7D3EE3">Já sei quais carros</button>
+            </div>
+            <span style="font:400 13px Roboto;color:#5A6472">5 perguntas · menos de 1 minuto · nada é obrigatório</span>
+          </div>
+          <sc-if value="{{ obArt }}" hint-placeholder-val="{{ true }}">
+            <div aria-hidden="true" style="position:relative;height:340px;perspective:1100px">{{ obScene }}</div>
+          </sc-if>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ sugShow }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Sugeridos para você" style="border-radius:24px;background:#fff;border:1px solid #E6E6EE;padding:{{ obPad }};display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:8px">
+              <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:30px;padding:0 12px 0 4px;border-radius:999px;background:#F1EBFD;color:#4C1D95;font:700 12px Roboto;white-space:nowrap"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:22px;height:auto;display:block">{{ sugBadge }}</span>
+              <h2 style="margin:0;font:800 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">{{ sugTitle }}</h2>
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ sugChips }}" as="ch" hint-placeholder-count="4"><span style="height:26px;padding:0 10px;border-radius:999px;background:#EEEEF2;color:#3F4654;font:400 12px/26px Roboto;white-space:nowrap">{{ ch }}</span></sc-for></div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" onClick="{{ obStart }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">tune</span>Refazer perguntas</button>
+              <button type="button" onClick="{{ sugUse }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 16px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#6A2FCB">{{ sugCta }}<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:{{ quickCols }};gap:12px">
+            <sc-for list="{{ sugCars }}" as="sc" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;border:1px solid #E6E6EE;background:#FBFBFD">
+                <div style="position:relative;height:110px;border-radius:12px;background:{{ sc.thumb }}"><span style="position:absolute;left:8px;top:8px;height:24px;padding:0 9px;border-radius:999px;background:#fff;color:#15803D;font:700 11px/24px Roboto;white-space:nowrap;box-shadow:0 1px 3px rgba(29,36,51,.12)">{{ sc.match }}</span></div>
+                <span style="display:flex;flex-direction:column;gap:2px"><span style="font:800 15px/1.3 'Merriweather Sans',sans-serif">{{ sc.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ sc.d }}</span></span>
+                <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px"><sc-for list="{{ sc.why }}" as="w" hint-placeholder-count="2"><li style="display:flex;gap:6px;align-items:flex-start;font:400 13px/1.4 Roboto;color:#3F4654"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1.15;color:#15803D;flex:none">check</span>{{ w }}</li></sc-for></ul>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ sugGuest }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:8px;font:400 13px/1.45 Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">info</span>Suas respostas ficam só neste navegador. <a href="Login.dc.html?next=Comparativo.dc.html" style="font-weight:700" style-hover="color:#6A2FCB">Entre</a> para guardar o perfil e receber sugestões em qualquer dispositivo.</span></sc-if>
+        </section>
+      </sc-if>
+
+      <div ref="{{ cardsRef }}" style="display:grid;grid-template-columns:{{ slotCols }};gap:16px">
+          <sc-for list="{{ cards }}" as="c" hint-placeholder-count="2">
+            <article style="background:#fff;border:1px solid #E6E6EE;border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
+              <div style="position:relative;height:150px;background:#F1F1F5">
+                <span role="img" aria-label="{{ c.name }}" style="position:absolute;inset:14px 20px 8px;background:{{ c.photo }}"></span>
+                <sc-if value="{{ c.noPhoto }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ c.mk }}" tone="dark" style="width:40px;height:40px" hint-size="40px,40px"></x-import></span></span></sc-if>
+                <sc-if value="{{ c.isWinner }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:999px;background:#7D3EE3;color:#fff;font:700 11px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1">auto_awesome</span>{{ c.winTxt }}</span></sc-if>
+              </div>
+              <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:14px;flex:1">
+                <div style="display:flex;align-items:flex-start;gap:8px">
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                    <span style="font:800 19px/1.25 'Merriweather Sans',sans-serif">{{ c.name }}</span>
+                    <span style="font:400 13px Roboto;color:#5A6472">{{ c.cat }}</span>
+                  </div>
+                  <button type="button" onClick="{{ c.swap }}" aria-label="Trocar veículo" title="Trocar veículo" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">swap_horiz</button>
+                  <button type="button" onClick="{{ c.remove }}" aria-label="Remover do comparativo" title="Remover do comparativo" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#FEF2F2;color:#B91C1C">delete</button>
+                </div>
+                <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:8px">
+                  <label style="position:relative;display:block;min-width:0;height:48px;border:1px solid #D5D8DE;border-radius:8px;background:#fff;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3;background:#FBFAFF" style-focus-within="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><span style="position:absolute;left:10px;top:6px;pointer-events:none;font:400 11px Roboto;color:#5A6472">Versão</span><select key="{{ c.selKey }}" defaultValue="{{ c.viS }}" onChange="{{ c.setVer }}" aria-label="Versão do {{ c.name }}" style="appearance:none;-webkit-appearance:none;position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:20px 30px 6px 10px;border:0;border-radius:8px;outline:none;background:transparent;font:500 13px/1.3 Roboto;color:#1D2433;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><sc-for list="{{ c.verOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}" selected="{{ o.sel }}">{{ o.t }}</option></sc-for></select><span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);pointer-events:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">expand_more</span></label>
+                  <label style="position:relative;display:block;min-width:0;height:48px;border:1px solid #D5D8DE;border-radius:8px;background:#fff;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3;background:#FBFAFF" style-focus-within="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><span style="position:absolute;left:10px;top:6px;pointer-events:none;font:400 11px Roboto;color:#5A6472">Ano</span><select key="{{ c.selKeyY }}" defaultValue="{{ c.yearS }}" onChange="{{ c.setYear }}" aria-label="Ano do {{ c.name }}" style="appearance:none;-webkit-appearance:none;position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:20px 30px 6px 10px;border:0;border-radius:8px;outline:none;background:transparent;font:500 13px/1.3 Roboto;color:#1D2433;cursor:pointer;white-space:nowrap;overflow:hidden"><sc-for list="{{ c.yearOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}" selected="{{ o.sel }}">{{ o.t }}</option></sc-for></select><span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);pointer-events:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">expand_more</span></label>
+                </div>
+                <div style="display:grid;grid-template-columns:{{ statCols }};gap:8px">
+                  <div style="padding:10px 8px;border-radius:12px;background:#E9F7EE;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center"><span style="font:400 11px Roboto;color:#3F4654;white-space:nowrap">Faixa de preço</span><span style="font:700 13px/1.3 Roboto;color:#1D2433;text-wrap:balance">{{ c.range }}</span></div>
+                  <div style="padding:10px 8px;border-radius:12px;background:#F6F6F9;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center"><span style="font:400 11px Roboto;color:#5A6472;white-space:nowrap">FIPE</span><span style="font:700 13px/1.3 Roboto;color:#1D2433;white-space:nowrap">{{ c.fipe }}</span></div>
+                  <div style="padding:10px 8px;border-radius:12px;background:#F6F6F9;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center"><span style="font:400 11px Roboto;color:#5A6472;white-space:nowrap">Nota geral</span><span style="font:800 18px/1.1 'Merriweather Sans',sans-serif;color:#7D3EE3">{{ c.nota }}</span></div>
+                </div>
+                <a href="{{ c.ficha }}" style="margin-top:auto;display:flex;align-items:center;gap:4px;font:700 13px Roboto;color:#7D3EE3;white-space:nowrap" style-hover="color:#6A2FCB">Ver ficha completa<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+              </div>
+            </article>
+          </sc-for>
+          <sc-for list="{{ emptySlots }}" as="es" hint-placeholder-count="1">
+            <div style="min-height:{{ slotMinH }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;border-radius:20px;border:1.5px dashed #C9B3F5;background:#FBFAFF;text-align:center">
+              <span style="width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid #DCCFF8;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:26px;line-height:1;color:#7D3EE3">directions_car</span>
+              <span style="max-width:220px;font:700 15px/1.35 Roboto;color:#1D2433;text-wrap:balance">{{ es.t }}</span>
+              <button type="button" onClick="{{ es.go }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 16px;border:0;border-radius:8px;background:{{ es.bg }};color:{{ es.fg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:{{ es.hov }}"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">add_circle</span>Adicionar veículo</button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <section style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Comece por uma dúvida comum</h2><span style="font:400 14px Roboto;color:#5A6472">Comparações que mais aparecem por aqui. Você troca qualquer veículo depois.</span></div>
+          <div style="display:grid;grid-template-columns:{{ quickCols }};gap:16px">
+            <sc-for list="{{ quick }}" as="qk" hint-placeholder-count="3">
+              <button type="button" onClick="{{ qk.go }}" style="display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:16px;border:1px solid #E6E6EE;background:#fff;color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3;box-shadow:0 8px 24px rgba(29,36,51,.08)">
+                <div style="display:flex;gap:8px"><sc-for list="{{ qk.thumbs }}" as="th" hint-placeholder-count="2"><span style="flex:1;height:64px;border-radius:10px;background:{{ th }}"></span></sc-for></div>
+                <span style="font:800 16px/1.3 'Merriweather Sans',sans-serif">{{ qk.t }}</span>
+                <span style="font:400 13px/1.45 Roboto;color:#5A6472">{{ qk.d }}</span>
+                <span style="display:flex;align-items:center;gap:4px;font:700 13px Roboto;color:#7D3EE3;white-space:nowrap">Comparar<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+      <sc-if value="{{ cohOn }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Alerta do Copiloto" style="display:flex;flex-direction:column;gap:16px;padding:{{ cohPad }};border-radius:20px;background:#FFFAEB;border:1px solid #F6DE9A">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <img src="assets/home/copiloto-mascote.webp" alt="" style="width:40px;height:auto;flex:none;display:block">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 11px Roboto;letter-spacing:.06em;color:#92400E">O COPILOTO NOTOU</span><span style="font:800 19px/1.3 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">{{ cohTitle }}</span><span style="font:400 14px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ cohText }}</span></div>
+            <button type="button" onClick="{{ cohDismiss }}" aria-label="Manter assim" title="Manter assim" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#92400E;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:background .15s ease-out" style-hover="background:#FEF3C7">close</button>
+          </div>
+          <sc-if value="{{ cohHasSug }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px Roboto;color:#1D2433">{{ cohSugTitle }}</span>
+            <div style="display:grid;grid-template-columns:{{ cohCols }};gap:10px"><sc-for list="{{ cohSugs }}" as="g" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:14px;background:#fff;border:1px solid #F0E3BA"><span style="width:64px;height:42px;flex:none;border-radius:8px;background:{{ g.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><strong style="font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ g.t }}</strong><span style="font:400 12px Roboto;color:#5A6472">{{ g.d }}</span></span><button type="button" onClick="{{ g.go }}" style="flex:none;height:34px;padding:0 12px;border-radius:8px;border:1.5px solid #7D3EE3;background:#fff;color:#5B21B6;font:700 12px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF">{{ g.cta }}</button></div></sc-for></div></div></sc-if>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" onClick="{{ cohDismiss }}" style="min-height:38px;padding:8px 14px;border-radius:8px;border:0;background:transparent;color:#92400E;font:700 13px/1.3 Roboto;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FEF3C7">Manter assim, quero comparar mesmo</button></div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Veredito" style="display:flex;flex-direction:column;gap:18px;padding:{{ cohPad }};border-radius:20px;background:#fff;border:2px solid #7D3EE3">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <img src="assets/home/copiloto-mascote.webp" alt="" style="width:40px;height:auto;flex:none;display:block">
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 11px/1.3 Roboto;letter-spacing:.06em;color:#6D28D9;white-space:nowrap">{{ vdOver }}</span><span style="font:800 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">{{ vdHead }}</span><span style="font:400 15px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ vdWhy }}</span></div>
+          </div>
+          <div role="table" aria-label="Resumo dos carros" style="display:flex;flex-direction:column;border:1px solid #E6E6EE;border-radius:14px;overflow:hidden">
+            <div role="row" style="display:grid;grid-template-columns:{{ vdCols }};gap:12px;padding:10px 16px;background:#F6F6F9;font:400 12px Roboto;color:#5A6472"><span role="columnheader">Carro</span><span role="columnheader">Preço FIPE</span><span role="columnheader">Custo por mês</span><span role="columnheader">Nota geral</span></div>
+            <sc-for list="{{ vdRows }}" as="r" hint-placeholder-count="3"><div role="row" style="display:grid;grid-template-columns:{{ vdCols }};gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #EEEEF2;background:{{ r.bg }}">
+              <span role="cell" style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:22px;height:22px;flex:none;border-radius:50%;background:{{ r.nBg }};color:{{ r.nFg }};font:700 11px/22px Roboto;text-align:center">{{ r.n }}</span><span style="min-width:0;display:flex;flex-direction:column;gap:1px"><strong style="font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.t }}</strong><sc-if value="{{ r.isRec }}" hint-placeholder-val="{{ false }}"><span style="font:700 11px Roboto;color:#6D28D9">Recomendado</span></sc-if></span></span>
+              <span role="cell" style="display:flex;flex-direction:column;gap:2px"><span style="font:{{ r.pw }} 14px Roboto">{{ r.price }}</span><sc-if value="{{ r.cheap }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/20px Roboto;white-space:nowrap">Mais barato</span></sc-if></span>
+              <span role="cell" style="display:flex;flex-direction:column;gap:2px"><span style="font:{{ r.mw }} 14px Roboto">{{ r.month }}</span><sc-if value="{{ r.low }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/20px Roboto;white-space:nowrap">Menor custo</span></sc-if></span>
+              <span role="cell" style="display:flex;align-items:center;gap:8px"><strong style="font:800 16px 'Merriweather Sans',sans-serif;color:{{ r.sc }}">{{ r.nota }}</strong><span style="flex:1;max-width:80px;height:6px;border-radius:3px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ r.w }};background:{{ r.sc }};border-radius:3px"></span></span></span>
+            </div></sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><a href="{{ vdHref }}" style="display:flex;align-items:center;gap:4px;font:700 14px Roboto" style-hover="color:#4C1D95">Ver a ficha do {{ vdShort }}<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a><span style="font:400 12px Roboto;color:#5A6472">A nota pesa preço, custo de uso, espaço, desempenho e segurança. Mude as prioridades no resumo abaixo.</span></div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ isResult }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Resumo inteligente" style="border-radius:24px;padding:{{ resumoPad }};background:radial-gradient(120% 90% at 100% 0%, #3B1F6E 0%, #16121F 55%, #0A0A0A 100%);color:#fff;display:grid;grid-template-columns:{{ resumoCols }};gap:32px">
+          <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+            <span style="display:flex;align-items:center;gap:10px;font:800 22px 'Merriweather Sans',sans-serif"><span style="font-family:'Material Symbols Rounded';font-size:24px;line-height:1;color:#B794F6">insights</span>Resumo inteligente</span>
+            <dl style="margin:0;display:flex;flex-direction:column">
+              <sc-for list="{{ bestFor }}" as="bf" hint-placeholder-count="6"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid {{ bf.sep }}"><dt style="flex:1 1 auto;min-width:0;font:400 15px/1.35 Roboto;color:#C9CDD6">{{ bf.k }}</dt><dd style="flex:none;margin:0;font:800 15px/1.35 'Merriweather Sans',sans-serif;text-align:right;white-space:nowrap">{{ bf.v }}</dd></div></sc-for>
+            </dl>
+            <span style="font:400 13px/1.5 Roboto;color:#9BA3B1">A melhor escolha depende das suas prioridades, não existe um único veículo perfeito para todo mundo.</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)">
+            <sc-if value="{{ notPersonal }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <img src="assets/home/copiloto-mascote.webp" alt="" style="width:40px;height:auto;display:block">
+                <span style="font:800 17px/1.3 'Merriweather Sans',sans-serif">Qual combina mais com você?</span>
+                <span style="font:400 14px/1.5 Roboto;color:#C9CDD6">Diga o que pesa mais no seu dia a dia e o Copiloto recalcula a recomendação.</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ personal }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <span style="font:700 11px Roboto;letter-spacing:.06em;color:#C9B3F5">PARA AS SUAS PRIORIDADES</span>
+                <span style="font:800 22px/1.25 'Merriweather Sans',sans-serif">{{ recName }}</span>
+                <span style="font:400 13px/1.5 Roboto;color:#C9CDD6">{{ recWhy }}</span>
+                <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px"><sc-for list="{{ recBars }}" as="rb" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;gap:12px;font:500 13px Roboto"><span>{{ rb.t }}</span><span style="color:#C9CDD6">{{ rb.v }}</span></div><div style="height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden"><div style="height:100%;width:{{ rb.w }};border-radius:3px;background:{{ rb.c }};transition:width .4s ease-out"></div></div></div></sc-for></div>
+              </div>
+            </sc-if>
+            <button type="button" onClick="{{ openPrio }}" style="margin-top:auto;height:44px;border-radius:999px;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="background:rgba(255,255,255,.08);border-color:#fff">{{ prioBtn }}</button>
+          </div>
+        </section>
+
+        <section data-screen-label="Pontos" style="display:grid;grid-template-columns:{{ slotColsN }};gap:16px">
+          <sc-for list="{{ ptsCards }}" as="p" hint-placeholder-count="2">
+            <div style="background:#fff;border:1px solid #E6E6EE;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px">
+              <span style="font:800 16px 'Merriweather Sans',sans-serif">{{ p.name }}</span>
+              <div style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;align-items:center;gap:6px;font:700 12px Roboto;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">thumb_up</span>Pontos positivos</span><sc-for list="{{ p.pros }}" as="t" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:flex-start;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#15803D;flex:none">check_circle</span>{{ t }}</span></sc-for></div>
+              <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid #EEEEF2"><span style="display:flex;align-items:center;gap:6px;font:700 12px Roboto;color:#B45309"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">info</span>Pontos de atenção</span><sc-for list="{{ p.cons }}" as="t" hint-placeholder-count="2"><span style="display:flex;gap:8px;align-items:flex-start;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#D97706;flex:none">error</span>{{ t }}</span></sc-for></div>
+            </div>
+          </sc-for>
+        </section>
+
+        <section data-screen-label="Lado a lado" style="background:#fff;border:1px solid #E6E6EE;border-radius:20px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 24px">
+            <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Ficha lado a lado</h2><span style="font:400 13px/1.45 Roboto;color:#5A6472;text-wrap:pretty">{{ tblSub }}</span></div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <button type="button" role="switch" aria-checked="{{ onlyDiff }}" onClick="{{ toggleDiff }}" style="display:flex;align-items:center;gap:10px;height:36px;padding:0 4px;border:0;background:transparent;color:#1D2433;font:500 14px Roboto;white-space:nowrap;cursor:pointer"><span style="position:relative;flex:none;width:40px;height:24px;border-radius:999px;background:{{ swBg }};transition:background .15s ease-out"><span style="position:absolute;top:3px;left:{{ swX }};width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(29,36,51,.25);transition:left .15s ease-out"></span></span>Só diferenças</button>
+              <div ref="{{ refRef }}" style="position:relative">
+                <button type="button" onClick="{{ toggleRef }}" aria-expanded="{{ refOpen }}" style="display:flex;align-items:center;gap:6px;height:36px;padding:0 10px 0 12px;border-radius:999px;border:1px solid #D5D8DE;background:#fff;color:#1D2433;font:500 13px Roboto;white-space:nowrap;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">tune</span>Refinar especificações<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">{{ refChev }}</span></button>
+                <sc-if value="{{ refOpen }}" hint-placeholder-val="{{ false }}">
+                  <div role="menu" aria-label="Seções da ficha" style="position:absolute;right:0;top:calc(100% + 6px);z-index:20;width:260px;padding:8px;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.16), 0 0 0 1px #E6E6EE;display:flex;flex-direction:column">
+                    <span style="padding:6px 10px 8px;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">MOSTRAR NA FICHA</span>
+                    <sc-for list="{{ refItems }}" as="ri" hint-placeholder-count="6"><button type="button" role="menuitemcheckbox" aria-checked="{{ ri.on }}" onClick="{{ ri.go }}" style="display:flex;align-items:center;gap:10px;height:38px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#1D2433;font:400 14px Roboto;text-align:left;cursor:pointer" style-hover="background:#F4F4F6"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:{{ ri.c }}">{{ ri.icon }}</span>{{ ri.t }}</button></sc-for>
+                    <button type="button" onClick="{{ refAll }}" style="margin-top:4px;height:36px;border:0;border-top:1px solid #EEEEF2;background:transparent;color:#7D3EE3;font:700 13px Roboto;cursor:pointer" style-hover="color:#6A2FCB">Mostrar todas</button>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:18px 24px;border-top:1px solid #E6E6EE;background:#FAFAFC">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="display:flex;align-items:center;gap:8px;font:800 16px 'Merriweather Sans',sans-serif;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#15803D">emoji_events</span>Placar: quem ganha em mais itens</span><span style="font:400 12px Roboto;color:#5A6472">{{ placarNote }}</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+              <sc-for list="{{ placar }}" as="p" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:8px;padding:12px 14px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 {{ p.bw }} {{ p.bd }}">
+                  <div style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:44px;height:28px;flex:none;border-radius:6px;background:{{ p.thumb }}"></span><span style="flex:1;min-width:0;font:700 14px/1.3 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.t }}</span><sc-if value="{{ p.lead }}" hint-placeholder-val="{{ false }}"><span style="flex:none;padding:2px 8px;border-radius:999px;background:#DCFCE7;color:#166534;font:700 11px Roboto">Lidera</span></sc-if></div>
+                  <div style="display:flex;align-items:baseline;gap:6px"><span style="font:800 26px/1 'Merriweather Sans',sans-serif;color:{{ p.nc }}">{{ p.w }}</span><span style="font:400 13px Roboto;color:#5A6472">{{ p.of }}</span></div>
+                  <span style="display:block;height:6px;border-radius:3px;background:#EEEEF2"><span style="display:block;height:6px;border-radius:3px;background:{{ p.bar }};width:{{ p.pct }}"></span></span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="overflow-x:auto;border-top:1px solid #E6E6EE">
+            <div role="table" style="min-width:{{ tblMin }}">
+              <div role="row" style="display:grid;grid-template-columns:{{ tblCols }};gap:12px;padding:12px 24px;background:#F6F6F9;border-bottom:1px solid #E6E6EE">
+                <span role="columnheader" style="font:400 12px Roboto;color:#5A6472">Critério</span>
+                <sc-for list="{{ tblHead }}" as="h" hint-placeholder-count="2"><span role="columnheader" style="display:flex;align-items:center;gap:8px;min-width:0;font:700 13px/1.3 Roboto;color:#1D2433"><span style="width:36px;height:24px;flex:none;border-radius:6px;background:{{ h.thumb }}"></span><span style="min-width:0">{{ h.t }}</span></span></sc-for>
+              </div>
+              <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;border-bottom:1px solid #EEEEF2">
+                  <button type="button" onClick="{{ g.toggle }}" aria-expanded="{{ g.open }}" style="display:flex;align-items:center;gap:8px;padding:16px 24px;border:0;background:transparent;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FAFAFC"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">{{ g.icon }}</span><span style="flex:1;font:800 16px 'Merriweather Sans',sans-serif;color:#4C1D95">{{ g.t }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ g.count }}</span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">{{ g.chev }}</span></button>
+                  <sc-if value="{{ g.open }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;flex-direction:column">
+                      <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="3">
+                        <div role="row" style="display:grid;grid-template-columns:{{ tblCols }};gap:12px;align-items:center;min-height:48px;padding:8px 24px;border-top:1px solid #F0F0F4;transition:background .15s ease-out" style-hover="background:#FAFAFC">
+                          <span role="cell" style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:500 14px/1.3 Roboto;color:#1D2433">{{ r.k }}</span><sc-if value="{{ r.hasNote }}" hint-placeholder-val="{{ false }}"><span style="font:400 11px Roboto;color:#5A6472">{{ r.note }}</span></sc-if></span>
+                          <sc-for list="{{ r.cells }}" as="cl" hint-placeholder-count="2"><span role="cell" aria-label="{{ cl.aria }}" style="justify-self:start;display:flex;align-items:center;gap:6px;min-width:0;padding:{{ cl.pad }};border-radius:999px;background:{{ cl.bg }};font:{{ cl.w }} 14px/1.35 Roboto;color:{{ cl.c }}"><sc-if value="{{ cl.hasInd }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="flex:none;font-family:'Material Symbols Rounded';font-size:{{ cl.indS }};line-height:1;color:{{ cl.indC }}">{{ cl.ind }}</span></sc-if><sc-if value="{{ cl.isBool }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:{{ cl.bC }}">{{ cl.bIcon }}</span></sc-if><sc-if value="{{ cl.isText }}" hint-placeholder-val="{{ true }}"><span style="min-width:0">{{ cl.t }}</span></sc-if></span></sc-for>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noDiffs }}" hint-placeholder-val="{{ false }}"><div style="padding:24px;font:400 14px Roboto;color:#5A6472">Nenhuma diferença nas seções que você escolheu.</div></sc-if>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px 18px;flex-wrap:wrap;padding:14px 24px;border-bottom:1px solid #EEEEF2;font:400 12px Roboto;color:#3F4654">
+            <span style="font:700 12px Roboto;color:#4C1D95">Legenda</span>
+            <span style="display:flex;align-items:center;gap:2px"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#15803D">arrow_drop_up</span>Melhor da linha</span>
+            <span style="display:flex;align-items:center;gap:2px"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#DC2626">arrow_drop_down</span>Pior da linha</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#15803D">check_circle</span>Possui</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#DC2626">cancel</span>Não possui</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="color:#5A6472;font-weight:700">—</span>Não informado</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:8px;padding:16px 24px;font:400 12px/1.5 Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1.2">info</span>Custos são estimativas para 1.000 km/mês (60% cidade), gasolina a R$ 6,29, IPVA de SP (4%) e seguro médio do perfil. Consumo pelo Inmetro. Não é proposta de seguro nem preço de venda.</div>
+        </section>
+
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:24px 28px;border-radius:20px;background:#1D2433;color:#fff">
+          <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px"><span style="font:700 18px 'Merriweather Sans',sans-serif">Escolheu o seu? Consulte a placa antes de fechar</span><span style="font:400 14px/1.5 Roboto;color:#C9CDD6">Leilão, sinistro, roubo e furto, débitos e recall da unidade que você vai comprar.</span></div>
+          <button type="button" onClick="{{ openPlate }}" style="height:48px;padding:0 22px;border-radius:8px;background:#FF5040;color:#fff;font:700 15px Roboto;display:flex;border:0;cursor:pointer;align-items:center;gap:6px;white-space:nowrap" style-hover="background:#E63E2F;color:#fff">Consultar placa<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></button>
+        </div>
+      </sc-if>
+
+      <section style="display:flex;flex-direction:column;gap:16px;padding-top:16px">
+        <h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Como funciona o comparativo da Achecar</h2>
+        <div style="display:grid;grid-template-columns:{{ quickCols }};gap:16px">
+          <sc-for list="{{ how }}" as="hw" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:16px;background:#fff;border:1px solid #E6E6EE"><span style="width:32px;height:32px;border-radius:50%;background:#F1EBFD;color:#7D3EE3;font:700 14px/32px Roboto;text-align:center">{{ hw.n }}</span><span style="font:700 15px/1.35 Roboto">{{ hw.t }}</span><span style="font:400 13px/1.5 Roboto;color:#5A6472">{{ hw.d }}</span></div></sc-for>
+        </div>
+      </section>
+
+      <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Salvar na conta" style="position:relative;overflow:hidden;border-radius:24px;background:#1D2433;color:#fff;padding:{{ gnPad }};display:grid;grid-template-columns:{{ gnCols }};gap:28px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+            <span style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:rgba(183,148,246,.16);color:#D6C4FB;font:700 11px Roboto;letter-spacing:.06em;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">bookmark</span>CONTA GRÁTIS</span>
+            <h2 style="margin:0;font:800 26px/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Guarde este comparativo e volte quando quiser</h2>
+            <p style="margin:0;max-width:520px;font:400 15px/1.55 Roboto;color:#C9CDD6;text-wrap:pretty">Você pode comparar agora, mas só quem entra guarda o comparativo. Com a conta, ele fica salvo em qualquer dispositivo.</p>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ gnPerks }}" as="pk" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px;font:400 14px Roboto;color:#fff"><span style="width:22px;height:22px;flex:none;border-radius:50%;background:#7D3EE3;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:15px;line-height:1">check</span>{{ pk }}</li></sc-for></ul>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:6px">
+              <a href="Login.dc.html?next=Comparativo.dc.html%3Fsalvar%3D1" style="display:flex;align-items:center;gap:6px;height:48px;padding:0 22px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#6A2FCB;color:#fff">Entrar e salvar<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+              <span style="font:400 13px Roboto;color:#9BA3B1;white-space:nowrap">Grátis · menos de 1 minuto</span>
+            </div>
+          </div>
+          <sc-if value="{{ gnArt }}" hint-placeholder-val="{{ true }}">
+            <div aria-hidden="true" style="position:relative;min-height:240px;display:flex;align-items:center;justify-content:flex-end;padding:8px 4% 40px 0">
+              <span style="position:absolute;left:8%;top:28px;width:62%;height:150px;border-radius:16px;background:#2A3245;border:1px solid rgba(255,255,255,.08);transform:rotate(-6deg)"></span>
+              <div style="position:relative;z-index:1;width:min(100%,370px);border-radius:16px;background:#fff;color:#1D2433;box-shadow:0 24px 64px rgba(0,0,0,.35);overflow:hidden">
+                <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #EEEEF2">
+                  <span style="width:32px;height:32px;flex:none;border-radius:10px;background:#F0FDF4;color:#15803D;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px">bookmark_added</span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:800 14px/1.3 'Merriweather Sans',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ gnTitle }}</span><span style="font:400 11px Roboto;color:#5A6472">Salvo hoje · {{ gnCount }}</span></span>
+                  <span style="flex:none;font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472">more_horiz</span>
+                </div>
+                <div style="display:flex;flex-direction:column;padding:6px 8px">
+                  <sc-for list="{{ gnCars }}" as="gc" hint-placeholder-count="2">
+                    <div style="display:flex;align-items:center;gap:12px;padding:8px">
+                      <span style="width:72px;height:44px;flex:none;border-radius:10px;background:{{ gc.bg }}"></span>
+                      <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 13px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ gc.t }}</span><span style="font:400 11px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ gc.d }}</span></span>
+                      <span style="flex:none;font:700 12px 'Roboto Mono',monospace;color:#1D2433">{{ gc.fipe }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 16px;background:#F6F6F9;font:500 11px Roboto;color:#5A6472"><span style="display:flex;align-items:center;gap:6px"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">devices</span>No celular e no computador</span><span style="display:flex;align-items:center;gap:4px;color:#15803D;font-weight:700"><span style="width:6px;height:6px;border-radius:50%;background:#15803D"></span>Sincronizado</span></div>
+              </div>
+              <img src="assets/comparativo/il-comparativos.png" alt="" style="position:absolute;right:-6px;top:-10px;z-index:2;width:84px;height:auto;display:block;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))">
+            </div>
+          </sc-if>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Comparativos salvos" style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Seus comparativos salvos</h2><span style="font:400 14px Roboto;color:#5A6472">{{ savedCount }}</span></div>
+          <div style="display:grid;grid-template-columns:{{ quickCols }};gap:16px">
+            <sc-for list="{{ savedCards }}" as="sv" hint-placeholder-count="2">
+              <div style="position:relative;display:flex;flex-direction:column;gap:12px;padding:18px 20px;border-radius:16px;border:1px solid {{ sv.bd }};background:#fff">
+                <div style="display:flex;align-items:flex-start;gap:8px">
+                  <span style="flex:1;min-width:0;font:800 15px/1.35 'Merriweather Sans',sans-serif">{{ sv.t }}</span>
+                  <button type="button" onClick="{{ sv.menu }}" aria-label="Opções do comparativo" aria-expanded="{{ sv.menuOn }}" style="width:32px;height:32px;flex:none;margin:-4px -8px 0 0;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">more_vert</button>
+                </div>
+                <span style="font:400 12px Roboto;color:#5A6472">{{ sv.meta }}</span>
+                <button type="button" onClick="{{ sv.open }}" style="align-self:flex-start;display:flex;align-items:center;gap:4px;padding:0;border:0;background:transparent;color:#7D3EE3;font:700 13px Roboto;cursor:pointer" style-hover="color:#6A2FCB">{{ sv.cta }}<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></button>
+                <sc-if value="{{ sv.menuOn }}" hint-placeholder-val="{{ false }}">
+                  <div role="menu" style="position:absolute;right:12px;top:44px;z-index:5;min-width:200px;padding:6px;border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.16), 0 0 0 1px #E6E6EE;display:flex;flex-direction:column">
+                    <button type="button" role="menuitem" onClick="{{ sv.edit }}" style="display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#1D2433;font:400 14px Roboto;text-align:left;cursor:pointer" style-hover="background:#F4F4F6"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">edit</span>Editar comparativo</button>
+                    <button type="button" role="menuitem" onClick="{{ sv.del }}" style="display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#B91C1C;font:400 14px Roboto;text-align:left;cursor:pointer" style-hover="background:#FEF2F2"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">delete</span>Excluir comparativo</button>
+                  </div>
+                </sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-if>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ scrimClick }}" style="position:fixed;inset:0;z-index:90;background:rgba(18,13,38,.48);display:flex;align-items:{{ mAlign }};justify-content:center;padding:{{ mPad }};box-sizing:border-box">
+      <div role="dialog" aria-modal="true" aria-label="{{ mLabel }}" style="width:100%;max-width:{{ mW }};max-height:{{ mMaxH }};height:{{ mH }};display:flex;flex-direction:column;background:#fff;border-radius:{{ mRadius }};box-shadow:0 24px 64px rgba(18,13,38,.18);overflow:hidden">
+
+        <sc-if value="{{ mPick }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;min-height:0;flex:1">
+            <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 12px 20px">
+              <sc-if value="{{ pkBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ pkGoBack }}" aria-label="Voltar" style="width:36px;height:36px;flex:none;margin-left:-8px;border-radius:50%;border:0;background:transparent;color:#1D2433;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1" style-hover="background:#F4F4F6">arrow_back</button></sc-if>
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:800 18px 'Merriweather Sans',sans-serif">{{ pkTitle }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ pkSub }}</span></span>
+              <button type="button" onClick="{{ closeModal }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1" style-hover="background:#F4F4F6;color:#1D2433">close</button>
+            </div>
+            <div style="display:flex;gap:6px;padding:0 20px 14px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #EEEEF2"><sc-for list="{{ pkSteps }}" as="st" hint-placeholder-count="5"><button type="button" onClick="{{ st.go }}" disabled="{{ st.dis }}" style="flex:none;display:flex;align-items:center;gap:6px;height:30px;padding:0 10px 0 4px;border-radius:999px;border:1px solid {{ st.bd }};background:{{ st.bg }};color:{{ st.fg }};font:500 12px Roboto;white-space:nowrap;cursor:{{ st.cur }}"><span style="width:22px;height:22px;border-radius:50%;background:{{ st.nBg }};color:{{ st.nFg }};font:700 11px/22px Roboto;text-align:center;font-family:{{ st.nFf }}">{{ st.n }}</span>{{ st.t }}</button></sc-for></div>
+            <div style="flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:20px 24px 24px;display:flex;flex-direction:column;gap:20px">
+
+              <sc-if value="{{ pkIsMarca }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <label style="display:flex;align-items:center;gap:10px;height:48px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;box-sizing:border-box"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">search</span><input value="{{ pkQ }}" onChange="{{ pkSetQ }}" placeholder="Buscar marca, modelo ou versão" aria-label="Buscar veículo" autofocus="{{ true }}" style="flex:1;min-width:0;border:0;outline:none;background:transparent;font:400 15px Roboto;color:#1D2433"><sc-if value="{{ pkHasQ }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ pkClearQ }}" aria-label="Limpar busca" style="width:28px;height:28px;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:18px;line-height:1" style-hover="background:#F4F4F6">close</button></sc-if></label>
+                  <sc-if value="{{ pkHasQ }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column">
+                      <sc-for list="{{ pkResults }}" as="m" hint-placeholder-count="3"><button type="button" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:16px;min-height:68px;padding:12px 14px;margin:0 -14px;border:0;border-radius:12px;background:transparent;color:#1D2433;text-align:left;cursor:pointer" style-hover="background:#F7F4FF"><span style="width:64px;height:40px;flex:none;border-radius:8px;background:{{ m.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ m.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ m.d }}</span></span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">chevron_right</span></button></sc-for>
+                      <sc-if value="{{ pkNoResults }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:4px;padding:16px 0"><span style="font:700 14px Roboto">Nada encontrado para "{{ pkQ }}"</span><span style="font:400 13px Roboto;color:#5A6472">Confira a grafia ou escolha pela montadora abaixo.</span></div></sc-if>
+                    </div>
+                  </sc-if>
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <span style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">MAIS PROCURADAS</span>
+                    <div style="display:grid;grid-template-columns:{{ pkBrandCols }};gap:8px"><sc-for list="{{ pkBrands }}" as="b" hint-placeholder-count="6"><button type="button" onClick="{{ b.go }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;border-radius:12px;border:1px solid #E6E6EE;background:#fff;color:#1D2433;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ b.mk }}" tone="dark" style="width:36px;height:36px" hint-size="36px,36px"></x-import><span style="font:700 13px Roboto;white-space:nowrap">{{ b.t }}</span><span style="font:400 11px Roboto;color:#5A6472;white-space:nowrap">{{ b.n }}</span></button></sc-for></div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ pkIsModelo }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:6px"><sc-for list="{{ pkModels }}" as="m" hint-placeholder-count="3"><button type="button" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:16px;min-height:76px;padding:12px 14px;margin:0 -14px;border:0;border-radius:12px;background:{{ m.bg }};color:#1D2433;text-align:left;cursor:pointer" style-hover="background:#F7F4FF"><span style="width:76px;height:48px;flex:none;border-radius:8px;background:{{ m.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">{{ m.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ m.d }}</span></span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">chevron_right</span></button></sc-for></div>
+              </sc-if>
+
+              <sc-if value="{{ pkIsAno }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px"><span style="font:400 14px Roboto;color:#3F4654">Ano-modelo do {{ pkModelName }}</span><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ pkYears }}" as="y" hint-placeholder-count="3"><button type="button" onClick="{{ y.go }}" style="height:44px;min-width:88px;padding:0 18px;border-radius:999px;border:1.5px solid {{ y.bd }};background:{{ y.bg }};color:{{ y.fg }};font:700 15px Roboto;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF">{{ y.t }}</button></sc-for></div></div>
+              </sc-if>
+
+              <sc-if value="{{ pkIsVersao }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{ pkVers }}" as="v" hint-placeholder-count="3"><button type="button" onClick="{{ v.go }}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;border:1.5px solid {{ v.bd }};background:{{ v.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font:700 15px Roboto">{{ v.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ v.d }}</span></span><span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:400 11px Roboto;color:#5A6472">FIPE</span><span style="font:700 14px Roboto;white-space:nowrap">{{ v.p }}</span></span></button></sc-for></div>
+              </sc-if>
+
+              <sc-if value="{{ pkIsOk }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="border:1px solid #E6E6EE;border-radius:16px;overflow:hidden">
+                    <div style="position:relative;height:150px;background:#F1F1F5"><span role="img" aria-label="{{ pkCarName }}" style="position:absolute;inset:14px 24px 8px;background:{{ pkCarPhoto }}"></span></div>
+                    <div style="padding:16px 18px;display:flex;align-items:flex-start;gap:12px">
+                      <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:800 18px/1.25 'Merriweather Sans',sans-serif">{{ pkCarName }}</span><span style="font:400 14px Roboto;color:#5A6472">{{ pkCarVer }}</span></span>
+                      <span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:400 11px Roboto;color:#5A6472">FIPE</span><span style="font:800 18px 'Merriweather Sans',sans-serif;white-space:nowrap">{{ pkCarPrice }}</span></span>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:8px;padding:14px 18px 16px;border-top:1px solid #EEEEF2">
+                      <span style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">QUER MUDAR ALGO?</span>
+                      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px"><sc-for list="{{ pkEdits }}" as="e" hint-placeholder-count="4"><button type="button" onClick="{{ e.go }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 10px 0 12px;border-radius:8px;border:1.5px solid #DCCFF8;background:#F7F4FF;color:#5B21B6;font:700 13px Roboto;white-space:nowrap;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out, color .15s ease-out" style-hover="border-color:#7D3EE3;background:#EFE7FD;color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">{{ e.icon }}</span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis">{{ e.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">chevron_right</span></button></sc-for></div>
+                    </div>
+                  </div>
+                  <sc-if value="{{ pkDup }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;background:#FFF6DA;color:#92400E;font:400 13px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#D97706">error</span>Esse veículo já está no comparativo. Troque o ano ou a versão para comparar.</div></sc-if>
+                  <span style="font:400 13px/1.45 Roboto;color:#5A6472">{{ pkOkHint }}</span>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ pkIsOk }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;gap:8px;padding:12px 20px 16px;border-top:1px solid #EEEEF2">
+                <button type="button" onClick="{{ closeModal }}" style="height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 15px Roboto;cursor:pointer" style-hover="background:#F6F6F9">Cancelar</button>
+                <button type="button" onClick="{{ pkConfirm }}" disabled="{{ pkDup }}" style="flex:1;height:48px;border:0;border-radius:8px;background:{{ pkCtaBg }};color:{{ pkCtaFg }};font:700 15px Roboto;cursor:{{ pkCtaCur }};transition:background .15s ease-out" style-hover="background:{{ pkCtaHov }}">{{ pkCta }}</button>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mQuiz }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;min-height:0;flex:1">
+            <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 12px 20px">
+              <sc-if value="{{ qzBack }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ qzGoBack }}" aria-label="Voltar" style="width:36px;height:36px;flex:none;margin-left:-8px;border-radius:50%;border:0;background:transparent;color:#1D2433;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6">arrow_back</button></sc-if>
+              <span style="flex:1;min-width:0;display:flex;align-items:center;gap:8px"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:26px;height:auto;display:block"><span style="font:700 13px Roboto;color:#5A6472;white-space:nowrap">{{ qzStepTxt }}</span></span>
+              <button type="button" onClick="{{ closeModal }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">close</button>
+            </div>
+            <div style="height:4px;margin:0 20px;border-radius:2px;background:#EEEEF2;overflow:hidden"><div style="height:100%;width:{{ qzPct }};border-radius:2px;background:#7D3EE3;transition:width .25s ease-out"></div></div>
+            <div style="flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:20px 20px 16px;display:flex;flex-direction:column;gap:16px">
+              <sc-if value="{{ qzAsking }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 22px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">{{ qzQ }}</span><span style="font:400 14px/1.45 Roboto;color:#5A6472">{{ qzHint }}</span></div>
+                  <div role="{{ qzRole }}" aria-label="{{ qzQ }}" style="display:grid;grid-template-columns:{{ qzCols }};gap:8px">
+                    <sc-for list="{{ qzOpts }}" as="o" hint-placeholder-count="4"><button type="button" role="{{ o.role }}" aria-checked="{{ o.on }}" onClick="{{ o.go }}" style="display:flex;align-items:center;gap:12px;min-height:60px;padding:10px 14px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="width:36px;height:36px;flex:none;border-radius:10px;background:{{ o.iBg }};color:{{ o.iFg }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ o.icon }}</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ o.t }}</span><span style="font:400 12px/1.35 Roboto;color:#5A6472">{{ o.d }}</span></span><span style="flex:none;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:{{ o.ckC }}">{{ o.ck }}</span></button></sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ qzDone }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 22px/1.25 'Merriweather Sans',sans-serif">{{ qzResTitle }}</span><span style="font:400 14px/1.45 Roboto;color:#5A6472">{{ qzResSub }}</span></div>
+                  <sc-if value="{{ qzRelaxed }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;background:#FFF6DA;color:#92400E;font:400 13px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1;color:#D97706">error</span>{{ qzRelaxTxt }}</div></sc-if>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                    <div role="group" aria-label="Ordenar" style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ qzSorts }}" as="so" hint-placeholder-count="3"><button type="button" onClick="{{ so.go }}" aria-pressed="{{ so.on }}" style="height:32px;padding:0 12px;border-radius:999px;border:1px solid {{ so.bd }};background:{{ so.bg }};color:{{ so.fg }};font:500 12px Roboto;white-space:nowrap;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF">{{ so.t }}</button></sc-for></div>
+                    <span style="font:700 13px Roboto;color:{{ qzSelC }};white-space:nowrap">{{ qzSelTxt }}</span>
+                  </div>
+                  <div role="group" aria-label="Veículos sugeridos" style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{ qzList }}" as="sc" hint-placeholder-count="6"><button type="button" role="checkbox" aria-checked="{{ sc.on }}" onClick="{{ sc.go }}" style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;border:1.5px solid {{ sc.bd }};background:{{ sc.bg }};color:#1D2433;text-align:left;cursor:{{ sc.cur }};opacity:{{ sc.op }};transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:{{ sc.hovBd }};background:{{ sc.hovBg }}"><span style="flex:none;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:{{ sc.ckC }}">{{ sc.ck }}</span><span style="width:72px;height:46px;flex:none;border-radius:8px;background:{{ sc.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px/1.3 Roboto">{{ sc.t }}</span><span style="font:400 12px/1.35 Roboto;color:#5A6472">{{ sc.d }}</span><span style="font:400 12px/1.35 Roboto;color:#3F4654">{{ sc.whyLine }}</span></span><span style="flex:none;height:24px;padding:0 9px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 11px/24px Roboto;white-space:nowrap">{{ sc.match }}</span></button></sc-for></div>
+                  <sc-if value="{{ qzFull }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;gap:6px;font:400 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">info</span>Limite de 3 veículos. Desmarque um para escolher outro.</span></sc-if>
+                  <span style="font:400 12px/1.45 Roboto;color:#5A6472">{{ qzSaveNote }}</span>
+                </div>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;padding:12px 20px 16px;border-top:1px solid #EEEEF2">
+              <sc-if value="{{ qzAsking }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ qzSkip }}" style="height:48px;padding:0 16px;border-radius:8px;border:0;background:transparent;color:#5A6472;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">Pular</button></sc-if>
+              <sc-if value="{{ qzDone }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ qzRestart }}" style="height:48px;padding:0 16px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9">Ajustar respostas</button></sc-if>
+              <button type="button" onClick="{{ qzNext }}" disabled="{{ qzNextDis }}" style="flex:1;height:48px;border:0;border-radius:8px;background:{{ qzNextBg }};color:{{ qzNextFg }};font:700 15px Roboto;white-space:nowrap;cursor:{{ qzNextCur }};transition:background .15s ease-out" style-hover="background:{{ qzNextHov }}">{{ qzNextTxt }}</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mFull }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:24px;overflow-y:auto">
+            <span style="width:44px;height:44px;border-radius:12px;background:#E8F0FE;color:#1E3A8A;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:24px;line-height:1">info</span>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px 'Merriweather Sans',sans-serif">Comparativo cheio (3 de 3)</span><span style="font:400 14px/1.5 Roboto;color:#3F4654">Escolha qual veículo sai para o <strong>{{ pendingName }}</strong> entrar.</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:#F1EBFD;color:#4C1D95;font:500 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">add_circle</span>Entra: {{ pendingName }}</div>
+            <div style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{ fullList }}" as="f" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;border:1px solid #E6E6EE"><span style="width:56px;height:36px;flex:none;border-radius:8px;background:{{ f.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ f.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ f.d }}</span></span><button type="button" onClick="{{ f.go }}" style="height:36px;padding:0 14px;border-radius:8px;border:1.5px solid #7D3EE3;background:#fff;color:#7D3EE3;font:700 13px Roboto;cursor:pointer" style-hover="background:#F7F4FF">Trocar</button></div></sc-for></div>
+            <div style="display:flex;gap:8px;justify-content:flex-end"><button type="button" onClick="{{ closeModal }}" style="height:44px;padding:0 18px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer" style-hover="background:#F6F6F9">Cancelar</button></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mPrio }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;min-height:0">
+            <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 16px 8px 24px"><span style="flex:1;display:flex;flex-direction:column;gap:6px"><span style="font:800 20px 'Merriweather Sans',sans-serif">O que é mais importante para você?</span><span style="font:400 14px/1.5 Roboto;color:#5A6472">Toque para marcar a importância de cada critério. Vamos recalcular a recomendação.</span></span><button type="button" onClick="{{ closeModal }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1" style-hover="background:#F4F4F6">close</button></div>
+            <div style="overflow-y:auto;padding:8px 24px 16px;display:flex;flex-direction:column"><sc-for list="{{ prioRows }}" as="pr" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 0;border-top:1px solid {{ pr.sep }}"><span style="width:36px;height:36px;flex:none;border-radius:10px;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ pr.icon }}</span><span style="flex:1;min-width:140px;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ pr.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ pr.d }}</span></span><div role="radiogroup" aria-label="{{ pr.t }}" style="display:flex;padding:3px;border-radius:999px;background:#F4F4F6"><sc-for list="{{ pr.opts }}" as="o" hint-placeholder-count="3"><button type="button" role="radio" aria-checked="{{ o.on }}" onClick="{{ o.go }}" style="height:32px;padding:0 12px;border:0;border-radius:999px;background:{{ o.bg }};color:{{ o.fg }};font:500 12px Roboto;box-shadow:{{ o.sh }};cursor:pointer;transition:background .15s ease-out" style-hover="color:#1D2433">{{ o.t }}</button></sc-for></div></div></sc-for></div>
+            <div style="display:flex;gap:8px;padding:12px 24px 20px;border-top:1px solid #EEEEF2"><button type="button" onClick="{{ prioReset }}" style="height:48px;padding:0 16px;border-radius:8px;border:0;background:transparent;color:#5A6472;font:700 14px Roboto;cursor:pointer" style-hover="background:#F4F4F6;color:#1D2433">Redefinir</button><button type="button" onClick="{{ prioApply }}" style="flex:1;height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#6A2FCB">Ver recomendação</button></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mSave }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:24px">
+            <img src="assets/comparativo/il-comparativos.png" alt="" style="width:96px;height:auto;display:block">
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px 'Merriweather Sans',sans-serif">Comparativos ficam na conta</span><span style="font:400 14px/1.5 Roboto;color:#3F4654">Você pode comparar agora, mas só quem entra guarda o comparativo. Entre ou crie sua conta grátis e voltamos aqui com ele salvo.</span></div>
+            <div style="display:flex;flex-direction:column;gap:8px"><a href="Login.dc.html?next=Comparativo.dc.html%3Fsalvar%3D1" style="height:48px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px/48px Roboto;text-align:center" style-hover="background:#6A2FCB;color:#fff">Entrar para salvar</a><button type="button" onClick="{{ closeModal }}" style="height:48px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 15px Roboto;cursor:pointer" style-hover="background:#F6F6F9">Continuar sem salvar</button></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mShare }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px;padding:24px;overflow-y:auto">
+            <div style="display:flex;align-items:flex-start;gap:12px"><span style="flex:1;display:flex;flex-direction:column;gap:6px"><span style="font:800 20px 'Merriweather Sans',sans-serif">Compartilhar comparativo</span><span style="font:400 14px/1.5 Roboto;color:#5A6472">{{ shareTitle }}</span></span><button type="button" onClick="{{ closeModal }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;margin:-6px -8px 0 0;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6">close</button></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:6px 6px 6px 14px;border-radius:10px;border:1.5px solid #D5D8DE;background:#F6F6F9"><span style="flex:1;min-width:0;font:400 13px 'Roboto Mono',monospace;color:#3F4654;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ shareUrl }}</span><button type="button" onClick="{{ shareLink }}" style="flex:none;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:0;border-radius:8px;background:{{ linkBg }};color:#fff;font:700 13px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:{{ linkHov }}"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ linkIcon }}</span>{{ linkTxt }}</button></div>
+            <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px"><sc-for list="{{ shareOpts }}" as="o" hint-placeholder-count="6"><button type="button" onClick="{{ o.go }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;border-radius:14px;border:1px solid #E6E6EE;background:#fff;color:#1D2433;font:500 13px Roboto;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="width:44px;height:44px;border-radius:50%;background:{{ o.bg }};color:#fff;display:flex;align-items:center;justify-content:center"><sc-if value="{{ o.hasImg }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display:block;width:22px;height:22px;background:{{ o.imgBg }}"></span></sc-if><sc-if value="{{ o.noImg }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1">{{ o.icon }}</span></sc-if></span><span style="white-space:nowrap">{{ o.t }}</span></button></sc-for></div>
+            <span style="font:400 12px/1.45 Roboto;color:#5A6472">Quem abrir o link vê os mesmos carros, versões e anos. Não é preciso ter conta.</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mConfirm }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;padding:24px">
+            <span style="width:44px;height:44px;border-radius:12px;background:#FEF2F2;color:#B91C1C;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:24px;line-height:1">delete</span>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font:800 20px 'Merriweather Sans',sans-serif">{{ cfTitle }}</span><span style="font:400 14px/1.5 Roboto;color:#3F4654">{{ cfText }}</span></div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap"><button type="button" onClick="{{ closeModal }}" style="height:44px;padding:0 18px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer" style-hover="background:#F6F6F9">Cancelar</button><button type="button" onClick="{{ cfGo }}" style="height:44px;padding:0 18px;border:0;border-radius:8px;background:#DC2626;color:#fff;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#B91C1C">{{ cfCta }}</button></div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ stickOn }}" hint-placeholder-val="{{ false }}">
+    <div aria-hidden="true" style="position:fixed;left:0;right:0;top:78px;z-index:41;background:#fff;border-bottom:1px solid #E6E6EE;box-shadow:0 8px 24px rgba(29,36,51,.08)">
+      <div style="max-width:1152px;margin:0 auto;padding:12px clamp(16px, calc(2.2vw + 7px), 32px) 10px;box-sizing:border-box">
+        <div style="display:grid;grid-template-columns:{{ tblCols }};gap:12px;align-items:center;padding:0 25px">
+          <span style="font:700 12px Roboto;color:#5A6472">Comparando</span>
+          <sc-for list="{{ stickCars }}" as="sc" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:56px;height:36px;flex:none;border-radius:8px;background:{{ sc.thumb }}"></span><span style="display:flex;flex-direction:column;gap:1px;min-width:0"><span style="font:700 13px/1.25 Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.t }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sc.d }}</span></span></span></sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:14px;max-width:calc(100% - 32px);padding:12px 12px 12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:{{ toastIc }}">{{ toastIcon }}</span><span style="flex:1;min-width:0;line-height:1.4">{{ toast }}</span><sc-if value="{{ hasUndo }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ undo }}" style="height:32px;padding:0 12px;border:0;border-radius:6px;background:transparent;color:#C9B3F5;font:700 14px Roboto;cursor:pointer" style-hover="background:rgba(255,255,255,.08)">Desfazer</button></sc-if></div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Vazio&quot;,&quot;Montando&quot;,&quot;Resultado&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;},&quot;logado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Sim&quot;,&quot;Não&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  state = { quiz: null, profile: null, stick: false, closedG: {}, hiddenG: {}, refOpen: false, vw: window.innerWidth, items: [], saved: [], logged: false, modal: null, pick: null, prio: { econ: 2, espaco: 2, desemp: 2, seg: 2, custo: 2 }, prioDraft: null, personal: false, tab: 0, onlyDiff: false, toast: "", toastKind: "", undoFn: null, curSaved: null, menu: null, confirm: null, pending: null, copied: false };
+  cardsRef = React.createRef(); refRef = React.createRef();
+  obScene = () => {
+    const E = React.createElement, F = "'Material Symbols Rounded'";
+    const anim = (k, inD, fl, flD) => ({ "data-ob-anim": "1", key: k, style: { animation: "obIn .6s cubic-bezier(.2,.8,.2,1) " + inD + "s both" + (fl ? ", obFloat " + fl + "s ease-in-out " + (inD + 0.6 + (flD || 0)) + "s infinite" : "") } });
+    const at = (k, pos, z, inD, fl, flD, child) => E("div", { key: k, style: { position: "absolute", ...pos, transform: "translateZ(" + z + "px)", transformStyle: "preserve-3d" } }, E("div", anim(k + "i", inD, fl, flD), child));
+    const q = (t, tail) => E("div", { style: { position: "relative", padding: "12px 16px", borderRadius: tail === "l" ? "18px 18px 18px 6px" : "18px 18px 6px 18px", background: "#fff", color: "#1D2433", font: "500 14px/1.3 Roboto", whiteSpace: "nowrap", boxShadow: "0 14px 32px rgba(77,26,153,.16), 0 2px 6px rgba(29,36,51,.06)" } }, "“" + t + "”");
+    const badge = (icon, ic, t, bg) => E("div", { style: { display: "flex", alignItems: "center", gap: 6, height: 32, padding: "0 12px 0 8px", borderRadius: 999, background: bg || "#fff", color: "#1D2433", font: "700 12px Roboto", whiteSpace: "nowrap", boxShadow: "0 10px 24px rgba(29,36,51,.14)" } }, E("span", { style: { fontFamily: F, fontSize: 18, lineHeight: 1, color: ic } }, icon), t);
+    const msg = (me, t) => E("div", { style: { alignSelf: me ? "flex-end" : "flex-start", maxWidth: "84%", padding: "8px 11px", borderRadius: me ? "14px 14px 4px 14px" : "14px 14px 14px 4px", background: me ? "#7D3EE3" : "#F4F1FB", color: me ? "#fff" : "#1D2433", font: "400 12px/1.4 Roboto" } }, t);
+    const dots = E("div", { style: { alignSelf: "flex-start", display: "flex", gap: 4, padding: "10px 12px", borderRadius: "14px 14px 14px 4px", background: "#F4F1FB" } }, [0, 1, 2].map((i) => E("span", { key: i, "data-ob-anim": "1", style: { width: 6, height: 6, borderRadius: "50%", background: "#7D3EE3", animation: "obDot 1.2s " + i * 0.15 + "s infinite ease-in-out" } })));
+    const panel = E("div", { style: { width: 248, borderRadius: 22, background: "#fff", boxShadow: "0 30px 60px rgba(46,16,101,.22), 0 4px 12px rgba(29,36,51,.08)", overflow: "hidden" } },
+      E("div", { style: { display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", borderBottom: "1px solid #EEEEF2" } }, E("img", { src: "assets/home/copiloto-mascote.webp", alt: "", style: { width: 24, height: "auto" } }), E("span", { style: { flex: 1, font: "700 13px Roboto", color: "#1D2433" } }, "Copiloto"), E("span", { style: { width: 8, height: 8, borderRadius: "50%", background: "#22C55E" } })),
+      E("div", { style: { display: "flex", flexDirection: "column", gap: 8, padding: "12px 12px 14px" } }, msg(false, "Oi! Me conta: você vai usar mais na cidade ou na estrada?"), msg(true, "Cidade, com as crianças"), msg(false, "Boa. E até quanto quer investir?"), dots));
+    return E("div", { style: { position: "absolute", inset: 0, transformStyle: "preserve-3d", transform: "rotateX(10deg) rotateY(-16deg)" } },
+      E("div", { "data-ob-anim": "1", key: "glow", style: { position: "absolute", left: "18%", top: "10%", width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(125,62,227,.30) 0%, rgba(125,62,227,0) 68%)", animation: "obGlow 6s ease-in-out infinite" } }),
+      at("panel", { left: "22%", top: 34 }, 0, 0.05, 7, 0, panel),
+      at("q1", { left: "-2%", top: 10 }, 70, 0.35, 5.5, 0.2, q("Vale a pena comprar?", "r")),
+      at("q2", { right: "-4%", top: 96 }, 90, 0.5, 6.2, 0.6, q("Tem algum risco?", "l")),
+      at("q3", { left: "0%", bottom: 34 }, 60, 0.65, 5.8, 1, q("O que preciso avaliar?", "r")),
+      at("b1", { right: "2%", top: 18 }, 110, 0.8, 4.8, 0.3, badge("check_circle", "#15803D", "Leilão: nada consta")),
+      at("b2", { right: "6%", bottom: 92 }, 120, 0.95, 5.2, 0.8, badge("local_gas_station", "#7D3EE3", "13,4 km/l na cidade")),
+      at("b3", { left: "12%", top: 170 }, 100, 1.1, 6, 0.4, badge("payments", "#C2410C", "FIPE R$ 98.490")));
+  };
+  KP = "achecar-perfil-compra";
+  QZ = [
+    { id: "uso", q: "Para que você vai usar o carro?", hint: "Escolha o que mais se parece com a sua rotina.", multi: false, opts: [["cidade", "location_city", "Dia a dia na cidade", "Trânsito, vagas apertadas, trajetos curtos"], ["estrada", "add_road", "Estrada e viagens", "Rodovia com frequência, viagens longas"], ["familia", "family_restroom", "Família", "Crianças, cadeirinha, bagagem"], ["trabalho", "work", "Trabalho ou aplicativo", "Rodar muito e gastar pouco"]] },
+    { id: "orc", q: "Até quanto quer investir?", hint: "Valor do carro, sem contar seguro e documentação.", multi: false, opts: [["50", "sell", "Até R$ 50 mil", "Usados e seminovos de entrada"], ["90", "savings", "R$ 50 a 90 mil", "Hatches de entrada e seminovos"], ["120", "payments", "R$ 90 a 120 mil", "Hatches turbo e sedãs de entrada"], ["160", "account_balance_wallet", "R$ 120 a 160 mil", "SUVs compactos e sedãs médios"], ["999", "diamond", "Acima de R$ 160 mil", "SUVs médios e versões topo"]] },
+    { id: "tipo", q: "Que tipo de carro você prefere?", hint: "Se não tiver preferência, deixamos em aberto.", multi: false, opts: [["Hatch", "directions_car", "Hatch", "Compacto e fácil de estacionar"], ["Sedã", "local_taxi", "Sedã", "Porta-malas grande"], ["SUV", "airport_shuttle", "SUV", "Posição de dirigir mais alta"], ["any", "apps", "Tanto faz", "Mostre o que combinar mais"]] },
+    { id: "prio", q: "O que mais pesa na sua escolha?", hint: "Marque até 2.", multi: true, max: 2, opts: [["econ", "local_gas_station", "Economia de combustível", "Gastar pouco no posto"], ["espaco", "luggage", "Espaço", "Porta-malas e conforto atrás"], ["desemp", "speed", "Desempenho", "Retomadas e ultrapassagens"], ["seg", "verified_user", "Segurança", "Airbags e nota no Latin NCAP"], ["custo", "savings", "Custo de manter", "IPVA, seguro e manutenção"]] },
+    { id: "cambio", q: "Câmbio manual ou automático?", hint: "Última pergunta.", multi: false, opts: [["auto", "motion_mode", "Automático", "Mais conforto no trânsito"], ["manual", "settings", "Manual", "Costuma ser mais barato"], ["any", "apps", "Tanto faz", "Não é decisivo para mim"]] }
+  ];
+  suggest = (a, lim) => {
+    const budget = +(a.orc || 999), lo = { 50: 0, 90: 45000, 120: 85000, 160: 115000, 999: 150000 }[a.orc || 999] || 0;
+    const all = []; this.M.forEach((m) => m.vers.forEach((_, vi) => (budget <= 90 ? m.years : m.years.slice(0, 1)).forEach((yr) => all.push(this.car({ mid: m.id, vi, year: yr })))));
+    const prio = a.prio || [], W = { econ: 1, espaco: 1, desemp: 1, seg: 1, custo: 1 }; prio.forEach((k) => (W[k] = 3));
+    const U = { cidade: { econ: 1, custo: 1 }, estrada: { desemp: 1.5, econ: 0.5 }, familia: { espaco: 2, seg: 1.5 }, trabalho: { econ: 2, custo: 2 } }[a.uso] || {}; Object.keys(U).forEach((k) => (W[k] += U[k]));
+    const fit = (c, strict) => (c.fipe <= budget * 1000 * (strict ? 1 : 1.12)) && (!strict || c.fipe >= lo * 0.9) && (!a.tipo || a.tipo === "any" || c.m.cat === a.tipo || !strict) && (!a.cambio || a.cambio === "any" || (a.cambio === "auto") === c.auto || !strict);
+    let pool = all.filter((c) => fit(c, true)), relaxed = false;
+    if (new Set(pool.map((c) => c.m.id)).size < 2) { pool = all.filter((c) => fit(c, false)); relaxed = true; }
+    if (new Set(pool.map((c) => c.m.id)).size < 2) { pool = all.slice().sort((x, y) => x.fipe - y.fipe).slice(0, 8); relaxed = true; }
+    const ranked = pool.map((c) => ({ c, s: this.score(c, W) + (a.uso === "cidade" ? (4700 - c.m.len) / 600 : 0) })).sort((x, y) => y.s - x.s);
+    const L = lim || 3, out = [], seen = {}; ranked.forEach((r) => { if (!seen[r.c.m.id] && out.length < L) { seen[r.c.m.id] = 1; out.push(r); } }); if (L > 3) ranked.forEach((r) => { if (out.length < L && !out.includes(r)) out.push(r); }); out.sort((x, y) => y.s - x.s);
+    const top = out.length ? out[0].s : 1;
+    const AREA = { econ: ["econ", (c) => this.dec(c.comb) + " km/l na média"], espaco: ["espaco", (c) => "Porta-malas de " + c.m.trunk + " litros"], desemp: ["desemp", (c) => "0 a 100 km/h em " + this.dec(c.z) + " s"], seg: ["seg", (c) => c.m.airbags + " airbags" + (c.m.ncap ? " · " + c.m.ncap + " estrelas no Latin NCAP" : "")], custo: ["custo", (c) => "Custo mensal de " + this.brl(c.mensal)] };
+    return { relaxed, list: out.map((r) => { const c = r.c, keys = (prio.length ? prio : Object.keys(c.sc).sort((x, y) => c.sc[y] - c.sc[x]).slice(0, 2)); const why = keys.map((k) => AREA[k][1](c)); if (c.fipe <= budget * 1000) why.push("Dentro do seu orçamento: " + this.brl(c.fipe)); return { key: c.m.id + "-" + c.it.vi, fipe: c.fipe, comb: c.comb, it: c.it, t: c.name + " " + c.ver, d: c.m.cat + " · " + (c.auto ? "automático" : "manual") + " · FIPE " + this.brl(c.fipe), why: why.slice(0, 3), whyLine: why.slice(0, 2).join(" · "), match: Math.round(78 + 20 * (r.s / top)) + "% de afinidade", thumb: this.thumb(c.m) }; }) };
+  };
+  K = "achecar-comparativo"; KS = "achecar-comparativos-salvos";
+  M = [
+    { id: "onix", brand: "Chevrolet", mk: "chevrolet", model: "Onix", cat: "Hatch", img: "onix", years: [2026, 2025, 2024], trunk: 303, airbags: 6, ncap: 3, len: 4163, tank: 44, vers: [["1.0", 88320, 82, 10.6, 13.9, 13.9, 16.8], ["1.0 Turbo", 98490, 116, 16.8, 10.1, 12.4, 15.2], ["Premier 1.0 Turbo", 118290, 116, 16.8, 10.4, 11.9, 14.8]] },
+    { id: "hb20", brand: "Hyundai", mk: "hyundai", model: "HB20", cat: "Hatch", img: "hb20", years: [2026, 2025, 2024], trunk: 300, airbags: 6, ncap: 0, len: 4015, tank: 50, vers: [["Comfort 1.0",95790,80,10.2,13.6,13.6,15.9],["Limited 1.0",99990,80,10.2,13.6,13.6,15.9],["Limited 1.0 TGDI",119990,120,17.5,10.2,12.1,14.6],["Platinum 1.0 TGDI",129650,120,17.5,10.2,11.8,14.3]] },
+    { id: "polo", brand: "Volkswagen", mk: "volkswagen", model: "Polo", cat: "Hatch", img: "polo", years: [2026, 2025, 2024], trunk: 300, airbags: 6, ncap: 5, len: 4074, tank: 52, vers: [["Track 1.0 MPI",84690,84,10.3,13.8,13.4,16.2],["Sense 170 TSI",101140,116,16.8,9.6,12.2,14.6],["Highline 170 TSI",114777,116,16.8,9.6,12,14.4]] },
+    { id: "argo", brand: "Fiat", mk: "fiat", model: "Argo", cat: "Hatch", img: "argo", years: [2026, 2025, 2024], trunk: 300, airbags: 4, ncap: 0, len: 3998, tank: 48, vers: [["1.0", 84990, 75, 10.7, 14.4, 13.5, 15.4], ["Drive 1.3", 94990, 107, 13.7, 10.9, 12.4, 14.2], ["Trekking 1.3 CVT", 109990, 107, 13.7, 11.4, 11.8, 13.4]] },
+    { id: "mobi", brand: "Fiat", mk: "fiat", model: "Mobi", cat: "Hatch", img: "mobi", years: [2026, 2025], trunk: 235, airbags: 2, ncap: 0, len: 3566, tank: 47, vers: [["Like 1.0", 74990, 75, 10.4, 14.2, 13.5, 15.1], ["Trekking 1.0", 79990, 75, 10.4, 14.4, 13.3, 14.8]] },
+    { id: "virtus", brand: "Volkswagen", mk: "volkswagen", model: "Virtus", cat: "Sedã", img: "virtus", years: [2026, 2025, 2024], trunk: 521, airbags: 6, ncap: 5, len: 4561, tank: 52, vers: [["Sense 1.0 TSI", 118990, 116, 16.8, 9.9, 12.4, 15.6], ["Highline 1.0 TSI", 138990, 116, 16.8, 10.1, 11.8, 14.9], ["Exclusive 1.4 TSI", 158990, 150, 25.5, 8.7, 10.9, 14.0]] },
+    { id: "corolla", brand: "Toyota", mk: "toyota", model: "Corolla", cat: "Sedã", img: "corolla", years: [2026, 2025, 2024], trunk: 470, airbags: 7, ncap: 5, len: 4630, tank: 50, vers: [["GLi 2.0", 159990, 177, 21.4, 9.3, 11.0, 13.6], ["XEi 2.0", 174990, 177, 21.4, 9.3, 10.9, 13.4], ["Altis Hybrid", 199990, 122, 14.5, 10.9, 17.8, 15.5]] },
+    { id: "tcross", brand: "Volkswagen", mk: "volkswagen", model: "T-Cross", cat: "SUV", img: "tcross", years: [2026, 2025, 2024], trunk: 373, airbags: 6, ncap: 5, len: 4218, tank: 52, vers: [["Sense 200 TSI",119990,128,20.4,10.1,11.6,13.6],["Comfortline 200 TSI",149990,128,20.4,10.1,11.4,13.4],["Highline 250 TSI",179990,150,25.5,8.9,10.6,12.8],["Extreme 250 TSI",191990,150,25.5,8.9,10.5,12.7]] },
+    { id: "tracker", brand: "Chevrolet", mk: "chevrolet", model: "Tracker", cat: "SUV", img: "tracker", years: [2026, 2025, 2024], trunk: 393, airbags: 6, ncap: 5, len: 4270, tank: 44, vers: [["1.0 Turbo AT",119990,116,16.8,10.9,11.8,13.8],["LT 1.0 Turbo",142490,116,16.8,10.9,11.6,13.6],["LTZ 1.0 Turbo",157690,116,16.8,11.2,11.5,13.5],["Premier 1.2 Turbo",174990,141,22.9,9.6,11.1,13.1],["RS 1.2 Turbo",175990,141,22.9,9.6,11.1,13.1]] },
+    { id: "creta", brand: "Hyundai", mk: "hyundai", model: "Creta", cat: "SUV", img: "creta", years: [2026, 2025, 2024], trunk: 422, airbags: 6, ncap: 0, len: 4330, tank: 50, vers: [["Action 1.0 Turbo",119990,120,17.5,11,11.3,13.2],["Limited 1.0 Turbo",151990,120,17.5,11,11.1,13],["Ultimate 1.6 Turbo",188990,193,27,8.2,9.8,11.8]] },
+    { id: "pulse", brand: "Fiat", mk: "fiat", model: "Pulse", cat: "SUV", img: "pulse", years: [2026, 2025, 2024], trunk: 370, airbags: 4, ncap: 0, len: 4099, tank: 47, vers: [["Drive 1.3", 109990, 107, 13.7, 11.2, 12.0, 13.5], ["Audace 1.0 Turbo", 129990, 130, 20.4, 9.4, 11.7, 13.6], ["Abarth 1.3 Turbo", 159990, 185, 27.5, 7.6, 10.0, 12.0]] },
+    { id: "compass", brand: "Jeep", mk: "jeep", model: "Compass", cat: "SUV", img: "compass", years: [2026, 2025, 2024], trunk: 410, airbags: 7, ncap: 5, len: 4404, tank: 55, vers: [["Sport 1.3 T270", 184990, 185, 27.5, 9.0, 10.4, 12.2], ["Longitude 1.3 T270", 204990, 185, 27.5, 9.0, 10.2, 12.0], ["Limited 1.3 T270", 224990, 185, 27.5, 9.0, 10.0, 11.8]] },
+    { id: "tiguan", brand: "Volkswagen", mk: "volkswagen", model: "Tiguan Allspace", cat: "SUV", img: "tiguan", years: [2026, 2025], trunk: 230, airbags: 7, ncap: 5, len: 4728, tank: 58, vers: [["R-Line 350 TSI 4Motion", 279990, 220, 35.7, 6.8, 8.6, 11.0]] },
+    { id: "trailblazer", brand: "Chevrolet", mk: "chevrolet", model: "Trailblazer", cat: "SUV", img: "trailblazer", years: [2026, 2025], trunk: 205, airbags: 7, ncap: 0, len: 4887, tank: 76, vers: [["LT 2.8 Diesel 4x4", 259990, 207, 52.0, 10.5, 9.3, 11.1], ["Premier 2.8 Diesel 4x4", 297990, 207, 52.0, 10.5, 9.1, 10.9]] },
+    { id: "tiggo8", brand: "Caoa Chery", mk: "chery", model: "Tiggo 8", cat: "SUV", img: "tiggo8", years: [2026, 2025], trunk: 193, airbags: 6, ncap: 0, len: 4722, tank: 51, vers: [["Max Drive 1.6 TGDI", 219990, 187, 28.0, 8.9, 9.6, 11.5], ["PHEV 1.5 Turbo híbrido", 239990, 323, 52.0, 7.0, 15.8, 14.2]] },
+    { id: "commander", brand: "Jeep", mk: "jeep", model: "Commander", cat: "SUV", img: "commander", years: [2027, 2026], trunk: 233, airbags: 6, ncap: 0, len: 4769, tank: 60, vers: [["Longitude T270 7L", 228790, 176, 27.5, 10.2, 8.6, 10.5], ["Limited T270 MHEV", 255690, 176, 27.5, 10.0, 9.4, 11.0], ["Overland T270 MHEV", 283790, 176, 27.5, 10.0, 9.3, 10.9], ["Overland 2.2T Diesel 4x4", 319990, 200, 45.9, 10.5, 9.8, 12.0]] },
+    { id: "sw4", brand: "Toyota", mk: "toyota", model: "SW4", cat: "SUV", img: "sw4", years: [2026, 2025], trunk: 250, airbags: 7, ncap: 0, len: 4795, tank: 80, vers: [["SRX 2.8 Diesel 4x4 7L", 349990, 204, 50.9, 10.0, 8.5, 10.8]] },
+  ];
+  QUICK = [[["onix", 1, 2026], ["hb20", 1, 2026]], [["polo", 1, 2026], ["argo", 1, 2026], ["onix", 1, 2026]], [["tcross", 0, 2026], ["tracker", 0, 2026], ["creta", 1, 2026]]];
+  QUICK_D = ["Os dois hatches mais vendidos do Brasil, nas versões turbo.", "Três hatches de entrada: quem gasta menos e quem anda mais.", "SUVs compactos na faixa de R$ 130 a 150 mil."];
+  PRESET = { Vazio: [], Montando: [{ mid: "onix", vi: 1, year: 2026 }], Resultado: [{ mid: "onix", vi: 1, year: 2026 }, { mid: "hb20", vi: 1, year: 2026 }, { mid: "polo", vi: 1, year: 2026 }] };
+  componentDidMount() {
+    this.onR = () => this.setState({ vw: window.innerWidth }); window.addEventListener("resize", this.onR);
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ modal: null, menu: null, refOpen: false }); }; document.addEventListener("keydown", this.onKey);
+    this.onScroll = () => { const el = this.cardsRef.current, on = !!el && this.state.items.length >= 2 && el.getBoundingClientRect().bottom < 96; if (on !== this.state.stick) this.setState({ stick: on }); }; window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.onDoc = (e) => { if (this.state.refOpen && this.refRef.current && !this.refRef.current.contains(e.target)) this.setState({ refOpen: false }); if (this.state.menu != null && !e.target.closest('[role="menu"],[aria-label="Opções do comparativo"]')) this.setState({ menu: null }); }; document.addEventListener("pointerdown", this.onDoc, true);
+    let items = [], saved = [], logged = false, curSaved = null;
+    try { const d = JSON.parse(localStorage.getItem(this.K) || "null"); if (d) { items = d.items || []; curSaved = d.curSaved || null; } } catch (e) {}
+    try { saved = JSON.parse(localStorage.getItem(this.KS) || "[]"); } catch (e) {}
+    let profile = null; try { profile = JSON.parse(localStorage.getItem(this.KP) || "null"); } catch (e) {}
+    try { logged = !!(JSON.parse(localStorage.getItem("achecar-session") || "null") || {}).logged; } catch (e) {}
+    items = items.filter((it) => this.mOf(it.mid)).slice(0, 3).map((it) => { const m = this.mOf(it.mid); let vi = it.ver ? m.vers.findIndex((v) => v[0] === it.ver) : it.vi; if (vi == null || vi < 0 || vi >= m.vers.length) vi = Math.max(0, Math.min(it.vi || 0, m.vers.length - 1)); const y = +it.year; return { mid: it.mid, vi, year: m.years.includes(y) ? y : m.years[0] }; });
+    { const cq = new URLSearchParams(location.search).get("c"); if (cq) items = cq.split(",").map((x) => { const [mid, vi, year] = x.split(":"); return { mid, vi: +vi || 0, year: +year }; }).filter((it) => this.mOf(it.mid)).map((it) => { const m = this.mOf(it.mid); return { mid: it.mid, vi: Math.min(m.vers.length - 1, it.vi), year: m.years.includes(it.year) ? it.year : m.years[0] }; }).slice(0, 3); }
+    const est = this.props.estado; if (est && this.PRESET[est]) { items = this.PRESET[est].slice(); curSaved = null; }
+    this.setState({ items, saved, logged, curSaved, profile }, () => {
+      const q = new URLSearchParams(location.search), add = q.get("add");
+      if (q.get("novo") && this.state.items.length < 3) this.openPick("add");
+      this.persist();
+      if (q.get("salvar") && this.isLogged() && this.state.items.length >= 2) this.doSave();
+      const mais = (q.get("mais") || "").split(",").filter((x) => this.mOf(x));
+      if (add && mais.length && this.mOf(add)) {
+        const m0 = this.mOf(add); let v0 = m0.vers.findIndex((v) => v[0] === q.get("ver")); if (v0 < 0) v0 = 0;
+        const list = [{ mid: m0.id, vi: v0, year: m0.years[0] }, ...mais.slice(0, 2).map((id) => ({ mid: id, vi: 0, year: this.mOf(id).years[0] }))];
+        this.setItems(list, list.length + " veículos no comparativo"); return;
+      }
+      if (add) {
+        const m = this.mOf(add);
+        if (!m) { this.toast("Ainda não temos dados de comparação do " + (q.get("nome") || "modelo") + ". Escolha outro veículo.", "info"); return; }
+        let vi = m.vers.findIndex((v) => v[0] === q.get("ver")); if (vi < 0) vi = 0;
+        const y = +q.get("ano"); this.addItem({ mid: m.id, vi, year: m.years.includes(y) ? y : m.years[0] });
+      }
+    });
+  }
+  componentDidUpdate(pp) { if (pp.estado !== this.props.estado && this.PRESET[this.props.estado]) this.setItems(this.PRESET[this.props.estado].slice(), "", true); }
+  componentWillUnmount() { window.removeEventListener("resize", this.onR); window.removeEventListener("scroll", this.onScroll); document.removeEventListener("keydown", this.onKey); document.removeEventListener("pointerdown", this.onDoc, true); clearTimeout(this.tt); }
+  isLogged = () => (this.props.logado === "Sim" ? true : this.props.logado === "Não" ? false : this.state.logged);
+  mOf = (id) => this.M.find((m) => m.id === id);
+  brl = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
+  k1 = (n) => (Math.round(n / 1000) * 1000).toLocaleString("pt-BR");
+  dec = (n, d = 1) => n.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  photo = (m) => "url('assets/carros/" + m.img + ".webp') center/contain no-repeat";
+  thumb = (m) => "#F1F1F5 url('assets/carros/" + m.img + ".webp') center/86% no-repeat";
+  toast = (msg, kind, undoFn) => { clearTimeout(this.tt); this.setState({ toast: msg, toastKind: kind || "", undoFn: undoFn || null }); this.tt = setTimeout(() => this.setState({ toast: "", undoFn: null }), undoFn ? 6000 : 3400); };
+  persist = () => { const view = this.state.items.map((it) => { const m = this.mOf(it.mid), v = m.vers[it.vi]; return { t: m.brand + " " + m.model, short: m.model, d: v[0] + " · " + it.year, img: "assets/carros/" + m.img + ".webp" }; }); try { localStorage.setItem(this.K, JSON.stringify({ items: this.state.items, view, curSaved: this.state.curSaved })); } catch (e) {} };
+  setItems = (items, msg, keepSaved, undoFn) => this.setState((s) => ({ items, curSaved: keepSaved ? s.curSaved : null, tab: Math.min(s.tab, Math.max(0, items.length - 1)) }), () => { this.persist(); if (msg) this.toast(msg, "ok", undoFn); });
+  same = (a, b) => a.mid === b.mid && a.vi === b.vi && a.year === b.year;
+  label = (it) => { const m = this.mOf(it.mid); return m.model + " " + m.vers[it.vi][0] + " " + it.year; };
+  addItem = (it) => {
+    const s = this.state;
+    if (s.items.some((x) => this.same(x, it))) { this.toast(this.label(it) + " já está no comparativo", "info"); return; }
+    if (s.items.length >= 3) { this.setState({ modal: "full", pending: it }); return; }
+    const items = [...s.items, it]; this.setState({ tab: items.length - 1 });
+    this.setItems(items, this.label(it) + " entrou no comparativo");
+  };
+  car = (it) => {
+    const m = this.mOf(it.mid), v = m.vers[it.vi], dep = Math.pow(0.9, Math.max(0, 2026 - it.year));
+    const [ver, price, cv, kgfm, z, c, e] = v, fipe = Math.round(price * dep / 10) * 10;
+    const comb = 0.6 * c + 0.4 * e, fuel = (600 / c + 400 / e) * 6.29, ipva = fipe * 0.04 / 12, seguro = fipe * (m.cat === "SUV" ? 0.05 : 0.045) / 12, manut = (1200 + fipe * 0.006) / 12, mensal = fuel + ipva + seguro + manut;
+    const cl = (x) => Math.max(0, Math.min(10, x * 10));
+    const sc = { econ: cl((comb - 10) / (16 - 10)), desemp: cl((14.5 - z) / (14.5 - 7.5)), espaco: cl((m.trunk - 230) / (530 - 230)), seg: cl(((m.airbags - 2) / 5) * 0.5 + (m.ncap / 5) * 0.5), custo: cl((3600 - mensal) / (3600 - 1700)) };
+    const lvl = it.vi + (price > 150000 ? 1 : 0), auto = /CVT|Hybrid|Turbo|TSI|T270|Plus|Premier|Limited|Platinum|Exclusive|Highline|Comfortline|GTS|Ultimate|LTZ|XEi|Abarth|Audace|Longitude/.test(ver) && !/^Track|^Sense 1\.0$|^Like|^Trekking 1\.0$|^1\.0$|^Drive 1\.3$/.test(ver);
+    const dims = { Hatch: [1730, 1470], "Sedã": [1752, 1480], SUV: [1790, 1600] }[m.cat] || [1750, 1500];
+    const ex = { cambio: /CVT|Hybrid/.test(ver) ? "Automático CVT" : auto ? "Automático, 6 marchas" : "Manual, 6 marchas", tracao: "Dianteira", vmax: Math.round(150 + cv * 0.33), larg: dims[0], alt: dims[1], eixos: Math.round(m.len * 0.62 / 5) * 5, gar: { hyundai: 5, toyota: 5, jeep: 3, chevrolet: 3, volkswagen: 3, fiat: 3 }[m.mk] || 3, tela: lvl >= 2 ? "10,1 pol." : lvl >= 1 ? "8 pol." : "7 pol.", spk: lvl >= 2 ? 6 : 4 };
+    return { ...ex, auto, it, m, ver, price, cv, kgfm, z, c, e, comb, fipe, fuel, ipva: ipva * 12, seguro: seguro * 12, manut: manut * 12, mensal, sc, lvl, name: m.brand + " " + m.model, short: m.model, verYear: ver + " · " + (it.year - 1) + "/" + it.year, range: "R$ " + this.k1(fipe * 0.95) + "–" + this.k1(fipe * 1.05) };
+  };
+  score = (c, w) => { const ks = Object.keys(w), tw = ks.reduce((t, k) => t + w[k], 0); return ks.reduce((t, k) => t + c.sc[k] * w[k], 0) / tw; };
+  openPick = (mode, idx, step) => {
+    const it = idx != null ? this.state.items[idx] : null, m = it ? this.mOf(it.mid) : null;
+    this.setState({ modal: "pick", pick: { mode, idx, step: step || "marca", mk: m ? m.mk : null, mid: it && mode === "edit" ? it.mid : null, year: it && mode === "edit" ? it.year : null, vi: it && mode === "edit" ? it.vi : null, q: "" } });
+  };
+  setPick = (u) => this.setState((s) => ({ pick: { ...s.pick, ...u } }));
+  confirmPick = () => {
+    const p = this.state.pick, it = { mid: p.mid, vi: p.vi, year: p.year };
+    if (p.mode === "add") { this.setState({ modal: null }); this.addItem(it); return; }
+    const items = this.state.items.slice(), old = items[p.idx]; items[p.idx] = it;
+    this.setState({ modal: null }); this.setItems(items, p.mode === "swap" ? this.label(old) + " saiu e " + this.label(it) + " entrou" : "Veículo atualizado para " + this.label(it));
+  };
+  changeItem = (i, u) => { const items = this.state.items.slice(), it = { ...items[i], ...u }; if (items.some((x, j) => j !== i && this.same(x, it))) { this.toast(this.label(it) + " já está no comparativo", "info"); return; } items[i] = it; this.setItems(items, "Atualizado para " + this.label(it)); };
+  doSave = () => {
+    const s = this.state, title = s.items.map((it) => this.mOf(it.mid).model).join(" × "), id = "c" + Date.now();
+    const d = new Date(), at = String(d.getDate()).padStart(2, "0") + "/" + String(d.getMonth() + 1).padStart(2, "0") + "/" + d.getFullYear();
+    const saved = [{ id, title, items: s.items, at, sub: s.items.map((it) => this.mOf(it.mid).vers[it.vi][0] + " " + it.year).join(" · ") }, ...s.saved.filter((x) => x.id !== s.curSaved)];
+    try { localStorage.setItem(this.KS, JSON.stringify(saved)); } catch (e) {}
+    this.setState({ saved, curSaved: id }, () => { this.persist(); this.toast("Comparação salva com sucesso.", "ok"); });
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const BP = { "Desktop 1440": 1440, "Desktop 1024": 1024, "Mobile 390": 390, "Mobile 360": 360, "Mobile 320": 320 }, fw = BP[this.props.breakpoint];
+    const s = this.state, vw = fw ? Math.min(fw, s.vw) : s.vw, wide = vw >= (this.props.bpDesktop1024 ?? 1024), mid = vw >= (this.props.bpTablet640 ?? 640), logged = this.isLogged();
+    const cars = s.items.map(this.car), n = cars.length, isResult = n >= 2, names = cars.map((c) => c.short);
+    const bestIdx = (f) => { let b = 0; cars.forEach((c, i) => { if (f(c) > f(cars[b])) b = i; }); return b; };
+    const W = s.personal ? s.prio : { econ: 1, espaco: 1, desemp: 1, seg: 1, custo: 1 };
+    const scores = cars.map((c) => this.score(c, W)), recI = n ? scores.indexOf(Math.max(...scores)) : 0;
+    const AREA = { econ: "economia", espaco: "espaço", desemp: "desempenho", seg: "segurança", custo: "custo mensal" };
+    const topK = Object.keys(s.prio).filter((k) => s.prio[k] === 3);
+    const COH = (() => {
+      if (!isResult) return { cohOn: false };
+      const f = cars[0], fam = (k) => (k === "Crossover" ? "SUV" : k), sig = s.items.map((it) => it.mid + it.vi).join("|");
+      const outs = cars.map((x, i) => ({ x, i })).slice(1).filter(({ x }) => fam(x.m.cat) !== fam(f.m.cat) || Math.max(x.fipe, f.fipe) / Math.min(x.fipe, f.fipe) > 1.5);
+      if (!outs.length || s.cohOff === sig) return { cohOn: false };
+      const lc = (k) => (k === "SUV" ? "SUV" : k.toLowerCase()), o = outs[0].x, oi = outs[0].i, catDiff = fam(o.m.cat) !== fam(f.m.cat), pct = Math.round((Math.max(o.fipe, f.fipe) / Math.min(o.fipe, f.fipe) - 1) * 100);
+      const title = catDiff ? "Esse comparativo mistura carros de propostas diferentes" : "Os preços estão muito distantes";
+      const text = catDiff ? "Você está comparando um " + lc(f.m.cat) + " (" + f.short + ") com um " + lc(o.m.cat) + " (" + o.short + "). Normalmente quem compara busca carros da mesma categoria, porque espaço, consumo e custo mudam muito." : "O " + (o.fipe > f.fipe ? o.short : f.short) + " custa " + pct + "% a mais que o " + (o.fipe > f.fipe ? f.short : o.short) + ". Comparativos assim costumam ser entre carros da mesma faixa de preço, senão o mais caro sempre ganha em equipamentos.";
+      const used = s.items.map((it) => it.mid);
+      const sug = this.M.filter((m) => !used.includes(m.id) && fam(m.cat) === fam(f.m.cat)).map((m) => { let vi = 0, best = 1e12; m.vers.forEach((v, k) => { const d = Math.abs(v[1] - f.fipe); if (d < best) { best = d; vi = k; } }); return { m, vi, d: best }; }).filter((x) => x.d / f.fipe < 0.3).sort((a, b) => a.d - b.d).slice(0, 3);
+      return { cohOn: true, cohTitle: title, cohText: text, cohHasSug: sug.length > 0, cohSugTitle: "Com base no " + f.name + ", o Copiloto sugere trocar o " + o.short + " por:", cohCols: wide ? "repeat(3,minmax(0,1fr))" : "minmax(0,1fr)",
+        cohSugs: sug.map(({ m, vi }) => ({ t: m.brand + " " + m.model, d: m.vers[vi][0] + " · " + this.brl(m.vers[vi][1]), thumb: this.thumb(m), cta: "Trocar", go: () => { const items = s.items.slice(); items[oi] = { mid: m.id, vi, year: m.years[0] }; this.setItems(items, o.short + " saiu e " + m.model + " entrou"); } })),
+        cohDismiss: () => this.setState({ cohOff: sig }) };
+    })();
+    const showTabs = isResult && !mid, shown = showTabs ? [Math.min(s.tab, n - 1)] : cars.map((_, i) => i);
+    const cards = shown.map((i) => { const c = cars[i]; return {
+      cat: c.m.cat + " · " + c.cv + " cv", viS: String(c.it.vi), yearS: String(c.it.year),
+      selKey: c.m.id + "-" + c.it.vi + "-" + i, selKeyY: c.m.id + "-" + c.it.year + "-" + i,
+      verOpts: c.m.vers.map((v, j) => ({ v: String(j), t: v[0], sel: j === c.it.vi })), yearOpts: c.m.years.map((y) => ({ v: String(y), t: (y - 1) + "/" + y, sel: y === c.it.year })),
+      setVer: (e) => this.changeItem(i, { vi: +e.target.value }), setYear: (e) => this.changeItem(i, { year: +e.target.value }),
+      name: c.name, mk: c.m.mk, photo: this.photo(c.m), noPhoto: false, verYear: c.verYear, range: c.range, fipe: this.brl(c.fipe), nota: this.dec(4 + 0.6 * this.score(c, W)),
+      isWinner: isResult && i === recI, winTxt: s.personal ? "Recomendado para você" : "Melhor nota geral",
+      ficha: "Versoes.dc.html?id=" + c.m.id + "&marca=" + c.m.brand + "&mk=" + c.m.mk + "&modelo=" + encodeURIComponent(c.m.model) + "&cat=" + encodeURIComponent(c.m.cat) + "&img=assets/carros/" + c.m.img + ".webp",
+      edit: () => this.openPick("edit", i, "ok"), swap: () => this.openPick("swap", i, "marca"),
+      remove: () => { const prev = s.items.slice(), items = s.items.filter((_, j) => j !== i); this.setItems(items, c.short + " saiu do comparativo", false, () => this.setItems(prev, "")); } }; });
+    const pctNum = (x) => Math.round(x * 10) + "%";
+    const bestFor = isResult ? [["Melhor para economia", (c) => c.comb], ["Melhor para famílias", (c) => c.sc.espaco + c.sc.seg], ["Melhor para desempenho", (c) => -c.z], ["Melhor para cidade", (c) => c.c + (4700 - c.m.len) / 250], ["Melhor para viagens", (c) => c.e + c.m.trunk / 100 + c.cv / 40], ["Melhor custo-benefício", (c) => this.score(c, { econ: 1, espaco: 1, desemp: 1, seg: 1, custo: 1 }) / c.fipe]].map(([k, f], i) => ({ k, v: cars[bestIdx(f)].name, sep: i ? "rgba(255,255,255,.1)" : "transparent" })) : [];
+    const ptsCards = isResult ? cars.map((c, i) => {
+      const pros = [], cons = [], rank = (f, hi) => { const vals = cars.map(f), best = hi ? Math.max(...vals) : Math.min(...vals), worst = hi ? Math.min(...vals) : Math.max(...vals); return vals[i] === best && best !== worst ? 1 : vals[i] === worst && best !== worst ? -1 : 0; };
+      const T = [[(x) => x.comb, true, "Mais econômico: " + this.dec(c.comb) + " km/l na média", "Gasta mais: " + this.dec(c.comb) + " km/l na média"], [(x) => x.z, false, "Mais rápido: 0 a 100 km/h em " + this.dec(c.z) + " s", "Mais lento: 0 a 100 km/h em " + this.dec(c.z) + " s"], [(x) => x.m.trunk, true, "Maior porta-malas: " + c.m.trunk + " L", "Menor porta-malas: " + c.m.trunk + " L"], [(x) => x.sc.seg, true, "Mais proteção: " + c.m.airbags + " airbags" + (c.m.ncap ? " e " + c.m.ncap + " estrelas no Latin NCAP" : ""), "Menos proteção: " + c.m.airbags + " airbags" + (c.m.ncap ? "" : ", sem nota no Latin NCAP")], [(x) => x.mensal, false, "Menor custo mensal: " + this.brl(c.mensal), "Maior custo mensal: " + this.brl(c.mensal)]];
+      T.forEach(([f, hi, p, cn]) => { const r = rank(f, hi); if (r > 0) pros.push(p); if (r < 0) cons.push(cn); });
+      if (!pros.length) pros.push("Fica no meio em todos os critérios, sem ponto fraco claro");
+      if (!cons.length) cons.push("Nenhum critério em que fique atrás dos outros");
+      return { name: c.name + " " + c.ver, pros: pros.slice(0, 3), cons: cons.slice(0, 3) };
+    }) : [];
+    const eq = (lv, need) => [lv >= need ? 1 : 0, lv >= need ? "Sim" : "Não", "bool"];
+    const G = [
+      ["preco", "Preço e custo", "payments", [["FIPE", (c) => [c.fipe, this.brl(c.fipe)], "lo"], ["Faixa de preço", (c) => [c.fipe, c.range], null, "anúncios de mercado"], ["Custo mensal estimado", (c) => [c.mensal, this.brl(c.mensal)], "lo", "combustível, IPVA, seguro e manutenção"], ["IPVA por ano (SP)", (c) => [c.ipva, this.brl(c.ipva)], "lo"], ["Seguro estimado por ano", (c) => [c.seguro, this.brl(c.seguro)], "lo"], ["Manutenção por ano", (c) => [c.manut, this.brl(c.manut)], "lo"]]],
+      ["desemp", "Desempenho e consumo", "speed", [["Potência", (c) => [c.cv, c.cv + " cv"], "hi"], ["Torque", (c) => [c.kgfm, this.dec(c.kgfm) + " kgfm"], "hi"], ["Câmbio", (c) => [c.cambio, c.cambio], null], ["Tração", (c) => [c.tracao, c.tracao], null], ["Velocidade máxima", (c) => [c.vmax, c.vmax + " km/h"], "hi"], ["0 a 100 km/h", (c) => [c.z, this.dec(c.z) + " s"], "lo"], ["Consumo na cidade", (c) => [c.c, this.dec(c.c) + " km/l (G)"], "hi"], ["Consumo na estrada", (c) => [c.e, this.dec(c.e) + " km/l (G)"], "hi"], ["Autonomia na cidade", (c) => [c.c * c.m.tank, Math.round(c.c * c.m.tank) + " km"], "hi", "tanque cheio"]]],
+      ["dim", "Dimensões e capacidades", "straighten", [["Porta-malas", (c) => [c.m.trunk, c.m.trunk + " litros"], "hi"], ["Comprimento", (c) => [c.m.len, c.m.len.toLocaleString("pt-BR") + " mm"], null], ["Largura", (c) => [c.larg, c.larg.toLocaleString("pt-BR") + " mm"], null], ["Altura", (c) => [c.alt, c.alt.toLocaleString("pt-BR") + " mm"], null], ["Entre-eixos", (c) => [c.eixos, c.eixos.toLocaleString("pt-BR") + " mm"], "hi"], ["Tanque de combustível", (c) => [c.m.tank, c.m.tank + " litros"], "hi"]]],
+      ["seg", "Segurança e tecnologia", "verified_user", [["Airbags", (c) => [c.m.airbags, String(c.m.airbags)], "hi"], ["Latin NCAP", (c) => [c.m.ncap, c.m.ncap ? c.m.ncap + " estrelas" : "—", c.m.ncap ? "" : "na"], "hi"], ["Controle de estabilidade", () => [1, "Sim", "bool"], null], ["Frenagem autônoma de emergência", (c) => eq(c.lvl, 1), null], ["Alerta de ponto cego", (c) => eq(c.lvl, 2), null], ["Piloto automático", (c) => [c.lvl, c.lvl >= 3 ? "Adaptativo" : "Convencional"], null], ["Câmera de ré", (c) => eq(c.lvl, 1), null], ["Faróis full LED", (c) => eq(c.lvl, 2), null]]],
+      ["conf", "Conforto e conveniência", "airline_seat_recline_extra", [["Ar-condicionado", (c) => [c.lvl >= 2 ? 1 : 0, c.lvl >= 2 ? "Digital automático" : "Manual"], null], ["Direção", () => ["e", "Elétrica"], null], ["Chave presencial", (c) => eq(c.lvl, 1), null], ["Painel digital", (c) => eq(c.lvl, 1), null], ["Bancos em couro", (c) => eq(c.lvl, 2), null], ["Teto solar", (c) => (c.lvl >= 3 ? [1, "Panorâmico"] : [0, "—", "na"]), null]]],
+      ["con", "Conectividade", "devices", [["Tela multimídia", (c) => [c.tela, c.tela], null], ["CarPlay e Android Auto sem fio", (c) => eq(c.lvl, 1), null], ["Carregador por indução", (c) => eq(c.lvl, 2), null], ["Alto-falantes", (c) => [c.spk, String(c.spk)], "hi"], ["USB-C", () => [1, "Sim", "bool"], null]]],
+      ["gar", "Garantia", "workspace_premium", [["Garantia de fábrica", (c) => [c.gar, c.gar + " anos"], "hi"]]]
+    ];
+    const allRowsCount = (rows) => rows.length;
+    const wins = cars.map(() => 0); let contested = 0;
+    if (isResult) G.forEach(([, , , rows]) => rows.forEach(([, f, better]) => { if (!better) return; const raw = cars.map((c) => f(c)[0]); if (raw.every((x) => x === raw[0])) return; contested++; const b = better === "hi" ? Math.max(...raw) : Math.min(...raw); raw.forEach((x, i) => { if (x === b) wins[i]++; }); }));
+    const topW = Math.max(0, ...wins);
+    const placar = isResult ? cars.map((c, i) => { const lead = wins[i] === topW && topW > 0; return { t: names[i], thumb: this.thumb ? this.thumb(c.m) : "#F6F6F9", w: String(wins[i]), of: "de " + contested + " itens", lead, nc: lead ? "#166534" : "#1D2433", bar: lead ? "#22C55E" : "#C9AEFF", pct: (contested ? Math.round((wins[i] / contested) * 100) : 0) + "%", bd: lead ? "#86EFAC" : "#E6E6EE", bw: lead ? "1.5px" : "1px" }; }) : [];
+    const groups = isResult ? G.filter(([id]) => !s.hiddenG[id]).map(([id, t, icon, rows]) => {
+      const built = rows.map(([k, f, better, note]) => {
+        const vals = cars.map(f), raw = vals.map((v) => v[0]), allEq = raw.every((x) => x === raw[0]);
+        const hiB = better && !allEq ? (better === "hi" ? Math.max(...raw) : Math.min(...raw)) : null, loB = better && !allEq ? (better === "hi" ? Math.min(...raw) : Math.max(...raw)) : null;
+        return { k, note: note || "", hasNote: !!note, diff: !allEq, cells: vals.map((v) => { const kind = v[2] || "", isBool = kind === "bool", na = kind === "na", best = hiB != null && v[0] === hiB, worst = loB != null && v[0] === loB && !best;
+          return { t: v[1], aria: (isBool ? (v[0] ? "Possui" : "Não possui") : v[1]) + (best ? ", melhor da linha" : worst ? ", pior da linha" : ""), isBool, isText: !isBool, bIcon: v[0] ? "check_circle" : "cancel", bC: v[0] ? "#15803D" : "#DC2626", hasInd: best || worst, ind: best ? "emoji_events" : "arrow_drop_down", indS: best ? "16px" : "22px", indC: best ? "#15803D" : "#DC2626", c: na ? "#5A6472" : best ? "#166534" : "#1D2433", w: best ? 700 : 400, bg: best ? "#DCFCE7" : "transparent", pad: best ? "4px 10px 4px 8px" : "4px 0" }; }) };
+      }).filter((r) => !s.onlyDiff || r.diff);
+      const open = !s.closedG[id];
+      return { t, icon, rows: built, open, chev: open ? "expand_less" : "expand_more", count: built.length + (built.length === 1 ? " item" : " itens"), toggle: () => this.setState((x) => ({ closedG: { ...x.closedG, [id]: !x.closedG[id] } })) };
+    }).filter((g) => g.rows.length) : [];
+    const refItems = G.map(([id, t]) => { const on = !s.hiddenG[id]; return { t, on, icon: on ? "check_box" : "check_box_outline_blank", c: on ? "#7D3EE3" : "#5A6472", go: () => this.setState((x) => ({ hiddenG: { ...x.hiddenG, [id]: !x.hiddenG[id] } })) }; });
+    const hiddenN = G.filter(([id]) => s.hiddenG[id]).length;
+    const recBars = isResult ? cars.map((c, i) => ({ t: c.short + " " + c.ver, v: this.dec(scores[i]) + " de 10", w: pctNum(scores[i]), c: i === recI ? "#B794F6" : "rgba(255,255,255,.45)" })) : [];
+    const p = s.pick, pm = p && p.mid ? this.mOf(p.mid) : null, steps = ["marca", "modelo", "ano", "versao", "ok"], si = p ? steps.indexOf(p.step) : 0;
+    const nq = (x) => (x || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const others = p ? s.items.filter((_, j) => p.mode === "add" || j !== p.idx) : [];
+    const pkDup = !!(p && p.step === "ok" && others.some((x) => this.same(x, { mid: p.mid, vi: p.vi, year: p.year })));
+    const brands = []; this.M.forEach((m) => { const b = brands.find((x) => x.mk === m.mk); if (b) b.n++; else brands.push({ mk: m.mk, t: m.brand, n: 1 }); });
+    const pickCar = p && p.step === "ok" && pm ? this.car({ mid: p.mid, vi: p.vi, year: p.year }) : null;
+    const modalW = { quiz: "620px", pick: "640px", full: "520px", prio: "620px", save: "440px", share: "440px", confirm: "440px" }[s.modal] || "520px";
+    const sheet = !mid;
+    const cf = s.confirm || {};
+    const curSavedObj = s.saved.find((x) => x.id === s.curSaved);
+    const rc = cars[recI] || {}, cheap = isResult ? cars[bestIdx((x) => -x.fipe)] : null, low = isResult ? cars[bestIdx((x) => -x.mensal)] : null, sortedF = isResult ? cars.map((x) => x.fipe).sort((a, b) => a - b) : [0, 0];
+    return { ...COH, openPlate: () => window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { plate: true } })), cohPad: mid ? "22px 24px" : "18px", verCols: vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1fr) minmax(0,1.3fr)" : "minmax(0,1fr)", vdFactCols: mid ? "repeat(3,minmax(0,1fr))" : "minmax(0,1fr)",
+      vdOver: s.personal ? "VEREDITO PARA AS SUAS PRIORIDADES" : "VEREDITO DO COPILOTO", vdName: isResult ? rc.name + " " + rc.ver : "", vdShort: isResult ? rc.short : "",
+      vdHead: isResult ? "Fique com o " + rc.short + " " + rc.ver : "",
+      vdWhy: isResult ? (() => { const alt = cheap && cheap !== rc ? cheap : null; if (!alt) return "É o mais barato e também o mais equilibrado. Não há motivo para pagar mais pelos outros."; const d = rc.fipe - alt.fipe; return "Custa " + this.brl(Math.abs(d)) + (d >= 0 ? " a mais" : " a menos") + " que o " + alt.short + ", mas compensa: tem nota " + this.dec(4 + 0.6 * scores[recI]) + " contra " + this.dec(4 + 0.6 * scores[cars.indexOf(alt)]) + ", com vantagem em " + (["espaço", "desempenho", "segurança"].filter((k, i) => [rc.sc.espaco > alt.sc.espaco, rc.sc.desemp > alt.sc.desemp, rc.sc.seg > alt.sc.seg][i]).join(", ") || "equilíbrio geral") + "." + (s.personal ? " Considera as prioridades que você marcou." : ""); })() : "",
+      vdCols: mid ? "minmax(0,1.6fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr)" : "minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) 70px",
+      vdRows: isResult ? cars.map((x, i) => ({ x, i, sc0: scores[i] })).sort((p, q) => q.sc0 - p.sc0).map(({ x, i, sc0 }, k) => ({ n: String(k + 1), t: x.short + " " + x.ver, isRec: i === recI, bg: i === recI ? "#F7F4FF" : "#fff", nBg: i === recI ? "#7D3EE3" : "#EEEEF2", nFg: i === recI ? "#fff" : "#5A6472", price: this.brl(x.fipe), month: this.brl(x.mensal), cheap: x === cheap, low: x === low, pw: x === cheap ? 700 : 400, mw: x === low ? 700 : 400, nota: this.dec(4 + 0.6 * sc0), w: Math.round((4 + 0.6 * sc0) * 10) + "%", sc: i === recI ? "#7D3EE3" : "#9BA3B1" })) : [],
+      vdHref: isResult ? "Versoes.dc.html?id=" + rc.m.id + "&marca=" + rc.m.brand + "&mk=" + rc.m.mk + "&modelo=" + encodeURIComponent(rc.m.model) : "#",
+      vdFacts: isResult ? [{ icon: "sell", k: "Mais barato", v: cheap.short, d: sortedF[sortedF.length - 1] - cheap.fipe < 500 ? "Preços praticamente iguais" : this.brl(sortedF[sortedF.length - 1] - cheap.fipe) + " a menos que o mais caro" }, { icon: "savings", k: "Menor custo por mês", v: low.short, d: this.brl(low.mensal) + " com uso, IPVA, seguro e manutenção" }, { icon: "emoji_events", k: "Maior nota geral", v: rc.short, d: this.dec(4 + 0.6 * scores[recI]) + " de 10" }] : [],
+      frameW: fw ? fw + "px" : "none", frameShadow: fw ? "0 0 0 1px #E6E6EE, 0 8px 24px rgba(29,36,51,.12)" : "none",
+      mainPad: mid ? "24px clamp(16px, calc(2.2vw + 7px), 32px) 80px" : "16px 16px 64px", heroPad: mid ? "40px 48px" : "28px 22px", heroCols: wide ? "minmax(0,1fr) 300px" : "minmax(0,1fr)", heroArt: wide, heroSize: mid ? "40px" : "30px",
+      quickCols: wide ? "repeat(3,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      isEmpty: n === 0, hasItems: n > 0, isResult, countTxt: n + (n === 1 ? " veículo" : " veículos") + " de 3",
+      quick: this.QUICK.map((q, i) => ({ t: q.map((x) => this.mOf(x[0]).model).join(" × "), d: this.QUICK_D[i], thumbs: q.map((x) => this.thumb(this.mOf(x[0]))), go: () => { this.setItems(q.map(([mid, vi, year]) => ({ mid, vi, year })), "Comparativo montado. Troque qualquer veículo quando quiser."); window.scrollTo({ top: 0, behavior: "smooth" }); } })),
+      openAdd: () => (n >= 3 ? this.toast("O comparativo já tem 3 veículos. Troque ou remova um para adicionar outro.", "info") : this.openPick("add")),
+      showTabs, tabs: cars.map((c, i) => { const on = i === Math.min(s.tab, n - 1); return { t: c.name, on, go: () => this.setState({ tab: i }), bg: on ? "#1D2433" : "#EEEEF2", fg: on ? "#fff" : "#5A6472", hov: on ? "#1D2433" : "#E3E3EA" }; }),
+      cards, canAdd: n > 0 && n < 3 && !showTabs, statCols: n >= 3 && wide && vw < (this.props.bpWide1200 ?? 1200) ? "minmax(0,1fr) minmax(0,1fr)" : "1.3fr 1fr 1fr", slotCols: wide ? "repeat(3,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)", slotColsN: wide ? "repeat(" + Math.max(n, 2) + ",minmax(0,1fr))" : "minmax(0,1fr)", slotMinH: wide && n ? "420px" : n ? "220px" : "180px",
+      slotHint: n === 1 ? "Adicione pelo menos dois veículos para comparar lado a lado." : "Até 3 veículos no comparativo.",
+      isSaved: !!curSavedObj, saveIcon: curSavedObj ? "bookmark_added" : "bookmark", saveTxt: curSavedObj ? "Salvo" : "Salvar", saveBd: curSavedObj ? "#86EFAC" : "#D5D8DE", saveBg: curSavedObj ? "#F0FDF4" : "#fff", saveFg: curSavedObj ? "#15803D" : "#1D2433",
+      save: () => (curSavedObj ? this.toast("Esse comparativo já está salvo na sua conta", "ok") : logged ? this.doSave() : this.setState({ modal: "save" })),
+      openShare: () => this.setState({ modal: "share", copied: false }),
+      openClear: () => this.setState({ modal: "confirm", confirm: { title: "Limpar comparação?", text: "Você vai remover todos os veículos deste comparativo. Essa ação não pode ser desfeita.", cta: "Limpar", go: () => { this.setState({ modal: null }); this.setItems([], "Comparativo limpo"); } } }),
+      resumoPad: mid ? "28px 32px" : "22px 20px", resumoCols: wide ? "minmax(0,1.4fr) minmax(0,1fr)" : "minmax(0,1fr)",
+      bestFor, personal: s.personal, notPersonal: !s.personal, recName: n ? cars[recI].name + " " + cars[recI].ver : "", recWhy: topK.length ? "Pesa mais para você: " + topK.map((k) => AREA[k]).join(", ") + "." : "Com os pesos que você marcou.", recBars,
+      prioBtn: s.personal ? "Editar prioridades" : "Personalizar recomendação", openPrio: () => this.setState({ modal: "prio", prioDraft: { ...s.prio } }),
+      ptsCards, groups, placar, placarNote: "Conta só os itens em que um carro é melhor que o outro. Empates ficam de fora.", noDiffs: isResult && !groups.length, onlyDiff: s.onlyDiff, toggleDiff: () => this.setState((x) => ({ onlyDiff: !x.onlyDiff })), swBg: s.onlyDiff ? "#7D3EE3" : "#D5D8DE", swX: s.onlyDiff ? "19px" : "3px",
+      tblCols: (mid ? "minmax(170px,1.2fr)" : "130px") + " repeat(" + n + ",minmax(" + (mid ? 120 : 110) + "px,1fr))", tblMin: (mid ? 200 + n * 140 : 140 + n * 120) + "px", tblHead: cars.map((c) => ({ t: c.short + " " + c.ver, thumb: this.thumb(c.m) })),
+      cardsRef: this.cardsRef, refRef: this.refRef, refOpen: s.refOpen, refChev: s.refOpen ? "expand_less" : "expand_more", toggleRef: () => this.setState((x) => ({ refOpen: !x.refOpen })), refItems, refAll: () => this.setState({ hiddenG: {} }),
+      tblSub: (hiddenN ? (G.length - hiddenN) + " de " + G.length + " seções · " : "") + "🏆 melhor e ▼ pior de cada linha",
+      pageTitle: n >= 2 ? "Comparativo" : "Compare antes de decidir", pageSub: n >= 2 ? n + (n === 1 ? " veículo" : " veículos") + " de 3 · preços FIPE out/2026 · custos estimados para 1.000\u00a0km/mês em\u00a0SP" : "Até três veículos lado a lado, com custo real de uso e o que pesa em cada um.",
+      emptySlots: showTabs ? [] : Array.from({ length: 3 - n }, (_, i) => { const main = i === 0; return { t: n === 1 && main ? "Adicione mais um para comparar lado a lado" : "Adicione um veículo para comparar", go: () => this.openPick("add"), bg: main ? "#7D3EE3" : "#1D2433", fg: "#fff", hov: main ? "#6A2FCB" : "#0A0A0A" }; }),
+      stickOn: s.stick && isResult && mid, stickCars: cars.map((c) => ({ t: c.name, d: c.ver + " · " + c.it.year, thumb: this.thumb(c.m) })),
+      how: [["1", "Escolha até 3 veículos", "Pela marca, modelo, ano e versão. Dá para trocar qualquer um a qualquer hora."], ["2", "Veja o que muda entre eles", "Ficha técnica, equipamentos e o custo real de uso lado a lado, com o melhor de cada linha marcado."], ["3", "Salve ou compartilhe", "Guarde na sua conta para voltar depois ou mande para quem vai decidir com você."]].map(([n2, t, d]) => ({ n: n2, t, d })),
+      gnPad: mid ? "32px 40px" : "24px 20px", gnCols: vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1.2fr) minmax(0,1fr)" : "minmax(0,1fr)", gnArt: wide,
+      gnPerks: ["Comparativos salvos sem prazo", "Aviso quando o preço FIPE mudar", "Copiloto que conhece os seus finalistas"],
+      gnTitle: names.join(" × ") || "Seu comparativo", gnCars: (cars.length ? cars.map((c) => ({ bg: this.thumb(c.m), t: c.name, d: c.ver + " · " + c.it.year, fipe: "R$ " + Math.round(c.fipe).toLocaleString("pt-BR") })) : ["onix", "hb20"].map((id) => { const m = this.mOf(id); return { bg: this.thumb(m), t: m.brand + " " + m.model, d: m.vers[0][0], fipe: "" }; })), gnThumbs: cars.length ? cars.map((c) => this.thumb(c.m)) : [this.thumb(this.mOf("onix")), this.thumb(this.mOf("hb20"))], gnCount: n + (n === 1 ? " veículo" : " veículos"),
+      ...(() => {
+        const prof = s.profile, sug = prof ? this.suggest(prof.a) : null, q = s.quiz, step = q ? q.step : 0, Q = this.QZ[step], done = !!q && step >= this.QZ.length;
+        const ans = q ? q.a : {}, cur = Q ? ans[Q.id] : null, has = Q ? (Q.multi ? (cur || []).length > 0 : !!cur) : true;
+        const live = done ? this.suggest(ans, 10) : null, keys = live ? live.list.map((x) => x.key) : [];
+        const sel = live ? (q.sel ? q.sel.filter((k) => keys.includes(k)) : keys.slice(0, 3)) : [], srt = (q && q.sort) || "afin";
+        const shown = live ? live.list.slice().sort((x, y) => (srt === "preco" ? x.fipe - y.fipe : srt === "econ" ? y.comb - x.comb : 0)) : [];
+        const L = (id, v) => { const qq = this.QZ.find((x) => x.id === id); const o = qq && qq.opts.find((x) => x[0] === v); return o ? o[2] : null; };
+        const chips = prof ? [L("uso", prof.a.uso), L("orc", prof.a.orc), prof.a.tipo && prof.a.tipo !== "any" ? L("tipo", prof.a.tipo) : null, ...(prof.a.prio || []).map((p) => L("prio", p)), prof.a.cambio && prof.a.cambio !== "any" ? L("cambio", prof.a.cambio) : null].filter(Boolean) : [];
+        const finish = () => { if (sel.length < 2) return; const a = s.quiz.a, chosen = live.list.filter((x) => sel.includes(x.key)), profile = { a, at: Date.now() }; try { localStorage.setItem(this.KP, JSON.stringify(profile)); } catch (e) {} this.setState({ profile, modal: null, quiz: null }); this.setItems(chosen.map((x) => x.it), "Comparativo montado com " + chosen.length + " veículos escolhidos por você"); window.scrollTo({ top: 0, behavior: "smooth" }); };
+        const sugList = sug ? sug.list : [];
+        const setQ = (u) => this.setState((x) => ({ quiz: { ...x.quiz, ...u } }));
+        return {
+          obShow: n < 2 && !prof, obPad: mid ? "28px 32px" : "22px 20px", obCols: vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1.1fr) minmax(0,1fr)" : "minmax(0,1fr)", obArt: wide, obScene: wide ? this.obScene() : null,
+          obPreview: this.QZ[0].opts.slice(0, 3).map((o, i) => ({ icon: o[1], t: o[2], bd: i === 2 ? "#7D3EE3" : "#E6E6EE", bg: i === 2 ? "#F7F4FF" : "#fff" })),
+          obStart: () => this.setState({ modal: "quiz", quiz: { step: 0, a: prof ? { ...prof.a } : {} } }),
+          sugShow: !!prof && n === 0, sugBadge: logged ? "Sugerido para o seu perfil" : "Sugerido para você", sugTitle: logged ? "Bem-vindo de volta. Separamos um comparativo do seu jeito" : "Um comparativo do seu jeito", sugChips: chips, sugCars: sugList,
+          sugCta: "Comparar estes " + (sug ? sug.list.length : 0), sugUse: () => { if (!sug) return; this.setItems(sug.list.map((x) => x.it), "Comparativo montado para o seu perfil"); }, sugGuest: !logged && !!prof,
+          mQuiz: s.modal === "quiz", qzBack: !!q && step > 0, qzGoBack: () => this.setState((x) => ({ quiz: { ...x.quiz, step: x.quiz.step - 1 } })),
+          qzStepTxt: done ? "Seu comparativo" : "Pergunta " + (step + 1) + " de " + this.QZ.length, qzPct: Math.round(((done ? this.QZ.length : step) / this.QZ.length) * 100) + "%",
+          qzAsking: !!q && !done, qzDone: done, qzQ: Q ? Q.q : "", qzHint: Q ? Q.hint : "", qzRole: Q && Q.multi ? "group" : "radiogroup", qzCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+          qzOpts: Q ? Q.opts.map(([v, icon, t, d]) => { const on = Q.multi ? (cur || []).includes(v) : cur === v, full = Q.multi && !on && (cur || []).length >= Q.max; return { icon, t, d, on, role: Q.multi ? "checkbox" : "radio", bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : full ? "#FAFAFC" : "#fff", iBg: on ? "#7D3EE3" : "#F1EBFD", iFg: on ? "#fff" : "#7D3EE3", ck: Q.multi ? (on ? "check_box" : "check_box_outline_blank") : on ? "radio_button_checked" : "radio_button_unchecked", ckC: on ? "#7D3EE3" : "#C3C8D1",
+            go: () => this.setState((x) => { const a = { ...x.quiz.a }; if (Q.multi) { const l = a[Q.id] || []; a[Q.id] = l.includes(v) ? l.filter((y) => y !== v) : l.length >= Q.max ? [...l.slice(1), v] : [...l, v]; return { quiz: { ...x.quiz, a } }; } a[Q.id] = v; return { quiz: { step: x.quiz.step + 1, a } }; }) }; }) : [],
+          qzSkip: () => this.setState((x) => { const a = { ...x.quiz.a }; delete a[Q.id]; return { quiz: { ...x.quiz, a, step: x.quiz.step + 1 } }; }),
+          qzRestart: () => this.setState((x) => ({ quiz: { ...x.quiz, step: 0 } })),
+          qzNext: () => { if (done) finish(); else if (has) this.setState((x) => ({ quiz: { ...x.quiz, step: x.quiz.step + 1 } })); },
+          ...((dis) => ({ qzNextDis: dis, qzNextBg: dis ? "#E6E6EE" : "#7D3EE3", qzNextFg: dis ? "#5A6472" : "#fff", qzNextCur: dis ? "not-allowed" : "pointer", qzNextHov: dis ? "#E6E6EE" : "#6A2FCB" }))(done ? sel.length < 2 : !has),
+          qzNextTxt: done ? (sel.length < 2 ? "Selecione pelo menos 2" : "Comparar " + sel.length + " selecionados") : step === this.QZ.length - 1 ? "Ver sugestões" : "Continuar",
+          qzResTitle: live ? live.list.length + " veículos combinam com você" : "", qzResSub: "Escolha de 2 a 3 para comparar lado a lado. Já marcamos os 3 com mais afinidade.",
+          qzSelTxt: sel.length + " de 3 selecionados", qzSelC: sel.length >= 2 ? "#15803D" : "#5A6472", qzFull: sel.length >= 3,
+          qzSorts: [["afin", "Mais afinidade"], ["preco", "Menor preço"], ["econ", "Mais econômico"]].map(([k, t]) => { const on = srt === k; return { t, on, bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", fg: on ? "#4C1D95" : "#3F4654", go: () => setQ({ sort: k }) }; }),
+          qzList: shown.map((x) => { const on = sel.includes(x.key), off = !on && sel.length >= 3; return { ...x, on, ck: on ? "check_box" : "check_box_outline_blank", ckC: on ? "#7D3EE3" : "#C3C8D1", bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", op: off ? 0.55 : 1, cur: off ? "not-allowed" : "pointer", hovBd: off ? "#E6E6EE" : "#7D3EE3", hovBg: off ? "#fff" : "#F7F4FF", go: () => { if (off) return; setQ({ sel: on ? sel.filter((k) => k !== x.key) : [...sel, x.key] }); } }; }),
+          qzRelaxed: !!(live && live.relaxed), qzRelaxTxt: "Poucos carros atendiam a tudo o que você marcou. Ampliamos um pouco o orçamento ou o tipo para ter o que comparar.",
+          qzSaveNote: logged ? "Suas respostas ficam salvas no seu perfil. Na próxima visita, sugerimos comparativos com base nelas." : "Suas respostas ficam neste navegador. Entre na sua conta para guardar o perfil e receber sugestões em qualquer dispositivo."
+        };
+      })(),
+      showGuestNote: !logged && n > 0, showSaved: logged && s.saved.length > 0, savedCount: s.saved.length + (s.saved.length === 1 ? " comparativo" : " comparativos") + " na sua conta",
+      savedCards: s.saved.map((sv) => ({ t: sv.title, meta: (sv.sub || "") + " · Salvo em " + sv.at, cta: sv.id === s.curSaved ? "Aberto agora" : "Ver comparativo", bd: sv.id === s.curSaved ? "#C9B3F5" : "#E6E6EE", menuOn: s.menu === sv.id,
+        menu: () => this.setState((x) => ({ menu: x.menu === sv.id ? null : sv.id })),
+        open: () => { this.setState({ items: sv.items, curSaved: sv.id, menu: null }, this.persist); window.scrollTo({ top: 0, behavior: "smooth" }); },
+        edit: () => { this.setState({ items: sv.items, curSaved: sv.id, menu: null }, () => { this.persist(); window.scrollTo({ top: 0, behavior: "smooth" }); this.toast("Editando " + sv.title + ". Troque, remova ou adicione veículos e salve de novo.", "info"); }); },
+        del: () => this.setState({ menu: null, modal: "confirm", confirm: { title: "Excluir este comparativo?", text: sv.title + " sai da sua lista. Esta ação não pode ser desfeita.", cta: "Excluir comparativo", go: () => { const saved = this.state.saved.filter((x) => x.id !== sv.id); try { localStorage.setItem(this.KS, JSON.stringify(saved)); } catch (e) {} this.setState((x) => ({ saved, modal: null, curSaved: x.curSaved === sv.id ? null : x.curSaved }), () => { this.persist(); this.toast("Comparativo excluído", "ok"); }); } } }) })),
+      modalOpen: !!s.modal, closeModal: () => this.setState({ modal: null }), scrimClick: (e) => { if (e.target === e.currentTarget) this.setState({ modal: null }); },
+      mAlign: sheet ? "flex-end" : "center", mPad: sheet ? "48px 0 0" : "24px", mW: sheet ? "100%" : modalW, mMaxH: sheet ? "100%" : "min(720px, calc(100vh - 48px))", mH: s.modal === "pick" ? (sheet ? "calc(100vh - 48px)" : "min(640px, calc(100vh - 48px))") : "auto", mRadius: sheet ? "20px 20px 0 0" : "20px",
+      mLabel: { quiz: "Comparativo guiado", pick: "Escolher veículo", full: "Comparativo cheio", prio: "Prioridades", save: "Salvar comparativo", share: "Compartilhar comparativo", confirm: cf.title || "" }[s.modal] || "",
+      mPick: s.modal === "pick", mFull: s.modal === "full", mPrio: s.modal === "prio", mSave: s.modal === "save", mShare: s.modal === "share", mConfirm: s.modal === "confirm",
+      pkTitle: p ? { add: "Adicionar veículo", edit: "Editar este veículo", swap: "Trocar veículo" }[p.mode] : "", pkSub: p ? (p.mode === "swap" ? "Sai: " + this.label(s.items[p.idx]) : "Comparativo (" + n + "/3)") : "",
+      pkBack: !!p && si > 0, pkGoBack: () => this.setPick({ step: steps[si - 1] }),
+      pkSteps: ["Montadora", "Modelo", "Ano", "Versão", "Confirmar"].map((t, i) => { const done = i < si, on = i === si; return { t, n: done ? "check" : String(i + 1), nFf: done ? "'Material Symbols Rounded'" : "Roboto", dis: !done, cur: done ? "pointer" : "default", go: () => done && this.setPick({ step: steps[i] }), bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", fg: on || done ? "#1D2433" : "#5A6472", nBg: on ? "#7D3EE3" : done ? "#E9F7EE" : "#EEEEF2", nFg: on ? "#fff" : done ? "#15803D" : "#5A6472" }; }),
+      pkIsMarca: !!p && p.step === "marca", pkIsModelo: !!p && p.step === "modelo", pkIsAno: !!p && p.step === "ano", pkIsVersao: !!p && p.step === "versao", pkIsOk: !!p && p.step === "ok",
+      pkQ: p ? p.q : "", pkHasQ: !!(p && p.q.trim()), pkSetQ: (e) => this.setPick({ q: e.target.value }), pkClearQ: () => this.setPick({ q: "" }),
+      pkResults: p && p.q.trim() ? this.M.filter((m) => nq(m.brand + " " + m.model + " " + m.vers.map((v) => v[0]).join(" ")).includes(nq(p.q.trim()))).map((m) => ({ t: m.brand + " " + m.model, d: m.cat + " · " + m.vers.length + " versões · " + m.years[m.years.length - 1] + " a " + m.years[0], thumb: this.thumb(m), go: () => this.setPick({ mk: m.mk, mid: m.id, step: "ano", vi: null }) })) : [],
+      pkNoResults: !!(p && p.q.trim()) && !this.M.some((m) => nq(m.brand + " " + m.model + " " + m.vers.map((v) => v[0]).join(" ")).includes(nq(p.q.trim()))),
+      pkBrandCols: mid ? "repeat(3,minmax(0,1fr))" : "repeat(2,minmax(0,1fr))",
+      pkBrands: brands.map((b) => ({ mk: b.mk, t: b.t, n: b.n + (b.n === 1 ? " modelo" : " modelos"), go: () => this.setPick({ mk: b.mk, step: "modelo" }) })),
+      pkModels: p && p.mk ? this.M.filter((m) => m.mk === p.mk).map((m) => ({ t: m.model, d: m.cat + " · FIPE de " + this.brl(m.vers[0][1]) + " a " + this.brl(m.vers[m.vers.length - 1][1]), thumb: this.thumb(m), bg: p.mid === m.id ? "#F7F4FF" : "transparent", go: () => this.setPick({ mid: m.id, step: "ano", vi: p.mid === m.id ? p.vi : null }) })) : [],
+      pkModelName: pm ? pm.brand + " " + pm.model : "",
+      pkYears: pm ? pm.years.map((y) => { const on = y === p.year; return { t: String(y), bd: on ? "#7D3EE3" : "#D5D8DE", bg: on ? "#F7F4FF" : "#fff", fg: on ? "#4C1D95" : "#1D2433", go: () => this.setPick({ year: y, step: "versao" }) }; }) : [],
+      pkVers: pm && p.year ? pm.vers.map((v, i) => { const on = i === p.vi, c = this.car({ mid: pm.id, vi: i, year: p.year }); return { t: v[0], d: v[2] + " cv · " + this.dec(v[5]) + " km/l na cidade · 0 a 100 em " + this.dec(v[4]) + " s", p: this.brl(c.fipe), bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", go: () => this.setPick({ vi: i, step: "ok" }) }; }) : [],
+      pkCarName: pickCar ? pickCar.name : "", pkCarVer: pickCar ? pickCar.verYear : "", pkCarPrice: pickCar ? this.brl(pickCar.fipe) : "", pkCarPhoto: pickCar ? this.photo(pickCar.m) : "none",
+      pkEdits: [["factory", "Trocar marca", "marca"], ["directions_car", "Trocar modelo", "modelo"], ["calendar_today", "Trocar ano", "ano"], ["tune", "Trocar versão", "versao"]].map(([icon, t, st]) => ({ icon, t, go: () => this.setPick({ step: st }) })),
+      pkDup, pkOkHint: p && p.mode === "add" ? (n + 1 >= 2 ? "Na próxima tela você vê todos os veículos do comparativo." : "Depois, adicione pelo menos mais um veículo para comparar lado a lado.") : "O comparativo é recalculado na hora.",
+      pkCta: p ? { add: "Adicionar ao comparativo", edit: "Salvar alteração", swap: "Trocar veículo" }[p.mode] : "", pkConfirm: () => !pkDup && this.confirmPick(),
+      pkCtaBg: pkDup ? "#E6E6EE" : "#7D3EE3", pkCtaFg: pkDup ? "#5A6472" : "#fff", pkCtaCur: pkDup ? "not-allowed" : "pointer", pkCtaHov: pkDup ? "#E6E6EE" : "#6A2FCB",
+      pendingName: s.pending ? this.label(s.pending) : "",
+      fullList: s.items.map((it, i) => { const c = this.car(it); return { t: c.name, d: c.verYear, thumb: this.thumb(c.m), go: () => { const items = s.items.slice(), old = items[i]; items[i] = s.pending; this.setState({ modal: null, pending: null, tab: i }); this.setItems(items, this.label(old) + " saiu e " + this.label(s.pending) + " entrou"); } }; }),
+      prioRows: [["econ", "local_gas_station", "Economia", "Gastar pouco combustível"], ["espaco", "luggage", "Espaço e família", "Porta-malas e conforto para todos"], ["desemp", "speed", "Desempenho", "Retomadas e ultrapassagens"], ["seg", "verified_user", "Segurança", "Airbags e nota no Latin NCAP"], ["custo", "savings", "Custo mensal", "IPVA, seguro e manutenção"]].map(([k, icon, t, d], i) => ({ icon, t, d, sep: i ? "#EEEEF2" : "transparent", opts: [[1, "Pouco"], [2, "Médio"], [3, "Muito"]].map(([v, ot]) => { const on = (s.prioDraft || s.prio)[k] === v; return { t: ot, on, bg: on ? "#fff" : "transparent", fg: on ? "#4C1D95" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", go: () => this.setState((x) => ({ prioDraft: { ...(x.prioDraft || x.prio), [k]: v } })) }; }) })),
+      prioReset: () => this.setState({ prioDraft: { econ: 2, espaco: 2, desemp: 2, seg: 2, custo: 2 } }),
+      prioApply: () => this.setState((x) => ({ prio: x.prioDraft || x.prio, personal: true, modal: null }), () => this.toast("Recomendação recalculada para as suas prioridades", "ok")),
+      shareTitle: names.join(" × ") + " · " + n + " veículos lado a lado",
+      ...(() => { const url = location.href.split("?")[0] + "?c=" + s.items.map((it) => it.mid + ":" + it.vi + ":" + it.year).join(","), txt = "Comparei " + names.join(" × ") + " na Achecar", E = encodeURIComponent, open = (u, label) => { window.open(u, "_blank", "noopener"); this.setState({ modal: null }); this.toast("Abrimos o " + label + " com o link do comparativo", "ok"); };
+        return { shareUrl: url.replace(/^https?:\/\//, ""), linkIcon: s.copied ? "check" : "content_copy", linkTxt: s.copied ? "Copiado" : "Copiar", linkBg: s.copied ? "#15803D" : "#7D3EE3", linkHov: s.copied ? "#166534" : "#6A2FCB",
+          shareLink: () => { const done = () => { this.setState({ copied: true }); this.toast("Link copiado. Cole onde quiser.", "ok"); }; try { navigator.clipboard.writeText(url).then(done, done); } catch (e) { done(); } },
+          shareOpts: [
+            { t: "WhatsApp", img: "https://cdn.simpleicons.org/whatsapp/ffffff", bg: "#25D366", f: "400 22px 'Material Symbols Rounded'", go: () => open("https://wa.me/?text=" + E(txt + ": " + url), "WhatsApp") },
+            { t: "Telegram", img: "https://cdn.simpleicons.org/telegram/ffffff", bg: "#229ED9", f: "400 22px 'Material Symbols Rounded'", go: () => open("https://t.me/share/url?url=" + E(url) + "&text=" + E(txt), "Telegram") },
+            { t: "E-mail", icon: "mail", bg: "#5A6472", f: "400 22px 'Material Symbols Rounded'", go: () => { location.href = "mailto:?subject=" + E(txt) + "&body=" + E(txt + ". Veja lado a lado: " + url); this.setState({ modal: null }); } },
+            { t: "Facebook", img: "https://cdn.simpleicons.org/facebook/ffffff", bg: "#1877F2", f: "800 22px Roboto", go: () => open("https://www.facebook.com/sharer/sharer.php?u=" + E(url), "Facebook") },
+            { t: "X", img: "https://cdn.simpleicons.org/x/ffffff", bg: "#0A0A0A", f: "700 20px Roboto", go: () => open("https://twitter.com/intent/tweet?text=" + E(txt) + "&url=" + E(url), "X") }
+          ].map((o) => ({ ...o, hasImg: !!o.img, noImg: !o.img, imgBg: o.img ? "url('" + o.img + "') center/contain no-repeat" : "none" })) }; })(),
+      cfTitle: cf.title || "", cfText: cf.text || "", cfCta: cf.cta || "", cfGo: () => cf.go && cf.go(),
+      hasToast: !!s.toast, toast: s.toast, hasUndo: !!s.undoFn, undo: () => { const f = s.undoFn; this.setState({ toast: "", undoFn: null }); f && f(); },
+      toastIcon: s.toastKind === "ok" ? "check_circle" : "info", toastIc: s.toastKind === "ok" ? "#4ADE80" : "#93C5FD"
+    };
+  }
+}
+</script>
+</body>
+</html>

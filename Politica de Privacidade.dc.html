@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="Header Achecar" hint-size="100%,81px"></dc-import>
+  </div>
+
+  <section data-screen-label="Política de privacidade" style="background:#fff;border-bottom:1px solid #EEEEF2;padding:56px clamp(16px, calc(2.2vw + 7px), 32px) 0;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:14px">
+      <nav aria-label="Você está em" style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#5A6472">
+        <a href="Home Achecar.dc.html" style="color:#5A6472" style-hover="color:#7D3EE3">Início</a><span aria-hidden="true">/</span><span style="color:#1D2433">Política de privacidade</span>
+      </nav>
+      <h1 style="margin:0;max-width:760px;font:800 38px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">Nosso compromisso em proteger sua privacidade</h1>
+      <p style="margin:0;max-width:680px;font:400 17px/1.55 Roboto;color:#5A6472;text-wrap:pretty">Saiba mais sobre como a Achecar coleta e usa dados e seus direitos como usuário.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+        <span style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#F3EDFD;color:#7D3EE3;font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">update</span>Última atualização: 20/01/2026</span>
+        <span style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:#F3F4F6;color:#5A6472;font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">schedule</span>Leitura de 6 min</span>
+      </div>
+      <div role="tablist" aria-label="Documentos legais" style="display:flex;gap:32px;margin-top:26px;overflow-x:auto">
+        <a href="Termos de Uso.dc.html" role="tab" aria-selected="false" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 4px;margin-bottom:-1px;border-bottom:2px solid transparent;color:#5A6472;font:500 15px Roboto;white-space:nowrap" style-hover="color:#1D2433">Termos de uso</a>
+        <a href="Politica de Privacidade.dc.html" role="tab" aria-selected="true" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 4px;margin-bottom:-1px;border-bottom:2px solid #7D3EE3;color:#7D3EE3;font:700 15px Roboto;white-space:nowrap" style-hover="color:#7D3EE3">Política de privacidade</a>
+      </div>
+    </div>
+  </section>
+
+  <main style="flex:1;width:100%;box-sizing:border-box;padding:40px clamp(16px, calc(2.2vw + 7px), 32px) 96px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;gap:40px;align-items:flex-start">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <aside aria-label="Nesta página" style="flex:none;width:264px;position:sticky;top:105px;max-height:calc(100vh - 130px);overflow:auto;display:flex;flex-direction:column;gap:4px">
+          <span style="font:700 12px Roboto;letter-spacing:.06em;color:#5A6472;padding:0 12px 8px">NESTA PÁGINA</span>
+          <sc-for list="{{ toc }}" as="t" hint-placeholder-count="12">
+            <a href="{{ t.href }}" style="display:flex;gap:10px;padding:8px 12px;border-radius:8px;border-left:2px solid {{ t.bar }};background:{{ t.bg }};color:{{ t.color }};font:{{ t.weight }} 14px/1.35 Roboto" style-hover="background:#F1F1F5;color:#1D2433"><span style="flex:none;min-width:18px;color:#5A6472">{{ t.n }}</span>{{ t.label }}</a>
+          </sc-for>
+        </aside>
+      </sc-if>
+      <article style="flex:1;min-width:0;background:#fff;border:1px solid #E5E5E5;border-radius:20px;padding:40px 48px;box-sizing:border-box;display:flex;flex-direction:column;gap:32px">
+
+          <section id="politica" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:0 0 0;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">1. Política de Privacidade</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">A Achecar valoriza sua confiança e respeita sua privacidade. Por isso, esta Política de Privacidade descreve de forma clara como coletamos, usamos, armazenamos e protegemos os dados pessoais fornecidos ao utilizar nossos serviços de <strong style="color:#1D2433;font-weight:700">consulta veicular online</strong>.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Realizamos apenas <strong style="color:#1D2433;font-weight:700">uma única consulta por acesso</strong>, fornecendo ao usuário informações sobre veículos a partir de bases públicas e integradas, de forma segura, rápida e eficiente.</p>
+          </section>
+          <section id="definicoes" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">2. Definições</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Usuário:</strong> todas as pessoas físicas que utilizarão ou visitarão o(s) Site(s) e/ou plataformas digitais, maiores de 18 (dezoito) anos ou emancipadas.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Dados Pessoais:</strong> significa quaisquer informações fornecidas e/ou coletadas pela <strong style="color:#1D2433;font-weight:700">Achecar</strong> e/ou seus parceiros comerciais, por qualquer meio, ainda que públicos, que:</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">(I) identifiquem, ou que, quando usadas em combinação com outras informações tratadas pela <strong style="color:#1D2433;font-weight:700">Achecar</strong>, identifiquem um indivíduo; ou</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">(II) por meio das quais a identificação ou informações de contato de uma pessoa física possam ser derivadas.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Finalidade:</strong> o objetivo, o propósito que a <strong style="color:#1D2433;font-weight:700">Achecar</strong> deseja alcançar a partir de cada ato de tratamento das informações pessoais.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Bases Legais:</strong> instrumento ou justificativa legal que torna legítimo o tratamento de dados pessoais para uma determinada finalidade.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Consentimento:</strong> autorização expressa e inequívoca dada pelo Usuário titular do dado pessoal para que a <strong style="color:#1D2433;font-weight:700">Achecar</strong> trate seus dados pessoais para uma finalidade previamente descrita, na qual a base legal necessária para o ato demande a autorização expressa do titular.</p>
+          </section>
+          <section id="coleta" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">3. Como Coletamos Dados Pessoais?</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Coletamos os dados pessoais fornecidos diretamente pelo usuário por meio de:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Formulários em nosso site e aplicativo;</li><li>Consulta realizada no sistema Achecar;</li><li>Cadastro e criação de conta;</li><li>Contato via canais de atendimento.</li></ul><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Informações como nome, CPF, e-mail e dados veiculares são utilizados para viabilizar a <strong style="color:#1D2433;font-weight:700">consulta veicular</strong> solicitada, cumprir exigências legais e melhorar a experiência de navegação e atendimento.</p>
+          </section>
+          <section id="finalidades" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">4. Finalidades do Uso dos Dados</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Os dados pessoais são utilizados exclusivamente para:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Realizar a consulta veicular solicitada;</li><li>Processar eventuais pagamentos;</li><li>Enviar comprovantes ou atualizações relacionadas à consulta;</li><li>Cumprir obrigações legais, judiciais ou regulatórias;</li><li>Prevenir fraudes e garantir a segurança da operação;</li><li>Melhorar nossos serviços e experiência do usuário.</li></ul><p style="margin:0;padding:14px 18px;border-radius:12px;background:#F3EDFD;font:400 16px/1.6 Roboto;color:#1D2433"><strong style="color:#1D2433;font-weight:700">Não realizamos o compartilhamento de dados com terceiros para fins comerciais.</strong></p>
+          </section>
+          <section id="seguranca" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">5. Segurança e Proteção de Dados</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">A Achecar adota medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda, uso indevido ou divulgação indevida. Entre essas medidas estão:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Armazenamento seguro em servidores próprios ou em nuvem com conformidade à LGPD;</li><li>Controle de acesso e criptografia;</li><li>Monitoramento e políticas internas de segurança da informação;</li><li>Treinamento contínuo da equipe sobre proteção de dados.</li></ul>
+          </section>
+          <section id="cookies" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">6. Uso de Cookies</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Utilizamos cookies para:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Melhorar sua experiência de navegação;</li><li>Lembrar suas preferências de acesso;</li><li>Coletar métricas de desempenho do site;</li><li>Garantir o funcionamento adequado da plataforma.</li></ul><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Você pode configurar seu navegador para recusar os cookies, mas isso pode afetar a funcionalidade do site.</p>
+          </section>
+          <section id="retencao" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">7. Retenção de Dados</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Seus dados pessoais serão armazenados pelo tempo necessário para cumprir as finalidades descritas nesta política, respeitando os prazos legais de armazenamento para cumprimento de obrigações fiscais, contábeis ou jurídicas, conforme previsto na legislação brasileira.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Após o término do período de retenção ou mediante solicitação de exclusão, seus dados serão eliminados de forma segura, exceto quando houver obrigação legal de mantê-los.</p>
+          </section>
+          <section id="direitos" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">8. Direitos do Titular dos Dados</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018), você, como titular dos dados, possui os seguintes direitos:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li><strong style="color:#1D2433;font-weight:700">Confirmação e acesso:</strong> solicitar a confirmação da existência de tratamento e o acesso aos seus dados pessoais;</li><li><strong style="color:#1D2433;font-weight:700">Correção:</strong> solicitar a correção de dados incompletos, inexatos ou desatualizados;</li><li><strong style="color:#1D2433;font-weight:700">Anonimização, bloqueio ou eliminação:</strong> solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD;</li><li><strong style="color:#1D2433;font-weight:700">Exclusão:</strong> solicitar a exclusão dos dados pessoais tratados com base no seu consentimento;</li><li><strong style="color:#1D2433;font-weight:700">Portabilidade:</strong> solicitar a portabilidade dos dados a outro fornecedor de serviço ou produto;</li><li><strong style="color:#1D2433;font-weight:700">Informação:</strong> ser informado sobre as entidades públicas e privadas com as quais compartilhamos seus dados;</li><li><strong style="color:#1D2433;font-weight:700">Revogação do consentimento:</strong> revogar o consentimento a qualquer momento, sem comprometer a licitude do tratamento realizado anteriormente.</li></ul>
+          </section>
+          <section id="exclusao" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">9. Como Solicitar a Exclusão dos Seus Dados</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Você tem o direito de solicitar a <strong style="color:#1D2433;font-weight:700">exclusão (eliminação) de todos os seus dados pessoais</strong> armazenados em nossa plataforma a qualquer momento.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Para solicitar a exclusão dos seus dados, siga os passos abaixo:</strong></p><ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Envie um e-mail para <a href="mailto:dpo@achecar.com.br">dpo@achecar.com.br</a> com o assunto <strong style="color:#1D2433;font-weight:700">"Solicitação de Exclusão de Dados"</strong>;</li><li>No corpo do e-mail, informe: seu nome completo, e-mail cadastrado na plataforma e CPF (para verificação de identidade).</li></ol><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Prazo de resposta</strong></p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Sua solicitação será processada em até <strong style="color:#1D2433;font-weight:700">15 (quinze) dias úteis</strong>, conforme previsto na legislação vigente.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Informações importantes</strong></p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Alguns dados poderão ser mantidos pelo prazo necessário para cumprimento de obrigações legais, fiscais ou regulatórias, conforme previsto na legislação brasileira;</li><li>Após a exclusão definitiva, você perderá o acesso ao histórico de consultas realizadas;</li><li>A exclusão dos dados é irreversível e não poderá ser desfeita.</li></ul>
+          </section>
+          <section id="atualizacoes" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">10. Atualizações da Política</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Esta Política de Privacidade poderá ser atualizada periodicamente para refletir mudanças em nossas práticas ou em exigências legais. Recomendamos a revisão regular para estar ciente de eventuais mudanças.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Alterações significativas serão comunicadas por meio de aviso em nosso site ou por e-mail, quando aplicável.</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Data da última atualização:</strong> 20/01/2026</p>
+          </section>
+          <section id="dpo" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">11. Canal de Atendimento e DPO</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Caso tenha dúvidas, solicitações ou deseje exercer qualquer um dos seus direitos como titular de dados, entre em contato com nosso Encarregado de Proteção de Dados (DPO):</p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">E-mail:</strong> <a href="mailto:dpo@achecar.com.br">dpo@achecar.com.br</a></p><p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty"><strong style="color:#1D2433;font-weight:700">Horário de atendimento:</strong> Segunda a sexta-feira, das 9h às 18h (horário de Brasília)</p>
+          </section>
+          <section id="legislacao" style="scroll-margin-top:112px;display:flex;flex-direction:column;gap:14px;padding:32px 0 0;border-top:1px solid #EEEEF2;">
+            <h2 style="margin:0;font:700 22px/1.3 'Merriweather Sans',sans-serif;color:#1D2433">12. Legislação Aplicável</h2>
+            <p style="margin:0;font:400 16px/1.7 Roboto;color:#3A4352;text-wrap:pretty">Esta Política de Privacidade é regida pela legislação brasileira, em especial:</p><ul style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.6 Roboto;color:#3A4352"><li>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</li><li>Marco Civil da Internet (Lei nº 12.965/2014)</li><li>Código de Defesa do Consumidor (Lei nº 8.078/1990)</li></ul>
+          </section>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 24px;border-radius:16px;background:#F6F6F9">
+          <span style="width:44px;height:44px;flex:none;border-radius:50%;background:#fff;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1">support_agent</span>
+          <span style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Ficou com alguma dúvida?</span><span style="font:400 13px Roboto;color:#5A6472">Atendimento de segunda a sexta, das 8h às 17h, exceto feriados.</span></span>
+          <a href="mailto:dpo@achecar.com.br" style="height:40px;padding:0 16px;border-radius:8px;border:1.5px solid #7D3EE3;color:#7D3EE3;font:700 14px Roboto;display:flex;align-items:center;box-sizing:border-box" style-hover="background:#F3EDFD">Falar com a Achecar</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer style="background:#0A0A0A;color:#fff;padding:40px clamp(16px, calc(2.2vw + 7px), 32px)">
+    <div style="max-width:1152px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 24px;flex-wrap:wrap">
+      <span style="font:400 12px/16px Roboto">© 2026 Achecar. Todos os direitos reservados.</span>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <a href="Termos de Uso.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Termos de uso</a>
+        <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Política de privacidade</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  TOC = "[{\"id\":\"politica\",\"label\":\"Política de Privacidade\",\"n\":\"1\"},{\"id\":\"definicoes\",\"label\":\"Definições\",\"n\":\"2\"},{\"id\":\"coleta\",\"label\":\"Como Coletamos Dados Pessoais?\",\"n\":\"3\"},{\"id\":\"finalidades\",\"label\":\"Finalidades do Uso dos Dados\",\"n\":\"4\"},{\"id\":\"seguranca\",\"label\":\"Segurança e Proteção de Dados\",\"n\":\"5\"},{\"id\":\"cookies\",\"label\":\"Uso de Cookies\",\"n\":\"6\"},{\"id\":\"retencao\",\"label\":\"Retenção de Dados\",\"n\":\"7\"},{\"id\":\"direitos\",\"label\":\"Direitos do Titular dos Dados\",\"n\":\"8\"},{\"id\":\"exclusao\",\"label\":\"Como Solicitar a Exclusão dos Seus Dados\",\"n\":\"9\"},{\"id\":\"atualizacoes\",\"label\":\"Atualizações da Política\",\"n\":\"10\"},{\"id\":\"dpo\",\"label\":\"Canal de Atendimento e DPO\",\"n\":\"11\"},{\"id\":\"legislacao\",\"label\":\"Legislação Aplicável\",\"n\":\"12\"}]";
+  state = { active: "", vw: window.innerWidth };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() {
+    window.addEventListener("resize", this.onResize);
+    const ids = JSON.parse(this.TOC).map((t) => t.id);
+    this.io = new IntersectionObserver((es) => {
+      const vis = es.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (vis[0]) this.setState({ active: vis[0].target.id });
+    }, { rootMargin: "-110px 0px -60% 0px" });
+    setTimeout(() => ids.forEach((id) => { const el = document.getElementById(id); if (el) this.io.observe(el); }), 300);
+    this.setState({ active: ids[0] });
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); this.io && this.io.disconnect(); }
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const a = this.state.active;
+    return {
+      wide: this.state.vw >= (this.props.bpDesktop1024 ?? 1024),
+      toc: JSON.parse(this.TOC).map((t) => ({ ...t, href: "#" + t.id, bar: t.id === a ? "#7D3EE3" : "transparent", bg: t.id === a ? "#F3EDFD" : "transparent", color: t.id === a ? "#7D3EE3" : "#5A6472", weight: t.id === a ? 700 : 400 }))
+    };
+  }
+}
+</script>
+</body>
+</html>

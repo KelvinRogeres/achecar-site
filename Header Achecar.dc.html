@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+<style>@keyframes rkShoot{0%{transform:translateX(0)}35%{transform:translateX(-4px)}60%{transform:translateX(44px);opacity:0}61%{transform:translateX(-44px);opacity:0}100%{transform:translateX(0);opacity:1}} @keyframes rkLine{0%{transform:translateX(30px) scaleX(.2);opacity:0}30%{opacity:.9}100%{transform:translateX(-40px) scaleX(1);opacity:0}} [data-rk]:hover [data-rk-arrow],[data-rk]:focus-visible [data-rk-arrow]{animation:rkShoot .7s cubic-bezier(.5,0,.2,1) infinite} [data-rk]:hover [data-rk-line],[data-rk]:focus-visible [data-rk-line]{animation:rkLine .45s linear infinite} @media (prefers-reduced-motion:reduce){[data-rk] *{animation:none!important}} @keyframes cpDock{from{opacity:0;transform:translate(-50%,18px) scale(.97)}to{opacity:1;transform:translate(-50%,0) scale(1)}} @keyframes cpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}} @keyframes cpMenu{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}} @keyframes cpItem{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:none}} @media (prefers-reduced-motion: reduce){[data-cp-anim]{animation:none !important}} [role="region"][aria-label="Copiloto"] input::placeholder{color:#5A6472 !important;letter-spacing:0 !important} [role="region"][aria-label="Copiloto"] input[aria-label="Placa do veículo"]::placeholder{color:rgba(255,255,255,.5) !important;letter-spacing:.14em !important} [data-cop-dd] .fig-asset-9af41815b1c4a4c4{display:none !important;background:linear-gradient(160deg,rgba(48,20,97,.82) 0%,rgba(48,20,97,.55) 55%,rgba(48,20,97,.35) 100%),url(_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/assets/9af41815b1c4a4c4.jpg) center/cover no-repeat !important;cursor:pointer;transition:filter .15s ease-out} [data-cop-dd] .fig-asset-9af41815b1c4a4c4:hover{filter:brightness(1.06)} [data-cop-dd] .fig-asset-9af41815b1c4a4c4 > span{text-shadow:0 1px 2px rgba(20,8,48,.35)} [data-cop-dd] .fig-asset-9af41815b1c4a4c4 span[style*="212, 212, 212"]{color:#5A6472 !important} [data-cop-dd] .fig-asset-9af41815b1c4a4c4 svg[style*="29, 36, 51"]{color:#fff !important} [data-cop-dd] .fig-asset-9af41815b1c4a4c4 svg path{fill:#fff !important} [data-cop-dd] .fig-asset-9af41815b1c4a4c4 div[style*="125, 62, 227"]{transition:background-color .15s ease-out} [data-cop-dd] .fig-asset-9af41815b1c4a4c4:hover div[style*="125, 62, 227"]{background-color:#5F29AE !important} </style><style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<header ref="{{ rootRef }}" style="position:relative;width:100%;background:#fff;border-bottom:1px solid #EEEEF2;font-family:Roboto,sans-serif;color:#1D2433">
+  <div style="position:relative;max-width:1152px;margin:0 auto;height:80px;padding:0 clamp(16px, calc(2.2vw + 7px), 32px);box-sizing:content-box;display:flex;align-items:center;justify-content:space-between;gap:12px">
+    <a href="Home Achecar.dc.html" aria-label="Achecar · início" style="display:flex;align-items:center">
+      <img src="assets/logo/achecar-logo-web.svg" alt="Achecar" width="156" height="32" style="display:block;height:32px;width:auto">
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Principal" style="display:flex;align-items:center;gap:40px">
+        <div style="position:static" onMouseEnter="{{ dd.garagem.enter }}" onMouseLeave="{{ dd.garagem.leave }}">
+          <button onClick="{{ dd.garagem.toggle }}" aria-expanded="{{ dd.garagem.open }}" aria-haspopup="true" style="display:flex;align-items:center;gap:2px;height:40px;padding:0;border:0;background:transparent;cursor:pointer;font:500 15px Roboto;color:{{ dd.garagem.color }}" style-hover="color:#7D3EE3">Garagem<span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:transform .15s ease-out;transform:{{ dd.garagem.rot }}">expand_more</span></button>
+          <sc-if value="{{ dd.garagem.open }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:calc(100% - 14px);left:{{ ddLeft }};right:{{ ddRight }};padding-top:22px;z-index:50;display:flex;justify-content:{{ ddJustify }}">
+              <div onClick="{{ dd.garagem.click }}" onMouseOver="{{ dd.garagem.over }}" style="max-width:100%;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.12)">
+                <x-import component-from-global-scope="AchecarDesignSystem_c352d1.HeaderMenuGaragem" conta="{{ garConta }}" garagem="{{ garEstado }}" layout="{{ garLayout }}" hint-size="720px,320px"></x-import>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:static" onMouseEnter="{{ dd.copiloto.enter }}" onMouseLeave="{{ dd.copiloto.leave }}">
+          <button onClick="{{ dd.copiloto.toggle }}" aria-expanded="{{ dd.copiloto.open }}" aria-haspopup="true" style="display:flex;align-items:center;gap:2px;height:40px;padding:0;border:0;background:transparent;cursor:pointer;font:500 15px Roboto;color:{{ dd.copiloto.color }}" style-hover="color:#7D3EE3">Copiloto<span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;transition:transform .15s ease-out;transform:{{ dd.copiloto.rot }}">expand_more</span></button>
+          <sc-if value="{{ dd.copiloto.open }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:calc(100% - 14px);left:{{ ddLeft }};right:{{ ddRight }};padding-top:22px;z-index:50;display:flex;justify-content:{{ ddJustify }}">
+              <div style="max-width:100%;display:flex;align-items:stretch;gap:0;border-radius:16px;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.12);overflow:hidden">
+                <div style="position:relative;flex:none;width:320px;margin:12px 0 12px 12px;border-radius:14px;overflow:hidden;background:radial-gradient(90% 70% at 100% 0%,rgba(194,65,143,.45),transparent 60%),radial-gradient(80% 80% at 0% 100%,rgba(125,62,227,.55),transparent 70%),#301461;color:#fff;display:flex;flex-direction:column;padding:22px;box-sizing:border-box;gap:14px">
+                  <sc-if value="{{ notLogged }}" hint-placeholder-val="{{ true }}">
+                    <img src="assets/home/copiloto-mascote.webp" alt="" style="position:absolute;right:8px;top:8px;width:150px;height:auto;pointer-events:none;filter:drop-shadow(0 14px 20px rgba(0,0,0,.35))">
+                    <span style="margin-top:auto;font:700 12px Roboto;letter-spacing:.08em;color:#E0D2FF">COPILOTO</span>
+                    <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif">Tire dúvidas sobre<br>qualquer carro.</span>
+                    <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font:400 13px/1.4 Roboto;color:#E4E4E7">
+                      <li style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#C9AEFF">check_circle</span>3 perguntas grátis ao criar a conta</li>
+                      <li style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#C9AEFF">check_circle</span>Preço, consumo, manutenção e revenda</li>
+                      <li style="display:flex;gap:8px;align-items:flex-start"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#C9AEFF">check_circle</span>Livre na consulta veicular paga</li>
+                    </ul>
+                    <div style="margin-top:6px;display:flex;flex-direction:column;gap:8px">
+                      <a href="Login.dc.html?modo=criar" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:8px;background:#fff;color:#4C1D95;font:700 14px Roboto;transition:background .15s ease-out" style-hover="background:#F1EBFD;color:#4C1D95" style-active="background:#E3D8FC">Criar conta grátis</a>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ logged }}" hint-placeholder-val="{{ false }}">
+                    <img src="assets/home/copiloto-mascote.webp" alt="" style="position:absolute;right:8px;top:8px;width:132px;height:auto;pointer-events:none;filter:drop-shadow(0 14px 20px rgba(0,0,0,.35))">
+                    <span style="margin-top:auto;display:flex;align-items:center;gap:6px;font:700 12px Roboto;letter-spacing:.08em;color:#E0D2FF">OLÁ, {{ firstNameUp }}</span>
+                    <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif">O que você quer<br>saber hoje?</span>
+                    <form onSubmit="{{ copSend }}" style="position:relative;display:block;height:52px;border-radius:12px;background:#fff;box-shadow:0 8px 20px rgba(11,8,30,.3);transition:box-shadow .15s ease-out" style-hover="box-shadow:0 0 0 2px #C9AEFF,0 8px 20px rgba(11,8,30,.3)">
+                      <input value="{{ copDraft }}" onChange="{{ copSetDraft }}" placeholder="Pergunte sobre qualquer carro" aria-label="Pergunte ao Copiloto" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 56px 0 16px;border:0;border-radius:12px;background:transparent;color:#1D2433;font:400 14px Roboto;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input>
+                      <button type="submit" aria-label="Enviar pergunta" style="position:absolute;right:6px;top:6px;width:40px;height:40px;border:0;border-radius:10px;background:#7D3EE3;color:#fff;font-family:'Material Symbols Rounded';font-size:20px;cursor:pointer;transition:background .15s ease-out" style-hover="background:#5F29AE" style-active="background:#4C1D95">arrow_upward</button>
+                    </form>
+                    <div style="display:flex;flex-direction:column;gap:4px">
+                      <sc-for list="{{ copChips }}" as="c" hint-placeholder-count="2"><button type="button" onClick="{{ c.go }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;height:36px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#fff;font:500 13px Roboto;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:rgba(255,255,255,.1)"><span style="display:flex;align-items:center;gap:8px"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#C9AEFF">auto_awesome</span>{{ c.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#C9AEFF">north_east</span></button></sc-for>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.08);font:500 12px Roboto;color:#E4E4E7"><span>{{ cpQuotaTxt }}</span><span style="display:flex;gap:4px"><sc-for list="{{ cpDotsDark }}" as="d" hint-placeholder-count="3"><span style="width:8px;height:8px;border-radius:50%;background:{{ d.bg }}"></span></sc-for></span></div>
+                  </sc-if>
+                </div>
+                <div data-cop-dd="1" onClick="{{ dd.copiloto.click }}" onMouseOver="{{ dd.copiloto.over }}" style="min-width:0">
+                  <x-import component-from-global-scope="AchecarDesignSystem_c352d1.HeaderMenuCopiloto" dc-props="{{ copProps }}" hint-size="720px,416px"></x-import>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <a href="Blog.dc.html" style="font:500 15px Roboto;color:#1D2433" style-hover="color:#7D3EE3">Blog</a>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:12px;flex:none">
+      <sc-if value="{{ logged }}" hint-placeholder-val="{{ false }}">
+        <div style="position:relative">
+          <button onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-haspopup="menu" style="display:flex;align-items:center;gap:8px;border:0;background:transparent;cursor:pointer;font:500 15px Roboto;color:#1D2433;padding:4px;border-radius:999px">
+            <span style="position:relative;width:32px;height:32px;border-radius:50%;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ initials }}<sc-if value="{{ avDot }}" hint-placeholder-val="{{ false }}"><span aria-label="Nova notificação" style="position:absolute;top:-1px;right:-1px;width:10px;height:10px;border-radius:50%;background:#FF5040;box-shadow:0 0 0 2px #fff;pointer-events:none"></span></sc-if></span><sc-if value="{{ notSmall }}" hint-placeholder-val="{{ true }}">{{ firstName }}</sc-if><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ chev }}</span>
+          </button>
+          <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="menu" style="position:absolute;top:calc(100% + 6px);right:0;z-index:50;width:240px;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(29,36,51,.16);padding:6px;display:flex;flex-direction:column">
+              <div style="padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid #EEEEF2;margin-bottom:4px">
+                <span style="font:700 14px Roboto">{{ name }}</span>
+                <span style="font:400 12px Roboto;color:#5A6472">{{ email }}</span>
+              </div>
+              <sc-for list="{{ menuItems }}" as="m" hint-placeholder-count="3">
+                <a role="menuitem" href="{{ m.href }}" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font:400 14px Roboto;color:#1D2433" style-hover="background:#F6F6F9;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">{{ m.icon }}</span><span style="flex:1">{{ m.label }}</span><sc-if value="{{ m.badge }}" hint-placeholder-val="{{ false }}"><span style="min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#7D3EE3;color:#fff;font:700 11px/20px Roboto;text-align:center">{{ m.badgeTxt }}</span></sc-if></a>
+              </sc-for>
+              <div style="height:1px;background:#EEEEF2;margin:4px 6px"></div>
+              <button role="menuitem" onClick="{{ logout }}" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border:0;border-radius:8px;background:transparent;font:400 14px Roboto;color:#1D2433;cursor:pointer;text-align:left" style-hover="background:#F6F6F9"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">logout</span>Sair</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notLogged }}" hint-placeholder-val="{{ true }}">
+        <a href="{{ loginHref }}" style="height:40px;padding:0 18px;border-radius:8px;background:#0A0A0A;color:#fff;font:700 14px Roboto;display:flex;align-items:center" style-hover="background:#262626;color:#fff">Entrar</a>
+      </sc-if>
+      <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+        <a href="Consulta Placa.dc.html" onClick="{{ hdrPlaca }}" style="height:40px;padding:0 18px;border-radius:8px;background:#FF5040;color:#fff;font:700 14px Roboto;display:flex;align-items:center;white-space:nowrap;cursor:pointer" style-hover="background:#E63E2F;color:#fff">Consultar placa</a>
+      </sc-if>
+      <button aria-label="Buscar carro na Garagem" onClick="{{ openSearch }}" style="flex:none;width:40px;height:40px;border:0;border-radius:50%;background:#F1F1F5;color:#1D2433;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#E6E6EE"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">search</span></button>
+    </div>
+  </div>
+  <sc-if value="{{ cbSpacer }}" hint-placeholder-val="{{ false }}"><style>body{padding-bottom:96px}</style></sc-if>
+  <sc-if value="{{ plSpacer }}" hint-placeholder-val="{{ false }}"><style>body{padding-bottom:240px}</style></sc-if>
+  <style>[data-ico-tile]{display:flex!important;align-items:center!important;justify-content:center!important}[data-ico-tile] *{position:static!important;inset:auto!important;transform:none!important;margin:0!important;left:auto!important;top:auto!important}[data-ico-tile] > *{display:flex!important;align-items:center!important;justify-content:center!important;width:20px!important;height:20px!important}[data-ico-tile] svg{width:20px!important;height:20px!important;flex:none!important}</style>
+  <sc-if value="{{ lgModal }}" hint-placeholder-val="{{ false }}">
+    <style>body{overflow:hidden}</style>
+    <div onClick="{{ lgCloseFn }}" style="position:fixed;inset:0;z-index:300;background:rgba(11,13,18,.6);display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box">
+      <div role="dialog" aria-modal="true" aria-label="Entrar ou criar conta" onClick="{{ lgStop }}" style="width:100%;max-width:480px;max-height:calc(100vh - 32px);overflow:auto;border-radius:20px;background:#fff;box-shadow:0 24px 64px rgba(11,13,18,.35)">
+        <dc-import name="Login" embed="{{ true }}" next="{{ lgNext }}" on-done="{{ lgDoneFn }}" on-close="{{ lgCloseFn }}" hint-size="100%,560px"></dc-import>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ lgDrawerOn }}" hint-placeholder-val="{{ false }}">
+    <style>body{overflow:hidden}@keyframes lgdFade{from{opacity:0}to{opacity:1}}@keyframes lgdIn{from{transform:translateX(48px);opacity:0}to{transform:none;opacity:1}}@keyframes lgdUp{from{transform:translateY(100%)}to{transform:none}}@media (prefers-reduced-motion:reduce){[data-lgd]{animation:none!important}}aside[data-lgd] [screen="Login"] header button[aria-label="Fechar"]{display:none!important}</style>
+    <div data-lgd="" onClick="{{ lgCloseFn }}" style="position:fixed;inset:0;z-index:300;background:rgba(11,13,18,.42);animation:lgdFade .2s ease-out both;cursor:pointer"></div>
+    <aside data-lgd="" role="dialog" aria-modal="true" aria-label="Entrar ou criar conta" style="position:fixed;z-index:301;top:{{ lgdTop }};right:0;bottom:0;left:{{ lgdLeft }};width:{{ lgdW }};display:grid;grid-template-columns:{{ lgdCols }};background:#fff;border-radius:{{ lgdRadius }};box-shadow:-24px 0 64px rgba(11,13,18,.28);overflow:hidden;animation:{{ lgdAnim }};font-family:Roboto,sans-serif;color:#1D2433">
+      <sc-if value="{{ lgdBrand }}" hint-placeholder-val="{{ true }}">
+        <div style="position:relative;overflow:hidden;background:#1E1238;color:#fff">
+          <sc-for list="{{ lgdSlides }}" as="sl" hint-placeholder-count="2">
+            <img src="{{ sl.src }}" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ sl.pos }};opacity:{{ sl.op }};transform:scale({{ sl.sc }});transition:opacity .9s ease-out,transform 6s linear">
+          </sc-for>
+          <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,10,16,.35) 0%,rgba(11,10,16,0) 22%,rgba(11,10,16,0) 50%,rgba(11,10,16,.82) 100%)"></div>
+          <img src="assets/logo/achecar-logo-web.svg" alt="Achecar" style="position:absolute;left:40px;top:36px;height:28px;width:auto;filter:brightness(0) invert(1)">
+          <div style="position:absolute;left:40px;right:40px;bottom:40px;display:flex;flex-direction:column;gap:20px">
+            <sc-for list="{{ lgdSlides }}" as="sl" hint-placeholder-count="1">
+              <sc-if value="{{ sl.on }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;font:800 30px/1.22 'Merriweather Sans',sans-serif;color:#fff;text-wrap:balance;animation:lgdIn .5s ease-out both">{{ sl.t }}</p>
+              </sc-if>
+            </sc-for>
+            <div style="display:flex;gap:8px">
+              <sc-for list="{{ lgdSlides }}" as="sl" hint-placeholder-count="2">
+                <button type="button" onClick="{{ sl.go }}" aria-label="{{ sl.lbl }}" style="width:{{ sl.dw }};height:4px;padding:0;border:0;border-radius:999px;background:{{ sl.dc }};cursor:pointer;transition:width .3s ease-out,background .3s ease-out" style-hover="background:#fff"></button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+      <div style="position:relative;display:flex;flex-direction:column;min-height:0;overflow:auto;overscroll-behavior:contain">
+        <button type="button" data-lgd-close="" onClick="{{ lgCloseFn }}" aria-label="Fechar login" style="position:absolute;top:{{ lgdCloseTop }};right:16px;z-index:3;width:40px;height:40px;border:0;border-radius:50%;background:#F6F6F9;color:#1D2433;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s ease-out" style-hover="background:#E6E6EE">close</button>
+        <sc-if value="{{ lgdSheet }}" hint-placeholder-val="{{ false }}">
+          <div aria-hidden="true" style="flex:none;display:flex;justify-content:center;padding-top:8px"><span style="width:40px;height:4px;border-radius:999px;background:#D5D8DE"></span></div>
+        </sc-if>
+        <sc-if value="{{ lgdStrip }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:none;margin:12px 16px 0;padding:12px 14px;border-radius:12px;background:#F7F4FF;display:flex;align-items:center;gap:10px">
+            <span style="flex:none;font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">lock_open</span>
+            <span style="font:500 13px/1.4 Roboto;color:#1D2433">Entre sem sair da página. Copiloto grátis, consultas e Garagem salvos na sua conta.</span>
+          </div>
+        </sc-if>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:{{ lgdFormPad }}">
+          <dc-import name="Login" embed="{{ true }}" no-close="{{ true }}" next="{{ lgNext }}" on-done="{{ lgDoneFn }}" on-close="{{ lgCloseFn }}" hint-size="100%,560px"></dc-import>
+        </div>
+        <div style="flex:none;display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 24px 20px;font:400 12px Roboto;color:#5A6472">
+          <span style="font-family:'Material Symbols Rounded';font-size:16px;color:#15803D">verified_user</span>Seus dados ficam protegidos, conforme a LGPD.
+        </div>
+      </div>
+    </aside>
+  </sc-if>
+  <sc-if value="{{ plPill }}" hint-placeholder-val="{{ false }}">
+    <button type="button" onClick="{{ plReopen }}" data-cp-anim="1" aria-label="Abrir consulta de placa" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:10px;height:52px;padding:0 20px 0 8px;border:0;border-radius:999px;background:#0B0A10;color:#fff;font:700 15px Roboto,sans-serif;cursor:pointer;box-shadow:0 0 0 2px rgba(255,80,64,.55),0 10px 28px rgba(11,10,16,.35);animation:cpIn .24s ease-out both;white-space:nowrap" style-hover="background:#1C1B24">
+      <span style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FF5040 0%,#C2418F 55%,#7D3EE3 100%);display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px">search</span>
+      Consultar placa
+      <span style="font-family:'Material Symbols Rounded';font-size:20px;color:#C9CDD6">expand_less</span>
+    </button>
+  </sc-if>
+  <sc-if value="{{ dkOn }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ dockRef }}" role="region" aria-label="Copiloto" data-cp-anim="1" style="animation:cpDock .26s cubic-bezier(.2,.8,.2,1) both;position:fixed;left:50%;bottom:{{ dkBottom }};transform:translateX(-50%);z-index:70;width:{{ dkW }};max-width:calc(100vw - 24px);display:flex;flex-direction:column;background:#fff;border:1px solid {{ dkBd }};border-radius:24px;box-shadow:0 24px 64px rgba(18,13,38,.18);overflow:hidden;font-family:Roboto,sans-serif;color:#1D2433;background:{{ dkBgc }}">
+      <sc-if value="{{ dkOpen }}" hint-placeholder-val="{{ false }}">
+        <div data-cp-anim="1" style="display:flex;flex-direction:column;max-height:{{ dkMaxH }};animation:cpIn .22s ease-out both">
+          <div style="display:flex;align-items:center;gap:10px;padding:14px 12px 4px 18px"><span style="width:36px;height:36px;flex:none;border-radius:10px;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;overflow:hidden"><sc-if value="{{ dkIsConv }}" hint-placeholder-val="{{ true }}"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:28px;height:auto;display:block"></sc-if><sc-if value="{{ dkNotConv }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ dkIcon }}</span></sc-if></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 15px Roboto">{{ dkTitle }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dkSub }}</span></span><button type="button" onClick="{{ dkClose }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">close</button></div>
+          <div style="height:10px;border-bottom:1px solid #EEEEF2"></div>
+          <div ref="{{ dkMsgRef }}" style="position:relative;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scroll-behavior:smooth;padding:{{ dkMsgPad }};display:flex;flex-direction:column;gap:{{ dkMsgGap }}">
+            <sc-if value="{{ tConv }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <sc-if value="{{ convEmpty }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:10px"><span style="font:400 14px/1.5 Roboto;color:#3F4654">{{ convIntro }}</span><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ convSug }}" as="q" hint-placeholder-count="3"><button type="button" onClick="{{ q.go }}" style="display:flex;align-items:center;gap:6px;min-height:36px;padding:5px 12px;border-radius:999px;border:1px solid #DCCFF8;background:#fff;color:#5B21B6;font:500 13px/1.3 Roboto;text-align:left;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F6F2FE">{{ q.t }}<span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">arrow_forward</span></button></sc-for></div></div></sc-if>
+                <sc-for list="{{ convMsgs }}" as="m" hint-placeholder-count="0"><div data-me="{{ m.meF }}" style="align-self:{{ m.al }};max-width:86%;display:flex;flex-direction:column;gap:8px"><div style="padding:{{ dkBubPad }};border-radius:{{ m.r }};background:{{ m.bg }};color:{{ m.fg }};font:{{ dkBubFont }};white-space:pre-line">{{ m.t }}</div><sc-if value="{{ m.hasAct }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ m.act }}" style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #7D3EE3;background:#fff;color:#5B21B6;font:700 12px Roboto;white-space:nowrap;max-width:100%;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF">{{ m.actT }}<span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">arrow_forward</span></button></sc-if></div></sc-for>
+                <sc-if value="{{ convMore }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ convSug }}" as="q" hint-placeholder-count="3"><button type="button" onClick="{{ q.go }}" style="min-height:32px;padding:4px 12px;border-radius:999px;border:1px solid #DCCFF8;background:#fff;color:#5B21B6;font:500 12px/1.3 Roboto;text-align:left;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F6F2FE">{{ q.t }}</button></sc-for></div></sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ tCmp }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:700 14px Roboto">{{ cmpTitle }}</span><span style="display:flex;gap:4px"><sc-for list="{{ cmpSlots }}" as="sl" hint-placeholder-count="3"><span style="width:28px;height:6px;border-radius:3px;background:{{ sl }}"></span></sc-for></span></div>
+                <sc-for list="{{ cmpList }}" as="c" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;border:1px solid #E6E6EE;transition:border-color .15s ease-out" style-hover="border-color:#C9B3F5"><span style="width:64px;height:40px;flex:none;border-radius:8px;background:{{ c.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.d }}</span></span><button type="button" onClick="{{ c.remove }}" aria-label="Remover" style="width:32px;height:32px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#FEF2F2;color:#B91C1C">close</button></div></sc-for>
+                <sc-if value="{{ cmpEmpty }}" hint-placeholder-val="{{ false }}"><span style="font:400 14px/1.5 Roboto;color:#5A6472">Nenhum comparativo em andamento. Adicione carros pelas páginas de versões ou comece pelo Comparativo.</span></sc-if>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:4px"><a href="{{ cmpHref }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 16px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 13px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#6A2FCB;color:#fff">{{ cmpCta }}</a><sc-if value="{{ cmpCanAdd }}" hint-placeholder-val="{{ true }}"><a href="Comparativo.dc.html?novo=1" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 13px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">Adicionar</a></sc-if><sc-if value="{{ cmpHas }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ cmpClear }}" style="height:40px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#B91C1C;font:500 13px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FEF2F2">{{ cmpClearTxt }}</button></sc-if></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ tCons }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ consList }}" as="c" hint-placeholder-count="1"><div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;border:1px solid #E6E6EE;transition:border-color .15s ease-out" style-hover="border-color:#C9B3F5"><span style="flex:none;display:inline-flex;flex-direction:column;width:76px;border-radius:4px;overflow:hidden;border:1.5px solid #1D2433"><span style="height:8px;background:#1E40AF"></span><span style="font:700 13px/1.4 'Roboto Mono',monospace;text-align:center">{{ c.placa }}</span></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ c.t }}</span><span style="font:400 12px Roboto;color:{{ c.fg }}">{{ c.d }}</span></span><a href="{{ c.href }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 13px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">Abrir</a></div></sc-for>
+                <span style="font:400 12px Roboto;color:#5A6472">{{ consNote }}</span>
+                <a href="Consulta Placa.dc.html" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:8px;background:#FF5040;color:#fff;font:700 14px Roboto;transition:background .15s ease-out" style-hover="background:#E63E2F;color:#fff">Nova consulta de placa<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+              </div>
+            </sc-if>
+            <sc-if value="{{ tGar }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ garList }}" as="c" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;border:1px solid #E6E6EE;transition:border-color .15s ease-out" style-hover="border-color:#C9B3F5"><span style="width:64px;height:40px;flex:none;border-radius:8px;background:{{ c.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.d }}</span></span><a href="{{ c.href }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 13px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">Ver ficha</a></div></sc-for>
+                <sc-if value="{{ garGuest }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;background:#F7F4FF"><span style="flex:1;font:400 13px/1.45 Roboto;color:#3F4654">Entre para ver o seu carro e acompanhar o valor.</span><a href="{{ loginHref }}" style="height:36px;padding:0 14px;border-radius:8px;background:#0A0A0A;color:#fff;font:700 13px/36px Roboto;white-space:nowrap" style-hover="background:#2A2A2A;color:#fff">Entrar</a></div></sc-if>
+                <a href="Garagem.dc.html" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 13px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">Abrir a Garagem</a>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ plC }}" hint-placeholder-val="{{ false }}">
+        <div data-cp-anim="1" style="position:relative;display:flex;flex-direction:column;gap:20px;padding:{{ plPad }};background:#0B0A10;color:#fff;overflow:hidden;animation:cpIn .22s ease-out both">
+          <span aria-hidden="true" style="position:absolute;left:-60px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(125,62,227,.35), rgba(125,62,227,0) 70%);pointer-events:none"></span>
+          <span aria-hidden="true" style="position:absolute;right:-40px;bottom:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(255,80,64,.28), rgba(255,80,64,0) 70%);pointer-events:none"></span>
+          <div style="position:relative;display:flex;align-items:flex-start;gap:12px"><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:800 20px/1.2 'Merriweather Sans',sans-serif">Consulte a placa antes de comprar</span><span style="font:400 13px/1.45 Roboto;color:#C9CDD6">Leilão, sinistro, roubo e furto, débitos e muito mais. Em minutos.</span></span><sc-if value="{{ plCanClose }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ plClose }}" aria-label="Fechar consulta de placa" style="width:36px;height:36px;flex:none;margin:-4px -6px 0 0;border-radius:50%;border:0;background:transparent;color:#C9CDD6;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:rgba(255,255,255,.08);color:#fff">close</button></sc-if></div>
+          <form onSubmit="{{ plSubmit }}" style="position:relative;padding:2px;border-radius:20px;background:{{ plRing }};box-shadow:0 0 28px rgba(255,80,64,.35), 0 0 40px rgba(125,62,227,.25)">
+            <div style="display:flex;gap:8px;padding:8px;border-radius:18px;background:#0E0D14">
+              <label style="position:relative;flex:1;min-width:0;height:56px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:#1C1B24;cursor:text;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:rgba(255,255,255,.28)" style-focus-within="border-color:#B794F6;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><input value="{{ plV }}" onChange="{{ plSet }}" autofocus="{{ plFocus }}" maxlength="8" placeholder="DIGITE A PLACA" aria-label="Placa do veículo" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px;border:0;border-radius:12px;outline:none;background:transparent;font:700 18px 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#fff"></label>
+              <button type="submit" aria-label="Buscar placa" data-rk="" style="position:relative;overflow:hidden;width:56px;height:56px;flex:none;border:0;border-radius:12px;background:linear-gradient(135deg,#FF5040 0%,#C2418F 55%,#7D3EE3 100%);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:filter .15s ease-out, transform .15s ease-out" style-hover="filter:brightness(1.1)" style-active="transform:scale(.94)">
+                <span ref="{{ rkRef }}" aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:rotate .25s cubic-bezier(.2,.8,.2,1);pointer-events:none">
+                  <span data-rk-line="" style="position:absolute;left:15px;top:20px;width:14px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:0s;pointer-events:none"></span>
+                  <span data-rk-line="" style="position:absolute;left:9px;top:27px;width:18px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:.15s;pointer-events:none"></span>
+                  <span data-rk-line="" style="position:absolute;left:15px;top:34px;width:12px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:.3s;pointer-events:none"></span>
+                  <span data-rk-arrow="" style="position:relative;font-family:'Material Symbols Rounded';font-size:24px;line-height:1">arrow_forward</span>
+                </span>
+              </button>
+            </div>
+          </form>
+          <sc-if value="{{ plErr }}" hint-placeholder-val="{{ false }}"><span style="position:relative;font:500 12px Roboto;color:#FCA5A5">Digite uma placa válida: ABC1234 ou ABC1D23.</span></sc-if>
+          
+        </div>
+      </sc-if>
+      <sc-if value="{{ supOpen }}" hint-placeholder-val="{{ false }}">
+        <div data-cp-anim="1" style="display:flex;flex-direction:column;max-height:min(62vh, 520px);animation:cpIn .22s ease-out both">
+          <div style="display:flex;align-items:center;gap:12px;padding:14px 12px 12px 16px;border-bottom:1px solid #EEEEF2">
+            <span style="width:36px;height:36px;flex:none;border-radius:50%;background:#E9F7EE;color:#15803D;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;line-height:1">support_agent</span>
+            <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Atendimento Achecar</span><span style="display:flex;align-items:center;gap:6px;font:400 12px Roboto;color:#5A6472"><span style="width:7px;height:7px;border-radius:50%;background:#22C55E"></span>Online · responde em até 5 min</span></span>
+            <button type="button" onClick="{{ supClose }}" aria-label="Fechar atendimento" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">close</button>
+          </div>
+          <div style="flex:1;min-height:160px;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ supMsgs }}" as="m" hint-placeholder-count="1"><div style="align-self:{{ m.al }};max-width:84%;padding:10px 13px;border-radius:{{ m.rad }};background:{{ m.bg }};color:{{ m.fg }};font:400 14px/1.5 Roboto;white-space:pre-line">{{ m.t }}</div></sc-for>
+            <sc-if value="{{ supEmpty }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ supSug }}" as="q" hint-placeholder-count="3"><button type="button" onClick="{{ q.go }}" style="min-height:34px;padding:8px 12px;border-radius:999px;border:1px solid #E6E6EE;background:#fff;color:#1D2433;font:500 13px/1.3 Roboto;white-space:nowrap;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#15803D;background:#F0FDF4">{{ q.t }}</button></sc-for></div></sc-if>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ cpQuotaOn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;border-top:1px solid #EEEEF2;background:{{ cpQuotaBg }};font:500 12px Roboto;color:{{ cpQuotaFg }}"><span style="display:flex;align-items:center;gap:6px"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ cpQuotaIcon }}</span>{{ cpQuotaTxt }}</span><span style="display:flex;gap:4px"><sc-for list="{{ cpDots }}" as="d" hint-placeholder-count="3"><span style="width:8px;height:8px;border-radius:50%;background:{{ d.bg }}"></span></sc-for></span></div></sc-if>
+      
+      
+      <sc-if value="{{ formOn }}" hint-placeholder-val="{{ false }}"><form onSubmit="{{ dkSend }}" style="display:flex;align-items:center;gap:8px;padding:8px 8px 8px 12px;border-top:{{ dkFormBd }}">
+        
+        <label style="position:relative;flex:1;min-width:0;height:44px;cursor:text"><input value="{{ dkDraft }}" onChange="{{ dkSetDraft }}" onFocus="{{ dkOpenConv }}" placeholder="{{ dkPh }}" aria-label="Pergunte ao Copiloto" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 4px;border:0;outline:none;background:transparent;font:400 15px Roboto;color:#1D2433"></label>
+        <sc-if value="{{ dkClosed }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ dkToggle }}" aria-label="Abrir painel" style="width:40px;height:40px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">expand_less</button></sc-if>
+        <button type="submit" aria-label="Enviar" style="width:44px;height:44px;flex:none;border-radius:50%;border:0;background:#7D3EE3;color:#fff;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#6A2FCB">arrow_upward</button>
+      </form></sc-if>
+    </div>
+  </sc-if>
+  <sc-if value="{{ fabOn }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ fabRef }}" style="position:fixed;right:{{ fabR }};bottom:{{ fabB }};z-index:72;font-family:Roboto,sans-serif;color:#1D2433">
+      <sc-if value="{{ mnOpen }}" hint-placeholder-val="{{ false }}">
+        <div role="menu" aria-label="O que você quer fazer?" data-cp-anim="1" style="animation:cpMenu .2s cubic-bezier(.2,.8,.2,1) both;transform-origin:bottom right;position:absolute;right:0;bottom:calc(100% + 12px);width:{{ mnW }};display:flex;flex-direction:column;gap:4px;padding:14px 10px 10px;border-radius:20px;background:#fff;border:1px solid #E6E6EE;box-shadow:0 24px 64px rgba(18,13,38,.18)">
+          <span style="padding:0 8px 6px;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">O QUE VOCÊ QUER FAZER?</span>
+          <sc-for list="{{ mnItems }}" as="m" hint-placeholder-count="4"><div data-cp-anim="1" style="display:flex;flex-direction:column;animation:cpItem .22s ease-out {{ m.dl }} both">
+            <button type="button" role="menuitem" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 8px;border:0;border-radius:12px;background:{{ m.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F4F1FB">
+              <span style="width:38px;height:38px;flex:none;border-radius:10px;background:{{ m.ibg }};color:{{ m.ic }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:21px;line-height:1">{{ m.icon }}</span>
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ m.t }}</span><span style="font:400 12px/1.35 Roboto;color:#5A6472">{{ m.d }}</span></span>
+              <sc-if value="{{ m.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="flex:none;height:22px;padding:0 8px;border-radius:999px;background:{{ m.bBg }};color:{{ m.bFg }};font:700 11px/22px Roboto;white-space:nowrap">{{ m.badge }}</span></sc-if>
+              <span style="flex:none;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#9BA3B1">{{ m.chev }}</span>
+            </button>
+            <sc-if value="{{ m.isTools }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-wrap:wrap;gap:6px;padding:2px 8px 12px 58px"><sc-for list="{{ tools }}" as="tl" hint-placeholder-count="6"><a href="{{ tl.href }}" style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 8px;border-radius:999px;background:#F4F1FB;color:#4C1D95;font:500 13px Roboto;white-space:nowrap;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#E9E2FC;color:#3B1A78"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">{{ tl.icon }}</span>{{ tl.t }}</a></sc-for></div></sc-if>
+            
+          </div></sc-for>
+        </div>
+      </sc-if>
+      
+      <button type="button" onClick="{{ mnToggle }}" aria-label="Abrir menu do Copiloto" aria-haspopup="menu" aria-expanded="{{ mnOpen }}" style="position:relative;width:64px;height:64px;padding:0;border:0;border-radius:50%;background:#fff;box-shadow:{{ fabSh }};cursor:pointer;display:flex;align-items:center;justify-content:center;transition:box-shadow .15s ease-out, transform .15s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 8px 20px rgba(77,26,153,.32), 0 0 0 2px #7D3EE3"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:48px;height:auto;display:block"><sc-if value="{{ dkDot }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:6px;right:6px;width:11px;height:11px;border-radius:50%;background:#FF5040;box-shadow:0 0 0 2px #fff"></span></sc-if></button>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1280px&quot;,&quot;height&quot;:&quot;360px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;garagem&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hideCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  NOTIFS = [
+    { id: "n1", kind: "relatorio", icon: "description", tint: "#F3EDFD", ink: "#7D3EE3", title: "Seu relatório está pronto", text: "A consulta da placa ABC1D23 (Onix LTZ 2022) foi concluída.", when: "Há 2 h", group: "Hoje", screen: "consulta", href: "Minha Conta.dc.html?tela=consulta" },
+    { id: "n2", kind: "fipe", icon: "trending_up", tint: "#E8F5EC", ink: "#15803D", title: "A FIPE do seu Onix subiu 1,2%", text: "Agora ele vale R$ 88.320 na Tabela FIPE de outubro.", when: "Ontem", group: "Esta semana", href: "Garagem.dc.html" },
+    { id: "n3", kind: "revisao", icon: "build", tint: "#FFF4E0", ink: "#B45309", title: "Revisão dos 40.000 km chegando", text: "Faltam cerca de 1.200 km pelo plano de revisões da Chevrolet.", when: "Há 3 dias", group: "Esta semana", screen: "carro", href: "Minha Conta.dc.html?tela=carro" },
+    { id: "n4", kind: "recall", icon: "warning", tint: "#FDECEA", ink: "#C2410C", title: "Novo recall para o Chevrolet Onix", text: "Airbag do passageiro. A troca é gratuita em qualquer concessionária.", when: "Há 5 dias", group: "Esta semana", screen: "carro", href: "Minha Conta.dc.html?tela=carro" },
+    { id: "n5", kind: "cupom", icon: "local_offer", tint: "#F3EDFD", ink: "#7D3EE3", title: "10% de desconto na próxima consulta", text: "Use o cupom ACHECAR10 até 30 de novembro.", when: "18 out", group: "Anteriores", href: "Consulta Placa.dc.html" }
+  ];
+  ntRead = () => { try { const v = JSON.parse(localStorage.getItem("achecar-notif-read") || "null"); return Array.isArray(v) ? v : ["n4", "n5"]; } catch (e) { return ["n4", "n5"]; } };
+  ntSave = (ids) => { try { localStorage.setItem("achecar-notif-read", JSON.stringify(ids)); } catch (e) {} window.dispatchEvent(new Event("achecar-notif")); };
+  rkRef = React.createRef();
+  onRkMove = (e) => {
+    const el = this.rkRef.current; if (!el) return;
+    cancelAnimationFrame(this.rkRaf);
+    this.rkRaf = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      if (Math.hypot(dx, dy) < 30) { el.style.rotate = "0deg"; return; }
+      let a = Math.atan2(dy, dx) * 180 / Math.PI;
+      const prev = this.rkAng ?? 0; while (a - prev > 180) a -= 360; while (a - prev < -180) a += 360;
+      this.rkAng = a; el.style.rotate = a + "deg";
+    });
+  };
+  _rkL = (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.addEventListener("mousemove", this.onRkMove, { passive: true }), 1);
+  _plL = (window.addEventListener("achecar-placa", () => this.setState({ plC: true, plErr: false, mn: false, dd: "", menuOpen: false })), 1);
+  _ntL = (window.addEventListener("achecar-notif", () => this.setState({ ntRd: this.ntRead() })), window.addEventListener("storage", (e) => { if (e.key === "achecar-notif-read") this.setState({ ntRd: this.ntRead() }); }), 1);
+  state = { session: null, menuOpen: false, dd: "", pinned: false, vw: window.innerWidth, ntOpen: false, ntRd: this.ntRead() };
+  rootRef = React.createRef(); dockRef = React.createRef();
+  read = () => { try { return JSON.parse(localStorage.getItem("achecar-session") || "null"); } catch (e) { return null; } };
+  sync = () => this.setState({ session: this.read(), cmp: this.readCmp() });
+  readCmp = () => { try { return JSON.parse(localStorage.getItem("achecar-comparativo") || "null"); } catch (e) { return null; } };
+  sig = (items) => (items || []).map((x) => x.mid + x.vi + x.year).join("|");
+  writeCmp = (items) => { const d = this.readCmp() || {}, di = d.items || [], dv = d.view || []; const view = items.map((it) => dv[di.findIndex((x) => this.sig([x]) === this.sig([it]))] || null); try { localStorage.setItem("achecar-comparativo", JSON.stringify({ ...d, items, view, curSaved: null })); } catch (e) {} this.setState({ cmp: this.readCmp() }); };
+  fabRef = React.createRef(); dkMsgRef = React.createRef();
+  onResize = () => this.setState({ vw: window.innerWidth });
+  onDown = (e) => { const inF = this.fabRef.current && this.fabRef.current.contains(e.target), inD = this.dockRef.current && this.dockRef.current.contains(e.target); if (this.state.mn && !inF) this.setState({ mn: false }); if ((this.state.dk || this.state.plC) && !inD && !inF) this.setState({ dk: false, plC: false }); if ((this.state.menuOpen || this.state.dd) && this.rootRef.current && !this.rootRef.current.contains(e.target)) this.setState({ menuOpen: false, dd: "", pinned: false }); };
+  onKey = (e) => { if (e.key === "Escape") this.setState({ menuOpen: false, dd: "", pinned: false, dk: false }); };
+  lgClose = () => { const m = this.state.lgM; this.setState({ lgM: null }); if (m && m.gate) location.href = "Home Achecar.dc.html"; };
+  lgDone = () => { const m = this.state.lgM || {}; this.setState({ lgM: null }); this.sync && this.sync(); if (m.cb) { m.cb(); return; } const cur = decodeURIComponent(location.pathname.split("/").pop()) + location.search; if (m.next && m.next !== cur) location.href = m.next; else location.reload(); };
+  hideCopItems = () => { if (this.state.dd !== "copiloto") return; requestAnimationFrame(() => { document.querySelectorAll('header [aria-label="Principal"] .sc-host-x div').forEach((el) => { const t = (el.textContent || "").trim(); if (t.length < 90 && /^Emplacamentos/.test(t) && el.parentElement && !/^Emplacamentos/.test((el.parentElement.textContent || "").trim())) el.style.display = "none"; }); }); };
+  hideGarItems = () => { if (this.state.dd !== "garagem") return; requestAnimationFrame(() => { document.querySelectorAll('header [aria-label="Principal"] .sc-host-x div').forEach((d) => { const t = (d.textContent || "").trim(); if (/^SUA GARAGEM/i.test(t) && getComputedStyle(d).overflow === "hidden" && !d.dataset.garCol) { d.dataset.garCol = "1"; d.style.overflow = "visible"; } }); document.querySelectorAll('header [aria-label="Principal"] .sc-host-x div').forEach((d) => { if (d.dataset.icoTile) return; const r = d.getBoundingClientRect(); if (r.width >= 32 && r.width <= 56 && Math.abs(r.width - r.height) < 2 && d.querySelector("svg") && !d.querySelector("img")) d.dataset.icoTile = "1"; }); document.querySelectorAll('header [aria-label="Principal"] .sc-host-x div').forEach((el) => { const t = (el.textContent || "").trim(); if (t.length < 70 && /^Consumo e eficiência/.test(t) && el.parentElement && !/^Consumo e eficiência/.test((el.parentElement.textContent || "").trim())) el.style.display = "none"; }); }); };
+  CP_MAX = 3;
+  cpUsed = () => { try { return +(localStorage.getItem("achecar-copiloto-uso") || 0); } catch (e) { return 0; } };
+  cpSetUsed = (n) => { try { localStorage.setItem("achecar-copiloto-uso", String(n)); } catch (e) {} };
+  lgdMode = () => (this.props.loginStyle ?? new URLSearchParams(location.search).get("login") ?? "Modal").toLowerCase().startsWith("d") ? "drawer" : "modal";
+  isLogged = () => { try { return !!JSON.parse(localStorage.getItem("achecar-session") || "null")?.logged; } catch (e) { return false; } };
+  lgdRun = () => { clearInterval(this.lgdIv); this.lgdIv = setInterval(() => { if (!this.state.lgM) return; this.setState((s) => ({ lgdI: ((s.lgdI || 0) + 1) % 2 })); }, 5000); };
+  lgdVals = () => {
+    const vw = this.state.vw || window.innerWidth, open = !!this.state.lgM, dr = this.lgdMode() === "drawer", sheet = vw < 600, wide = vw >= 1024;
+    return {
+      lgModal: open && !dr, lgDrawerOn: open && dr, lgdSheet: sheet, lgdBrand: wide, lgdStrip: !wide,
+      lgdW: sheet ? "auto" : wide ? "min(940px, calc(100vw - 80px))" : "min(520px, 100vw)", lgdLeft: sheet ? "0" : "auto", lgdTop: sheet ? "auto" : "0",
+      lgdCols: wide ? "minmax(0,1fr) minmax(0,480px)" : "minmax(0,1fr)", lgdRadius: sheet ? "20px 20px 0 0" : "20px 0 0 20px",
+      lgdAnim: sheet ? "lgdUp .28s cubic-bezier(.2,.8,.2,1) both" : "lgdIn .28s cubic-bezier(.2,.8,.2,1) both", lgdCloseTop: sheet ? "14px" : "16px", lgdFormPad: sheet ? "0 0 4px" : "24px 16px",
+      lgdSlides: [["assets/login/login-1-sm.jpg", "Compre seu próximo carro de cabeça leve.", "60% 30%"], ["assets/login/login-2-sm.jpg", "Saiba tudo do carro antes de pegar a estrada.", "45% 35%"]].map(([src, tx, pos], i) => { const on = (this.state.lgdI || 0) === i; return { src, t: tx, pos, on, op: on ? 1 : 0, sc: on ? 1.06 : 1, dw: on ? "32px" : "16px", dc: on ? "#fff" : "rgba(255,255,255,.45)", lbl: "Foto " + (i + 1), go: () => { this.setState({ lgdI: i }); this.lgdRun(); } }; }),
+      lgdPerks: [{ icon: "auto_awesome", t: "Copiloto grátis para tirar dúvidas de qualquer carro" }, { icon: "history", t: "Suas consultas e relatórios guardados" }, { icon: "garage", t: "Garagem com o valor do seu carro atualizado" }],
+      lgTeaserOn: !!this.state.lgTeaser && !open && dr && !this.isLogged(), lgtRight: sheet ? "12px" : "24px", lgtLeft: sheet ? "12px" : "auto", lgtBottom: sheet ? "12px" : "24px",
+      lgTeaserOpen: () => { this.setState({ lgTeaser: false }); window.achecarLogin("Login.dc.html?next=" + encodeURIComponent(decodeURIComponent(location.pathname.split("/").pop()) + location.search)); },
+      lgTeaserClose: () => { try { sessionStorage.setItem("achecar-lg-teaser", "x"); } catch (e) {} this.setState({ lgTeaser: false }); },
+    };
+  };
+  componentDidMount() {
+    this.lgdRun();
+    if (this.props.copilotoAberto) setTimeout(() => { if (!this.state.lgM) this.setState({ dk: true, dkTab: 0, mn: false }); }, 400);
+    window.achecarLogin = (url, cb, opt) => { let next = ""; try { next = new URL(url, location.href).searchParams.get("next") || ""; } catch (e) {} this.setState({ lgM: { next, cb, gate: !!(opt && opt.gate) }, dd: "", pinned: false, mn: false, menuOpen: false, dk: false, sup: false, plC: false }); };
+    this.onLgClick = (e) => { if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return; const a = e.target.closest && e.target.closest("a[href]"); if (!a) return; const hr = a.getAttribute("href") || ""; if (!/^Login\.dc\.html/.test(hr)) return; e.preventDefault(); e.stopPropagation(); window.achecarLogin(hr); };
+    document.addEventListener("click", this.onLgClick, true);
+    this.onLgKey = (e) => { if (e.key === "Escape" && this.state.lgM) this.lgClose(); }; document.addEventListener("keydown", this.onLgKey);
+    this.sync();
+    window.addEventListener("storage", this.sync);
+    window.addEventListener("achecar-session", this.sync); window.addEventListener("achecar-comparativo", this.sync); window.addEventListener("focus", this.sync);
+    window.addEventListener("resize", this.onResize);
+    { const q = new URLSearchParams(location.search), c = q.get("cop"), T = { conversa: 0, comparativo: 1, consultas: 2, garagem: 3 }; if (c != null && T[c] != null) { setTimeout(() => this.setState({ dk: true, dkTab: T[c], mn: false }), 300); q.delete("cop"); const qs = q.toString(); history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + location.hash); try { sessionStorage.removeItem("achecar-intent"); } catch (e) {} } }
+    this.onCop = (e) => { const d = (e && e.detail) || {}; if (d.placa != null) { this.setState({ plC: true, plV: d.placa, plErr: false, mn: false, dk: false, sup: false }); return; } if (d.q && this.dkAskFn) this.dkAskFn(d.q); else this.setState({ dk: true, dkTab: d.tab || 0 }); };
+    this.onCtx = () => this.forceUpdate();
+    this.onLink = (e) => { const a = e.target.closest && e.target.closest('a[href^="Copiloto.dc.html?q="]'); if (!a || /Copiloto\.dc/.test(location.pathname)) return; e.preventDefault(); const q = new URLSearchParams(a.getAttribute("href").split("?")[1]).get("q"); if (q && this.dkAskFn) this.dkAskFn(q); };
+    window.addEventListener("achecar-copiloto", this.onCop); window.addEventListener("achecar-copiloto-ctx", this.onCtx); document.addEventListener("click", this.onLink, true);
+    document.addEventListener("pointerdown", this.onDown, true);
+    document.addEventListener("keydown", this.onKey);
+  }
+  componentDidUpdate() { this.hideGarItems(); this.hideCopItems(); const mk = (this.state.dkMsgs || []).length + "|" + (this.state.dk ? 1 : 0) + "|" + (this.state.dkTab || 0); if (mk !== this._mk) { const grew = this._mk && +mk.split("|")[0] > +this._mk.split("|")[0]; this._mk = mk; requestAnimationFrame(() => { const el = this.dkMsgRef.current; if (!el) return; const qs = el.querySelectorAll('[data-me="1"]'), last = qs[qs.length - 1]; el.scrollTop = grew && last ? Math.max(0, last.offsetTop - 12) : el.scrollHeight; }); }  if (this.state.dd === "garagem") { this.patchGar(); clearTimeout(this.pgT); this.pgT = setTimeout(this.patchGar, 120); } }
+  patchGar = () => {
+    const root = this.rootRef.current; if (!root) return;
+    const own = (el) => [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent).join("").trim();
+    const savedLbl = [...root.querySelectorAll("span,div,p")].find((el) => /^modelos salvos$/i.test(own(el)));
+    root.querySelectorAll("span,div,p").forEach((el) => {
+      const t = own(el);
+      if (t === "Ver tudo em Mercado") { let r = el; for (let i = 0; i < 3 && r.parentElement && (r.parentElement.textContent || "").trim() === "Ver tudo em Mercado"; i++) r = r.parentElement; r.style.display = "none"; }
+      const m = /^(Chevrolet|Hyundai|Volkswagen|Fiat|Jeep|Toyota|Renault|Honda|Nissan)\s+([A-Za-z0-9]+)/.exec(t);
+      if (m && t.length < 60) {
+        let row = el; for (let i = 0; i < 4 && row && !row.querySelector(":scope > svg, :scope > img[data-car]"); i++) row = row.parentElement;
+        if (!row || row.dataset.carDone) return;
+        const svg = row.querySelector(":scope > svg"); if (!svg) return;
+        row.dataset.carDone = "1"; if (savedLbl && savedLbl.compareDocumentPosition(row) & Node.DOCUMENT_POSITION_FOLLOWING) row.dataset.savedModel = "1"; else row.dataset.carId = m[2].toLowerCase(); row.style.cursor = "pointer";
+        const b = svg.getBoundingClientRect(), w = Math.max(64, Math.round(b.width * 1.6)), h = Math.max(44, Math.round(b.height * 1.1));
+        const img = document.createElement("span"); img.setAttribute("data-car", "1"); img.setAttribute("aria-hidden", "true");
+        img.style.cssText = "flex:none;width:" + w + "px;height:" + h + "px;border-radius:10px;background:#F4F4F6 url(assets/carros/" + m[2].toLowerCase() + ".webp) center / 92% auto no-repeat";
+        svg.replaceWith(img);
+      }
+    });
+    const fix = (r) => { r.style.height = "64px"; r.style.minHeight = "64px"; r.style.boxSizing = "border-box"; r.style.alignItems = "center"; r.style.padding = "8px 12px"; r.style.borderRadius = "12px"; const im = r.querySelector("[data-car]"); if (im) { im.style.height = "44px"; im.style.width = "72px"; im.style.flex = "none"; } };
+    root.querySelectorAll("[data-saved-model]").forEach((r) => { r.style.display = "none"; });
+    if (savedLbl) { let sec = savedLbl; while (sec.parentElement && sec.parentElement !== root && !sec.parentElement.querySelector("[data-car-id]")) sec = sec.parentElement; sec.style.display = "none"; }
+    root.querySelectorAll("[data-car-id]").forEach((car) => {
+      const list = car.parentElement; if (!list) return;
+      const add = [...list.children].find((c) => /^Adicionar outro carro/.test((c.textContent || "").trim()));
+      [...list.children].filter((c) => c.dataset.carId || c === add).forEach(fix);
+      if (add && !add.dataset.dashed) {
+        add.dataset.dashed = "1"; add.style.border = "1.5px dashed #C9B5F5"; add.style.background = "transparent"; add.style.cursor = "pointer";
+        add.style.transition = "background .18s ease-out, border-color .18s ease-out, box-shadow .18s ease-out, transform .18s ease-out";
+        const tint = (on) => { add.style.background = on ? "#F5F0FF" : "transparent"; add.style.borderColor = on ? "#7D3EE3" : "#C9B5F5"; add.style.borderStyle = on ? "solid" : "dashed"; add.style.boxShadow = on ? "0 6px 18px rgba(125,62,227,.16)" : "none"; add.style.transform = on ? "translateY(-1px)" : "none";
+          add.querySelectorAll("span,div,p").forEach((t) => { if ([...t.childNodes].some((n) => n.nodeType === 3 && /Adicionar outro carro/.test(n.textContent))) t.style.color = on ? "#7D3EE3" : ""; }); };
+        add.addEventListener("mouseenter", () => tint(true)); add.addEventListener("mouseleave", () => tint(false));
+        add.addEventListener("focusin", () => tint(true)); add.addEventListener("focusout", () => tint(false));
+      }
+    });
+  };
+  componentWillUnmount() { window.removeEventListener("mousemove", this.onRkMove); cancelAnimationFrame(this.rkRaf);
+    document.removeEventListener("click", this.onLgClick, true); document.removeEventListener("keydown", this.onLgKey);
+    clearTimeout(this.ddT); clearTimeout(this.pgT);
+    window.removeEventListener("storage", this.sync); window.removeEventListener("achecar-comparativo", this.sync); window.removeEventListener("focus", this.sync);
+    window.removeEventListener("achecar-session", this.sync);
+    window.removeEventListener("resize", this.onResize);
+    document.removeEventListener("pointerdown", this.onDown, true);
+    document.removeEventListener("keydown", this.onKey);
+  }
+  renderVals() {
+    const s = this.state.session;
+    const logged = !!(s && s.logged);
+    const name = (s && s.name) || "Ana Souza";
+    const here = (location.pathname.split("/").pop() || "").replace(/%20/g, " ");
+    const next = encodeURIComponent(here + location.search);
+    const conta = "Minha Conta.dc.html";
+    const ddOf = (k, go) => ({
+      open: this.state.dd === k,
+      color: this.state.dd === k || (k === "garagem" && this.props.active === "garagem") ? "#7D3EE3" : "#1D2433",
+      rot: this.state.dd === k ? "rotate(180deg)" : "none",
+      enter: () => { clearTimeout(this.ddT); if (this.state.pinned) return; this.setState({ dd: k, menuOpen: false }); },
+      leave: () => { clearTimeout(this.ddT); if (this.state.pinned) return; this.ddT = setTimeout(() => this.setState((st) => (st.dd === k && !st.pinned ? { dd: "" } : null)), 160); },
+      toggle: () => { clearTimeout(this.ddT); this.setState((st) => (st.pinned && st.dd === k ? { dd: "", pinned: false } : { dd: k, pinned: true, menuOpen: false })); },
+      over: (e) => {
+        const root = e.currentTarget, RX = /Quanto vale meu carro|Buscar veículo|Comparar veículos|Lançamentos|Preço e valorização|Consumo e eficiência|Custo de manter|Como funciona a Garagem|Adicionar outro carro|Entrar ou criar conta|Consultar placa|Ver tudo|Ver todos|Abrir|Perguntar/;
+        let n = e.target, row = null, solid = false;
+        if (e.target.closest && e.target.closest("[data-dashed]")) { if (this.hovRow) { const hr = this.hovRow; if (hr._hovBg) { hr.style.background = ""; hr.style.boxShadow = ""; } if (hr._hovTile) { hr._hovTile.style.background = hr._hovTile._hovPrev || ""; hr._hovTile = null; } if (hr._hovTtl) { hr._hovTtl.style.color = hr._hovTtl._hovPrev || ""; hr._hovTtl = null; } hr.style.filter = ""; hr._hovBg = false; this.hovRow = null; } return; }
+        for (let i = 0; n && n !== root && i < 8; i++, n = n.parentElement) {
+          if (n.dataset && (n.dataset.carId || n.dataset.savedModel)) { row = n; break; }
+          if (n.tagName === "A" || n.tagName === "BUTTON" || n.getAttribute("role") === "button") { row = n; break; }
+          const t = n.textContent || "";
+          if (t.length < 90 && RX.test(t)) row = n; else if (row) break;
+        }
+        if (!row) { n = e.target; for (let i = 0; n && n !== root && i < 6; i++, n = n.parentElement) { const cs = getComputedStyle(n), r = n.getBoundingClientRect(); if (cs.display === "flex" && r.height >= 36 && r.height <= 120 && r.width >= 140 && (n.textContent || "").trim().length < 120) { row = n; break; } } }
+        if (row && !(row.dataset && (row.dataset.carId || row.dataset.savedModel)) && row.tagName !== "A" && row.tagName !== "BUTTON") { const rw = root.getBoundingClientRect().width; for (let i = 0; i < 3; i++) { const p = row.parentElement; if (!p || p === root) break; const pr = p.getBoundingClientRect(), cs = getComputedStyle(p); if (pr.height > 130 || pr.width > rw * 0.9 || cs.flexDirection === "column" && p.children.length > 1 && pr.height > row.getBoundingClientRect().height + 8) break; row = p; } }
+        if (row) { const bg = getComputedStyle(row).backgroundColor; solid = !!bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent" && !row._hovBg; }
+        const clear = (r) => { if (!r) return; if (r._hovBg) { r.style.background = ""; r.style.boxShadow = ""; } if (r._hovSolid) { r.style.background = r._hovPrev || ""; r._hovSolid = false; } if (r._hovRing) { r.style.boxShadow = r._hovPrevSh || ""; r._hovRing = false; } if (r._hovTile) { r._hovTile.style.background = r._hovTile._hovPrev || ""; r._hovTile = null; } if (r._hovTtl) { r._hovTtl.style.color = r._hovTtl._hovPrev || ""; r._hovTtl = null; } r.style.filter = ""; r._hovBg = false; };
+        if (this.hovRow && this.hovRow !== row) clear(this.hovRow);
+        if (row && this.hovRow !== row) {
+          row.style.cursor = "pointer"; row.style.transition = "background .15s ease-out, box-shadow .15s ease-out, filter .15s ease-out";
+          const rcs = getComputedStyle(row), bgc = rcs.backgroundColor;
+          if (solid) {
+            const DK = { "rgb(125, 62, 227)": "#5F29AE", "rgb(125, 61, 227)": "#5F29AE", "rgb(255, 80, 64)": "#E63E2F", "rgb(10, 10, 10)": "#2A2A2E", "rgb(29, 36, 51)": "#2B3447" };
+            if (DK[bgc]) { row._hovPrev = row.style.background; row.style.background = DK[bgc]; row._hovSolid = true; }
+            else { row._hovPrevSh = row.style.boxShadow; row.style.boxShadow = "inset 0 0 0 1px #7D3EE3, 0 8px 24px rgba(29,36,51,.12)"; row._hovRing = true; }
+          } else {
+            const pad = parseFloat(rcs.paddingLeft) || 0, sp = Math.max(0, 10 - pad);
+            if (!rcs.borderRadius || rcs.borderRadius === "0px") row.style.borderRadius = (12 - Math.min(sp, 6)) + "px";
+            row.style.background = "#F6F2FE"; row.style.boxShadow = sp ? "0 0 0 " + sp + "px #F6F2FE" : "none"; row._hovBg = true;
+            const tile = row.querySelector("[data-ico-tile]"); if (tile) { tile._hovPrev = tile.style.background; tile.style.transition = "background .15s ease-out"; tile.style.background = "#EDE4FD"; row._hovTile = tile; }
+            const ttl = [...row.querySelectorAll("span,div,p")].find((x) => x.children.length === 0 && parseInt(getComputedStyle(x).fontWeight) >= 500 && (x.textContent || "").trim().length > 2); if (ttl) { ttl._hovPrev = ttl.style.color; ttl.style.transition = "color .15s ease-out"; ttl.style.color = "#5F29AE"; row._hovTtl = ttl; }
+          }
+          this.hovRow = row; if (!row._lv) { row._lv = 1; row.addEventListener("mouseleave", () => { clear(row); if (this.hovRow === row) this.hovRow = null; }); }
+        }
+        e.currentTarget.querySelectorAll("button,a,[role=button]").forEach((b) => { b.style.cursor = "pointer"; });
+      },
+      click: (e) => {
+        if (e.target.closest("input")) return;
+        if (k === "copiloto") { const card = e.target.closest(".fig-asset-9af41815b1c4a4c4"); if (card) { e.preventDefault(); e.stopPropagation(); let q = ""; let n = e.target; for (let i = 0; n && n !== card && i < 4; i++, n = n.parentElement) { const cs = getComputedStyle(n); if (cs.borderRadius === "999px" && n.parentElement && n.parentElement.style.flexWrap === "wrap") { q = (n.textContent || "").trim(); break; } } this.setState({ dd: "", pinned: false, dk: true, dkTab: 0, sup: false, mn: false, plC: false }); if (q && this.dkAskFn) setTimeout(() => this.dkAskFn(q), 0); else setTimeout(() => { const d = this.dockRef && this.dockRef.current; const inp = d && d.querySelector("input"); if (inp) inp.focus(); }, 280); return; } }
+        const el = e.target.closest("a,button,[role=button]");
+        if (k === "garagem" && !logged) {
+          let n = e.target, hit = false;
+          for (let i = 0; n && i < 6; i++, n = n.parentElement) { if (/Entrar ou criar conta/.test(n.textContent || "") && (n.textContent || "").length < 40) { hit = true; break; } }
+          if (hit) { e.preventDefault(); window.achecarLogin(this.loginUrl()); return; }
+        }
+        if (k === "garagem" && logged) {
+          let n = e.target;
+          for (let i = 0; n && i < 7; i++, n = n.parentElement) { if (n.dataset && n.dataset.savedModel) { e.preventDefault(); location.href = "Garagem.dc.html"; return; } if (n.dataset && n.dataset.carId) { e.preventDefault(); location.href = "Meu Carro.dc.html?carro=" + n.dataset.carId; return; } const t = n.textContent || ""; if (t.length < 70 && /Adicionar outro carro/.test(t)) { e.preventDefault(); location.href = conta + "?tela=carros&add=1"; return; } }
+        }
+        { let m = e.target; for (let i = 0; m && i < 6; i++, m = m.parentElement) { const t = m.textContent || ""; if (t.length < 60 && /^\s*Lançamentos/.test(t)) { e.preventDefault(); location.href = "Lancamentos.dc.html"; return; } } }
+        if (k === "garagem") {
+          let n = e.target;
+          for (let i = 0; n && i < 6; i++, n = n.parentElement) { const t = n.textContent || ""; if (t.length < 90 && /Comparar veículos/.test(t)) { e.preventDefault(); location.href = "Comparativo.dc.html"; return; } if (t.length < 90 && /Lançamentos/.test(t)) { e.preventDefault(); location.href = "Lancamentos.dc.html"; return; } if (t.length < 90 && /Preço e valorização/.test(t)) { e.preventDefault(); location.href = "Precos e Valorizacao.dc.html"; return; } if (t.length < 90 && /Buscar veículo|Lançamentos|Preço e valorização|Consumo e eficiência|Custo de manter/.test(t)) { e.preventDefault(); location.href = "Garagem.dc.html"; return; } if (t.length < 90 && /Como funciona a Garagem/.test(t)) { e.preventDefault(); location.href = "Como Funciona Garagem.dc.html"; return; } if (t.length < 60 && /Consultar placa/.test(t)) { e.preventDefault(); location.href = "Consulta Placa.dc.html"; return; } }
+        }
+        if (k === "copiloto") { let n2 = e.target; for (let i = 0; n2 && i < 6; i++, n2 = n2.parentElement) { const t = n2.textContent || ""; if (t.length < 90 && /Custo de manter|Calculadora de custo/.test(t)) { e.preventDefault(); location.href = "Calculadora de Custos v2.dc.html"; return; } } }
+        if (k === "copiloto") { let n = e.target; for (let i = 0; n && i < 6; i++, n = n.parentElement) { const t = n.textContent || ""; if (t.length < 90 && /Quanto vale meu carro/.test(t)) { e.preventDefault(); location.href = "Quanto Vale.dc.html"; return; } } }
+        if (el) { e.preventDefault(); location.href = go(el); }
+      }
+    });
+    this.loginUrl = () => "Login.dc.html?next=" + encodeURIComponent(conta + "?tela=carros") + "&back=" + next;
+    const garHref = logged ? conta + "?tela=carros" : "Login.dc.html?next=" + encodeURIComponent(conta + "?tela=carros") + "&back=" + next;
+    const DK = (() => { const cd = this.state.cmp || {}, ci = (cd.items || []).slice(0, 3), cv = cd.view || [], cn = ci.length, path = decodeURIComponent(location.pathname), st = this.state;
+    const small = st.vw < (this.props.bpTablet640 ?? 640), logged = !!(st.session && st.session.logged), open = !!st.dk, tab = st.dkTab || 0;
+    const page = /Versoes/.test(path) ? "versoes" : /Lancamento/.test(path) ? "lanc" : /Comparativo/.test(path) ? "cmp" : /Garagem/.test(path) ? "gar" : /Precos/.test(path) ? "fipe" : /Consulta/.test(path) ? "placa" : "home";
+    const qp = new URLSearchParams(location.search), mdl = qp.get("modelo") || "";
+    const CTX0 = { versoes: ["Sobre o " + (mdl || "carro desta página"), ["Essa versão vale a pena?", "Quanto custa manter por mês?", "Compare com os rivais"]], lanc: ["Sobre este lançamento", ["Vale esperar pelo lançamento?", "O que mudou em relação ao atual?", "Compare com os rivais"]], cmp: ["Sobre o seu comparativo", ["Qual combina mais comigo?", "Qual gasta menos por mês?", "Adicionar outro carro"]], gar: ["Ajudo a encontrar o carro certo", ["SUV até R$ 150 mil que gaste pouco", "Compare dois carros", "Quanto vale meu carro?"]], fipe: ["Sobre preços e FIPE", ["Esse preço FIPE está bom?", "Quanto meu carro vale hoje?", "Compare dois carros"]], placa: ["Antes de consultar a placa", ["O que a consulta mostra?", "Quanto custa a consulta?", "Ver minhas consultas"]], home: ["Pergunte qualquer coisa sobre carros", ["Antes de comprar, o que eu verifico?", "Compare dois carros", "Consultar uma placa"]] }[page];
+    const CX = window.ACHECAR_COP_CTX || null, dkKey = "achecar-copiloto-dock:" + (CX ? CX.id : page);
+    const CTX = CX ? [CX.title, CX.sugs] : CTX0;
+    if (this.loadedKey !== dkKey) { this.loadedKey = dkKey; let m0 = []; try { m0 = JSON.parse(localStorage.getItem(dkKey) || "[]"); } catch (e) {} setTimeout(() => this.setState({ dkMsgs: m0 }), 0); }
+    const msgs = st.dkMsgs || [], setTab = (k) => this.setState({ dk: true, dkTab: k });
+    const answer = (q) => { const t = q.toLowerCase();
+      if (CX && CX.answer && !/compar|garagem|minhas consultas/.test(t)) return [CX.answer(q), "", null];
+      if (/compar|rival|adicionar outro/.test(t)) return [cn ? "Seu comparativo tem " + cn + (cn === 1 ? " carro" : " carros") + ". " + (cn < 2 ? "Falta pelo menos mais um para comparar." : "Já dá para ver lado a lado.") : "Você ainda não tem comparativo. Adicione carros pelas páginas de versões ou monte um pelo Comparativo.", "Ver comparativo", () => setTab(1)];
+      if (/placa|consulta/.test(t)) return ["A consulta por placa mostra leilão, sinistro, roubo e furto, débitos, recall e mais de 140 informações, por R$ 79,90. O relatório fica na sua conta.", logged ? "Ver minhas consultas" : "Consultar uma placa", () => (logged ? setTab(2) : (location.href = "Consulta Placa.dc.html"))];
+      if (/garagem|salv/.test(t)) return ["Na Garagem você salva carros e acompanha o valor de cada um.", "Ver Garagem", () => setTab(3)];
+      if (/vale esperar|mudou/.test(t)) return ["Vale esperar se a novidade pesa no seu uso e você pode aguardar a chegada. Se precisa do carro já, o modelo atual costuma ter desconto quando a nova geração chega.", "Abrir o Copiloto completo", () => (location.href = "Copiloto.dc.html?q=" + encodeURIComponent(q))];
+      if (/custa|manter|gasta/.test(t)) return ["Some combustível, IPVA, seguro e revisões. Nas fichas da Achecar esse custo aparece por mês em cada versão.", "Abrir o Copiloto completo", () => (location.href = "Copiloto.dc.html?q=" + encodeURIComponent(q))];
+      return ["Posso ajudar com isso. Para respostas completas, com fontes, abra o Copiloto.", "Abrir o Copiloto completo", () => (location.href = "Copiloto.dc.html?q=" + encodeURIComponent(q))]; };
+    const ask = (q) => {
+      if (!q || !String(q).trim()) return;
+      let lg = false; try { lg = !!(JSON.parse(localStorage.getItem("achecar-session") || "null") || {}).logged; } catch (e) {}
+      if (!lg) { this.setState({ dkDraft: q }); window.achecarLogin && window.achecarLogin("Login.dc.html", () => { this.forceUpdate(); setTimeout(() => this.dkAskFn && this.dkAskFn(q), 50); }); return; }
+      const livre = !!this.props.copilotoLivre, used = this.cpUsed();
+      if (!livre && used >= this.CP_MAX) { const next = [...(this.state.dkMsgs || []), { me: true, t: q }, { me: false, t: "Você usou as " + this.CP_MAX + " perguntas grátis do Copiloto. Numa consulta veicular paga, você pergunta à vontade sobre o relatório do carro.", actT: "Consultar placa", limit: true }]; this.setState({ dk: true, dkTab: 0, dkMsgs: next, dkDraft: "" }); return; }
+      if (!livre) this.cpSetUsed(used + 1);
+      const [a, actT] = answer(q); const next = [...(this.state.dkMsgs || []), { me: true, t: q }, { me: false, t: a, actT, q }]; this.setState({ dk: true, dkTab: 0, dkMsgs: next, dkDraft: "" }); try { localStorage.setItem(dkKey, JSON.stringify(next.slice(-40))); } catch (e) {} };
+    this.dkAskFn = ask;
+    const thumbOf = (img) => (img ? "#F1F1F5 url('" + img + "') center/86% no-repeat" : "#F1F1F5");
+    let saved = []; try { saved = JSON.parse(localStorage.getItem("achecar-garagem-salvos") || "[]"); } catch (e) {}
+    const CARS = { onix: "Chevrolet Onix", hb20: "Hyundai HB20", polo: "Volkswagen Polo", tracker: "Chevrolet Tracker", compass: "Jeep Compass", creta: "Hyundai Creta", tcross: "Volkswagen T-Cross", virtus: "Volkswagen Virtus", corolla: "Toyota Corolla", argo: "Fiat Argo", pulse: "Fiat Pulse", commander: "Jeep Commander", sw4: "Toyota SW4" };
+    const gar = [...(logged ? [{ t: "Chevrolet Onix 1.0 Turbo 2024", d: "Meu carro · FIPE R$ 89.410", id: "onix" }] : []), ];
+    const hideOn = /Login|Copiloto\.dc/.test(path);
+    return {
+      rkRef: this.rkRef,
+      dockRef: this.dockRef, dkMsgPad: !!this.props.copilotoAberto ? "10px 14px" : "16px 18px", dkMsgGap: !!this.props.copilotoAberto ? "8px" : "12px", dkBubPad: !!this.props.copilotoAberto ? "8px 12px" : "11px 14px", dkBubFont: !!this.props.copilotoAberto ? "400 13px/1.45 Roboto" : "400 14px/1.5 Roboto", dkOn: !hideOn && (open || !!st.sup || !!st.plC || (!!this.props.pinPlate && !st.plMin)), dkBd: st.plC ? "#2A2833" : "#E6E6EE", dkBgc: st.plC ? "#0B0A10" : "#fff", dkMsgRef: this.dkMsgRef, formOn: (open && (st.dkTab || 0) === 0) || !!st.sup, dkIsConv: (st.dkTab || 0) === 0, dkNotConv: (st.dkTab || 0) !== 0, dkIcon: ["chat_bubble", "compare_arrows", "description", "garage"][st.dkTab || 0], dkTitle: ["Copiloto", "Comparativo", "Consultas", "Garagem"][st.dkTab || 0], dkSub: [CTX[0], "Até 3 veículos lado a lado", "Suas consultas de placa", "O seu carro"][st.dkTab || 0], fabRef: this.fabRef, fabOn: !hideOn && !(small && (open || st.sup || st.plC)), fabR: small ? "14px" : "24px", fabB: small ? "14px" : "24px", mnW: small ? "calc(100vw - 28px)" : "340px", fabSh: st.mn || open || st.sup || st.plC ? "0 4px 12px rgba(77,26,153,.25), 0 0 0 2px #7D3EE3" : "0 4px 12px rgba(77,26,153,.25)", dkOpen: open, dkClosed: !open && !st.sup, dkW: open ? (small ? "calc(100vw - 16px)" : this.props.copilotoAberto ? "480px" : "560px") : (small ? "calc(100vw - 24px)" : "480px"), dkBottom: small ? "10px" : "16px", dkMaxH: this.props.copilotoAberto ? "min(44vh, 400px)" : "min(62vh, 560px)", dkFormBd: open || st.mn || st.sup ? "1px solid #EEEEF2" : "0",
+      dkDot: cn > 0 && !open, dkCtx: CTX[0], dkPh: st.sup ? "Escreva para o atendimento" : open ? "Pergunte ao Copiloto" : CTX[1][0], dkToggleLbl: open ? "Fechar Copiloto" : "Abrir Copiloto",
+      dkToggle: () => this.setState((x) => ({ dk: !x.dk, sup: false, mn: false, plC: false })), dkClose: () => this.setState({ dk: false }), dkOpenConv: () => { if (!this.state.sup) this.setState({ dk: true, dkTab: 0, mn: false }); },
+      dkDraft: st.dkDraft || "", dkSetDraft: (e) => this.setState({ dkDraft: e.target.value }), dkSend: (e) => { e.preventDefault(); const q = (st.dkDraft || "").trim(); if (st.sup) { if (q) supAsk(q); return; } if (q) ask(q); else this.setState({ dk: true, mn: false }); },
+      ...(() => {
+        const go = (u) => this.setState({ mn: false, sup: false, dk: false, plC: false, ...u });
+        const toLogin = (intent) => { const q = new URLSearchParams(location.search); q.set("cop", intent); const back = here + "?" + q.toString(); try { sessionStorage.setItem("achecar-intent", back); } catch (e) {} window.achecarLogin("Login.dc.html?next=" + encodeURIComponent(back)); };
+        const cmpN = cn, sm = st.supMsgs || [];
+        const reply = (q) => /placa|consulta|relat/i.test(q) ? "Entendi. Me passe a placa e o e-mail da compra que eu localizo a sua consulta." : /pag|pix|cart|reembols|estorno/i.test(q) ? "Posso ajudar com o pagamento. O Pix confirma em até 2 minutos; no cartão, em até 1 hora. Me diga o que aconteceu." : "Recebi sua mensagem. Um atendente da equipe Achecar vai continuar por aqui em até 5 minutos.";
+        const supAsk = (q) => { const next2 = [...sm, { me: true, t: q }]; this.setState({ supMsgs: next2, dkDraft: "" }); clearTimeout(this.supT); this.supT = setTimeout(() => this.setState((x) => ({ supMsgs: [...(x.supMsgs || []), { me: false, t: reply(q) }] })), 900); };
+        this.supAskFn = supAsk;
+        const pl = (st.plV || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+        return {
+          mnOpen: !!st.mn, tools: [["savings", "Quanto vale", "Quanto Vale.dc.html"], ["calculate", "Custo por mês", "Versoes.dc.html#g-custo"], ["compare", "Comparar", "Comparativo.dc.html"]].map(([icon, t, href]) => ({ icon, t, href })), mnToggle: () => this.setState((x) => ({ mn: !x.mn })), plPad: small ? "22px 18px 24px" : "28px 28px 30px", plRing: st.plErr ? "#DC2626" : "linear-gradient(100deg,#FF5040 0%,#7D3EE3 45%,#B794F6 60%,#FF5040 100%)", plC: !!st.plC || (!!this.props.pinPlate && !st.plMin), plCanClose: true, plFocus: !this.props.pinPlate || !!st.plReopened, plSpacer: !!this.props.pinPlate && !st.plMin, plPill: !!this.props.pinPlate && !!st.plMin && !st.plC && !st.dk && !st.mn, plReopen: () => this.setState({ plMin: false, plC: false, plReopened: true }), plClose: () => this.setState({ plC: false, plErr: false, plMin: !!this.props.pinPlate }),
+          mnItems: [
+            { icon: "chat_bubble", t: "Copiloto", d: logged ? "Tire dúvidas sobre carros, preços e consultas" : "Entre na sua conta para conversar", ibg: "#F1EBFD", ic: "#7D3EE3", hasBadge: !logged, badge: "Entrar", bBg: "#F1EBFD", bFg: "#4C1D95", chev: "chevron_right", go: () => { if (!logged) { toLogin("conversa"); return; } go({ dk: true, dkTab: 0 }); } },
+            { icon: "support_agent", t: "Atendimento", d: "Fale com a equipe Achecar", ibg: "#E9F7EE", ic: "#15803D", hasBadge: true, badge: "Online", bBg: "#E9F7EE", bFg: "#15803D", chev: "chevron_right", go: () => go({ sup: true, supMsgs: sm.length ? sm : [{ me: false, t: "Olá! Sou da equipe Achecar. Como posso ajudar?" }] }) },
+            { icon: "description", t: "Consultas", d: logged ? "Relatórios das placas que você consultou" : "Entre para ver suas consultas", ibg: "#F4F4F6", ic: "#3F4654", hasBadge: false, chev: "chevron_right", go: () => { if (!logged) { toLogin("consultas"); return; } go({ dk: true, dkTab: 2 }); } },
+            { icon: "garage", t: "Garagem", d: "O seu carro e quanto ele vale", ibg: "#F4F4F6", ic: "#3F4654", hasBadge: false, chev: "chevron_right", go: () => go({ dk: true, dkTab: 3 }) },
+            { icon: "pin", t: "Consultar placa", d: "Digite a placa para ver o histórico do veículo", ibg: "#FFF1EF", ic: "#E63E2F", hasBadge: false, chev: "chevron_right", go: () => go({ plC: true }) },
+            { icon: "handyman", t: "Ferramentas", d: "Quanto vale, custo por mês e comparar", ibg: "#F4F4F6", ic: "#3F4654", hasBadge: false, chev: st.mnTools ? "expand_less" : "expand_more", isTools: !!st.mnTools, go: () => this.setState((x) => ({ mnTools: !x.mnTools })) },
+            { icon: "compare_arrows", t: "Comparativo", d: cmpN ? cmpN + " de 3 veículos no seu comparativo" : "Compare até 3 veículos lado a lado", ibg: "#F1EBFD", ic: "#7D3EE3", hasBadge: cmpN > 0, badge: cmpN + "/3", bBg: "#F1EBFD", bFg: "#4C1D95", chev: "chevron_right", go: () => go({ dk: true, dkTab: 1 }) }
+          ].map((m, i) => ({ isPlate: false, bg: "transparent", dl: (0.04 + i * 0.03).toFixed(2) + "s", ...m })),
+          plV: pl, plSet: (e) => this.setState({ plV: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7), plErr: false }), plErr: !!st.plErr, plBd: st.plErr ? "#DC2626" : "#D5D8DE",
+          hdrPlaca: (e) => { e.preventDefault(); const inp = [...document.querySelectorAll('input')].find((i) => !i.closest('header') && !i.closest('footer') && !i.closest('[role="dialog"]') && /placa/i.test((i.placeholder || "") + " " + (i.getAttribute("aria-label") || "")) && i.offsetParent); if (inp) { const y = inp.getBoundingClientRect().top + window.scrollY - window.innerHeight / 3; window.scrollTo({ top: Math.max(0, y), behavior: "smooth" }); setTimeout(() => inp.focus({ preventScroll: true }), 350); return; } this.setState({ plC: true, plErr: false, mn: false, dd: null }); },
+          plSubmit: (e) => { e.preventDefault(); if (!/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(pl)) { this.setState({ plErr: true }); return; } location.href = "Consulta Placa.dc.html?placa=" + pl; },
+          supOpen: !!st.sup, supClose: () => this.setState({ sup: false }), supEmpty: sm.length <= 1,
+          supMsgs: sm.map((m) => ({ t: m.t, al: m.me ? "flex-end" : "flex-start", bg: m.me ? "#15803D" : "#F4F4F6", fg: m.me ? "#fff" : "#1D2433", rad: m.me ? "16px 16px 4px 16px" : "16px 16px 16px 4px" })),
+          supSug: ["Não recebi meu relatório", "Problema no pagamento", "Quero cancelar uma consulta"].map((t) => ({ t, go: () => supAsk(t) }))
+        };
+      })(),
+      dkTabs: ["Conversa", "Comparativo", "Consultas", "Garagem"].map((t, k) => { const on = k === tab; return { t, on, bd: on ? "#7D3EE3" : "transparent", fg: on ? "#4C1D95" : "#5A6472", w: on ? 700 : 500, dot: k === 1 && cn > 0 && !on, go: () => setTab(k) }; }),
+      tConv: tab === 0, tCmp: tab === 1, tCons: tab === 2, tGar: tab === 3,
+      convEmpty: !msgs.length, convMore: msgs.length > 0, convIntro: CTX[0] + ". Escolha uma sugestão ou escreva sua pergunta.", convSug: CTX[1].map((t) => ({ t, go: () => ask(t) })),
+      convMsgs: msgs.map((m) => ({ meF: m.me ? "1" : "0", t: m.t, al: m.me ? "flex-end" : "flex-start", bg: m.me ? "#7D3EE3" : "#F4F1FB", fg: m.me ? "#fff" : "#1D2433", r: m.me ? "16px 16px 4px 16px" : "16px 16px 16px 4px", hasAct: !m.me && !!m.actT, actT: m.actT || "", act: () => { if (m.limit) { location.href = "Consulta Placa.dc.html"; return; } const f = answer(m.q || "")[2]; f && f(); } })),
+      cmpTitle: cn ? (cn >= 2 ? "Comparativo pronto · " + cn + " de 3" : "Comparativo em andamento · 1 de 3") : "Comparativo", cmpSlots: [0, 1, 2].map((k) => (k < cn ? "#7D3EE3" : "#E6E6EE")),
+      cmpList: ci.map((it, k) => ({ t: (cv[k] && cv[k].t) || "Veículo " + (k + 1), d: (cv[k] && cv[k].d) || "", thumb: thumbOf(cv[k] && cv[k].img), remove: () => this.writeCmp(ci.filter((_, z) => z !== k)) })),
+      cmpEmpty: !cn, cmpHas: cn > 0, cmpCanAdd: cn < 3, cmpHref: cn ? "Comparativo.dc.html" : "Comparativo.dc.html?novo=1", cmpCta: cn >= 2 ? "Ver comparativo" : cn ? "Completar comparativo" : "Começar um comparativo",
+      cmpClearTxt: st.dkConfirm ? "Confirmar exclusão" : "Excluir", cmpClear: () => { if (!st.dkConfirm) { this.setState({ dkConfirm: true }); clearTimeout(this.dcT); this.dcT = setTimeout(() => this.setState({ dkConfirm: false }), 4000); return; } this.writeCmp([]); this.setState({ dkConfirm: false }); },
+      consList: logged ? (() => { let L = []; try { L = JSON.parse(localStorage.getItem("achecar-consultas") || "[]"); } catch (e) {} if (!L.length) L = [{ placa: "ABC1D23", t: "Audi A3 1.8 · 2004", d: "5 apontamentos · concluída em 05/10/2026" }]; return L.map((c) => ({ ...c, fg: "#92400E", href: "Insights Consulta v5.dc.html?placa=" + c.placa })); })() : [],
+      consNote: logged ? "Os relatórios ficam na sua conta e não expiram." : "Entre para ver as consultas que você já fez.",
+      garList: gar.map((g) => ({ t: g.t, d: g.d, thumb: thumbOf("assets/carros/" + g.id + ".webp"), href: "Versoes.dc.html?id=" + g.id + "&modelo=" + encodeURIComponent(CARS[g.id].split(" ").slice(1).join(" ")) + "&marca=" + encodeURIComponent(CARS[g.id].split(" ")[0]) + "&img=assets/carros/" + g.id + ".webp" })),
+      garGuest: !logged, loginHref: "Login.dc.html?next=" + encodeURIComponent(path.split("/").pop() + location.search) }; })();
+    const cpU = Math.min(this.CP_MAX, this.cpUsed()), cpLeft = this.CP_MAX - cpU, cpLivre = !!this.props.copilotoLivre;
+    return { ...DK,
+      cpQuotaOn: false, cpLivreOn: logged && cpLivre, cpGuestOn: !logged,
+      cpQuotaTxt: cpLeft ? (cpLeft === 1 ? "Resta 1 pergunta grátis" : "Restam " + cpLeft + " perguntas grátis") : "Perguntas grátis esgotadas", cpQuotaIcon: cpLeft ? "chat_bubble" : "block", cpQuotaBg: cpLeft ? "#FAFAFC" : "#FFF7ED", cpQuotaFg: cpLeft ? "#5A6472" : "#9A3412",
+      firstNameUp: (name.split(" ")[0] || "").toUpperCase(), copDraft: this.state.copDraft || "", copSetDraft: (e) => this.setState({ copDraft: e.target.value }),
+      copSend: (e) => { e.preventDefault(); const q = (this.state.copDraft || "").trim(); if (!q) return; this.setState({ copDraft: "", dd: "" }); this.dkAskFn && this.dkAskFn(q); },
+      copChips: ["Qual desvaloriza menos?", "Híbrido compensa?"].map((t) => ({ t, go: () => { this.setState({ dd: "" }); this.dkAskFn && this.dkAskFn(t); } })),
+      cpDotsDark: Array.from({ length: this.CP_MAX }, (_, i) => ({ bg: i < cpLeft ? "#C9AEFF" : "rgba(255,255,255,.25)" })),
+      cpDots: Array.from({ length: this.CP_MAX }, (_, i) => ({ bg: i < cpLeft ? "#7D3EE3" : "#D5D8DE" })), lgOpen: !!this.state.lgM, ...this.lgdVals(), lgNext: (this.state.lgM && this.state.lgM.next) || "", lgDoneFn: this.lgDone, lgCloseFn: this.lgClose, lgStop: (e) => e.stopPropagation(),
+      rootRef: this.rootRef,
+      dd: { garagem: ddOf("garagem", () => garHref), copiloto: ddOf("copiloto", () => "Home Achecar.dc.html#copiloto") },
+      ddLeft: "24px", ddRight: "24px", ddJustify: "center", garLayout: "completo", copProps: { style: { minHeight: 416 } },
+      garConta: logged ? "logado" : "deslogado", garEstado: logged ? "parcial" : "—",
+      wide: this.state.vw >= (this.props.bpWide1200 ?? 1200),
+      logged, notLogged: !logged,
+      showCta: this.props.hideCta ? false : this.state.vw >= (this.props.bpTablet640 ?? 640), notSmall: this.state.vw >= (this.props.bpTablet640 ?? 640),
+      openSearch: () => { const here = decodeURIComponent(location.pathname.split("/").pop()); if (here === "Garagem.dc.html") { const i = document.querySelector('main input[type="search"], main [data-pop] input'); if (i) { window.scrollTo({ top: 0, behavior: "smooth" }); setTimeout(() => i.focus(), 250); } return; } location.href = "Garagem.dc.html?busca=1"; },
+      firstName: name.split(" ")[0], name, email: (s && s.email) || "ana@email.com",
+      initials: name.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase(),
+      menuOpen: this.state.menuOpen, chev: this.state.menuOpen ? "expand_less" : "expand_more",
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen, dd: "", pinned: false, ntOpen: false })),
+      ...(() => {
+        const rd = this.state.ntRd || [], unread = this.NOTIFS.filter((n) => !rd.includes(n.id)).length;
+        return {
+          ntOpen: this.state.ntOpen, ntHas: unread > 0, ntCount: unread > 9 ? "9+" : String(unread),
+          ntBell: this.state.ntOpen ? "#F3EDFD" : "transparent", ntBellInk: this.state.ntOpen ? "#7D3EE3" : "#1D2433",
+          ntAria: unread ? "Notificações, " + unread + " não lidas" : "Notificações",
+          ntToggle: () => this.setState((st) => ({ ntOpen: !st.ntOpen, menuOpen: false, dd: "", pinned: false })),
+          ntClose: () => this.setState({ ntOpen: false }),
+          ntReadAll: () => this.ntSave(this.NOTIFS.map((n) => n.id)),
+          ntItems: this.NOTIFS.slice(0, 4).map((n, i) => { const un = !rd.includes(n.id); return { ...n, weight: un ? 700 : 400, bg: un ? "#FAF7FF" : "#fff", dot: un ? "#7D3EE3" : "transparent", line: i ? "#EEEEF2" : "transparent", open: () => { if (un) this.ntSave([...rd, n.id]); this.setState({ ntOpen: false }); } }; })
+        };
+      })(),
+      menuItems: [
+        { label: "Meus carros", icon: "garage", href: conta + "?tela=carros" },
+        { label: "Minhas consultas", icon: "manage_search", href: conta + "?tela=consultas" },
+        { label: "Notificações", icon: "notifications", href: conta + "?tela=notificacoes" },
+        { label: "Avaliar um carro", icon: "reviews", href: "Avaliar Veiculo.dc.html" },
+        { label: "Perfil e configurações", icon: "person", href: conta + "?tela=perfil" }
+      ].map((it) => { const un = it.icon === "notifications" ? this.NOTIFS.filter((n) => !(this.state.ntRd || []).includes(n.id)).length : 0; return { ...it, badge: un > 0, badgeTxt: un > 9 ? "9+" : String(un) }; }),
+      avDot: this.NOTIFS.some((n) => !(this.state.ntRd || []).includes(n.id)),
+      garagemHref: logged ? conta + "?tela=carros" : "Login.dc.html?next=" + encodeURIComponent(conta + "?tela=carros") + "&back=" + next,
+      garagemColor: this.props.active === "garagem" ? "#7D3EE3" : "#1D2433",
+      loginHref: "Login.dc.html?next=" + next + "&back=" + next,
+      logout: () => {
+        localStorage.setItem("achecar-session", JSON.stringify({ logged: false }));
+        window.dispatchEvent(new Event("achecar-session"));
+        this.setState({ menuOpen: false });
+        location.href = "Home Achecar.dc.html";
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/fig-assets.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    select{appearance:none;-webkit-appearance:none}
+    html{scroll-behavior:smooth}
+    @keyframes ddIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  </style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div data-hdr="1" style="position:sticky;top:0;z-index:40;width:100%">
+    <dc-import name="Header Achecar" active="garagem" hint-size="100%,81px"></dc-import>
+  </div>
+
+  <main style="flex:1">
+    <section data-screen-label="01 Versão" style="padding:20px clamp(16px, calc(2.2vw + 7px), 32px) 24px">
+      <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+        <nav aria-label="Você está em" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;font:400 13px Roboto;color:#5A6472">
+          <a href="Garagem v2.dc.html" style="padding:4px 6px;margin:-4px -2px;border-radius:6px;font-weight:500" style-hover="background:#F5F4FE">Catálogo</a>
+          <span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span>
+          <a href="Marca.dc.html?m=toyota" style="padding:4px 6px;margin:-4px -2px;border-radius:6px;font-weight:500" style-hover="background:#F5F4FE">Toyota</a>
+          <span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span>
+          <a href="Modelo.dc.html" style="padding:4px 6px;margin:-4px -2px;border-radius:6px;font-weight:500" style-hover="background:#F5F4FE">Corolla Cross</a>
+          <span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span>
+          <span style="color:#1D2433;font-weight:500">{{ verName }} · {{ yearLabel }}</span>
+        </nav>
+
+        <div style="border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.06);padding:clamp(16px,2.4vw,24px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px 32px">
+          <div style="display:flex;flex-direction:column;min-width:0">
+            <div style="position:relative;flex:1;min-height:clamp(220px,26vw,300px);border-radius:16px;background:#F5F4FE;overflow:hidden">
+              <sc-if value="{{ phFoto }}" hint-placeholder-val="{{ true }}"><span role="img" aria-label="{{ verName }}" style="position:absolute;left:6%;right:6%;top:10%;bottom:8%;background:url(assets/carros/corolla-cross.webp) center / contain no-repeat;filter:drop-shadow(0 16px 16px rgba(29,36,51,.2))"></span></sc-if>
+              <sc-if value="{{ phLogo }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:48px;height:48px;transform:scale(2.6)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="toyota" tone="dark" hint-size="48px,48px"></x-import></span></span></sc-if>
+              <sc-if value="{{ phMono }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="width:120px;height:120px;border-radius:50%;background:#D7263D;color:#fff;display:flex;align-items:center;justify-content:center;font:800 56px 'Merriweather Sans',sans-serif">C</span></span></sc-if>
+              
+              <sc-if value="{{ phFoto }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;padding:5px 10px 5px 8px;border-radius:999px;background:rgba(255,255,255,.92);box-shadow:inset 0 0 0 1px #DCCFF8;font:500 12px Roboto;color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">auto_awesome</span>Imagem gerada por IA</span></sc-if>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font:700 11px Roboto;letter-spacing:.08em;color:#7D3EE3">TOYOTA · COROLLA CROSS</span>
+              <h1 style="margin:0;font:800 clamp(24px,2.8vw,32px)/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">{{ verName }}</h1>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ heroTags }}" as="t" hint-placeholder-count="4"><span style="padding:4px 10px;border-radius:999px;background:#F6F6F9;box-shadow:inset 0 0 0 1px #E6E6EE;font:500 12px Roboto;color:#1D2433;white-space:nowrap">{{ t }}</span></sc-for>
+                <span style="padding:4px 10px;border-radius:999px;background:#F6F6F9;box-shadow:inset 0 0 0 1px #E6E6EE;font:700 12px 'Roboto Mono',monospace;color:#5A6472;white-space:nowrap">Cód. {{ verCode }}</span>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr);gap:12px">
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+                <span style="font:700 13px Roboto">Ano-modelo</span>
+                <div data-dd="1" style="position:relative;">
+                  <button type="button" onClick="{{ dd_year.toggle }}" onKeyDown="{{ ddKey }}" aria-haspopup="listbox" aria-expanded="{{ dd_year.open }}" aria-label="Ano-modelo" style="width:100%;height:48px;box-sizing:border-box;border:0;border-radius:8px;background:#fff;box-shadow:{{ dd_year.ring }};display:flex;align-items:center;gap:8px;padding:0 10px 0 14px;text-align:left;color:#1D2433;cursor:pointer;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-visible="outline:none;box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+                    <span style="flex:1;min-width:0;font:500 15px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dd_year.value }}</span>
+                    <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:{{ dd_year.chevColor }};transform:{{ dd_year.rot }};transition:transform .15s ease-out">expand_more</span>
+                  </button>
+                  <sc-if value="{{ dd_year.open }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Ano-modelo" style="position:absolute;top:calc(100% + 6px);left:0;z-index:45;width:200px;min-width:100%;max-width:calc(100vw - 32px);box-sizing:border-box;background:#fff;border-radius:12px;box-shadow:0 16px 40px rgba(29,36,51,.16), inset 0 0 0 1px #E6E6EE;padding:6px;display:flex;flex-direction:column;gap:4px;animation:ddIn .14s ease-out both">
+                    
+                    <div style="max-height:288px;overflow:auto;display:flex;flex-direction:column;gap:2px">
+                      <sc-for list="{{ dd_year.opts }}" as="o" hint-placeholder-count="5"><button type="button" role="option" aria-selected="{{ o.on }}" onClick="{{ o.pick }}" style="flex:none;width:100%;min-height:40px;display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;border-radius:8px;background:{{ o.bg }};text-align:left;color:#1D2433;cursor:pointer;transition:background .12s ease-out" style-hover="background:#F5F4FE"><span style="flex:1;min-width:0;font:{{ o.weight }} 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.label }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ o.sub }}</span><span style="width:18px;flex:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">{{ o.check }}</span></button></sc-for>
+                      <sc-if value="{{ dd_year.empty }}" hint-placeholder-val="{{ false }}"><span style="padding:12px 10px;font:400 13px Roboto;color:#5A6472">Nenhuma marca encontrada.</span></sc-if>
+                    </div>
+                  </div></sc-if>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+                <span style="font:700 13px Roboto">Versão</span>
+                <div data-dd="1" style="position:relative;">
+                  <button type="button" onClick="{{ dd_ver.toggle }}" onKeyDown="{{ ddKey }}" aria-haspopup="listbox" aria-expanded="{{ dd_ver.open }}" aria-label="Versão" style="width:100%;height:48px;box-sizing:border-box;border:0;border-radius:8px;background:#fff;box-shadow:{{ dd_ver.ring }};display:flex;align-items:center;gap:8px;padding:0 10px 0 14px;text-align:left;color:#1D2433;cursor:pointer;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-visible="outline:none;box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+                    <span style="flex:1;min-width:0;font:500 15px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dd_ver.value }}</span>
+                    <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:{{ dd_ver.chevColor }};transform:{{ dd_ver.rot }};transition:transform .15s ease-out">expand_more</span>
+                  </button>
+                  <sc-if value="{{ dd_ver.open }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Versão" style="position:absolute;top:calc(100% + 6px);right:0;z-index:45;width:max(100%, 340px);min-width:100%;max-width:calc(100vw - 32px);box-sizing:border-box;background:#fff;border-radius:12px;box-shadow:0 16px 40px rgba(29,36,51,.16), inset 0 0 0 1px #E6E6EE;padding:6px;display:flex;flex-direction:column;gap:4px;animation:ddIn .14s ease-out both">
+                    
+                    <div style="max-height:288px;overflow:auto;display:flex;flex-direction:column;gap:2px">
+                      <sc-for list="{{ dd_ver.opts }}" as="o" hint-placeholder-count="5"><button type="button" role="option" aria-selected="{{ o.on }}" onClick="{{ o.pick }}" style="flex:none;width:100%;min-height:40px;display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;border-radius:8px;background:{{ o.bg }};text-align:left;color:#1D2433;cursor:pointer;transition:background .12s ease-out" style-hover="background:#F5F4FE"><span style="flex:1;min-width:0;font:{{ o.weight }} 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.label }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ o.sub }}</span><span style="width:18px;flex:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">{{ o.check }}</span></button></sc-for>
+                      <sc-if value="{{ dd_ver.empty }}" hint-placeholder-val="{{ false }}"><span style="padding:12px 10px;font:400 13px Roboto;color:#5A6472">Nenhuma marca encontrada.</span></sc-if>
+                    </div>
+                  </div></sc-if>
+                </div>
+              </div>
+            </div>
+
+            <div style="border-radius:12px;background:#F6F6F9;padding:16px;display:flex;flex-direction:column;gap:10px">
+              <sc-if value="{{ hasPrice }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <span style="font:400 13px Roboto;color:#5A6472">Preço FIPE · ref. {{ fipeRef }}</span>
+                  <div style="display:flex;align-items:baseline;gap:8px 14px;flex-wrap:wrap">
+                    <span style="font:800 clamp(28px,3vw,34px)/1 'Merriweather Sans',sans-serif;white-space:nowrap">{{ fipe }}</span>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap">
+                      <sc-for list="{{ vars }}" as="v" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:2px;padding:3px 8px;border-radius:6px;background:{{ v.bg }};color:{{ v.color }};font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ v.icon }}</span>{{ v.text }}</span></sc-for>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;padding-top:10px;border-top:1px solid #E6E6EE;font:400 13px Roboto;color:#5A6472">
+                    <sc-if value="{{ hasZero }}" hint-placeholder-val="{{ true }}"><span>Zero km na FIPE: <strong style="color:#1D2433;font-weight:700">{{ zeroKm }}</strong></span></sc-if>
+                    <span style="display:flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;font:500 12px Roboto;color:#1D2433">{{ situacao }}</span>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noPrice }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:10px;font:400 14px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1">info</span>Sem preço FIPE para esta versão e ano.</div></sc-if>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a href="Comparativo.dc.html?add=corolla-cross&amp;nome=Corolla%20Cross" style="flex:1 1 160px;height:48px;box-sizing:border-box;border-radius:8px;box-shadow:inset 0 0 0 1.5px #7D3EE3;color:#7D3EE3;display:flex;align-items:center;justify-content:center;gap:6px;font:700 15px Roboto;transition:background .15s ease-out" style-hover="background:#F5F4FE;color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">compare_arrows</span>Comparar</a>
+              <a href="Consulta Placa.dc.html" style="flex:1 1 200px;height:48px;box-sizing:border-box;border-radius:8px;background:#FF5040;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;font:700 15px Roboto;transition:background .15s ease-out" style-hover="background:#E43E2F;color:#fff"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">search</span>Consultar placa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav aria-label="Seções" style="position:sticky;top:{{ navTop }};z-index:30;padding:0 clamp(16px, calc(2.2vw + 7px), 32px);pointer-events:none">
+      <div style="max-width:1152px;margin:0 auto;box-sizing:border-box;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 8px 24px rgba(26,13,64,.08);overflow:hidden;pointer-events:auto">
+        <div ref="{{ navRef }}" onScroll="{{ navScroll }}" style="display:flex;gap:0;padding:0 8px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:{{ navMask }};mask-image:{{ navMask }}">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7"><a href="{{ t.href }}" aria-current="{{ t.cur }}" style="flex:none;height:48px;padding:0 16px;display:flex;align-items:center;font:{{ t.weight }} 14px Roboto;color:{{ t.color }};white-space:nowrap;box-shadow:{{ t.line }};transition:color .15s ease-out,box-shadow .15s ease-out" style-hover="color:#7D3EE3;box-shadow:inset 0 -3px 0 #C9B3F5">{{ t.label }}</a></sc-for></div>
+      </div>
+    </nav>
+
+    <div style="padding:32px clamp(16px, calc(2.2vw + 7px), 32px) 72px">
+      <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+
+        <section id="preco" data-screen-label="02 Preço" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Preço FIPE · {{ yearLabel }}</h2>
+            <span style="font:400 14px Roboto;color:#5A6472">Histórico mensal e projeção desta versão no ano-modelo {{ yearLabel }}.</span>
+          </div>
+          <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0">
+            <sc-if value="{{ hasHist }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                    <span style="font:700 14px Roboto">Histórico e projeção · {{ yearLabel }}</span>
+                    <div style="display:flex;gap:14px;flex-wrap:wrap;font:400 12px Roboto;color:#5A6472">
+                      <span style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:3px;border-radius:2px;background:#7D3EE3"></span>Histórico FIPE</span>
+                      <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}"><span style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:0;border-top:2px dashed #FF5040"></span>Projeção (estimativa)</span></sc-if>
+                    </div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:0 8px">
+                    <div style="position:relative;height:240px">
+                      <sc-for list="{{ yTicks }}" as="y" hint-placeholder-count="4"><span style="position:absolute;right:0;top:{{ y.top }};transform:translateY(-50%);font:400 11px Roboto;color:#5A6472;white-space:nowrap">{{ y.label }}</span></sc-for>
+                    </div>
+                    <div onMouseMove="{{ chartMove }}" onMouseLeave="{{ chartLeave }}" style="position:relative;height:240px;cursor:crosshair">
+                      <sc-for list="{{ yTicks }}" as="y" hint-placeholder-count="4"><span style="position:absolute;left:0;right:0;top:{{ y.top }};height:1px;background:#EEEEF2"></span></sc-for>
+                      <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:0;bottom:0;left:{{ todayX }};right:0;background:repeating-linear-gradient(135deg,rgba(255,80,64,.05) 0 6px,transparent 6px 12px)"></span><span style="position:absolute;top:0;bottom:0;left:{{ todayX }};width:1px;background:#D5D8DE"></span><span style="position:absolute;top:4px;left:{{ todayX }};padding-left:6px;font:700 10px Roboto;letter-spacing:.06em;color:#C2410C">ESTIMATIVA</span></sc-if>
+                      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                        <defs><linearGradient id="vArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7D3EE3" stop-opacity=".18"></stop><stop offset="1" stop-color="#7D3EE3" stop-opacity="0"></stop></linearGradient></defs>
+                        <path d="{{ areaPath }}" fill="url(#vArea)"></path>
+                        <path d="{{ histPath }}" fill="none" stroke="#7D3EE3" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+                        <path d="{{ projPath }}" fill="none" stroke="#FF5040" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></path>
+                      </svg>
+                      <sc-for list="{{ projDots }}" as="d" hint-placeholder-count="2"><span style="position:absolute;left:{{ d.x }};top:{{ d.y }};width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #FF5040"></span></sc-for>
+                      <sc-if value="{{ hov }}" hint-placeholder-val="{{ false }}">
+                        <span style="position:absolute;top:0;bottom:0;left:{{ hovX }};width:1px;background:#1D2433;opacity:.25"></span>
+                        <span style="position:absolute;left:{{ hovX }};top:{{ hovY }};width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:{{ hovColor }};box-shadow:0 0 0 3px #fff"></span>
+                        <span style="position:absolute;left:{{ hovX }};top:{{ hovY }};transform:translate({{ hovShift }},calc(-100% - 14px));padding:8px 10px;border-radius:8px;background:#1D2433;color:#fff;display:flex;flex-direction:column;gap:2px;white-space:nowrap;pointer-events:none;box-shadow:0 8px 24px rgba(29,36,51,.18)"><span style="font:400 11px Roboto;color:#C9CCD3">{{ hovLabel }}</span><span style="font:700 14px Roboto">{{ hovValue }}</span></span>
+                      </sc-if>
+                    </div>
+                    <span></span>
+                    <div style="position:relative;height:20px;margin-top:6px">
+                      <sc-for list="{{ xTicks }}" as="x" hint-placeholder-count="5"><span style="position:absolute;left:{{ x.left }};transform:translateX(-50%);font:400 11px Roboto;color:#5A6472;white-space:nowrap">{{ x.label }}</span></sc-for>
+                    </div>
+                  </div>
+                  <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px;background:#FFF5F3;box-shadow:inset 0 0 0 1px #FFD9D3">
+                      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                        <span style="padding:2px 8px;border-radius:6px;background:#FF5040;color:#fff;font:700 11px Roboto;letter-spacing:.04em">ESTIMATIVA</span>
+                        <sc-for list="{{ projList }}" as="p" hint-placeholder-count="2"><span style="font:400 13px Roboto;color:#5A6472;white-space:nowrap">{{ p.y }} <strong style="font-weight:700;color:#1D2433">{{ p.v }}</strong></span></sc-for>
+                      </div>
+                      <span style="font:400 13px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Base: {{ projBase }}. Mês-base {{ fipeRef }}, {{ fipeBase }}.</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px/1.5 Roboto;color:#5A6472">Sem projeção: não há base suficiente para estimar o preço desta versão (modelo novo, série curta ou zero km).</span></sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noHist }}" hint-placeholder-val="{{ false }}">
+                <div style="min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center"><span style="font-family:'Material Symbols Rounded';font-size:32px;line-height:1;color:#8A93A3">show_chart</span><span style="font:700 15px Roboto">Sem histórico de preço</span><span style="font:400 13px Roboto;color:#5A6472;max-width:360px">A FIPE ainda não tem série mensal para esta versão e ano.</span></div>
+              </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <h3 style="margin:0;font:800 20px/1.3 'Merriweather Sans',sans-serif">Esta versão em outros anos</h3>
+              <span style="font:400 13px Roboto;color:#5A6472">Código FIPE {{ verCode }} · Referência: out/2026</span>
+            </div>
+            <sc-if value="{{ hasYears }}" hint-placeholder-val="{{ true }}">
+              <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow-x:auto">
+                <table style="width:100%;min-width:600px;border-collapse:collapse;font:400 14px Roboto">
+                  <thead><tr style="box-shadow:inset 0 -1px 0 #E6E6EE">
+                    <th style="padding:14px 20px;text-align:left;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">ANO</th>
+                    <th style="padding:14px 12px;text-align:left;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">COMBUSTÍVEL</th>
+                    <th style="padding:14px 12px;text-align:right;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">PREÇO FIPE</th>
+                    <th style="padding:14px 12px;text-align:right;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">DEPRECIAÇÃO</th>
+                    <th style="padding:14px 20px;text-align:right;font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">IPVA (SP)</th>
+                  </tr></thead>
+                  <tbody>
+                    <sc-for list="{{ yearRows }}" as="r" hint-placeholder-count="6"><tr aria-current="{{ r.on }}" style="background:{{ r.bg }}">
+                      <td style="padding:12px 20px;border-top:1px solid #EEEEF2;box-shadow:{{ r.bar }}"><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><sc-if value="{{ r.dis }}" hint-placeholder-val="{{ false }}"><span style="padding:3px 10px;border-radius:999px;background:#F5F4FE;font:700 13px Roboto;color:#5F29AE">0 km</span></sc-if><sc-if value="{{ r.isYear }}" hint-placeholder-val="{{ true }}"><span style="display:flex;align-items:center;gap:6px;font:{{ r.weight }} 14px Roboto;color:#7D3EE3">{{ r.label }}</span></sc-if><sc-if value="{{ r.on }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 6px;border-radius:4px;background:#7D3EE3;color:#fff;font:500 11px Roboto">Você está aqui</span></sc-if></span></td>
+                      <td style="padding:12px;border-top:1px solid #EEEEF2;color:#5A6472">{{ r.fuel }}</td>
+                      <td style="padding:12px;border-top:1px solid #EEEEF2;text-align:right;font-weight:700;white-space:nowrap">{{ r.price }}</td>
+                      <td style="padding:12px;border-top:1px solid #EEEEF2;text-align:right;white-space:nowrap;font-weight:700;color:{{ r.depColor }}">{{ r.dep }}</td>
+                      <td style="padding:12px 20px;border-top:1px solid #EEEEF2;text-align:right;font-weight:700;white-space:nowrap">{{ r.ipva }}</td>
+                    </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noYears }}" hint-placeholder-val="{{ false }}"><div style="padding:24px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;font:400 13px Roboto;color:#5A6472">Sem preços de outros anos para esta versão.</div></sc-if>
+            <span style="font:400 12px/1.5 Roboto;color:#5A6472">Depreciação: diferença de preço para o 0 km, no mesmo combustível. IPVA (SP): estimativa com alíquota cheia de 4%; outros estados em <a href="#custo" style="font-weight:700">Custo anual</a>. Fonte: Tabela FIPE (ref. out/2026).</span>
+          </div>
+
+          <sc-if value="{{ mercado }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px">
+              <sc-for list="{{ mercadoStats }}" as="m" hint-placeholder-count="3"><div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:16px 20px;display:flex;flex-direction:column;gap:4px"><span style="font:400 13px Roboto;color:#5A6472">{{ m.label }}</span><span style="font:800 20px 'Merriweather Sans',sans-serif">{{ m.value }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ m.sub }}</span></div></sc-for>
+            </div>
+          </sc-if>
+          <a href="{{ cp.preco.href }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 12px 4px 4px;box-sizing:border-box;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #DCCFF8;color:#5F29AE;font:500 13px Roboto;transition:background .15s ease-out" style-hover="background:#F5F4FE;color:#5F29AE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:28px;height:28px;object-fit:contain;flex:none"><span>Pergunte ao Copiloto: <strong style="font-weight:700">{{ cp.preco.q }}</strong></span><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+        </section>
+
+        <section id="consumo" data-screen-label="03 Consumo e porte" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Consumo e porte</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px">
+            <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="font:700 15px Roboto">Consumo</span><span style="padding:3px 8px;border-radius:6px;background:#F6F6F9;box-shadow:inset 0 0 0 1px #E6E6EE;font:500 12px Roboto;color:#5A6472">PBEV/Inmetro · gasolina</span></div>
+              <sc-if value="{{ hasCons }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:18px">
+                  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px">
+                    <div style="border-radius:12px;background:#F6F6F9;padding:14px 16px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">location_city</span>Cidade</span><span style="font:800 28px/1 'Merriweather Sans',sans-serif;white-space:nowrap">11,5<span style="font:400 14px Roboto;color:#5A6472"> km/l</span></span></div>
+                    <div style="border-radius:12px;background:#F6F6F9;padding:14px 16px;display:flex;flex-direction:column;gap:6px"><span style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">road</span>Estrada</span><span style="font:800 28px/1 'Merriweather Sans',sans-serif;white-space:nowrap">13,1<span style="font:400 14px Roboto;color:#5A6472"> km/l</span></span></div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:10px">
+                    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font:700 13px Roboto">Selo de eficiência</span><span style="font:400 12px Roboto;color:#5A6472">A é o mais eficiente</span></div>
+                    <div role="img" aria-label="Selo Inmetro C, numa escala de A a E" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;align-items:end">
+                      <sc-for list="{{ seal }}" as="g" hint-placeholder-count="5"><span style="height:{{ g.h }};border-radius:8px;background:{{ g.c }};box-shadow:{{ g.ring }};display:flex;align-items:center;justify-content:center;font:800 {{ g.fs }} 'Merriweather Sans',sans-serif;color:{{ g.lc }};opacity:{{ g.op }}">{{ g.k }}</span></sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noCons }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px Roboto;color:#5A6472">Esta versão não tem medição no PBEV/Inmetro.</span></sc-if>
+            </div>
+            <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font:700 15px Roboto">Porte</span><a href="Central de Ajuda.dc.html" style="padding:4px 6px;margin:-4px -6px;border-radius:6px;font:700 13px Roboto" style-hover="background:#F5F4FE">Como calculamos o porte</a></div>
+              <sc-if value="{{ hasPorte }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span style="font:800 26px 'Merriweather Sans',sans-serif">SUV médio</span><span style="font:400 13px Roboto;color:#5A6472">4.460 mm de comprimento</span></div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <div style="position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;height:8px">
+                      <span style="border-radius:4px 0 0 4px;background:#EAE2FF"></span><span style="background:#7D3EE3"></span><span style="border-radius:0 4px 4px 0;background:#EAE2FF"></span>
+                      <span style="position:absolute;left:53%;top:-5px;width:4px;height:18px;border-radius:2px;background:#1D2433;box-shadow:0 0 0 2px #fff"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;font:400 11px Roboto;color:#5A6472"><span>Compacto</span><span style="text-align:center;color:#1D2433;font-weight:700">Médio</span><span style="text-align:right">Grande</span></div>
+                  </div>
+                  <span style="font:400 12px/1.5 Roboto;color:#5A6472">Classificação própria da Carpedia, não oficial. Critério: comprimento e carroceria.</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noPorte }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px Roboto;color:#5A6472">Sem porte calculado: faltam comprimento ou carroceria.</span></sc-if>
+            </div>
+          </div>
+        </section>
+
+        <section id="ficha" data-screen-label="04 Ficha técnica" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Ficha técnica</h2>
+            <span style="font:400 13px Roboto;color:#5A6472">{{ fichaCount }}</span>
+          </div>
+          <sc-if value="{{ hasFicha }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;flex-wrap:wrap;gap:12px">
+                <sc-for list="{{ fichaTop }}" as="t" hint-placeholder-count="8">
+                  <div style="flex:1 1 calc(25% - 12px);min-width:200px;box-sizing:border-box;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:14px 16px;display:flex;align-items:center;gap:14px">
+                    <span style="width:44px;height:44px;flex:none;overflow:hidden;border-radius:10px;background:#F5F4FE;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#7D3EE3">{{ t.icon }}</span>
+                    <span style="min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">{{ t.l }}</span><span style="font:800 20px/1.1 'Merriweather Sans',sans-serif;white-space:nowrap">{{ t.v }}<span style="font:400 13px Roboto;color:#5A6472"> {{ t.u }}</span></span></span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <sc-for list="{{ ficha }}" as="sec" hint-placeholder-count="6">
+                  <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+                    <div style="display:flex;align-items:center;gap:10px;padding:14px 20px;box-shadow:inset 0 -1px 0 #E6E6EE">
+                      <span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">{{ sec.icon }}</span>
+                      <span style="flex:1;font:800 13px Roboto;letter-spacing:.06em;color:#1D2433;text-transform:uppercase">{{ sec.t }}</span>
+                      <span style="font:400 12px Roboto;color:#5A6472">{{ sec.n }}</span>
+                    </div>
+                    <dl style="margin:0;display:flex;flex-direction:column">
+                      <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
+                        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:baseline;gap:16px;padding:12px 20px;border-top:{{ it.line }}">
+                          <dt style="font:400 14px Roboto;color:#1D2433">{{ it.l }}</dt>
+                          <dd style="margin:0;font:700 14px Roboto;color:#1D2433;text-align:left">{{ it.v }}<span style="font:400 13px Roboto;color:#5A6472"> {{ it.u }}</span></dd>
+                        </div>
+                      </sc-for>
+                    </dl>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ hasAdas }}" hint-placeholder-val="{{ true }}">
+                <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+                  <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;box-shadow:inset 0 -1px 0 #EEEEF2">
+                    <span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">shield</span>
+                    <span style="flex:1;font:700 15px Roboto">Assistentes de direção (ADAS)</span>
+                    <span style="font:400 12px Roboto;color:#5A6472">{{ adasN }}</span>
+                  </div>
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:4px 16px;padding:12px 18px 16px">
+                    <sc-for list="{{ adas }}" as="d" hint-placeholder-count="6"><div style="display:flex;align-items:center;gap:10px;padding:8px 0"><span style="width:24px;height:24px;flex:none;border-radius:50%;background:{{ d.bg }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:{{ d.color }}">{{ d.icon }}</span><span style="flex:1;min-width:0;font:400 14px/1.35 Roboto;color:#1D2433">{{ d.l }}</span><sc-if value="{{ d.hasVal }}" hint-placeholder-val="{{ false }}"><span style="padding:2px 8px;border-radius:6px;background:#F5F4FE;font:500 12px Roboto;color:#5F29AE">{{ d.v }}</span></sc-if></div></sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noFicha }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;text-align:center;font:400 13px Roboto;color:#5A6472">Ficha técnica indisponível para esta versão e ano.</div></sc-if>
+        </section>
+
+        <section id="equipamentos" data-screen-label="05 Equipamentos" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px 16px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Equipamentos</h2>
+              <span style="font:400 14px Roboto;color:#5A6472">{{ eqSub }}</span>
+            </div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ eqFilters }}" as="f" hint-placeholder-count="4"><button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.on }}" style="height:36px;padding:0 12px;border:0;border-radius:999px;background:{{ f.bg }};color:{{ f.color }};box-shadow:{{ f.ring }};display:flex;align-items:center;gap:6px;font:500 13px Roboto;white-space:nowrap;cursor:pointer;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:{{ f.iconColor }}">{{ f.icon }}</span>{{ f.label }}<span style="font:400 12px Roboto;color:#5A6472">{{ f.n }}</span></button></sc-for>
+            </div>
+          </div>
+          <div role="note" style="display:flex;gap:10px;padding:12px 14px;border-radius:12px;background:#F5F4FE;box-shadow:inset 0 0 0 1px #DCCFF8;font:400 13px/1.5 Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">info</span><span style="text-wrap:pretty">Só aparecem itens que a fonte cobriu para esta versão e ano. Item fora da lista é <strong>não rastreado</strong>: não significa que o veículo não o tenha.</span></div>
+          <sc-if value="{{ hasEq }}" hint-placeholder-val="{{ true }}">
+            <div style="columns:3 300px;column-gap:16px">
+              <sc-for list="{{ eq }}" as="c" hint-placeholder-count="9">
+                <div style="break-inside:avoid;margin-bottom:16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:16px 18px;display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"><span style="font:700 14px Roboto">{{ c.t }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ c.n }}</span></div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <sc-for list="{{ c.items }}" as="it" hint-placeholder-count="5"><div style="display:flex;align-items:flex-start;gap:8px"><span title="{{ it.st }}" style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:{{ it.color }};flex:none">{{ it.icon }}</span><span style="flex:1;min-width:0;font:400 13px/1.4 Roboto;color:{{ it.text }};text-decoration:{{ it.deco }}">{{ it.l }}</span><sc-if value="{{ it.opt }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 6px;border-radius:4px;background:#F5F4FE;font:500 11px Roboto;color:#5F29AE">Opcional</span></sc-if></div></sc-for>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noEq }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;text-align:center;font:400 13px Roboto;color:#5A6472">{{ noEqText }}</div></sc-if>
+          <a href="{{ cp.equip.href }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 12px 4px 4px;box-sizing:border-box;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #DCCFF8;color:#5F29AE;font:500 13px Roboto;transition:background .15s ease-out" style-hover="background:#F5F4FE;color:#5F29AE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:28px;height:28px;object-fit:contain;flex:none"><span>Pergunte ao Copiloto: <strong style="font-weight:700">{{ cp.equip.q }}</strong></span><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+        </section>
+
+        <section id="custo" data-screen-label="06 Custo anual" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px 16px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;align-items:center;gap:10px"><h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Custo anual</h2><span style="padding:2px 8px;border-radius:6px;background:#FF5040;color:#fff;font:700 11px Roboto;letter-spacing:.04em">ESTIMATIVA</span></div>
+              <span style="font:400 14px Roboto;color:#5A6472">Quanto custa ter este carro por ano, no estado escolhido.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;width:180px">
+              <span style="font:700 13px Roboto">Estado (UF)</span>
+              <div data-dd="1" style="position:relative;">
+                  <button type="button" onClick="{{ dd_uf.toggle }}" onKeyDown="{{ ddKey }}" aria-haspopup="listbox" aria-expanded="{{ dd_uf.open }}" aria-label="Estado" style="width:100%;height:44px;box-sizing:border-box;border:0;border-radius:8px;background:#fff;box-shadow:{{ dd_uf.ring }};display:flex;align-items:center;gap:8px;padding:0 10px 0 14px;text-align:left;color:#1D2433;cursor:pointer;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-visible="outline:none;box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+                    <span style="flex:1;min-width:0;font:500 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ dd_uf.value }}</span>
+                    <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:{{ dd_uf.chevColor }};transform:{{ dd_uf.rot }};transition:transform .15s ease-out">expand_more</span>
+                  </button>
+                  <sc-if value="{{ dd_uf.open }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Estado" style="position:absolute;top:calc(100% + 6px);right:0;z-index:45;width:280px;min-width:100%;max-width:calc(100vw - 32px);box-sizing:border-box;background:#fff;border-radius:12px;box-shadow:0 16px 40px rgba(29,36,51,.16), inset 0 0 0 1px #E6E6EE;padding:6px;display:flex;flex-direction:column;gap:4px;animation:ddIn .14s ease-out both">
+                    
+                    <div style="max-height:288px;overflow:auto;display:flex;flex-direction:column;gap:2px">
+                      <sc-for list="{{ dd_uf.opts }}" as="o" hint-placeholder-count="5"><button type="button" role="option" aria-selected="{{ o.on }}" onClick="{{ o.pick }}" style="flex:none;width:100%;min-height:40px;display:flex;align-items:center;gap:10px;padding:8px 10px;border:0;border-radius:8px;background:{{ o.bg }};text-align:left;color:#1D2433;cursor:pointer;transition:background .12s ease-out" style-hover="background:#F5F4FE"><span style="flex:1;min-width:0;font:{{ o.weight }} 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ o.label }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ o.sub }}</span><span style="width:18px;flex:none;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">{{ o.check }}</span></button></sc-for>
+                      <sc-if value="{{ dd_uf.empty }}" hint-placeholder-val="{{ false }}"><span style="padding:12px 10px;font:400 13px Roboto;color:#5A6472">Nenhuma marca encontrada.</span></sc-if>
+                    </div>
+                  </div></sc-if>
+                </div>
+            </div>
+          </div>
+          <sc-if value="{{ hasCusto }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+              <div style="flex:2 1 440px;min-width:0;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:18px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <span style="font:400 13px Roboto;color:#5A6472">{{ custoLabel }}</span>
+                  <span style="font:800 32px/1.1 'Merriweather Sans',sans-serif;white-space:nowrap">{{ custoTotal }}<span style="font:400 15px Roboto;color:#5A6472"> /ano</span></span>
+                  <span style="font:400 13px Roboto;color:#5A6472">{{ custoMes }}</span>
+                </div>
+                <div aria-hidden="true" style="display:flex;gap:3px;height:12px">
+                  <sc-for list="{{ custoBar }}" as="b" hint-placeholder-count="2"><span style="flex:{{ b.flex }};border-radius:3px;background:{{ b.color }}"></span></sc-for>
+                </div>
+                <div style="display:flex;flex-direction:column">
+                  <sc-for list="{{ comps }}" as="c" hint-placeholder-count="5">
+                    <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid #EEEEF2">
+                      <span style="width:10px;height:10px;flex:none;border-radius:3px;background:{{ c.color }};box-shadow:{{ c.ring }}"></span>
+                      <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px Roboto;color:{{ c.text }}">{{ c.l }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.src }}</span></span>
+                      <span style="font:{{ c.weight }} 14px Roboto;color:{{ c.text }};white-space:nowrap">{{ c.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:16px">
+                <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:4px">
+                  <span style="font:700 15px Roboto;padding-bottom:6px">Premissas</span>
+                  <sc-for list="{{ premissas }}" as="p" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #EEEEF2"><span style="font:400 13px Roboto;color:#5A6472">{{ p.l }}</span><span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:700 13px Roboto">{{ p.v }}</span><span style="font:400 11px Roboto;color:#5A6472">{{ p.src }}</span></span></div></sc-for>
+                </div>
+                <div style="border-radius:16px;background:#F6F6F9;box-shadow:inset 0 0 0 1px #E6E6EE;padding:16px 20px;display:flex;flex-direction:column;gap:6px">
+                  <span style="font:700 13px Roboto">Não inclui</span>
+                  <span style="font:400 13px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Pneus, reparos imprevistos, licenciamento, financiamento e outros gastos pessoais. IPVA sem descontos ou isenções individuais.</span>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noCusto }}" hint-placeholder-val="{{ false }}"><div style="padding:32px 16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;text-align:center;font:400 13px Roboto;color:#5A6472">Sem dados para estimar o custo anual desta versão.</div></sc-if>
+          <a href="{{ cp.custo.href }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;min-height:36px;padding:4px 12px 4px 4px;box-sizing:border-box;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #DCCFF8;color:#5F29AE;font:500 13px Roboto;transition:background .15s ease-out" style-hover="background:#F5F4FE;color:#5F29AE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:28px;height:28px;object-fit:contain;flex:none"><span>Pergunte ao Copiloto: <strong style="font-weight:700">{{ cp.custo.q }}</strong></span><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+        </section>
+
+        <section id="revisoes" data-screen-label="07 Plano de revisões" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Plano de revisões</h2>
+          <sc-if value="{{ hasPlano }}" hint-placeholder-val="{{ false }}">
+            <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0">
+              <span style="font:400 13px/1.5 Roboto;color:#5A6472">O que vencer primeiro, km ou meses. Itens conforme o manual do fabricante.</span>
+              <div style="display:flex;gap:14px;flex-wrap:wrap;font:400 12px Roboto;color:#5A6472">
+                <sc-for list="{{ planoLeg }}" as="l" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:6px"><span style="min-width:20px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:5px;background:{{ l.bg }};color:{{ l.color }};display:flex;align-items:center;justify-content:center;font:700 11px Roboto">{{ l.k }}</span>{{ l.t }}</span></sc-for>
+              </div>
+              <div style="overflow-x:auto;margin:0 -20px;padding:0 20px">
+                <table style="border-collapse:separate;border-spacing:0;min-width:640px;width:100%;font:400 13px Roboto">
+                  <thead><tr>
+                    <th style="position:sticky;left:0;background:#fff;text-align:left;padding:8px 12px 8px 0;font:700 12px Roboto;color:#5A6472">Item</th>
+                    <sc-for list="{{ planoCols }}" as="c" hint-placeholder-count="6"><th style="padding:8px 6px;text-align:center;font:700 12px Roboto;color:#1D2433;white-space:nowrap">{{ c.km }}<br><span style="font-weight:400;color:#5A6472">{{ c.m }}</span></th></sc-for>
+                  </tr></thead>
+                  <tbody>
+                    <sc-for list="{{ planoRows }}" as="r" hint-placeholder-count="6"><tr>
+                      <td style="position:sticky;left:0;background:#fff;padding:10px 12px 10px 0;border-top:1px solid #EEEEF2;white-space:nowrap">{{ r.l }}</td>
+                      <sc-for list="{{ r.cells }}" as="x" hint-placeholder-count="6"><td style="padding:10px 6px;border-top:1px solid #EEEEF2;text-align:center"><span style="display:inline-flex;min-width:22px;height:22px;padding:0 4px;box-sizing:border-box;border-radius:5px;background:{{ x.bg }};color:{{ x.color }};align-items:center;justify-content:center;font:700 11px Roboto">{{ x.k }}</span></td></sc-for>
+                    </tr>
+                    <sc-if value="{{ r.open }}" hint-placeholder-val="{{ false }}"><tr><td colspan="6" style="padding:4px 20px 20px;background:#FBFAFF;box-shadow:inset 3px 0 0 #7D3EE3">
+                      <div style="display:flex;flex-direction:column;gap:14px;padding-top:12px">
+              <sc-if value="{{ hasHist }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;flex-direction:column;gap:16px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                    <span style="font:700 14px Roboto">Histórico e projeção · {{ openYear }}</span>
+                    <div style="display:flex;gap:14px;flex-wrap:wrap;font:400 12px Roboto;color:#5A6472">
+                      <span style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:3px;border-radius:2px;background:#7D3EE3"></span>Histórico FIPE</span>
+                      <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}"><span style="display:flex;align-items:center;gap:6px"><span style="width:16px;height:0;border-top:2px dashed #FF5040"></span>Projeção (estimativa)</span></sc-if>
+                    </div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:0 8px">
+                    <div style="position:relative;height:240px">
+                      <sc-for list="{{ yTicks }}" as="y" hint-placeholder-count="4"><span style="position:absolute;right:0;top:{{ y.top }};transform:translateY(-50%);font:400 11px Roboto;color:#5A6472;white-space:nowrap">{{ y.label }}</span></sc-for>
+                    </div>
+                    <div onMouseMove="{{ chartMove }}" onMouseLeave="{{ chartLeave }}" style="position:relative;height:240px;cursor:crosshair">
+                      <sc-for list="{{ yTicks }}" as="y" hint-placeholder-count="4"><span style="position:absolute;left:0;right:0;top:{{ y.top }};height:1px;background:#EEEEF2"></span></sc-for>
+                      <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;top:0;bottom:0;left:{{ todayX }};right:0;background:repeating-linear-gradient(135deg,rgba(255,80,64,.05) 0 6px,transparent 6px 12px)"></span><span style="position:absolute;top:0;bottom:0;left:{{ todayX }};width:1px;background:#D5D8DE"></span><span style="position:absolute;top:4px;left:{{ todayX }};padding-left:6px;font:700 10px Roboto;letter-spacing:.06em;color:#C2410C">ESTIMATIVA</span></sc-if>
+                      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+                        <defs><linearGradient id="vArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7D3EE3" stop-opacity=".18"></stop><stop offset="1" stop-color="#7D3EE3" stop-opacity="0"></stop></linearGradient></defs>
+                        <path d="{{ areaPath }}" fill="url(#vArea)"></path>
+                        <path d="{{ histPath }}" fill="none" stroke="#7D3EE3" stroke-width="2.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+                        <path d="{{ projPath }}" fill="none" stroke="#FF5040" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></path>
+                      </svg>
+                      <sc-for list="{{ projDots }}" as="d" hint-placeholder-count="2"><span style="position:absolute;left:{{ d.x }};top:{{ d.y }};width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px #FF5040"></span></sc-for>
+                      <sc-if value="{{ hov }}" hint-placeholder-val="{{ false }}">
+                        <span style="position:absolute;top:0;bottom:0;left:{{ hovX }};width:1px;background:#1D2433;opacity:.25"></span>
+                        <span style="position:absolute;left:{{ hovX }};top:{{ hovY }};width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:{{ hovColor }};box-shadow:0 0 0 3px #fff"></span>
+                        <span style="position:absolute;left:{{ hovX }};top:{{ hovY }};transform:translate({{ hovShift }},calc(-100% - 14px));padding:8px 10px;border-radius:8px;background:#1D2433;color:#fff;display:flex;flex-direction:column;gap:2px;white-space:nowrap;pointer-events:none;box-shadow:0 8px 24px rgba(29,36,51,.18)"><span style="font:400 11px Roboto;color:#C9CCD3">{{ hovLabel }}</span><span style="font:700 14px Roboto">{{ hovValue }}</span></span>
+                      </sc-if>
+                    </div>
+                    <span></span>
+                    <div style="position:relative;height:20px;margin-top:6px">
+                      <sc-for list="{{ xTicks }}" as="x" hint-placeholder-count="5"><span style="position:absolute;left:{{ x.left }};transform:translateX(-50%);font:400 11px Roboto;color:#5A6472;white-space:nowrap">{{ x.label }}</span></sc-for>
+                    </div>
+                  </div>
+                  <sc-if value="{{ hasProj }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px;background:#FFF5F3;box-shadow:inset 0 0 0 1px #FFD9D3">
+                      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                        <span style="padding:2px 8px;border-radius:6px;background:#FF5040;color:#fff;font:700 11px Roboto;letter-spacing:.04em">ESTIMATIVA</span>
+                        <sc-for list="{{ projList }}" as="p" hint-placeholder-count="2"><span style="font:400 13px Roboto;color:#5A6472;white-space:nowrap">{{ p.y }} <strong style="font-weight:700;color:#1D2433">{{ p.v }}</strong></span></sc-for>
+                      </div>
+                      <span style="font:400 13px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Base: {{ projBase }}. Mês-base {{ fipeRef }}, {{ fipeBase }}.</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ noProj }}" hint-placeholder-val="{{ false }}"><span style="font:400 13px/1.5 Roboto;color:#5A6472">Sem projeção: não há base suficiente para estimar o preço desta versão (modelo novo, série curta ou zero km).</span></sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noHist }}" hint-placeholder-val="{{ false }}">
+                <div style="min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center"><span style="font-family:'Material Symbols Rounded';font-size:32px;line-height:1;color:#8A93A3">show_chart</span><span style="font:700 15px Roboto">Sem histórico de preço</span><span style="font:400 13px Roboto;color:#5A6472;max-width:360px">A FIPE ainda não tem série mensal para esta versão e ano.</span></div>
+              </sc-if>
+
+                        <sc-if value="{{ r.notCurrent }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ r.pick }}" style="align-self:flex-start;height:36px;padding:0 14px;border:0;border-radius:8px;box-shadow:inset 0 0 0 1.5px #7D3EE3;background:#fff;color:#7D3EE3;font:700 13px Roboto;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:#F5F4FE">Ver a ficha {{ r.label }} desta versão<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_upward</span></button></sc-if>
+                      </div>
+                    </td></tr></sc-if>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noPlano }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:20px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+              <span style="width:44px;height:44px;flex:none;border-radius:12px;background:#F6F6F9;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;color:#5A6472">build</span>
+              <span style="flex:1 1 260px;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Sem plano de revisões para esta versão e ano</span><span style="font:400 13px Roboto;color:#5A6472">A fonte ainda não publicou o plano. Consulte o manual do proprietário ou a concessionária.</span></span>
+            </div>
+          </sc-if>
+        </section>
+
+        <section id="versoes" data-screen-label="08 Versões" style="scroll-margin-top:150px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Versões {{ yearLabel }} do Corolla Cross</h2>
+            <span style="display:flex;gap:6px 16px;flex-wrap:wrap;font:400 14px Roboto;color:#5A6472">Da mais barata à mais cara, pela FIPE.<a href="Modelo.dc.html" style="font-weight:700">Ver todos os anos do Corolla Cross</a></span>
+          </div>
+          <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;padding:8px;display:flex;flex-direction:column">
+            <sc-for list="{{ verRows }}" as="v" hint-placeholder-count="6">
+              <button type="button" onClick="{{ v.pick }}" aria-current="{{ v.on }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:8px 20px;padding:14px 12px;border:0;border-radius:10px;background:{{ v.bg }};box-shadow:{{ v.ring }};text-align:left;color:#1D2433;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF">
+                <span style="min-width:0;display:flex;flex-direction:column;gap:3px"><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font:700 14px Roboto">{{ v.name }}</span><sc-if value="{{ v.on }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 6px;border-radius:4px;background:#7D3EE3;color:#fff;font:500 11px Roboto">Vendo agora</span></sc-if></span><span style="font:400 12px Roboto;color:#5A6472">{{ v.meta }}</span></span>
+                <span style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:700 14px Roboto;white-space:nowrap">{{ v.price }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ v.zero }}</span></span>
+                <span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">chevron_right</span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;cenario&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Completo&quot;,&quot;Parcial&quot;,&quot;Sem dados&quot;],&quot;default&quot;:&quot;Completo&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estados da API&quot;},&quot;foto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Foto&quot;,&quot;Foto IA&quot;,&quot;Logo da marca&quot;,&quot;Monograma&quot;],&quot;default&quot;:&quot;Foto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estados da API&quot;},&quot;planoRevisoes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estados da API&quot;},&quot;dadosMercado&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estados da API&quot;}}">
+class Component extends DCLogic {
+  state = (() => { const q = new URLSearchParams(location.search), y0 = (q.get("ano") || "").toLowerCase(), y = y0 === "0km" || y0 === "0 km" ? "0 Km" : y0, vr = q.get("ver"); return { year: ["0 Km", "2027", "2026", "2025", "2024", "2023", "2022", "2021"].includes(y) ? y : "2025", ver: vr || "xrx", hov: null, uf: "SP", eqF: "todos" }; })();
+  goTo = (ver, year) => { location.href = "Versoes v2.dc.html?" + new URLSearchParams({ ver, ano: year === "0 Km" ? "0km" : year }).toString(); };
+  VERS = [["xr", "Corolla Cross XR 2.0 16V Flex Aut.", "XR 2.0 Flex", "Flex", "Automático", 146210, "002210-1"], ["xre", "Corolla Cross XRE 2.0 16V Flex Aut.", "XRE 2.0 Flex", "Flex", "Automático", 157430, "002211-0"], ["xrx", "Corolla Cross XRX 2.0 16V Flex Aut.", "XRX 2.0 Flex", "Flex", "Automático", 170648, "002201-3"], ["xrv", "Corolla Cross XRV Hybrid 1.8 16V Aut.", "XRV Hybrid 1.8", "Híbrido", "Automático", 172900, "002205-6"], ["gr", "Corolla Cross GR-Sport 2.0 16V Flex Aut.", "GR-Sport 2.0 Flex", "Flex", "Automático", 178520, "002208-0"], ["xrxh", "Corolla Cross XRX Hybrid 1.8 16V Aut.", "XRX Hybrid 1.8", "Híbrido", "Automático", 184360, "002206-4"]];
+  YF = { "0 Km": 210207 / 170648, "2027": 194799 / 170648, "2026": 184721 / 170648, "2025": 1, "2024": 155099 / 170648, "2023": 0.84, "2022": 0.77, "2021": 0.71 };
+  UF = "AC 2,AL 3,AP 3,AM 3,BA 2.5,CE 3,DF 3.5,ES 2,GO 3.75,MA 2.5,MT 3,MS 3,MG 4,PA 2.5,PB 2.5,PR 1.9,PE 2.4,PI 2.5,RJ 4,RN 3,RS 3,RO 3,RR 3,SC 2,SP 4,SE 2.5,TO 2".split(",").map((x) => { const [k, a] = x.split(" "); return { k, a: +a / 100 }; });
+  UFN = { AC: "Acre", AL: "Alagoas", AP: "Amapá", AM: "Amazonas", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MT: "Mato Grosso", MS: "Mato Grosso do Sul", MG: "Minas Gerais", PA: "Pará", PB: "Paraíba", PR: "Paraná", PE: "Pernambuco", PI: "Piauí", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RS: "Rio Grande do Sul", RO: "Rondônia", RR: "Roraima", SC: "Santa Catarina", SP: "São Paulo", SE: "Sergipe", TO: "Tocantins" };
+  FICHA = [
+    ["Geral", [["Combustível", "Flex"], ["Carroceria (configuração)", "SUV"], ["Número de portas", "4"], ["Número de lugares", "5"], ["Tipo de propulsão", "Combustão"]]],
+    ["Motor", [["Motor", "2.0 16V Dynamic Force"], ["Potência máxima (cv)", "177 (E) / 175 (G)"], ["Torque máximo (kgfm)", "21,3 (E) / 20,9 (G)"], ["Cilindrada (cm³)", "1987"], ["Injeção", "Direta e indireta"]]],
+    ["Garantia e Custos", [["Garantia do veículo (anos + km)", "10 anos"]]],
+    ["Dimensões e pesos", [["Comprimento (mm)", "4460"], ["Altura (mm)", "1620"], ["Largura (mm)", "1825"], ["Distância entre-eixos (mm)", "2640"], ["Volume do porta-malas (l)", "440"], ["Vão livre do solo (mm)", "161"], ["Peso em ordem de marcha (kg)", "1445"]]],
+    ["Desempenho", [["Aceleração 0-100 km/h (s)", "9,8"], ["Velocidade máxima (km/h)", "195"]]],
+    ["Transmissão e tração", [["Câmbio (tipo)", "Automático"], ["Número de marchas", "10"]]],
+    ["Consumo e eficiência", [["Tanque de combustível (l)", "47"]]],
+    ["ADAS", [["Frenagem automática de emergência (AEB)", "Sim"], ["Controle de cruzeiro adaptativo (ACC)", "Sim"], ["Monitor de ponto cego (BSD)", "Sim"], ["Câmera de ré", "Sim"], ["Sensores de estacionamento dianteiros", "Sim"], ["Sensores de estacionamento traseiros", "Sim"], ["Alerta de colisão frontal (FCW)", "Sim"], ["Alerta de saída de faixa (LDW)", "Sim"], ["Alerta de tráfego cruzado traseiro (RCTA)", "Sim"], ["Câmera 360°", "Sim"], ["Piloto automático", "Adaptativo"]]],
+    ["Conforto, multimídia e iluminação", [["Ar-condicionado", "Automático digital"], ["Faróis", "Full LED"]]]
+  ];
+  EQ = [
+    ["Segurança e proteção", "Airbags frontais|s;Airbags laterais|s;Airbags de cortina|s;Airbag de joelho do motorista|s;Freios ABS|s;Controle eletrônico de estabilidade (ESC)|s;Controle de tração|s;Fixação Isofix|s"],
+    ["Climatização e qualidade do ar", "Ar-condicionado automático|s;Ar-condicionado dual zone|s;Saídas de ar traseiras|s;Filtro de cabine|s;Ionizador de ar|a"],
+    ["Bancos", "Revestimento em couro|s;Ajuste elétrico do motorista|s;Ajuste lombar|s;Ajuste elétrico do passageiro|a;Aquecimento dos bancos|a;Bancos ventilados|a;Banco traseiro bipartido|s"],
+    ["Interior e conveniência", "Retrovisor interno eletrocrômico|s;Iluminação ambiente|o;Tomadas USB traseiras|s;Porta-objetos refrigerado|a"],
+    ["Volante, painel e instrumentos", "Volante multifuncional|s;Volante revestido em couro|s;Ajuste de altura e profundidade|s;Aletas de troca de marcha|s;Painel de instrumentos digital|s;Head-up display|a;Computador de bordo|s"],
+    ["Vidros, chaves e acesso", "Chave presencial|s;Partida por botão|s;Vidros elétricos one-touch|s;Teto solar|o;Tampa traseira elétrica|s;Abertura remota da tampa|s"],
+    ["Multimídia, som e conectividade", "Central multimídia|s;Espelhamento Apple CarPlay/Android Auto|s;Carregador por indução|s;Sistema de som com 6 alto-falantes|s;Conectividade remota|a"],
+    ["Exterior e iluminação", "Faróis full LED|s;Ajuste automático de altura dos faróis|s;Farol alto automático|s;Luz diurna em LED|s;Lanternas em LED|s;Faróis de neblina em LED|s;Rodas de liga leve 18 pol.|s;Retrovisores com rebatimento elétrico|s;Retrovisores com aquecimento|a;Sensor de chuva|s;Sensor crepuscular|s;Rack de teto|o"],
+    ["Dinâmica, freios e eficiência", "Auto Hold|s;Freio de estacionamento eletrônico|s;Modos de condução|s;Sistema start-stop|a;Direção elétrica|s"]
+  ].map(([t, s]) => ({ t, items: s.split(";").map((x) => { const [l, k] = x.split("|"); return { l, k }; }) }));
+  MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+
+  ddMk = (k, value, items, cur, onPick) => { const open = this.state.dd === k; return { open, value, ring: open ? "inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)" : "inset 0 0 0 1px #D5D8DE", rot: open ? "rotate(180deg)" : "none", chevColor: open ? "#7D3EE3" : "#5A6472", toggle: () => this.setState((s) => ({ dd: s.dd === k ? null : k, ddQ: "" })), opts: items.map((o) => { const on = o.id === cur; return { ...o, on, bg: on ? "#F5F4FE" : "transparent", weight: on ? 700 : 400, check: on ? "check" : "", pick: () => { this.setState({ dd: null, ddQ: "" }); onPick(o.id); } }; }), empty: !items.length, q: this.state.ddQ || "", onQ: (e) => this.setState({ ddQ: e.target.value }) }; };
+  navRef = React.createRef();
+  navScroll = () => { const n = this.navRef.current; if (!n) return; const L = n.scrollLeft > 4, Rr = n.scrollLeft + n.clientWidth < n.scrollWidth - 4, k = (L ? "l" : "") + (Rr ? "r" : ""); if (k !== this.state.navF) this.setState({ navF: k }); };
+  ddKey = (e) => { if (e.key === "Escape") this.setState({ dd: null }); };
+  componentDidMount() { this._hdr = () => { const h = document.querySelector("[data-hdr]"); const t = (h ? Math.round(h.getBoundingClientRect().height) : 81) + 8; if (t !== this.state.navT) this.setState({ navT: t }); this.navScroll(); }; window.addEventListener("resize", this._hdr); setTimeout(this._hdr, 50); setTimeout(this._hdr, 800); this._spy = () => { const ids = ["preco", "consumo", "ficha", "equipamentos", "custo", "revisoes", "versoes"]; let cur = null; const y = 160; ids.forEach((id) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= y) cur = id; }); if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = "versoes"; if (cur !== this.state.sec) { this.setState({ sec: cur }); const n = this.navRef.current, a = n && cur && n.querySelector('a[href="#' + cur + '"]'); if (a) { const l = a.offsetLeft - 16, r = a.offsetLeft + a.offsetWidth - n.clientWidth + 16; if (n.scrollLeft > l) n.scrollTo({ left: l, behavior: "smooth" }); else if (n.scrollLeft < r) n.scrollTo({ left: r, behavior: "smooth" }); } } }; window.addEventListener("scroll", this._spy, { passive: true }); setTimeout(this._spy, 300); this._ddc = (e) => { if (this.state.dd && !e.target.closest("[data-dd]")) this.setState({ dd: null }); }; this._ddk = (e) => { if (e.key === "Escape" && this.state.dd) this.setState({ dd: null }); }; document.addEventListener("mousedown", this._ddc); document.addEventListener("keydown", this._ddk); }
+  componentWillUnmount() { window.removeEventListener("scroll", this._spy); window.removeEventListener("resize", this._hdr); document.removeEventListener("mousedown", this._ddc); document.removeEventListener("keydown", this._ddk); }
+  fmt = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
+  series = (f) => {
+    const A = [[0, 179641], [16, 189504], [27, 174719], [28, 170648]], out = [];
+    for (let i = 0; i <= 28; i++) { let k = 0; while (A[k + 1][0] < i) k++; const [x0, y0] = A[k], [x1, y1] = A[k + 1]; const t = (i - x0) / (x1 - x0 || 1); const n = (i === 0 || i === 16 || i >= 27) ? 0 : Math.sin(i * 1.7) * 900; out.push(Math.round((y0 + (y1 - y0) * t + n) * f)); }
+    return out;
+  };
+  mLabel = (i) => { const m = (5 + i) % 12, y = 2024 + Math.floor((5 + i) / 12); return this.MES[m] + "/" + String(y).slice(2); };
+  renderVals() {
+    const s = this.state, P = this.props, cen = P.cenario || "Completo", none = cen === "Sem dados", part = cen === "Parcial";
+    const yf = this.YF[s.year] || 1, V = this.VERS.find((v) => v[0] === s.ver) || this.VERS[2], vf = V[5] / 170648, oy = s.year, isZ = s.year === "0 Km", f = (this.YF[oy] || 1) * vf;
+    const price = V[5] * yf, zero = 210207 * vf;
+    const fuelTxt = V[3];
+    const foto = P.foto || "Foto";
+    const hist = (none || !oy) ? [] : this.series(f), proj = (none || part || oy === "0 Km") ? [] : [[40, 161107 * f, "2027"], [52, 154834 * f, "2028"]];
+    const lo = 140000 * f, hi = 200000 * f, X = (i) => (i / (proj.length ? 52 : 28)) * 100, Y = (v) => ((hi - v) / (hi - lo)) * 100;
+    const hp = hist.map((v, i) => (i ? "L" : "M") + X(i).toFixed(2) + " " + Y(v).toFixed(2)).join(" ");
+    const pts = hist.map((v, i) => ({ x: X(i), y: Y(v), label: this.mLabel(i) + " · FIPE", v, est: false })).concat(proj.map(([i, v, y]) => ({ x: X(i), y: Y(v), label: y + " · estimativa", v, est: true })));
+    const h = s.hov != null ? pts[s.hov] : null;
+    const tickV = [150000, 165000, 180000, 195000].map((v) => v * f);
+    const xt = proj.length ? [[0, "jun/24"], [7, "jan/25"], [19, "jan/26"], [31, "jan/27"], [43, "jan/28"]] : [[0, "jun/24"], [7, "jan/25"], [19, "jan/26"], [28, "out/26"]];
+    const ufo = this.UF.find((u) => u.k === s.uf) || this.UF[24];
+    const dep = price * (9541 / 170648), ipva = price * ufo.a, tot = dep + ipva;
+    const ficha = none ? [] : (part ? this.FICHA.filter((x) => x[0] !== "Conforto, multimídia e iluminação").map(([t, it]) => [t, t === "ADAS" ? it.slice(0, 5) : it]) : this.FICHA);
+    const nF = ficha.reduce((a, x) => a + x[1].length, 0);
+    const ST = { s: ["De série", "check_circle", "#15803D"], o: ["Opcional", "add_circle", "#7D3EE3"], a: ["Ausente", "do_not_disturb_on", "#8A93A3"] };
+    const eqAll = none ? [] : this.EQ, cnt = { s: 0, o: 0, a: 0 }; eqAll.forEach((c) => c.items.forEach((i) => cnt[i.k]++));
+    const eqF = s.eqF, eqV = eqAll.map((c) => ({ ...c, items: c.items.filter((i) => eqF === "todos" || i.k === eqF) })).filter((c) => c.items.length);
+    const allN = cnt.s + cnt.o + cnt.a;
+    const plano = !!P.planoRevisoes && !none;
+    const cols = [[10, 12], [20, 24], [30, 36], [40, 48], [50, 60], [60, 72]];
+    const PR = [["Óleo do motor", "TTTTTT"], ["Filtro de óleo", "TTTTTT"], ["Filtro de ar do motor", "ITITIT"], ["Filtro de cabine", "TTTTTT"], ["Fluido de freio", "ITITIT"], ["Velas de ignição", "IIIIIT"]];
+    const CL = { T: ["#7D3EE3", "#fff"], I: ["#F5F4FE", "#5F29AE"] };
+    return {
+      ...(() => {
+        const car = "Corolla Cross " + V[2] + " " + (isZ ? "0 km" : s.year);
+        const link = (q) => "Copiloto.dc.html?" + new URLSearchParams({ q, carro: car }).toString();
+        const ask = (q) => ({ q, href: link(q) });
+        return {
+          cpCar: car, cpHref: link("O que você acha do " + car + "?"),
+          cpPros: [{ t: "Garantia longa", d: "10 anos de garantia de fábrica, segundo a ficha técnica." }, { t: "Pacote de assistentes completo", d: "Os 11 assistentes de direção rastreados aparecem nesta versão, incluindo frenagem automática e piloto adaptativo." }, { t: "Porta-malas de 440 litros", d: "Bom espaço para um SUV médio de 4.460 mm." }],
+          cpCons: [{ t: "Consumo urbano mediano", d: "11,5 km/l na cidade e selo C no PBEV/Inmetro, na gasolina." }, { t: "Preço em queda", d: "A FIPE caiu 2,33% no mês e 9,95% em 12 meses." }, { t: "Alguns confortos ausentes", d: "Bancos ventilados, head-up display e start-stop não constam nesta versão." }],
+          cpQ: s.cpQ || "", cpOnQ: (e) => this.setState({ cpQ: e.target.value }), cpPh: "Pergunte sobre o " + car,
+          cpSubmit: (e) => { e.preventDefault(); const q = (this.state.cpQ || "").trim(); if (q) location.href = link(q); },
+          cpSugs: [ask("Vale " + this.fmt(price) + "?"), ask("Quanto custa por mês em " + (s.uf || "SP") + "?"), ask(V[3] === "Híbrido" ? "Compensa o híbrido sobre o flex?" : "Compensa pagar mais pelo híbrido?"), ask("O que muda para a versão de cima?")],
+          cp: { preco: ask("Esse preço está bom para um " + (isZ ? "0 km" : s.year) + "?"), equip: ask("O que falta nesta versão?"), custo: ask("Como gastar menos por ano com ele?") }
+        };
+      })(),
+      navTop: (s.navT || 89) + "px", navRef: this.navRef, navScroll: this.navScroll,
+      navMask: ({ l: "linear-gradient(90deg,transparent,#000 32px)", r: "linear-gradient(90deg,#000 calc(100% - 32px),transparent)", lr: "linear-gradient(90deg,transparent,#000 32px,#000 calc(100% - 32px),transparent)" })[s.navF] || "none",
+      ddKey: this.ddKey,
+      dd_year: this.ddMk("year", isZ ? "0 km" : s.year, ["0 Km", "2027", "2026", "2025", "2024", "2023", "2022", "2021"].filter((y) => !(part && y === "0 Km")).map((y) => ({ id: y, label: y === "0 Km" ? "0 km" : y, sub: this.fmt(V[5] * (this.YF[y] || 1)) })), s.year, (y) => { if (y !== s.year) this.goTo(V[0], y); }),
+      dd_ver: this.ddMk("ver", V[2], this.VERS.map((x) => ({ id: x[0], label: x[2], sub: this.fmt(x[5] * yf) })), V[0], (id) => { if (id !== V[0]) this.goTo(id, s.year); }),
+      dd_uf: this.ddMk("uf", ufo.k + " · " + (ufo.a * 100).toLocaleString("pt-BR") + "%", this.UF.map((u) => ({ id: u.k, label: this.UFN[u.k] + " (" + u.k + ")", sub: (u.a * 100).toLocaleString("pt-BR") + "%" })), s.uf, (k) => this.setState({ uf: k })),
+      verName: V[1], verShort: V[2], verCode: V[6], verId: V[0], year: s.year,
+      heroTags: none ? [isZ ? "0 km" : s.year] : [isZ ? "0 km" : s.year, "SUV", V[3], V[4]], yearLabel: isZ ? "0 km" : s.year,
+      phFoto: foto === "Foto" || foto === "Foto IA", phIA: foto === "Foto IA", phLogo: foto === "Logo da marca", phMono: foto === "Monograma",
+      phCaption: foto === "Foto" ? "Foto " + (isZ ? "2027" : s.year) + " · 3/4 dianteira" : foto === "Foto IA" ? "Ilustração gerada por IA · " + (isZ ? "2027" : s.year) + " · 3/4 dianteira" : "Sem foto desta versão",
+      yearOpts: ["2027", "2026", "2025", "2024", "2023", "2022", "2021"], onYear: (e) => this.setState({ year: e.target.value, open: e.target.value, hov: null }),
+      verOpts: this.VERS.map((v) => ({ id: v[0], label: v[2] + " · " + this.fmt(v[5] * yf) })), onVer: (e) => this.setState({ ver: e.target.value, hov: null }),
+      hasPrice: !none, noPrice: none, fipe: this.fmt(price), fipeBase: this.fmt(price), fipeRef: "10/2026",
+      vars: (part ? [[-2.33, "no mês"]] : [[-2.33, "no mês"], [-9.95, "em 12 meses"]]).map(([v, l]) => ({ text: (v > 0 ? "+" : "") + v.toLocaleString("pt-BR") + "% " + l, icon: v < 0 ? "trending_down" : "trending_up", bg: v < 0 ? "#FFF1EC" : "#EAF6EE", color: v < 0 ? "#C2410C" : "#15803D" })),
+      hasZero: !part && !isZ, zeroKm: this.fmt(zero), situacao: part ? "Fora de linha" : "Tem versão 0 km na FIPE",
+      tabs: [["#preco", "Preço"], ["#consumo", "Consumo e porte"], ["#ficha", "Ficha técnica"], ["#equipamentos", "Equipamentos"], ["#custo", "Custo anual"], ["#revisoes", "Revisões"], ["#versoes", "Versões"]].map(([href, label]) => { const on = this.state.sec === href.slice(1); return { href, label, cur: on ? "true" : "false", color: on ? "#7D3EE3" : "#5A6472", weight: on ? 700 : 500, line: on ? "inset 0 -3px 0 #7D3EE3" : "inset 0 -3px 0 transparent" }; }),
+      hasHist: hist.length > 0, noHist: !hist.length, hasProj: proj.length > 0, noProj: hist.length > 0 && !proj.length,
+      histPath: hp, areaPath: hist.length ? hp + " L" + X(28).toFixed(2) + " 100 L0 100 Z" : "",
+      projPath: proj.length ? "M" + X(28).toFixed(2) + " " + Y(hist[28]).toFixed(2) + " " + proj.map(([i, v]) => "L" + X(i).toFixed(2) + " " + Y(v).toFixed(2)).join(" ") : "",
+      projDots: proj.map(([i, v]) => ({ x: X(i) + "%", y: Y(v) + "%" })), todayX: X(28) + "%",
+      projList: proj.map(([, v, y]) => ({ y, v: this.fmt(v) })), projBase: "depreciação média observada em 7 anos-modelo do próprio modelo (784 observações)",
+      yTicks: tickV.map((v) => ({ top: Y(v) + "%", label: "R$ " + Math.round(v / 1000) + " mil" })),
+      xTicks: xt.map(([i, label]) => ({ left: X(i) + "%", label })),
+      chartMove: (e) => { const r = e.currentTarget.getBoundingClientRect(), px = ((e.clientX - r.left) / r.width) * 100; let b = 0, bd = 1e9; pts.forEach((p, i) => { const d = Math.abs(p.x - px); if (d < bd) { bd = d; b = i; } }); if (b !== this.state.hov) this.setState({ hov: b }); },
+      chartLeave: () => this.setState({ hov: null }),
+      hov: !!h, hovX: h ? h.x + "%" : "0", hovY: h ? h.y + "%" : "0", hovLabel: h ? h.label : "", hovValue: h ? this.fmt(h.v) : "", hovColor: h && h.est ? "#FF5040" : "#7D3EE3", hovShift: h ? (h.x > 75 ? "-100%" : h.x < 15 ? "0" : "-50%") : "-50%",
+      hasYears: !none, noYears: none,
+      yearRows: (() => { const rows = (part ? [] : [["0 Km", 210207]]).concat([["2027", 194799], ["2026", 184721], ["2025", 170648], ["2024", 155099], ["2023", 170648 * 0.84], ["2022", 170648 * 0.77], ["2021", 170648 * 0.71]]); const top = rows[0][1]; return rows.map(([y, p], i) => { const on = y === s.year, z = y === "0 Km", d = (1 - p / top) * 100; return { bar: on ? "inset 3px 0 0 #7D3EE3" : "none", label: y, isYear: !z, chev: on ? "" : "chevron_right", chevColor: "#5A6472", fuel: fuelTxt, price: this.fmt(p * vf), dep: i === 0 ? "—" : "▼ " + d.toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%", depColor: i === 0 ? "#8A93A3" : "#C2410C", ipva: this.fmt(p * vf * 0.04), on, dis: z, cursor: on ? "default" : "pointer", bg: on ? "#F5F4FE" : "transparent", weight: on ? 800 : 700, go: () => { if (!on) this.goTo(V[0], y); } }; }); })(),
+      mercado: !!P.dadosMercado && !none,
+      mercadoStats: [{ label: "Emplacamentos em set/2026", value: "5.904", sub: "ago/2026: 6.211 · Fenabrave" }, { label: "Segmento Fenabrave", value: "SUV compacto", sub: "Classificação da Fenabrave" }, { label: "Desvalorização em 12 meses", value: "38º no ranking", sub: "Entre os modelos com FIPE no período" }],
+      seal: [["A", "#15803D", "#DCFCE7", "#15803D"], ["B", "#65A30D", "#ECFCCB", "#4D7C0F"], ["C", "#F59E0B", "#FEF3C7", "#92400E"], ["D", "#EA580C", "#FFEDD5", "#C2410C"], ["E", "#DC2626", "#FEE2E2", "#B91C1C"]].map(([k, c, tint, ink]) => { const on = k === "C"; return { k, c: on ? c : tint, h: on ? "48px" : "32px", fs: on ? "22px" : "13px", lc: on ? "#1D2433" : ink, op: 1, ring: on ? "0 0 0 2px #fff, 0 0 0 4px #1D2433" : "none" }; }),
+      hasCons: !none && !part, noCons: none || part, hasPorte: !none, noPorte: none,
+      hasFicha: ficha.length > 0, noFicha: !ficha.length, fichaCount: nF ? nF + " itens em " + ficha.length + " seções" : "",
+      ...(() => {
+        const IC = { Geral: "info", Motor: "settings", "Garantia e Custos": "verified", "Dimensões e pesos": "straighten", Desempenho: "speed", "Transmissão e tração": "swap_driving_apps_wheel", "Consumo e eficiência": "local_gas_station", "Conforto, multimídia e iluminação": "airline_seat_recline_extra" };
+        const UN = ["mm", "l", "kg", "s", "km/h", "cv", "kgfm", "cm³", "km/l"]; const split = (l) => { const m = l.match(/^(.*?)\s*\(([^)]+)\)$/); return m && UN.includes(m[2]) ? [m[1], m[2]] : [l, ""]; };
+        const nf = (x) => /^\d{4,}$/.test(x) ? (+x).toLocaleString("pt-BR") : x;
+        const flat = {}; ficha.forEach(([, it]) => it.forEach(([l, val]) => { flat[l] = val; }));
+        const TOP = [["Potência máxima (cv)", "Potência", "bolt", "cv"], ["Torque máximo (kgfm)", "Torque", "rotate_right", "kgfm"], ["Aceleração 0-100 km/h (s)", "0 a 100 km/h", "timer", "s"], ["Velocidade máxima (km/h)", "Velocidade máxima", "speed", "km/h"], ["Volume do porta-malas (l)", "Porta-malas", "luggage", "litros"], ["Tanque de combustível (l)", "Tanque", "local_gas_station", "litros"], ["Comprimento (mm)", "Comprimento", "straighten", "mm"], ["Número de marchas", "Câmbio", "swap_driving_apps_wheel", "marchas"]];
+        const adasSec = ficha.find((x) => x[0] === "ADAS");
+        const secs = ficha.filter((x) => x[0] !== "ADAS");
+        return {
+          fichaTop: TOP.filter(([k]) => flat[k]).map(([k, l, icon, u]) => { const raw = String(flat[k]), dual = / \/ /.test(raw); return { l: dual ? l + " (etanol)" : l, icon, u, v: nf(raw.split(" / ")[0].replace(/\s*\(E\)/, "")) }; }),
+          ficha: secs.map(([t, it]) => ({ t, icon: IC[t] || "list", n: it.length + (it.length === 1 ? " item" : " itens"), items: it.map(([l, val], i) => { let [lab, u] = split(l); let vv = nf(val); if (u && /\(E\)|\(G\)/.test(vv)) { vv = vv.replace(/\s*\(E\)/, " " + u + " etanol").replace(/\s*\(G\)/, " " + u + " gasolina"); u = ""; } return { l: lab, v: vv, u, line: i ? "1px solid #EEEEF2" : "0" }; }) })),
+          hasAdas: !!adasSec, adasN: adasSec ? adasSec[1].filter((x) => x[1] !== "Não").length + " de " + adasSec[1].length : "",
+          adas: adasSec ? adasSec[1].map(([l, val]) => { const no = val === "Não", yes = val === "Sim"; return { l, v: val, hasVal: !yes && !no, icon: no ? "close" : "check", bg: no ? "#F1F1F5" : "#EAF6EE", color: no ? "#8A93A3" : "#15803D" }; }) : []
+        };
+      })(),
+      eqSub: allN ? allN + " itens em " + eqAll.length + " categorias" : "Itens de série, opcionais e ausentes",
+      eqFilters: [["todos", "Todos", "apps", "#5A6472", allN], ["s", "De série", ST.s[1], ST.s[2], cnt.s], ["o", "Opcional", ST.o[1], ST.o[2], cnt.o], ["a", "Ausente", ST.a[1], ST.a[2], cnt.a]].map(([k, label, icon, ic, n]) => { const on = eqF === k; return { label, icon, iconColor: ic, n: String(n), on, bg: on ? "#F5F4FE" : "#fff", color: on ? "#5F29AE" : "#1D2433", ring: on ? "inset 0 0 0 1.5px #7D3EE3" : "inset 0 0 0 1px #E6E6EE", pick: () => this.setState({ eqF: k }) }; }),
+      hasEq: eqV.length > 0, noEq: !eqV.length, noEqText: allN ? "Nenhum item com esse status." : "A fonte não cobriu equipamentos para esta versão e ano.",
+      eq: eqV.map((c) => ({ t: c.t, n: c.items.length + (c.items.length === 1 ? " item" : " itens"), items: c.items.map((i) => ({ l: i.l, st: ST[i.k][0], icon: ST[i.k][1], color: ST[i.k][2], opt: i.k === "o", text: i.k === "a" ? "#5A6472" : "#1D2433", deco: "none" })) })),
+      uf: s.uf, ufName: ufo.k + " · " + (ufo.a * 100).toLocaleString("pt-BR") + "%", onUf: (e) => this.setState({ uf: e.target.value }),
+      ufOpts: this.UF.map((u) => ({ k: u.k, label: this.UFN[u.k] + " (" + u.k + ")" })),
+      hasCusto: !none, noCusto: none,
+      custoLabel: "Subtotal anual dos componentes informados", custoTotal: this.fmt(tot), custoMes: "≈ " + this.fmt(tot / 12) + " por mês · faltam combustível, seguro e manutenção",
+      custoBar: [{ flex: dep, color: "#7D3EE3" }, { flex: ipva, color: "#B79AF0" }],
+      comps: [["Depreciação", dep, "Projeção estatística", "#7D3EE3"], ["IPVA " + ufo.k, ipva, "Alíquota estimada de " + (ufo.a * 100).toLocaleString("pt-BR") + "%, sem isenções", "#B79AF0"], ["Combustível", null, "Ausente: consumo não informado"], ["Seguro", null, "Ausente"], ["Manutenção", null, "Ausente"]].map(([l, v, src, c]) => ({ l, src, v: v == null ? "Não informado" : this.fmt(v), color: c || "#fff", ring: c ? "none" : "inset 0 0 0 1.5px #C9CCD3", text: v == null ? "#5A6472" : "#1D2433", weight: v == null ? 400 : 700 })),
+      premissas: [{ l: "Quilometragem", v: "12.000 km/ano", src: "Padrão" }, { l: "Consumo", v: "Não informado", src: "Sem dado no PBEV ou na ficha" }, { l: "Preço do litro", v: "R$ 6,58", src: "Gasolina · ref. 07/2026" }],
+      hasPlano: plano, noPlano: !plano,
+      planoLeg: [{ k: "T", t: "Trocar", bg: CL.T[0], color: CL.T[1] }, { k: "I", t: "Inspecionar", bg: CL.I[0], color: CL.I[1] }],
+      planoCols: cols.map(([k, m]) => ({ km: (k * 1000).toLocaleString("pt-BR") + " km", m: m + " meses" })),
+      planoRows: PR.map(([l, c]) => ({ l, cells: c.split("").map((k) => ({ k, bg: CL[k][0], color: CL[k][1] })) })),
+      verRows: this.VERS.map((v) => { const on = v[0] === V[0]; return { name: v[1], meta: v[3] + " · " + v[4], price: this.fmt(v[5] * yf), zero: "0 km " + this.fmt(210207 * (v[5] / 170648)), on, bg: on ? "#F5F4FE" : "transparent", ring: on ? "inset 0 0 0 1.5px #7D3EE3" : "none", pick: () => { if (!on) this.goTo(v[0], s.year); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

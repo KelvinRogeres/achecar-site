@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <script src="lancamentos-data.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB} input::placeholder{color:#5A6472} @keyframes skl{0%{background-position:-400px 0}100%{background-position:400px 0}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9;width:100%;max-width:{{ frameW }};margin:0 auto;box-shadow:{{ frameShadow }}">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+  <main data-screen-label="Lançamentos" style="flex:1;width:100%;box-sizing:border-box;padding:{{ mainPad }}">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:{{ secGap }}">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;gap:4px;font:400 13px Roboto;color:#5A6472"><a href="Garagem.dc.html" style="color:#5A6472;white-space:nowrap" style-hover="color:#7D3EE3">Explorar</a><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span><span style="color:#1D2433;white-space:nowrap">Lançamentos</span></div>
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:8px"><h1 style="margin:0;font:800 {{ h1Size }}/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">Descubra os próximos lançamentos</h1><p style="margin:0;max-width:640px;font:400 16px/1.55 Roboto;color:#3F4654;text-wrap:pretty">Acompanhe o que chega ao Brasil, quanto deve custar e quando. Veja se vale esperar ou se um modelo já à venda resolve.</p></div>
+          <span style="display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">science</span>Dados demonstrativos · atualizado em {{ updated }}</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:48px 24px;border-radius:20px;background:#fff;border:1px solid #E6E6EE;text-align:center">
+          <span style="width:52px;height:52px;border-radius:50%;background:#FEF2F2;color:#B91C1C;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:26px;line-height:1">cloud_off</span>
+          <span style="font:800 20px 'Merriweather Sans',sans-serif">Não conseguimos carregar os lançamentos</span>
+          <span style="max-width:420px;font:400 14px/1.5 Roboto;color:#5A6472">Pode ser a sua conexão ou uma instabilidade nossa. Seus filtros e lançamentos acompanhados continuam salvos.</span>
+          <button type="button" onClick="{{ retry }}" style="height:44px;padding:0 18px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#6A2FCB">Tentar de novo</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+        <div aria-busy="true" aria-label="Carregando lançamentos" style="display:flex;flex-direction:column;gap:20px">
+          <div style="height:{{ heroH }};border-radius:24px;background:linear-gradient(90deg,#ECECF2 0%,#F6F6F9 50%,#ECECF2 100%);background-size:800px 100%;animation:skl 1.2s linear infinite"></div>
+          <div style="display:grid;grid-template-columns:{{ cardCols }};gap:16px"><sc-for list="{{ skeletons }}" as="k" hint-placeholder-count="6"><div style="height:340px;border-radius:16px;background:linear-gradient(90deg,#ECECF2 0%,#F6F6F9 50%,#ECECF2 100%);background-size:800px 100%;animation:skl 1.2s linear infinite"></div></sc-for></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isReady }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Destaques" aria-roledescription="carrossel" aria-label="Lançamentos em destaque" style="position:relative">
+          <div onPointerDown="{{ swDown }}" onPointerUp="{{ swUp }}" style="overflow:hidden;border-radius:24px;touch-action:pan-y">
+            <div style="display:flex;transform:translateX({{ trackX }});transition:transform .35s cubic-bezier(.2,.8,.2,1)">
+              <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="4">
+                <div role="group" aria-roledescription="slide" aria-label="{{ sl.aria }}" style="flex:0 0 100%;min-width:0;box-sizing:border-box;background:#1D2433;color:#fff;display:grid;grid-template-columns:{{ slideCols }};align-items:center;gap:20px;padding:{{ slidePad }};min-height:{{ heroH }}">
+                  <div style="display:flex;flex-direction:column;gap:12px;min-width:0;order:{{ slideTxtOrder }}">
+                    <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="height:26px;padding:0 10px;border-radius:999px;background:{{ sl.sBg }};color:{{ sl.sFg }};font:700 12px/26px Roboto;white-space:nowrap">{{ sl.status }}</span><span style="height:26px;padding:0 10px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font:500 12px/26px Roboto;white-space:nowrap">{{ sl.tipo }}</span></div>
+                    <span style="font:400 14px Roboto;color:#C9CDD6">{{ sl.brand }}</span>
+                    <span style="margin-top:-8px;font:800 {{ slideH }}/1.1 'Merriweather Sans',sans-serif">{{ sl.model }}</span>
+                    <span style="max-width:460px;font:400 15px/1.5 Roboto;color:#E3E5EA;text-wrap:pretty">{{ sl.hl }}</span>
+                    <div style="display:flex;gap:20px;flex-wrap:wrap;padding:4px 0"><span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Roboto;color:#9BA3B1">Previsão no Brasil</span><span style="font:700 15px Roboto">{{ sl.eta }}</span></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Roboto;color:#9BA3B1">Preço</span><span style="font:700 15px Roboto">{{ sl.price }}</span></span></div>
+                    <a href="{{ sl.href }}" style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:46px;padding:0 20px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#6A2FCB;color:#fff">Conhecer lançamento<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+                  </div>
+                  <div style="position:relative;height:{{ slideImgH }};min-width:0">
+                    <span role="img" aria-label="{{ sl.model }}" style="position:absolute;inset:0;background:{{ sl.photo }}"></span>
+                    <sc-if value="{{ sl.noImg }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:16px;background:rgba(255,255,255,.06);border:1px dashed rgba(255,255,255,.2)"><span style="position:relative;width:72px;height:72px;border-radius:50%;background:#fff;overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%) scale(1.1)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ sl.mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span><span style="font:400 12px Roboto;color:#C9CDD6">Imagem oficial ainda não divulgada</span></div></sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px">
+            <div role="tablist" aria-label="Escolher destaque" style="display:flex;gap:6px"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{ d.on }}" aria-label="{{ d.aria }}" onClick="{{ d.go }}" style="width:{{ d.w }};height:8px;padding:0;border:0;border-radius:4px;background:{{ d.bg }};cursor:pointer;transition:width .2s ease-out, background .2s ease-out" style-hover="background:#7D3EE3"></button></sc-for></div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="font:400 13px Roboto;color:#5A6472;white-space:nowrap">{{ slideCount }}</span><button type="button" onClick="{{ prev }}" aria-label="Destaque anterior" style="width:40px;height:40px;border-radius:50%;border:1px solid #D5D8DE;background:#fff;color:#1D2433;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF">chevron_left</button><button type="button" onClick="{{ next }}" aria-label="Próximo destaque" style="width:40px;height:40px;border-radius:50%;border:1px solid #D5D8DE;background:#fff;color:#1D2433;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF">chevron_right</button></div>
+          </div>
+        </section>
+
+        <section data-screen-label="Lista de lançamentos" style="display:grid;grid-template-columns:{{ listCols }};gap:24px;align-items:start">
+          <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+            <aside aria-label="Filtros" style="position:sticky;top:100px;display:flex;flex-direction:column;gap:18px;padding:20px;border-radius:16px;background:#fff;border:1px solid #E6E6EE">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:800 16px 'Merriweather Sans',sans-serif">Filtros</span><sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ clearAll }}" style="padding:4px 6px;border:0;border-radius:6px;background:transparent;color:#7D3EE3;font:700 13px Roboto;cursor:pointer" style-hover="background:#F7F4FF">Limpar</button></sc-if></div>
+              <sc-for list="{{ fGroups }}" as="g" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 12px Roboto;color:#5A6472">{{ g.t }}</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ g.opts }}" as="o" hint-placeholder-count="4"><button type="button" aria-pressed="{{ o.on }}" onClick="{{ o.go }}" style="height:32px;padding:0 11px;border-radius:999px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:500 12px Roboto;white-space:nowrap;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF">{{ o.t }}<span style="margin-left:4px;color:#5A6472">{{ o.n }}</span></button></sc-for></div></div></sc-for>
+              <div style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;font:700 12px Roboto;color:#5A6472"><span>Preço até</span><span style="color:#1D2433">{{ priceTxt }}</span></span><input type="range" min="80000" max="300000" step="10000" value="{{ pmax }}" onChange="{{ setPmax }}" aria-label="Preço máximo" style="width:100%;accent-color:#7D3EE3;cursor:pointer"><button type="button" role="switch" aria-checked="{{ inclNoPrice }}" onClick="{{ toggleNoPrice }}" style="display:flex;align-items:center;gap:10px;padding:4px 0;border:0;background:transparent;color:#1D2433;font:400 13px Roboto;text-align:left;cursor:pointer"><span style="position:relative;flex:none;width:36px;height:22px;border-radius:999px;background:{{ npBg }};transition:background .15s ease-out"><span style="position:absolute;top:3px;left:{{ npX }};width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s ease-out"></span></span>Incluir sem preço divulgado</button></div>
+            </aside>
+          </sc-if>
+
+          <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <div role="tablist" aria-label="Lista" style="display:flex;padding:3px;border-radius:999px;background:#EEEEF2"><sc-for list="{{ tabs }}" as="t" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="height:36px;padding:0 14px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};font:500 13px Roboto;box-shadow:{{ t.sh }};white-space:nowrap;cursor:pointer" style-hover="color:#1D2433">{{ t.t }} <span style="color:#5A6472">{{ t.n }}</span></button></sc-for></div>
+              <label style="position:relative;flex:1 1 220px;min-width:0;height:42px;border:1.5px solid #D5D8DE;border-radius:8px;background:#fff;cursor:text;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3" style-focus-within="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);pointer-events:none;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">search</span><input value="{{ q }}" onChange="{{ setQ }}" placeholder="Buscar marca ou modelo" aria-label="Buscar marca ou modelo" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 12px 0 40px;border:0;border-radius:8px;outline:none;background:transparent;font:400 14px Roboto;color:#1D2433"></label>
+              <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ openSheet }}" style="display:flex;align-items:center;gap:6px;height:42px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:border-color .15s ease-out" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">tune</span>Filtros{{ fCountTxt }}</button></sc-if>
+              <label style="position:relative;flex:none;height:42px;width:200px;border:1.5px solid #D5D8DE;border-radius:8px;background:#fff;cursor:pointer;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3" style-focus-within="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><select key="{{ sortKey }}" defaultValue="{{ sort }}" onChange="{{ setSort }}" aria-label="Ordenar" style="appearance:none;-webkit-appearance:none;position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 32px 0 12px;border:0;border-radius:8px;outline:none;background:transparent;font:500 13px Roboto;color:#1D2433;cursor:pointer"><sc-for list="{{ sorts }}" as="o" hint-placeholder-count="3"><option value="{{ o.v }}" selected="{{ o.sel }}">{{ o.t }}</option></sc-for></select><span style="position:absolute;right:8px;top:50%;transform:translateY(-50%);pointer-events:none;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">expand_more</span></label>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:28px">
+              <span style="font:700 13px Roboto;color:#1D2433;white-space:nowrap">{{ countTxt }}</span>
+              <sc-for list="{{ chips }}" as="c" hint-placeholder-count="0"><button type="button" onClick="{{ c.go }}" aria-label="Remover filtro {{ c.t }}" style="display:flex;align-items:center;gap:4px;height:28px;padding:0 6px 0 10px;border-radius:999px;border:0;background:#F1EBFD;color:#4C1D95;font:500 12px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#E3D8FC">{{ c.t }}<span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">close</span></button></sc-for>
+              <sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ clearAll }}" style="height:28px;padding:0 8px;border:0;border-radius:6px;background:transparent;color:#7D3EE3;font:700 12px Roboto;white-space:nowrap;cursor:pointer" style-hover="background:#F7F4FF">Limpar tudo</button></sc-if>
+            </div>
+
+            <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:40px 20px;border-radius:16px;background:#fff;border:1px solid #E6E6EE;text-align:center"><span style="font-family:'Material Symbols Rounded';font-size:36px;line-height:1;color:#5A6472">search_off</span><span style="font:800 18px 'Merriweather Sans',sans-serif">Nenhum lançamento com esses filtros</span><span style="max-width:380px;font:400 14px/1.5 Roboto;color:#5A6472">{{ noResTxt }}</span><button type="button" onClick="{{ clearAll }}" style="height:40px;padding:0 16px;border-radius:8px;border:1.5px solid #7D3EE3;background:#fff;color:#7D3EE3;font:700 14px Roboto;cursor:pointer" style-hover="background:#F7F4FF">Limpar filtros</button></div>
+            </sc-if>
+
+            <div style="display:grid;grid-template-columns:{{ cardCols }};gap:16px">
+              <sc-for list="{{ cards }}" as="c" hint-placeholder-count="6">
+                <article style="position:relative;display:flex;flex-direction:column;border-radius:16px;background:#fff;border:1px solid #E6E6EE;overflow:hidden;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#C9B3F5;box-shadow:0 8px 24px rgba(29,36,51,.08)">
+                  <div style="position:relative;height:150px;background:#F1F1F5">
+                    <span role="img" aria-label="{{ c.model }}" style="position:absolute;inset:12px 16px 6px;background:{{ c.photo }}"></span>
+                    <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="position:relative;width:56px;height:56px;border-radius:50%;background:#fff;overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%) scale(.85)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ c.mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span><span style="font:400 11px Roboto;color:#5A6472">Imagem ainda não divulgada</span></div></sc-if>
+                    <span style="position:absolute;left:10px;top:10px;display:flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;background:{{ c.sBg }};color:{{ c.sFg }};font:700 11px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1">{{ c.sIcon }}</span>{{ c.status }}</span>
+                    <button type="button" onClick="{{ c.follow }}" aria-pressed="{{ c.following }}" aria-label="{{ c.followAria }}" title="{{ c.followAria }}" style="position:absolute;right:8px;top:8px;width:36px;height:36px;border-radius:50%;border:0;background:#fff;color:{{ c.fIc }};cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;font-variation-settings:{{ c.fFill }};box-shadow:0 1px 4px rgba(29,36,51,.15);transition:background .15s ease-out" style-hover="background:#F7F4FF">bookmark</button>
+                  </div>
+                  <div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:14px 16px 16px">
+                    <span style="font:500 11px Roboto;letter-spacing:.04em;color:#7D3EE3">{{ c.tipo }}</span>
+                    <span style="display:flex;flex-direction:column;gap:2px;margin-top:-6px"><span style="font:800 17px/1.25 'Merriweather Sans',sans-serif">{{ c.model }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.meta }}</span></span>
+                    <span style="font:400 13px/1.45 Roboto;color:#3F4654;text-wrap:pretty">{{ c.hl }}</span>
+                    <div style="display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:1px solid #EEEEF2;margin-top:auto">
+                      <span style="display:flex;align-items:center;gap:6px;font:500 13px Roboto;color:{{ c.etaC }}"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#5A6472">event</span>{{ c.eta }}</span>
+                      <span style="display:flex;align-items:center;gap:6px;font:{{ c.pW }} 13px Roboto;color:{{ c.pC }}"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#5A6472">sell</span>{{ c.price }}</span>
+                    </div>
+                    <a href="{{ c.href }}" style="display:flex;align-items:center;justify-content:center;gap:4px;height:40px;border-radius:8px;border:1.5px solid #DCCFF8;background:#FBFAFF;color:#5B21B6;font:700 14px Roboto;transition:background .15s ease-out, border-color .15s ease-out" style-hover="background:#F1EBFD;border-color:#7D3EE3;color:#4C1D95">Ver detalhes<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+                  </div>
+                </article>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ hasCancel }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;border-radius:16px;background:#fff;border:1px solid #E6E6EE">
+                <span style="display:flex;align-items:center;gap:8px;font:700 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#991B1B">block</span>Cancelados no Brasil</span>
+                <sc-for list="{{ cancelled }}" as="x" hint-placeholder-count="1"><a href="{{ x.href }}" style="display:flex;align-items:center;gap:10px;padding:8px;margin:0 -8px;border-radius:10px;color:#1D2433;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433"><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ x.t }}</span><span style="font:400 12px/1.4 Roboto;color:#5A6472">{{ x.hl }}</span></span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">chevron_right</span></a></sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </section>
+
+        <section data-screen-label="Rumores" style="display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:16px;background:#FFF8EB;border:1.5px dashed #E0A93B">
+          <div style="display:flex;align-items:flex-start;gap:12px"><span style="width:40px;height:40px;flex:none;border-radius:12px;background:#FDE7B8;color:#92400E;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;font-variation-settings:'FILL' 1">campaign</span><div style="display:flex;flex-direction:column;gap:4px"><span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:800 17px 'Merriweather Sans',sans-serif">Rumores, ainda não confirmados<span style="padding:3px 8px;border-radius:999px;background:#92400E;color:#fff;font:700 11px Roboto;letter-spacing:.04em;text-transform:uppercase">Não oficial</span></span><span style="font:400 13px/1.45 Roboto;color:#5A6472">Ficam separados da lista porque a marca não anunciou nada. Podem nunca acontecer.</span></div></div>
+          <div style="display:grid;grid-template-columns:{{ rumorCols }};gap:10px"><sc-for list="{{ rumors }}" as="r" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #F3D9A4"><span style="font:700 14px Roboto">{{ r.t }}</span><span style="font:400 13px/1.45 Roboto;color:#3F4654">{{ r.hl }}</span><span style="font:400 11px Roboto;color:#5A6472">Fonte: {{ r.src }} · {{ r.date }}</span></div></sc-for></div>
+        </section>
+      </sc-if>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+
+  <sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ scrim }}" style="position:fixed;inset:0;z-index:90;background:rgba(18,13,38,.48);display:flex;align-items:flex-end">
+      <div role="dialog" aria-modal="true" aria-label="Filtros" style="width:100%;max-height:85vh;display:flex;flex-direction:column;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -12px 40px rgba(18,13,38,.3)">
+        <div style="display:flex;align-items:center;gap:8px;padding:16px 16px 12px 20px;border-bottom:1px solid #EEEEF2"><span style="flex:1;font:800 18px 'Merriweather Sans',sans-serif">Filtros</span><button type="button" onClick="{{ closeSheet }}" aria-label="Fechar" style="width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1" style-hover="background:#F4F4F6">close</button></div>
+        <div style="flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 20px;display:flex;flex-direction:column;gap:18px">
+          <sc-for list="{{ fGroups }}" as="g" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 12px Roboto;color:#5A6472">{{ g.t }}</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ g.opts }}" as="o" hint-placeholder-count="4"><button type="button" aria-pressed="{{ o.on }}" onClick="{{ o.go }}" style="height:40px;padding:0 14px;border-radius:999px;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:500 13px Roboto;white-space:nowrap;cursor:pointer" style-hover="border-color:#7D3EE3">{{ o.t }}<span style="margin-left:4px;color:#5A6472">{{ o.n }}</span></button></sc-for></div></div></sc-for>
+          <div style="display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;font:700 12px Roboto;color:#5A6472"><span>Preço até</span><span style="color:#1D2433">{{ priceTxt }}</span></span><input type="range" min="80000" max="300000" step="10000" value="{{ pmax }}" onChange="{{ setPmax }}" aria-label="Preço máximo" style="width:100%;height:32px;accent-color:#7D3EE3;cursor:pointer"><button type="button" role="switch" aria-checked="{{ inclNoPrice }}" onClick="{{ toggleNoPrice }}" style="display:flex;align-items:center;gap:10px;min-height:44px;border:0;background:transparent;color:#1D2433;font:400 14px Roboto;text-align:left;cursor:pointer"><span style="position:relative;flex:none;width:40px;height:24px;border-radius:999px;background:{{ npBg }}"><span style="position:absolute;top:3px;left:{{ npX }};width:18px;height:18px;border-radius:50%;background:#fff"></span></span>Incluir sem preço divulgado</button></div>
+        </div>
+        <div style="display:flex;gap:8px;padding:12px 20px 16px;border-top:1px solid #EEEEF2"><button type="button" onClick="{{ clearAll }}" style="height:48px;padding:0 16px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer" style-hover="background:#F6F6F9">Limpar</button><button type="button" onClick="{{ closeSheet }}" style="flex:1;height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#6A2FCB">{{ sheetCta }}</button></div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:10px;max-width:calc(100% - 32px);padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px/1.4 Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#4ADE80">bookmark_added</span>{{ toast }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Normal&quot;,&quot;Carregando&quot;,&quot;Erro&quot;],&quot;default&quot;:&quot;Normal&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  state = { vw: window.innerWidth, loading: true, err: false, slide: 0, tab: "prox", q: "", f: { brand: [], cat: [], motor: [], per: [], status: [] }, pmax: 300000, noPrice: true, sort: "eta", sheet: false, follow: [], toast: "" };
+  KF = "achecar-lancamentos-seguidos"; FEAT = ["onix-2027", "commander-2027", "dolphin-2027", "kardian-x"];
+  componentDidMount() {
+    this.onR = () => this.setState({ vw: window.innerWidth }); window.addEventListener("resize", this.onR);
+    let follow = []; try { follow = JSON.parse(localStorage.getItem(this.KF) || "[]"); } catch (e) {}
+    this.setState({ follow }); this.load();
+    this.onKey = (e) => { if (e.key === "Escape") this.setState({ sheet: false }); if (e.target.tagName === "INPUT") return; if (e.key === "ArrowRight") this.go(1); if (e.key === "ArrowLeft") this.go(-1); }; document.addEventListener("keydown", this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onR); document.removeEventListener("keydown", this.onKey); clearTimeout(this.lt); clearTimeout(this.tt); }
+  load = () => { this.setState({ loading: true, err: false }); clearTimeout(this.lt); this.lt = setTimeout(() => this.setState({ loading: false, err: !window.ACHECAR_LANC }), 650); };
+  go = (d) => this.setState((s) => ({ slide: (s.slide + d + this.FEAT.length) % this.FEAT.length }));
+  brl = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
+  per = (k) => (k >= 999998 ? "Sem data definida" : k <= 202612 ? "Até dez/2026" : k <= 202706 ? "1º sem/2027" : "2º sem/2027");
+  priceTxt = (it) => (it.price == null ? "Preço ainda não divulgado" : this.brl(it.price) + (it.priceEst ? " · estimativa" : ""));
+  toggleF = (g, v) => this.setState((s) => { const l = s.f[g]; return { f: { ...s.f, [g]: l.includes(v) ? l.filter((x) => x !== v) : [...l, v] } }; });
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const BP = { "Desktop 1440": 1440, "Desktop 1024": 1024, "Mobile 390": 390, "Mobile 360": 360, "Mobile 320": 320 }, fw = BP[this.props.breakpoint];
+    const s = this.state, vw = fw ? Math.min(fw, s.vw) : s.vw, wide = vw >= (this.props.bpDesktop1024 ?? 1024), mid = vw >= (this.props.bpTablet640 ?? 640), D = window.ACHECAR_LANC || { items: [], rumors: [], STATUS: {}, TIPO: {} };
+    const est = this.props.estado, isLoading = est === "Carregando" || (est !== "Erro" && s.loading), isError = est === "Erro" || (!isLoading && s.err);
+    const ST = D.STATUS, live = D.items.filter((i) => i.status !== "cancelado");
+    const inTab = (i) => (s.tab === "rec" ? i.status === "disponivel" : i.status !== "disponivel");
+    const nq = (x) => (x || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const pass = (i, skip) => (skip === "q" || !s.q.trim() || nq(i.brand + " " + i.model).includes(nq(s.q.trim()))) && ["brand", "cat", "motor", "per", "status"].every((g) => skip === g || !s.f[g].length || s.f[g].includes(g === "per" ? this.per(i.etaKey) : i[g])) && (skip === "price" || (i.price == null ? s.noPrice : i.price <= s.pmax));
+    let list = live.filter((i) => inTab(i) && pass(i));
+    list.sort((a, b) => (s.sort === "price" ? (a.price == null) - (b.price == null) || (a.price || 0) - (b.price || 0) : s.sort === "az" ? (a.brand + a.model).localeCompare(b.brand + b.model, "pt-BR") : s.tab === "rec" ? b.etaKey - a.etaKey : a.etaKey - b.etaKey));
+    const opt = (g, vals, label) => ({ t: label, opts: vals.map(([v, t]) => { const on = s.f[g].includes(v), n = live.filter((i) => inTab(i) && pass(i, g) && (g === "per" ? this.per(i.etaKey) : i[g]) === v).length; return { t, n: String(n), on, bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", fg: on ? "#4C1D95" : "#1D2433", go: () => this.toggleF(g, v) }; }) });
+    const uniq = (k) => [...new Set(live.map((i) => i[k]))].sort();
+    const fGroups = [opt("brand", uniq("brand").map((v) => [v, v]), "Marca"), opt("cat", uniq("cat").map((v) => [v, v]), "Categoria"), opt("motor", uniq("motor").map((v) => [v, v]), "Motorização"), opt("per", ["Até dez/2026", "1º sem/2027", "2º sem/2027", "Sem data definida"].map((v) => [v, v]), "Período previsto"), opt("status", ["anunciado", "exterior", "confirmado", "prevenda", "adiado", "disponivel"].filter((v) => s.tab === "rec" ? v === "disponivel" : v !== "disponivel").map((v) => [v, ST[v].t]), "Status")];
+    const chips = []; ["brand", "cat", "motor", "per", "status"].forEach((g) => s.f[g].forEach((v) => chips.push({ t: g === "status" ? ST[v].t : v, go: () => this.toggleF(g, v) })));
+    if (s.pmax < 300000) chips.push({ t: "Até " + this.brl(s.pmax), go: () => this.setState({ pmax: 300000 }) });
+    if (!s.noPrice) chips.push({ t: "Só com preço divulgado", go: () => this.setState({ noPrice: true }) });
+    if (s.q.trim()) chips.push({ t: "“" + s.q.trim() + "”", go: () => this.setState({ q: "" }) });
+    const nF = chips.length, href = (i) => "Lancamento.dc.html?id=" + i.id, photo = (i) => (i.img ? "url('assets/carros/" + i.img + ".webp') center/contain no-repeat" : "none");
+    const feat = this.FEAT.map((id) => D.items.find((i) => i.id === id)).filter(Boolean);
+    const cardCols = vw >= (this.props.bpWide1200 ?? 1200) ? "repeat(3,minmax(0,1fr))" : vw >= (this.props.bpTablet760 ?? 760) ? "repeat(2,minmax(0,1fr))" : vw >= (this.props.bpMobile520 ?? 520) ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)";
+    return {
+      frameW: fw ? fw + "px" : "none", frameShadow: fw ? "0 0 0 1px #E6E6EE, 0 8px 24px rgba(29,36,51,.12)" : "none", wide, narrow: !wide,
+      mainPad: mid ? "24px clamp(16px, calc(2.2vw + 7px), 32px) 80px" : "16px 16px 64px", secGap: mid ? "32px" : "24px", h1Size: mid ? "36px" : "28px", updated: D.updated || "",
+      isLoading, isError, isReady: !isLoading && !isError, retry: this.load, heroH: mid ? "380px" : "520px", skeletons: [1, 2, 3, 4, 5, 6],
+      slideCols: mid ? "minmax(0,1fr) minmax(0,1.1fr)" : "minmax(0,1fr)", slidePad: mid ? "36px 40px" : "24px 20px", slideTxtOrder: mid ? "0" : "1", slideH: mid ? "34px" : "26px", slideImgH: mid ? "260px" : "170px",
+      trackX: "-" + s.slide * 100 + "%",
+      slides: feat.map((i, k) => { const st = ST[i.status]; return { aria: (k + 1) + " de " + feat.length + ": " + i.brand + " " + i.model, brand: i.brand, mk: i.mk, model: i.model, hl: i.hl, status: st.t, sBg: st.bg, sFg: st.fg, tipo: D.TIPO[i.tipo], eta: i.eta, price: this.priceTxt(i), href: href(i), photo: photo(i), noImg: !i.img }; }),
+      dots: feat.map((_, k) => { const on = k === s.slide; return { on, aria: "Destaque " + (k + 1), w: on ? "28px" : "8px", bg: on ? "#7D3EE3" : "#C9CDD6", go: () => this.setState({ slide: k }) }; }),
+      slideCount: (s.slide + 1) + " de " + feat.length, prev: () => this.go(-1), next: () => this.go(1),
+      swDown: (e) => { this.sx = e.clientX; }, swUp: (e) => { if (this.sx == null) return; const dx = e.clientX - this.sx; this.sx = null; if (Math.abs(dx) > 40) this.go(dx < 0 ? 1 : -1); },
+      listCols: wide ? "260px minmax(0,1fr)" : "minmax(0,1fr)", cardCols, rumorCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      tabs: [["prox", "Próximos lançamentos"], ["rec", "Recém-lançados"]].map(([k, t]) => { const on = s.tab === k, n = live.filter((i) => (k === "rec" ? i.status === "disponivel" : i.status !== "disponivel")).length; return { t, n: String(n), on, bg: on ? "#fff" : "transparent", fg: on ? "#4C1D95" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", go: () => this.setState((x) => ({ tab: k, f: { ...x.f, status: [] } })) }; }),
+      q: s.q, setQ: (e) => this.setState({ q: e.target.value }),
+      sort: s.sort, sortKey: "s-" + s.sort, setSort: (e) => this.setState({ sort: e.target.value }), sorts: [["eta", s.tab === "rec" ? "Mais recentes" : "Chegada mais próxima"], ["price", "Menor preço"], ["az", "A a Z"]].map(([v, t]) => ({ v, t, sel: v === s.sort })),
+      fGroups, chips, hasFilters: nF > 0, fCountTxt: nF ? " (" + nF + ")" : "", clearAll: () => this.setState({ q: "", f: { brand: [], cat: [], motor: [], per: [], status: [] }, pmax: 300000, noPrice: true }),
+      countTxt: list.length + (list.length === 1 ? " lançamento" : " lançamentos"), noResults: list.length === 0, noResTxt: s.q.trim() ? "Não achamos “" + s.q.trim() + "”. Confira a grafia ou tire alguns filtros." : "Tente tirar alguns filtros ou trocar de aba.",
+      pmax: s.pmax, setPmax: (e) => this.setState({ pmax: +e.target.value }), priceTxt: s.pmax >= 300000 ? "Qualquer valor" : this.brl(s.pmax), inclNoPrice: s.noPrice, toggleNoPrice: () => this.setState((x) => ({ noPrice: !x.noPrice })), npBg: s.noPrice ? "#7D3EE3" : "#D5D8DE", npX: s.noPrice ? (wide ? "17px" : "19px") : "3px",
+      openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false }), sheetOpen: s.sheet && !wide, scrim: (e) => { if (e.target === e.currentTarget) this.setState({ sheet: false }); }, sheetCta: "Ver " + list.length + (list.length === 1 ? " lançamento" : " lançamentos"),
+      cards: list.map((i) => { const st = ST[i.status], f = s.follow.includes(i.id); return { model: i.model, mk: i.mk, meta: i.brand + " · " + i.cat + " · " + i.motor, tipo: D.TIPO[i.tipo].toUpperCase(), hl: i.hl, status: st.t, sBg: st.bg, sFg: st.fg, sIcon: st.icon, photo: photo(i), noImg: !i.img, href: href(i),
+        eta: i.status === "adiado" ? "Adiado para " + i.eta + " (era " + i.etaWas + ")" : i.etaKey >= 999998 ? "Data ainda não confirmada para o Brasil" : i.status === "disponivel" ? "Chegou em " + i.eta : "Previsto para " + i.eta, etaC: i.status === "adiado" ? "#B91C1C" : "#1D2433",
+        price: this.priceTxt(i), pC: i.price == null ? "#5A6472" : "#1D2433", pW: i.price == null ? 400 : 700,
+        following: f, fIc: f ? "#7D3EE3" : "#5A6472", fFill: f ? "'FILL' 1" : "'FILL' 0", followAria: f ? "Parar de acompanhar " + i.model : "Acompanhar " + i.model,
+        follow: () => { const nf = f ? s.follow.filter((x) => x !== i.id) : [...s.follow, i.id]; try { localStorage.setItem(this.KF, JSON.stringify(nf)); } catch (e) {} this.setState({ follow: nf }); clearTimeout(this.tt); this.setState({ toast: f ? i.model + " saiu da sua lista" : i.model + " está na sua lista de acompanhados" }); this.tt = setTimeout(() => this.setState({ toast: "" }), 3000); } }; }),
+      hasCancel: s.tab === "prox", cancelled: D.items.filter((i) => i.status === "cancelado").map((i) => ({ t: i.brand + " " + i.model, hl: i.hl, href: href(i) })),
+      rumors: (D.rumors || []).map((r) => ({ t: r.brand + " " + r.model, hl: r.hl, src: r.src, date: r.date })),
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

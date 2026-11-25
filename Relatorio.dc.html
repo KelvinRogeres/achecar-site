@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB} @keyframes rpDot{0%,80%,100%{opacity:.25}40%{opacity:1}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:{{ relMinH }};display:flex;flex-direction:column;background:#F6F6F9;width:100%;max-width:{{ frameW }};margin:0 auto;padding-bottom:{{ relPadB }};box-sizing:border-box;box-shadow:{{ frameShadow }}">
+  <sc-if value="{{ notEmbedR }}" hint-placeholder-val="{{ true }}"><div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" copiloto-aberto="{{ true }}" pin-plate="{{ isDemo }}" copiloto-livre="{{ notDemo }}" hint-size="100%,81px"></dc-import></div></sc-if>
+  <main data-screen-label="Relatório" style="flex:1;width:100%;box-sizing:border-box;padding:{{ relTopPad }} clamp(16px, calc(2.2vw + 7px), 32px) 96px">
+    <sc-if value="{{ isDemo }}" hint-placeholder-val="{{ true }}">
+      <div style="max-width:1152px;margin:0 auto 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <x-import component-from-global-scope="AchecarDesignSystem_c352d1.FeedbackAviso" variant="info" text="Este é um relatório de exemplo com dados fictícios. É assim que a sua consulta aparece depois do pagamento." dc-props="{{ demoAvisoProps }}" hint-size="100%,48px"></x-import>
+        <div style="flex:1 1 100%;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))">
+            <sc-for list="{{ demoStats }}" as="d" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;gap:2px;padding:18px 24px;box-shadow:inset -1px 0 0 #EEEEF2">
+                <span style="font:800 22px/1.1 'Merriweather Sans',sans-serif;color:#1D2433">{{ d.n }}</span>
+                <span style="font:400 13px/1.35 Roboto;color:#5A6472">{{ d.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px 24px;flex-wrap:wrap;padding:14px 24px;border-top:1px solid #EEEEF2;background:#FAFAFC">
+            <span style="font:700 12px Roboto;letter-spacing:.06em;color:#5A6472">INCLUSO</span>
+            <sc-for list="{{ demoPerks }}" as="p" hint-placeholder-count="5">
+              <span style="display:flex;align-items:center;gap:6px;font:500 13px Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">{{ p.icon }}</span>{{ p.t }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+    <div style="max-width:1152px;margin:0 auto;display:grid;grid-template-columns:{{ layoutCols }};gap:32px;align-items:start">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Seções do relatório" style="position:sticky;top:{{ relNavTop }};display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ nav }}" as="n" hint-placeholder-count="9"><button type="button" onClick="{{ n.go }}" style="display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 12px;border:0;border-radius:10px;background:{{ n.bg }};color:{{ n.color }};font:{{ n.weight }} 14px/1.25 Roboto;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F1EBFD"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;flex:none">{{ n.icon }}</span><span style="flex:1;min-width:0">{{ n.t }}</span><sc-if value="{{ n.hasCount }}" hint-placeholder-val="{{ false }}"><span style="flex:none;min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:{{ n.cBg }};color:{{ n.cColor }};font:500 11px/20px Roboto;text-align:center">{{ n.count }}</span></sc-if></button></sc-for>
+          </div>
+        </nav>
+      </sc-if>
+      <div style="min-width:0;display:flex;flex-direction:column;gap:24px">
+        <div ref="{{ colRef }}" style="display:flex;flex-direction:column;gap:8px">
+          <sc-if value="{{ notEmbedR }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:4px;font:400 13px Roboto;color:#5A6472"><a href="Minha Conta.dc.html?tela=consultas" style="color:#5A6472;white-space:nowrap" style-hover="color:#7D3EE3">Minhas consultas</a><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span><span style="color:#1D2433;white-space:nowrap">{{ plate }}</span></div></sc-if>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+              <h1 style="margin:0;font:800 30px/1.2 'Merriweather Sans',sans-serif">Consulta Achecar · {{ plate }}</h1>
+              <span style="font:400 13px/1.5 Roboto;color:#5A6472">Concluída em 05/10/2026, 16:45 · bases atualizadas até 30/09/2026 · ID consulta_demo_completa</span>
+            </div>
+            <sc-if value="{{ notEmbedR }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px">
+              <button type="button" onClick="{{ share }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">share</span>Compartilhar</button>
+              <button type="button" onClick="{{ download }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#6A2FCB"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">download</span>Baixar PDF</button>
+            </div></sc-if>
+          </div>
+        </div>
+
+        <section id="sec-resumo" data-screen-label="Resumo" style="scroll-margin-top:105px;display:flex;flex-direction:column;gap:16px">
+          <div style="background:#fff;border:1px solid #E6E6EE;border-radius:20px;padding:24px;display:grid;grid-template-columns:{{ heroCols }};gap:24px;align-items:center">
+            <div style="height:130px;border-radius:14px;background:#ECECF2;display:flex;align-items:center;justify-content:center">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center">
+                <span style="width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="audi" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span>
+                <span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">Foto ilustrativa do modelo</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+              <span style="align-self:flex-start;display:inline-flex;flex-direction:column;width:108px;border-radius:4px;overflow:hidden;background:#fff;border:1.5px solid #1D2433"><span style="height:10px;background:#1E40AF;color:#fff;font:700 6px/10px Roboto;letter-spacing:.12em;text-align:center">BRASIL</span><span style="font:700 18px/1.3 'Roboto Mono',monospace;text-align:center;color:#1D2433">{{ plate }}</span></span>
+              <span style="font:800 24px/1.2 'Merriweather Sans',sans-serif">Audi A3 1.8</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ heroChips }}" as="hc" hint-placeholder-count="4"><span style="height:26px;padding:0 10px;border-radius:999px;background:#EEEEF2;color:#3F4654;font:400 12px/26px Roboto;white-space:nowrap">{{ hc }}</span></sc-for></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;text-align:{{ priceAlign }}">
+              <span style="font:400 12px Roboto;color:#5A6472">Tabela FIPE · mai/2026</span>
+              <span style="font:800 26px/1.2 'Merriweather Sans',sans-serif;white-space:nowrap">R$ 28.000</span>
+            </div>
+          </div>
+
+          <div style="background:#FFFAEB;border:1px solid #F6DE9A;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;gap:16px;align-items:flex-start">
+              <span style="width:40px;height:40px;flex:none;border-radius:10px;background:#FFF4D6;border:1px solid #F5C451;box-sizing:border-box;color:#D97706;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1">error</span>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:800 24px/1.25 'Merriweather Sans',sans-serif">Atenção aos registros antes de comprar</span><span style="font:400 15px/1.5 Roboto;color:#3F4654">5 apontamentos em 11 verificações. Débitos, leilão, sinistro e recall precisam ser resolvidos ou negociados antes de pagar.</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px"><sc-for list="{{ segs }}" as="sg" hint-placeholder-count="11"><span style="height:6px;border-radius:3px;background:{{ sg }}"></span></sc-for></div>
+              <div style="display:flex;justify-content:space-between;gap:16px;font:400 12px Roboto;color:#5A6472;white-space:nowrap"><span>5 consta</span><span>6 nada consta</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:{{ checkCols }};column-gap:24px">
+              <sc-for list="{{ checks }}" as="c" hint-placeholder-count="11"><button type="button" onClick="{{ c.go }}" style="display:flex;align-items:center;gap:12px;min-height:50px;padding:8px;margin:0 -8px;border:0;border-top:1px solid #F0E3BA;border-radius:0;background:transparent;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FFF3D1"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;flex:none;color:{{ c.color }}">{{ c.icon }}</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px/1.3 Roboto;color:#1D2433">{{ c.t }}</span><sc-if value="{{ c.hasD }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px/1.35 Roboto;color:#5A6472">{{ c.d }}</span></sc-if></span><span style="flex:none;display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:999px;border:1px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:15px;line-height:1">{{ c.icon }}</span>{{ c.label }}</span></button></sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid #F0E3BA">
+              <span style="font:700 11px Roboto;letter-spacing:.06em;color:#6D28D9">PERGUNTE AO COPILOTO</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ resumoQs }}" as="q" hint-placeholder-count="2"><button type="button" onClick="{{ q.ask }}" style="display:flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px 5px 6px;border-radius:999px;border:1px solid #DCCFF8;background:#fff;color:#5B21B6;font:500 14px/1.3 Roboto;white-space:{{ chipWs }};text-align:left;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F6F2FE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;flex:none;display:block"><span>{{ q.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">arrow_forward</span></button></sc-for></div>
+            </div>
+            <span style="display:flex;align-items:flex-start;gap:6px;font:400 12px/1.5 Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1.2">info</span>Conta só alertas atuais ou registros que pesam na compra. O furto de 2018, recuperado, aparece no histórico e não como alerta.</span>
+          </div>
+        </section>
+
+        <section id="sec-copiloto" data-screen-label="Copiloto" style="scroll-margin-top:105px;background:#F7F4FF;border:1px solid #9F7AEA;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:20px">
+          <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 6px;border-radius:999px;background:#fff;border:1px solid #E6E6EE;color:#5B21B6;font:700 14px Roboto"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:26px;height:auto;display:block">Copiloto<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">chat_bubble</span></span>
+          <div style="background:#fff;border:1px solid #F6DE9A;border-radius:16px;padding:24px;display:grid;grid-template-columns:{{ riskCols }};gap:28px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">RISCO DA COMPRA</span>
+              <span style="font:900 36px/1 'Merriweather Sans',sans-serif;color:#9A3412">Moderado</span>
+              <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="height:24px;padding:0 10px;border-radius:999px;background:#EEEEF2;color:#5A6472;font:400 12px/24px Roboto">Baixo</span><span style="height:24px;padding:0 10px;border-radius:999px;background:#FFF6DA;border:1px solid #F5C451;box-sizing:border-box;color:#92400E;font:500 12px/22px Roboto">Moderado</span><span style="height:24px;padding:0 10px;border-radius:999px;background:#EEEEF2;color:#5A6472;font:400 12px/24px Roboto">Alto</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <p style="margin:0;font:500 16px/1.55 Roboto;color:#1D2433;text-wrap:pretty">Passou por leilão depois de uma batida com indenização e tem R$ 1.004,59 em débitos. A transferência só sai depois de quitar o licenciamento.</p>
+              <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px"><sc-for list="{{ riskPts }}" as="r" hint-placeholder-count="3"><li style="display:flex;gap:10px;align-items:center;font:400 14px/1.45 Roboto"><span style="width:7px;height:7px;flex:none;border-radius:50%;background:#D97706"></span>{{ r }}</li></sc-for></ul>
+              <span style="font:400 13px/1.45 Roboto;color:#5A6472">Não pesa: furto de 2018 (recuperado) e financiamento (quitado em 2024).</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:{{ twoCols }};gap:12px">
+            <div style="padding:16px 18px;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Débitos a abater</span><span style="font:800 24px/1.2 'Merriweather Sans',sans-serif">R$ 1.004,59</span><span style="font:400 12px/1.4 Roboto;color:#5A6472">Licenciamento 2026 + 1 multa · DETRAN-ES</span></div>
+            <div style="padding:16px 18px;border-radius:14px;background:#fff;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Faixa para negociar</span><span style="font:800 24px/1.2 'Merriweather Sans',sans-serif">R$ 2.800 a 4.200</span><span style="font:400 12px/1.4 Roboto;color:#5A6472">Estimativa: 10 a 15% abaixo da FIPE (R$ 28.000, mai/2026). Não é fórmula homologada.</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font:700 11px Roboto;letter-spacing:.06em;color:#6D28D9">ANTES DE FECHAR</span>
+            <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><sc-for list="{{ todo }}" as="t" hint-placeholder-count="3"><li style="display:flex;gap:12px;align-items:flex-start;font:400 14px/1.5 Roboto"><span style="width:22px;height:22px;flex:none;border-radius:50%;background:#7D3EE3;color:#fff;font:700 12px/22px Roboto;text-align:center">{{ t.n }}</span><span><strong style="font-weight:700">{{ t.b }}</strong> {{ t.t }}</span></li></sc-for></ol>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid #E3D8FC">
+            <span style="font:700 11px Roboto;letter-spacing:.06em;color:#6D28D9">PERGUNTE AO COPILOTO</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ copQs }}" as="q" hint-placeholder-count="2"><button type="button" onClick="{{ q.ask }}" style="display:flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px 5px 6px;border-radius:999px;border:1px solid #DCCFF8;background:#fff;color:#5B21B6;font:500 14px/1.3 Roboto;white-space:{{ chipWs }};text-align:left;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F6F2FE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;flex:none;display:block"><span>{{ q.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">arrow_forward</span></button></sc-for></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <button type="button" onClick="{{ openCop }}" style="height:40px;padding:0 18px;border-radius:999px;border:1.5px solid #7D3EE3;background:#fff;color:#5B21B6;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F1EBFD">Fazer outra pergunta</button>
+            <span style="flex:1;min-width:220px;font:400 12px/1.45 Roboto;color:#5A6472">Síntese feita só com os dados desta consulta. Não substitui a análise dos documentos nem a vistoria.</span>
+          </div>
+        </section>
+
+        <sc-for list="{{ cats }}" as="cat" hint-placeholder-count="3">
+          <section id="{{ cat.anchor }}" data-screen-label="{{ cat.t }}" style="scroll-margin-top:105px;display:flex;flex-direction:column;gap:16px;margin-top:24px;padding-top:40px;border-top:1px solid #E6E6EE">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:0 4px">
+              <div style="flex:1 1 320px;display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;align-items:center;gap:8px;font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3"><span style="width:32px;height:32px;border-radius:10px;background:#F1EBFD;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px;letter-spacing:0">{{ cat.icon }}</span>{{ cat.eyebrow }}</span><h2 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">{{ cat.t }}</h2><span style="font:400 15px Roboto;color:#5A6472">{{ cat.sub }}</span></div>
+              <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span style="font:400 13px Roboto;color:#5A6472;white-space:nowrap">{{ cat.meta }}</span><button type="button" onClick="{{ cat.ask }}" style="display:flex;align-items:center;gap:8px;height:36px;padding:0 14px 0 8px;border-radius:999px;border:0;background:#F1EBFD;color:#6D28D9;font:500 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out" style-hover="background:#E3D8FC"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;display:block">Entender com o Copiloto</button></div>
+            </div>
+            <sc-for list="{{ cat.mods }}" as="m" hint-placeholder-count="3">
+              <article id="{{ m.anchor }}" style="scroll-margin-top:105px;background:#fff;border:1px solid {{ m.bd }};border-radius:20px;overflow:hidden">
+                <button type="button" onClick="{{ m.toggle }}" aria-expanded="{{ m.open }}" style="width:100%;display:flex;align-items:center;gap:16px;padding:22px 24px 18px;border:0;background:transparent;color:#1D2433;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FAFAFC">
+                  <span style="width:40px;height:40px;flex:none;border-radius:10px;background:{{ m.iBg }};color:{{ m.iColor }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1">{{ m.icon }}</span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font:800 20px/1.25 'Merriweather Sans',sans-serif">{{ m.t }}</span><span style="font:400 14px/1.45 Roboto;color:#3F4654">{{ m.sum }}</span></span>
+                  <span style="flex:none;display:inline-flex;align-items:center;gap:4px;height:28px;padding:0 10px;border-radius:999px;border:1px solid {{ m.b.bd }};background:{{ m.b.bg }};color:{{ m.b.fg }};font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:15px;line-height:1">{{ m.b.icon }}</span>{{ m.badge }}</span>
+                  <span style="flex:none;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">{{ m.chev }}</span>
+                </button>
+                <sc-if value="{{ m.open }}" hint-placeholder-val="{{ true }}">
+                  <div style="padding:{{ modPad }};display:flex;flex-direction:column;gap:16px">
+                    <sc-for list="{{ m.blocks }}" as="b" hint-placeholder-count="2">
+                      <sc-if value="{{ b.isNote }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:12px;background:#F4F4F6;color:#3F4654;font:400 14px/1.5 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.2;color:#5A6472">info</span><span>{{ b.text }}</span></div></sc-if>
+                      <sc-if value="{{ b.isWarn }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:12px;background:#FFF6DA;color:#9A3412;font:400 14px/1.5 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.2;color:#D97706">error</span><span>{{ b.text }}</span></div></sc-if>
+                      <sc-if value="{{ b.isSub }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:4px"><span style="font:700 14px/1.35 Roboto;color:#1D2433">{{ b.text }}</span><sc-if value="{{ b.hasBadge }}" hint-placeholder-val="{{ false }}"><span style="flex:none;display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:999px;border:1px solid {{ b.badge.bd }};background:{{ b.badge.bg }};color:{{ b.badge.fg }};font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:15px;line-height:1">{{ b.badge.icon }}</span>{{ b.badge.t }}</span></sc-if></div></sc-if>
+                      <sc-if value="{{ b.isStats }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:32px;flex-wrap:wrap"><sc-for list="{{ b.items }}" as="st" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Roboto;color:#5A6472">{{ st.k }}</span><span style="font:800 22px/1.25 'Merriweather Sans',sans-serif;color:{{ st.c }};white-space:nowrap">{{ st.v }}</span></div></sc-for></div></sc-if>
+                      <sc-if value="{{ b.isKv }}" hint-placeholder-val="{{ false }}"><dl style="margin:0;display:grid;grid-template-columns:{{ b.cols }};column-gap:24px"><sc-for list="{{ b.items }}" as="f" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:3px;padding:12px 0;border-top:1px solid #E6E6EE;min-width:0"><dt style="font:400 12px/1.35 Roboto;color:#5A6472">{{ f.k }}</dt><dd style="margin:0;font:{{ f.w }} 14px/1.35 Roboto;color:{{ f.c }};overflow-wrap:anywhere">{{ f.v }}</dd></div></sc-for></dl></sc-if>
+                      <sc-if value="{{ b.isFlags }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:{{ b.cols }};gap:8px"><sc-for list="{{ b.items }}" as="fl" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;box-sizing:border-box;border-radius:12px;background:{{ fl.bg }}"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;flex:none;color:{{ fl.ic }}">{{ fl.icon }}</span><span style="flex:1;min-width:0;font:400 14px/1.3 Roboto;color:#1D2433">{{ fl.k }}</span><span style="flex:none;font:700 12px Roboto;color:{{ fl.vc }}">{{ fl.v }}</span></div></sc-for></div></sc-if>
+                      <sc-if value="{{ b.isChips }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ b.items }}" as="ch" hint-placeholder-count="3"><span style="height:28px;padding:0 12px;border-radius:999px;background:#EEEEF2;color:#3F4654;font:400 13px/28px Roboto">{{ ch }}</span></sc-for></div></sc-if>
+                      <sc-if value="{{ b.isTable }}" hint-placeholder-val="{{ false }}"><div style="border:1px solid #E6E6EE;border-radius:12px;overflow-x:auto"><div role="table" style="min-width:{{ b.minW }}">
+                        <div role="row" style="display:grid;grid-template-columns:{{ b.gcols }};gap:16px;padding:10px 16px;background:#F6F6F9"><sc-for list="{{ b.head }}" as="h" hint-placeholder-count="4"><span role="columnheader" style="font:400 12px Roboto;color:#5A6472;min-width:0;text-align:{{ h.align }}">{{ h.t }}</span></sc-for></div>
+                        <sc-for list="{{ b.rows }}" as="row" hint-placeholder-count="2"><div role="row" style="display:grid;grid-template-columns:{{ b.gcols }};gap:16px;padding:12px 16px;border-top:1px solid #E6E6EE;transition:background .15s ease-out" style-hover="background:#FAFAFC"><sc-for list="{{ row }}" as="cell" hint-placeholder-count="4"><span role="cell" style="font-family:{{ cell.ff }};font-size:{{ cell.fs }};font-weight:{{ cell.fwt }};line-height:1.4;color:{{ cell.c }};min-width:0;overflow-wrap:anywhere;text-align:{{ cell.align }}">{{ cell.v }}</span></sc-for></div></sc-for>
+                      </div></div></sc-if>
+                      <sc-if value="{{ b.isTl }}" hint-placeholder-val="{{ false }}"><ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px"><sc-for list="{{ b.items }}" as="e" hint-placeholder-count="6"><li style="display:grid;grid-template-columns:{{ tlCols }};gap:12px;align-items:start"><span style="font:400 13px/1.4 Roboto;color:#3F4654">{{ e.d }}</span><span style="width:10px;height:10px;margin-top:4px;border-radius:50%;background:{{ e.c }}"></span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:700 14px/1.35 Roboto">{{ e.t }}</span><span style="font:400 13px/1.4 Roboto;color:#5A6472">{{ e.s }}</span></span></li></sc-for></ol></sc-if>
+                      <sc-if value="{{ b.isPhotos }}" hint-placeholder-val="{{ false }}"><div style="display:grid;grid-template-columns:{{ b.cols }};gap:8px"><sc-for list="{{ b.items }}" as="ph" hint-placeholder-count="2"><figure style="margin:0;display:flex;flex-direction:column;gap:8px"><div style="aspect-ratio:16/9;border-radius:12px;background:#ECECF2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:24px;line-height:1">image</span><span style="font:400 13px Roboto;color:#5A6472">{{ ph.t }}</span></div><figcaption style="font:400 12px Roboto;color:#5A6472">{{ ph.c }}</figcaption></figure></sc-for></div></sc-if>
+                      <sc-if value="{{ b.isDefs }}" hint-placeholder-val="{{ false }}"><dl style="margin:0;display:flex;flex-direction:column"><sc-for list="{{ b.items }}" as="df" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:{{ defCols }};gap:4px 24px;padding:10px 0;border-top:1px solid #E6E6EE"><dt style="font:700 14px/1.4 Roboto;color:#1D2433">{{ df.k }}</dt><dd style="margin:0;font:400 14px/1.4 Roboto;color:#3F4654">{{ df.v }}</dd></div></sc-for></dl></sc-if>
+                      <sc-if value="{{ b.isFipe }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 860 230" role="img" aria-label="FIPE de 05/2022 a 05/2026" style="width:100%;height:auto;display:block;font-family:Roboto,sans-serif">
+                        <line x1="72" y1="50" x2="840" y2="50" stroke="#E6E6EE"></line><line x1="72" y1="120" x2="840" y2="120" stroke="#E6E6EE"></line><line x1="72" y1="190" x2="840" y2="190" stroke="#E6E6EE"></line>
+                        <text x="60" y="54" font-size="12" fill="#7A8494" text-anchor="end">28 mil</text><text x="60" y="124" font-size="12" fill="#7A8494" text-anchor="end">26 mil</text><text x="60" y="194" font-size="12" fill="#7A8494" text-anchor="end">24 mil</text>
+                        <polygon points="100,120 280,155 460,120 640,85 820,50 820,190 100,190" fill="#F1EBFD"></polygon>
+                        <polyline points="100,120 280,155 460,120 640,85 820,50" fill="none" stroke="#7D3EE3" stroke-width="3" stroke-linejoin="round"></polyline>
+                        <circle cx="100" cy="120" r="5.5" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="280" cy="155" r="5.5" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="460" cy="120" r="5.5" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="640" cy="85" r="5.5" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="820" cy="50" r="8" fill="#7D3EE3"></circle>
+                        <text x="100" y="218" font-size="12" fill="#7A8494" text-anchor="middle">05/2022</text><text x="280" y="218" font-size="12" fill="#7A8494" text-anchor="middle">05/2023</text><text x="460" y="218" font-size="12" fill="#7A8494" text-anchor="middle">05/2024</text><text x="640" y="218" font-size="12" fill="#7A8494" text-anchor="middle">05/2025</text><text x="820" y="218" font-size="12" fill="#7A8494" text-anchor="middle">05/2026</text>
+                      </svg></sc-if>
+                      <sc-if value="{{ b.isChart }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 860 236" role="img" aria-label="Leituras de quilometragem de 2019 a 2022 e estimativa até 2026" style="width:100%;height:auto;display:block;font-family:Roboto,sans-serif">
+                        <line x1="72" y1="50" x2="840" y2="50" stroke="#E6E6EE"></line><line x1="72" y1="120" x2="840" y2="120" stroke="#E6E6EE"></line><line x1="72" y1="190" x2="840" y2="190" stroke="#E6E6EE"></line>
+                        <text x="0" y="54" font-size="12" fill="#7A8494">200 mil km</text><text x="0" y="124" font-size="12" fill="#7A8494">150 mil km</text><text x="0" y="194" font-size="12" fill="#7A8494">100 mil km</text>
+                        <text x="80" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2019</text><text x="180" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2020</text><text x="280" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2021</text><text x="380" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2022</text><text x="480" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2023</text><text x="580" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2024</text><text x="680" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2025</text><text x="780" y="220" font-size="12" fill="#7A8494" text-anchor="middle">2026</text>
+                        <polygon points="425,111.6 840,24.8 840,54.2" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"></polygon>
+                        <line x1="425" y1="111.6" x2="840" y2="39.4" stroke="#B45309" stroke-width="3" stroke-dasharray="9 7"></line>
+                        <polyline points="100,162 200,148 305,131.2 425,111.6" fill="none" stroke="#7D3EE3" stroke-width="3" stroke-linejoin="round"></polyline>
+                        <circle cx="100" cy="162" r="6" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="200" cy="148" r="6" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="305" cy="131.2" r="6" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle><circle cx="425" cy="111.6" r="6" fill="#fff" stroke="#7D3EE3" stroke-width="2.5"></circle>
+                        <text x="425" y="96" font-size="12" fill="#5A6472" text-anchor="middle">156 mil · 06/2022</text>
+                        <text x="840" y="14" font-size="12" fill="#5A6472" text-anchor="end">estimativa 197 a 218 mil</text>
+                      </svg></sc-if>
+                    </sc-for>
+                    <sc-if value="{{ m.hasQs }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:10px;padding-top:16px;border-top:1px solid #E6E6EE"><span style="font:700 11px Roboto;letter-spacing:.06em;color:#6D28D9">PERGUNTE AO COPILOTO</span><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ m.qs }}" as="q" hint-placeholder-count="2"><button type="button" onClick="{{ q.ask }}" style="display:flex;align-items:center;gap:8px;min-height:36px;padding:5px 14px 5px 6px;border-radius:999px;border:1px solid #DCCFF8;background:#fff;color:#5B21B6;font:500 14px/1.3 Roboto;white-space:{{ chipWs }};text-align:left;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F6F2FE"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;flex:none;display:block"><span>{{ q.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">arrow_forward</span></button></sc-for></div></div></sc-if>
+                    <span style="display:flex;align-items:center;gap:6px;padding-top:14px;border-top:1px dashed #DCDCE4;font:400 12px/1.4 Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">schedule</span>{{ m.src }}</span>
+                  </div>
+                </sc-if>
+              </article>
+            </sc-for>
+          </section>
+        </sc-for>
+
+        <span style="margin-top:-12px;padding:0 4px;font:400 12px/1.5 Roboto;color:#5A6472">Consulta demonstrativa com dados fictícios (mock). Não usar como diagnóstico, cotação ou histórico real de veículo.</span>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:24px 28px;border-radius:20px;background:#1D2433;color:#fff">
+          <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px"><span style="font:700 18px 'Merriweather Sans',sans-serif">Vai olhar outro carro?</span><span style="font:400 14px/1.5 Roboto;color:#C9CDD6">Consulte a placa antes de fechar negócio. O relatório fica na sua conta e não expira.</span></div>
+          <a href="Consulta Placa.dc.html" style="height:48px;padding:0 22px;border-radius:8px;background:#FF5040;color:#fff;font:700 15px Roboto;display:flex;align-items:center;gap:6px" style-hover="background:#E63E2F;color:#fff">Consultar outra placa<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <sc-if value="{{ notEmbedR }}" hint-placeholder-val="{{ true }}"><dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import></sc-if>
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:80;padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25)">{{ toast }}</div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  state = { closed: {}, toast: "", vw: window.innerWidth, active: "sec-resumo", cop: false, sess: {}, theme: "geral", draft: "", typing: "" };
+  msgRef = React.createRef(); inRef = React.createRef(); copRef = React.createRef(); colRef = React.createRef(); tabRef = React.createRef();
+  tabFade = () => { const el = this.tabRef.current; if (!el) return; const l = el.scrollLeft > 4, r = el.scrollLeft + el.clientWidth < el.scrollWidth - 4; const f = this.state.fade || {}; if (f.l !== l || f.r !== r) this.setState({ fade: { l, r } }); };
+  measure = () => { const el = this.colRef.current; if (!el) return; const r = el.getBoundingClientRect(), bar = { l: Math.round(r.left), w: Math.round(r.width) }; if (!this.state.bar || this.state.bar.l !== bar.l || this.state.bar.w !== bar.w) this.setState({ bar }); };
+  isDemo = () => { if (this.props.embed) return false; const q = new URLSearchParams(location.search); return q.get("demo") === "1" || !q.get("placa"); };
+  key = () => "achecar-copiloto:" + (new URLSearchParams(location.search).get("placa") || "ABC1D23").toUpperCase();
+  componentDidMount() {
+    const pl = (new URLSearchParams(location.search).get("placa") || "ABC1D23").toUpperCase();
+    window.ACHECAR_COP_CTX = { id: "consulta:" + pl, title: pl + " · Audi A3 1.8 2004 · conversa salva nesta consulta", sugs: ["Quais desses registros travam a compra?", "O que resolver antes de pagar?", "O leilão de 2020 é grave?", "Como negociar os débitos?"], answer: (q) => this.answer(q) };
+    window.dispatchEvent(new Event("achecar-copiloto-ctx"));
+    if (!this.isDemo()) try { const L = JSON.parse(localStorage.getItem("achecar-consultas") || "[]").filter((c) => c.placa !== pl); localStorage.setItem("achecar-consultas", JSON.stringify([{ placa: pl, t: "Audi A3 1.8 · 2004", d: "5 apontamentos · concluída em 05/10/2026" }, ...L].slice(0, 10))); } catch (e) {}
+    let logged = false; try { logged = !!JSON.parse(localStorage.getItem("achecar-session") || "null")?.logged; } catch (e) {}
+    if (!logged && !this.isDemo() && !this.props.embed) { const u = "Login.dc.html?next=" + encodeURIComponent("Relatorio.dc.html" + location.search); let n = 0; const go = () => { if (window.achecarLogin) window.achecarLogin(u, null, { gate: true }); else if (++n < 30) setTimeout(go, 100); else location.href = u; }; go(); return; }
+    this.onR = () => { this.setState({ vw: window.innerWidth }); requestAnimationFrame(() => { this.measure(); this.tabFade(); }); }; this.ro = new ResizeObserver(() => this.measure()); setTimeout(() => { if (this.colRef.current) this.ro.observe(this.colRef.current); this.measure(); }, 0);
+    this.onS = () => { let cur = "sec-resumo"; this.navIds().forEach((id) => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 200) cur = id; }); if (cur !== this.state.active) this.setState({ active: cur }); };
+    this.onK = (e) => { if (e.key === "Escape" && this.state.cop) this.setState({ cop: false }); };
+    this.onD = (e) => { if (this.state.cop && this.copRef.current && !this.copRef.current.contains(e.target)) this.setState({ cop: false }); };
+    try { const sv = JSON.parse(localStorage.getItem(this.key()) || "null"); if (sv && sv.sess) this.setState({ sess: sv.sess, theme: sv.theme || "geral" }); } catch (e) {}
+    window.addEventListener("resize", this.onR); window.addEventListener("scroll", this.onS, { passive: true }); document.addEventListener("keydown", this.onK); document.addEventListener("pointerdown", this.onD, true);
+  }
+  componentWillUnmount() { if (window.ACHECAR_COP_CTX && /^consulta:/.test(window.ACHECAR_COP_CTX.id)) { window.ACHECAR_COP_CTX = null; window.dispatchEvent(new Event("achecar-copiloto-ctx")); } this.ro && this.ro.disconnect(); clearTimeout(this.tt); clearTimeout(this.rt); window.removeEventListener("resize", this.onR); window.removeEventListener("scroll", this.onS); document.removeEventListener("keydown", this.onK); document.removeEventListener("pointerdown", this.onD, true); }
+  persist = () => { try { localStorage.setItem(this.key(), JSON.stringify({ sess: this.state.sess, theme: this.state.theme, at: Date.now() })); } catch (e) {} setTimeout(() => { const el = this.msgRef.current; if (el) el.scrollTop = el.scrollHeight; }, 30); };
+  set = (u) => this.setState(u, this.persist);
+  toast = (m) => { clearTimeout(this.tt); this.setState({ toast: m }); this.tt = setTimeout(() => this.setState({ toast: "" }), 3000); };
+  scrollTo = (id) => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 100, behavior: "smooth" }); };
+  navIds = () => ["sec-resumo", "sec-copiloto", ...this.CATS.map((c) => "cat-" + c.id)];
+  ask = (q, th) => { window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { q } })); };
+  askOld = (q, th) => {
+    const t = th || this.state.theme, add = (s, m) => ({ ...s.sess, [t]: [...(s.sess[t] || []), m] });
+    this.set((s) => ({ cop: true, theme: t, typing: t, draft: "", sess: add(s, { me: true, text: q }) }));
+    clearTimeout(this.rt); this.rt = setTimeout(() => this.set((s) => ({ typing: "", sess: add(s, { me: false, text: this.answer(q) }) })), 900);
+  };
+  answer = (q) => {
+    const t = q.toLowerCase();
+    for (const [k, v] of this.ANS) if (k.test(t)) return v;
+    return "Pelo que esta consulta mostra, os pontos que pesam são o leilão de 2020 como sinistrado, os R$ 1.004,59 em débitos e o recall pendente. Se quiser, pergunte sobre um deles que eu detalho.";
+  };
+  ANS = [
+    [/travam|impede a transfer|precisam estar pagos/, "O que trava a transferência hoje é o licenciamento 2026 em aberto (R$ 711,12). A multa de R$ 293,47 também precisa estar paga para o DETRAN-ES liberar.\n\nLeilão, sinistro e recall não impedem a transferência, mas pesam no preço e no seguro."],
+    [/resolver antes|antes de comprar|o que eu resolvo/, "Antes de pagar:\n1. Peça o comprovante de quitação dos R$ 1.004,59 ou abata do valor.\n2. Faça vistoria cautelar com foco na lataria (batida de 2020).\n3. Confirme o recall numa concessionária. É gratuito."],
+    [/negociar|abater/, "Some os débitos (R$ 1.004,59) ao desconto pelo histórico de leilão. A faixa de R$ 2.800 a R$ 4.200 abaixo da FIPE é um ponto de partida; mostre o relatório ao vendedor para justificar."],
+    [/vale a pena|é grave|leilão de 2020/, "Depende do preço e da vistoria. O carro foi a leilão como sinistrado, com danos médios e reparos de lataria. Se a vistoria cautelar aprovar e o desconto refletir o histórico, pode valer. Sem vistoria, eu não fecharia."],
+    [/desvaloriza/, "Carros com registro de leilão costumam ser revendidos de 10% a 30% abaixo da FIPE, dependendo da classificação. Aqui a classe é dano médio, o que puxa para o meio dessa faixa."],
+    [/seguro|seguradora/, "Pelo radar securitário, 9 de 15 seguradoras aceitam este carro, com prêmio entre R$ 1.800 e R$ 3.000 por ano. Algumas podem exigir vistoria prévia por causa do leilão."],
+    [/danos médios|reparos procurar|lataria|checklist/, "Danos médios indicam reparo de lataria sem comprometimento estrutural registrado. Na vistoria, peça para checar longarinas, colunas, alinhamento de portas e diferenças de pintura, principalmente na frente direita."],
+    [/indenização parcial/, "Não necessariamente. Indenização parcial quer dizer que a seguradora pagou parte do valor, sem perda total. O rótulo não mostra a extensão do dano; a vistoria cautelar é que confirma."],
+    [/quilometragem|hodômetro/, "A última leitura verificada é de 156.000 km em 06/2022. A estimativa de 197 a 218 mil km usa o ritmo de 12.000 km/ano e não é leitura real. Se o hodômetro mostrar muito menos, desconfie e peça notas de revisão."],
+    [/recall/, "A campanha RECALL_DEMO_001 corrige um componente de segurança e está pendente nesta unidade. O reparo é gratuito: agende numa concessionária Audi informando o chassi."],
+    [/licenciamento|quem deve pagar/, "O licenciamento 2026 custa R$ 711,12 no DETRAN-ES. Normalmente quem vende quita antes da transferência; se você pagar, abata do valor combinado."],
+    [/multa/, "A multa em aberto (R$ 293,47, avanço de sinal) é do veículo. Ela precisa ser paga para transferir; os pontos ficam com quem dirigia na data, não com você."],
+    [/história|3 frases|resuma|pesa nessa/, "Saiu da fábrica em 2004 e foi carro de locadora até 2007. Foi furtado e recuperado em 2018, financiado em 2019 e foi a leilão como sinistrado em 2020. Passou em vistoria em 2024 com reparo de lataria informado."],
+    [/donos|proprietári/, "Para um carro de 2004, dois registros é pouco. A lista pode estar incompleta: pergunte ao vendedor há quanto tempo está com o carro e peça o histórico de revisões."],
+    [/chassi|motor|documento/, "Os dados de cadastro batem entre as bases nacional e estadual. Na vistoria, confira se o chassi gravado no carro e o número do motor são iguais aos do documento."],
+    [/preço|justo|fipe|anúncio/, "A FIPE de mai/2026 é R$ 28.000. Com o histórico de leilão e os débitos, um preço justo fica perto de R$ 23.800 a R$ 25.200, já abatendo R$ 1.004,59."]
+  ];
+  TONE = { bad: { bg: "#FFF6DA", bd: "#F5C451", fg: "#92400E", icon: "error" }, ok: { bg: "#E9F7EE", bd: "#E9F7EE", fg: "#15803D", icon: "check_circle" }, info: { bg: "#E8F0FE", bd: "#E8F0FE", fg: "#1E3A8A", icon: "info" }, hist: { bg: "#EEEEF2", bd: "#EEEEF2", fg: "#3F4654", icon: "history" } };
+  CHECKS = [
+    ["Restrições estaduais", "Licenciamento 2026 pendente", 1, "estaduais"], ["Registro de leilão", "18/03/2020 · sinistrado", 1, "leilao"],
+    ["Indício de sinistro", "Indenização parcial em 2020", 1, "batidas"], ["Recall pendente", "1 campanha", 1, "recall"],
+    ["Multas no RENAINF", "1 multa em aberto", 1, "renainf"], ["Motor alterado", "", 0, "cad"],
+    ["Chassi remarcado", "", 0, "restricoes"], ["Roubo ou furto ativo", "Furto de 2018 recuperado", 0, "roubo"],
+    ["Apontamentos bancários", "", 0, "comercial"], ["Gravame ativo", "Quitado em 2024", 0, "gravame"],
+    ["Restrição judicial (RENAJUD)", "Baixada em 2022", 0, "renajud"]
+  ];
+  CATS = [
+    { id: "veiculo", icon: "directions_car", t: "Veículo e documentos", sub: "Quem é o carro e se os cadastros batem.", mods: [
+      { id: "ident", icon: "directions_car", t: "Identificação do veículo", sum: "Dados de cadastro da unidade consultada.", b: "info", badge: "Informativo", blocks: [
+        ["note", "A foto do topo é do modelo, não da unidade consultada."],
+        ["kv", 3, [["Placa", "ABC1D23"], ["Placa anterior", "ABC1234"], ["Marca", "Audi"], ["Modelo", "A3 1.8"], ["Versão", "1.8 manual"], ["Ano fabricação/modelo", "2004/2005"], ["Cor", "Prata"], ["Procedência", "Nacional"], ["Renavam", "00000000001"], ["Motor", "MOTORDEMO1"], ["Chassi", "9ZZZZZZZZZZ000001"], ["Cilindradas", "1.781 cm³"], ["Combustível", "Gasolina"], ["Categoria", "Particular"], ["Tipo", "Automóvel"], ["Espécie", "Passageiro"], ["Código FIPE", "CODIGO_FIPE_DEMO"], ["Potência", "125 cv"], ["Câmbio", "Manual 5 marchas"], ["Passageiros", "5"], ["Capacidade de carga", "não levantado"], ["Peso bruto total", "1.700 kg"], ["Capacidade de tração", "2.900 kg"], ["Eixos", "2"], ["Eixos traseiros", "não levantado"], ["Eixos auxiliares", "não levantado"], ["Município/UF", "Domingos Martins/ES"], ["Valor FIPE", "R$ 28.000"]]]
+      ], qs: ["Esses dados batem com o documento do carro?", "O que conferir no chassi e no motor?"] },
+      { id: "fat", icon: "receipt_long", t: "Faturamento inicial", sum: "Primeira venda: pessoa física.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Registro relacionado à saída inicial do veículo da fábrica para a cadeia de comercialização."],
+        ["kv", 3, [["Tipo de comprador", "Pessoa física"], ["Documento", "***.***.***-**"], ["Data do faturamento", "não levantado"]]]
+      ], qs: ["O que muda o carro ter saído para pessoa física?", "Isso afeta o valor de revenda?"] },
+      { id: "prop", icon: "group", t: "Histórico de proprietários", sum: "2 registros disponíveis · placa sempre no ES.", b: "info", badge: "Informativo", blocks: [
+        ["note", "A lista mostra só os registros disponíveis e não garante a contagem completa de transferências. Nomes e documentos não são exibidos."],
+        ["table", ["Posição", "Tipo", "Município/UF", "Documento", "Período"], [["Atual", "Pessoa física", "Domingos Martins/ES", "***.***.***-**", "não levantado"], ["Anterior", "Pessoa jurídica", "Vitoria/ES", "**.***.***/****-**", "não levantado"]], { w: ["0.7fr", "1fr", "1.3fr", "1.3fr", "1fr"] }]
+      ], qs: ["Quantos donos é normal para um carro de 2005?", "O que perguntar ao vendedor sobre os donos anteriores?"] },
+      { id: "cad", icon: "compare_arrows", t: "Cadastro nacional × estadual", sum: "Os dois cadastros batem campo a campo. 0 divergências.", b: "ok", badge: "Sem divergência", blocks: [
+        ["table", ["Campo", "Base nacional", "Base estadual (ES)", ""], [["Placa", "ABC1D23", "ABC1D23"], ["Chassi", "9ZZZZZZZZZZ000001", "9ZZZZZZZZZZ000001"], ["Marcação do chassi", "Normal", "Normal"], ["Motor", "MOTORDEMO1", "MOTORDEMO1"], ["Renavam", "00000000001", "00000000001"], ["Categoria", "Particular", "Particular"], ["Combustível", "Gasolina", "Gasolina"], ["Cor", "Prata", "Prata"], ["Espécie", "Passageiro", "Passageiro"], ["Tipo", "Automóvel", "Automóvel"], ["Município/UF", "Domingos Martins/ES", "Domingos Martins/ES"], ["Situação", "Em circulação", "Em circulação"], ["DI (importação)", "não se aplica", "não se aplica"], ["Atualizado em", "30/09/2026", "30/09/2026"]].map((r) => [...r, "✓"]), { w: ["1fr", "1.2fr", "1.2fr", "48px"], check: 3 }],
+        ["sub", "Conferência de componentes"],
+        ["flags", [["Divergência em placa", "Não"], ["Divergência em chassi", "Não"], ["Divergência em motor", "Não"], ["Divergência em renavam", "Não"], ["Divergência em ano de fabricação", "Não"], ["Divergência em ano do modelo", "Não"], ["Divergência em cor", "Não"], ["Divergência em combustível", "Não"]]]
+      ], qs: ["Por que as bases nacional e estadual divergem?", "Essa diferença pode travar a transferência?"], src: "Fonte: base nacional e base estadual (mock) · consultado em 05/10/2026, 16:45 · atualizadas em 30/09/2026" }
+    ] },
+    { id: "restr", icon: "block", t: "Restrições e situação", sub: "O que pode travar a transferência ou a circulação.", mods: [
+      { id: "restricoes", icon: "block", t: "Restrições", sum: "1 apontamento: licenciamento 2026 pendente.", b: "bad", badge: "Consta", blocks: [
+        ["warn", "Licenciamento 2026 em aberto no ES (R$ 711,12). Sem ele pago, o carro não pode ser transferido."],
+        ["flags", [["Licenciamento pendente", "Sim", 1], ["Restrição administrativa", "Não"], ["Alienação fiduciária ativa", "Não"], ["RENAJUD ativo", "Não"]]],
+        ["kv", 2, [["Marcação do chassi", "Normal"], ["Agente financeiro atual", "Nenhum"]]]
+      ], qs: ["O licenciamento pendente impede a transferência?", "Como quitar o licenciamento 2026 antes de fechar?"] },
+      { id: "nacionais", icon: "public", t: "Restrições nacionais", sum: "Nenhum apontamento na base nacional.", b: "ok", badge: "Nada consta", blocks: [
+        ["flags", [["Financeira", "Não"], ["RENAJUD", "Não"], ["Comunicação de venda", "Não"], ["Roubo ou furto ativo", "Não"], ["Administrativa", "Não"], ["Outras restrições", "Não"]]]
+      ], qs: ["O que conta como restrição nacional?", "Preciso de algum documento extra?"] },
+      { id: "estaduais", icon: "map", t: "Restrições estaduais (ES)", sum: "1 apontamento: licenciamento.", b: "bad", badge: "Consta", blocks: [
+        ["flags", [["Licenciamento", "Sim", 1], ["Administrativa", "Não"], ["Comunicação de venda", "Não"], ["Data tributária", "Não"], ["Financeira", "Não"], ["Guincho", "Não"], ["Judicial", "Não"], ["Arrendamento", "Não"], ["RENAJUD", "Não"], ["Roubo", "Não"], ["Tributária", "Não"], ["IPVA", "Não"], ["Restrição 1", "Não"], ["Restrição 2", "Não"], ["Restrição 3", "Não"], ["Restrição 4", "Não"]]]
+      ], qs: ["Quanto custa regularizar o licenciamento no ES?", "Quem deve pagar: eu ou o vendedor?"], src: "Fonte: base estadual ES (mock) · consultado em 05/10/2026, 16:45 · atualizada em 30/09/2026" },
+      { id: "gravame", icon: "account_balance", t: "Gravame (financiamento)", sum: "1 registro, baixado pela financeira em 19/07/2024. Sem financiamento ativo.", b: "ok", badge: "Sem gravame ativo", blocks: [
+        ["note", "Registro histórico quitado. Não há financiamento ativo nesta consulta."],
+        ["kv", 3, [["Situação", "Baixado pelo agente"], ["Tipo", "Alienação fiduciária"], ["Agente", "Financeira demonstrativa"], ["Documento do agente", "**.***.***/****-**"], ["Responsável", "Financeira"], ["Contrato", "CONTRATO_DEMO_001"], ["Nº da restrição", "RESTRICAO_DEMO_001"], ["Documento do financiado", "***.***.***-**"], ["Inclusão", "19/07/2019"], ["Data da situação", "19/07/2024"], ["Vigência do contrato", "19/07/2024"], ["Emissão", "não levantado"], ["Intenção", "Financiamento"], ["UF/município", "ES · Domingos Martins"], ["Ano fab./modelo", "2004/2005"], ["Chassi", "9ZZZZZZZZZZ000001"]]]
+      ], qs: ["O financiamento quitado ainda pode dar problema?", "Como confirmo a baixa do gravame?"] },
+      { id: "renajud", icon: "gavel", t: "RENAJUD (restrição judicial)", sum: "1 registro histórico, baixado em 15/09/2022.", b: "ok", badge: "Sem restrição ativa", blocks: [
+        ["table", ["Tribunal", "Órgão", "Restrição", "Inclusão", "Baixa", "Situação"], [["TRIBUNAL_DEMO (00000)", "VARA_DEMO", "Transferência", "15/08/2022", "15/09/2022", "Baixada"]], { w: ["1.6fr", "1fr", "1fr", "1fr", "1fr", "0.8fr"] }]
+      ], qs: ["A restrição baixada em 2022 ainda pesa?", "O que pedir ao vendedor sobre esse processo?"] },
+      { id: "roubo", icon: "local_police", t: "Roubo e furto", sum: "Furto em 2018 com recuperação registrada. Sem alerta ativo hoje.", b: "hist", badge: "Histórico", blocks: [
+        ["note", "Recuperação registrada é evento histórico; confirmar a situação atual nas bases competentes."],
+        ["kv", 2, [["Alerta ativo de roubo ou furto", "Não"]]],
+        ["table", ["Data", "Ocorrência", "Município", "Boletim"], [["14/08/2018", "Furto", "Vitoria/ES", "BO_DEMO_001"], ["02/09/2018", "Recuperação", "Vitoria/ES", "BO_DEMO_002"]]]
+      ], qs: ["Carro recuperado de furto tem risco hoje?", "O furto de 2018 afeta o seguro?"] },
+      { id: "comercial", icon: "shield", t: "Risco comercial", sum: "Sem apontamento em bancos, financeiras e seguradoras.", b: "ok", badge: "Nada consta", blocks: [
+        ["note", "Este indicador cobre só o âmbito comercial. Não resume todos os riscos da consulta (leilão, débitos e recall estão em outros módulos)."],
+        ["kv", 3, [["Score", "100 de 100"], ["Risco", "Baixo"], ["Âmbito", "Bancos, financeiras e seguradoras"]]]
+      ], qs: ["O que é risco comercial na prática?", "Banco e seguradora vão aceitar esse carro?"] }
+    ] },
+    { id: "debitos", icon: "payments", t: "Débitos e multas", sub: "O que está em aberto hoje.", mods: [
+      { id: "debitos", icon: "payments", t: "Débitos", sum: "R$ 1.004,59 em aberto: licenciamento 2026 e 1 multa.", b: "bad", badge: "R$ 1.004,59", blocks: [
+        ["note", "Multas, Municipais e RENAINF mostram a mesma multa de R$ 293,47. Três categorias com valor não são três dívidas. A multa já paga não entra no total."],
+        ["stats", [["Total em aberto", "R$ 1.004,59", 1], ["Itens únicos", "2"]]],
+        ["table", ["Item", "Tipo", "Origem", "No RENAINF", "Valor pendente"], [["Multa demo_002", "Multa", "Municipal", "Sim", "R$ 293,47"], ["Licenciamento 2026", "Licenciamento", "Estadual", "Não", "R$ 711,12"]], { right: [4] }],
+        ["sub", "Por categoria"],
+        ["kv", 4, [["IPVA", "R$ 0,00"], ["DPVAT", "R$ 0,00"], ["Licenciamento", "R$ 711,12", 1], ["Multas", "R$ 293,47", 1], ["Municipais", "R$ 293,47"], ["RENAINF", "R$ 293,47"], ["DETRAN", "R$ 0,00"], ["DER", "R$ 0,00"], ["DERSA", "R$ 0,00"], ["PRF", "R$ 0,00"], ["CETESB", "R$ 0,00"]]]
+      ], qs: ["Como abater R$ 1.004,59 na negociação?", "Quais débitos precisam estar pagos antes da transferência?"] },
+      { id: "renainf", icon: "traffic", t: "Multas no RENAINF", sum: "2 autos de infração: 1 pago e 1 em aberto (R$ 293,47).", b: "bad", badge: "1 em aberto", blocks: [
+        ["stats", [["Autos", "2"], ["Pago", "R$ 195,23"], ["Pendente", "R$ 293,47", 1]]],
+        ["sub", "Avanço de sinal · Audi A3 1.8", "bad", "Em aberto"],
+        ["kv", 3, [["Auto", "DEMO20260002"], ["Órgão autuador", "ORGAO_DEMO_MUNICIPAL"], ["Município", "Vitoria/ES"], ["Local", "Avenida Demonstrativa, 100"], ["Data e hora", "01/03/2026, 09:15"], ["Cadastro", "03/03/2026"], ["Notificação", "10/03/2026"], ["Penalidade", "05/04/2026"], ["Velocidade", "não se aplica"], ["Valor", "R$ 293,47"], ["Pago", "R$ 0,00"], ["Pendente", "R$ 293,47", 1]]],
+        ["sub", "Excesso de velocidade · Audi A3 1.8", "ok", "Paga"],
+        ["kv", 3, [["Auto", "DEMO20250001"], ["Órgão autuador", "ORGAO_DEMO_ESTADUAL"], ["Município", "Vitoria/ES"], ["Local", "Via Demonstrativa, Km 10"], ["Data e hora", "08/01/2025, 14:32"], ["Cadastro", "10/01/2025"], ["Notificação", "15/01/2025"], ["Penalidade", "20/02/2025"], ["Velocidade", "95 km/h medida · limite 80 km/h"], ["Valor", "R$ 195,23"], ["Pago", "R$ 195,23"], ["Pendente", "R$ 0,00"]]]
+      ], qs: ["A multa em aberto passa para o meu nome?", "Como pagar a multa de R$ 293,47?"], src: "Fonte: RENAINF (mock) · consultado em 05/10/2026, 16:45" }
+    ] },
+    { id: "hist", icon: "history", t: "Histórico", sub: "Leilão, sinistro, locadora, laudos e anúncios.", mods: [
+      { id: "linha", icon: "timeline", t: "Linha do tempo", sum: "14 eventos de 2004 a 2024. 2 pedem atenção (2020).", b: "info", badge: "Informativo", blocks: [
+        ["tl", [["10/11/2024", "p", "Laudo de vistoria aprovado com observações", "Reparo de lataria informado."], ["19/07/2024", "p", "Financiamento quitado", "Gravame baixado pela financeira."], ["15/09/2022", "p", "Restrição judicial baixada", "RENAJUD incluído em 15/08/2022."], ["17/06/2022", "g", "Última leitura de quilometragem", "156.000 km."], ["10/05/2022", "g", "Anunciado à venda", "R$ 25.000 com 150.000 km (não verificado)."], ["22/04/2022", "p", "Laudo de vistoria aprovado", "Arquivo não disponível."], ["06/04/2021", "g", "2 falhas registradas", "Sensores de roda e de direção, com 142.000 km."], ["18/03/2020", "o", "Vendido em leilão como sinistrado", "Lote 0089 · danos médios."], ["01/02/2020", "o", "Indenização parcial", "Batida com reparo parcial pago por seguradora."], ["19/07/2019", "p", "Financiado", "Alienação fiduciária."], ["02/09/2018", "g", "Recuperado após furto", "BO_DEMO_002 · Vitória/ES."], ["14/08/2018", "g", "Furto registrado", "BO_DEMO_001 · Vitória/ES."], ["10/01/2005", "g", "Uso em locadora até 12/2007", "Locadora demonstrativa."], ["2004", "p", "Faturamento inicial", "Pessoa física."]]]
+      ], qs: ["O que mais pesa nessa história?", "Resuma a vida do carro em 3 frases"], src: "Montada a partir dos módulos desta consulta." },
+      { id: "leilao", icon: "gavel", t: "Leilão", sum: "1 registro: leilão em 18/03/2020, classificado como sinistrado.", b: "bad", badge: "Consta", blocks: [
+        ["warn", "Carro de leilão costuma valer menos na revenda e pode ter restrição de seguro. O alcance das bases de leilão é limitado: não ter registro não comprova que o carro nunca passou por leilão."],
+        ["kv", 3, [["Data do leilão", "18/03/2020"], ["Leilão", "LEILAO_DEMO_001"], ["Lote", "0089"], ["Condição", "Sinistrado", 1], ["Comitente", "Comitente demonstrativo"], ["Marca/modelo", "Audi A3 1.8"], ["Placa", "ABC1D23"], ["Chassi", "9ZZZZZZZZZZ000001"]]]
+      ], qs: ["Quanto o leilão desvaloriza esse carro?", "Consigo seguro para carro de leilão?"] },
+      { id: "classif", icon: "speed", t: "Classificação do leilão", sum: "Danos médios no registro histórico.", b: "bad", badge: "Danos médios", blocks: [
+        ["note", "A escala do fornecedor não foi informada, então o score não é convertido em porcentagem."],
+        ["kv", 3, [["Classe de dano", "Médio", 1], ["Score do fornecedor", "3"], ["Escala", "não informada"]]]
+      ], qs: ["O que significa danos médios?", "Que reparos procurar na vistoria?"], src: "Fonte: fornecedor de leilão (mock) · leilão LEILAO_DEMO_001" },
+      { id: "remk", icon: "fact_check", t: "Remarketing: evento e checklist", sum: "Evento de 18/03/2020: reparos de lataria necessários; motor e câmbio funcionando.", b: "bad", badge: "Consta", blocks: [
+        ["note", "Condição fictícia registrada na data do evento; não representa estado atual."],
+        ["kv", 3, [["Data do evento", "18/03/2020"], ["Organizador", "Organizador demonstrativo"], ["Vendedor", "Comitente demonstrativo"], ["Condição do veículo", "Reparos de lataria necessários", 1], ["Situação do chassi", "Regular"], ["Motor", "Funcionando"], ["Câmbio", "Funcionando"], ["Mecânica", "Exige inspeção", 1], ["Segmento", "Hatch médio"]]],
+        ["sub", "Checklist de inspeção · 17/03/2020"],
+        ["kv", 4, [["Motor", "Bom"], ["Porta-malas", "Bom"], ["Frente direita", "Regular", 1], ["Porta dianteira direita", "Bom"], ["Porta traseira direita", "Bom"], ["Traseira direita", "Bom"], ["Lado direito", "Bom"], ["Pneu traseiro direito", "Bom"], ["Traseira", "Bom"], ["Bancos dianteiros", "Bom"], ["Forro do teto", "Bom"], ["Carenagem dianteira", "não informado"], ["Carenagem direita", "não informado"], ["Carenagem esquerda", "não informado"], ["Tanque de combustível", "Bom"], ["Lado esquerdo", "Bom"], ["Pneu traseiro esquerdo", "Bom"], ["Caçamba", "não se aplica"], ["Bancos traseiros", "Bom"], ["Teto", "Bom"]]]
+      ], qs: ["O que o checklist do leilão mostra?", "Algum item do checklist preocupa?"] },
+      { id: "batidas", icon: "car_crash", t: "Batidas e indenizações", sum: "Indenização parcial registrada em 01/02/2020.", b: "bad", badge: "Consta", blocks: [
+        ["warn", "Parcial e integral são classificações diferentes; o rótulo não mostra a extensão física dos danos. Confira na vistoria cautelar."],
+        ["flags", [["Indenização parcial · 01/02/2020", "Sim", 1], ["Indenização integral (perda total)", "Não"]]],
+        ["kv", 2, [["CSV de sinistro recuperado", "Não consultado nesta consulta"]]]
+      ], qs: ["Indenização parcial quer dizer batida grave?", "O que olhar na lataria por causa da batida de 2020?"] },
+      { id: "locadora", icon: "car_rental", t: "Uso em locadora", sum: "Carro de locadora de 01/2005 a 12/2007. Hoje é de uso particular.", b: "hist", badge: "Histórico", blocks: [
+        ["note", "Uso anterior em locadora não informa sozinho o estado atual de conservação."],
+        ["kv", 4, [["Empresa", "Locadora demonstrativa"], ["Início", "10/01/2005"], ["Fim", "01/12/2007"], ["Uso atual", "Particular"]]]
+      ], qs: ["Carro de locadora desgasta mais?", "O que conferir por ter sido carro de aluguel?"] },
+      { id: "laudos", icon: "assignment_turned_in", t: "Laudos de vistoria", sum: "2 laudos: aprovado com observações (2024) e aprovado (2022).", b: "hist", badge: "Histórico", blocks: [
+        ["note", "Laudos seguem os critérios de seus emissores; data antiga não equivale a vistoria atual."],
+        ["table", ["Data", "Laudo", "Resultado", "Observações", "Arquivo"], [["10/11/2024", "LAUDO_DEMO_001", "Aprovado com observações", "Reparo de lataria informado no laudo fictício", "Disponível"], ["22/04/2022", "LAUDO_DEMO_002", "Aprovado", "—", "Sem arquivo"]], { w: ["0.9fr", "1.2fr", "1.5fr", "2fr", "0.9fr"] }]
+      ], qs: ["O laudo com observações é um problema?", "Preciso fazer uma nova vistoria cautelar?"] },
+      { id: "anuncios", icon: "sell", t: "Anúncios anteriores", sum: "1 anúncio em 10/05/2022: R$ 25.000 com 150.000 km.", b: "hist", badge: "Histórico", blocks: [
+        ["note", "O que o anunciante declarou não foi verificado. Preço de anúncio não é preço atual."],
+        ["kv", 3, [["Data", "10/05/2022"], ["Valor anunciado", "R$ 25.000"], ["Quilometragem anunciada", "150.000 km"]]],
+        ["sub", "Opcionais anunciados"], ["chips", ["Ar-condicionado", "Vidros elétricos", "Direção hidráulica"]],
+        ["sub", "Fotos do anúncio"], ["chips", ["Frente do veículo demonstrativo · 10/05/2022", "Lateral do veículo demonstrativo · 10/05/2022"]]
+      ], qs: ["O preço do anúncio de 2022 diz algo hoje?", "As fotos antigas mostram algum dano?"] }
+    ] },
+    { id: "uso", icon: "speed", t: "Uso e estado", sub: "Quilometragem, recall, falhas e fotos.", mods: [
+      { id: "km", icon: "speed", t: "Quilometragem", sum: "Última leitura: 156.000 km em 17/06/2022 (desatualizada). Sem regressão.", b: "bad", badge: "Desatualizada", blocks: [
+        ["warn", "Leitura com mais de 12 meses é considerada desatualizada. Confira o hodômetro, as revisões e a conservação."],
+        ["chart"],
+        ["table", ["Data", "Leitura", "Origem"], [["17/06/2022", "156.000 km", "Parceiro (mock)"], ["06/04/2021", "142.000 km", "Parceiro (mock)"], ["15/03/2020", "130.000 km", "Parceiro (mock)"], ["30/03/2019", "120.000 km", "Parceiro (mock)"]], { right: [1] }],
+        ["sub", "Estimativa para hoje (não é leitura verificada)"],
+        ["kv", 3, [["Faixa estimada", "197.000 km a 218.000 km"], ["Média estimada", "207.600 km"], ["Ritmo usado", "12.000 km/ano"], ["Perfil parecido (hatch, ES, particular)", "198.000 km"], ["Idade", "22 anos"], ["Regressão entre leituras", "Não"]]]
+      ], qs: ["A quilometragem estimada é confiável?", "Como saber se o hodômetro foi adulterado?"] },
+      { id: "recall", icon: "campaign", t: "Recall", sum: "1 campanha pendente nesta unidade.", b: "bad", badge: "Pendente", blocks: [
+        ["warn", "Peça o comprovante de atendimento numa concessionária autorizada antes de pagar. Recall do modelo e recall pendente da unidade são resultados diferentes."],
+        ["kv", 2, [["Campanha", "RECALL_DEMO_001"], ["Data", "10/03/2022"], ["Título", "Campanha de segurança demonstrativa"], ["Risco", "Funcionamento inadequado de componente de segurança"], ["Situação na unidade", "Pendente", 1]]]
+      ], qs: ["O que o recall corrige e é perigoso?", "Como agendar o recall na concessionária?"] },
+      { id: "falhas", icon: "build", t: "Falhas registradas", sum: "2 falhas na unidade em 06/04/2021 (sensores). Diagnóstico atual não confirmado.", b: "hist", badge: "Histórico", blocks: [
+        ["note", "Falha comum do modelo não quer dizer que esta unidade tenha o problema."],
+        ["table", ["Data", "Km", "Problema", "Resolvida"], [["06/04/2021 07:40", "142.000 km", "Registro de sensor de velocidade de roda", "não informado"], ["06/04/2021 07:40", "142.000 km", "Registro de sensor de direção", "não informado"]], { w: ["1fr", "0.8fr", "2.4fr", "0.9fr"] }],
+        ["sub", "Falhas comuns do modelo"], ["chips", ["Desgaste de freios", "Ocorrência de sensor"]]
+      ], qs: ["Essas falhas são comuns nesse modelo?", "Quanto custa consertar os sensores?"] },
+      { id: "fotos", icon: "photo_library", t: "Fotos", sum: "2 fotos do anúncio de 2022. Não mostram o estado atual.", b: "info", badge: "Informativo", blocks: [
+        ["photos", [["Frente do veículo demonstrativo", "Anúncio · 10/05/2022"], ["Lateral do veículo demonstrativo", "Anúncio · 10/05/2022"]]]
+      ], qs: ["O que as fotos mostram sobre o estado do carro?", "Que fotos pedir ao vendedor?"] }
+    ] },
+    { id: "preco", icon: "monitoring", t: "Preço, seguro e mercado", sub: "Quanto vale, quanto custa segurar e como se compara.", mods: [
+      { id: "fipe", icon: "monitoring", t: "FIPE e mercado", sum: "R$ 28.000 em mai/2026 · +7,69% desde mai/2022.", b: "info", badge: "Informativo", blocks: [
+        ["note", "A FIPE é uma referência do modelo; não define o preço desta unidade. O anúncio de R$ 25.000 (2022) não é preço atual."],
+        ["stats", [["FIPE · 05/2026", "R$ 28.000"], ["Menor valor · 05/2023", "R$ 25.000"], ["Faixa para negociar (estimativa)", "R$ 2.800 a R$ 4.200"]]],
+        ["fipe"],
+        ["table", ["Ano", "Mês de referência", "Valor", "Variação"], [["2026", "05/2026", "R$ 28.000", "+3,7%"], ["2025", "05/2025", "R$ 27.000", "+3,85%"], ["2024", "05/2024", "R$ 26.000", "+4%"], ["2023", "05/2023", "R$ 25.000", "-3,85%"], ["2022", "05/2022", "R$ 26.000", "—"]], { right: [2, 3], w: ["0.8fr", "1.6fr", "1.4fr", "1fr"] }]
+      ], qs: ["Qual é um preço justo para esse carro?", "Por que o anúncio de 2022 estava abaixo da FIPE?"] },
+      { id: "seguro", icon: "verified_user", t: "Radar securitário", sum: "9 de 15 seguradoras aceitam · prêmio de R$ 1.800 a R$ 3.000/ano.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Valores anuais demonstrativos. Não é proposta: aceitação e preço finais dependem da análise da seguradora."],
+        ["stats", [["Aceitam", "9"], ["Análise manual", "3"], ["Recusam", "3"], ["Prêmio médio (franquia normal)", "R$ 2.400/ano"]]],
+        ["table", ["Franquia", "Prêmio mín.", "Prêmio médio", "Prêmio máx.", "Franquia mín.", "Franquia média", "Franquia máx."], [["Normal", "R$ 1.800", "R$ 2.400", "R$ 3.000", "R$ 3.000", "R$ 3.800", "R$ 4.600"], ["Reduzida", "R$ 2.000", "R$ 2.720", "R$ 3.440", "R$ 1.800", "R$ 2.400", "R$ 3.000"]], { right: [1, 2, 3, 4, 5, 6] }],
+        ["sub", "Por seguradora"],
+        ["table", ["Seguradora", "Resultado", "Prêmio", "Franquia", "Prêmio (reduzida)", "Franquia (reduzida)"], [["Seguradora 01","Aceita","R$ 1.800","R$ 3.000","R$ 2.000","R$ 1.800"],["Seguradora 02","Aceita","R$ 1.950","R$ 3.200","R$ 2.180","R$ 1.950"],["Seguradora 03","Aceita","R$ 2.100","R$ 3.400","R$ 2.360","R$ 2.100"],["Seguradora 04","Aceita","R$ 2.250","R$ 3.600","R$ 2.540","R$ 2.250"],["Seguradora 05","Aceita","R$ 2.400","R$ 3.800","R$ 2.720","R$ 2.400"],["Seguradora 06","Aceita","R$ 2.550","R$ 4.000","R$ 2.900","R$ 2.550"],["Seguradora 07","Aceita","R$ 2.700","R$ 4.200","R$ 3.080","R$ 2.700"],["Seguradora 08","Aceita","R$ 2.850","R$ 4.400","R$ 3.260","R$ 2.850"],["Seguradora 09","Aceita","R$ 3.000","R$ 4.600","R$ 3.440","R$ 3.000"],["Seguradora 10","Análise manual","—","—","—","—"],["Seguradora 11","Análise manual","—","—","—","—"],["Seguradora 12","Análise manual","—","—","—","—"],["Seguradora 13","Recusa","—","—","—","—"],["Seguradora 14","Recusa","—","—","—","—"],["Seguradora 15","Recusa","—","—","—","—"]], { right: [2, 3, 4, 5], w: ["1.2fr", "1.2fr", "0.9fr", "0.9fr", "1.3fr", "1.3fr"] }]
+      ], qs: ["Quanto deve custar o seguro desse carro?", "Leilão e sinistro encarecem o seguro?"] },
+      { id: "comp", icon: "leaderboard", t: "Comparativo com outros hatches", sum: "1º de 4 no ranking demonstrativo; melhor em aceleração e potência.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Em roxo, o melhor de cada critério. Modelos e valores ilustrativos; equipamentos de catálogo não comprovam a configuração da unidade."],
+        ["table", ["Critério", "Este carro · Audi A3 1.8", "Volkswagen Golf", "Ford Focus", "Chevrolet Astra"], [["FIPE", "R$ 28.000", "R$ 30.000", "R$ 27.000", "*R$ 26.000"], ["Desvalorização em 6 meses", "*-2%", "-3%", "-4%", "-5%"], ["0 a 100 km/h", "*9,7 s", "10,8 s", "10,2 s", "11 s"], ["Peso/potência", "*9,28 kg/cv", "10,1 kg/cv", "10 kg/cv", "10,5 kg/cv"], ["Porta-malas", "350 L", "330 L", "350 L", "*370 L"], ["Potência", "*125 cv", "115 cv", "120 cv", "110 cv"], ["Consumo estrada", "12 km/l", "*12,5 km/l", "11,8 km/l", "11,5 km/l"], ["Consumo cidade", "9 km/l", "*9,5 km/l", "8,8 km/l", "8,5 km/l"], ["Nota geral", "*8,3", "8,1", "8", "7,8"]], { right: [1, 2, 3, 4], w: ["1.6fr", "1.3fr", "1fr", "0.8fr", "1fr"] }],
+        ["sub", "Equipamentos"],
+        ["table", ["Item", "Este carro", "Volkswagen", "Ford", "Chevrolet"], [["Airbags frontais", "De série", "De série", "De série", "De série"], ["Ar-condicionado", "De série", "De série", "De série", "De série"], ["Freios ABS", "De série", "De série", "De série", "De série"], ["Câmera traseira", "Opcional", "Opcional", "Opcional", "Opcional"]]]
+      ], qs: ["Ele vale mais a pena que os concorrentes?", "Qual hatch da mesma faixa é mais confiável?"] },
+      { id: "consumo", icon: "local_gas_station", t: "Consumo e desempenho", sum: "10,2 km/l combinado · 0 a 100 km/h em 9,7 s.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Dados demonstrativos de catálogo, sem aferição da unidade; consumo real depende das condições de uso."],
+        ["kv", 3, [["Cidade (gasolina)", "9 km/l"], ["Estrada (gasolina)", "12 km/l"], ["Combinado", "10,2 km/l"], ["Etanol", "não se aplica"], ["Velocidade máxima", "202 km/h"], ["0 a 100 km/h", "9,7 s"], ["Potência", "125 cv"], ["Torque", "17,34 kgfm"], ["Desempenho", "Intermediário"]]]
+      ], qs: ["Quanto vou gastar de combustível por mês?", "O consumo é bom para uso na cidade?"] }
+    ] },
+    { id: "ficha", icon: "description", t: "Ficha técnica e manutenção", sub: "Especificações, revisões e peças.", mods: [
+      { id: "tec", icon: "description", t: "Ficha técnica", sum: "1.8 manual de 5 marchas · versão confirmada. Variante automática à parte.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Outra versão no catálogo: 1.8 automático de 4 marchas (conversor de torque, 1.205 kg). Os dados acima são da versão manual, confirmada nesta consulta."],
+        ["sub", "Geral"], ["kv", 3, [["Procedência", "Nacional"], ["Porte", "Médio"], ["Portas", "4"], ["Ocupantes", "5"], ["Garantia", "1 ano"], ["Configuração", "Hatch"]]],
+        ["sub", "Transmissão"], ["kv", 3, [["Câmbio", "Manual"], ["Tração", "Dianteira"], ["Acoplamento", "Embreagem monodisco a seco"], ["Marchas", "5"]]],
+        ["sub", "Suspensão"], ["kv", 3, [["Dianteira", "Independente McPherson"], ["Traseira", "Eixo de torção"]]],
+        ["sub", "Freios"], ["kv", 3, [["Dianteiros", "Disco ventilado"], ["Traseiros", "Disco sólido"]]],
+        ["sub", "Direção"], ["kv", 3, [["Assistência", "Hidráulica"], ["Diâmetro de giro", "10,9 m"], ["Voltas do volante", "não levantado"]]],
+        ["sub", "Rodas e pneus"], ["kv", 3, [["Pneus dianteiros", "205/60 R15"], ["Pneus traseiros", "205/60 R15"], ["Rodas", "Aro 15"]]],
+        ["sub", "Dimensões"], ["kv", 3, [["Comprimento", "4.152 mm"], ["Largura", "1.735 mm"], ["Altura", "1.423 mm"], ["Entre-eixos", "2.513 mm"], ["Bitola dianteira", "1.513 mm"], ["Bitola traseira", "1.495 mm"], ["Porta-malas", "350 L"], ["Tanque", "55 L"], ["Peso", "1.160 kg"]]],
+        ["sub", "Aerodinâmica"], ["kv", 3, [["Área frontal", "2,1 m²"], ["Coeficiente de arrasto", "0,31"], ["Área frontal corrigida", "0,651 m²"]]],
+        ["sub", "Lubrificante"], ["kv", 3, [["Óleo", "Sintético"], ["Viscosidade", "5W40"], ["Cárter", "4,5 L"]]],
+        ["sub", "Iluminação"], ["kv", 3, [["Farol baixo", "H7"], ["Farol alto", "H1"], ["Farol auxiliar", "H7"]]]
+      ], qs: ["Esse motor é confiável?", "Quais peças costumam dar problema?"] },
+      { id: "rev", icon: "event_repeat", t: "Plano de revisões", sum: "Plano de catálogo de 30.000 a 80.000 km. Não comprova revisões feitas.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Plano de catálogo não comprova revisões executadas. Valores e códigos são demonstrativos."],
+        ["table", ["Revisão", "Prazo", "Trocar", "Inspecionar", "Preço"], [["30.000 km","36 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","R$ 420"],["40.000 km","48 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","R$ 510"],["50.000 km","60 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","Preço não informado"],["60.000 km","72 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","Preço não informado"],["70.000 km","84 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","Preço não informado"],["80.000 km","96 meses","Filtro de óleo, Óleo do motor","Sistema de freios, Pneus, Bateria","Preço não informado"]], { right: [4], w: ["0.8fr", "0.8fr", "2fr", "2fr", "1.3fr"] }],
+        ["sub", "Por quilometragem (catálogo)"],
+        ["table", ["Km", "Peças para trocar", "Itens para inspecionar"], [["50.000 km","Elemento do filtro de ar, Filtro de combustível, Filtro de óleo, Óleo do motor, Filtro de cabine","Alimentação de combustível, Bateria, Sistema de freios, Sistema de escapamento, Pneus, Sistema elétrico"],["60.000 km","Elemento do filtro de ar, Filtro de combustível, Filtro de óleo, Óleo do motor, Filtro de cabine","Alimentação de combustível, Bateria, Sistema de freios, Sistema de escapamento, Pneus, Sistema elétrico"],["70.000 km","Elemento do filtro de ar, Filtro de combustível, Filtro de óleo, Óleo do motor, Filtro de cabine","Alimentação de combustível, Bateria, Sistema de freios, Sistema de escapamento, Pneus, Sistema elétrico"],["80.000 km","Elemento do filtro de ar, Filtro de combustível, Filtro de óleo, Óleo do motor, Filtro de cabine","Alimentação de combustível, Bateria, Sistema de freios, Sistema de escapamento, Pneus, Sistema elétrico"]], { w: ["0.8fr", "2.6fr", "2.6fr"] }]
+      ], qs: ["Quais revisões já deveriam ter sido feitas?", "Quanto custa a próxima revisão?"] },
+      { id: "pecas", icon: "settings", t: "Preços de peças originais", sum: "27 peças · preços sem mão de obra · 2 sem preço informado.", b: "info", badge: "Informativo", blocks: [
+        ["note", "Preços de referência de 30/09/2026, sem mão de obra. Códigos demonstrativos: confira a compatibilidade com a versão."],
+        ["table", ["Peça", "Código", "Preço"], [["Amortecedor dianteiro direito","PECA_DEMO_001","R$ 112,50"],["Amortecedor traseiro direito","PECA_DEMO_002","R$ 145,00"],["Batente do amortecedor traseiro","PECA_DEMO_003","R$ 177,50"],["Batente da suspensão dianteira direita","PECA_DEMO_004","R$ 210,00"],["Batente da suspensão traseira direita","PECA_DEMO_005","R$ 242,50"],["Bico injetor de combustível","PECA_DEMO_006","Preço não informado"],["Bomba de combustível","PECA_DEMO_007","R$ 307,50"],["Capa externa do retrovisor direito","PECA_DEMO_008","R$ 340,00"],["Capa externa do retrovisor esquerdo","PECA_DEMO_009","R$ 372,50"],["Conjunto óptico dianteiro esquerdo","PECA_DEMO_010","R$ 405,00"],["Correia Poli V","PECA_DEMO_011","R$ 437,50"],["Disco de embreagem","PECA_DEMO_012","Preço não informado"],["Disco de freio dianteiro direito","PECA_DEMO_013","R$ 502,50"],["Disco de freio traseiro direito","PECA_DEMO_014","R$ 535,00"],["Elemento do filtro de ar","PECA_DEMO_015","R$ 567,50"],["Filtro do ar da cabine","PECA_DEMO_016","R$ 600,00"],["Retrovisor direito","PECA_DEMO_017","R$ 632,50"],["Retrovisor esquerdo","PECA_DEMO_018","R$ 665,00"],["Filtro de combustível","PECA_DEMO_019","R$ 697,50"],["Filtro de óleo","PECA_DEMO_020","R$ 730,00"],["Capa primer do para-choque dianteiro","PECA_DEMO_021","R$ 762,50"],["Platô da embreagem","PECA_DEMO_022","R$ 795,00"],["Velas de ignição","PECA_DEMO_023","R$ 827,50"],["Amortecedor dianteiro esquerdo","PECA_DEMO_024","R$ 860,00"],["Lanterna traseira esquerda","PECA_DEMO_025","R$ 892,50"],["Pastilha de freio dianteira direita","PECA_DEMO_026","R$ 925,00"],["Pastilha de freio dianteira esquerda","PECA_DEMO_027","R$ 957,50"]], { right: [2], w: ["2fr", "1.2fr", "1fr"] }]
+      ], qs: ["Quais peças vou trocar primeiro?", "Manter esse carro sai caro?"] }
+    ] },
+    { id: "avisos", icon: "policy", t: "Avisos", sub: "Limites e cobertura desta consulta.", mods: [
+      { id: "aviso", icon: "policy", t: "Avisos desta consulta", sum: "Cobertura, cortesias, Copiloto e catálogo.", b: "info", badge: "Informativo", blocks: [
+        ["defs", [["Cobertura", "Ausência de registro nas bases consultadas não é garantia absoluta."], ["Cortesias", "Algumas informações dependem da disponibilidade de parceiros."], ["Proprietários", "Histórico anonimizado, sem exposição de nome ou documento integral."], ["Copiloto", "Sínteses e estimativas não substituem avaliação profissional."], ["Catálogo", "Informações de modelo podem divergir da configuração da unidade."], ["Confidencialidade", "Usar dados somente para a finalidade autorizada da consulta."]]]
+      ], qs: ["O que essa consulta não cobre?", "Onde confirmo o que ficou de fora?"], src: "Consulta consulta_demo_completa · gerada em 05/10/2026, 16:45" }
+    ] }
+  ];
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } const _o = this._rv0(), E = !!this.props.embed; return { ..._o, notEmbedR: !E, relTopPad: E ? "56px" : "24px", relNavTop: E ? "152px" : "105px", relMinH: E ? "0" : "100vh", relPadB: E ? "0" : "88px" }; }
+  _rv0() {
+    const BP = { "Desktop 1440": 1440, "Desktop 1024": 1024, "Mobile 390": 390, "Mobile 360": 360, "Mobile 320": 320 }; const fw = BP[this.props.breakpoint]; const s = fw ? { ...this.state, vw: Math.min(fw, this.state.vw) } : this.state, vw = s.vw, wide = vw >= (this.props.bpDesktop1024 ?? 1024), mid = vw >= (this.props.bpTablet768 ?? 768);
+    const plate = (new URLSearchParams(location.search).get("placa") || "ABC1D23").toUpperCase();
+    const TH = [{ id: "geral", t: "Geral", icon: "forum", qs: [] }, ...this.CATS.map((c) => ({ id: c.id, t: c.t, icon: c.icon, qs: c.mods.flatMap((m) => m.qs || []) }))], curTh = TH.find((x) => x.id === s.theme) || TH[0], msgs = s.sess[s.theme] || [];
+    const askF = (q, th) => ({ t: q, ask: () => this.ask(q, th || "geral") });
+    const SRC = "Fonte: parceiro (mock) · consultado em 05/10/2026, 16:45 · base atualizada em 30/09/2026";
+    const MUTED = /^(não levantado|não informado|não se aplica|sem arquivo|preço não informado|—)$/i, BROWN = "#9A3412";
+    const cols = (n) => "repeat(" + (vw >= (this.props.bpDesktop960 ?? 960) ? n : vw >= (this.props.bpTablet600 ?? 600) ? Math.min(n, 2) : 1) + ",minmax(0,1fr))";
+    const TLC = { p: "#7D3EE3", g: "#5A6472", o: "#D97706" };
+    const blk = (b) => {
+      const o = { isPhotos: false, isDefs: false, isFipe: false, isNote: false, isWarn: false, isSub: false, isStats: false, isKv: false, isFlags: false, isChips: false, isTable: false, isTl: false, isChart: false };
+      const [type, a, c, d] = b;
+      if (type === "note") return { ...o, isNote: true, text: a };
+      if (type === "warn") return { ...o, isWarn: true, text: a };
+      if (type === "sub") { const t = this.TONE[c]; return { ...o, isSub: true, text: a, hasBadge: !!c, badge: t ? { ...t, t: d } : {} }; }
+      if (type === "stats") return { ...o, isStats: true, items: a.map(([k, v, f]) => ({ k, v, c: f ? BROWN : "#1D2433" })) };
+      if (type === "kv") return { ...o, isKv: true, cols: cols(a), items: c.map(([k, v, f]) => ({ k, v, c: f ? BROWN : MUTED.test(v) ? "#5A6472" : "#1D2433", w: MUTED.test(v) ? 400 : 500 })) };
+      if (type === "flags") return { ...o, isFlags: true, cols: cols(3), items: a.map(([k, v, f]) => ({ k, v, bg: f ? "#FFF6DA" : "#F4F4F6", icon: f ? "error" : "check_circle", ic: f ? "#D97706" : "#5A6472", vc: f ? BROWN : "#3F4654" })) };
+      if (type === "chips") return { ...o, isChips: true, items: a };
+      if (type === "tl") return { ...o, isTl: true, items: a.map(([dt, k, t, sub]) => ({ d: dt, c: TLC[k], t, s: sub })) };
+      if (type === "chart") return { ...o, isChart: true };
+      if (type === "fipe") return { ...o, isFipe: true };
+      if (type === "photos") return { ...o, isPhotos: true, cols: vw >= (this.props.bpTablet600 ?? 600) ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)", items: a.map(([t, c2]) => ({ t, c: c2 })) };
+      if (type === "defs") return { ...o, isDefs: true, items: a.map(([k, v]) => ({ k, v })) };
+      if (type === "table") {
+        const opt = d || {}, right = opt.right || [];
+        const al = (i) => (right.includes(i) ? "right" : opt.check === i ? "center" : "left");
+        return { ...o, isTable: true, gcols: (opt.w || a.map(() => "minmax(0,1fr)")).join(" "), minW: Math.max(a.length * 110, 360) + "px", head: a.map((t, i) => ({ t, align: al(i) })),
+          rows: c.map((r) => r.map((v, i) => { if (opt.check === i) return { v: "check", ff: "'Material Symbols Rounded'", fs: "18px", fwt: 400, c: "#15803D", align: "center" }; const hi = typeof v === "string" && v[0] === "*", t = hi ? v.slice(1) : v; return { v: t, ff: "Roboto", fs: hi ? "15px" : "14px", fwt: hi ? 700 : 400, c: hi ? "#7D3EE3" : MUTED.test(t) ? "#5A6472" : "#1D2433", align: al(i) }; })) };
+      }
+      return o;
+    };
+    const cats = this.CATS.map((c, ci) => {
+      const bad = c.mods.filter((m) => m.b === "bad").length;
+      return { anchor: "cat-" + c.id, icon: c.icon, eyebrow: "SEÇÃO " + String(ci + 1).padStart(2, "0") + " DE " + String(this.CATS.length).padStart(2, "0"), t: c.t, sub: c.sub, meta: c.mods.length + (c.mods.length > 1 ? " módulos" : " módulo") + (bad ? " · " + bad + " com apontamento" : ""), ask: () => this.ask("Explique a parte de " + c.t.toLowerCase() + " desta consulta", c.id),
+        mods: c.mods.map((m) => {
+          const open = !s.closed[m.id], isBad = m.b === "bad";
+          return { anchor: "m-" + m.id, icon: m.icon, t: m.t, sum: m.sum, badge: m.badge, b: this.TONE[m.b], iBg: isBad ? "#FFF6DD" : "#F1F1F5", iColor: isBad ? "#D97706" : "#3F4654", bd: isBad ? "#F6DE9A" : "#E6E6EE", open, chev: open ? "expand_less" : "expand_more",
+            toggle: () => this.setState((st) => ({ closed: { ...st.closed, [m.id]: !st.closed[m.id] } })),
+            blocks: (m.blocks || []).map(blk), hasQs: !!(m.qs && m.qs.length), qs: (m.qs || []).map((q) => askF(q, c.id)), src: m.src || SRC };
+        }) };
+    });
+    const nav = [["sec-resumo", "dashboard", "Resumo"], ["sec-copiloto", "auto_awesome", "Leitura do Copiloto"], ...this.CATS.map((c) => ["cat-" + c.id, c.icon, c.t, c.mods.length, c.mods.filter((m) => m.b === "bad").length])]
+      .map(([id, icon, t, n, bad]) => { const on = s.active === id; return { icon, t, go: () => this.scrollTo(id), hasCount: n != null, count: bad ? bad : n, cBg: bad ? "#FFF6DA" : "#EEEEF2", cColor: bad ? "#92400E" : "#5A6472", bg: on ? "#F1EBFD" : "transparent", color: on ? "#4C1D95" : "#1D2433", weight: on ? 500 : 400 }; });
+    return {
+      isDemo: this.isDemo(), notDemo: !this.isDemo(), demoPerks: [{ icon: "auto_awesome", t: "Copiloto para perguntar sobre qualquer item" }, { icon: "sell", t: "Valor FIPE" }, { icon: "timeline", t: "Linha do tempo" }, { icon: "download", t: "PDF" }, { icon: "share", t: "Link para compartilhar" }], demoStats: [{ icon: "data_table", n: "+140", t: "informações sobre o veículo" }, { icon: "account_balance", n: "+15", t: "fontes oficiais e privadas" }, { icon: "dashboard", n: "33", t: "módulos em 8 seções" }, { icon: "all_inclusive", n: "Não expira", t: "fica salvo na sua conta" }], demoAvisoProps: { style: { flex: "1 1 420px", width: "auto", minWidth: 0 } },
+      frameW: fw ? fw + "px" : "none", frameShadow: fw ? "0 0 0 1px #E6E6EE, 0 8px 24px rgba(29,36,51,.12)" : "none", wide, plate, layoutCols: wide ? "232px minmax(0,1fr)" : "minmax(0,1fr)",
+      heroCols: vw >= (this.props.bpTablet768 ?? 768) ? "180px minmax(0,1fr) auto" : "minmax(0,1fr)", priceAlign: vw >= (this.props.bpTablet768 ?? 768) ? "right" : "left", checkCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      riskCols: mid ? "200px minmax(0,1fr)" : "minmax(0,1fr)", twoCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)", chipWs: mid ? "nowrap" : "normal", defCols: mid ? "160px minmax(0,1fr)" : "minmax(0,1fr)", tlCols: mid ? "120px 10px minmax(0,1fr)" : "84px 10px minmax(0,1fr)", modPad: mid ? "0 24px 24px" : "0 16px 20px",
+      heroChips: ["Renavam 00000000001", "Chassi 9ZZZZZZZZZZ000001", "Motor MOTORDEMO1", "125 cv"],
+      segs: [...Array(5).fill("#C2410C"), ...Array(6).fill("#16A34A")],
+      nav, cats,
+      checks: this.CHECKS.map(([t, d, bad, id]) => { const tn = this.TONE[bad ? "bad" : "ok"]; return { t, d, hasD: !!d, icon: tn.icon, color: bad ? "#D97706" : "#15803D", label: bad ? "Consta" : "Nada consta", bg: tn.bg, bd: tn.bd, fg: tn.fg, go: () => { this.setState((st) => ({ closed: { ...st.closed, [id]: false } })); setTimeout(() => this.scrollTo("m-" + id), 40); } }; }),
+      resumoQs: ["Quais desses registros travam a compra?", "O que resolver antes de pagar?"].map((q) => askF(q)),
+      riskPts: ["Leilão em 18/03/2020 como lote sinistrado", "Débitos: licenciamento 2026 (R$ 711,12) e 1 multa (R$ 293,47)", "Recall pendente da unidade, gratuito na concessionária"],
+      todo: [{ n: 1, b: "Peça o comprovante de quitação dos débitos", t: "ou abata R$ 1.004,59 do valor combinado." }, { n: 2, b: "Faça vistoria cautelar com foco na lataria", t: "para avaliar o reparo da batida de 2020." }, { n: 3, b: "Confirme o recall na concessionária", t: "a campanha é gratuita e pode ser feita antes da transferência." }],
+      copQs: ["Como negociar os R$ 1.004,59 de débitos?", "Vale a pena comprar mesmo com o leilão?"].map((q) => askF(q)),
+      starters: s.theme === "geral" ? ["Antes de comprar, o que eu resolvo?", "O leilão de 2020 é grave?", "O preço está justo?", "Quais desses registros travam a compra?"].map((q) => askF(q, "geral")) : ["Explique a parte de " + curTh.t.toLowerCase() + " desta consulta", ...curTh.qs].slice(0, 4).map((q) => askF(q, s.theme)),
+      openCop: () => { window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { tab: 0 } })); }, openCopOld: () => { if (!this.state.cop) this.setState({ cop: true }, () => setTimeout(() => { this.inRef.current?.focus(); this.tabFade(); const el = this.msgRef.current; if (el) el.scrollTop = el.scrollHeight; }, 60)); }, closeCop: () => this.setState({ cop: false }),
+      copOpen: s.cop, copClosed: !s.cop, msgRef: this.msgRef, inRef: this.inRef, copRef: this.copRef, colRef: this.colRef, tabRef: this.tabRef, onTabScroll: this.tabFade,
+      tabMask: ((f) => "linear-gradient(90deg, " + (f.l ? "transparent 0, #000 56px" : "#000 0") + ", " + (f.r ? "#000 calc(100% - 72px), transparent 100%" : "#000 100%") + ")")(s.fade || { r: true }),
+      barLeft: s.bar ? s.bar.l + "px" : "12px", barW: s.bar ? s.bar.w + "px" : "calc(100% - 24px)", formBd: s.cop ? "1px solid #EEEEF2" : "0",
+      themes: TH.map((x) => { const on = x.id === s.theme, n = Math.ceil((s.sess[x.id] || []).length / 2); return { t: x.t, icon: x.icon, on, has: n > 0, n, go: () => this.set({ theme: x.id }), bg: on ? "#F1EBFD" : "#fff", bd: on ? "#7D3EE3" : "#E6E6EE", color: on ? "#4C1D95" : "#1D2433", cBg: on ? "#7D3EE3" : "#EEEEF2", cColor: on ? "#fff" : "#5A6472" }; }),
+      themeLabel: curTh.t, placeholder: s.theme === "geral" ? "Pergunte sobre esta consulta" : "Pergunte sobre " + curTh.t.toLowerCase(),
+      themeIntro: s.theme === "geral" ? "Pergunte qualquer coisa sobre esta consulta. Eu respondo só com os dados do relatório." : "Conversa sobre " + curTh.t.toLowerCase() + ". Fica salva aqui quando você voltar a esta consulta.",
+      noMsgs: !msgs.length && s.typing !== s.theme,
+      msgs: msgs.map((m) => ({ text: m.text, align: m.me ? "flex-end" : "flex-start", bg: m.me ? "#7D3EE3" : "#F4F4F6", color: m.me ? "#fff" : "#1D2433", radius: m.me ? "16px 16px 4px 16px" : "16px 16px 16px 4px" })),
+      typing: s.typing === s.theme, dots: [0, 1, 2].map((i) => React.createElement("span", { key: i, style: { width: 7, height: 7, borderRadius: "50%", background: "#7D3EE3", animation: "rpDot 1.2s " + i * 0.15 + "s infinite ease-in-out" } })),
+      draft: s.draft, setDraft: (e) => this.setState({ draft: e.target.value }),
+      send: (e) => { e.preventDefault(); const q = s.draft.trim(); if (q) this.ask(q); },
+      share: () => this.toast("Link do relatório copiado."), download: () => this.toast("Gerando o PDF do relatório…"),
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

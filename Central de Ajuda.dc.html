@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    input::placeholder{color:rgba(255,255,255,.7)}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+
+  <section data-screen-label="Ajuda · topo" style="position:relative;overflow:hidden;background:radial-gradient(50% 120% at 90% 10%,rgba(125,62,227,.55),transparent 70%),#1D2433;color:#fff;padding:56px clamp(16px, calc(2.2vw + 7px), 32px) 64px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:18px">
+      <nav aria-label="Você está em" style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#C4C4CC">
+        <a href="Home Achecar.dc.html" style="color:#C4C4CC" style-hover="color:#fff">Início</a><span aria-hidden="true">/</span><span style="color:#fff">Central de ajuda</span>
+      </nav>
+      <span style="font:700 12px Roboto;letter-spacing:.08em;color:#C9AEFF">CENTRAL DE AJUDA</span>
+      <h1 style="margin:0;font:800 38px/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Como podemos ajudar?</h1>
+      <label style="position:relative;display:block;width:560px;max-width:100%;height:56px;border-radius:12px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px {{ searchRing }};cursor:text;margin-top:6px" style-hover="box-shadow:inset 0 0 0 1px #C9AEFF">
+        <span style="position:absolute;left:16px;top:16px;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;color:#fff;pointer-events:none">search</span>
+        <input value="{{ q }}" onChange="{{ onQ }}" onFocus="{{ focusOn }}" onBlur="{{ focusOff }}" placeholder="Pesquise: reembolso, Pix, relatório…" aria-label="Pesquisar na central de ajuda" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px 0 52px;border:0;border-radius:12px;background:transparent;font:400 16px Roboto;color:#fff;outline:none;box-shadow:{{ searchFocus }}">
+      </label>
+    </div>
+  </section>
+
+  <main style="flex:1;padding:40px clamp(16px, calc(2.2vw + 7px), 32px) 80px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:grid;grid-template-columns:{{ bpG0 }};gap:32px;align-items:start">
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:24px">
+        <div role="tablist" aria-label="Categorias" style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+            <button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="height:40px;padding:0 16px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:inset 0 0 0 1px {{ t.ring }};font:500 14px Roboto;cursor:pointer;display:flex;align-items:center;gap:8px" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ t.icon }}</span>{{ t.label }}<span style="font:500 12px Roboto;opacity:.8">{{ t.n }}</span></button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ true }}">
+          <div style="border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+            <sc-for list="{{ items }}" as="it" hint-placeholder-count="6">
+              <a href="{{ it.url }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:18px 20px;border-top:{{ it.border }};color:#1D2433" style-hover="color:#7D3EE3;background:#FAF8FF">
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                  <span style="font:500 15px/1.45 Roboto;text-wrap:pretty">{{ it.q }}</span>
+                  <sc-if value="{{ it.showCat }}" hint-placeholder-val="{{ false }}"><span style="font:400 12px Roboto;color:#5A6472">{{ it.cat }}</span></sc-if>
+                </span>
+                <span style="flex:none;font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472">chevron_right</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noItems }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:40px 24px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+            <span style="font-family:'Material Symbols Rounded';font-size:32px;color:#5A6472">search_off</span>
+            <span style="font:700 16px Roboto">Nada encontrado para “{{ q }}”</span>
+            <span style="font:400 14px Roboto;color:#5A6472">Tente outra palavra ou fale com o atendimento.</span>
+          </div>
+        </sc-if>
+        <a href="https://www.achecar.com.br/perguntas-frequentes/categoria/informacoes-tecnicas-e-especificas" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;padding:20px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;color:#1D2433" style-hover="color:#1D2433;box-shadow:inset 0 0 0 1px #7D3EE3">
+          <span style="flex:none;width:44px;height:44px;border-radius:12px;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:24px">menu_book</span>
+          <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Informações técnicas e específicas</span><span style="font:400 13px Roboto;color:#5A6472">56 perguntas sobre leilão, gravame, RENAJUD, recall e cada item do relatório</span></span>
+          <span style="font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472">open_in_new</span>
+        </a>
+      </div>
+
+      <aside aria-label="Fale com a gente" style="display:flex;flex-direction:column;gap:16px;position:sticky;top:105px">
+        <div style="padding:24px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 18px 'Merriweather Sans',sans-serif">Não achou sua resposta?</span>
+            <span style="font:400 13px/1.5 Roboto;color:#5A6472">Segunda a sexta, das 8h às 17h, exceto feriados.</span>
+          </div>
+          <a href="https://wa.me/message/QO5K56VNJCP5F1" target="_blank" rel="noopener" style="height:48px;border-radius:8px;background:#15803D;color:#fff;font:700 15px Roboto;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#116A32;color:#fff"><span style="font-family:'Material Symbols Rounded';font-size:20px">chat</span>Falar no WhatsApp</a>
+          <a href="https://www.achecar.com.br/fale-conosco" target="_blank" rel="noopener" style="height:48px;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px #D4D4D8;color:#1D2433;font:700 15px Roboto;display:flex;align-items:center;justify-content:center;gap:8px" style-hover="color:#7D3EE3;box-shadow:inset 0 0 0 1px #7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:20px">mail</span>Enviar e-mail</a>
+          <a href="tel:08000004770" style="display:flex;align-items:center;justify-content:center;gap:8px;font:500 14px Roboto;color:#1D2433" style-hover="color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">call</span>0800 000 4770</a>
+        </div>
+        <a href="https://www.reclameaqui.com.br/empresa/achecar/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;color:#1D2433" style-hover="color:#1D2433;box-shadow:inset 0 0 0 1px #7D3EE3">
+          <img src="assets/footer/selo-reclameaqui.png" alt="" style="height:44px;width:auto;display:block;border-radius:6px">
+          <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">Achecar no Reclame Aqui</span><span style="font:400 12px Roboto;color:#5A6472">Veja avaliações e abra uma reclamação</span></span>
+          <span style="font-family:'Material Symbols Rounded';font-size:18px;color:#5A6472">open_in_new</span>
+        </a>
+      </aside>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  _bpOn = (window.addEventListener("resize", () => this.setState({ vw: window.innerWidth })), 0);
+  bpCols = () => { const vw = this.state.vw || window.innerWidth, T = this.props.bpTablet768 ?? 768, D = this.props.bpDesktop1024 ?? 1024, o = {};
+    [[3,2,1]].forEach(([d, t, m], i) => { o["bpG" + i] = "repeat(" + (vw >= D ? d : vw >= T ? t : m) + ",minmax(0,1fr))"; }); return o; };
+  state = { q: "", tab: "pag", focus: false };
+  B = "https://www.achecar.com.br/perguntas-frequentes/";
+  FAQ = {
+    pag: ["Pagamento e suporte", "payments", [
+      ["Quais formas de pagamento são aceitas pela Achecar?", "quais-formas-pagamento-aceitas-achecar"],
+      ["Prazo para compensação de pagamentos na Achecar", "prazo-compensacao-pagamento-consulta-veicular"],
+      ["Como solicitar cancelamento ou reembolso de consulta veicular?", "como-solicitar-cancelamento-reembolso-consulta"],
+      ["Como obter ajuda sobre minha consulta veicular?", "como-obter-ajuda-consulta-veicular"],
+      ["Como faço para entrar em contato com o suporte da Achecar?", "quais-horarios-atendimento-suporte-achecar"],
+      ["É possível compartilhar o relatório da Achecar com outras pessoas?", "possivel-compartilhar-relatorio-achecar-outras-pessoas"],
+      ["Como salvar ou imprimir meu relatório da Achecar?", "como-salvar-imprimir-relatorio-achecar"],
+      ["O que é indício de sinistro e como é classificado?", "o-que-indicio-sinistro-como-classificado"],
+      ["O que significa comunicação de venda e como isso afeta o veículo?", "o-que-significa-comunicacao-venda-como-afeta-veiculo"]
+    ]],
+    cad: ["Cadastro e privacidade", "shield_person", [
+      ["A consulta veicular mostra os dados pessoais dos antigos proprietários?", "a-consulta-veicular-mostra-os-dados-pessoais-dos-antigos-proprietarios"],
+      ["Os dados da consulta veicular são seguros e confiáveis?", "os-dados-da-consulta-veicular-sao-seguros-e-confiaveis"],
+      ["Por que o CPF ou CNPJ é solicitado no cadastro?", "porque-cpf-cnpj-solicitado-cadastro-consulta-veicular"],
+      ["Como os dados pessoais são protegidos na consulta veicular?", "como-dados-pessoais-sao-protegidos-consulta-veicular"]
+    ]]
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() { return { ...this._rv(), ...this.bpCols() }; }
+  _rv() {
+    const s = this.state, q = s.q.trim().toLowerCase(), searching = !!q;
+    let list = [];
+    Object.keys(this.FAQ).forEach((k) => { if (searching || k === s.tab) this.FAQ[k][2].forEach((x) => list.push({ q: x[0], url: this.B + x[1], cat: this.FAQ[k][0] })); });
+    if (searching) list = list.filter((x) => x.q.toLowerCase().includes(q));
+    const items = list.map((x, i) => ({ ...x, border: i ? "1px solid #EEEEF2" : "0", showCat: searching }));
+    return {
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }), focusOn: () => this.setState({ focus: true }), focusOff: () => this.setState({ focus: false }),
+      searchRing: s.focus ? "#C9AEFF" : "rgba(255,255,255,.18)", searchFocus: s.focus ? "0 0 0 3px rgba(125,61,227,.35)" : "none",
+      tabs: Object.keys(this.FAQ).map((k) => { const on = !searching && s.tab === k; return { label: this.FAQ[k][0], icon: this.FAQ[k][1], n: this.FAQ[k][2].length, on, bg: on ? "#1D2433" : "#fff", fg: on ? "#fff" : "#1D2433", ring: on ? "#1D2433" : "#D4D4D8", pick: () => this.setState({ tab: k, q: "" }) }; }),
+      items, hasItems: items.length > 0, noItems: items.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>

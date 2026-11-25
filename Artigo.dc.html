@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#fff;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    [data-body] p{margin:0;font:400 18px/1.7 Roboto;color:#2A3242;text-wrap:pretty}
+    [data-body] h2{margin:24px 0 0;font:800 26px/1.25 'Merriweather Sans',sans-serif;color:#1D2433;scroll-margin-top:120px}
+    [data-body] a{text-decoration:underline;text-underline-offset:3px}
+    input::placeholder{color:rgba(255,255,255,.55);letter-spacing:.08em}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#fff">
+  <div style="position:sticky;top:0;z-index:40">
+    <dc-import name="Header Achecar" active="blog" hint-size="100%,81px"></dc-import>
+    <div aria-hidden="true" style="height:3px;background:#EEEAF7"><div style="height:3px;background:#7D3EE3;width:{{ progress }};transition:width .1s linear"></div></div>
+  </div>
+
+  <article ref="{{ artRef }}" style="flex:1;display:flex;flex-direction:column">
+    <header data-screen-label="Matéria · topo" style="padding:40px clamp(16px, calc(2.2vw + 7px), 32px) 32px;display:flex;justify-content:center">
+      <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:18px">
+        <nav aria-label="Você está em" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font:400 13px Roboto;color:#5A6472">
+          <a href="Home Achecar.dc.html" style="color:#5A6472" style-hover="color:#7D3EE3">Início</a><span aria-hidden="true">/</span>
+          <a href="Blog.dc.html" style="color:#5A6472" style-hover="color:#7D3EE3">Blog</a><span aria-hidden="true">/</span>
+          <a href="{{ p.catHref }}" style="color:#1D2433" style-hover="color:#7D3EE3">{{ p.catLabel }}</a>
+        </nav>
+        <div style="display:flex;align-items:center;gap:8px"><span style="padding:4px 10px;border-radius:999px;background:#F3EDFD;color:#7D3EE3;font:700 12px Roboto">{{ p.fmtLabel }}</span><span style="font:700 12px Roboto;letter-spacing:.06em;color:#5A6472">{{ p.catUp }}</span></div>
+        <h1 style="margin:0;max-width:860px;font:800 42px/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">{{ p.title }}</h1>
+        <p style="margin:0;max-width:760px;font:400 20px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ p.dek }}</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #EEEEF2">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:40px;height:40px;border-radius:50%;background:#1D2433;display:flex;align-items:center;justify-content:center"><img src="assets/logo/header-symbol.svg" alt="" style="width:22px;height:22px"></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">Redação Achecar</span><span style="font:400 13px Roboto;color:#5A6472">Publicado em {{ p.date }} · Atualizado hoje · {{ p.min }} min de leitura</span></span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button onClick="{{ copyLink }}" aria-label="Copiar link" style="height:40px;padding:0 14px;border:0;border-radius:999px;background:#F6F6F9;color:#1D2433;font:500 14px Roboto;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="background:#EEEAF7"><span style="font-family:'Material Symbols Rounded';font-size:18px">link</span>{{ copyTxt }}</button>
+            <a href="{{ waHref }}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp" style="height:40px;padding:0 14px;border-radius:999px;background:#F6F6F9;color:#1D2433;font:500 14px Roboto;display:flex;align-items:center;gap:6px" style-hover="background:#EEEAF7;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px">share</span>WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="padding:0 clamp(16px, calc(2.2vw + 7px), 32px);display:flex;justify-content:center">
+      <figure style="margin:0;width:100%;max-width:1152px;display:flex;flex-direction:column;gap:10px">
+        <div style="aspect-ratio:21/9;border-radius:24px;background-color:{{ p.bgc }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat"></div>
+        <figcaption style="font:400 13px Roboto;color:#5A6472">Foto ilustrativa · Achecar</figcaption>
+      </figure>
+    </div>
+
+    <div style="padding:40px clamp(16px, calc(2.2vw + 7px), 32px) 64px;display:flex;justify-content:center">
+      <div style="width:100%;max-width:1152px;display:grid;grid-template-columns:{{ cols }};gap:56px;align-items:start">
+        <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+          <aside aria-label="Nesta matéria" style="position:sticky;top:112px;display:flex;flex-direction:column;gap:20px">
+            <nav style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:700 12px Roboto;letter-spacing:.08em;color:#5A6472;padding-bottom:10px">NESTA MATÉRIA</span>
+              <sc-for list="{{ toc }}" as="t" hint-placeholder-count="7">
+                <a href="{{ t.href }}" style="display:block;padding:8px 0 8px 14px;border-left:2px solid {{ t.line }};font:{{ t.w }} 14px/1.4 Roboto;color:{{ t.fg }}" style-hover="color:#7D3EE3">{{ t.label }}</a>
+              </sc-for>
+            </nav>
+            <div style="padding:16px;border-radius:12px;background:#F6F6F9;display:flex;flex-direction:column;gap:6px">
+              <span style="font:700 13px Roboto">{{ checkCount }} de 8 itens checados</span>
+              <div style="height:6px;border-radius:3px;background:#E6E6EE"><div style="height:6px;border-radius:3px;background:#15803D;width:{{ checkPct }}"></div></div>
+            </div>
+          </aside>
+        </sc-if>
+
+        <div data-body="" style="min-width:0;max-width:720px;display:flex;flex-direction:column;gap:22px">
+          <section aria-label="Resumo" style="padding:22px clamp(16px, calc(2.2vw + 7px), 32px);border-radius:16px;background:#F3EDFD;display:flex;flex-direction:column;gap:12px">
+            <span style="display:flex;align-items:center;gap:12px">
+              <span style="flex:none;width:40px;height:40px;border-radius:50%;background:#7D3EE3;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="assets/mascote/mascote-frente.webp" alt="" style="width:30px;height:30px;object-fit:contain"></span>
+              <span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto;color:#1D2433">Resumo do Copiloto</span><span style="font:400 12px Roboto;color:#5A6472">Os pontos principais em 30 segundos</span></span>
+            </span>
+            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 16px/1.55 Roboto;color:#1D2433">
+              <li>Comece pela placa: leilão, sinistro, roubo e furto, gravame e débitos aparecem antes de você ver o carro.</li>
+              <li>Confirme que o documento, o chassi e o motor batem com o que o vendedor diz.</li>
+              <li>Só pague depois da transferência combinada, e nunca por fora do contrato.</li>
+            </ul>
+            <a href="{{ copAsk }}" style="align-self:flex-start;display:block;border-radius:8px;text-decoration:none">
+              <x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOBotO" label="Perguntar ao Copiloto" hierarchy="secondary" size="md" hint-size="200px,40px"></x-import>
+            </a>
+          </section>
+
+          <sc-if value="{{ isModel }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:22px">
+              <p>Carro usado bonito por fora pode esconder muita coisa por dentro do histórico. Uma passagem por leilão, uma indenização de seguro ou um financiamento que ainda não foi quitado não aparecem na pintura, mas aparecem no preço de revenda e, às vezes, na sua dor de cabeça com o Detran.</p>
+              <p>Este guia segue a ordem que recomendamos: primeiro os dados, depois o carro, por último o dinheiro.</p>
+
+              <h2 id="placa">1. Comece pela placa</h2>
+              <p>Antes de marcar visita, peça a placa ao vendedor. Quem tem o carro em dia não costuma se negar. Com ela você levanta o histórico do veículo sem sair de casa e evita viagem perdida.</p>
+              <form onSubmit="{{ plSubmit }}" style="display:flex;flex-direction:column;gap:12px;padding:22px;border-radius:16px;background:#1D2433;color:#fff">
+                <span style="font:700 16px Roboto">Tem a placa aí? Veja marca, modelo e ano grátis.</span>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <label style="position:relative;flex:1 1 200px;height:52px;border-radius:8px;background:#2A3346;box-shadow:inset 0 0 0 1px {{ plRing }};cursor:text" style-hover="box-shadow:inset 0 0 0 1px #C9AEFF">
+                    <input value="{{ plate }}" onChange="{{ onPlate }}" maxlength="7" placeholder="ABC1D23" aria-label="Placa do veículo" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px;border:0;border-radius:8px;background:transparent;color:#fff;font:700 18px 'Roboto Mono',monospace;letter-spacing:.1em" style-focus="outline:none;box-shadow:inset 0 0 0 1px #C9AEFF, 0 0 0 3px rgba(125,61,227,.35)">
+                  </label>
+                  <button type="submit" style="height:52px;padding:0 22px;border:0;border-radius:8px;background:#FF5040;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#E63E2F">Consultar placa</button>
+                </div>
+                <sc-if value="{{ plErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 13px Roboto;color:#FCA5A5">{{ plErr }}</span></sc-if>
+              </form>
+
+              <h2 id="leilao">2. Leilão e sinistro</h2>
+              <p>Carro de leilão não é proibido, mas costuma valer menos na revenda e pode ter seguro recusado ou mais caro. O sinistro mostra se uma seguradora já indenizou o veículo, total ou parcialmente, e é um sinal para olhar com atenção a estrutura e a pintura.</p>
+              <div style="padding:18px 20px;border-radius:12px;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;gap:14px">
+                <span style="flex:none;font-family:'Material Symbols Rounded';font-size:24px;color:#7D3EE3">lightbulb</span>
+                <span style="display:flex;flex-direction:column;gap:4px"><b style="font:700 15px Roboto">Na prática</b><span style="font:400 15px/1.6 Roboto;color:#3F4654">Se aparecer leilão, pergunte o motivo e peça o laudo. Um carro de frota renovada não tem o mesmo peso de um carro recuperado de enchente.</span></span>
+              </div>
+
+              <h2 id="restricoes">3. Gravame e restrições</h2>
+              <p>Gravame é o registro de que o carro está alienado a um banco por causa de um financiamento. Enquanto ele existir, a transferência não acontece. Restrições judiciais (RENAJUD) e administrativas também travam o processo e podem ter origem em dívidas do dono atual.</p>
+              <div style="overflow-x:auto;border-radius:12px;box-shadow:inset 0 0 0 1px #E6E6EE">
+                <table style="width:100%;min-width:520px;border-collapse:collapse;font:400 15px/1.45 Roboto">
+                  <thead><tr style="background:#F6F6F9;text-align:left"><th style="padding:12px 16px;font:700 13px Roboto">Item</th><th style="padding:12px 16px;font:700 13px Roboto">O que significa</th><th style="padding:12px 16px;font:700 13px Roboto">Trava a venda?</th></tr></thead>
+                  <tbody>
+                    <tr style="border-top:1px solid #EEEEF2"><td style="padding:12px 16px;font-weight:700">Gravame</td><td style="padding:12px 16px">Financiamento ativo em nome do vendedor</td><td style="padding:12px 16px;color:#C62828;font-weight:700">Sim</td></tr>
+                    <tr style="border-top:1px solid #EEEEF2"><td style="padding:12px 16px;font-weight:700">RENAJUD</td><td style="padding:12px 16px">Bloqueio determinado por um juiz</td><td style="padding:12px 16px;color:#C62828;font-weight:700">Sim</td></tr>
+                    <tr style="border-top:1px solid #EEEEF2"><td style="padding:12px 16px;font-weight:700">Débitos</td><td style="padding:12px 16px">IPVA, licenciamento e multas em aberto</td><td style="padding:12px 16px;color:#8A5300;font-weight:700">Precisa quitar</td></tr>
+                    <tr style="border-top:1px solid #EEEEF2"><td style="padding:12px 16px;font-weight:700">Recall</td><td style="padding:12px 16px">Reparo de segurança pendente na fábrica</td><td style="padding:12px 16px;color:#15803D;font-weight:700">Não</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h2 id="debitos">4. Débitos e multas</h2>
+              <p>IPVA, licenciamento e multas acompanham o carro, não o dono. Combine por escrito quem paga o quê e desconte do preço o que estiver em aberto. Multas no RENAINF podem não aparecer na consulta estadual, por isso vale olhar as duas.</p>
+              <aside style="display:flex;flex-direction:column;gap:8px;padding:16px 20px;border-left:3px solid #7D3EE3;background:#FAF8FF">
+                <span style="font:700 12px Roboto;letter-spacing:.06em;color:#7D3EE3">VEJA TAMBÉM</span>
+                <a href="Artigo.dc.html?a=ipva-eletrico" style="font:500 15px Roboto">IPVA de carro elétrico: quais estados oferecem benefícios?</a>
+                <a href="Artigo.dc.html?a=golpes-venda" style="font:500 15px Roboto">Os golpes mais comuns na venda de carro usado</a>
+              </aside>
+
+              <h2 id="km">5. Quilometragem e laudos</h2>
+              <p>Compare a quilometragem do painel com o histórico de revisões, laudos de vistoria e anúncios anteriores. Um carro que já apareceu com mais quilômetros em um anúncio antigo é sinal claro de adulteração.</p>
+
+              <h2 id="recall">6. Recall</h2>
+              <p>Recall pendente não impede a compra, mas é reparo de segurança gratuito que precisa ser feito. Peça ao vendedor para resolver antes ou agende você mesmo numa concessionária da marca.</p>
+
+              <h2 id="pagamento">7. Na hora de pagar</h2>
+              <p>Pague só depois de conferir o documento em mãos e com a transferência combinada. Prefira transferência bancária identificada para a conta do dono que está no documento. Desconfie de pressa, de desconto grande demais e de pedido de sinal antes da visita.</p>
+
+              <h2 id="checklist">Checklist antes de fechar</h2>
+              <div role="group" aria-label="Checklist" style="display:flex;flex-direction:column;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+                <sc-for list="{{ checks }}" as="c" hint-placeholder-count="8">
+                  <label style="position:relative;display:flex;align-items:center;gap:14px;padding:14px 18px;border-top:{{ c.border }};cursor:pointer;background:{{ c.bg }}" style-hover="background:#FAF8FF">
+                    <input type="checkbox" checked="{{ c.on }}" onChange="{{ c.toggle }}" style="position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer">
+                    <span style="flex:none;width:24px;height:24px;border-radius:6px;box-shadow:inset 0 0 0 1.5px {{ c.ring }};background:{{ c.box }};display:flex;align-items:center;justify-content:center;pointer-events:none"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#fff">{{ c.mark }}</span></span>
+                    <span style="font:400 16px/1.45 Roboto;color:#1D2433;text-decoration:{{ c.strike }};pointer-events:none">{{ c.t }}</span>
+                  </label>
+                </sc-for>
+              </div>
+
+              <section aria-label="Veredito" style="padding:24px;border-radius:16px;background:#E8F5EC;display:flex;flex-direction:column;gap:8px">
+                <span style="display:flex;align-items:center;gap:8px;font:700 13px Roboto;letter-spacing:.06em;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:20px">verified</span>EM UMA FRASE</span>
+                <span style="font:700 20px/1.4 'Merriweather Sans',sans-serif;color:#1D2433">Dados antes, carro depois, dinheiro por último. Se o vendedor não quer passar a placa, passe você para o próximo anúncio.</span>
+              </section>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notModel }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:24px;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:10px">
+              <span style="font:700 16px Roboto">Texto desta pauta em produção.</span>
+              <span style="font:400 15px/1.6 Roboto;color:#3F4654">Esta página usa o modelo de matéria do novo blog. Veja o modelo completo com resumo, checklist, tabela e veredito.</span>
+              <a href="Artigo.dc.html?a=compra-no-escuro" style="align-self:flex-start;font:700 15px Roboto">Abrir matéria modelo</a>
+            </div>
+          </sc-if>
+
+          <section aria-label="Como fizemos" style="padding-top:24px;border-top:1px solid #EEEEF2;display:flex;flex-direction:column;gap:8px">
+            <span style="font:700 14px Roboto">Como fizemos esta matéria</span>
+            <span style="font:400 14px/1.6 Roboto;color:#5A6472">Escrita pela Redação Achecar com base nas regras do Código de Trânsito Brasileiro, nas orientações da Senatran e dos Detrans e nos itens que a Consulta Achecar levanta. Viu algo desatualizado? <a href="https://www.achecar.com.br/fale-conosco" target="_blank" rel="noopener">Avise a redação</a>.</span>
+          </section>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 20px;border-radius:12px;background:#F6F6F9">
+            <span style="font:700 15px Roboto">{{ fbQ }}</span>
+            <sc-if value="{{ fbAsk }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;gap:8px">
+                <button onClick="{{ fbYes }}" style="height:40px;padding:0 16px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #D4D4D8;color:#1D2433;font:500 14px Roboto;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">thumb_up</span>Sim</button>
+                <button onClick="{{ fbNo }}" style="height:40px;padding:0 16px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #D4D4D8;color:#1D2433;font:500 14px Roboto;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">thumb_down</span>Não</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ fbNoDone }}" hint-placeholder-val="{{ false }}"><a href="{{ copAsk }}" style="font:700 14px Roboto">Pergunte ao Copiloto o que faltou</a></sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section data-screen-label="Leia também" style="background:#F6F6F9;padding:56px clamp(16px, calc(2.2vw + 7px), 32px) 72px;display:flex;justify-content:center">
+      <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:12px;border-bottom:2px solid #1D2433">
+          <h2 style="margin:0;font:800 24px 'Merriweather Sans',sans-serif">Leia também</h2>
+          <a href="{{ p.catHref }}" style="display:flex;align-items:center;gap:2px;font:500 14px Roboto">Mais em {{ p.catLabel }}<span style="font-family:'Material Symbols Rounded';font-size:18px">arrow_forward</span></a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:24px">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="4">
+            <a href="{{ r.href }}" style="display:flex;flex-direction:column;gap:10px;color:#1D2433" style-hover="color:#7D3EE3">
+              <div style="position:relative;aspect-ratio:4/3;border-radius:16px;background-color:{{ r.bgc }};background-image:{{ r.bg }};background-size:{{ r.bgs }};background-position:center;background-repeat:no-repeat"><span style="position:absolute;left:10px;top:10px;padding:4px 9px;border-radius:999px;background:#fff;color:#1D2433;font:700 11px Roboto">{{ r.fmtLabel }}</span></div>
+              <span style="font:700 16px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ r.title }}</span>
+              <span style="font:400 12px Roboto;color:#5A6472">{{ r.date }} · {{ r.min }} min</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </article>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.24)">{{ toast }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  artRef = React.createRef();
+  state = { D: null, pct: 0, active: "placa", vw: window.innerWidth, checks: {}, plate: "", plErr: "", fb: "", copied: false, toast: "" };
+  TOC = [["placa", "Comece pela placa"], ["leilao", "Leilão e sinistro"], ["restricoes", "Gravame e restrições"], ["debitos", "Débitos e multas"], ["km", "Quilometragem e laudos"], ["recall", "Recall"], ["pagamento", "Na hora de pagar"], ["checklist", "Checklist"]];
+  CHECKS = ["Consultei a placa e li o relatório inteiro", "Sem leilão, ou entendi o motivo e vi o laudo", "Sem gravame nem restrição judicial", "Débitos somados e descontados do preço", "Chassi e motor batem com o documento", "Quilometragem coerente com o histórico", "Recall resolvido ou agendado", "Pagamento só com a transferência combinada"];
+  onScroll = () => {
+    const el = this.artRef.current; if (!el) return;
+    const r = el.getBoundingClientRect(), total = r.height - window.innerHeight, pct = total > 0 ? Math.min(100, Math.max(0, (-r.top / total) * 100)) : 0;
+    let active = this.state.active; for (const [id] of this.TOC) { const h = document.getElementById(id); if (h && h.getBoundingClientRect().top < 160) active = id; }
+    if (Math.abs(pct - this.state.pct) > 0.5 || active !== this.state.active) this.setState({ pct, active });
+  };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() { import("./blog-data.js").then((D) => this.setState({ D })); window.addEventListener("scroll", this.onScroll, { passive: true }); window.addEventListener("resize", this.onResize); }
+  componentWillUnmount() { window.removeEventListener("scroll", this.onScroll); window.removeEventListener("resize", this.onResize); clearTimeout(this.tt); }
+  card = (p) => { const D = this.state.D, c = D.CATS.find((x) => x.id === p.cat) || {}; return { ...p, href: "Artigo.dc.html?a=" + p.id, catLabel: c.label, catUp: (c.label || "").toUpperCase(), catHref: "Todas as Materias.dc.html?editoria=" + p.cat, fmtLabel: D.FORMATS[p.fmt], bg: "url(" + p.img + ")", bgs: p.cutout ? "60% auto" : "cover", bgc: p.cutout ? "#EEEAF7" : "#E6E6EE" }; };
+  toastMsg = (t) => { this.setState({ toast: t }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: "" }), 2400); };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, D = s.D, id = new URLSearchParams(location.search).get("a") || "compra-no-escuro";
+    let p = { id: "compra-no-escuro", title: "Compra no escuro: o que checar antes de fechar negócio", dek: "Placa, documento, leilão, sinistro e débitos: o passo a passo para não levar surpresa junto com o carro.", catLabel: "Compra e venda", catUp: "COMPRA E VENDA", catHref: "Todas as Materias.dc.html?editoria=compra", fmtLabel: "Guia", date: "21 out 2026", min: 9, bg: "url(assets/home/blog-destaque.webp)", bgs: "cover", bgc: "#E6E6EE" }, related = [];
+    if (D) { const raw = D.byId(id); p = this.card(raw); if (p.cutout) p.bgs = "auto 80%"; related = D.POSTS.filter((x) => x.id !== raw.id).sort((a, b) => (b.cat === raw.cat) - (a.cat === raw.cat)).slice(0, 4).map(this.card); }
+    const done = this.CHECKS.filter((_, i) => s.checks[i]).length, wide = s.vw >= (this.props.bpDesktop1024 ?? 1024);
+    const url = location.href.split("#")[0];
+    return {
+      artRef: this.artRef, progress: s.pct.toFixed(1) + "%", p, related, isModel: !D || p.id === "compra-no-escuro", notModel: !!D && p.id !== "compra-no-escuro",
+      wide, cols: wide ? "220px minmax(0,1fr)" : "minmax(0,1fr)",
+      toc: this.TOC.map(([k, label]) => { const on = s.active === k; return { href: "#" + k, label, line: on ? "#7D3EE3" : "#E6E6EE", fg: on ? "#7D3EE3" : "#3F4654", w: on ? 700 : 400 }; }),
+      checkCount: String(done), checkPct: Math.round((done / 8) * 100) + "%",
+      checks: this.CHECKS.map((t, i) => { const on = !!s.checks[i]; return { t, on, border: i ? "1px solid #EEEEF2" : "0", bg: on ? "#F4FBF6" : "#fff", ring: on ? "#15803D" : "#A1A7B3", box: on ? "#15803D" : "#fff", mark: on ? "check" : "", strike: on ? "line-through" : "none", toggle: () => this.setState((x) => ({ checks: { ...x.checks, [i]: !x.checks[i] } })) }; }),
+      plate: s.plate, plErr: s.plErr, plRing: s.plErr ? "#FCA5A5" : "rgba(255,255,255,.18)",
+      onPlate: (e) => this.setState({ plate: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""), plErr: "" }),
+      plSubmit: (e) => { e.preventDefault(); if (!/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(s.plate)) return this.setState({ plErr: "Digite uma placa válida · ABC1D23" }); location.href = "Consulta Placa.dc.html?placa=" + s.plate; },
+      copyTxt: s.copied ? "Copiado" : "Copiar link",
+      copyLink: () => { try { navigator.clipboard.writeText(url); } catch (e) {} this.setState({ copied: true }); this.toastMsg("Link copiado."); setTimeout(() => this.setState({ copied: false }), 2000); },
+      waHref: "https://wa.me/?text=" + encodeURIComponent((p.title || "") + " " + url),
+      fbQ: s.fb === "yes" ? "Obrigado! Isso ajuda a redação." : s.fb === "no" ? "Obrigado pelo retorno." : "Esta matéria foi útil?",
+      fbAsk: !s.fb, fbNoDone: s.fb === "no", fbYes: () => this.setState({ fb: "yes" }), fbNo: () => this.setState({ fb: "no" }),
+      copAsk: "Copiloto.dc.html?q=" + encodeURIComponent("Tenho uma dúvida sobre: " + (p.title || "")),
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

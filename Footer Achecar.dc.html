@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <style>footer input::placeholder{color:rgba(255,255,255,.55);letter-spacing:.06em}</style>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<footer style="background:#0A0A0A;color:#fff;padding:62px clamp(16px, calc(2.2vw + 7px), 32px) 46px;font-family:Roboto,sans-serif">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column">
+      <form onSubmit="{{ onSubmitPlate }}" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:28px 32px;border-radius:20px;background:#1A1A1C">
+        <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font:700 20px/28px 'Merriweather Sans',sans-serif">Consulte a placa antes de fechar negócio.</span>
+          <span style="font:400 14px/20px Roboto;color:#C4C4CC">Mais de 140 informações de mais de 15 fontes oficiais e privadas. O relatório fica na sua conta e não expira.</span>
+        </div>
+        <label style="position:relative;display:flex;align-items:center;justify-content:flex-end;height:50px;flex:0 0 auto;padding:5px;border-radius:12px;background:#2A2A2E;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);width:245px;box-sizing:border-box;cursor:text;transition:box-shadow .15s ease-out, background .15s ease-out" style-hover="background:#34343A;box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-within="box-shadow:inset 0 0 0 1px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)">
+          <input value="{{ plate }}" onChange="{{ onPlate }}" maxlength="7" placeholder="ABC1D23" aria-label="Placa do veículo" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 116px 0 20px;border:0;border-radius:12px;background:transparent;color:#fff;font:500 14px 'Roboto Mono',monospace;letter-spacing:.06em;text-transform:uppercase;outline:none;cursor:text">
+          <button type="submit" style="position:relative;z-index:1;height:40px;padding:0 16px;border:0;border-radius:8px;background:#fff;color:#0A0A0A;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out, transform .1s ease-out, box-shadow .15s ease-out" style-hover="background:#E4E4E7" style-active="background:#D4D4D8;transform:scale(.97)" style-focus="outline:none;box-shadow:0 0 0 3px rgba(125,61,227,.55)">Consultar</button>
+        </label>
+      </form>
+      <sc-if value="{{ plateMsg }}" hint-placeholder-val="{{ false }}"><span role="alert" style="margin-top:8px;font:400 12px Roboto;color:#FCA5A5;text-align:right">{{ plateMsg }}</span></sc-if>
+
+      <sc-if value="{{ footOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:{{ footCols }};column-gap:24px;row-gap:40px;padding-top:48px">
+          <div style="display:flex;flex-direction:column;gap:20px;min-width:0;grid-column:{{ footBrandSpan }}">
+            <img src="assets/footer/logo-achecar.png" alt="Achecar" style="width:160px;height:auto;display:block">
+            <p style="margin:0;max-width:350px;font:400 12px/16px Roboto;color:#E4E4E7;text-wrap:pretty">A Achecar é uma plataforma brasileira de informações sobre veículos. Pela placa, reunimos dados de fontes oficiais e privadas em um relatório claro. Também oferecemos ferramentas gratuitas: Tabela FIPE, Comparador, dados de mercado e a Garagem Achecar.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="https://apps.apple.com/br/app/achecar-consulte-a-placa/id6786428056" target="_blank" rel="noopener" aria-label="Baixar na App Store"><img src="assets/footer/loja-appstore.png" alt="" style="height:49px;width:auto;display:block"></a>
+              <a href="https://play.google.com/store/apps/details?id=com.achecar.app" target="_blank" rel="noopener" aria-label="Disponível no Google Play"><img src="assets/footer/loja-googleplay.png" alt="" style="height:49px;width:auto;display:block"></a>
+            </div>
+            <div style="display:flex;align-items:center;gap:20px">
+              <span style="font:400 12px Roboto;color:#E4E4E7">Siga a Achecar</span>
+              <div style="display:flex;gap:24px">
+                <a href="https://www.facebook.com/achecar.com.br" target="_blank" rel="noopener" aria-label="Facebook" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-facebook.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.instagram.com/achecar.com.br" target="_blank" rel="noopener" aria-label="Instagram" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-instagram.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.linkedin.com/company/achecar/" target="_blank" rel="noopener" aria-label="Linkedin" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-linkedin.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.youtube.com/@achecar-com-br" target="_blank" rel="noopener" aria-label="Youtube" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-youtube.png" alt="" style="width:32px;height:32px;display:block"></a>
+              </div>
+            </div>
+          </div>
+          <nav aria-label="Consulta Achecar" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Consulta Achecar</span>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Consultar placa</a>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">O que vem no relatório</a>
+            <a href="Insights Consulta v5.dc.html?demo=1" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Exemplo de relatório</a>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Preço e formas de pagamento</a>
+            <a href="Minha Conta.dc.html?tela=consultas" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Minhas consultas</a>
+          </nav>
+          <nav aria-label="Garagem" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Garagem</span>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Buscar carros</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Montadoras</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Categorias</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Mais vendidos</a>
+            <a href="Lancamentos.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Lançamentos</a>
+            <a href="Minha Conta.dc.html?tela=carros" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Minha Garagem</a>
+          </nav>
+          <nav aria-label="Copiloto" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Copiloto</span>
+            <a href="Copiloto.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Pergunte ao Copiloto</a>
+            <a href="Precos e Valorizacao.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Tabela FIPE</a>
+            <a href="Quanto Vale.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Quanto vale meu carro</a>
+            <a href="Comparativo.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Comparador</a>
+            <a href="Versoes.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Calculadora de custo</a>
+          </nav>
+          <nav aria-label="Achecar" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Achecar</span>
+            <a href="#" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Sobre a Achecar</a>
+            <a href="Blog.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Blog</a>
+            <a href="Central de Ajuda.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Central de ajuda</a>
+            <a href="Home Achecar.dc.html#app" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Baixe o app</a>
+            <a href="Parceiros.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Programa de afiliados</a>
+          </nav>
+        </div>
+
+        <div style="margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;padding:24px 32px;border:1px solid #2A2A2E;border-radius:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 16px/22px Roboto">Precisa de ajuda?</span>
+            <span style="font:400 12px/16px Roboto;color:#C4C4CC">Atendimento de segunda a sexta, das 8h às 17h, exceto feriados.</span>
+          </div>
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <a href="Central de Ajuda.dc.html" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">Central de ajuda</a>
+            <a href="tel:08000004770" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">0800 000 4770</a>
+            <a href="https://www.achecar.com.br/fale-conosco" target="_blank" rel="noopener" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">Enviar e-mail</a>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a href="https://www.reclameaqui.com.br/empresa/achecar/" target="_blank" rel="noopener" aria-label="Achecar no Reclame Aqui"><img src="assets/footer/selo-reclameaqui.png" alt="Verificada por Reclame Aqui" style="height:72px;width:auto;display:block"></a>
+            <img src="assets/footer/selo-siteconfiavel.png" alt="Site Confiável" style="height:72px;width:auto;display:block">
+            <img src="assets/footer/selo-lgpd.png" alt="LGPD · Lei Geral de Proteção de Dados" style="height:72px;width:auto;display:block">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font:400 12px Roboto;color:#C4C4CC">Pagamento com Pix ou cartão de crédito à vista</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <img src="assets/footer/pg-pix.png" alt="Pix" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-visa.png" alt="Visa" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-mastercard.png" alt="Mastercard" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-elo.png" alt="Elo" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-amex.png" alt="Amex" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-hipercard.png" alt="Hipercard" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-diners.png" alt="Diners" style="height:43px;width:auto;display:block">
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:{{ footRuleMt }};display:flex;align-items:center;gap:16px">
+        <div style="flex:1;height:1px;background:#262629"></div>
+        <button onClick="{{ toggleFoot }}" aria-expanded="{{ footOpen }}" style="display:flex;align-items:center;gap:4px;height:36px;padding:0 16px;border-radius:999px;border:1px solid #333336;background:#141416;color:#fff;font:700 14px Roboto;cursor:pointer" style-hover="background:#1F1F22">{{ footToggleLabel }}<span style="font-family:'Material Symbols Rounded';font-size:18px">{{ footChev }}</span></button>
+        <div style="flex:1;height:1px;background:#262629"></div>
+      </div>
+
+      <div style="margin-top:40px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px 24px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:400 12px/16px Roboto;color:#fff">© 2026 Achecar. Todos os direitos reservados. [Razão social] · CNPJ [a definir]</span>
+          <span style="font:400 12px/16px Roboto;color:#A1A1AA">A Consulta Achecar reúne dados de fontes oficiais e privadas e não substitui a vistoria cautelar.</span>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <a href="Termos de Uso.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Termos de uso</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Política de privacidade</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Política de cookies</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Preferências de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;900px&quot;}}">
+class Component extends DCLogic {
+  state = { open: true, plate: "", plateMsg: "", vw: window.innerWidth };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() { window.addEventListener("resize", this.onResize); }
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+  renderVals() {
+    const s = this.state, wide = s.vw >= (this.props.bpDesktop1024 ?? 1024);
+    return {
+      footOpen: s.open, toggleFoot: () => this.setState({ open: !s.open }),
+      footToggleLabel: s.open ? "Recolher" : "Expandir", footChev: s.open ? "expand_less" : "expand_more", footRuleMt: s.open ? "64px" : "40px",
+      footCols: wide ? "minmax(0,1fr) repeat(4,minmax(0,165px))" : "repeat(auto-fit,minmax(170px,1fr))", footBrandSpan: wide ? "auto" : "1 / -1",
+      plate: s.plate, plateMsg: s.plateMsg,
+      onPlate: (e) => this.setState({ plate: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""), plateMsg: "" }),
+      onSubmitPlate: (e) => { e.preventDefault(); if (!/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(s.plate)) return this.setState({ plateMsg: "Digite uma placa válida · ABC1D23" }); location.href = "Consulta Placa.dc.html?placa=" + s.plate; }
+    };
+  }
+}
+</script>
+</body>
+</html>

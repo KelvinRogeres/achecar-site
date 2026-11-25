@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <script src="lancamentos-data.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB} @keyframes skl{0%{background-position:-200px 0}100%{background-position:200px 0}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9;width:100%;max-width:{{ frameW }};margin:0 auto;box-shadow:{{ frameShadow }}">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+  <sc-if value="{{ isPremium }}" hint-placeholder-val="{{ false }}">
+  <section data-screen-label="Abertura 360" style="position:relative;overflow:hidden;background:#0F1218;color:#fff;padding:{{ pad }};min-height:calc(100vh - 81px);display:flex;align-items:center;box-sizing:border-box">
+  
+  <span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 160px), linear-gradient(180deg,#1A1E26 0%,#141820 62%)"></span>
+  <span aria-hidden="true" style="position:absolute;left:0;right:0;bottom:0;height:30%;pointer-events:none;background:linear-gradient(180deg,#0E1116 0%,#090B0E 100%);border-top:1px solid rgba(255,255,255,.07)"></span>
+  <span aria-hidden="true" style="position:absolute;left:30%;right:30%;top:0;height:3px;border-radius:0 0 999px 999px;pointer-events:none;background:rgba(245,243,255,.85);box-shadow:0 0 28px 6px rgba(245,243,255,.25);opacity:{{ lightOp }};transition:opacity .6s ease-out .9s"></span>
+  <span aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(50% 65% at 50% 0%, rgba(245,243,255,.16), rgba(245,243,255,0) 70%), radial-gradient(45% 30% at 50% 78%, rgba(125,62,227,.14), rgba(125,62,227,0) 70%);opacity:{{ lightOp }};transition:opacity .8s ease-out 1s"></span>
+  <span aria-hidden="true" style="position:absolute;inset:0;z-index:5;pointer-events:none;background:repeating-linear-gradient(180deg,#2B303A 0 58px,#22262E 58px 60px,#1C2027 60px 62px);box-shadow:0 18px 40px rgba(0,0,0,.55);transform:translateY({{ doorY }});transition:transform 1.8s cubic-bezier(.65,.05,.25,1)"><span style="position:absolute;left:50%;bottom:28px;width:120px;height:8px;margin-left:-60px;border-radius:4px;background:#3A404B"></span><span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.9"><span style="position:relative;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.92);overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span><span style="font:700 13px Roboto;letter-spacing:.08em;color:#C9CDD6">{{ doorTxt }}</span></span></span>
+  <div style="position:relative;z-index:1;width:100%;max-width:1152px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><span style="display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:#3B2A12;color:#FCD34D;font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ stIcon }}</span>{{ stT }}</span><span style="height:28px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.08);color:#E6E6EE;font:400 12px/28px Roboto;white-space:nowrap">{{ chipLine }}</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center"><span style="display:flex;align-items:center;gap:10px"><span style="position:relative;width:40px;height:40px;border-radius:50%;background:#fff;overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%) scale(.72)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span><span style="font:700 15px Roboto;color:#E6E6EE">{{ brand }}</span></span><h1 style="margin:0;font-family:'Merriweather Sans',sans-serif;font-weight:800;font-size:{{ titleSize }};line-height:1.15;letter-spacing:-.01em;text-wrap:balance">{{ model }}</h1><p style="margin:4px 0 0;max-width:620px;font:400 17px/1.5 Roboto;color:#C9CDD6;text-wrap:pretty">{{ hl }}</p></div>
+    <div ref="{{ stage }}" tabIndex="0" role="img" aria-label="Jeep Commander 2027 em 360 graus. Arraste ou use as setas para girar." onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerCancel="{{ onUp }}" onKeyDown="{{ onKey }}" style="position:relative;width:100%;aspect-ratio:16/9;max-height:560px;cursor:grab;touch-action:pan-y;user-select:none;outline:none;border-radius:20px;background:transparent" style-focus="box-shadow:0 0 0 3px rgba(125,61,227,.55)">
+            
+            
+            
+            
+            <sc-for list="{{ frames }}" as="fr" hint-placeholder-count="1"><span aria-hidden="true" style="position:absolute;inset:0;background:{{ fr.bg }};opacity:{{ fr.op }};pointer-events:none"></span></sc-for>
+            
+            <sc-if value="{{ showHint }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;z-index:3;left:50%;bottom:4%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.10);color:#fff;font:500 12px Roboto;white-space:nowrap;pointer-events:none"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">360</span>{{ hint }}</span></sc-if>
+          </div>
+    <div style="display:flex;align-items:center;gap:14px;justify-content:center">
+            <button type="button" onClick="{{ prev }}" aria-label="Girar para a esquerda" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:rgba(255,255,255,.10)">rotate_left</button>
+            <div aria-hidden="true" style="display:flex;align-items:flex-end;gap:4px;height:14px"><sc-for list="{{ ticks }}" as="t" hint-placeholder-count="20"><span style="width:3px;height:{{ t.h }};border-radius:2px;background:{{ t.bg }};transition:height .15s ease-out"></span></sc-for></div>
+            <span style="min-width:36px;font:500 12px 'Roboto Mono',monospace;color:#9BA3B1;text-align:center">{{ angle }}</span>
+            <button type="button" onClick="{{ next }}" aria-label="Girar para a direita" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:rgba(255,255,255,.10)">rotate_right</button>
+          </div>
+    <div style="width:100%;max-width:880px;display:flex;flex-direction:column;gap:16px"><div style="display:grid;grid-template-columns:{{ hsCols }};gap:10px"><sc-for list="{{ heroStats }}" as="st" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:4px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.06)"><span style="font:400 12px Roboto;color:#9BA3B1">{{ st.k }}</span><span style="font:800 16px/1.3 'Merriweather Sans',sans-serif;color:#fff">{{ st.v }}</span></div></sc-for></div><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button type="button" onClick="{{ openCmp }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;white-space:nowrap;transition:background .15s ease-out;border:0;cursor:pointer" style-hover="background:#6A2FCB;color:#fff"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">compare_arrows</span>Comparar com rivais</button><button type="button" onClick="{{ follow }}" aria-pressed="{{ following }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 20px;border-radius:8px;border:1.5px solid rgba(255,255,255,.28);background:transparent;color:#fff;font:700 15px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="background:rgba(255,255,255,.08);border-color:#fff"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ fIcon }}</span>{{ fTxtShort }}</button></div></div>
+    <span style="font:400 11px Roboto;color:#5A6472">{{ heroSrc }}</span>
+  </div>
+</section>
+  </sc-if>
+  <main data-screen-label="Lançamento" style="flex:1;width:100%;box-sizing:border-box;padding:{{ mainPad }}">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;font:400 13px Roboto;color:#5A6472"><a href="Lancamentos.dc.html" style="color:#5A6472;white-space:nowrap" style-hover="color:#7D3EE3">Lançamentos</a><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">chevron_right</span><span style="color:#1D2433;white-space:nowrap">{{ name }}</span></div>
+
+      <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+        <div aria-busy="true" aria-label="Carregando lançamento" style="display:grid;grid-template-columns:{{ heroCols }};gap:24px;padding:24px;border-radius:20px;background:#fff;border:1px solid #E6E6EE">
+          <div style="aspect-ratio:16/10;border-radius:16px;background:linear-gradient(90deg,#F1F1F5 0,#E6E6EE 50%,#F1F1F5 100%);background-size:400px 100%;animation:skl 1.2s linear infinite"></div>
+          <div style="display:flex;flex-direction:column;gap:12px"><sc-for list="{{ sk }}" as="w" hint-placeholder-count="5"><span style="height:18px;width:{{ w }};border-radius:6px;background:linear-gradient(90deg,#F1F1F5 0,#E6E6EE 50%,#F1F1F5 100%);background-size:400px 100%;animation:skl 1.2s linear infinite"></span></sc-for></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isMissing }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:56px 24px;border-radius:20px;background:#fff;border:1px solid #E6E6EE;text-align:center">
+          <span style="width:56px;height:56px;border-radius:50%;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:28px;line-height:1">search_off</span>
+          <span style="font:800 20px 'Merriweather Sans',sans-serif">Não encontramos esse lançamento</span>
+          <span style="max-width:420px;font:400 14px/1.5 Roboto;color:#5A6472">O endereço pode estar errado ou o lançamento saiu da lista. Veja os próximos carros que chegam ao Brasil.</span>
+          <a href="Lancamentos.dc.html" style="height:44px;padding:0 18px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px/44px Roboto" style-hover="background:#6A2FCB;color:#fff">Ver lançamentos</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isOk }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-radius:12px;background:#FFF6DA;color:#92400E;font:400 12px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1.2">science</span>{{ demoTxt }}</div>
+
+        <sc-if value="{{ notPremium }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Resumo do lançamento" style="display:grid;grid-template-columns:{{ heroCols }};gap:24px;padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE">
+          <div data-screen-label="Galeria" style="display:flex;flex-direction:column;gap:10px;min-width:0">
+            <div onKeyDown="{{ galKey }}" tabIndex="0" aria-roledescription="galeria" aria-label="Galeria de imagens do {{ model }}" style="position:relative;aspect-ratio:{{ stageRatio }};border-radius:16px;background:linear-gradient(180deg,#FBFBFD 0%,#F1F1F5 62%,#E6E6EE 100%);overflow:hidden;outline:none" style-focus="box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+              <sc-if value="{{ galIsPhoto }}" hint-placeholder-val="{{ true }}">
+                <span aria-hidden="true" style="position:absolute;left:12%;right:12%;bottom:14%;height:18px;border-radius:50%;background:radial-gradient(closest-side, rgba(29,36,51,.28), rgba(29,36,51,0));filter:blur(2px)"></span>
+                <span role="img" aria-label="{{ galAlt }}" style="position:absolute;left:6%;right:6%;top:10%;bottom:14%;background:{{ galBg }};transition:opacity .2s ease-out"></span>
+              </sc-if>
+              <sc-for list="{{ galSlots }}" as="gs" hint-placeholder-count="0"><sc-if value="{{ gs.on }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;padding:14px;box-sizing:border-box;color:#5A6472"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ gs.id }}" shape="rounded" radius="12" fit="cover" placeholder="{{ gs.ph }}" style="width:100%;height:100%" hint-size="100%,100%"></x-import></div></sc-if></sc-for>
+              <sc-if value="{{ noImg }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><span style="position:relative;width:72px;height:72px;border-radius:50%;background:#fff;overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span><span style="font:400 12px Roboto;color:#5A6472">Imagens ainda não divulgadas</span></div></sc-if>
+              <sc-if value="{{ hasGal }}" hint-placeholder-val="{{ true }}">
+                <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:999px;background:#fff;color:#1D2433;font:700 12px Roboto;box-shadow:0 2px 8px rgba(29,36,51,.10);pointer-events:none"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">{{ galIcon }}</span>{{ galLbl }}</span>
+                <span style="position:absolute;right:12px;top:12px;height:28px;padding:0 10px;border-radius:999px;background:rgba(29,36,51,.72);color:#fff;font:500 12px/28px Roboto;pointer-events:none">{{ galCount }}</span>
+                <button type="button" onClick="{{ galPrev }}" aria-label="Imagem anterior" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#1D2433;box-shadow:0 2px 8px rgba(29,36,51,.14);cursor:pointer;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#F7F4FF;color:#7D3EE3">chevron_left</button>
+                <button type="button" onClick="{{ galNext }}" aria-label="Próxima imagem" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#1D2433;box-shadow:0 2px 8px rgba(29,36,51,.14);cursor:pointer;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#F7F4FF;color:#7D3EE3">chevron_right</button></sc-if>
+                <sc-if value="{{ galIsPhoto }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ openLb }}" aria-label="Ampliar imagem" style="position:absolute;right:12px;bottom:12px;display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;border:0;background:#fff;color:#1D2433;font:700 12px Roboto;box-shadow:0 2px 8px rgba(29,36,51,.14);cursor:pointer;transition:background .15s ease-out, color .15s ease-out" style-hover="background:#F7F4FF;color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">open_in_full</span>Ampliar</button></sc-if>
+              </sc-if>
+            </div>
+            <sc-if value="{{ hasGal }}" hint-placeholder-val="{{ true }}">
+<sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">              <div role="tablist" aria-label="Imagens" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+                <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="position:relative;aspect-ratio:16/10;max-height:72px;width:100%;border-radius:10px;border:2px solid {{ t.bd }};background:{{ t.bg }};color:#5A6472;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;padding:0 4px 6px;box-sizing:border-box;cursor:pointer;transition:border-color .15s ease-out, background-color .15s ease-out" style-hover="border-color:#B794F6"><sc-if value="{{ t.empty }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">{{ t.icon }}</span></sc-if><span style="font:500 11px Roboto;color:{{ t.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%">{{ t.alt }}</span></button></sc-for>
+              </div>
+              <span style="font:400 11px Roboto;color:#5A6472">{{ galNote }}</span></sc-if>
+            </sc-if>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <span style="display:flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:999px;background:{{ stBg }};color:{{ stFg }};font:700 12px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:15px;line-height:1">{{ stIcon }}</span>{{ stT }}</span>
+              <sc-for list="{{ chips }}" as="c" hint-placeholder-count="2"><span style="height:26px;padding:0 10px;border-radius:999px;background:#EEEEF2;color:#3F4654;font:400 12px/26px Roboto;white-space:nowrap">{{ c }}</span></sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 13px Roboto;color:#5A6472">{{ brand }}</span><h1 style="margin:0;font:800 {{ h1 }}/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">{{ model }}</h1><p style="margin:4px 0 0;font:400 16px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ hl }}</p></div>
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+              <div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Chegada ao Brasil</span><span style="font:800 18px/1.25 'Merriweather Sans',sans-serif">{{ eta }}</span><sc-if value="{{ hasWas }}" hint-placeholder-val="{{ false }}"><span style="font:400 12px Roboto;color:#B91C1C">Antes previsto para {{ etaWas }}</span></sc-if></div>
+              <div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">{{ priceLbl }}</span><span style="font:800 18px/1.25 'Merriweather Sans',sans-serif;color:{{ priceC }}">{{ price }}</span><sc-if value="{{ priceEst }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;height:20px;padding:0 8px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 11px/20px Roboto">Estimativa da Achecar</span></sc-if></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;background:{{ stBg }};color:{{ stFg }};font:400 13px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1">{{ stIcon }}</span><span>{{ stD }}</span></div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <sc-if value="{{ false }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ follow }}" aria-pressed="{{ following }}" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 16px;border-radius:8px;border:1.5px solid {{ fBd }};background:{{ fBg }};color:{{ fFg }};font:700 14px Roboto;white-space:nowrap;cursor:pointer;transition:background .15s ease-out, border-color .15s ease-out" style-hover="border-color:#7D3EE3;background:#F7F4FF"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ fIcon }}</span>{{ fTxt }}</button></sc-if>
+              <sc-if value="{{ inCatalog }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ fichaHref }}" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;white-space:nowrap;box-sizing:border-box;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">Ver ficha {{ current }}</a>
+                <a href="{{ compareHref }}" style="display:flex;align-items:center;gap:6px;height:44px;padding:0 16px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#6A2FCB;color:#fff"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">compare_arrows</span>Comparar</a>
+              </sc-if>
+            </div>
+            <span style="font:400 12px Roboto;color:#5A6472">{{ followNote }}</span>
+          </div>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ isPremium }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Versões e preços" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Versões e preços</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">{{ verSub }}</span></div><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">Preço de tabela · fonte: site da Jeep</span></div>
+          <div style="display:grid;grid-template-columns:{{ verCols }};gap:12px"><sc-for list="{{ verCards }}" as="v" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:16px;border:1.5px solid {{ v.bd }};background:{{ v.bg }};cursor:pointer;transition:border-color .15s ease-out" style-hover="border-color:#7D3EE3" onClick="{{ v.go }}"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;min-height:22px"><span style="min-width:0;font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ v.d }}</span><sc-if value="{{ v.entry }}" hint-placeholder-val="{{ false }}"><span style="height:22px;padding:0 8px;border-radius:999px;background:#F1EBFD;color:#4C1D95;font:700 11px/22px Roboto;white-space:nowrap">Entrada</span></sc-if></div><span style="font:800 16px/1.3 'Merriweather Sans',sans-serif">{{ v.t }}</span><span style="margin-top:auto;font:800 22px 'Merriweather Sans',sans-serif;white-space:nowrap">{{ v.p }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ v.delta }}</span></div></sc-for></div>
+        </section>
+        <section data-screen-label="Preço frente aos rivais" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Preço frente aos rivais</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">Faixa de preço de cada SUV de 7 lugares e médios. O roxo é o Commander, da versão de entrada à mais cara.</span></div>
+          <sc-if value="{{ rvDemo }}" hint-placeholder-val="{{ true }}"><span style="align-self:flex-start;height:22px;padding:0 8px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 11px/22px Roboto;white-space:nowrap">Valores demonstrativos</span></sc-if>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ rvRows }}" as="r" hint-placeholder-count="7"><div style="display:grid;grid-template-columns:{{ rvCols }};gap:12px;align-items:center"><span style="font:{{ r.w }} 14px Roboto;color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.t }}</span><div style="position:relative;height:28px;border-radius:6px;background:#F6F6F9"><span style="position:absolute;top:4px;bottom:4px;left:{{ r.l }};width:{{ r.wd }};border-radius:4px;background:{{ r.c }};transition:left .3s ease-out, width .3s ease-out"></span><sc-if value="{{ r.isUs }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-2px;bottom:-2px;left:{{ r.mk }};width:3px;border-radius:2px;background:#1D2433"></span></sc-if></div><span style="font:700 13px Roboto;color:#1D2433;text-align:right;white-space:nowrap">{{ r.p }}</span></div></sc-for>
+            <div style="display:grid;grid-template-columns:{{ rvCols }};gap:12px"><span></span><div style="display:flex;justify-content:space-between;font:400 11px Roboto;color:#5A6472"><sc-for list="{{ rvAxis }}" as="ax" hint-placeholder-count="5"><span>{{ ax }}</span></sc-for></div><span></span></div>
+          </div>
+          <span style="font:400 12px/1.45 Roboto;color:#3F4654">{{ rvRead }}</span>
+        </section>
+        <section data-screen-label="Rivais" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Rivais do {{ shortModel }}</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">SUVs de 7 lugares e médios na mesma faixa. Escolha com quem comparar.</span></div><span style="height:22px;padding:0 8px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 11px/22px Roboto;white-space:nowrap">Preços demonstrativos</span></div>
+          <div style="display:grid;grid-template-columns:{{ rivCols }};gap:12px"><sc-for list="{{ rivCards }}" as="r" hint-placeholder-count="6">
+            <div style="display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:16px;border:1px solid #E6E6EE;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#C9B3F5;box-shadow:0 8px 24px rgba(29,36,51,.08)">
+              <div style="position:relative;aspect-ratio:16/9;border-radius:12px;background:#F6F6F9;overflow:hidden"><span role="img" aria-label="{{ r.t }}" style="position:absolute;inset:8px;background:{{ r.img }}"></span><sc-if value="{{ r.noImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:50%;top:50%;width:64px;height:64px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;overflow:hidden"><span style="position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-50%)"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ r.mk }}" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span></span></sc-if></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:800 16px/1.3 'Merriweather Sans',sans-serif">{{ r.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ r.d }}</span></div>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px"><span style="display:flex;flex-direction:column;gap:1px"><span style="font:400 11px Roboto;color:#5A6472">A partir de</span><span style="font:800 18px 'Merriweather Sans',sans-serif;white-space:nowrap">{{ r.p }}</span></span><span style="font:700 12px Roboto;color:{{ r.dc }};white-space:nowrap">{{ r.delta }}</span></div>
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+                <button type="button" onClick="{{ r.cmp }}" disabled="{{ r.cannot }}" title="{{ r.cmpTitle }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:8px;border:1.5px solid {{ r.cmpBd }};background:{{ r.cmpBg }};color:{{ r.cmpFg }};font:700 13px Roboto;white-space:nowrap;cursor:{{ r.cmpCur }};transition:background .15s ease-out" style-hover="background:{{ r.cmpHov }}"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ r.cmpIcon }}</span>{{ r.cmpTxt }}</button>
+                <a href="{{ r.ver }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 13px Roboto;white-space:nowrap;transition:background .15s ease-out" style-hover="background:#6A2FCB;color:#fff">Ver versão<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a>
+              </div>
+            </div>
+          </sc-for></div>
+        </section>
+        </sc-if>
+
+        <section data-screen-label="Decisão" style="display:grid;grid-template-columns:{{ decCols }};gap:16px;align-items:stretch">
+          <div style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:18px;min-width:0">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 11px Roboto;letter-spacing:.06em;color:#6D28D9">DECISÃO</span><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Esperar ou comprar agora?</h2><p style="margin:0;font:400 15px/1.5 Roboto;color:#3F4654;text-wrap:pretty">{{ decLine }}</p></div>
+              <span style="display:flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;background:{{ decBg }};color:{{ decFg }};font:700 13px Roboto;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ decIcon }}</span>{{ decVerdict }}</span>
+            </div>
+            <div style="display:grid;grid-template-columns:{{ twoCols }};gap:12px">
+              <sc-for list="{{ decCols2 }}" as="dc" hint-placeholder-count="2"><div style="display:flex;flex-direction:column;gap:12px;padding:16px 18px;border-radius:16px;background:{{ dc.bg }}"><span style="display:flex;align-items:center;gap:8px;font:700 15px Roboto;color:{{ dc.fg }}"><span style="width:30px;height:30px;flex:none;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ dc.icon }}</span>{{ dc.t }}</span><ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ dc.items }}" as="li" hint-placeholder-count="3"><li style="display:flex;gap:8px;align-items:flex-start;font:400 14px/1.45 Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1.3;color:{{ dc.fg }};flex:none">check</span>{{ li }}</li></sc-for></ul></div></sc-for>
+            </div>
+            <div style="display:grid;grid-template-columns:{{ threeCols }};gap:10px;padding-top:16px;border-top:1px solid #EEEEF2">
+              <sc-for list="{{ decFacts }}" as="f" hint-placeholder-count="3"><div style="display:flex;gap:10px;align-items:flex-start"><span style="width:32px;height:32px;flex:none;border-radius:10px;background:#F6F6F9;color:#5A6472;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ f.icon }}</span><span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:400 12px Roboto;color:#5A6472">{{ f.k }}</span><span style="font:700 14px/1.35 Roboto;color:#1D2433">{{ f.v }}</span><sc-if value="{{ f.est }}" hint-placeholder-val="{{ false }}"><span style="font:400 11px Roboto;color:#92400E">estimativa da Achecar</span></sc-if></span></div></sc-for>
+            </div>
+          </div>
+          <div style="padding:{{ boxPad }};border-radius:20px;background:#E9E2FC;display:flex;flex-direction:column;gap:12px">
+            <span style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:32px;padding:0 12px 0 4px;border-radius:999px;background:#fff;color:#5B21B6;font:700 12px Roboto;white-space:nowrap"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:24px;height:auto;display:block">Pergunte ao Copiloto</span>
+            <span style="font:400 13px/1.45 Roboto;color:#3F4654">Ele responde com o que já foi divulgado e avisa o que ainda é estimativa ou está em aberto.</span>
+            <div style="display:flex;flex-direction:column;gap:8px"><sc-for list="{{ copQs }}" as="q" hint-placeholder-count="3"><a href="{{ q.href }}" style="display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 14px;border-radius:12px;background:#fff;color:#5B21B6;font:500 14px/1.35 Roboto;transition:background .15s ease-out" style-hover="background:#F7F4FF;color:#4C1D95"><span style="flex:1">{{ q.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">arrow_forward</span></a></sc-for></div>
+          </div>
+        </section>
+
+        <sc-if value="{{ isPremium }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Cores" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Cores disponíveis</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">{{ colorSub }}</span></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><sc-for list="{{ colors }}" as="c" hint-placeholder-count="5"><button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.on }}" style="display:flex;align-items:center;gap:10px;height:48px;padding:0 16px 0 8px;border-radius:999px;border:1.5px solid {{ c.bd }};background:{{ c.bgc }};color:#1D2433;cursor:pointer;transition:border-color .15s ease-out" style-hover="border-color:#7D3EE3"><span style="width:32px;height:32px;border-radius:50%;background:{{ c.hex }};box-shadow:inset 0 0 0 1px rgba(29,36,51,.18)"></span><span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px"><span style="font:700 13px Roboto;white-space:nowrap">{{ c.t }}</span><span style="font:400 11px Roboto;color:#5A6472">{{ c.k }}</span></span></button></sc-for></div>
+          <span style="font:400 12px Roboto;color:#5A6472">{{ colorNote }}</span>
+        </section>
+
+        <section data-screen-label="Medidas" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Medidas</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">Onde cada número fica no carro.</span></div>
+          <sc-if value="{{ dimDemo }}" hint-placeholder-val="{{ true }}"><span style="align-self:flex-start;height:22px;padding:0 8px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 11px/22px Roboto;white-space:nowrap">Valores demonstrativos</span></sc-if>
+          <div tabIndex="0" role="img" aria-label="{{ model }} em 360 graus com medidas. Arraste para girar." onPointerDown="{{ mDown }}" onPointerMove="{{ mMove }}" onPointerUp="{{ mUp }}" onPointerCancel="{{ mUp }}" onKeyDown="{{ mKey }}" style="position:relative;width:100%;aspect-ratio:1920/1080;max-height:520px;border-radius:16px;background:#F6F6F9;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;outline:none" style-focus="box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+            <sc-for list="{{ mFrames }}" as="fr" hint-placeholder-count="1"><span aria-hidden="true" style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;inset:0;background:{{ fr.bg }};opacity:{{ fr.op }};pointer-events:none"></span></sc-for>
+            <span aria-hidden="true" style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;left:2%;right:2%;top:88%;height:0;border-top:1.5px solid #7D3EE3"></span>
+            <span style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;left:50%;top:88%;transform:translate(-50%,-50%);padding:4px 10px;border-radius:999px;background:#7D3EE3;color:#fff;font:700 12px Roboto;white-space:nowrap">Comprimento {{ dLen }}</span>
+            <span aria-hidden="true" style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;left:21.9%;width:59.9%;top:82%;height:0;border-top:1.5px dashed #3F4654"></span>
+            <span style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;left:51.8%;top:82%;transform:translate(-50%,-50%);padding:3px 8px;border-radius:999px;background:#fff;color:#1D2433;font:500 11px Roboto;white-space:nowrap;box-shadow:0 1px 4px rgba(29,36,51,.15)">Entre-eixos {{ dWb }}</span>
+            <span aria-hidden="true" style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;left:99%;top:14.8%;bottom:20.4%;width:0;border-left:1.5px solid #7D3EE3"></span>
+            <span style="opacity:{{ dimOp }};transition:opacity .2s ease-out;position:absolute;right:2%;top:47%;transform:translateY(-50%);padding:4px 10px;border-radius:999px;background:#7D3EE3;color:#fff;font:700 12px Roboto;white-space:nowrap">Altura {{ dH }}</span>
+            <div style="position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:#fff;color:#1D2433;font:500 12px Roboto;box-shadow:0 2px 8px rgba(29,36,51,.12);pointer-events:none;white-space:nowrap;max-width:calc(100% - 160px);overflow:hidden"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3;flex:none">360</span><span style="overflow:hidden;text-overflow:ellipsis">{{ mHint }}</span></div>
+            <sc-if value="{{ mOff }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ mSnap }}" style="position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:0;background:#7D3EE3;color:#fff;font:700 12px Roboto;white-space:nowrap;cursor:pointer;box-shadow:0 4px 12px rgba(77,26,153,.25);transition:background .15s ease-out" style-hover="background:#6A2FCB"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">straighten</span>Ver medidas</button></sc-if>
+          </div>
+          <div style="display:grid;grid-template-columns:{{ threeCols }};gap:10px"><sc-for list="{{ dimCards }}" as="d" hint-placeholder-count="3"><div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">{{ d.k }}</span><span style="font:800 17px/1.3 'Merriweather Sans',sans-serif">{{ d.v }}</span></div></sc-for></div>
+        </section>
+
+        
+
+        <section data-screen-label="Itens de série" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Itens de série</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">{{ serieSub }}</span></div><span style="font:400 12px Roboto;color:#5A6472">Fonte: site da Jeep</span></div>
+          <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:{{ twoCols }};gap:10px 24px"><sc-for list="{{ serie }}" as="it" hint-placeholder-count="10"><li style="display:flex;gap:10px;align-items:flex-start;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.15;color:#15803D;flex:none">check</span>{{ it }}</li></sc-for></ul>
+          <sc-if value="{{ serieMore }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ serieToggle }}" style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9">{{ serieBtn }}<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">{{ serieChev }}</span></button></sc-if>
+        </section>
+
+        <section data-screen-label="Custo para manter" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Quanto custa manter por 3 anos</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">Versão {{ costVer }}. Revisões pelo pacote oficial da Jeep; o resto é estimativa da Achecar.</span></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px"><span style="font:800 26px/1.1 'Merriweather Sans',sans-serif;white-space:nowrap">{{ costTotal }}</span><span style="font:400 12px Roboto;color:#5A6472;white-space:nowrap">{{ costMonth }}</span></div></div>
+          <div style="display:flex;flex:none;height:12px;margin-top:4px;border-radius:6px;overflow:hidden;gap:2px"><sc-for list="{{ costRows }}" as="c" hint-placeholder-count="4"><span style="flex:{{ c.f }};background:{{ c.c }}"></span></sc-for></div>
+          <div style="display:grid;grid-template-columns:{{ twoCols }};gap:10px 24px"><sc-for list="{{ costRows }}" as="c" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;flex:none;border-radius:3px;background:{{ c.c }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="display:flex;align-items:center;gap:6px;font:400 14px Roboto;color:#3F4654">{{ c.t }}<sc-if value="{{ c.est }}" hint-placeholder-val="{{ false }}"><span style="height:18px;padding:0 6px;border-radius:999px;background:#FFF6DA;color:#92400E;font:700 10px/18px Roboto">estimativa</span></sc-if><sc-if value="{{ c.off }}" hint-placeholder-val="{{ false }}"><span style="height:18px;padding:0 6px;border-radius:999px;background:#E9F7EE;color:#15803D;font:700 10px/18px Roboto">oficial</span></sc-if></span><span style="font:400 11px Roboto;color:#5A6472">{{ c.n }}</span></span><span style="font:700 14px Roboto;white-space:nowrap">{{ c.v }}</span></div></sc-for></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;border-top:1px solid #EEEEF2"><span style="font:400 12px Roboto;color:#5A6472;width:100%">Pacotes de revisão da Jeep</span><sc-for list="{{ revs }}" as="r" hint-placeholder-count="3"><span style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:999px;background:#F6F6F9;font:400 13px Roboto;color:#3F4654;white-space:nowrap">{{ r.t }}<strong style="color:#1D2433">{{ r.p }}</strong></span></sc-for></div>
+        </section>
+
+        <section data-screen-label="Acessórios" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Acessórios oficiais</h2><span style="font:400 14px/1.45 Roboto;color:#5A6472">Preço sugerido pela Jeep. Mão de obra e condições a validar com a concessionária.</span></div><div role="tablist" aria-label="Tipo de acessório" style="display:flex;padding:3px;border-radius:999px;background:#EEEEF2;flex-wrap:wrap"><sc-for list="{{ acTabs }}" as="t" hint-placeholder-count="4"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="height:32px;padding:0 12px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};font:500 12px Roboto;box-shadow:{{ t.sh }};white-space:nowrap;cursor:pointer" style-hover="color:#1D2433">{{ t.t }}</button></sc-for></div></div>
+          <div style="display:grid;grid-template-columns:{{ acCols }};gap:10px"><sc-for list="{{ acList }}" as="a" hint-placeholder-count="8"><div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid #E6E6EE;transition:border-color .15s ease-out" style-hover="border-color:#C9B3F5"><span style="width:40px;height:40px;flex:none;border-radius:10px;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;line-height:1">{{ a.icon }}</span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px/1.3 Roboto">{{ a.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ a.k }}</span></span><span style="font:700 14px Roboto;white-space:nowrap">{{ a.p }}</span></div></sc-for></div>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ hasNews }}" hint-placeholder-val="{{ true }}">
+          <section data-screen-label="Novidades" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">O que mudou</h2><sc-if value="{{ hasCurrent }}" hint-placeholder-val="{{ true }}"><span style="font:400 14px Roboto;color:#5A6472">Em relação ao {{ current }}, à venda hoje.</span></sc-if></div>
+            <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:{{ twoCols }};gap:10px 24px"><sc-for list="{{ news }}" as="n" hint-placeholder-count="4"><li style="display:flex;gap:10px;align-items:flex-start;font:400 15px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.2;color:#7D3EE3;flex:none">auto_awesome</span>{{ n }}</li></sc-for></ul>
+            <sc-if value="{{ hasDiff }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px solid #E6E6EE;border-radius:12px;overflow-x:auto"><div role="table" style="min-width:420px">
+                <div role="row" style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;padding:10px 16px;background:#F6F6F9"><span role="columnheader" style="font:400 12px Roboto;color:#5A6472">Item</span><span role="columnheader" style="font:400 12px Roboto;color:#5A6472">{{ curLbl }}</span><span role="columnheader" style="font:700 12px Roboto;color:#4C1D95">{{ model }}</span></div>
+                <sc-for list="{{ diff }}" as="d" hint-placeholder-count="3"><div role="row" style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px;padding:12px 16px;border-top:1px solid #E6E6EE;transition:background .15s ease-out" style-hover="background:#FAFAFC"><span role="cell" style="font:400 14px Roboto;color:#3F4654">{{ d.k }}</span><span role="cell" style="font:400 14px Roboto;color:#5A6472">{{ d.a }}</span><span role="cell" style="font:700 14px Roboto;color:{{ d.c }}">{{ d.b }}</span></div></sc-for>
+              </div></div>
+            </sc-if>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ hasEv }}" hint-placeholder-val="{{ false }}">
+          <section data-screen-label="Autonomia e recarga" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Autonomia e recarga</h2>
+            <div style="display:grid;grid-template-columns:{{ threeCols }};gap:10px">
+              <div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Autonomia</span><span style="font:800 22px 'Merriweather Sans',sans-serif">{{ evRange }}</span></div>
+              <div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Recarga em casa (AC)</span><span style="font:700 15px/1.35 Roboto">{{ evAc }}</span></div>
+              <div style="padding:14px 16px;border-radius:14px;background:#F6F6F9;display:flex;flex-direction:column;gap:4px"><span style="font:400 12px Roboto;color:#5A6472">Recarga rápida (DC)</span><span style="font:700 15px/1.35 Roboto">{{ evDc }}</span></div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px;padding:12px 14px;border-radius:12px;background:#E8F0FE;color:#1E3A8A;font:400 13px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.1">straighten</span><span>Padrão de medição: {{ evStd }}</span></div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ notPremium }}" hint-placeholder-val="{{ true }}">
+        <section data-screen-label="Preço e versões" style="padding:{{ boxPad }};border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Preço e versões</h2>
+          <sc-if value="{{ hasVers }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column"><sc-for list="{{ vers }}" as="v" hint-placeholder-count="3"><div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid {{ v.sep }}"><span style="font:500 15px Roboto">{{ v.t }}</span><span style="font:800 16px 'Merriweather Sans',sans-serif;white-space:nowrap">{{ v.p }}</span></div></sc-for></div></sc-if>
+          <sc-if value="{{ noVers }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:12px;background:#F4F4F6;color:#3F4654;font:400 14px/1.5 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1.2;color:#5A6472">info</span>A marca ainda não divulgou versões nem preços oficiais. Quando divulgar, a lista aparece aqui.</div></sc-if>
+        </section>
+        </sc-if>
+
+        <sc-if value="{{ hasSpecs }}" hint-placeholder-val="{{ true }}">
+          <section data-screen-label="Ficha técnica" style="border-radius:20px;background:#fff;border:1px solid #E6E6EE;overflow:hidden">
+            <div style="padding:20px 24px 8px;display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Ficha técnica divulgada</h2><span style="font:400 13px Roboto;color:#5A6472">Só o que a marca já informou. Itens em aberto aparecem quando forem divulgados.</span></div>
+            <sc-for list="{{ specs }}" as="g" hint-placeholder-count="4">
+              <div style="border-top:1px solid #EEEEF2">
+                <button type="button" onClick="{{ g.toggle }}" aria-expanded="{{ g.open }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:16px 24px;border:0;background:transparent;color:#1D2433;text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#FAFAFC"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">{{ g.icon }}</span><span style="flex:1;font:700 15px Roboto">{{ g.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ g.n }}</span><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">{{ g.chev }}</span></button>
+                <sc-if value="{{ g.open }}" hint-placeholder-val="{{ false }}"><dl style="margin:0;padding:0 24px 16px;display:grid;grid-template-columns:{{ twoCols }};column-gap:24px"><sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="2"><div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid #F0F0F4"><dt style="font:400 14px Roboto;color:#5A6472">{{ r.k }}</dt><dd style="margin:0;font:500 14px Roboto;text-align:right">{{ r.v }}</dd></div></sc-for></dl></sc-if>
+              </div>
+            </sc-for>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ showAlt }}" hint-placeholder-val="{{ true }}">
+          <section data-screen-label="Alternativas" style="display:flex;flex-direction:column;gap:14px">
+            <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif">Alternativas à venda hoje</h2><span style="font:400 14px Roboto;color:#5A6472">Mesma categoria, já nas concessionárias.</span></div>
+            <div style="display:grid;grid-template-columns:{{ rivCols }};gap:12px"><sc-for list="{{ rivals }}" as="r" hint-placeholder-count="2"><a href="{{ r.href }}" style="display:flex;align-items:center;gap:14px;padding:14px;border-radius:16px;background:#fff;border:1px solid #E6E6EE;color:#1D2433;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3;box-shadow:0 8px 24px rgba(29,36,51,.08);color:#1D2433"><span style="width:88px;height:56px;flex:none;border-radius:10px;background:{{ r.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">{{ r.t }}</span><span style="font:400 12px Roboto;color:#5A6472">Ver ficha</span></span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">arrow_forward</span></a></sc-for></div>
+          </section>
+        </sc-if>
+
+        <section data-screen-label="Fontes" style="padding:20px clamp(16px, calc(2.2vw + 7px), 32px);border-radius:20px;background:#fff;border:1px solid #E6E6EE;display:flex;flex-direction:column;gap:10px">
+          <span style="font:700 14px Roboto">Fontes</span>
+          <sc-for list="{{ sources }}" as="s" hint-placeholder-count="2"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:400 13px Roboto;color:#3F4654"><span style="height:22px;padding:0 8px;border-radius:999px;background:{{ s.bg }};color:{{ s.fg }};font:700 11px/22px Roboto">{{ s.kind }}</span><span style="flex:1;min-width:200px">{{ s.t }}</span><span style="color:#5A6472">{{ s.d }}</span></div></sc-for>
+          <span style="padding-top:8px;border-top:1px solid #EEEEF2;font:400 12px Roboto;color:#5A6472">Última atualização desta página: {{ updated }}</span>
+        </section>
+      </sc-if>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+  <sc-if value="{{ cmpOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cmpScrim }}" style="position:fixed;inset:0;z-index:96;background:rgba(18,13,38,.48);display:flex;align-items:{{ mAlign }};justify-content:center;padding:{{ mPad }};box-sizing:border-box">
+      <div role="dialog" aria-modal="true" aria-label="Comparar com rivais" style="width:100%;max-width:{{ mW }};max-height:{{ mMaxH }};display:flex;flex-direction:column;background:#fff;color:#1D2433;border-radius:{{ mRadius }};box-shadow:0 24px 64px rgba(18,13,38,.18);overflow:hidden">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:20px 16px 12px 24px"><span style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font:800 20px 'Merriweather Sans',sans-serif">Comparar o {{ shortModel }} com…</span><span style="font:400 13px/1.45 Roboto;color:#5A6472">Escolha até 2 carros. {{ cmpVerTxt }}</span></span><button type="button" onClick="{{ closeCmp }}" aria-label="Fechar" style="width:36px;height:36px;flex:none;border-radius:50%;border:0;background:transparent;color:#5A6472;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;line-height:1;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#1D2433">close</button></div>
+        <div style="padding:0 24px 12px"><label style="position:relative;display:block;height:48px;border:1.5px solid #D5D8DE;border-radius:8px;background:#fff;cursor:text;transition:border-color .15s ease-out, box-shadow .15s ease-out" style-hover="border-color:#7D3EE3" style-focus-within="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)"><span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">search</span><input value="{{ cmpQ }}" onChange="{{ cmpSetQ }}" placeholder="Buscar outro carro: marca ou modelo" aria-label="Buscar carro" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 14px 0 44px;border:0;border-radius:8px;outline:none;background:transparent;font:400 15px Roboto;color:#1D2433"></label></div>
+        <div style="flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:4px 24px 12px;display:flex;flex-direction:column;gap:6px">
+          <span style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472;padding:6px 0 2px">{{ cmpListTitle }}</span>
+          <sc-for list="{{ cmpList }}" as="o" hint-placeholder-count="6"><button type="button" onClick="{{ o.go }}" disabled="{{ o.dis }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 12px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:{{ o.cur }};opacity:{{ o.op }};transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:{{ o.hov }}"><span style="width:64px;height:40px;flex:none;border-radius:8px;background:{{ o.thumb }}"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto">{{ o.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ o.d }}</span></span><span style="width:22px;height:22px;flex:none;box-sizing:border-box;border-radius:6px;border:1.5px solid {{ o.cbBd }};background:{{ o.cbBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ o.cb }}</span></button></sc-for>
+          <sc-if value="{{ cmpNone }}" hint-placeholder-val="{{ false }}"><span style="padding:16px 0;font:400 13px Roboto;color:#5A6472">Nada encontrado para "{{ cmpQ }}". Tente só o modelo, como "Compass".</span></sc-if>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:12px 24px 20px;border-top:1px solid #EEEEF2"><span style="flex:1;font:400 13px Roboto;color:#5A6472">{{ cmpCount }}</span><button type="button" onClick="{{ closeCmp }}" style="height:48px;padding:0 18px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 15px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9">Cancelar</button><button type="button" onClick="{{ cmpGo }}" disabled="{{ cmpEmpty }}" style="height:48px;padding:0 20px;border:0;border-radius:8px;background:{{ cmpBtnBg }};color:{{ cmpBtnFg }};font:700 15px Roboto;cursor:{{ cmpBtnCur }};transition:background .15s ease-out" style-hover="background:{{ cmpBtnHov }}">Comparar</button></div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Imagem ampliada" onClick="{{ lbScrim }}" style="position:fixed;inset:0;z-index:95;background:rgba(18,13,38,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;box-sizing:border-box">
+      <button type="button" onClick="{{ closeLb }}" aria-label="Fechar" style="position:absolute;right:16px;top:16px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;transition:background .15s ease-out" style-hover="background:rgba(255,255,255,.22)">close</button>
+      <span role="img" aria-label="{{ galAlt }}" style="width:min(1100px, 100%);aspect-ratio:16/9;max-height:calc(100vh - 140px);background:{{ galBg }}"></span>
+      <span style="font:500 14px Roboto;color:#fff">{{ name }} · {{ galLbl }}</span>
+    </div>
+  </sc-if>
+  <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:10px;max-width:calc(100% - 32px);padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px/1.4 Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25)"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#4ADE80">check_circle</span>{{ toast }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;lancamento&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;onix-2027&quot;,&quot;commander-2027&quot;,&quot;dolphin-2027&quot;,&quot;tcross-2027&quot;,&quot;tracker-hev&quot;,&quot;taycan-2027&quot;,&quot;fastback-abarth&quot;,&quot;montana-2027&quot;,&quot;tucson-2027&quot;,&quot;kardian-x&quot;],&quot;default&quot;:&quot;onix-2027&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;estado&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Carregando&quot;,&quot;Não encontrado&quot;,&quot;Sem imagem&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Estado&quot;}}">
+class Component extends DCLogic {
+  state = { mf: 7, cmp: false, cmpSel: [], cmpQ: "", door: false, f: 0, used: false, colorI: 0, serieAll: false, acTab: 0, verI: 0, vw: window.innerWidth, loading: true, gi: 0, lb: false, open: { 0: true }, follow: [], toast: "" };
+  KF = "achecar-lancamentos-seguidos";
+  CAT = [["onix", "Chevrolet Onix", "Hatch"], ["hb20", "Hyundai HB20", "Hatch"], ["polo", "Volkswagen Polo", "Hatch"], ["argo", "Fiat Argo", "Hatch"], ["mobi", "Fiat Mobi", "Hatch"], ["virtus", "Volkswagen Virtus", "Sedã"], ["corolla", "Toyota Corolla", "Sedã"], ["tcross", "Volkswagen T-Cross", "SUV"], ["tracker", "Chevrolet Tracker", "SUV"], ["creta", "Hyundai Creta", "SUV"], ["pulse", "Fiat Pulse", "SUV"], ["compass", "Jeep Compass", "SUV"], ["sw4", "Toyota SW4", "SUV"], ["tiguan", "Volkswagen Tiguan Allspace", "SUV"], ["trailblazer", "Chevrolet Trailblazer", "SUV"], ["tiggo8", "Caoa Chery Tiggo 8", "SUV"]];
+  NAMES = { commander: "Jeep Commander", onix: "Chevrolet Onix", hb20: "Hyundai HB20", polo: "Volkswagen Polo", compass: "Jeep Compass", sw4: "Toyota SW4", tracker: "Chevrolet Tracker", creta: "Hyundai Creta", tcross: "Volkswagen T-Cross", pulse: "Fiat Pulse", strada: "Fiat Strada" };
+  componentDidMount() {
+    this.onR = () => this.setState({ vw: window.innerWidth }); window.addEventListener("resize", this.onR);
+    this.onK = (e) => { if (e.key === "Escape") this.setState({ lb: false, cmp: false }); }; document.addEventListener("keydown", this.onK);
+    let follow = []; try { follow = JSON.parse(localStorage.getItem(this.KF) || "[]"); } catch (e) {}
+    this.lt = setTimeout(() => this.setState({ loading: false, follow }), 350);
+    const D = window.ACHECAR_LANC || { items: [] }, id = new URLSearchParams(location.search).get("id") || this.props.lancamento || "onix-2027", it = D.items.find((x) => x.id === id);
+    if (it && it.spin) { this.sp = it.spin; this.ft = setTimeout(this.openDoor, 2500); let n = 0; for (let i = 0; i < it.spin.n; i++) { const im = new Image(); im.onload = im.onerror = () => { if (++n === it.spin.n) this.openDoor(); }; im.src = this.fsrc(i); } }
+  }
+  componentWillUnmount() { clearInterval(this.iv); clearTimeout(this.dt); clearTimeout(this.ft); document.removeEventListener("keydown", this.onK); window.removeEventListener("resize", this.onR); clearTimeout(this.lt); clearTimeout(this.tt); }
+  fsrc = (i) => this.sp.path + String(i).padStart(2, "0") + ".webp";
+  openDoor = () => { if (this.state.door) return; const rm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches; this.setState({ door: true }); if (!rm) this.dt = setTimeout(this.intro, 1700); };
+  intro = () => { if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return; const N = this.sp.n; let k = 0; this.iv = setInterval(() => { if (this.state.used || ++k > N) { clearInterval(this.iv); if (!this.state.used) this.setState({ f: 0 }); return; } this.setState({ f: k % N }); }, 90); };
+  spinGo = (d) => { clearInterval(this.iv); const N = this.sp.n; this.setState((s) => ({ used: true, f: (s.f + d + N) % N })); };
+  premium = (it, s, vw, mid, wide) => {
+    if (!it.spin) return { isPremium: false, notPremium: true, showAlt: !!(it.rivals && it.rivals.length), cmpOpen: false };
+    const N = it.spin.n, brl = this.brl, vers = it.versions || [], min = vers[0][1];
+    const rv = [[it.model.replace(/ 20\d\d$/, "") + " (" + vers.length + " versões)", vers[0][1], vers[vers.length - 1][1], true], ...it.rivalsPrice.list.map(([t, p]) => [t, p, p, false])];
+    const lo = 150000, hi = 360000, pc = (v) => ((v - lo) / (hi - lo) * 100).toFixed(2) + "%";
+    const vi = Math.min(s.verI, vers.length - 1), cv = vers[vi], fipe = cv[1];
+    const C = [["Perda de valor", fipe * 0.27, "#7D3EE3", "cerca de 27% em 3 anos", true], ["Combustível", 36000 / (/Diesel/.test(cv[0]) ? 10.5 : 8.6) * (/Diesel/.test(cv[0]) ? 6.09 : 6.29), "#B794F6", "36 mil km", true], ["Seguro", fipe * 0.042 * 2.7, "#3F4654", "média do perfil", true], ["IPVA (SP, 4%)", fipe * 0.04 * 2.6, "#FF8A7A", "3 anos, sobre o valor que cai", true], ["Revisões", it.revisoes[0][1], "#15803D", "pacote da 1ª à 3ª revisão", false]];
+    const tot = C.reduce((t, c) => t + c[1], 0);
+    const cats = ["Todos", ...Array.from(new Set(it.acessorios.map((a) => a[2])))], ct = cats[s.acTab] || "Todos";
+    const bp = it.spin.color, ci = Math.min(s.colorI, it.colors.length - 1);
+    const sideImg = this.fsrc(7);
+    const shortModel = it.model.replace(/ 20\d\d$/, "");
+    return {
+      isPremium: true, notPremium: false, showAlt: false, shortModel, doorTxt: (it.brand + " " + shortModel).toUpperCase(),
+      ...this.cmpVals(it, s, vw, mid, wide, vers, vi),
+      hsCols: wide ? "repeat(3,minmax(0,1fr))" : "repeat(2,minmax(0,1fr))",
+      rivCards: it.rivalsPrice.list.map(([t, p, id, mk, d]) => { const can = !!id && this.CAT.some((c) => c[0] === id), df = p - min;
+        let cd = {}; try { cd = JSON.parse(localStorage.getItem("achecar-comparativo") || "null") || {}; } catch (e) {}
+        const ci = cd.items || [], inC = !!id && ci.some((x) => x.mid === id), nm = t.split(" ").slice(1).join(" "), brand = t.split(" ")[0];
+        const add = () => { if (!can) return; let items = ci.slice(), view = (cd.view || []).slice();
+          if (!items.some((x) => x.mid === it.catalogId) && items.length < 3) { items.push({ mid: it.catalogId, vi, year: 2027, ver: vers[vi][0] }); view.push({ t: it.brand + " " + shortModel, short: shortModel, d: vers[vi][0] + " · 2027", img: "assets/carros/" + it.catalogId + ".webp" }); }
+          if (inC) { const k = items.findIndex((x) => x.mid === id); items.splice(k, 1); view.splice(k, 1); }
+          else if (items.length < 3) { items.push({ mid: id, vi: 0, year: 2026 }); view.push({ t, short: nm, d: d, img: "assets/carros/" + id + ".webp" }); }
+          else { this.flash("O comparativo já tem 3 veículos. Remova um no Copiloto para adicionar."); window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { tab: 1 } })); return; }
+          try { localStorage.setItem("achecar-comparativo", JSON.stringify({ ...cd, items, view, curSaved: null })); } catch (e) {}
+          window.dispatchEvent(new Event("achecar-comparativo")); window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { tab: 1 } })); this.forceUpdate(); };
+        return { cmp: add, cmpTxt: !can ? "Em breve" : inC ? "No comparativo" : "Comparar", cmpIcon: !can ? "schedule" : inC ? "check" : "compare_arrows", cmpTitle: can ? "" : "Ainda sem dados no comparador",
+          cmpBd: !can ? "#E6E6EE" : inC ? "#86EFAC" : "#7D3EE3", cmpBg: !can ? "#F6F6F9" : inC ? "#F0FDF4" : "#fff", cmpFg: !can ? "#5A6472" : inC ? "#15803D" : "#5B21B6", cmpHov: !can ? "#F6F6F9" : inC ? "#DCFCE7" : "#F7F4FF", cmpCur: can ? "pointer" : "not-allowed",
+          ver: "Versoes.dc.html?" + new URLSearchParams({ id: id || nm.toLowerCase().replace(/\s+/g, "-"), modelo: nm, marca: brand === "VW" ? "Volkswagen" : brand === "Caoa" ? "Caoa Chery" : brand, mk, cat: "SUV", img: id ? "assets/carros/" + id + ".webp" : "", min: p, max: Math.round(p * 1.25 / 1000) * 1000 - 10, n: 3, anos: "2025–2026" }).toString(),
+          t, d, mk, p: brl(p), noImg: !id, img: id ? "url('assets/carros/" + id + ".webp') center/contain no-repeat" : "none", can, cannot: !can, delta: (df > 0 ? "+" : "−") + brl(Math.abs(df)) + " vs " + shortModel, dc: df > 0 ? "#B91C1C" : "#15803D", href: "Comparativo.dc.html?" + new URLSearchParams({ add: it.catalogId, ver: vers[vi][0], mais: id || "" }).toString() }; }),
+      frames: Array.from({ length: N }, (_, i) => ({ bg: "url('" + this.fsrc(i) + "') center/contain no-repeat", op: i === s.f ? 1 : 0 })),
+      ticks: Array.from({ length: N }, (_, i) => ({ bg: i === s.f ? "#FFFFFF" : "rgba(255,255,255,.22)", h: i === s.f ? "14px" : "8px" })),
+      angle: Math.round((s.f / N) * 360) + "°", hint: "Arraste para girar", showHint: !s.used && s.door, doorY: s.door ? "-101%" : "0", lightOp: s.door ? 1 : 0, stage: this.stageRef,
+      onDown: (e) => { if (!this.state.door) this.openDoor(); this.dx = e.clientX; this.acc = 0; e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId); clearInterval(this.iv); this.setState({ used: true }); },
+      onMove: (e) => { if (this.dx == null) return; this.acc += e.clientX - this.dx; this.dx = e.clientX; const st = Math.trunc(this.acc / 22); if (st) { this.acc -= st * 22; this.setState((x) => ({ f: (x.f - st + N * 10) % N })); } },
+      onUp: () => { this.dx = null; }, onKey: (e) => { if (e.key === "ArrowLeft") this.spinGo(1); if (e.key === "ArrowRight") this.spinGo(-1); },
+      prev: () => this.spinGo(1), next: () => this.spinGo(-1),
+      titleSize: wide ? "56px" : mid ? "44px" : "34px", pad: mid ? "40px 32px 32px" : "24px 16px 24px",
+      chipLine: it.cat + " · " + vers.length + " versões", fTxtShort: s.follow.includes(it.id) ? "Acompanhando" : "Acompanhar",
+      heroStats: [["A partir de", brl(min)], ["Lugares", "7, em três fileiras"], ["Motores", "Turbo flex, híbrido leve e diesel"], ["Câmbio", "Automático de 6 marchas"], ["Tração", "Dianteira ou 4x4 (diesel)"], ["Segurança", "6 airbags e frenagem autônoma"]].map(([k, v]) => ({ k, v })),
+      heroSrc: "Preço de tabela da versão " + vers[0][0] + " · Fonte: site da Jeep · consultado em 11/10/2026",
+      verSub: vers.length + " versões, de " + brl(min) + " a " + brl(vers[vers.length - 1][1]) + ".", verCols: wide ? "repeat(4,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      verCards: vers.map(([t, p, d], i) => ({ t, d, p: brl(p), entry: i === 0, delta: i === 0 ? "Preço de entrada" : "+" + brl(p - min) + " sobre a de entrada", bd: i === vi ? "#7D3EE3" : "#E6E6EE", bg: i === vi ? "#F7F4FF" : "#fff", go: () => this.setState({ verI: i }) })),
+      rvDemo: !!it.rivalsPrice.demo, rvCols: mid ? "190px minmax(0,1fr) 150px" : "110px minmax(0,1fr) 92px",
+      rvRows: rv.sort((a, b) => a[1] - b[1]).map(([t, a, b, us]) => ({ t, isUs: us, w: us ? 700 : 400, c: us ? "#7D3EE3" : "#C9CDD6", l: pc(a), wd: us ? "calc(" + pc(b) + " - " + pc(a) + ")" : "8px", mk: pc(fipe), p: us ? brl(a).replace("R$ ", "R$ ") + "–" + Math.round(b / 1000) + " mil" : brl(a) })),
+      rvAxis: ["R$ 150 mil", "200", "250", "300", "R$ 360 mil"],
+      rvRead: "A versão selecionada (" + cv[0] + ", " + brl(fipe) + ") aparece como o traço escuro na barra do Commander. Toque numa versão acima para mudar.",
+      colorSub: it.colors.length + " cores. Bicolores têm o teto em preto.", colorNote: "O 360° desta página está em " + bp + ". As outras cores aparecem quando as fotos forem divulgadas.",
+      colors: it.colors.map(([t, hex, k], i) => ({ t, hex, k, on: i === ci, bd: i === ci ? "#7D3EE3" : "#E6E6EE", bgc: i === ci ? "#F7F4FF" : "#fff", go: () => this.setState({ colorI: i }) })),
+      dimDemo: !!it.dims.demo, sideImg,
+      mFrames: Array.from({ length: N }, (_, i) => ({ bg: "url('" + this.fsrc(i) + "') center/contain no-repeat", op: i === s.mf ? 1 : 0 })),
+      dimOp: s.mf === 7 ? 1 : 0, mOff: s.mf !== 7, mHint: s.mf === 7 ? "Arraste para girar" : "Medidas aparecem na vista lateral",
+      mSnap: () => this.setState({ mf: 7 }),
+      mDown: (e) => { this.mdx = e.clientX; this.macc = 0; e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId); },
+      mMove: (e) => { if (this.mdx == null) return; this.macc += e.clientX - this.mdx; this.mdx = e.clientX; const st = Math.trunc(this.macc / 22); if (st) { this.macc -= st * 22; this.setState((x) => ({ mf: (x.mf - st + N * 10) % N })); } },
+      mUp: () => { this.mdx = null; }, mKey: (e) => { if (e.key === "ArrowLeft") this.setState((x) => ({ mf: (x.mf + 1) % N })); if (e.key === "ArrowRight") this.setState((x) => ({ mf: (x.mf - 1 + N) % N })); }, dLen: it.dims.len, dWb: it.dims.wb, dH: it.dims.h,
+      dimCards: [["Largura", it.dims.w], ["Porta-malas", it.dims.trunk], ["Lugares", "7, em três fileiras"]].map(([k, v]) => ({ k, v })),
+      serieSub: "Versão " + vers[0][0] + ". Destaques de " + it.serieTotal + " itens.", serie: s.serieAll ? it.serie : it.serie.slice(0, 10), serieMore: it.serie.length > 10,
+      serieBtn: s.serieAll ? "Mostrar menos" : "Ver mais " + (it.serie.length - 10) + " destaques", serieChev: s.serieAll ? "expand_less" : "expand_more", serieToggle: () => this.setState((x) => ({ serieAll: !x.serieAll })),
+      costVer: cv[0], costTotal: brl(tot), costMonth: "cerca de " + brl(tot / 36) + " por mês",
+      costRows: C.map(([t, v, c, n, est]) => ({ t, v: brl(v), c, n, est, off: !est, f: String(Math.max(1, Math.round(v / 1000))) })),
+      revs: it.revisoes.map(([t, p]) => ({ t, p: brl(p) })),
+      acTabs: cats.map((t, i) => { const on = i === s.acTab; return { t, on, bg: on ? "#fff" : "transparent", fg: on ? "#4C1D95" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", go: () => this.setState({ acTab: i }) }; }),
+      acCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      acList: it.acessorios.filter((a) => ct === "Todos" || a[2] === ct).map(([t, p, k, icon]) => ({ t, k, icon, p: "R$ " + p.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) }))
+    };
+  };
+  cmpVals = (it, s, vw, mid, wide, vers, vi) => {
+    const nq = (x) => (x || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const rivIds = it.rivalsPrice.list.map((r) => r[2]).filter(Boolean), q = nq(s.cmpQ.trim());
+    const base = q ? this.CAT.filter(([id, t]) => nq(t).includes(q)) : [...it.rivalsPrice.list.map(([t, p, id, mk, d]) => [id, t, d, mk, p]), ...this.CAT.filter(([id]) => !rivIds.includes(id) && id !== it.catalogId).slice(0, 0)];
+    const list = base.map((r) => { const id = r[0], t = r[1], ok = !!id && this.CAT.some((c) => c[0] === id), on = s.cmpSel.includes(id), full = s.cmpSel.length >= 2 && !on;
+      return { t, d: ok ? (q ? r[2] : r[2]) : "Ainda sem dados no comparador", on, dis: !ok || full, cur: !ok || full ? "not-allowed" : "pointer", op: !ok ? ".55" : full ? ".7" : "1", bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", hov: ok && !full ? "#7D3EE3" : "#E6E6EE",
+        thumb: ok ? "#F1F1F5 url('assets/carros/" + id + ".webp') center/86% no-repeat" : "#F1F1F5", cb: on ? "check" : "", cbBd: on ? "#7D3EE3" : "#C9CDD6", cbBg: on ? "#7D3EE3" : "#fff",
+        go: () => ok && this.setState((x) => ({ cmpSel: on ? x.cmpSel.filter((y) => y !== id) : x.cmpSel.length < 2 ? [...x.cmpSel, id] : x.cmpSel })) }; });
+    const n = s.cmpSel.length, sheet = !mid;
+    return {
+      cmpOpen: s.cmp, openCmp: () => this.setState({ cmp: true, cmpQ: "" }), closeCmp: () => this.setState({ cmp: false }), cmpScrim: (e) => { if (e.target === e.currentTarget) this.setState({ cmp: false }); },
+      cmpQ: s.cmpQ, cmpSetQ: (e) => this.setState({ cmpQ: e.target.value }), cmpList: list, cmpNone: !!q && !list.length, cmpListTitle: q ? "RESULTADOS" : "RIVAIS SUGERIDOS",
+      cmpVerTxt: "Entra o " + it.model.replace(/ 20\d\d$/, "") + " " + vers[vi][0] + ". Troque a versão no comparativo.",
+      cmpCount: n ? n + (n === 1 ? " selecionado" : " selecionados") + " de 2" : "Nenhum selecionado", cmpEmpty: !n,
+      cmpBtnBg: n ? "#7D3EE3" : "#E6E6EE", cmpBtnFg: n ? "#fff" : "#5A6472", cmpBtnCur: n ? "pointer" : "not-allowed", cmpBtnHov: n ? "#6A2FCB" : "#E6E6EE",
+      cmpGo: () => { if (!n) return; location.href = "Comparativo.dc.html?" + new URLSearchParams({ add: it.catalogId, ver: vers[vi][0], mais: s.cmpSel.join(",") }).toString(); },
+      mAlign: sheet ? "flex-end" : "center", mPad: sheet ? "48px 0 0" : "24px", mW: sheet ? "100%" : "560px", mMaxH: sheet ? "100%" : "min(720px, calc(100vh - 48px))", mRadius: sheet ? "20px 20px 0 0" : "20px"
+    };
+  };
+  stageRef = React.createRef();
+  brl = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
+  flash = (t) => { clearTimeout(this.tt); this.setState({ toast: t }); this.tt = setTimeout(() => this.setState({ toast: "" }), 3200); };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const BP = { "Desktop 1440": 1440, "Desktop 1024": 1024, "Mobile 390": 390, "Mobile 360": 360, "Mobile 320": 320 }, fw = BP[this.props.breakpoint];
+    const s = this.state, vw = fw ? Math.min(fw, s.vw) : s.vw, wide = vw >= (this.props.bpDesktop1024 ?? 1024), mid = vw >= (this.props.bpTablet640 ?? 640);
+    const D = window.ACHECAR_LANC || { items: [], STATUS: {}, TIPO: {} };
+    const id = new URLSearchParams(location.search).get("id") || this.props.lancamento || "onix-2027";
+    const forced = this.props.estado;
+    const it = forced === "Não encontrado" ? null : D.items.find((x) => x.id === id) || (forced ? D.items[0] : null);
+    const loading = forced === "Carregando" || (s.loading && forced !== "Não encontrado");
+    const base = { frameW: fw ? fw + "px" : "none", frameShadow: fw ? "0 0 0 1px #E6E6EE, 0 8px 24px rgba(29,36,51,.12)" : "none", mainPad: mid ? "24px clamp(16px, calc(2.2vw + 7px), 32px) 80px" : "16px 16px 64px", heroCols: vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1.05fr) minmax(0,1fr)" : "minmax(0,1fr)", boxPad: mid ? "24px" : "18px", sk: ["40%", "80%", "65%", "90%", "50%"], isPremium: false, notPremium: true };
+    if (loading) return { ...base, isLoading: true, isMissing: false, isOk: false, name: "Carregando…" };
+    if (!it) return { ...base, isLoading: false, isMissing: true, isOk: false, name: "Não encontrado" };
+    const st = D.STATUS[it.status] || {}, noImg = forced === "Sem imagem" || !it.img;
+    const gal = noImg ? [] : [["photo", "Exterior", "directions_car"], ["slot", "Traseira", "flip"], ["slot", "Interior", "airline_seat_recline_normal"], ["slot", "Painel", "dashboard"]];
+    const gi = Math.min(s.gi, Math.max(0, gal.length - 1)), url = "url('assets/carros/" + it.img + ".webp') ", cur = gal[gi] || [];
+    const following = s.follow.includes(it.id), noPrice = it.price == null, closed = it.status === "cancelado", arrived = it.status === "disponivel";
+    const cat = it.catalogId && this.NAMES[it.catalogId];
+    const wait = closed ? [["block", "#FEF2F2", "#991B1B", "Não vale esperar por ele", "A venda no Brasil foi cancelada. Veja as alternativas abaixo."]] : arrived ? [["check_circle", "#E9F7EE", "#15803D", "Já dá para comprar", "Está nas concessionárias. Compare com as alternativas antes de fechar."]] : [
+      ["schedule", "#F1EBFD", "#4C1D95", "Vale esperar se", it.status === "exterior" || it.status === "anunciado" ? "A novidade pesa muito para você e você aceita a chance de ele não vir ao Brasil." : "Você pode esperar até " + it.eta + " e as novidades fazem diferença no seu uso."],
+      ["shopping_cart", "#F6F6F9", "#3F4654", "Compre agora se", it.current ? "Precisa do carro já. O " + it.current + " tende a ter desconto quando a novidade chegar." : "Precisa do carro já. Veja as alternativas da mesma categoria."]];
+    const icons = { "Motorização e câmbio": "settings", "Dimensões": "straighten", "Segurança": "verified_user", "Equipamentos": "tune" };
+    const specs = Object.entries(it.specs || {}).map(([t, rows], i) => { const open = !!s.open[i]; return { t, icon: icons[t] || "description", n: rows.length + (rows.length === 1 ? " item" : " itens"), open, chev: open ? "expand_less" : "expand_more", rows: rows.map(([k, v]) => ({ k, v })), toggle: () => this.setState((x) => ({ open: { ...x.open, [i]: !x.open[i] } })) }; });
+    const SRC = { oficial: ["Oficial", "#E9F7EE", "#15803D"], estimativa: ["Estimativa", "#FFF6DA", "#92400E"], rumor: ["Rumor", "#F4F4F6", "#5A6472"] };
+    const qs = [it.current ? "O que mudou no " + it.model + " em relação ao " + it.current + "?" : "O que o " + it.model + " traz de novo?", "Como ele se compara às opções à venda hoje?", noPrice ? "Quanto ele deve custar?" : "O preço faz sentido para o que ele oferece?"];
+    return {
+      ...base, isLoading: false, isMissing: false, isOk: true, ...this.premium(it, s, vw, mid, wide),
+      demoTxt: it.real ? "Versões, preços, itens de série, cores, acessórios e revisões vêm do site da Jeep (11/10/2026). Medidas e preços dos rivais são demonstrativos." : "Conteúdo demonstrativo do protótipo. Preços, datas e especificações não são informações reais.",
+      name: it.brand + " " + it.model, brand: it.brand, model: it.model, mk: it.mk, hl: it.hl, h1: mid ? "36px" : "28px",
+      chips: [it.cat, D.TIPO[it.tipo], it.motor].filter(Boolean),
+      stT: st.t, stD: st.d, stBg: st.bg, stFg: st.fg, stIcon: st.icon,
+      eta: it.eta, hasWas: !!it.etaWas, etaWas: it.etaWas || "",
+      priceLbl: it.priceEst ? "Preço estimado" : "Preço a partir de", price: noPrice ? "Preço ainda não divulgado" : this.brl(it.price), priceC: noPrice ? "#5A6472" : "#1D2433", priceEst: !!it.priceEst && !noPrice,
+      noImg, hasGal: gal.length > 1, galIsPhoto: cur[0] === "photo", galBg: gal.length ? url + "center/contain no-repeat" : "none", galAlt: gal.length ? it.model + ", " + (cur[1] || "").toLowerCase() : "Sem imagem", galCount: (gi + 1) + " de " + gal.length, galLbl: cur[1] || "", galIcon: cur[2] || "image",
+      galSlots: gal.map((g, i) => ({ on: g[0] === "slot" && i === gi, id: "lanc-" + it.id + "-" + g[1].toLowerCase(), ph: g[1] + " ainda não divulgado" })),
+      galPrev: () => this.setState({ gi: (gi - 1 + gal.length) % gal.length }), galNext: () => this.setState({ gi: (gi + 1) % gal.length }),
+      galKey: (e) => { return; if (e.key === "ArrowLeft") this.setState({ gi: (gi - 1 + gal.length) % gal.length }); if (e.key === "ArrowRight") this.setState({ gi: (gi + 1) % gal.length }); },
+      stageRatio: wide ? "4/3" : "16/10", galNote: "Foto ilustrativa do modelo. Traseira, interior e painel aparecem quando a marca divulgar as imagens oficiais.",
+      thumbs: gal.map((g, i) => { const on = i === gi, photo = g[0] === "photo"; return { alt: g[1], icon: g[2], empty: !photo, on, bd: on ? "#7D3EE3" : "#E6E6EE", fg: on ? "#4C1D95" : "#5A6472", bg: photo ? "#F6F6F9 " + url + "center 35%/86% no-repeat" : "#F6F6F9", go: () => this.setState({ gi: i }) }; }),
+      lbOpen: s.lb && cur[0] === "photo", openLb: () => this.setState({ lb: true }), closeLb: () => this.setState({ lb: false }), lbScrim: (e) => { if (e.target === e.currentTarget) this.setState({ lb: false }); },
+      following, fIcon: following ? "bookmark_added" : "bookmark", fTxt: following ? "Acompanhando" : "Acompanhar lançamento", fBd: following ? "#86EFAC" : "#D5D8DE", fBg: following ? "#F0FDF4" : "#fff", fFg: following ? "#15803D" : "#1D2433",
+      follow: () => { const f = following ? s.follow.filter((x) => x !== it.id) : [...s.follow, it.id]; try { localStorage.setItem(this.KF, JSON.stringify(f)); } catch (e) {} this.setState({ follow: f }); this.flash(following ? "Você parou de acompanhar o " + it.model : it.model + " salvo nos lançamentos que você acompanha"); },
+      followNote: "Os lançamentos que você acompanha ficam salvos neste navegador. Avisos por e-mail ainda não estão disponíveis.",
+      inCatalog: !!cat, current: it.current || "", fichaHref: cat ? "Versoes.dc.html?id=" + it.catalogId + "&modelo=" + encodeURIComponent(cat.split(" ").slice(1).join(" ")) + "&marca=" + encodeURIComponent(it.brand) + "&mk=" + it.mk + "&cat=" + encodeURIComponent(it.cat) + "&img=assets/carros/" + it.catalogId + ".webp" : "#",
+      compareHref: cat ? "Comparativo.dc.html?add=" + it.catalogId + "&nome=" + encodeURIComponent(it.current) : "#",
+      twoCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)", threeCols: mid ? "repeat(3,minmax(0,1fr))" : "minmax(0,1fr)", rivCols: wide ? "repeat(3,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      wait: wait.map(([icon, bg, fg, t, d]) => ({ icon, bg, fg, t, d })),
+      ...(() => {
+        const st = it.status, cur = it.current, P = {
+          prevenda: ["Dá para reservar já", "event_available", "#FFF6DA", "#92400E", "Já está em pré-venda: dá para garantir o preço de tabela e entrar na fila das primeiras unidades.", ["Quer ler avaliações e testes das primeiras unidades", "A versão ou a cor que você quer ainda não tem data de entrega", "Pode aproveitar ofertas depois da chegada às lojas"], ["Precisa do carro nos próximos meses", "A versão que você quer já tem preço e itens confirmados", "Quer travar o preço de tabela antes de reajustes"]],
+          confirmado: ["Vale esperar", "schedule", "#F1EBFD", "#4C1D95", "A chegada está confirmada. Se dá para esperar até " + it.eta + ", você compra a versão nova.", ["Pode esperar até " + it.eta, "As novidades fazem diferença no seu uso", "Quer a revenda melhor de um modelo novo"], ["Precisa do carro já", cur ? "O " + cur + " deve ganhar desconto até a troca" : "Uma alternativa atual já atende", "Prefere um modelo com histórico de manutenção conhecido"]],
+          anunciado: ["Espere com cautela", "help", "#EEEEF2", "#3F4654", "A marca anunciou, mas não confirmou a venda no Brasil. Não conte com a chegada.", ["Topa o risco de ele não vir ao Brasil", "A novidade é decisiva para você", "Não tem pressa"], ["Precisa do carro nos próximos meses", "Uma alternativa atual já atende", "Quer preço e data garantidos"]],
+          exterior: ["Não conte com ele", "public", "#E8F0FE", "#1E3A8A", "Só foi mostrado fora do Brasil. Apresentação lá fora não quer dizer chegada aqui.", ["Acompanha o mercado e não tem pressa", "Aceita esperar uma confirmação que pode não vir"], ["Precisa do carro em 2026 ou 2027", "Uma alternativa atual já atende", "Quer preço e data garantidos"]],
+          disponivel: ["Já dá para comprar", "check_circle", "#E9F7EE", "#15803D", "Está nas concessionárias. Compare com as alternativas antes de fechar.", ["Quer esperar as primeiras ofertas", "Prefere ver como o carro se sai nos primeiros meses"], ["Gostou do preço e da versão", "Quer as novidades já", "Comparou com os rivais e ele ganhou"]],
+          adiado: ["Prazo incerto", "schedule", "#FFF4F2", "#B91C1C", "A chegada foi remarcada para " + it.eta + ". Novos atrasos são possíveis.", ["A novidade é decisiva para você", "Pode esperar até " + it.eta + " ou mais"], ["Precisa do carro antes de " + it.eta, "Uma alternativa atual já atende"]],
+          cancelado: ["Não espere", "block", "#FEF2F2", "#991B1B", "A venda no Brasil foi cancelada. Veja os rivais e alternativas à venda.", [], ["Escolha entre as alternativas à venda hoje", "Use o comparativo para decidir"]]
+        }[st] || ["Avalie", "help", "#EEEEF2", "#3F4654", "", [], []];
+        const cols = []; if (P[5].length) cols.push({ t: "Vale esperar se…", icon: "hourglass_top", bg: "#F7F4FF", fg: "#5B21B6", items: P[5] }); cols.push({ t: st === "prevenda" ? "Reserve agora se…" : "Compre agora se…", icon: "shopping_cart", bg: "#F0FDF4", fg: "#15803D", items: P[6] });
+        return { decVerdict: P[0], decIcon: P[1], decBg: P[2], decFg: P[3], decLine: P[4], decCols2: cols, decCols: mid ? "minmax(0,1.7fr) minmax(0,1fr)" : "minmax(0,1fr)",
+          decFacts: [{ icon: "event", k: "Chegada ao Brasil", v: it.eta, est: false }, { icon: "sell", k: noPrice ? "Preço" : "Preço a partir de", v: noPrice ? "Ainda não divulgado" : this.brl(it.price), est: !!it.priceEst }, { icon: "trending_down", k: cur ? "O " + cur + " na troca" : "Modelo anterior", v: cur ? "Costuma cair de 5% a 10%" : "Não há modelo anterior à venda", est: !!cur }] };
+      })(),
+      copQs: qs.map((t) => ({ t, href: "Copiloto.dc.html?q=" + encodeURIComponent(t) })),
+      hasNews: !!(it.news && it.news.length), news: it.news || [], hasCurrent: !!it.current, curLbl: it.current || "Hoje",
+      hasDiff: !!(it.diff && it.diff.length), diff: (it.diff || []).map(([k, a, b]) => ({ k, a, b, c: /não divulgado|estimad/i.test(b) ? "#92400E" : "#4C1D95" })),
+      hasEv: !!it.ev, evRange: it.ev ? it.ev.range : "", evAc: it.ev ? it.ev.ac : "", evDc: it.ev ? it.ev.dc : "", evStd: it.ev ? it.ev.std : "",
+      hasVers: !!(it.versions && it.versions.length), noVers: !(it.versions && it.versions.length), vers: (it.versions || []).map(([t, p], i) => ({ t, p: this.brl(p), sep: i ? "#EEEEF2" : "transparent" })),
+      hasSpecs: specs.length > 0, specs,
+      hasRivals: !!(it.rivals && it.rivals.length), rivals: (it.rivals || []).map((r) => ({ t: this.NAMES[r] || r, thumb: "#F1F1F5 url('assets/carros/" + r + ".webp') center/88% no-repeat", href: "Versoes.dc.html?id=" + r + "&img=assets/carros/" + r + ".webp&modelo=" + encodeURIComponent((this.NAMES[r] || r).split(" ").slice(1).join(" ")) + "&marca=" + encodeURIComponent((this.NAMES[r] || r).split(" ")[0]) })),
+      sources: (it.sources || []).map(([t, d, k]) => { const x = SRC[k] || SRC.oficial; return { t, d, kind: x[0], bg: x[1], fg: x[2] }; }), updated: D.updated,
+      hasToast: !!s.toast, toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    [data-rail]::-webkit-scrollbar{display:none}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" active="blog" hint-size="100%,81px"></dc-import>
+  <nav aria-label="Editorias" style="background:#fff;border-bottom:1px solid #EEEEF2;padding:0 clamp(16px, calc(2.2vw + 7px), 32px);display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;align-items:center;gap:16px">
+      <div data-rail="" style="flex:1;min-width:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);padding-right:32px">
+        <sc-for list="{{ catNav }}" as="c" hint-placeholder-count="8">
+          <a href="{{ c.href }}" style="flex:none;display:flex;align-items:center;gap:6px;height:52px;padding:0 12px;color:#1D2433;font:500 14px Roboto;white-space:nowrap" style-hover="color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">{{ c.icon }}</span>{{ c.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </nav>
+  </div>
+
+  <section data-screen-label="Blog · manchete" style="padding:0;background:#0E0C14">
+    <a href="{{ cur.href }}" aria-label="{{ cur.title }}" style="position:relative;display:block;height:calc(100vh - 134px);min-height:520px;max-height:820px;overflow:hidden;color:#fff;background-color:#0E0C14;background-image:{{ cur.bg }};background-size:cover;background-position:center" style-hover="color:#fff">
+      <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,12,20,.1) 0%,rgba(14,12,20,.3) 40%,rgba(14,12,20,.92) 100%)"></span>
+      <span style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(16px, calc(2.2vw + 7px), 32px) 56px;display:flex;justify-content:center">
+        <span style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:14px">
+          <span style="display:flex;align-items:center;gap:10px"><span style="padding:5px 12px;border-radius:999px;background:#7D3EE3;color:#fff;font:700 12px Roboto">{{ cur.fmtLabel }}</span><span style="font:700 12px Roboto;letter-spacing:.08em;color:#E4E4E7">{{ cur.catUp }}</span></span>
+          <span style="max-width:820px;font:800 clamp(30px,4vw,52px)/1.1 'Merriweather Sans',sans-serif;letter-spacing:-.01em;text-wrap:balance">{{ cur.title }}</span>
+          <span style="max-width:620px;font:400 clamp(16px,1.4vw,19px)/1.5 Roboto;color:#E4E4E7;text-wrap:pretty">{{ cur.dek }}</span>
+          <span style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span style="height:48px;padding:0 22px;border-radius:8px;background:#fff;color:#1D2433;font:700 15px Roboto;display:flex;align-items:center;gap:6px">Ler matéria<span style="font-family:'Material Symbols Rounded';font-size:18px">arrow_forward</span></span><span style="font:400 14px Roboto;color:#E4E4E7">{{ cur.date }} · {{ cur.min }} min de leitura</span></span>
+        </span>
+      </span>
+    </a>
+  </section>
+
+
+  <main style="flex:1;padding:48px clamp(16px, calc(2.2vw + 7px), 32px) 80px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:64px">
+
+      <section data-screen-label="Destaques" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">SELEÇÃO DA REDAÇÃO</span><h2 style="margin:0;font:800 28px 'Merriweather Sans',sans-serif">Destaques da semana</h2></span>
+          <div style="display:flex;gap:8px">
+            <button onClick="{{ railPrev }}" aria-label="Voltar" style="width:44px;height:44px;border:0;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px #D4D4D8;color:#1D2433;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:22px">chevron_left</span></button>
+            <button onClick="{{ railNext }}" aria-label="Avançar" style="width:44px;height:44px;border:0;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px #D4D4D8;color:#1D2433;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:22px">chevron_right</span></button>
+          </div>
+        </div>
+        <div ref="{{ railRef }}" data-rail="" style="display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,300px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:4px 2px 8px">
+          <sc-for list="{{ rail }}" as="p" hint-placeholder-count="6">
+            <a href="{{ p.href }}" style="scroll-snap-align:start;display:flex;flex-direction:column;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden;color:#1D2433;transition:box-shadow .15s,transform .15s" style-hover="color:#1D2433;box-shadow:inset 0 0 0 1px #7D3EE3, 0 12px 32px rgba(26,13,64,.08);transform:translateY(-2px)">
+              <div style="position:relative;aspect-ratio:4/3;background-color:{{ p.bgc }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat"><span style="position:absolute;left:10px;top:10px;padding:4px 9px;border-radius:999px;background:#fff;color:#1D2433;font:700 11px Roboto;box-shadow:0 1px 4px rgba(29,36,51,.12)">{{ p.fmtLabel }}</span></div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:8px;padding:16px 18px 20px">
+                <span style="font:700 11px Roboto;letter-spacing:.06em;color:#7D3EE3">{{ p.catUp }}</span>
+                <span style="font:700 16px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                <span style="margin-top:auto;font:400 12px Roboto;color:#5A6472">{{ p.date }} · {{ p.min }} min</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-screen-label="Mercado" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 48px)/3 + 1px))),1fr));gap:24px;align-items:stretch">
+        <div style="padding:24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">MERCADO</span><h2 style="margin:0;font:800 22px/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Mais vendidos de outubro</h2><span style="font:400 13px Roboto;color:#5A6472">Emplacamentos até o dia 20 · automóveis e comerciais leves</span></span>
+            <x-import component-from-global-scope="AchecarDesignSystem_c352d1.StatusTag" text="Dados de exemplo" variant="warning" style="flex:none" hint-size="110px,24px"></x-import>
+          </div>
+          <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+            <sc-for list="{{ ranking }}" as="r" hint-placeholder-count="10">
+              <li style="display:grid;grid-template-columns:22px 52px minmax(0,1fr) 36px;align-items:center;gap:12px;padding:7px 0;border-top:{{ r.border }}">
+                <span style="font:800 15px 'Merriweather Sans',sans-serif;color:{{ r.posC }};text-align:right">{{ r.pos }}</span>
+                <span style="width:52px;height:32px;background:{{ r.bg }} center / contain no-repeat"></span>
+                <span style="min-width:0;display:flex;flex-direction:column;gap:5px">
+                  <span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="min-width:0;font:700 14px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.model }}</span><span style="flex:none;font:500 13px 'Roboto Mono',monospace;color:#1D2433">{{ r.units }}</span></span>
+                  <span style="height:4px;border-radius:2px;background:#F0EDF7"><span style="display:block;height:4px;border-radius:2px;background:{{ r.barC }};width:{{ r.bar }}"></span></span>
+                </span>
+                <span style="display:flex;align-items:center;justify-content:flex-end;font:700 12px Roboto;color:{{ r.dc }}"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ r.di }}</span>{{ r.dv }}</span>
+              </li>
+            </sc-for>
+          </ol>
+          <a href="Versoes.dc.html" style="flex:none;text-decoration:none;margin-top:auto"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOLinkComSeta" text="Ver ranking completo" size="16" hint-size="180px,24px"></x-import></a>
+        </div>
+        <div style="padding:24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+            <span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">TABELA FIPE</span><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif">FIPE da semana</h2><span style="font:400 13px Roboto;color:#5A6472">Variação do preço médio em relação à semana anterior</span></span>
+            <x-import component-from-global-scope="AchecarDesignSystem_c352d1.StatusTag" text="Dados de exemplo" variant="warning" style="flex:none" hint-size="110px,24px"></x-import>
+          </div>
+          <div role="tablist" aria-label="Filtro FIPE" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border-radius:10px;background:#F6F6F9">
+            <sc-for list="{{ fipeTabs }}" as="t" hint-placeholder-count="2">
+              <button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="height:38px;border:0;border-radius:8px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.sh }};font:500 14px Roboto;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px" style-hover="color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ t.icon }}</span>{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+            <sc-for list="{{ fipe }}" as="f" hint-placeholder-count="6">
+              <li style="display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 0;border-top:{{ f.border }}">
+                <span style="width:52px;height:32px;background:{{ f.bg }} center / contain no-repeat"></span>
+                <span style="min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 14px/1.3 Roboto;text-wrap:pretty">{{ f.model }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ f.year }} · <span style="font-family:'Roboto Mono',monospace;color:#1D2433">{{ f.price }}</span></span></span>
+                <span style="min-width:72px;display:flex;align-items:center;justify-content:flex-end;gap:2px;padding:4px 8px;border-radius:999px;background:{{ f.vbg }};color:{{ f.vc }};font:700 12px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px">{{ f.vi }}</span>{{ f.var }}</span>
+              </li>
+            </sc-for>
+          </ul>
+          <a href="Precos e Valorizacao.dc.html" style="flex:none;text-decoration:none;margin-top:auto"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOLinkComSeta" text="Consultar Tabela FIPE" size="16" hint-size="180px,24px"></x-import></a>
+        </div>
+      </section>
+
+      <section data-screen-label="Calendário de lançamentos" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">AGENDA</span><h2 style="margin:0;font:800 28px 'Merriweather Sans',sans-serif">Calendário de lançamentos</h2><span style="font:400 14px Roboto;color:#5A6472">O que chega às lojas nos próximos meses · datas de exemplo</span></span>
+          <a href="Lancamentos.dc.html" style="flex:none;text-decoration:none"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOLinkComSeta" text="Ver todos os lançamentos" size="16" hint-size="180px,24px"></x-import></a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px">
+          <sc-for list="{{ cal }}" as="m" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid #EEEEF2"><span style="display:flex;align-items:center;gap:10px"><span style="width:8px;height:8px;border-radius:50%;background:#7D3EE3"></span><span style="font:800 18px 'Merriweather Sans',sans-serif">{{ m.month }}</span></span><span style="font:500 12px Roboto;color:#5A6472">{{ m.count }}</span></div>
+              <sc-for list="{{ m.items }}" as="it" hint-placeholder-count="3">
+                <a href="Lancamentos.dc.html" style="display:grid;grid-template-columns:44px minmax(0,1fr) 64px;align-items:center;gap:14px;min-height:84px;padding:12px 20px;border-top:{{ it.border }};color:#1D2433;box-sizing:border-box" style-hover="color:#7D3EE3;background:#FAF8FF">
+                  <span style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font:800 22px/1 'Merriweather Sans',sans-serif;color:#1D2433">{{ it.day }}</span><span style="font:700 10px Roboto;letter-spacing:.08em;color:#5A6472">{{ it.mon }}</span></span>
+                  <span style="min-width:0;display:flex;flex-direction:column;gap:5px;align-items:flex-start"><span style="font:700 14px/1.3 Roboto;text-wrap:pretty">{{ it.model }}</span><span style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><span style="font:400 12px Roboto;color:#5A6472">{{ it.brand }}</span><x-import component-from-global-scope="AchecarDesignSystem_c352d1.StatusTag" text="{{ it.status }}" variant="{{ it.variant }}" hint-size="80px,22px"></x-import></span></span>
+                  <span style="width:64px;height:40px;background:{{ it.bg }} center / contain no-repeat"></span>
+                </a>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-screen-label="Marcas" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">GARAGEM ACHECAR</span><h2 style="margin:0;font:800 28px 'Merriweather Sans',sans-serif">Navegue por montadora</h2><span style="font:400 14px Roboto;color:#5A6472">Modelos, versões e preços na Garagem Achecar.</span></span>
+          <a href="Garagem.dc.html" style="flex:none;text-decoration:none"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOLinkComSeta" text="Todas as montadoras" size="16" hint-size="180px,24px"></x-import></a>
+        </div>
+        <div style="display:grid;grid-template-columns:{{ brandCols }};gap:12px">
+          <sc-for list="{{ brands }}" as="b" hint-placeholder-count="12">
+            <a href="{{ b.href }}" title="{{ b.name }}" style="height:104px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#1D2433;transition:box-shadow .15s" style-hover="color:#7D3EE3;box-shadow:inset 0 0 0 1px #7D3EE3, 0 6px 16px rgba(29,36,51,.08)">
+              <x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ b.key }}" tone="dark" style="width:40px;height:40px" hint-size="40px,40px"></x-import>
+              <span style="font:500 13px Roboto">{{ b.name }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-screen-label="Copiloto" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 84px)/4 + 1px))),1fr));gap:28px;align-items:center;padding:36px 40px;border-radius:24px;background:radial-gradient(60% 120% at 100% 0%,rgba(125,62,227,.6),transparent 70%),#301461;color:#fff">
+        <div style="display:flex;gap:20px;align-items:center">
+          <img src="assets/home/copiloto-mascote.webp" alt="" style="flex:none;width:88px;height:88px;object-fit:contain">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font:700 12px Roboto;letter-spacing:.08em;color:#E0D2FF">COPILOTO</span>
+            <span style="font:800 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">Leu, mas ficou com dúvida? Pergunte sobre o seu carro.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ asks }}" as="a" hint-placeholder-count="3">
+            <a href="{{ a.href }}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:#fff;font:500 15px Roboto" style-hover="color:#fff;background:rgba(255,255,255,.18)"><span style="font-family:'Material Symbols Rounded';font-size:20px">chat_bubble</span><span style="flex:1">{{ a.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></a>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  railRef = React.createRef();
+  rm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  state = { D: null, i: 0, hover: false, playing: !this.rm, fipeTab: "up", vw: window.innerWidth };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); }
+  HERO = ["compra-no-escuro", "ipva-eletrico", "golpes-venda", "consulta-o-que-mostra"];
+  componentDidMount() { import("./blog-data.js").then((D) => this.setState({ D })); window.addEventListener("resize", this.onResize); }
+  card = (p) => { const D = this.state.D, c = D.CATS.find((x) => x.id === p.cat) || {}; return { ...p, href: "Artigo.dc.html?a=" + p.id, catUp: (c.label || "").toUpperCase(), fmtLabel: D.FORMATS[p.fmt], bg: "url(" + p.img + ")", bgs: p.cutout ? "82% auto" : "cover", bgc: p.cutout ? "#EEEAF7" : "#E6E6EE" }; };
+  img = (id) => "url(assets/carros/" + id + ".webp)";
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, D = s.D, n = this.HERO.length, go = (i) => this.setState({ i: (i + n) % n });
+    const heroes = D ? this.HERO.map((id) => this.card(D.byId(id))) : [{ title: "Compra no escuro: o que checar antes de fechar negócio", dek: "Placa, documento, leilão, sinistro e débitos: o passo a passo para não levar surpresa junto com o carro.", fmtLabel: "Guia", catUp: "COMPRA E VENDA", date: "21 out 2026", min: 9, href: "Artigo.dc.html?a=compra-no-escuro", bg: "url(assets/home/blog-destaque.webp)" }];
+    const cur = heroes[Math.min(s.i, heroes.length - 1)];
+    const rankRaw = [["Fiat", "Strada", "strada", "11.842", 0], ["Volkswagen", "Polo", "polo", "9.615", 1], ["Chevrolet", "Onix", "onix-2026", "8.903", -1], ["Volkswagen", "T-Cross", "tcross", "7.450", 2], ["Hyundai", "HB20", "hb20", "7.212", 0], ["Chevrolet", "Tracker", "tracker", "6.988", -2], ["Fiat", "Argo", "argo", "6.310", 1], ["Hyundai", "Creta", "creta", "6.104", -1], ["Toyota", "Corolla Cross", "corolla-cross", "5.877", 3], ["Fiat", "Pulse", "pulse", "5.420", 0]];
+    const fipeRaw = { up: [["Toyota Corolla Cross XRE", "2024", "corolla-cross", "R$ 168.420", 1.8], ["Fiat Strada Volcano", "2024", "strada", "R$ 118.950", 1.2], ["Jeep Compass Longitude", "2023", "compass", "R$ 154.300", 0.9], ["Hyundai Creta Platinum", "2024", "creta", "R$ 151.780", 0.7], ["VW T-Cross Highline", "2023", "tcross", "R$ 132.640", 0.6], ["Toyota Corolla XEi", "2022", "corolla", "R$ 129.900", 0.5]],
+      down: [["BYD Dolphin", "2024", "byd-dolphin", "R$ 128.300", -2.4], ["Chevrolet Tracker Premier", "2023", "tracker", "R$ 124.100", -1.6], ["Jeep Renegade Sport", "2022", "renegade", "R$ 98.450", -1.3], ["Nissan Sentra Exclusive", "2023", "sentra", "R$ 136.900", -1.1], ["Fiat Pulse Impetus", "2023", "pulse", "R$ 102.700", -0.9], ["Chevrolet Spin Premier", "2022", "spin", "R$ 96.200", -0.8]] };
+    const fmtPct = (v) => (v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",") + "%";
+    const calRaw = [["Novembro", [["04", "Fiat", "Fastback 2027", "fastback", "Confirmado"], ["12", "BYD", "Dolphin Mini 2027", "byd-dolphin", "Pré-venda"], ["26", "Toyota", "Corolla Cross híbrido", "corolla-cross", "Confirmado"]]],
+      ["Dezembro", [["03", "Volkswagen", "Tiguan R-Line", "tiguan", "Pré-venda"], ["10", "Chevrolet", "Montana 2027", "montana", "Confirmado"], ["17", "Hyundai", "Tucson híbrido", "tucson", "Rumor"]]],
+      ["Janeiro", [["14", "Jeep", "Commander 2027", "commander", "Rumor"], ["21", "Nissan", "Frontier 2027", "frontier", "Pré-venda"], ["28", "Caoa Chery", "Tiggo 8 PHEV", "tiggo8", "Confirmado"]]]];
+    const ST = { "Confirmado": ["#E8F5EC", "#15803D"], "Pré-venda": ["#F3EDFD", "#7D3EE3"], "Rumor": ["#F2F2F5", "#3F4654"] };
+    const MON = { Novembro: "NOV", Dezembro: "DEZ", Janeiro: "JAN" };
+    const brandList = [["volkswagen", "Volkswagen"], ["fiat", "Fiat"], ["chevrolet", "Chevrolet"], ["toyota", "Toyota"], ["hyundai", "Hyundai"], ["jeep", "Jeep"], ["byd", "BYD"], ["honda", "Honda"], ["renault", "Renault"], ["nissan", "Nissan"], ["chery", "Caoa Chery"], ["bmw", "BMW"]];
+    const rail = D ? D.POSTS.filter((p) => p.id !== this.HERO[0]).slice(0, 10).map(this.card) : [];
+    const railBy = (dir) => { const el = this.railRef.current; if (el) el.scrollBy({ left: dir * (el.clientWidth * 0.85), behavior: this.rm ? "auto" : "smooth" }); };
+    return {
+      slides: heroes.map((h, k) => ({ title: h.title, bg: h.bg, op: k === s.i ? 1 : 0, hidden: k === s.i ? "false" : "true", on: k === s.i, dot: k === s.i ? "#fff" : "rgba(255,255,255,.35)", go: () => go(k) })),
+      cur, slideNum: String(s.i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0"), prev: () => go(s.i - 1), next: () => go(s.i + 1),
+      pause: () => this.setState({ hover: true }), resume: () => this.setState({ hover: false }),
+      togglePlay: () => this.setState({ playing: !s.playing }), playIcon: s.playing ? "pause" : "play_arrow", playLbl: s.playing ? "Pausar manchetes" : "Reproduzir manchetes",
+      catNav: D ? D.CATS.map((c) => ({ ...c, href: "Todas as Materias.dc.html?editoria=" + c.id })) : [],
+      railRef: this.railRef, rail, railPrev: () => railBy(-1), railNext: () => railBy(1),
+      ranking: rankRaw.map(([brand, model, img, units, d], k) => ({ pos: String(k + 1), brand, model, units, bg: this.img(img), border: k ? "1px solid #EEEEF2" : "0", posC: k < 3 ? "#7D3EE3" : "#5A6472", bar: Math.round((parseInt(units.replace(".", "")) / 11842) * 100) + "%", barC: k < 3 ? "#7D3EE3" : "#C9AEFF",
+        di: d > 0 ? "arrow_drop_up" : d < 0 ? "arrow_drop_down" : "remove", dv: d ? String(Math.abs(d)) : "", dc: d > 0 ? "#15803D" : d < 0 ? "#C62828" : "#5A6472" })),
+      fipeTabs: [["up", "Valorizaram", "trending_up"], ["down", "Desvalorizaram", "trending_down"]].map(([k, label, icon]) => { const on = s.fipeTab === k; return { label, icon, on, bg: on ? "#fff" : "transparent", fg: on ? "#1D2433" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.12)" : "none", pick: () => this.setState({ fipeTab: k }) }; }),
+      fipe: fipeRaw[s.fipeTab].map(([model, year, img, price, v], k) => ({ model, year, price, var: fmtPct(v), bg: this.img(img), border: k ? "1px solid #EEEEF2" : "0", vi: v > 0 ? "arrow_upward" : "arrow_downward", vc: v > 0 ? "#15803D" : "#C62828", vbg: v > 0 ? "#E8F5EC" : "#FDECEA" })),
+      cal: calRaw.map(([month, items]) => ({ month, count: items.length + " lançamentos", items: items.map(([day, brand, model, img, status], k) => ({ day, mon: MON[month], brand, model, status, bg: this.img(img), variant: { "Confirmado": "positive", "Pré-venda": "highlight", "Rumor": "neutral" }[status], border: k ? "1px solid #EEEEF2" : "0" })) })),
+      allLbl: s.vw >= (this.props.bpTablet640 ?? 640) ? "Todas as matérias" : "Todas", brandCols: "repeat(" + (s.vw >= (this.props.bpDesktop1000 ?? 1000) ? 6 : s.vw >= (this.props.bpTablet640 ?? 640) ? 4 : 3) + ",minmax(0,1fr))", brands: brandList.map(([key, name]) => ({ key, name, href: "Garagem.dc.html?marca=" + key })),
+      asks: ["Qual SUV até R$ 150 mil desvaloriza menos?", "Vale a pena trocar meu carro por um elétrico?", "Quanto vou gastar por mês com um Onix 2022?"].map((t) => ({ t, href: "Copiloto.dc.html?q=" + encodeURIComponent(t) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

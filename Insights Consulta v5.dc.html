@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#fff;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE} input::placeholder{color:#7A8494} [data-ri-in]:focus{outline:none}@media print{[data-noprint]{display:none!important}}</style>
+  <script src="bp-preview.js"></script>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:50"><dc-import name="Header Achecar" copiloto-aberto="{{ true }}" copiloto-livre="{{ true }}" hint-size="100%,81px"></dc-import></div>
+  <main data-screen-label="Insights v5" style="flex:1;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:0 clamp(16px, calc(2.2vw + 7px), 32px) clamp(48px, calc(4vw + 32px), 96px)">
+    <div data-noprint="" style="position:sticky;top:81px;z-index:30;align-self:stretch;margin:0 calc(-1 * clamp(16px, calc(2.2vw + 7px), 32px));padding:12px clamp(16px, calc(2.2vw + 7px), 32px);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 0 #EEEEF2;display:flex;justify-content:center">
+      <div style="width:100%;max-width:1152px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div role="tablist" aria-label="Visualização da consulta" style="display:flex;gap:4px;padding:4px;border-radius:12px;background:#F1F1F5">
+          <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="2">
+            <a role="tab" href="{{ tb.href }}" onClick="{{ tb.go }}" aria-selected="{{ tb.on }}" style="height:36px;padding:0 14px;border-radius:9px;background:{{ tb.bg }};box-shadow:{{ tb.sh }};color:{{ tb.fg }};font:{{ tb.font }};display:flex;align-items:center;gap:8px;white-space:nowrap" style-hover="color:#1D2433;background:{{ tb.hov }}"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:{{ tb.ic }}">{{ tb.icon }}</span>{{ tb.t }}</a>
+          </sc-for>
+        </div>
+        <div data-noprint="" style="display:flex;justify-content:flex-end"><div style="position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+              <button type="button" onClick="{{ doPdf }}" style="height:40px;padding:0 14px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;color:#1D2433;font:500 14px Roboto;display:flex;align-items:center;gap:8px;cursor:pointer;white-space:nowrap" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:18px">download</span>{{ pdfLbl }}</button>
+              <button type="button" onClick="{{ toggleShare }}" aria-expanded="{{ shareOpen }}" style="height:40px;padding:0 14px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px {{ shareBd }};color:#1D2433;font:500 14px Roboto;display:flex;align-items:center;gap:8px;cursor:pointer;white-space:nowrap" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:18px">link</span>Copiar link</button>
+              <sc-if value="{{ shareOpen }}" hint-placeholder-val="{{ false }}">
+                <div role="dialog" aria-label="Compartilhar relatório" style="position:absolute;right:0;top:48px;z-index:20;width:min(340px, calc(100vw - 48px));background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 16px 40px rgba(26,13,64,.16);padding:18px;display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;flex-direction:column;gap:4px"><span style="font:700 15px Roboto;color:#1D2433">Link do relatório digital</span><span style="font:400 13px/1.45 Roboto;color:#5A6472">Quem abrir vê o resumo e os apontamentos, sem dados que identificam o carro ou os donos.</span></div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <sc-for list="{{ shareRows }}" as="sr" hint-placeholder-count="5">
+                      <div style="display:flex;align-items:center;gap:8px;font:400 13px Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:{{ sr.c }}">{{ sr.i }}</span><span style="flex:1">{{ sr.t }}</span><span style="font:500 12px Roboto;color:{{ sr.c }}">{{ sr.s }}</span></div>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;background:#F6F6F9;font:400 12px 'Roboto Mono',monospace;color:#5A6472;overflow:hidden"><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ shareUrl }}</span></div>
+                  <button type="button" onClick="{{ copyShare }}" style="height:44px;border:0;border-radius:8px;background:{{ copyBg }};color:#fff;font:700 14px Roboto;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="filter:brightness(.92)"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ copyIcon }}</span>{{ copyLbl }}</button>
+                </div>
+              </sc-if>
+            </div></div>
+      </div>
+    </div>
+    <sc-if value="{{ onResumo }}" hint-placeholder-val="{{ true }}">
+    <div style="width:100%;max-width:1152px;padding:56px 0 56px">
+      <section data-screen-label="Insights" style="color:#1D2433;display:grid;grid-template-columns:{{ dkCols }};gap:16px;font-family:Roboto,sans-serif">
+        <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="display:flex;align-items:center;gap:8px;font:700 12px Roboto;letter-spacing:.06em;color:#7D3EE3">ACHECAR INSIGHTS<span style="padding:1px 7px;border-radius:5px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;color:#1D2433;font:700 12px 'Roboto Mono',monospace;letter-spacing:.06em">{{ plate }}</span></span>
+              <h1 style="margin:0;font:800 22px/1.25 'Merriweather Sans',sans-serif;color:#1D2433">Audi A3 1.8 manual</h1>
+              <span style="font:400 13px Roboto;color:#5A6472">2004/2005 · 1.8 · Gasolina · Prata</span>
+            </div>
+            <span style="flex:none;width:112px;height:72px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;align-items:center;justify-content:center"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="audi" tone="dark" style="width:48px;height:48px" hint-size="48px,48px"></x-import></span>
+          </div>
+          <div style="border-radius:14px;background:{{ al.bg }};box-shadow:inset 0 0 0 1px {{ al.bd }};padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+            <span style="display:flex;align-items:center;gap:8px;font:700 16px Roboto;color:{{ al.fg }}"><span style="font-family:'Material Symbols Rounded';font-size:20px">{{ al.icon }}</span>{{ al.t }}<span style="margin-left:auto"><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">verified</span>Verificado</span></span></span>
+            <span style="font:400 14px/1.5 Roboto;color:#1D2433">{{ al.d }}</span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ riskRows }}" as="rr" hint-placeholder-count="3">
+                <button type="button" onClick="{{ openRiscos }}" style="height:26px;padding:0 10px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px {{ al.bd }};color:#1D2433;font:500 12px Roboto;display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap" style-hover="background:#F6F6F9"><span style="width:7px;height:7px;border-radius:50%;background:{{ rr.dk }}"></span>{{ rr.t }}</button>
+              </sc-for>
+            </div>
+            <span style="font:400 12px/1.45 Roboto;color:#5A6472">{{ al.sub }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+            <button type="button" onClick="{{ openCusto }}" style="text-align:left;border:0;cursor:pointer;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;font-family:Roboto,sans-serif;color:#1D2433;transition:box-shadow .15s ease-out,background .15s ease-out" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #C9B3F5,0 8px 24px rgba(26,13,64,.08)">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:400 12px Roboto;color:#5A6472">Custo estimado de posse</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">calculate</span>Estimativa</span></span>
+            <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;white-space:nowrap">{{ cost.month }}</span>
+            <span style="font:400 12px/1.4 Roboto;color:#5A6472">por mês · sem financiamento</span>
+          </button>
+            <button type="button" onClick="{{ openMercado }}" style="text-align:left;border:0;cursor:pointer;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;font-family:Roboto,sans-serif;color:#1D2433;transition:box-shadow .15s ease-out,background .15s ease-out" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #C9B3F5,0 8px 24px rgba(26,13,64,.08)">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:400 12px Roboto;color:#5A6472">Preço anunciado</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">calculate</span>Estimativa</span></span>
+            <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;white-space:nowrap">{{ dkPrice }}</span>
+            <span style="font:400 12px/1.4 Roboto;color:{{ mkDk }}">{{ mk.t }}</span>
+          </button>
+            <button type="button" onClick="{{ openRevenda }}" style="text-align:left;border:0;cursor:pointer;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;font-family:Roboto,sans-serif;color:#1D2433;transition:box-shadow .15s ease-out,background .15s ease-out" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #C9B3F5,0 8px 24px rgba(26,13,64,.08)">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:400 12px Roboto;color:#5A6472">Facilidade de revenda</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">calculate</span>Estimativa</span></span>
+            <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif;color:{{ rvDk }};white-space:nowrap">{{ rvWord }}</span>
+            <span style="font:400 12px/1.4 Roboto;color:#5A6472">{{ rvSub }}</span>
+          </button>
+            <button type="button" onClick="{{ openCusto }}" style="text-align:left;border:0;cursor:pointer;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;font-family:Roboto,sans-serif;color:#1D2433;transition:box-shadow .15s ease-out,background .15s ease-out" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #C9B3F5,0 8px 24px rgba(26,13,64,.08)">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:400 12px Roboto;color:#5A6472">Custo de manutenção</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">calculate</span>Estimativa</span></span>
+            <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;white-space:nowrap">{{ mntWord }}</span>
+            <span style="font:400 12px/1.4 Roboto;color:#5A6472">{{ mntSub }}</span>
+          </button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+          <button type="button" onClick="{{ openComp }}" style="text-align:left;border:0;cursor:pointer;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);padding:16px;display:flex;flex-direction:column;gap:12px;color:#1D2433;font-family:Roboto,sans-serif" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #C9B3F5,0 8px 24px rgba(26,13,64,.08)">
+            <span style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font:700 16px Roboto;color:#1D2433">Comparação com concorrentes</span><span style="font:400 12px Roboto;color:#5A6472">Custo mensal estimado</span></span>
+            <span style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ dkBars }}" as="b" hint-placeholder-count="4">
+                <span style="display:grid;grid-template-columns:92px minmax(0,1fr) 72px;gap:10px;align-items:center">
+                  <span style="font:{{ b.font }};color:#1D2433;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ b.t }}</span>
+                  <span style="height:8px;border-radius:999px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ b.w }};border-radius:999px;background:{{ b.c }}"></span></span>
+                  <span style="font:700 13px Roboto;text-align:right;white-space:nowrap">{{ b.v }}</span>
+                </span>
+              </sc-for>
+            </span>
+            <span style="font:400 12px/1.4 Roboto;color:#5A6472">{{ cp.answer }}</span>
+          </button>
+          <div style="background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE,0 8px 24px rgba(26,13,64,.05);background:#F7F4FF;box-shadow:inset 0 0 0 1px #E0D2FB;padding:16px;display:flex;flex-direction:column;gap:8px">
+            <span style="display:flex;align-items:center;gap:8px;font:700 16px Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">auto_awesome</span>Veredito Achecar<span style="margin-left:auto"><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">auto_awesome</span>Análise IA</span></span></span>
+            <span style="font:400 14px/1.55 Roboto;color:#1D2433;text-wrap:pretty">{{ dkVerdict }}</span>
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding-top:4px">
+              <sc-for list="{{ vStepsDk }}" as="st" hint-placeholder-count="3">
+                <span style="display:flex;flex-direction:column;gap:5px"><span style="height:6px;border-radius:999px;background:{{ st.bg }}"></span><span style="font:{{ st.font }};color:{{ st.fg }}">{{ st.t }}</span></span>
+              </sc-for>
+            </div>
+          </div>
+          
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">verified</span>Verificado</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">calculate</span>Estimativa</span><span style="display:inline-flex;align-items:center;gap:3px;font:500 11px Roboto;color:#7A8494;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px">auto_awesome</span>Análise IA</span></span>
+            <a href="{{ relHref }}" onClick="{{ goRel }}" style="display:flex;align-items:center;gap:4px;font:700 13px Roboto;color:#7D3EE3" style-hover="color:#5F29AE">Ver evidências no relatório completo<span style="font-family:'Material Symbols Rounded';font-size:16px">arrow_forward</span></a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <sc-if value="{{ panelOn }}" hint-placeholder-val="{{ false }}">
+      <style>@keyframes riPan{from{transform:translateX(32px);opacity:0}to{transform:none;opacity:1}}</style>
+      <div onClick="{{ closePanel }}" style="position:fixed;inset:0;z-index:90;background:rgba(11,13,18,.28);cursor:pointer"></div>
+      <aside role="dialog" aria-modal="true" aria-label="{{ pnTitle }}" style="position:fixed;z-index:91;top:0;right:0;bottom:0;width:min(440px, 100vw);background:#fff;box-shadow:-16px 0 48px rgba(11,13,18,.18);display:flex;flex-direction:column;animation:riPan .22s ease-out both">
+        <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid #EEEEF2">
+          <span style="font:800 18px 'Merriweather Sans',sans-serif">{{ pnTitle }}</span>
+          <button type="button" onClick="{{ closePanel }}" aria-label="Fechar detalhes" style="width:36px;height:36px;border:0;border-radius:50%;background:#F6F6F9;color:#1D2433;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;display:flex;align-items:center;justify-content:center" style-hover="background:#E6E6EE">close</button>
+        </div>
+        <div style="flex:1;overflow:auto;padding:16px 20px 24px;display:flex;flex-direction:column;gap:14px">
+          <sc-if value="{{ pnRiscos }}" hint-placeholder-val="{{ false }}">
+            <sc-for list="{{ riskGroups }}" as="g" hint-placeholder-count="2">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
+                <div style="display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;background:{{ g.bg }}">
+                  <span style="font:700 11px Roboto;letter-spacing:.06em;color:{{ g.fg }}">{{ g.label }}</span>
+                  <span style="font:700 15px/1.35 Roboto">{{ it.t }}</span>
+                  <span style="font:400 13px/1.5 Roboto;color:#3A4250">{{ it.d }}</span>
+                  <sc-for list="{{ it.impacts }}" as="im" hint-placeholder-count="0">
+                    <div style="display:flex;gap:8px;padding:8px 10px;border-radius:10px;background:#fff"><span style="flex:none;font-family:'Material Symbols Rounded';font-size:18px;color:{{ g.fg }}">{{ im.icon }}</span><span style="font:400 13px/1.45 Roboto;color:#3A4250"><strong style="color:#1D2433">{{ im.k }}.</strong> {{ im.v }}</span></div>
+                  </sc-for>
+                  <sc-if value="{{ it.hasImpact }}" hint-placeholder-val="{{ false }}"><span style="font:italic 400 12px/1.45 Roboto;color:#5A6472">{{ it.note }}</span></sc-if>
+                </div>
+              </sc-for>
+            </sc-for>
+          </sc-if>
+          <sc-if value="{{ pnCusto }}" hint-placeholder-val="{{ false }}">
+            <sc-for list="{{ cost.items }}" as="c" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #EEEEF2"><span style="flex:none;width:10px;height:10px;border-radius:3px;background:{{ c.color }}"></span><span style="flex:1;display:flex;flex-direction:column"><span style="font:500 14px Roboto">{{ c.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.d }}</span></span><span style="font:700 14px Roboto">{{ c.v }}</span></div>
+            </sc-for>
+            <span style="font:400 13px/1.5 Roboto;color:#3A4250"><strong>{{ cost.firstT }}</strong> {{ cost.firstD }}</span>
+          </sc-if>
+          <sc-if value="{{ pnMercado }}" hint-placeholder-val="{{ false }}">
+            <label style="position:relative;display:block;height:48px;cursor:text"><span style="position:absolute;left:12px;top:50%;translate:0 -50%;font:700 14px Roboto;color:#5A6472;pointer-events:none;z-index:1">Anúncio R$</span><input inputmode="numeric" value="{{ priceTxt }}" onChange="{{ onPrice }}" aria-label="Preço anunciado em reais" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 12px 0 100px;border:0;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;font:700 16px Roboto;color:#1D2433;outline:none;cursor:text" style-hover="box-shadow:inset 0 0 0 1px #7A8494" style-focus="box-shadow:inset 0 0 0 1px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></label>
+            <span style="font:700 15px/1.4 Roboto;color:{{ mk.fg }}">{{ mk.t }}</span>
+            <span style="font:400 14px/1.55 Roboto;color:#3A4250">{{ mk.d }}</span>
+            <span style="font:400 14px/1.55 Roboto;color:#3A4250">Preço justo {{ mk.fair }}. FIPE {{ mk.fipe }}. {{ mk.note }}</span>
+          </sc-if>
+          <sc-if value="{{ pnRevenda }}" hint-placeholder-val="{{ false }}">
+            <span style="font:700 15px/1.4 Roboto;color:{{ rv.fg }}">{{ rv.answer }}</span>
+            <sc-for list="{{ rv.facts }}" as="f" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #EEEEF2;font:400 14px Roboto"><span style="color:#5A6472">{{ f.k }}</span><strong>{{ f.v }}</strong></div></sc-for>
+            <span style="font:400 13px/1.5 Roboto;color:#5A6472">{{ rv.note }}</span>
+          </sc-if>
+          <sc-if value="{{ pnComp }}" hint-placeholder-val="{{ false }}">
+            <sc-for list="{{ cp.rows }}" as="row" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:8px;padding:10px 0;border-bottom:1px solid #EEEEF2;align-items:baseline"><span style="display:flex;flex-direction:column"><span style="font:{{ row.font }}">{{ row.t }}</span><span style="font:400 12px Roboto;color:{{ row.subFg }}">{{ row.sub }}</span></span><span style="font:700 14px Roboto;text-align:right">{{ row.p }}</span><span style="font:400 13px Roboto;text-align:right;color:#5A6472">{{ row.m }}/mês</span></div></sc-for>
+            <a href="Comparativo.dc.html" style="font:700 14px Roboto;color:#7D3EE3" style-hover="color:#5F29AE">Comparar lado a lado →</a>
+          </sc-if>
+          <a href="{{ relHref }}" onClick="{{ goRelPanel }}" style="margin-top:4px;display:flex;align-items:center;gap:6px;font:700 14px Roboto;color:#7D3EE3" style-hover="color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:18px">description</span>Ver evidências no relatório completo</a>
+        </div>
+      </aside>
+    </sc-if>
+    </sc-if>
+    <sc-if value="{{ onRel }}" hint-placeholder-val="{{ false }}">
+      <div style="align-self:stretch;margin:0 calc(-1 * clamp(16px, calc(2.2vw + 7px), 32px))"><dc-import name="Relatorio" embed="{{ true }}" hint-size="100%,1200px"></dc-import></div>
+    </sc-if>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;cenario&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Com ressalvas&quot;,&quot;Sem apontamentos&quot;],&quot;default&quot;:&quot;Com ressalvas&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Cenário da consulta&quot;},&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  state = { panel: null, askDraft: "", aba: new URLSearchParams(location.search).get("aba") === "relatorio" ? "rel" : "res", share: false, copied: false, toast: "", pdf: false, vw: window.innerWidth, open: { leilao: true, furto: true }, uso: 1, price: 26500, chk: {} };
+  fmt = (n) => "R$ " + Math.round(n).toLocaleString("pt-BR");
+  plate = () => (new URLSearchParams(location.search).get("placa") || "ABC1D23").toUpperCase();
+  componentDidMount() {
+    this.onR = () => this.setState({ vw: window.innerWidth });
+    window.addEventListener("resize", this.onR); this.onPop = () => this.setAba(new URLSearchParams(location.search).get("aba") === "relatorio" ? "rel" : "res", false); window.addEventListener("popstate", this.onPop); this.onDoc = (e) => { if (this.state.share && !e.target.closest("[role=dialog],[aria-expanded]")) this.setState({ share: false }); }; document.addEventListener("pointerdown", this.onDoc);
+    try { const c = JSON.parse(localStorage.getItem("achecar-resumo-chk:" + this.plate()) || "null"); if (c) this.setState({ chk: c }); } catch (e) {}
+    const pl = this.plate();
+    window.ACHECAR_COP_CTX = { id: "consulta:" + pl, title: pl + " · Audi A3 1.8 2004 · resumo inteligente", sugs: this.SUGS };
+    window.dispatchEvent(new Event("achecar-copiloto-ctx"));
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onR); }
+  SUGS = ["O furto recuperado atrapalha o seguro?", "Quanto posso pedir de desconto?", "O que olhar na vistoria cautelar?"];
+  token = () => btoa(this.plate().split("").reverse().join("") + "-ac").replace(/=/g, "").slice(0, 12);
+  toastMsg = (m) => { clearTimeout(this.tt); this.setState({ toast: m }); this.tt = setTimeout(() => this.setState({ toast: "" }), 2600); };
+  setAba = (a, push) => { if (a === this.state.aba) return; const q = new URLSearchParams(location.search); if (a === "rel") q.set("aba", "relatorio"); else q.delete("aba"); const qs = q.toString(); if (push) history.pushState({ aba: a }, "", location.pathname + (qs ? "?" + qs : "")); this.setState({ aba: a, share: false }); window.scrollTo({ top: 0 }); };
+  go = (id) => { const el = document.getElementById(id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 160, behavior: "smooth" }); };
+  SC = {
+    ressalvas: {
+      v: { pill: "Negocie com cuidado", icon: "error", pillBg: "#FEF0C7", pillFg: "#93370D", title: "Compra possível, se o preço refletir o histórico.", text: "Dois registros pesam na negociação, no seguro e na revenda. Nada impede a transferência depois de quitar os débitos." },
+      r: { fg: "#B42318", answer: "Sim. Leilão em 2020 e furto recuperado em 2018 pesam. Os débitos travam a transferência até serem pagos." },
+      fair: [23800, 25200], rvLevel: 2, delta: "R$ 2.800 a R$ 4.200 abaixo da FIPE",
+      groups: [
+        { label: "ALTO IMPACTO", fg: "#B42318", bg: "#FEF3F2", bd: "#FECDCA", items: [
+          { id: "leilao", icon: "gavel", t: "Leilão em 2020 como sinistrado", d: "Danos médios com reparo de lataria.", note: "Estimativa a partir da classificação do leilão. O impacto real depende da vistoria.", impacts: [["handshake", "Negociação", "Justifica pedir de 10% a 15% abaixo da FIPE."], ["shield", "Seguro", "9 de 15 seguradoras aceitam. Algumas pedem vistoria prévia."], ["sell", "Revenda", "Menos compradores interessados. A venda tende a demorar mais."]] },
+          { id: "furto", icon: "local_police", t: "Furto em 2018, recuperado", d: "Sem restrição ativa hoje.", note: "Um furto recuperado não gera recusa nem depreciação automática. Cada seguradora aplica os próprios critérios.", impacts: [["handshake", "Negociação", "Peça o boletim de recuperação e o laudo de identificação."], ["shield", "Seguro", "A aceitação varia por seguradora. Cote antes de fechar."], ["sell", "Revenda", "Pode afetar a percepção de quem compra depois."]] }
+        ] },
+        { label: "RESOLVER ANTES DE PAGAR", fg: "#B54708", bg: "#FFFAEB", bd: "#FEDF89", items: [
+          { id: "deb", icon: "receipt_long", t: "R$ 1.004,59 em débitos", d: "Licenciamento 2026 (R$ 711,12) trava a transferência. Multa de R$ 293,47." }
+        ] },
+        { label: "ATENÇÃO", fg: "#5F29AE", bg: "#F7F4FF", bd: "#E0D2FB", items: [
+          { id: "recall", icon: "build", t: "Recall pendente", d: "Gratuito em qualquer concessionária Audi." }
+        ] },
+        { label: "SEM APONTAMENTO", fg: "#15803D", bg: "#F0FDF4", bd: "#BBF7D0", items: [
+          { id: "ok", icon: "verified", t: "Gravame, RENAJUD, chassi e motor", d: "Gravame quitado em 2024. RENAJUD baixada em 2022. Cadastros sem divergência." }
+        ] }
+      ],
+      chk: [["deb", "Quitar ou abater os R$ 1.004,59", "Sem o licenciamento pago, não transfere."], ["vist", "Fazer vistoria cautelar", "Foco na lataria reparada em 2020."], ["bo", "Pedir o boletim de recuperação", "Do furto de 2018."], ["seg", "Cotar o seguro antes de fechar", "Compare 2 ou 3 seguradoras."], ["recall", "Agendar o recall", "Gratuito, na concessionária."]]
+    },
+    limpo: {
+      v: { pill: "Pode seguir", icon: "check_circle", pillBg: "#DCFCE7", pillFg: "#14532D", title: "Histórico limpo. O que resta é negociar o preço.", text: "Nenhum registro que afete seguro ou revenda. Confira a vistoria e feche perto da FIPE." },
+      r: { fg: "#15803D", answer: "Não. Nenhum registro de leilão, sinistro, roubo ou furto." },
+      fair: [26600, 28000], rvLevel: 0, delta: "até 5% abaixo da FIPE",
+      groups: [
+        { label: "SEM APONTAMENTO", fg: "#15803D", bg: "#F0FDF4", bd: "#BBF7D0", items: [
+          { id: "ok", icon: "verified", t: "22 verificações sem apontamento", d: "Leilão, sinistro, roubo e furto, débitos, gravame, RENAJUD e recall." }
+        ] }
+      ],
+      chk: [["vist", "Fazer vistoria cautelar", "Mesmo com histórico limpo."], ["seg", "Cotar o seguro", "Compare 2 ou 3 seguradoras."], ["doc", "Conferir o documento", "Chassi e motor iguais ao CRLV."]]
+    }
+  };
+  renderVals() {
+    const bv = this.props.visualizar; if (bv !== undefined && bv !== this._bpV) { this._bpV = bv; const g = () => window.acBpPreview ? window.acBpPreview(bv) : setTimeout(g, 200); setTimeout(g, 0); }
+    const s = this.state, vw = s.vw, wide = vw >= 1024, mid = vw >= 768, sm = vw < 600;
+    const S = this.SC[(this.props.cenario ?? "Com ressalvas") === "Sem apontamentos" ? "limpo" : "ressalvas"];
+    const plate = this.plate(), FIPE = 28000;
+    const km = [600, 1000, 1800][s.uso];
+    const fuel = (km / 10) * 6.19, items = [
+      ["Combustível", km.toLocaleString("pt-BR") + " km/mês · 10 km/l", fuel, "#7D3EE3"],
+      ["Seguro", S === this.SC.limpo ? "Média de mercado" : "Faixa R$ 1.800 a R$ 3.000/ano", 2400 / 12, "#A57BF0"],
+      ["Manutenção", "Revisões e desgaste", 2800 / 12, "#FF5040"],
+      ["IPVA", "ES · 2% do valor FIPE", (FIPE * 0.02) / 12, "#F59E0B"],
+      ["Licenciamento", "Taxa anual", 156 / 12, "#7A8494"]
+    ];
+    const tot = items.reduce((a, x) => a + x[2], 0);
+    const [fl, fh] = S.fair, p = s.price || 0, min = 20000, max = 32000, pos = (n) => Math.max(0, Math.min(100, ((n - min) / (max - min)) * 100)) + "%";
+    let mk;
+    if (!p) mk = { t: "Digite o preço do anúncio", d: "Comparamos com a FIPE e com o histórico deste carro.", fg: "#5A6472", bg: "#F6F6F9", bd: "#E6E6EE", icon: "edit" };
+    else if (p > fh) mk = { t: "Acima do preço justo", d: "Negocie " + this.fmt(p - fh) + " ou mais. Use o relatório para justificar.", fg: "#B54708", bg: "#FFFAEB", bd: "#FEDF89", icon: "trending_up" };
+    else if (p < fl) mk = { t: "Abaixo do esperado", d: "Preço baixo para o histórico. Redobre a atenção na vistoria.", fg: "#5F29AE", bg: "#F7F4FF", bd: "#E0D2FB", icon: "help" };
+    else mk = { t: "Dentro do preço justo", d: "O valor já considera o histórico deste carro.", fg: "#15803D", bg: "#F0FDF4", bd: "#BBF7D0", icon: "check_circle" };
+    mk = { ...mk, fair: this.fmt(fl) + " a " + this.fmt(fh), fipe: this.fmt(FIPE), fairL: pos(fl), fairW: ((fh - fl) / (max - min)) * 100 + "%", fipeL: pos(FIPE), youL: p ? pos(p) : "-40px", note: "O desconto de " + S.delta + " vem do histórico. Estimativa Achecar." };
+    const lv = S.rvLevel, lvC = ["#15803D", "#B54708", "#B42318"][lv];
+    const rv = {
+      fg: lvC, answer: ["Não. Liquidez normal para o modelo.", "Um pouco mais difícil que a média.", "Sim, mais difícil que a média do modelo."][lv],
+      scale: ["Fácil", "Moderada", "Difícil"].map((t, i) => ({ t, bg: i <= lv ? lvC : "#EEEEF2", fg: i === lv ? lvC : "#5A6472", font: i === lv ? "700 12px Roboto" : "400 12px Roboto" })),
+      facts: (lv ? [["Tempo estimado de venda", "60 a 90 dias"], ["Mesmo modelo sem histórico", "30 a 45 dias"], ["O que mais pesa", "Leilão de 2020"]] : [["Tempo estimado de venda", "30 a 45 dias"], ["Procura pelo modelo", "Média"], ["O que mais pesa", "Idade do carro"]]).map(([k, v]) => ({ k, v })),
+      note: "Estimativa a partir de anúncios de carros parecidos. Guardar o laudo de vistoria ajuda na revenda."
+    };
+    const me = { t: "Este Audi A3 1.8", sub: lv ? "Com histórico" : "Histórico limpo", p: this.fmt((fl + fh) / 2), m: this.fmt(tot), self: true };
+    const rows = [me, { t: "VW Golf 1.6", sub: "Revenda fácil", p: "R$ 26.900", m: "R$ 1.020" }, { t: "Ford Focus 2.0", sub: "Revenda moderada", p: "R$ 23.500", m: "R$ 1.150" }, { t: "Fiat Stilo 1.8", sub: "Revenda moderada", p: "R$ 20.900", m: "R$ 1.090" }];
+    const cp = { fg: lv ? "#B54708" : "#15803D", answer: lv ? "Só compensa com desconto. O Golf custa parecido e revende mais fácil." : "Sim. Preço e custo dentro da média, com acabamento acima.", rows: rows.map((r) => ({ ...r, font: r.self ? "700 14px Roboto" : "500 14px Roboto", subFg: r.self ? (lv ? "#B54708" : "#15803D") : "#5A6472", bg: "transparent" })) };
+    const done = S.chk.filter(([id]) => s.chk[id]).length;
+    const setChk = (id) => { const c = { ...s.chk, [id]: !s.chk[id] }; try { localStorage.setItem("achecar-resumo-chk:" + plate, JSON.stringify(c)); } catch (e) {} this.setState({ chk: c }); };
+    const riskDot = S.groups[0].fg;
+    return {
+      plate, reportHref: "Relatorio.dc.html?placa=" + plate,
+      v: S.v, r: S.r,
+      heroCols: wide ? "minmax(0,1.3fr) minmax(0,1fr)" : "minmax(0,1fr)",
+      kpiCols: sm ? "minmax(0,1fr)" : wide ? "minmax(0,1fr)" : "repeat(3,minmax(0,1fr))",
+      kpis: [
+        { k: "Preço justo", v: "R$ " + [fl, fh].map((n) => (n / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 })).join("–") + " mil", d: "FIPE " + this.fmt(FIPE), go: () => this.go("ri-mercado") },
+        { k: "Custo de posse", v: this.fmt(tot) + "/mês", d: this.fmt(tot * 12) + " por ano", go: () => this.go("ri-custo") },
+        { k: lv ? "A resolver antes" : "Débitos", v: lv ? "R$ 1.004,59" : "R$ 0", d: lv ? "Débitos travam a transferência" : "Nada pendente", go: () => this.go("ri-riscos") }
+      ],
+      pillars: [
+        ["Riscos", "ri-riscos", riskDot, lv ? "2 de alto impacto" : "Limpo"],
+        ["Custo", "ri-custo", "#7D3EE3", this.fmt(tot) + "/mês"],
+        ["Mercado", "ri-mercado", mk.fg, p ? mk.t.split(" ")[0] : "—"],
+        ["Revenda", "ri-revenda", lvC, rv.scale[lv].t],
+        ["Comparativo", "ri-comparativo", cp.fg, lv ? "Com desconto" : "Boa opção"]
+      ].map(([t, id, dot, st]) => ({ t, dot, s: st, fg: dot, go: () => this.go(id) })),
+      bodyCols: wide ? "minmax(0,1fr) 340px" : "minmax(0,1fr)", asidePos: wide ? "sticky" : "static",
+      riskGroups: S.groups.map((g) => ({ ...g, items: g.items.map((it) => { const o = !!s.open[it.id], has = !!it.impacts; return { ...it, hasImpact: has, open: o, showImpact: has && o, rot: o ? "180deg" : "0deg", impacts: (it.impacts || []).map(([icon, k, v], j) => ({ icon, k, v, bd: j ? "1px solid #EEEEF2" : "0", ddBd: j && mid ? "1px solid #EEEEF2" : "0" })), toggle: () => has && this.setState((x) => ({ open: { ...x.open, [it.id]: !x.open[it.id] } })) }; }) })),
+      impactCols: mid ? "repeat(3,minmax(0,1fr))" : "minmax(0,1fr)",
+      cost: { month: this.fmt(tot), year: this.fmt(tot * 12), items: items.map(([t, d, v, color]) => ({ t, d, v: this.fmt(v), color, flex: v.toFixed(1) })), firstShort: lv ? "+ R$ 1.004,59 de débitos no 1º mês" : "", firstT: lv ? "No primeiro mês, some R$ 1.004,59" : "Sem custos extras no primeiro mês.", firstD: lv ? "dos débitos pendentes, se não forem abatidos do preço." : "Não há débitos pendentes nesta placa." },
+      costCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      usos: ["Pouco", "Médio", "Muito"].map((t, i) => { const on = s.uso === i; return { t, tl: ["pouco", "na média", "muito"][i] + (i < 2 ? "," : ""), fg: on ? "#1D2433" : "#5A6472", deco: on ? "underline" : "none", on, bg: on ? "#fff" : "transparent", font: on ? "700 15px Roboto" : "400 15px Roboto", fontS: on ? "700 12px Roboto" : "500 12px Roboto", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", pick: () => this.setState({ uso: i }) }; }),
+      mk, priceTxt: s.price ? s.price.toLocaleString("pt-BR") : "",
+      onPrice: (e) => { const n = +String(e.target.value).replace(/\D/g, "").slice(0, 7); this.setState({ price: n }); },
+      mktCols: mid ? "minmax(0,220px) minmax(0,1fr)" : "minmax(0,1fr)",
+      twoCols: mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      rv, cp,
+      dkCols: wide ? "minmax(0,1.05fr) minmax(0,1fr)" : "minmax(0,1fr)",
+      al: lv ? { t: "Compra exige atenção", icon: "warning", fg: "#B54708", bg: "#FFFAEB", bd: "#FEDF89", d: "Leilão em 2020 e furto recuperado em 2018. Podem afetar a revenda e as condições de seguro.", sub: "Antes de comprar: " + S.chk.slice(0, 3).map(([, x]) => x.charAt(0).toLowerCase() + x.slice(1)).join(", ") + "." } : { t: "Histórico limpo", icon: "check_circle", fg: "#15803D", bg: "#F0FDF4", bd: "#BBF7D0", d: "Nenhum registro de leilão, sinistro, roubo ou furto.", sub: "Antes de comprar: faça a vistoria cautelar e cote o seguro." },
+      dkPrice: p ? "R$ " + (p / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " mil" : "Informe o preço",
+      mkDk: mk.fg,
+      rvDk: rv.fg, rvSub: lv ? "Histórico pode limitar compradores" : "Procura normal pelo modelo",
+      mntWord: "Moderado", mntSub: "R$ 233/mês · uso típico",
+      dkBars: (() => { const L = [["Audi A3", tot, true], ["Golf 1.6", 1020], ["Focus 2.0", 1150], ["Stilo 1.8", 1090]], mx = Math.max(...L.map((x) => x[1])) * 1.05; return L.map(([t2, v2, me]) => ({ t: t2, v: this.fmt(v2), w: Math.round((v2 / mx) * 100) + "%", c: me ? "#7D3EE3" : "#C9CDD6", font: me ? "700 13px Roboto" : "400 13px Roboto" })); })(),
+      dkVerdict: lv ? "Só avançaria depois de confirmar as condições do seguro, fazer a vistoria cautelar e negociar o preço para a faixa de " + mk.fair + "." : "Pode avançar. Faça a vistoria cautelar e feche perto da FIPE.",
+      vStepsDk: ["Evitar", "Negociar", "Seguir"].map((x, i) => { const act = (lv ? 1 : 2) === i, col = ["#B42318", "#B54708", "#15803D"][i]; return { t: x, bg: act ? col : "#E0D2FB", fg: act ? col : "#7A8494", font: act ? "700 12px Roboto" : "400 12px Roboto" }; }),
+      vCols: vw >= 1100 ? "minmax(0,1.6fr) minmax(0,.8fr) minmax(0,1fr)" : mid ? "minmax(0,1fr) minmax(0,1fr)" : "minmax(0,1fr)",
+      g3: wide ? "repeat(3,minmax(0,1fr))" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      g3b: wide ? "minmax(0,.75fr) minmax(0,1.25fr) minmax(0,1fr)" : mid ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      vSteps: ["Evitar", "Negociar", "Seguir"].map((x, i) => { const act = (lv ? 1 : 2) === i, col = ["#B42318", "#B54708", "#15803D"][i]; return { t: x, bg: act ? col : "#E9E6F2", fg: act ? col : "#7A8494", font: act ? "700 13px Roboto" : "400 13px Roboto" }; }),
+      recs: S.chk.slice(0, 3).map(([, t2], i) => ({ n: i + 1, t: t2 })),
+      riskHead: lv ? "2 registros de alto impacto" : "Nenhum registro relevante",
+      riskOkOn: true, riskOk: lv ? "Sem apontamento em gravame, RENAJUD, chassi e motor" : "22 verificações sem apontamento", riskRows: S.groups.filter((g) => g.label !== "SEM APONTAMENTO").flatMap((g) => g.items.map((it) => ({ dk: g.fg, t: it.t, fg: g.fg, bg: g.bg, lvl: { "ALTO IMPACTO": "Alto", "RESOLVER ANTES DE PAGAR": "Antes de pagar", "ATENÇÃO": "Atenção", "SEM APONTAMENTO": "OK" }[g.label], fx: ({ leilao: ["Comercial", "Seguro", "Segurança"], furto: ["Comercial", "Seguro"], deb: ["Financeiro", "Transferência"], recall: ["Segurança"], ok: ["Sem efeito"] })[it.id] || [] }))).slice(0, 3),
+      costTop: items.slice().sort((a, b) => b[2] - a[2]).slice(0, 3).map(([t2, , v2, color]) => ({ t: t2, v: this.fmt(v2), color })),
+      rvWord: ["Fácil", "Moderada", "Difícil"][lv], rvTime: rv.facts[0].v,
+      compBars: rows.map((r2) => { const n = +String(r2.p).replace(/\D/g, ""); return { t: r2.t.replace("Este ", ""), p: "R$ " + (n / 1000).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " mil", w: Math.round((n / 28000) * 100) + "%", c: r2.self ? "#7D3EE3" : "#C9CDD6", font: r2.self ? "700 12px Roboto" : "500 12px Roboto" }; }),
+      sugs2: this.SUGS.slice(0, 2).map((t2) => ({ t: t2, ask: () => window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { q: t2 } })) })),
+      panelOn: !!s.panel, pnRiscos: s.panel === "riscos", pnCusto: s.panel === "custo", pnMercado: s.panel === "mercado", pnRevenda: s.panel === "revenda", pnComp: s.panel === "comp",
+      pnTitle: { riscos: "Riscos do histórico", custo: "Custo de posse", mercado: "Preço pedido", revenda: "Revenda", comp: "Contra os concorrentes" }[s.panel] || "",
+      openRiscos: () => this.setState({ panel: "riscos" }), openCusto: () => this.setState({ panel: "custo" }), openMercado: () => this.setState({ panel: "mercado" }), openRevenda: () => this.setState({ panel: "revenda" }), openComp: () => this.setState({ panel: "comp" }),
+      closePanel: () => this.setState({ panel: null }),
+      goRelPanel: (e) => { e && e.preventDefault && e.preventDefault(); this.setState({ panel: null }); this.setAba("rel", true); },
+      askDraft: s.askDraft, onAsk: (e) => this.setState({ askDraft: e.target.value }),
+      askSubmit: (e) => { e.preventDefault(); const q = s.askDraft.trim(); if (!q) return; window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { q } })); this.setState({ askDraft: "" }); },
+      onResumo: s.aba === "res", onRel: s.aba === "rel",
+      relHref: "?aba=relatorio", goRel: (e) => { e && e.preventDefault && e.preventDefault(); this.setAba("rel", true); },
+      tabs: [["res", "Resumo inteligente", "auto_awesome", "?"], ["rel", "Relatório completo", "description", "?aba=relatorio"]].map(([id, t2, icon, href]) => { const on = s.aba === id; return { t: t2, icon, href, on, bg: on ? "#fff" : "transparent", sh: on ? "0 1px 3px rgba(29,36,51,.14)" : "none", fg: on ? "#1D2433" : "#5A6472", ic: on ? "#7D3EE3" : "#5A6472", hov: on ? "#fff" : "rgba(255,255,255,.6)", font: on ? "700 14px Roboto" : "500 14px Roboto", go: (e) => { e && e.preventDefault && e.preventDefault(); this.setAba(id, true); } }; }),
+      toast: s.toast, shareOpen: s.share, shareBd: s.share ? "#7D3EE3" : "#D5D8DE",
+      toggleShare: () => this.setState({ share: !s.share, copied: false }),
+      shareUrl: location.origin + location.pathname.replace(/[^/]*$/, "") + "Relatorio.dc.html?r=" + this.token() + "&compartilhado=1",
+      shareRows: [["visibility", "Modelo, ano, apontamentos e resumo", "Visível", "#15803D"], ["visibility_off", "Placa completa (aparece " + plate.slice(0, 3) + "•••" + plate.slice(-1) + ")", "Oculto", "#5A6472"], ["visibility_off", "Chassi, Renavam e motor", "Oculto", "#5A6472"], ["visibility_off", "Dados de proprietários", "Oculto", "#5A6472"]].map(([i, t2, st, c]) => ({ i, t: t2, s: st, c })),
+      copyShare: () => { const u = location.origin + location.pathname.replace(/[^/]*$/, "") + "Relatorio.dc.html?r=" + this.token() + "&compartilhado=1"; try { navigator.clipboard && navigator.clipboard.writeText(u); } catch (e) {} this.setState({ copied: true }); this.toastMsg("Link copiado, sem dados sensíveis."); setTimeout(() => this.setState({ share: false, copied: false }), 1400); },
+      copyBg: s.copied ? "#15803D" : "#7D3EE3", copyIcon: s.copied ? "check" : "content_copy", copyLbl: s.copied ? "Link copiado" : "Copiar link seguro",
+      pdfLbl: s.pdf ? "Gerando PDF…" : "Baixar PDF",
+      doPdf: () => { if (s.pdf) return; this.setState({ pdf: true }); setTimeout(() => { this.setState({ pdf: false }); window.print(); }, 700); },
+      docCols: wide ? "repeat(12,minmax(0,1fr))" : "minmax(0,1fr)", artSpan: wide ? "span 9" : "auto", tocOn: wide, sumCols: sm ? "minmax(0,1fr)" : "repeat(3,minmax(0,1fr))",
+      impCols: mid ? "120px minmax(0,1fr)" : "minmax(0,1fr)", impDdPad: mid ? "12px 0" : "0 0 12px", impDtPadB: mid ? "12px" : "4px",
+      chk: { count: done + " de " + S.chk.length, pct: (done / S.chk.length) * 100 + "%", items: S.chk.map(([id, t, d]) => { const on = !!s.chk[id]; return { t, d, on, fg: on ? "#5A6472" : "#1D2433", deco: on ? "line-through" : "none", toggle: () => setChk(id) }; }) },
+      sugs: this.SUGS.map((t) => ({ t, ask: () => window.dispatchEvent(new CustomEvent("achecar-copiloto", { detail: { q: t } })) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

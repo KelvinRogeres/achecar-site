@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/fig-assets.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}
+    input::placeholder{color:#5A6472}
+    @keyframes acSpin{to{transform:rotate(360deg)}}
+    @keyframes lgIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes lgPop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+    @keyframes lgBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+    @keyframes lgProg{from{width:0}to{width:100%}}
+    @media (prefers-reduced-motion:reduce){[data-lg] *{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div data-screen-label="Login" style="min-height:{{ rootMinH }};display:flex;background:#fff;border-radius:{{ rootRadius }}">
+
+  <sc-if value="{{ wideA }}" hint-placeholder-val="{{ true }}">
+    <aside ref="{{ asideRef }}" data-lg="" aria-label="Benefícios da conta" style="flex:0 0 46%;max-width:720px;position:sticky;top:0;height:100vh;box-sizing:border-box;overflow-x:hidden;overflow-y:auto;background:#F3EDFD;display:flex;flex-direction:column;justify-content:safe center;gap:32px;padding:48px clamp(32px,5vw,72px)">
+      <div style="display:flex;flex-direction:column;gap:10px;animation:lgIn .5s ease-out both">
+        <span style="font:700 11px Roboto;letter-spacing:.08em;color:#7D3EE3">COM A SUA CONTA</span>
+        <h2 style="margin:0;font:800 32px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">Seu carro, suas consultas e o Copiloto no mesmo lugar</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px">
+        <div style="grid-column:1 / -1;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:16px 20px;display:flex;align-items:center;gap:16px;animation:lgIn .5s ease-out .12s both">
+          <img src="assets/carros/onix.webp" alt="" style="width:128px;height:auto;flex:none;display:block">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;align-items:center;gap:8px;font:700 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">garage_home</span>Minha Garagem</span>
+            <span style="font:700 16px Roboto;color:#1D2433">Onix LTZ 2022</span>
+            <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font:700 18px 'Merriweather Sans',sans-serif;color:#1D2433">R$ 82.450</span><span style="padding:2px 8px;border-radius:999px;background:#F0FDF4;color:#15803D;font:700 12px Roboto">+1,2% no mês</span></span>
+            <span style="font:400 12px Roboto;color:#5A6472">Valor FIPE atualizado todo mês</span>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:16px;display:flex;flex-direction:column;gap:10px;animation:lgIn .5s ease-out .24s both">
+          <span style="display:flex;align-items:center;gap:8px;font:700 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">description</span>Minhas consultas</span>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;justify-content:space-between;gap:8px;font:500 13px Roboto;color:#1D2433">HB20 2023<span style="font:700 12px 'Roboto Mono',monospace;color:#5A6472">RIO4F21</span></span>
+            <span style="display:flex;justify-content:space-between;gap:8px;font:500 13px Roboto;color:#1D2433">Onix 2022<span style="font:700 12px 'Roboto Mono',monospace;color:#5A6472">BRA2E19</span></span>
+          </div>
+          <span style="display:flex;align-items:center;gap:4px;font:500 12px Roboto;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:16px">check_circle</span>Salvas, sem expirar</span>
+        </div>
+        <div style="background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:16px;display:flex;flex-direction:column;gap:10px;animation:lgIn .5s ease-out .36s both">
+          <span style="display:flex;align-items:center;gap:8px;font:700 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">compare_arrows</span>Comparações</span>
+          <div style="display:flex;align-items:center;justify-content:center;gap:4px">
+            <img src="assets/carros/onix.webp" alt="" style="width:64px;height:auto;display:block">
+            <span style="font:700 13px Roboto;color:#7D3EE3">×</span>
+            <img src="assets/carros/hb20.webp" alt="" style="width:64px;height:auto;display:block">
+          </div>
+          <span style="font:500 13px/1.35 Roboto;color:#1D2433">Onix × HB20 · qual desvaloriza menos</span>
+        </div>
+        <div style="grid-column:1 / -1;display:flex;align-items:flex-end;gap:12px;animation:lgIn .5s ease-out .48s both">
+          <sc-if value="{{ staticMascot }}" hint-placeholder-val="{{ false }}"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:104px;height:auto;flex:none;display:block;filter:drop-shadow(0 8px 12px rgba(77,26,153,.22));animation:lgBob 3.2s ease-in-out infinite"></sc-if>
+          <div style="flex:1;min-width:0;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);border-radius:16px 16px 16px 4px;padding:14px 16px;margin-bottom:18px;display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 12px Roboto;color:#7D3EE3">Copiloto</span>
+            <span style="font:400 14px/1.45 Roboto;color:#1D2433;text-wrap:pretty">Seu Onix chega aos 40 mil km em novembro. Quer ver quanto custa a revisão?</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </sc-if>
+
+  <sc-if value="{{ wideB }}" hint-placeholder-val="{{ false }}">
+    <aside ref="{{ asideRef }}" data-lg="" aria-label="Benefícios da conta" onMouseEnter="{{ pauseB }}" onMouseLeave="{{ playB }}" style="flex:0 0 46%;max-width:720px;position:sticky;top:0;height:100vh;box-sizing:border-box;overflow-x:hidden;overflow-y:auto;background:#7D3EE3;display:flex;flex-direction:column;justify-content:safe center;gap:28px;padding:48px clamp(32px,5vw,72px)">
+      <div style="display:flex;align-items:flex-end;gap:16px;max-width:520px">
+        <sc-if value="{{ staticMascot }}" hint-placeholder-val="{{ false }}"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:140px;height:auto;flex:none;display:block;filter:drop-shadow(0 12px 16px rgba(18,13,38,.3));animation:lgBob 3.2s ease-in-out infinite"></sc-if>
+        <div style="flex:1;min-width:0;margin-bottom:28px;padding:14px 18px;border-radius:20px 20px 20px 4px;background:#fff;box-shadow:0 8px 24px rgba(18,13,38,.18)">
+          <sc-for list="{{ bubble }}" as="b" hint-placeholder-count="1">
+            <span style="display:block;font:700 18px/1.35 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance;animation:lgIn .35s ease-out both">{{ b.text }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="max-width:520px;min-height:236px;display:flex">
+        <sc-if value="{{ b0 }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;animation:lgPop .4s ease-out both">
+            <span style="display:flex;align-items:center;gap:8px;font:700 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">garage_home</span>Minha Garagem</span>
+            <div style="display:flex;align-items:center;gap:20px">
+              <img src="assets/carros/onix.webp" alt="" style="width:180px;height:auto;flex:none;display:block">
+              <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+                <span style="font:700 17px Roboto;color:#1D2433">Onix LTZ 2022</span>
+                <span style="font:800 24px 'Merriweather Sans',sans-serif;color:#1D2433">R$ 82.450</span>
+                <span style="align-self:flex-start;padding:2px 8px;border-radius:999px;background:#F0FDF4;color:#15803D;font:700 12px Roboto">+1,2% no mês</span>
+              </div>
+            </div>
+            <span style="font:400 13px Roboto;color:#5A6472">Valor FIPE e próximas revisões, sempre à mão.</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ b1 }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;animation:lgPop .4s ease-out both">
+            <span style="display:flex;align-items:center;gap:8px;font:700 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">description</span>Minhas consultas</span>
+            <sc-for list="{{ consultas }}" as="c" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #EEEEF2">
+                <span style="padding:4px 8px;border-radius:6px;border:1.5px solid #1D2433;font:700 13px 'Roboto Mono',monospace;color:#1D2433">{{ c.placa }}</span>
+                <span style="flex:1;min-width:0;font:500 14px Roboto;color:#1D2433">{{ c.carro }}</span>
+                <span style="font:400 12px Roboto;color:#5A6472">{{ c.data }}</span>
+              </div>
+            </sc-for>
+            <span style="display:flex;align-items:center;gap:4px;font:500 13px Roboto;color:#15803D"><span style="font-family:'Material Symbols Rounded';font-size:18px">check_circle</span>Relatórios salvos, sem expirar</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ b2 }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;animation:lgPop .4s ease-out both">
+            <span style="display:flex;align-items:center;gap:8px;font:700 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">directions_car</span>Falando sobre Onix LTZ 2022</span>
+            <span style="align-self:flex-end;max-width:80%;padding:10px 14px;border-radius:16px 4px 16px 16px;background:#7D3EE3;color:#fff;font:400 14px/1.45 Roboto">Quando faço a próxima revisão?</span>
+            <span style="align-self:flex-start;max-width:85%;padding:10px 14px;border-radius:4px 16px 16px 16px;background:#F3F4F6;color:#1D2433;font:400 14px/1.45 Roboto;text-wrap:pretty">Aos 40 mil km, em novembro. Na rede Chevrolet custa em média R$ 690.</span>
+          </div>
+        </sc-if>
+        <sc-if value="{{ b3 }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(29,36,51,.12);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px;animation:lgPop .4s ease-out both">
+            <span style="display:flex;align-items:center;gap:8px;font:700 13px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">compare_arrows</span>Comparação salva</span>
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:8px;text-align:center">
+              <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><img src="assets/carros/onix.webp" alt="" style="width:100%;max-width:150px;height:auto;display:block"><span style="font:700 14px Roboto;color:#1D2433">Onix 2022</span><span style="font:400 12px Roboto;color:#5A6472">−6% em 12 meses</span></span>
+              <span style="font:800 18px 'Merriweather Sans',sans-serif;color:#7D3EE3">×</span>
+              <span style="display:flex;flex-direction:column;align-items:center;gap:6px"><img src="assets/carros/hb20.webp" alt="" style="width:100%;max-width:150px;height:auto;display:block"><span style="font:700 14px Roboto;color:#1D2433">HB20 2023</span><span style="font:400 12px Roboto;color:#5A6472">−8% em 12 meses</span></span>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+      <div role="tablist" aria-label="Benefícios" style="max-width:520px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ tabsB }}" as="t" hint-placeholder-count="4">
+          <button role="tab" aria-selected="{{ t.on }}" onClick="{{ t.pick }}" style="position:relative;overflow:hidden;height:40px;border:0;border-radius:999px;background:{{ t.bg }};color:{{ t.color }};font:700 13px Roboto;cursor:pointer;transition:background .2s ease-out" style-hover="filter:brightness(1.06)">
+            <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}">
+              <span onAnimationEnd="{{ nextB }}" style="position:absolute;left:0;bottom:0;height:3px;background:#7D3EE3;animation:lgProg 4.5s linear both;animation-play-state:{{ playState }}"></span>
+            </sc-if>
+            <span style="position:relative">{{ t.label }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </aside>
+  </sc-if>
+
+  <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+    <header style="height:{{ hdH }};padding:{{ hdPad }};display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <sc-if value="{{ notEmbed }}" hint-placeholder-val="{{ true }}"><a href="Home Achecar.dc.html" aria-label="Achecar · início" style="display:flex;align-items:center">
+        <img src="assets/logo/achecar-logo-web.svg" alt="Achecar" width="156" height="32" style="display:block;height:32px;width:auto">
+      </a></sc-if>
+      <sc-if value="{{ isEmbed }}" hint-placeholder-val="{{ false }}"><span></span></sc-if>
+      <sc-if value="{{ notEmbed }}" hint-placeholder-val="{{ true }}"><a href="{{ backHref }}" style="display:flex;align-items:center;gap:4px;font:500 14px Roboto;color:#5A6472" style-hover="color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_back</span>Voltar</a></sc-if>
+      <sc-if value="{{ embedClose }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ closeEmbed }}" aria-label="Fechar" style="width:40px;height:40px;margin-right:-8px;border:0;border-radius:50%;background:transparent;color:#5A6472;font-family:'Material Symbols Rounded';font-size:22px;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F6F6F9;color:#1D2433">close</button></sc-if>
+    </header>
+
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:{{ bodyPad }}">
+      <div style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:24px">
+
+        <sc-if value="{{ stEmail }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitEmail }}" style="display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h1 style="margin:0;font:700 30px/1.2 'Merriweather Sans',sans-serif">Entre ou crie sua conta</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472">{{ reason }}</p>
+            </div>
+            <button type="button" onClick="{{ google }}" aria-label="Continuar com o Google" style="height:48px;padding:0 12px;border-radius:8px;border:1px solid #747775;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:12px;font:500 15px/20px Roboto,Arial,sans-serif;letter-spacing:.25px;color:#1F1F1F;cursor:pointer;transition:background .15s ease-out,box-shadow .15s ease-out" style-hover="background:#F8F8F8;box-shadow:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15)" style-active="background:#EEEEEE"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg><span style="white-space:nowrap">Continuar com o Google</span></button>
+            <button type="button" onClick="{{ apple }}" aria-label="Continuar com a Apple" style="height:48px;padding:0 12px;border-radius:8px;border:1px solid #747775;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:8px;font:500 17px/20px -apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-.2px;color:#1F1F1F;cursor:pointer;transition:background .15s ease-out,box-shadow .15s ease-out" style-hover="background:#F8F8F8;box-shadow:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15)" style-active="background:#EEEEEE"><svg width="16" height="20" viewBox="0 0 814 1000" aria-hidden="true" style="flex:none;display:block;margin-top:-3px"><path fill="#000000" d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57-155.5-127C46.7 790.7 0 663 0 541.8c0-194.4 126.4-297.5 250.8-297.5 66.1 0 121.2 43.4 162.7 43.4 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 45.4 0 102.5-30.4 135.5-71.3z"></path></svg><span style="white-space:nowrap">Continuar com a Apple</span></button>
+            <div style="display:flex;align-items:center;gap:12px;font:400 13px Roboto;color:#5A6472"><div style="flex:1;height:1px;background:#E6E6EE"></div>ou com e-mail<div style="flex:1;height:1px;background:#E6E6EE"></div></div>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 13px Roboto">E-mail</span>
+              <input ref="{{ emailRef }}" type="email" value="{{ email }}" onChange="{{ onEmail }}" onKeyDown="{{ emailKey }}" onBlur="{{ emailBlur }}" placeholder="voce@email.com" autocomplete="email" role="combobox" aria-expanded="{{ domOpen }}" aria-autocomplete="list" style="height:48px;box-sizing:border-box;padding:0 14px;border-radius:8px;border:1.5px solid {{ emailBorder }};font:400 15px Roboto;color:#1D2433;outline:none" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+              <sc-if value="{{ domOpen }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Sugestões de e-mail" style="margin-top:-4px;border-radius:8px;border:1px solid #E6E6EE;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:4px;display:flex;flex-direction:column"><sc-for list="{{ domList }}" as="d" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{ d.on }}" onMouseDown="{{ d.pick }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;border:0;border-radius:6px;background:{{ d.bg }};text-align:left;cursor:pointer;font:400 14px Roboto;color:#5A6472" style-hover="background:#F5F4FE"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">mail</span><span><span style="color:#1D2433">{{ d.user }}</span><strong style="color:#1D2433">{{ d.dom }}</strong></span></button></sc-for></div></sc-if>
+              <sc-if value="{{ typoFix }}" hint-placeholder-val="{{ false }}"><div role="status" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;background:#FFFBEB;border:1px solid #FDE68A;font:400 13px Roboto;color:#78350F"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#B45309">help</span><span style="flex:1;min-width:160px">Você quis dizer <strong>{{ typoFix }}</strong>?</span><button type="button" onClick="{{ applyFix }}" style="height:30px;padding:0 12px;border:0;border-radius:6px;background:#1D2433;color:#fff;font:700 13px Roboto;cursor:pointer;white-space:nowrap">Corrigir</button><button type="button" onClick="{{ keepTypo }}" style="height:30px;padding:0 8px;border:0;background:transparent;color:#78350F;font:500 13px Roboto;cursor:pointer;white-space:nowrap">Manter</button></div></sc-if>
+              <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 12px Roboto;color:#B91C1C">{{ err }}</span></sc-if>
+            </label>
+            <button type="submit" style="height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#6A2FCB">
+              <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;box-sizing:border-box;animation:acSpin .8s linear infinite"></span></sc-if>
+              {{ continueLabel }}
+            </button>
+            <sc-if value="{{ narrowBenefits }}" hint-placeholder-val="{{ false }}">
+              <div data-lg="" style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:16px;background:#F3EDFD;animation:lgIn .5s ease-out both">
+                <sc-if value="{{ staticMascot }}" hint-placeholder-val="{{ false }}"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:64px;height:auto;flex:none;display:block;animation:lgBob 3.2s ease-in-out infinite"></sc-if>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+                  <span style="font:700 14px Roboto;color:#1D2433">Com a conta você ganha</span>
+                  <span style="font:400 13px/1.5 Roboto;color:#5A6472">Garagem com valor FIPE · consultas salvas sem expirar · Copiloto que conhece seu carro · comparações salvas</span>
+                </div>
+              </div>
+            </sc-if>
+            <p style="margin:0;font:400 12px/1.5 Roboto;color:#5A6472">Ao continuar, você concorda com os <a href="Termos de Uso.dc.html" style="text-decoration:underline">Termos de uso</a> e a <a href="Politica de Privacidade.dc.html" style="text-decoration:underline">Política de privacidade</a>.</p>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ stLogin }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <div style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:4px 4px 4px 4px;border:1px solid #E5E5E5;border-radius:999px;max-width:100%">
+              <span style="width:28px;height:28px;flex:none;border-radius:50%;background:{{ chipBg }};color:{{ chipColor }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ chipInitial }}</span>
+              <span style="font:500 14px Roboto;color:#1D2433;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">{{ email }}</span>
+              <button type="button" onClick="{{ toEmail }}" style="flex:none;height:28px;padding:0 12px;border:0;border-radius:999px;background:#F1F1F5;color:#1D2433;font:500 13px Roboto;cursor:pointer" style-hover="background:#E6E6EE">Trocar</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h1 style="margin:0;font:700 30px/1.2 'Merriweather Sans',sans-serif">Bem-vinda de volta, Ana</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472">Como você quer entrar?</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button type="button" onClick="{{ toCode }}" style="width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid #E5E5E5;border-radius:12px;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s ease-out,background .15s ease-out" style-hover="border-color:#7D3EE3;background:#FBF9FF">
+                <span style="width:40px;height:40px;flex:none;border-radius:50%;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;">mail</span></span>
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto;color:#1D2433">Receber código por e-mail</span><span style="font:400 13px/1.4 Roboto;color:#5A6472">Enviamos 6 dígitos para o seu e-mail. Sem senha.</span></span>
+                <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">chevron_right</span>
+              </button>
+              <button type="button" onClick="{{ toPass }}" style="width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid #E5E5E5;border-radius:12px;background:#fff;cursor:pointer;text-align:left;transition:border-color .15s ease-out,background .15s ease-out" style-hover="border-color:#7D3EE3;background:#FBF9FF">
+                <span style="width:40px;height:40px;flex:none;border-radius:50%;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;">key</span></span>
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto;color:#1D2433">Entrar com senha</span><span style="font:400 13px/1.4 Roboto;color:#5A6472">Use a senha que você criou.</span></span>
+                <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">chevron_right</span>
+              </button>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;font:400 13px Roboto;color:#5A6472"><div style="flex:1;height:1px;background:#E6E6EE"></div>ou<div style="flex:1;height:1px;background:#E6E6EE"></div></div>
+            <button type="button" onClick="{{ google }}" aria-label="Continuar com o Google" style="height:48px;padding:0 12px;border-radius:8px;border:1px solid #747775;background:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:12px;font:500 15px/20px Roboto,Arial,sans-serif;letter-spacing:.25px;color:#1F1F1F;cursor:pointer;transition:background .15s ease-out,box-shadow .15s ease-out" style-hover="background:#F8F8F8;box-shadow:0 1px 2px rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15)" style-active="background:#EEEEEE"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true" style="flex:none;display:block"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path></svg><span style="white-space:nowrap">Continuar com o Google</span></button>
+            <span style="font:400 12px/1.5 Roboto;color:#5A6472">Sua conta está vinculada ao Google com este e-mail.</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ stCreate }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitCreate }}" style="display:flex;flex-direction:column;gap:20px">
+            <div style="align-self:flex-start;display:flex;align-items:center;gap:10px;padding:4px 4px 4px 4px;border:1px solid #E5E5E5;border-radius:999px;max-width:100%">
+              <span style="width:28px;height:28px;flex:none;border-radius:50%;background:{{ chipBg }};color:{{ chipColor }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ chipInitial }}</span>
+              <span style="font:500 14px Roboto;color:#1D2433;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0">{{ email }}</span>
+              <button type="button" onClick="{{ toEmail }}" style="flex:none;height:28px;padding:0 12px;border:0;border-radius:999px;background:#F1F1F5;color:#1D2433;font:500 13px Roboto;cursor:pointer" style-hover="background:#E6E6EE">Trocar</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h1 style="margin:0;font:700 30px/1.2 'Merriweather Sans',sans-serif">Crie sua conta</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472">Ainda não há uma conta com este e-mail. Falta só o seu nome: leva menos de 1 minuto.</p>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 13px Roboto">Como podemos te chamar?</span>
+              <input ref="{{ nameRef }}" value="{{ name }}" onChange="{{ onName }}" placeholder="Seu nome" autocomplete="name" style="height:48px;box-sizing:border-box;padding:0 14px;border-radius:8px;border:1.5px solid {{ nameBorder }};font:400 15px Roboto;color:#1D2433;outline:none" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+              <sc-if value="{{ domOpen }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Sugestões de e-mail" style="margin-top:-4px;border-radius:8px;border:1px solid #E6E6EE;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:4px;display:flex;flex-direction:column"><sc-for list="{{ domList }}" as="d" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{ d.on }}" onMouseDown="{{ d.pick }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;border:0;border-radius:6px;background:{{ d.bg }};text-align:left;cursor:pointer;font:400 14px Roboto;color:#5A6472" style-hover="background:#F5F4FE"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">mail</span><span><span style="color:#1D2433">{{ d.user }}</span><strong style="color:#1D2433">{{ d.dom }}</strong></span></button></sc-for></div></sc-if>
+              <sc-if value="{{ typoFix }}" hint-placeholder-val="{{ false }}"><div role="status" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;background:#FFFBEB;border:1px solid #FDE68A;font:400 13px Roboto;color:#78350F"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#B45309">help</span><span style="flex:1;min-width:160px">Você quis dizer <strong>{{ typoFix }}</strong>?</span><button type="button" onClick="{{ applyFix }}" style="height:30px;padding:0 12px;border:0;border-radius:6px;background:#1D2433;color:#fff;font:700 13px Roboto;cursor:pointer;white-space:nowrap">Corrigir</button><button type="button" onClick="{{ keepTypo }}" style="height:30px;padding:0 8px;border:0;background:transparent;color:#78350F;font:500 13px Roboto;cursor:pointer;white-space:nowrap">Manter</button></div></sc-if>
+              <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 12px Roboto;color:#B91C1C">{{ err }}</span></sc-if>
+            </label>
+            <label style="display:flex;gap:10px;align-items:flex-start;font:400 14px/1.45 Roboto;color:#5A6472;cursor:pointer">
+              <input type="checkbox" checked="{{ news }}" onChange="{{ toggleNews }}" style="width:18px;height:18px;margin:1px 0 0;accent-color:#7D3EE3;flex:none">Quero receber cupons e novidades por e-mail
+            </label>
+            <button type="submit" style="height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#6A2FCB">Criar conta com e-mail</button>
+            <span style="font:400 12px/1.5 Roboto;color:#5A6472">Vamos enviar um código para confirmar o e-mail.</span>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ stCode }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitCode }}" style="display:flex;flex-direction:column;gap:20px">
+            <button type="button" onClick="{{ codeBack }}" style="align-self:flex-start;display:flex;align-items:center;gap:4px;padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_back</span>{{ codeBackLabel }}</button>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h1 style="margin:0;font:700 30px/1.2 'Merriweather Sans',sans-serif">{{ codeTitle }}</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472">Enviamos 6 dígitos para <strong style="color:#1D2433">{{ email }}</strong>. Vale por 10 minutos.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px" onPaste="{{ onPaste }}">
+              <sc-for list="{{ cells }}" as="d" hint-placeholder-count="6">
+                <input ref="{{ d.ref }}" value="{{ d.v }}" onChange="{{ d.change }}" onKeyDown="{{ d.key }}" inputmode="numeric" maxlength="1" aria-label="{{ d.label }}" autocomplete="one-time-code" style="height:60px;min-width:0;box-sizing:border-box;text-align:center;border-radius:8px;border:1.5px solid {{ d.border }};font:700 24px 'Roboto Mono',monospace;color:#1D2433;outline:none" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+              </sc-for>
+            </div>
+            <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 12px Roboto;color:#B91C1C;margin-top:-8px">{{ err }}</span></sc-if>
+            <button type="submit" style="height:48px;border:0;border-radius:8px;background:{{ codeBg }};color:{{ codeColor }};font:700 15px Roboto;cursor:pointer">Entrar</button>
+            <div style="display:flex;justify-content:space-between;gap:16px">
+              <button type="button" onClick="{{ resend }}" style="padding:0;border:0;background:transparent;color:{{ resendColor }};font:500 14px Roboto;cursor:pointer">{{ resendLabel }}</button>
+              <sc-if value="{{ showPassLink }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ toPass }}" style="padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer">Entrar com senha</button>
+              </sc-if>
+            </div>
+            <span style="font:400 12px Roboto;color:#5A6472">Não chegou? Confira o spam ou a aba Promoções.</span>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ stPass }}" hint-placeholder-val="{{ false }}">
+          <form onSubmit="{{ submitPass }}" style="display:flex;flex-direction:column;gap:20px">
+            <button type="button" onClick="{{ toLogin }}" style="align-self:flex-start;display:flex;align-items:center;gap:4px;padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_back</span>Outras opções</button>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <h1 style="margin:0;font:700 30px/1.2 'Merriweather Sans',sans-serif">Digite sua senha</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472">{{ email }}</p>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:8px">
+              <span style="font:700 13px Roboto">Senha</span>
+              <div style="position:relative;display:flex">
+                <input ref="{{ passRef }}" type="{{ passType }}" value="{{ pass }}" onChange="{{ onPass }}" autocomplete="current-password" style="flex:1;height:48px;box-sizing:border-box;padding:0 48px 0 14px;border-radius:8px;border:1.5px solid {{ passBorder }};font:400 15px Roboto;color:#1D2433;outline:none" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35)">
+                <button type="button" onClick="{{ togglePass }}" aria-label="{{ passAria }}" style="position:absolute;right:6px;top:6px;width:36px;height:36px;border:0;border-radius:8px;background:transparent;cursor:pointer;font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">{{ passIcon }}</button>
+              </div>
+              <sc-if value="{{ domOpen }}" hint-placeholder-val="{{ false }}"><div role="listbox" aria-label="Sugestões de e-mail" style="margin-top:-4px;border-radius:8px;border:1px solid #E6E6EE;background:#fff;box-shadow:0 8px 24px rgba(29,36,51,.12);padding:4px;display:flex;flex-direction:column"><sc-for list="{{ domList }}" as="d" hint-placeholder-count="4"><button type="button" role="option" aria-selected="{{ d.on }}" onMouseDown="{{ d.pick }}" style="display:flex;align-items:center;gap:8px;height:40px;padding:0 10px;border:0;border-radius:6px;background:{{ d.bg }};text-align:left;cursor:pointer;font:400 14px Roboto;color:#5A6472" style-hover="background:#F5F4FE"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#5A6472">mail</span><span><span style="color:#1D2433">{{ d.user }}</span><strong style="color:#1D2433">{{ d.dom }}</strong></span></button></sc-for></div></sc-if>
+              <sc-if value="{{ typoFix }}" hint-placeholder-val="{{ false }}"><div role="status" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;border-radius:8px;background:#FFFBEB;border:1px solid #FDE68A;font:400 13px Roboto;color:#78350F"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#B45309">help</span><span style="flex:1;min-width:160px">Você quis dizer <strong>{{ typoFix }}</strong>?</span><button type="button" onClick="{{ applyFix }}" style="height:30px;padding:0 12px;border:0;border-radius:6px;background:#1D2433;color:#fff;font:700 13px Roboto;cursor:pointer;white-space:nowrap">Corrigir</button><button type="button" onClick="{{ keepTypo }}" style="height:30px;padding:0 8px;border:0;background:transparent;color:#78350F;font:500 13px Roboto;cursor:pointer;white-space:nowrap">Manter</button></div></sc-if>
+              <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 12px Roboto;color:#B91C1C">{{ err }}</span></sc-if>
+            </label>
+            <button type="submit" style="height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#6A2FCB">Entrar</button>
+            <div style="display:flex;justify-content:space-between;gap:16px">
+              <button type="button" onClick="{{ toCode }}" style="padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer">Entrar com código</button>
+              <button type="button" onClick="{{ forgot }}" style="padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer">Esqueci minha senha</button>
+            </div>
+          </form>
+        </sc-if>
+
+        <sc-if value="{{ stDone }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:24px 0">
+            <span style="width:44px;height:44px;border-radius:50%;border:4px solid #E3D8FC;border-top-color:#7D3EE3;box-sizing:border-box;animation:acSpin .8s linear infinite"></span>
+            <span style="font:700 18px Roboto">{{ doneMsg }}</span>
+            <span style="font:400 14px Roboto;color:#5A6472">Levando você de volta…</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </main>
+
+  <sc-if value="{{ wander }}" hint-placeholder-val="{{ true }}">
+    <div ref="{{ walkRef }}" aria-hidden="true" style="position:fixed;left:0;top:0;z-index:70;width:88px;height:110px;pointer-events:none;will-change:transform;transform:translate(-200px,-200px)">
+      <span ref="{{ shadowRef }}" style="position:absolute;left:14px;right:14px;bottom:0;height:10px;border-radius:50%;background:rgba(29,36,51,.28);filter:blur(4px);will-change:transform,opacity"></span>
+      <div style="position:absolute;left:0;top:0;width:88px;perspective:420px">
+        <img ref="{{ flipRef }}" src="assets/mascote/mascote-frente.webp" alt="" style="width:88px;height:auto;display:block;transform-origin:50% 80%;will-change:transform;filter:drop-shadow(0 6px 8px rgba(77,26,153,.22))">
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;left:50%;bottom:32px;transform:translateX(-50%);z-index:80;padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25)">{{ toast }}</div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;variante&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;A&quot;,&quot;B&quot;],&quot;default&quot;:&quot;A&quot;,&quot;tsType&quot;:&quot;\&quot;A\&quot; | \&quot;B\&quot;&quot;,&quot;label&quot;:&quot;Painel de benefícios (A: prévia empilhada · B: carrossel com Copiloto)&quot;},&quot;mascotePasseando&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;label&quot;:&quot;Mascote passeando pela página&quot;}}">
+class Component extends DCLogic {
+  Q = new URLSearchParams(location.search);
+  KNOWN = ["ana@email.com"];
+  DOMAINS = ["gmail.com", "hotmail.com", "outlook.com", "yahoo.com.br", "icloud.com", "live.com", "bol.com.br", "uol.com.br", "terra.com.br", "yahoo.com", "outlook.com.br", "hotmail.com.br"];
+  lev = (a, b) => { const m = a.length, n = b.length, d = Array.from({ length: m + 1 }, (_, i) => [i]); for (let j = 1; j <= n; j++) d[0][j] = j; for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1), i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1] ? d[i - 2][j - 2] + 1 : 99); return d[m][n]; };
+  fixEmail = (em) => { const v = em.trim().toLowerCase().replace(/\s+/g, "").replace(/,/g, ".").replace(/\.+$/, ""); const at = v.lastIndexOf("@"); if (at < 1) return null; const user = v.slice(0, at), dom = v.slice(at + 1); if (!dom || this.DOMAINS.includes(dom)) return null; let best = null, bd = 9; this.DOMAINS.forEach((d) => { const k = this.lev(dom, d); if (k < bd) { bd = k; best = d; } }); const alias = { "gmail.com.br": "gmail.com", "gmial.com": "gmail.com", "hotmial.com": "hotmail.com", "outlok.com": "outlook.com" }[dom]; if (alias) return user + "@" + alias; return best && bd > 0 && bd <= 2 ? user + "@" + best : null; };
+  domSugs = (em) => { const v = em.trim().toLowerCase(), at = v.indexOf("@"); if (at < 1 || v.indexOf("@", at + 1) >= 0) return []; const user = v.slice(0, at), part = v.slice(at + 1); if (this.DOMAINS.includes(part)) return []; return this.DOMAINS.filter((d) => d.startsWith(part)).slice(0, 5).map((d) => ({ user: user + "@", dom: d, full: user + "@" + d })); };
+
+  state = { mode: "login", checking: false, step: "email", email: "", err: "", code: ["", "", "", "", "", ""], pass: "", showPass: false, name: "", news: false, resendIn: 0, sending: false, reset: false, anim: "start", toast: "", bi: 0, bPaused: false, vw: window.innerWidth };
+  emailRef = React.createRef(); passRef = React.createRef(); nameRef = React.createRef();
+  codeRefs = [0, 1, 2, 3, 4, 5].map(() => React.createRef());
+  onResize = () => this.setState({ vw: window.innerWidth });
+  walkRef = React.createRef(); flipRef = React.createRef();
+  shadowRef = React.createRef();
+  sim = null;
+  asideRef = React.createRef();
+  SPR = ["esq-2","esq-2-piscando","esq-1","esq-1-piscando","frente","frente-piscando","dir-1","dir-1-piscando","dir-2","dir-2-piscando","feliz","cima","olha-esq","olha-dir"];
+  bounds = () => {
+    const a = this.asideRef.current; if (!a) return null;
+    const r = a.getBoundingClientRect(), m = 20;
+    return { x0: r.left + m, x1: Math.max(r.left + m, r.right - 88 - m), y0: Math.max(r.top, 0) + m, y1: Math.max(r.top + m, Math.min(r.bottom, window.innerHeight) - 110 - m), w: r.width, h: r.height };
+  };
+  pickTarget = (p) => {
+    const B = this.bounds(); if (!B) return p;
+    let x, y, n = 0;
+    do { x = B.x0 + Math.random() * (B.x1 - B.x0); y = B.y0 + Math.random() * (B.y1 - B.y0); n++; } while (n < 8 && Math.hypot(x - p.x, y - p.y) < Math.min(B.w, B.h) * 0.3);
+    return { x, y };
+  };
+  setSprite = (name) => { const img = this.flipRef.current; if (img && this.curSpr !== name) { this.curSpr = name; img.src = "assets/mascote/mascote-" + name + ".png"; } };
+  frame = (t) => {
+    const S = this.sim, el = this.walkRef.current, img = this.flipRef.current, sh = this.shadowRef.current;
+    if (!S) return;
+    this.raf = requestAnimationFrame(this.frame);
+    if (!el || !img) return;
+    const dt = Math.min(0.05, (t - (S.last || t)) / 1000); S.last = t;
+    const moving = t >= S.waitUntil;
+    if (moving) {
+      const dx = S.tx - S.x, dy = S.ty - S.y, d = Math.hypot(dx, dy);
+      const maxV = 140, accel = 160;
+      const want = Math.min(maxV, Math.sqrt(2 * accel * 0.6 * d));
+      const ux = d > 0.5 ? dx / d : 0, uy = d > 0.5 ? dy / d : 0;
+      S.vx += (ux * want - S.vx) * Math.min(1, dt * 1.8); S.vy += (uy * want - S.vy) * Math.min(1, dt * 1.8);
+      if (d < 3 && Math.hypot(S.vx, S.vy) < 18) {
+        S.vx = 0; S.vy = 0; S.land = t;
+        S.waitUntil = t + 1400 + Math.random() * 2600;
+        const nt = this.pickTarget(S); S.tx = nt.x; S.ty = nt.y; S.look = Math.random() < 0.6;
+        S.happyUntil = Math.random() < 0.35 ? t + 900 : 0;
+      }
+    }
+    S.x += S.vx * dt; S.y += S.vy * dt;
+    if (!S.bT || t - S.bT > 500) { S.bT = t; S.B = this.bounds(); if (S.B) { S.tx = Math.min(S.B.x1, Math.max(S.B.x0, S.tx)); S.ty = Math.min(S.B.y1, Math.max(S.B.y0, S.ty)); } }
+    const ax = (S.vx - S.pvx) / Math.max(dt, 0.001); S.pvx = S.vx;
+    const sp = Math.hypot(S.vx, S.vy);
+    // smoothed angles
+    const tgtYaw = Math.max(-38, Math.min(38, S.vx * 0.28));
+    const tgtRoll = Math.max(-5, Math.min(5, S.vx * 0.03));
+    const tgtPitch = 0;
+    const k = Math.min(1, dt * 2.2);
+    S.yaw += (tgtYaw - S.yaw) * k; S.roll += (tgtRoll - S.roll) * k; S.pitch += (tgtPitch - S.pitch) * k;
+    const bobAmp = 3;
+    const bob = Math.sin(t / 1000 * Math.PI * 0.5) * bobAmp;
+    const sq = 1;
+    if (!S.blinkAt) S.blinkAt = t + 2000 + Math.random() * 3000;
+    const blinking = t >= S.blinkAt && t < S.blinkAt + 140; if (t >= S.blinkAt + 140) S.blinkAt = t + 2200 + Math.random() * 3500;
+    const yv = S.yaw, dir = yv < -22 ? "esq-2" : yv < -7 ? "esq-1" : yv > 22 ? "dir-2" : yv > 7 ? "dir-1" : "frente";
+    let spr = dir;
+    if (!moving) {
+      if (S.happyUntil && t < S.happyUntil) spr = "feliz";
+      else if (S.look) { const ph = Math.sin(t / 2200); spr = ph < -0.55 ? "olha-esq" : ph > 0.55 ? "olha-dir" : (Math.cos(t / 3100) > 0.9 ? "cima" : dir); }
+    }
+    if (blinking && /^(esq|dir|frente)/.test(spr)) spr = spr.replace(/-piscando$/, "") + "-piscando";
+    if (blinking && /^(olha|cima)/.test(spr)) spr = "frente-piscando";
+    this.setSprite(spr);
+    el.style.transform = "translate(" + S.x.toFixed(1) + "px," + S.y.toFixed(1) + "px)";
+    img.style.transform = "translateY(" + (bob - 6).toFixed(2) + "px) rotateY(" + (S.yaw * 0.25).toFixed(2) + "deg) rotateX(" + S.pitch.toFixed(2) + "deg) rotateZ(" + S.roll.toFixed(2) + "deg) scale(" + (2 - sq).toFixed(3) + "," + sq.toFixed(3) + ")";
+    if (sh) { const lift = (bob + bobAmp) / (bobAmp * 2); sh.style.transform = "scaleX(" + (1 - lift * 0.25 + Math.abs(S.roll) / 120).toFixed(3) + ")"; sh.style.opacity = (0.75 - lift * 0.35).toFixed(2); }
+  };
+  walk = () => {
+    const B = this.bounds(); if (!B) { this.walkT = setTimeout(this.walk, 600); return; }
+    this.SPR.forEach((n) => { const i = new Image(); i.src = "assets/mascote/mascote-" + n + ".png"; });
+    const p = { x: (B.x0 + B.x1) / 2, y: B.y1 };
+    const nt = this.pickTarget(p);
+    this.sim = { ...p, tx: nt.x, ty: nt.y, vx: 0, vy: 0, pvx: 0, yaw: 0, roll: 0, pitch: 0, waitUntil: performance.now() + 600, look: false, land: 0, last: 0 };
+    cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(this.frame);
+  };
+  stopWalk = () => { this.sim = null; cancelAnimationFrame(this.raf); };
+  BEN = [["Garagem", "Salve seu carro e acompanhe o valor FIPE todo mês."], ["Consultas", "Seus relatórios ficam salvos e não expiram."], ["Copiloto", "Eu já conheço o seu carro. É só perguntar."], ["Comparar", "Compare modelos e guarde as comparações."]];
+  componentDidMount() {
+    window.addEventListener("resize", this.onResize);
+    this.tick = setInterval(() => { if (this.state.resendIn > 0) this.setState((s) => ({ resendIn: s.resendIn - 1 })); }, 1000);
+    const seq = ["arrive", "shine", "garage", "parking", "parked"];
+    this.animT = seq.map((st, i) => setTimeout(() => this.setState({ anim: st }), 700 + i * 650));
+    setTimeout(() => this.emailRef.current?.focus(), 60);
+    this.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!this.props.embed && !this.reduced && (this.props.mascotePasseando ?? true)) this.walkT = setTimeout(this.walk, 900);
+  }
+  componentDidUpdate(pp) {
+    const on = this.props.mascotePasseando ?? true, was = pp.mascotePasseando ?? true;
+    if (on !== was) { clearTimeout(this.walkT); this.stopWalk(); if (on && !this.reduced) this.walkT = setTimeout(this.walk, 300); }
+  }
+  componentWillUnmount() { clearTimeout(this.walkT); this.stopWalk(); window.removeEventListener("resize", this.onResize); clearInterval(this.tick); (this.animT || []).forEach(clearTimeout); clearTimeout(this.t); clearTimeout(this.tt); }
+  toastMsg = (m) => { clearTimeout(this.tt); this.setState({ toast: m }); this.tt = setTimeout(() => this.setState({ toast: "" }), 3000); };
+  next = () => { const n = this.props.next || this.Q.get("next"); if (n) return n; try { const r = document.referrer ? new URL(document.referrer) : null; if (r && r.origin === location.origin && !/Login\.dc/.test(r.pathname)) return decodeURIComponent(r.pathname.split("/").pop()) + r.search + r.hash; } catch (e) {} try { const s = sessionStorage.getItem("achecar-intent"); if (s) return s; } catch (e) {} return "Home Achecar.dc.html"; };
+  finish = (name, email, msg) => {
+    localStorage.setItem("achecar-session", JSON.stringify({ logged: true, name, email }));
+    window.dispatchEvent(new Event("achecar-session"));
+    this.setState({ step: "done", doneMsg: msg });
+    clearTimeout(this.t);
+    this.t = setTimeout(() => { if (this.props.embed && this.props.onDone) this.props.onDone(); else location.href = this.next(); }, 900);
+  };
+  goCode = (mode) => this.setState({ mode: mode || this.state.mode, step: "code", code: ["", "", "", "", "", ""], err: "", resendIn: 30, sending: false }, () => setTimeout(() => this.codeRefs[0].current?.focus(), 30));
+  setCode = (i, v) => {
+    const d = (v || "").replace(/\D/g, "").slice(-1);
+    this.setState((s) => { const code = [...s.code]; code[i] = d; return { code, err: "" }; });
+    if (d && i < 5) this.codeRefs[i + 1].current?.focus();
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, known = this.KNOWN.includes(s.email.trim().toLowerCase()), E = !!this.props.embed;
+    const full = s.code.every((c) => c);
+    const nxt = this.next();
+    const reason = /Relatorio/.test(nxt) ? "Entre para ver o relatório. Ele fica salvo na sua conta e não expira." : /Minha Conta/.test(nxt) ? "Entre para acessar sua Garagem, suas consultas e o seu perfil." : "Grátis · menos de 1 minuto · sem cartão";
+    return {
+      wide: s.vw >= (this.props.bpDesktop960 ?? 960), wideA: !E && s.vw >= (this.props.bpDesktop960 ?? 960) && (this.props.variante ?? "A") === "A", wideB: !E && s.vw >= (this.props.bpDesktop960 ?? 960) && this.props.variante === "B",
+      narrowBenefits: !E && s.vw < (this.props.bpDesktop960 ?? 960),
+      isEmbed: E, notEmbed: !E, embedClose: E && !this.props.noClose, closeEmbed: () => this.props.onClose && this.props.onClose(), rootMinH: E ? "0" : "100vh", rootRadius: E ? "20px" : "0", hdH: E ? "64px" : "80px", hdPad: E ? "0 24px" : "0 40px", bodyPad: E ? "8px 28px 32px" : "24px 40px 64px",
+      wander: !E && (this.props.mascotePasseando ?? true) && s.vw >= (this.props.bpDesktop960 ?? 960), staticMascot: !((this.props.mascotePasseando ?? true) && s.vw >= (this.props.bpDesktop960 ?? 960)), asideRef: this.asideRef, walkRef: this.walkRef, flipRef: this.flipRef, shadowRef: this.shadowRef,
+      b0: s.bi === 0, b1: s.bi === 1, b2: s.bi === 2, b3: s.bi === 3,
+      bubble: [{ text: this.BEN[s.bi][1], k: s.bi }],
+      tabsB: this.BEN.map(([label], i) => ({ label, on: i === s.bi, bg: i === s.bi ? "#fff" : "rgba(255,255,255,.16)", color: i === s.bi ? "#7D3EE3" : "#fff", pick: () => this.setState({ bi: i }) })),
+      nextB: () => this.setState((st) => ({ bi: (st.bi + 1) % 4 })),
+      pauseB: () => this.setState({ bPaused: true }), playB: () => this.setState({ bPaused: false }), playState: s.bPaused ? "paused" : "running",
+      consultas: [{ placa: "RIO4F21", carro: "HB20 Platinum 2023", data: "12/09/2026" }, { placa: "BRA2E19", carro: "Onix LTZ 2022", data: "03/08/2026" }], anim: s.anim, backHref: this.Q.get("back") || "Home Achecar.dc.html", reason,
+      stEmail: s.step === "email", stCode: s.step === "code", stPass: s.step === "pass", stName: s.step === "name", stDone: s.step === "done",
+      email: s.email, err: s.err, sending: s.sending, emailRef: this.emailRef, passRef: this.passRef, nameRef: this.nameRef,
+      emailBorder: s.err && s.step === "email" ? "#DC2626" : "#D5D8DE",
+      onEmail: (e) => this.setState({ email: e.target.value.replace(/\s/g, ""), err: "", domIdx: 0, domHide: false, typoKeep: false }),
+      domOpen: !s.domHide && this.domSugs(s.email).length > 0,
+      domList: this.domSugs(s.email).map((d, i) => ({ ...d, on: i === (s.domIdx || 0), bg: i === (s.domIdx || 0) ? "#F5F4FE" : "transparent", pick: (e) => { e.preventDefault(); this.setState({ email: d.full, domHide: true, typoKeep: false }); } })),
+      emailKey: (e) => { const L = this.domSugs(s.email); if (s.domHide || !L.length) return; const i = s.domIdx || 0; if (e.key === "ArrowDown") { e.preventDefault(); this.setState({ domIdx: (i + 1) % L.length }); } else if (e.key === "ArrowUp") { e.preventDefault(); this.setState({ domIdx: (i - 1 + L.length) % L.length }); } else if (e.key === "Tab" || (e.key === "Enter" && s.email.split("@")[1] !== L[i].dom)) { e.preventDefault(); this.setState({ email: L[i].full, domHide: true }); } else if (e.key === "Escape") this.setState({ domHide: true }); },
+      emailBlur: () => this.setState({ domHide: true }),
+      typoFix: !s.typoKeep && (s.domHide || !this.domSugs(s.email).length) ? this.fixEmail(s.email) || "" : "",
+      applyFix: () => { this.setState({ email: this.fixEmail(s.email), typoKeep: false }); this.emailRef.current && this.emailRef.current.focus(); },
+      keepTypo: () => this.setState({ typoKeep: true }),
+      submitEmail: (e) => {
+        e.preventDefault();
+        if (!/^\S+@\S+\.\S+$/.test(s.email.trim())) return this.setState({ err: "Digite um e-mail válido · voce@email.com" });
+        if (!s.typoKeep && this.fixEmail(s.email) && !s.typoAsked) return this.setState({ typoAsked: true, domHide: true });
+        const isKnown = this.KNOWN.includes(s.email.trim().toLowerCase());
+        this.setState({ sending: true }); clearTimeout(this.t);
+        this.t = setTimeout(() => {
+          if (isKnown) this.setState({ step: "login", mode: "login", sending: false, err: "" });
+          else this.setState({ step: "create", mode: "create", sending: false, err: "" }, () => setTimeout(() => this.nameRef.current?.focus(), 30));
+        }, 700);
+      },
+      google: () => this.finish("Ana Souza", "ana@email.com", "Você entrou como Ana Souza"),
+      apple: () => this.finish("Ana Souza", "ana@email.com", "Você entrou como Ana Souza"),
+      toEmail: () => this.setState({ step: "email", err: "", reset: false, sending: false }, () => this.emailRef.current?.focus()),
+      toLogin: () => this.setState({ step: "login", err: "", reset: false }),
+      stLogin: s.step === "login", stCreate: s.step === "create",
+      continueLabel: s.sending ? "Verificando…" : "Continuar",
+      chipInitial: (s.email.trim()[0] || "?").toUpperCase(),
+      chipBg: s.step === "create" ? "#F3F4F6" : "#F3EDFD", chipColor: s.step === "create" ? "#5A6472" : "#7D3EE3",
+      codeBack: () => this.setState({ step: s.mode === "create" ? "create" : "login", err: "", reset: false }),
+      codeBackLabel: s.mode === "create" ? "Voltar" : "Outras opções",
+      showPassLink: s.mode === "login" && !s.reset,
+      submitCreate: (e) => { e.preventDefault(); if (s.name.trim().length < 2) return this.setState({ err: "Digite seu nome." }); this.goCode("create"); },
+      codeTitle: s.reset ? "Redefinir senha" : s.mode === "create" ? "Confirme seu e-mail" : "Digite o código",
+      cells: s.code.map((v, i) => ({ v, ref: this.codeRefs[i], label: "Dígito " + (i + 1), border: s.err && s.step === "code" ? "#DC2626" : v ? "#7D3EE3" : "#D5D8DE", change: (e) => this.setCode(i, e.target.value), key: (e) => { if (e.key === "Backspace" && !s.code[i] && i > 0) this.codeRefs[i - 1].current?.focus(); } })),
+      onPaste: (e) => { const d = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0, 6); if (!d) return; e.preventDefault(); const code = d.split("").concat(Array(6).fill("")).slice(0, 6); this.setState({ code, err: "" }); this.codeRefs[Math.min(d.length, 5)].current?.focus(); },
+      codeBg: full ? "#7D3EE3" : "#E5E5E5", codeColor: full ? "#fff" : "rgba(29,36,51,.4)",
+      submitCode: (e) => {
+        e.preventDefault();
+        if (!full) return this.setState({ err: "Digite os 6 dígitos." });
+        if (s.code.join("") === "000000") return this.setState({ err: "Código incorreto. Confira o e-mail e tente de novo." });
+        if (s.reset) { this.toastMsg("Senha redefinida. Você já está dentro."); return this.finish("Ana Souza", s.email.trim(), "Bem-vinda de volta, Ana"); }
+        if (s.mode === "create") { const n = s.name.trim(); return this.finish(n, s.email.trim(), "Conta criada. Olá, " + n.split(" ")[0]); }
+        return this.finish("Ana Souza", s.email.trim(), "Bem-vinda de volta, Ana");
+      },
+      known,
+      resendLabel: s.resendIn > 0 ? "Reenviar em " + s.resendIn + "s" : "Reenviar código", resendColor: s.resendIn > 0 ? "#5A6472" : "#7D3EE3",
+      resend: () => { if (s.resendIn > 0) return; this.setState({ resendIn: 30 }); this.toastMsg("Enviamos um novo código."); },
+      toPass: () => this.setState({ step: "pass", err: "" }, () => setTimeout(() => this.passRef.current?.focus(), 30)),
+      toCode: () => this.goCode("login"),
+      pass: s.pass, onPass: (e) => this.setState({ pass: e.target.value, err: "" }),
+      passType: s.showPass ? "text" : "password", passIcon: s.showPass ? "visibility_off" : "visibility", passAria: s.showPass ? "Ocultar senha" : "Mostrar senha",
+      togglePass: () => this.setState({ showPass: !s.showPass }),
+      passBorder: s.err && s.step === "pass" ? "#DC2626" : "#D5D8DE",
+      submitPass: (e) => { e.preventDefault(); if (s.pass.length < 6) return this.setState({ err: "Senha incorreta. Tente de novo ou entre com código." }); this.finish("Ana Souza", s.email.trim(), "Bem-vinda de volta, Ana"); },
+      forgot: () => { location.href = "Esqueci Senha.dc.html" + (s.email ? "?email=" + encodeURIComponent(s.email.trim()) : ""); },
+      name: s.name, onName: (e) => this.setState({ name: e.target.value, err: "" }), nameBorder: s.err && s.step === "name" ? "#DC2626" : "#D5D8DE",
+      news: s.news, toggleNews: () => this.setState({ news: !s.news }),
+      submitName: (e) => { e.preventDefault(); const n = s.name.trim(); if (n.length < 2) return this.setState({ err: "Digite seu nome." }); this.finish(n, s.email.trim(), "Conta criada. Olá, " + n.split(" ")[0]); },
+      doneMsg: s.doneMsg || "", toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

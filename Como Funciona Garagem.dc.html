@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}
+  @keyframes cfSwap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div data-screen-label="Como funciona a Garagem" style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" active="garagem" hint-size="100%,81px"></dc-import></div>
+
+  <main style="flex:1;width:100%;max-width:1152px;margin:0 auto;padding:56px clamp(16px, calc(2.2vw + 7px), 32px) 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:80px">
+    <section data-screen-label="Abertura" style="display:grid;grid-template-columns:{{ heroCols }};gap:48px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">MINHA GARAGEM</span>
+        <h1 style="margin:0;font:800 clamp(30px,3.6vw,40px)/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Seu carro, o valor e os alertas no mesmo lugar.</h1>
+        <p style="margin:0;font:400 17px/1.55 Roboto;color:#5A6472;text-wrap:pretty">Cadastre a placa uma vez e acompanhe o valor FIPE, as revisões e as consultas do seu carro.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+          <a href="{{ ctaHref }}" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;transition:background .15s ease-out" style-hover="background:#5F29AE;color:#fff">{{ ctaTxt }}<span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></a>
+          <span style="font:400 13px Roboto;color:#5A6472">Grátis · sem cartão</span>
+        </div>
+      </div>
+      <div ref="{{ heroRef }}" style="min-width:0;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE,0 12px 32px rgba(26,13,64,.08);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:12px;height:36px;padding:0 14px;border-bottom:1px solid #EEEEF2;background:#FAFAFC">
+          <span style="display:flex;gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span></span>
+          <span style="flex:1;min-width:0;height:22px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;align-items:center;gap:6px;padding:0 10px;font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden"><span style="font-family:'Material Symbols Rounded';font-size:14px">lock</span>achecar.com.br/garagem/meu-carro</span>
+        </div>
+        <div style="position:relative;height:{{ heroH }};overflow:hidden;background:#F6F6F9">
+          <iframe src="Meu Carro.dc.html" title="Prévia: Meu carro" tabindex="-1" aria-hidden="true" loading="lazy" style="position:absolute;left:0;top:0;width:1280px;height:{{ frameH }};border:0;transform:scale({{ heroScale }});transform-origin:0 0;pointer-events:none"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Como funciona" style="display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">COMO FUNCIONA</span>
+        <h2 style="margin:0;font:800 28px/1.25 'Merriweather Sans',sans-serif">Três passos, menos de um minuto.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:{{ tabCols }};gap:24px;align-items:start">
+        <div role="tablist" aria-label="Passos da Garagem" style="display:flex;flex-direction:column;gap:8px">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ st.on }}" onClick="{{ st.go }}" style="display:flex;gap:16px;align-items:flex-start;padding:20px;border:0;border-radius:16px;background:{{ st.bg }};box-shadow:{{ st.ring }};color:#1D2433;text-align:left;cursor:pointer;transition:background .15s ease-out, box-shadow .15s ease-out" style-hover="background:#fff;box-shadow:inset 0 0 0 1px #7D3EE3">
+              <span style="flex:none;width:32px;height:32px;border-radius:50%;background:{{ st.numBg }};color:{{ st.numC }};display:flex;align-items:center;justify-content:center;font:800 14px 'Merriweather Sans',sans-serif">{{ st.n }}</span>
+              <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font:700 17px/1.3 'Merriweather Sans',sans-serif">{{ st.t }}</span><span style="font:400 14px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ st.d }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+        <div ref="{{ tabRef }}" role="tabpanel" style="min-width:0;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE,0 12px 32px rgba(26,13,64,.08);overflow:hidden">
+          <div style="display:flex;align-items:center;gap:12px;height:36px;padding:0 14px;border-bottom:1px solid #EEEEF2;background:#FAFAFC">
+            <span style="display:flex;gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span><span style="width:10px;height:10px;border-radius:50%;background:#E6E6EE"></span></span>
+            <span style="flex:1;min-width:0;height:22px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;align-items:center;gap:6px;padding:0 10px;font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden"><span style="font-family:'Material Symbols Rounded';font-size:14px">lock</span>{{ curUrl }}</span>
+          </div>
+          <div style="position:relative;height:{{ tabH }};overflow:hidden;background:#F6F6F9">
+            <sc-for list="{{ frames }}" as="fr" hint-placeholder-count="3">
+              <iframe src="{{ fr.src }}" title="{{ fr.title }}" tabindex="-1" aria-hidden="true" loading="lazy" style="position:absolute;left:0;top:0;width:1280px;height:{{ frameH }};border:0;transform:scale({{ tabScale }});transform-origin:0 0;pointer-events:none;opacity:{{ fr.op }};transition:opacity .25s ease-out"></iframe>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Chamada final" style="position:relative;overflow:hidden;display:grid;grid-template-columns:{{ ctaCols }};align-items:center;gap:24px;padding:{{ ctaPad }};border-radius:24px;background:#F1EBFD">
+      <span aria-hidden="true" style="position:absolute;right:-120px;top:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(125,62,227,.22),rgba(125,62,227,0) 70%)"></span>
+      <div style="position:relative;display:flex;flex-direction:column;gap:20px;min-width:0">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">COMECE AGORA</span>
+          <span style="font:800 clamp(24px,2.6vw,30px)/1.2 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">Comece pela placa do seu carro.</span>
+          <span style="font:400 16px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Você vê marca, modelo e valor FIPE na hora. Grátis e sem cartão.</span>
+        </div>
+        <a href="{{ ctaHref }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;box-shadow:0 8px 24px rgba(125,62,227,.3);transition:background .15s ease-out" style-hover="background:#5F29AE;color:#fff">{{ ctaTxt }}<span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></a>
+      </div>
+      <div style="position:relative;min-height:340px;padding:72px 0 72px;display:flex;align-items:center;justify-content:center">
+        {{ ctaStage }}
+      </div>
+      <div role="group" aria-label="Escolher carro" style="position:absolute;left:{{ ctaDotsX }};bottom:24px;z-index:4;display:flex;gap:6px">
+        <sc-for list="{{ ctaDots }}" as="d" hint-placeholder-count="4">
+          <button type="button" aria-label="{{ d.label }}" aria-pressed="{{ d.on }}" onClick="{{ d.go }}" style="width:{{ d.w }};height:8px;padding:0;border:0;border-radius:4px;background:{{ d.bg }};cursor:pointer;transition:width .3s ease, background .3s ease" style-hover="background:#7D3EE3"></button>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 0, hw: 560, tw: 640, vw: window.innerWidth };
+  heroRef = React.createRef(); tabRef = React.createRef();
+  CARS = [
+    { img: "assets/carros/tracker.webp", m: "Chevrolet Tracker", fipe: "R$ 128.900", d: "+1,4% no mês", up: true, rev: "Revisão dos 30 mil km", revD: "Daqui a 1.800 km" },
+    { img: "assets/carros/corolla-cross.webp", m: "Toyota Corolla Cross", fipe: "R$ 168.300", d: "+0,6% no mês", up: true, rev: "Revisão dos 20 mil km", revD: "Daqui a 3.100 km" },
+    { img: "assets/carros/polo.webp", m: "Volkswagen Polo", fipe: "R$ 92.450", d: "−0,8% no mês", up: false, rev: "Revisão dos 40 mil km", revD: "Daqui a 2.300 km" },
+    { img: "assets/carros/compass.webp", m: "Jeep Compass", fipe: "R$ 176.200", d: "+0,9% no mês", up: true, rev: "Revisão dos 50 mil km", revD: "Daqui a 900 km" }
+  ];
+  STEPS = [
+    ["Adicione a placa", "Digite a placa e a gente identifica marca, modelo, versão e ano. O valor FIPE aparece na hora.", "Minha Conta.dc.html?tela=carros&preview=1", "achecar.com.br/minha-conta/carros"],
+    ["Explore os modelos", "Filtre o catálogo por categoria, preço e combustível e abra a ficha de cada carro.", "Garagem.dc.html", "achecar.com.br/garagem"],
+    ["Compare lado a lado", "Coloque até 3 carros um ao lado do outro: preço, consumo, ficha técnica e custo por mês.", "Comparativo.dc.html", "achecar.com.br/comparativo"]
+  ];
+  measure = () => { const h = this.heroRef.current, t = this.tabRef.current; this.setState({ hw: h ? h.clientWidth : 560, tw: t ? t.clientWidth : 640, vw: window.innerWidth }); };
+  componentDidMount() { this.ro = new ResizeObserver(this.measure); [this.heroRef.current, this.tabRef.current].forEach((el) => el && this.ro.observe(el)); this.measure(); if (!matchMedia("(prefers-reduced-motion: reduce)").matches) this.cv = setInterval(() => { if (!document.hidden) this.setState((x) => ({ cv: ((x.cv || 0) + 1) % this.CARS.length })); }, 3800); }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); clearInterval(this.cv); }
+  stage() {
+    const E = React.createElement, i = this.state.cv || 0, c = this.CARS[i];
+    const card = (pos, kids) => E("div", { key: pos.k, style: Object.assign({ position: "absolute", zIndex: 3, display: "flex", alignItems: "center", gap: 10, padding: "10px 14px 10px 10px", borderRadius: 12, background: "#fff", boxShadow: "0 12px 32px rgba(26,13,64,.12)" }, pos) }, kids);
+    const ic = (bg, fg, n) => E("span", { style: { width: 32, height: 32, flex: "none", borderRadius: 10, background: bg, color: fg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Material Symbols Rounded'", fontSize: 18 } }, n);
+    const fade = (key, el) => E("span", { key, style: { display: "contents" } }, el);
+    const swap = { animation: "cfSwap .5s cubic-bezier(.2,.8,.2,1) both" };
+    return E("div", { style: { position: "relative", width: "100%", maxWidth: 560 } },
+      E("div", { style: { position: "relative", aspectRatio: "16 / 9" } },
+        this.CARS.map((x, k) => E("img", { key: x.img, src: x.img, alt: k === i ? x.m : "", "aria-hidden": k === i ? null : "true", style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", imageRendering: "auto", filter: "drop-shadow(0 28px 22px rgba(48,20,97,.28))", opacity: k === i ? 1 : 0, transform: k === i ? "translateX(0) scale(1)" : "translateX(" + (k === (i + this.CARS.length - 1) % this.CARS.length ? "-8%" : "8%") + ") scale(.96)", transition: "opacity .6s ease, transform .8s cubic-bezier(.2,.8,.2,1)" } }))
+      ),
+      card({ k: "f", left: "0", top: "-56px", flexDirection: "column", alignItems: "flex-start", gap: 2, padding: "12px 16px" }, E("div", { key: "f" + i, style: Object.assign({ display: "flex", flexDirection: "column", gap: 2 }, swap) },
+        E("span", { style: { font: "500 11px Roboto", letterSpacing: ".06em", color: "#5A6472" } }, "VALOR FIPE · " + c.m.toUpperCase()),
+        E("span", { style: { font: "800 20px 'Merriweather Sans',sans-serif", color: "#1D2433" } }, c.fipe),
+        E("span", { style: { alignSelf: "flex-start", marginTop: 4, padding: "2px 8px", borderRadius: 999, background: c.up ? "#F0FDF4" : "#FEF2F2", color: c.up ? "#15803D" : "#B91C1C", font: "700 11px Roboto" } }, c.d))),
+      card({ k: "r", right: "0", top: "-40px" }, E("div", { key: "r" + i, style: Object.assign({ display: "flex", alignItems: "center", gap: 10 }, swap) }, ic("#FFF6DA", "#92400E", "build"),
+        E("span", { style: { display: "flex", flexDirection: "column", gap: 1 } }, E("span", { style: { font: "700 13px Roboto", color: "#1D2433" } }, c.rev), E("span", { style: { font: "400 12px Roboto", color: "#5A6472" } }, c.revD)))),
+      card({ k: "a", right: "4%", bottom: "-56px" }, [ic("#F1EBFD", "#7D3EE3", "notifications_active"),
+        E("span", { key: "t", style: { display: "flex", flexDirection: "column", gap: 1 } }, E("span", { style: { font: "700 13px Roboto", color: "#1D2433" } }, "Alerta de preço ativo"), E("span", { style: { font: "400 12px Roboto", color: "#5A6472" } }, "Avisamos quando a FIPE mudar"))])
+    );
+  }
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, wide = s.vw >= (this.props.bpDesktop1024 ?? 1024);
+    let logged = false; try { logged = !!(JSON.parse(localStorage.getItem("achecar-session") || "null") || {}).logged; } catch (e) {}
+    const dest = "Minha Conta.dc.html?tela=carros&add=1", hs = s.hw / 1280, ts = s.tw / 1280;
+    return {
+      ctaStage: this.stage(), ctaDotsX: wide ? "56px" : "24px",
+      ctaDots: this.CARS.map((x, k) => { const on = k === (s.cv || 0); return { label: "Ver " + x.m, on, w: on ? "22px" : "8px", bg: on ? "#7D3EE3" : "#CDBDF3", go: () => this.setState({ cv: k }) }; }),
+      heroRef: this.heroRef, tabRef: this.tabRef,
+      heroCols: s.vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,5fr) minmax(0,7fr)" : "minmax(0,1fr)", tabCols: wide ? "minmax(0,4fr) minmax(0,8fr)" : "minmax(0,1fr)",
+      ctaCols: s.vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1fr) minmax(0,1fr)" : "minmax(0,1fr)", ctaPad: wide ? "48px 56px" : "32px 24px", heroScale: hs.toFixed(4), tabScale: ts.toFixed(4), heroH: Math.round(800 * hs) + "px", tabH: Math.round(800 * ts) + "px", frameH: "800px",
+      ctaHref: logged ? dest : "Login.dc.html?next=" + encodeURIComponent(dest), ctaTxt: logged ? "Adicionar meu carro" : "Criar minha Garagem",
+      curUrl: this.STEPS[s.tab][3],
+      frames: this.STEPS.map((x, i) => ({ src: x[2], title: "Prévia: " + x[0], op: i === s.tab ? 1 : 0 })),
+      steps: this.STEPS.map((x, i) => { const on = i === s.tab; return { n: String(i + 1), t: x[0], d: x[1], on, bg: on ? "#fff" : "transparent", ring: on ? "inset 0 0 0 1px #7D3EE3,0 8px 24px rgba(29,36,51,.12)" : "none", numBg: on ? "#7D3EE3" : "#E6E6EE", numC: on ? "#fff" : "#5A6472", go: () => this.setState({ tab: i }) }; })
+    };
+  }
+}
+</script>
+</body>
+</html>

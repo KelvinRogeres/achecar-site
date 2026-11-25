@@ -1,0 +1,61 @@
+/* Achecar — semantic aliases, type scale, elevation & length helpers.
+   Raw Figma Variables live in fig-tokens.css (unitless floats for space/radius). */
+:root{
+  /* Brand */
+  --brand-primary:var(--purple-600);        /* #7D3EE3 — primary actions, links, active states */
+  --brand-primary-hover:var(--purple-700);  /* #5F29AE */
+  --brand-primary-soft:var(--purple-50);    /* #F5F4FE — soft fills, selected tabs */
+  --brand-accent:var(--coral-500);          /* #FF5040 — "Consultar placa", prices, paid CTA */
+  --brand-pay:var(--green-700);             /* #15803D — payment confirm */
+  --brand-ink:var(--ink-900);               /* #1D2433 — primary text */
+  --brand-black:var(--neutral-950);         /* #0A0A0A — dark header / "Entrar" */
+
+  /* Surfaces */
+  --surface-page:var(--bg-page);
+  --surface-card:var(--bg-surface);
+  --surface-muted:var(--bg-muted);
+  --surface-subtle:var(--bg-subtle);
+  --surface-inverse:var(--bg-inverse);
+
+  /* Text */
+  --text-body:var(--text-primary-2);
+  --text-muted:var(--text-secondary);
+  --text-faint:var(--text-tertiary);
+  --text-link:var(--text-brand);
+
+  /* Families */
+  --font-display:"Merriweather Sans",system-ui,sans-serif;
+  --font-sans:"Roboto",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --font-mono:"Roboto Mono",ui-monospace,monospace;
+  --font-ui-kit:"Inter","SF Pro Text",-apple-system,sans-serif;
+  --font-icons:"Material Symbols Rounded";
+
+  /* Type scale (from usage in the file) */
+  --type-display-xl:800 36px/1.15 var(--font-display);
+  --type-display-l:700 32px/1.2 var(--font-display);
+  --type-h1:700 28px/1.25 var(--font-display);
+  --type-h2:700 24px/1.3 var(--font-display);
+  --type-h3:800 20px/1.3 var(--font-display);
+  --type-h4:700 18px/1.35 var(--font-display);
+  --type-title:700 16px/1.4 var(--font-sans);
+  --type-body-l:400 16px/1.5 var(--font-sans);
+  --type-body:400 14px/1.45 var(--font-sans);
+  --type-body-s:400 13px/1.4 var(--font-sans);
+  --type-label:500 13px/1.3 var(--font-sans);
+  --type-caption:400 12px/1.35 var(--font-sans);
+  --type-overline:700 11px/1.3 var(--font-sans);
+  --type-plate:700 32px/1 var(--font-mono);
+
+  /* Elevation (exact values from components) */
+  --shadow-xs:0px 2px 8px 0px rgba(0,0,0,0.12);
+  --shadow-card:0px 8px 24px 0px rgba(29,36,51,0.12);
+  --shadow-float:0px 4px 12px 0px rgba(77,26,153,0.25);
+  --shadow-modal:0px 24px 64px 0px rgba(18,13,38,0.18);
+  --shadow-sheet:0px -12px 40px 0px rgba(0,0,0,0.3);
+  --focus-ring:0px 0px 0px 3px rgba(125,61,227,0.35);
+
+  /* Length helpers (fig-tokens floats are unitless) */
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:20px; --r-2xl:24px; --r-3xl:32px; --r-pill:999px;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px; --s-16:64px;
+}
+a{color:var(--text-brand)}a:hover{color:var(--brand-primary-hover)}

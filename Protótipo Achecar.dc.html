@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}</style>
+</helmet>
+<main style="min-height:100vh;box-sizing:border-box;padding:56px 24px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:960px;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <x-import component-from-global-scope="AchecarDesignSystem_c352d1.Logo" type="full" color="colorful" theme="light" hint-size="160px,32px"></x-import>
+      <h1 style="margin:8px 0 0;font:800 34px/1.2 'Merriweather Sans',sans-serif">Protótipo navegável</h1>
+      <p style="margin:0;font:400 16px/1.5 Roboto;color:#5A6472;max-width:620px">Escolha como começar. A sessão fica salva entre as telas: entrar ou sair em qualquer ponto muda o cabeçalho e os caminhos.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:16px">
+      <sc-for list="{{ modes }}" as="m" hint-placeholder-count="2">
+        <article style="background:#fff;border:1px solid #E5E5E5;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px">
+          <span style="align-self:flex-start;padding:4px 10px;border-radius:999px;background:{{ m.tagBg }};color:{{ m.tagColor }};font:700 12px Roboto">{{ m.tag }}</span>
+          <span style="font:700 22px/1.25 'Merriweather Sans',sans-serif">{{ m.title }}</span>
+          <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font:400 14px/1.5 Roboto;color:#5A6472">
+            <sc-for list="{{ m.steps }}" as="s" hint-placeholder-count="5"><li>{{ s }}</li></sc-for>
+          </ol>
+          <button onClick="{{ m.start }}" style="margin-top:auto;height:48px;border:0;border-radius:8px;background:{{ m.btnBg }};color:#fff;font:700 15px Roboto;cursor:pointer">{{ m.cta }}</button>
+        </article>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #E5E5E5;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+      <span style="font:700 18px 'Merriweather Sans',sans-serif">Atalhos e dados de teste</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 24px;font:400 14px/1.5 Roboto;color:#5A6472">
+        <span><strong style="color:#1D2433;font-family:'Roboto Mono',monospace">ABC1D23 · QRS4T56 · JKL2M34</strong> trazem Onix, HB20 e Creta</span>
+        <span><strong style="color:#1D2433;font-family:'Roboto Mono',monospace">ZZZ9Z99</strong> simula placa não encontrada</span>
+        <span><strong style="color:#1D2433;font-family:'Roboto Mono',monospace">PRIMEIRA10</strong> dá 10% no checkout</span>
+        <span>Código de login: qualquer sequência de 6 dígitos</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;padding-top:6px">
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="6">
+          <a href="{{ l.href }}" style="height:34px;padding:0 14px;border-radius:999px;border:1px solid #E1E2E8;background:#fff;color:#1D2433;font:500 13px Roboto;display:flex;align-items:center" style-hover="border-color:#7D3EE3;color:#7D3EE3">{{ l.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  setSession = (logged) => {
+    localStorage.setItem("achecar-session", JSON.stringify(logged ? { logged: true, name: "Ana Souza", email: "ana@email.com" } : { logged: false }));
+    localStorage.removeItem("ac-conta-screen");
+    window.dispatchEvent(new Event("achecar-session"));
+  };
+  renderVals() {
+    return {
+      modes: [
+        { tag: "Sem login", tagBg: "#F3F4F6", tagColor: "#1D2433", title: "Visitante que vai consultar uma placa", btnBg: "#0A0A0A", cta: "Começar sem login",
+          steps: ["Home: digita a placa no hero", "Confirma o veículo", "Entra ou cria a conta (Google ou e-mail + código)", "Paga com Pix ou cartão, com cupom", "Acompanha a consulta e abre o relatório"],
+          start: () => { this.setSession(false); location.href = "Home Achecar.dc.html"; } },
+        { tag: "Com login", tagBg: "#F3EDFD", tagColor: "#7D3EE3", title: "Ana, cliente com conta e Garagem", btnBg: "#7D3EE3", cta: "Começar com login",
+          steps: ["Home já mostra a conta no cabeçalho", "Meus carros: cadastra um carro pela placa", "Meu carro: Copiloto, FIPE e ficha", "Consulta a placa do próprio carro, direto no pagamento", "Minhas consultas, Perfil e Sair"],
+          start: () => { this.setSession(true); location.href = "Home Achecar.dc.html"; } }
+      ],
+      links: [["Home", "Home Achecar.dc.html"], ["Consultar placa", "Consulta Placa.dc.html"], ["Login", "Login.dc.html"], ["Meus carros", "Minha Conta.dc.html?tela=carros"], ["Minhas consultas", "Minha Conta.dc.html?tela=consultas"], ["Relatório", "Relatorio.dc.html?placa=ABC1D23"]].map(([label, href]) => ({ label, href }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+  </style>
+</helmet>
+<div data-screen-label="E-mails Achecar" style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#1D2433;color:#fff;padding:36px 24px 28px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1280px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:720px">
+        <span style="font:700 12px Roboto;letter-spacing:.1em;color:#E0D2FF">ACHECAR · E-MAILS</span>
+        <h1 style="margin:0;font:800 clamp(26px,3.2vw,36px)/1.15 'Merriweather Sans',sans-serif">E-mails transacionais e informativos</h1>
+        <p style="margin:0;font:400 15px/1.55 Roboto;color:#C9CDD6">Todos os e-mails do catálogo de notificações. HTML pronto para integração, com estilos inline, modo escuro e compatível com Gmail, Outlook e Apple Mail.</p>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ stats }}" as="st" hint-placeholder-count="3"><span style="display:flex;align-items:baseline;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)"><b style="font:800 18px 'Merriweather Sans',sans-serif">{{ st.n }}</b><span style="font:500 12px Roboto;color:#C9CDD6">{{ st.t }}</span></span></sc-for></div>
+    </div>
+  </header>
+  <main style="flex:1;padding:24px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1280px;display:grid;grid-template-columns:{{ cols }};gap:20px;align-items:start">
+      <nav aria-label="E-mails" style="position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;display:flex;flex-direction:column;gap:4px;padding:10px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+        <sc-for list="{{ list }}" as="e" hint-placeholder-count="7"><button type="button" onClick="{{ e.go }}" aria-current="{{ e.on }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px 12px;border:0;border-radius:10px;background:{{ e.bg }};text-align:left;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF"><span style="display:flex;align-items:center;gap:8px;width:100%"><span style="font:600 11px 'Roboto Mono',monospace;color:#5A6472">{{ e.id }}</span><span style="margin-left:auto;padding:1px 7px;border-radius:999px;background:{{ e.tBg }};color:{{ e.tFg }};font:700 10px Roboto">{{ e.type }}</span></span><span style="font:700 14px/1.3 Roboto;color:{{ e.fg }}">{{ e.name }}</span></button></sc-for>
+      </nav>
+      <sc-if value="{{ hasCur }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:{{ innerCols }};gap:20px;align-items:start;min-width:0">
+          <section style="display:flex;flex-direction:column;gap:14px;padding:20px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;min-width:0">
+            <span style="display:flex;flex-direction:column;gap:4px"><span style="font:600 12px 'Roboto Mono',monospace;color:#5A6472">{{ cur.id }} · {{ cur.type }}</span><h2 style="margin:0;font:800 20px 'Merriweather Sans',sans-serif">{{ cur.name }}</h2><span style="font:400 14px/1.5 Roboto;color:#5A6472">{{ cur.goal }}</span></span>
+            <dl style="margin:0;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:3px"><dt style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">ASSUNTO</dt><dd style="margin:0;font:600 14px/1.4 Roboto">{{ cur.subject }}</dd></div>
+              <div style="display:flex;flex-direction:column;gap:3px"><dt style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">PREHEADER</dt><dd style="margin:0;font:400 14px/1.45 Roboto;color:#3F4654">{{ cur.pre }}</dd></div>
+              <div style="display:flex;flex-direction:column;gap:3px"><dt style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">AÇÃO PRINCIPAL</dt><dd style="margin:0;font:600 14px Roboto;color:#4C1D95">{{ cur.cta }}</dd></div>
+              <div style="display:flex;flex-direction:column;gap:6px"><dt style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">VARIÁVEIS</dt><dd style="margin:0;display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ cur.vars }}" as="v" hint-placeholder-count="4"><code style="padding:3px 8px;border-radius:6px;background:#F1EBFD;color:#4C1D95;font:500 12px 'Roboto Mono',monospace">{{ v.t }}</code></sc-for></dd></div>
+              <div style="display:flex;flex-direction:column;gap:6px"><dt style="font:700 11px Roboto;letter-spacing:.06em;color:#5A6472">PENDÊNCIAS</dt><dd style="margin:0;display:flex;flex-direction:column;gap:6px"><sc-for list="{{ cur.todo }}" as="t" hint-placeholder-count="1"><span style="display:flex;gap:8px;padding:8px 10px;border-radius:8px;background:#FFF4E0;color:#7A4A00;font:400 13px/1.4 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px">pending</span>{{ t.t }}</span></sc-for></dd></div>
+            </dl>
+            <a href="{{ cur.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:6px;height:44px;border-radius:8px;box-shadow:inset 0 0 0 1.5px #7D3EE3;color:#4C1D95;font:700 14px Roboto;transition:background .15s ease-out" style-hover="background:#F7F4FF;color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:18px">code</span>Abrir HTML do e-mail</a>
+          </section>
+          <section style="display:flex;flex-direction:column;gap:12px;min-width:0">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+              <div style="display:flex;padding:3px;border-radius:999px;background:#EEEEF2"><sc-for list="{{ devs }}" as="d" hint-placeholder-count="2"><button type="button" onClick="{{ d.go }}" aria-pressed="{{ d.on }}" style="display:flex;align-items:center;gap:6px;height:34px;padding:0 14px;border:0;border-radius:999px;background:{{ d.bg }};color:{{ d.fg }};box-shadow:{{ d.sh }};font:600 13px Roboto;cursor:pointer" style-hover="color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:16px">{{ d.icon }}</span>{{ d.t }}</button></sc-for></div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" onClick="{{ toggleDark }}" aria-pressed="{{ dark }}" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:999px;border:1.5px solid {{ darkBd }};background:{{ darkBg }};color:#1D2433;font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">{{ darkIcon }}</span>Modo escuro</button><button type="button" onClick="{{ toggleSample }}" aria-pressed="{{ sample }}" style="display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:999px;border:1.5px solid {{ sampleBd }};background:{{ sampleBg }};color:#1D2433;font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">{{ sampleIcon }}</span>Dados de exemplo</button></div>
+            </div>
+            <div style="display:flex;justify-content:center;padding:16px;border-radius:16px;background:{{ stageBg }};transition:background .2s ease-out">
+              <iframe title="Prévia do e-mail" srcdoc="{{ doc }}" style="width:{{ frameW }};max-width:100%;height:{{ frameH }};border:0;border-radius:12px;background:transparent;box-shadow:0 8px 24px rgba(29,36,51,.12)"></iframe>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { list: [], i: 0, html: {}, dev: "d", sample: true, dark: false, vw: window.innerWidth };
+  SAMPLE = { url_imagem_carro_lateral: "emails/assets/carro-onix-lateral.png", copiloto_resumo: "O ponto que mais pesa é o leilão de 2020 como sinistrado: ele derruba o valor de revenda em cerca de 20%. A restrição judicial precisa ser baixada antes da transferência. O resto está limpo.", valor_desconto: "−R$ 3,99", fipe_m1: "66,9", fipe_m2: "66,4", fipe_m3: "66,0", fipe_m4: "65,6", fipe_m5: "65,1", fipe_m6: "64,3", barra_m1: "96", barra_m2: "84", barra_m3: "74", barra_m4: "64", barra_m5: "52", barra_m6: "40",  dispositivo: "iPhone · Safari", cidade: "São Paulo, SP", data_hora_acesso: "23/10/2026 14:32", data_hora: "23/10/2026 14:32", email_antigo: "an•••@gmail.com", email_novo: "an•••@email.com", perfil_percentual: "60%", data_exclusao: "30/10/2026", cartao_final: "Visa final 4821", motivo_recusa: "Saldo ou limite insuficiente", numero_nf: "000.123", valor_reembolso: "R$ 79,90", prazo_reembolso: "Até 2 faturas", qtd_fontes_pendentes: "1", fontes_pendentes: "Detran-SP", fontes_atualizadas: "Detran-SP", qtd_alertas_novos: "0", tipo_novidade: "Restrição RENAJUD", data_consulta: "12/09/2026", data_novidade: "22/10/2026", montadora: "Chevrolet", recall_resumo: "revisar o airbag do motorista", recall_data: "20/10/2026", data_vencimento: "15/11/2026", placa_final: "3", uf: "SP", valor_ipva: "R$ 2.571", ano_exercicio: "2026", perda_valor: "R$ 2.100", fipe_3m: "R$ 66.380", valor_estimado: "R$ 66.900", faixa_min: "R$ 63.500", faixa_max: "R$ 69.800", km: "45.000 km", valor_anterior: "R$ 68.100", custo_anterior: "R$ 2.302", custo_atual: "R$ 2.340", motivo_variacao: "A gasolina subiu em São Paulo", modelo_lancamento: "Nissan Kicks 2026", preco_inicial: "R$ 149.990", qtd_versoes: "4", motorizacao: "1.0 turbo", destaque_mes: "A Strada lidera de novo e o Onix volta ao top 3.", top1_modelo: "Fiat Strada", top1_vendas: "12.840", top2_modelo: "VW Polo", top2_vendas: "11.210", top3_modelo: "Chevrolet Onix", top3_vendas: "10.930", fipe_variacao_media: "−0,4%", newsletter_titulo: "5 matérias para ler no fim de semana", newsletter_preheader: "SUVs até R$ 150 mil, recall do mês e mais.", materia1_titulo: "SUVs até R$ 150 mil: qual vale mais a pena?", materia1_resumo: "Comparamos 5 modelos em preço, consumo e revenda.", materia2_titulo: "Recalls de outubro", materia2_resumo: "Veja se o seu carro está na lista.", materia3_titulo: "Como ler o relatório da placa", materia3_resumo: "Um guia rápido para não perder nenhum alerta.", cupom: "VOLTA15", cupom_desconto: "15%", cupom_validade: "31/10/2026", link_expira_em: "25/10/2026", data_pedido: "23/10/2026", custo: "",  nome: "Ana", codigo: "482 913", codigo_validade_min: "10", placa: "ABC1D23", veiculo_nome: "Chevrolet Onix 1.0 Turbo LTZ", modelo: "Onix", ano_modelo: "2022/2022", valor_total: "R$ 71,91", valor_desconto_pix: "R$ 3,99", pix_expira_em: "15:42", pix_copia_cola: "00020126580014br.gov.bcb.pix0136a1b2c3d4-e5f6-7890-abcd-ef1234567890520400005303986540571.915802BR5907ACHECAR6009SAO PAULO62070503***6304ABCD", numero_pedido: "48213", forma_pagamento: "Pix", data_pagamento: "23/10/2026 15:21", qtd_alertas: "2", qtd_ok: "31", "alerta.titulo": "Leilão em 2020", "alerta.descricao": "Classificado como sinistrado de média monta.", cupom_primeira_consulta: "PRIMEIRA10", mes_referencia: "outubro", fipe_atual: "R$ 64.280", fipe_anterior: "R$ 65.060", variacao_percentual: "−1,2%", variacao_valor: "−R$ 780", variacao_texto: "Caiu 1,2%", variacao_cor: "#B91C1C", empresa_razao_social: "[RAZÃO SOCIAL]", empresa_cnpj: "[CNPJ]", empresa_endereco: "[ENDEREÇO]" };
+  onR = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() {
+    window.addEventListener("resize", this.onR);
+    fetch("emails/emails.json").then((r) => r.json()).then((list) => { this.setState({ list }); list.forEach((e) => fetch("emails/" + e.file + ".html").then((r) => r.text()).then((t) => this.setState((s) => ({ html: { ...s.html, [e.file]: t } })))); });
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onR); }
+  TY = (t) => (t.startsWith("Opcional") ? ["#F1EBFD", "#5B21B6"] : t === "Transacional" ? ["#EEF2FF", "#3730A3"] : ["#F3F4F6", "#1D2433"]);
+  renderVals() {
+    const s = this.state, e = s.list[s.i], wide = s.vw >= 1100;
+    let doc = "";
+    if (e && s.html[e.file]) { doc = s.html[e.file].split("{{url_assets}}/email").join("emails/assets"); if (s.dark) doc = doc.replace("@media (prefers-color-scheme:dark){", "@media all{"); if (s.sample) doc = doc.replace(/\{\{([\w.]+)\}\}/g, (m, k) => (this.SAMPLE[k] !== undefined ? this.SAMPLE[k] : k.startsWith("url_imagem") ? m : k.startsWith("url_") ? "#" : m)); }
+    return {
+      stats: [[String(s.list.length), "e-mails prontos"], [String(s.list.filter((x) => x.type !== "Transacional" && !x.type.startsWith("Opcional")).length), "essenciais"], [String(Math.max(0, ...s.list.map((x) => x.size || 0))) + " KB", "maior HTML"]].map(([n, t]) => ({ n, t })),
+      cols: s.vw >= 900 ? "240px minmax(0,1fr)" : "minmax(0,1fr)", innerCols: wide ? "minmax(0,340px) minmax(0,1fr)" : "minmax(0,1fr)",
+      list: s.list.map((x, i) => { const on = i === s.i, T = this.TY(x.type); return { id: x.id, name: x.name, type: x.type.split(" ·")[0], tBg: T[0], tFg: T[1], on, bg: on ? "#F1EBFD" : "transparent", fg: on ? "#4C1D95" : "#1D2433", go: () => this.setState({ i }) }; }),
+      hasCur: !!e, cur: e ? { ...e, href: "emails/" + e.file + ".html", vars: e.vars.map((t) => ({ t: "{{" + t + "}}" })), todo: e.todo.map((t) => ({ t })) } : { vars: [], todo: [] },
+      devs: [["d", "Desktop", "desktop_windows"], ["m", "Celular", "smartphone"]].map(([k, t, icon]) => { const on = s.dev === k; return { t, icon, on, bg: on ? "#fff" : "transparent", fg: on ? "#4C1D95" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", go: () => this.setState({ dev: k }) }; }),
+      frameW: s.dev === "d" ? "660px" : "380px", frameH: "860px", doc,
+      dark: s.dark, toggleDark: () => this.setState((x) => ({ dark: !x.dark })), darkBd: s.dark ? "#7D3EE3" : "#E6E6EE", darkBg: s.dark ? "#F7F4FF" : "#fff", darkIcon: s.dark ? "dark_mode" : "light_mode", stageBg: s.dark ? "#0B0D12" : "#E9E9EF",
+      sample: s.sample, toggleSample: () => this.setState((x) => ({ sample: !x.sample })), sampleBd: s.sample ? "#7D3EE3" : "#E6E6EE", sampleBg: s.sample ? "#F7F4FF" : "#fff", sampleIcon: s.sample ? "check_box" : "check_box_outline_blank"
+    };
+  }
+}
+</script>
+</body>
+</html>

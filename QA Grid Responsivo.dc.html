@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+<style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433} a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE;text-decoration:underline}</style>
+</helmet>
+<main style="padding:32px clamp(16px, calc(2.2vw + 7px), 32px) 64px;display:flex;flex-direction:column;gap:20px">
+  <header style="max-width:1152px;display:flex;flex-direction:column;gap:6px">
+    <span style="font:700 12px Roboto;letter-spacing:.08em;color:#5A6472">QA · GRID RESPONSIVO</span>
+    <h1 style="margin:0;font:800 28px/1.2 'Merriweather Sans',sans-serif">Cada tela em 390, 768, 1024 e 1440.</h1>
+    <p style="margin:0;font:400 14px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Container 1152px. Margem lateral fluida: 16px no celular, 24px no tablet, 32px no desktop. Gutter 24px. Header em hambúrguer abaixo de 1200px.</p>
+  </header>
+  <nav style="display:flex;flex-wrap:wrap;gap:8px">
+    <sc-for list="{{ screens }}" as="s" hint-placeholder-count="12">
+      <button onClick="{{ s.pick }}" style="{{ s.st }}" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">{{ s.label }}</button>
+    </sc-for>
+  </nav>
+  <div style="display:flex;gap:24px;align-items:flex-start;overflow-x:auto;padding-bottom:12px">
+    <sc-for list="{{ frames }}" as="fr" hint-placeholder-count="4">
+      <figure style="margin:0;flex:none;display:flex;flex-direction:column;gap:8px">
+        <figcaption style="display:flex;justify-content:space-between;gap:12px;font:700 12px Roboto;color:#5A6472"><span>{{ fr.name }}</span><a href="{{ fr.src }}" target="_blank">Abrir</a></figcaption>
+        <div style="{{ fr.box }}">
+          <iframe src="{{ fr.src }}" title="{{ fr.name }}" style="{{ fr.ifr }}"></iframe>
+        </div>
+      </figure>
+    </sc-for>
+  </div>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0 };
+  list = [
+    ["Home", "Home Achecar.dc.html"], ["Consulta placa", "Consulta Placa.dc.html"], ["Checkout", "Checkout.dc.html"], ["Relatório", "Relatorio.dc.html"],
+    ["Versões", "Versoes.dc.html"], ["Comparativo", "Comparativo.dc.html"], ["Quanto Vale", "Quanto Vale.dc.html"], ["Preços e valorização", "Precos e Valorizacao.dc.html"],
+    ["Avaliar veículo", "Avaliar Veiculo.dc.html"], ["Calculadora", "Calculadora de Custos v2.dc.html"], ["Lançamentos", "Lancamentos.dc.html"], ["Lançamento", "Lancamento.dc.html"],
+    ["Garagem", "Garagem.dc.html"], ["Meu carro", "Meu Carro.dc.html"], ["Como funciona Garagem", "Como Funciona Garagem.dc.html"], ["Copiloto", "Copiloto.dc.html"],
+    ["Minha conta", "Minha Conta.dc.html"], ["Login", "Login.dc.html"], ["Esqueci senha", "Esqueci Senha.dc.html"], ["Blog", "Blog.dc.html"],
+    ["Artigo", "Artigo.dc.html"], ["Todas as matérias", "Todas as Materias.dc.html"], ["Central de ajuda", "Central de Ajuda.dc.html"], ["Parceiros", "Parceiros.dc.html"],
+    ["Termos de uso", "Termos de Uso.dc.html"], ["Privacidade", "Politica de Privacidade.dc.html"]
+  ];
+  renderVals() {
+    const sc = 0.42, H = 1500, cur = this.list[this.state.i];
+    return {
+      screens: this.list.map(([label], i) => ({ label, pick: () => this.setState({ i }),
+        st: "cursor:pointer;border:0;border-radius:999px;padding:8px 14px;font:500 13px Roboto;" + (i === this.state.i ? "background:#7D3EE3;color:#fff" : "background:#fff;color:#1D2433;box-shadow:inset 0 0 0 1px #E6E6EE") })),
+      frames: [390, 768, 1024, 1440].map(w => ({ name: w + "px", src: encodeURI(cur[1]),
+        box: `width:${Math.round(w * sc)}px;height:${Math.round(H * sc)}px;overflow:hidden;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08)`,
+        ifr: `width:${w}px;height:${H}px;border:0;transform:scale(${sc});transform-origin:0 0` }))
+    };
+  }
+}
+</script>
+</body>
+</html>

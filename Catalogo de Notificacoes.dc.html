@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    input::placeholder{color:#7A8494}
+  </style>
+</helmet>
+<div data-screen-label="Catálogo de notificações" style="min-height:100vh;display:flex;flex-direction:column">
+  <header style="background:#1D2433;color:#fff;padding:48px 24px 32px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:760px">
+        <span style="font:700 12px Roboto;letter-spacing:.1em;color:#E0D2FF">ACHECAR · RÉGUA DE COMUNICAÇÃO</span>
+        <h1 style="margin:0;font:800 clamp(28px,3.6vw,40px)/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">Catálogo de notificações</h1>
+        <p style="margin:0;font:400 16px/1.55 Roboto;color:#C9CDD6;text-wrap:pretty">Todos os avisos que o site e o app podem enviar, com gatilho, canais, momento, texto sugerido e destino. Base para desenhar a régua de e-mail, push e WhatsApp.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4"><span style="display:flex;align-items:baseline;gap:6px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)"><b style="font:800 20px 'Merriweather Sans',sans-serif">{{ st.n }}</b><span style="font:500 13px Roboto;color:#C9CDD6">{{ st.t }}</span></span></sc-for>
+      </div>
+    </div>
+  </header>
+
+  <div style="position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #E6E6EE;padding:12px 24px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <label style="position:relative;flex:1 1 260px;display:block;height:44px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472;pointer-events:none">search</span><input value="{{ q }}" onChange="{{ setQ }}" placeholder="Buscar por nome, gatilho ou texto" aria-label="Buscar notificação" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 12px 0 40px;border:0;border-radius:10px;background:transparent;font:400 14px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input></label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ chanF }}" as="c" hint-placeholder-count="5"><button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.on }}" style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:600 13px Roboto;cursor:pointer;transition:border-color .15s ease-out" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:16px">{{ c.icon }}</span>{{ c.t }}</button></sc-for></div>
+        <div style="display:flex;gap:6px"><sc-for list="{{ typeF }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.go }}" aria-pressed="{{ c.on }}" style="height:36px;padding:0 12px;border-radius:999px;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3">{{ c.t }}</button></sc-for></div>
+      </div>
+      <nav aria-label="Categorias" style="display:flex;gap:4px;overflow-x:auto;scrollbar-width:none"><sc-for list="{{ catNav }}" as="c" hint-placeholder-count="8"><button type="button" onClick="{{ c.go }}" style="flex:none;display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#1D2433;font:500 13px Roboto;cursor:pointer;white-space:nowrap" style-hover="background:#F7F4FF;color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#7D3EE3">{{ c.icon }}</span>{{ c.t }}<span style="font:600 11px Roboto;color:#5A6472">{{ c.n }}</span></button></sc-for></nav>
+    </div>
+  </div>
+
+  <main style="flex:1;padding:28px 24px 96px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:36px">
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><div style="padding:48px;border-radius:16px;background:#fff;text-align:center;font:400 15px Roboto;color:#5A6472">Nenhuma notificação com esses filtros.</div></sc-if>
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+        <section id="{{ g.id }}" data-screen-label="{{ g.t }}" style="scroll-margin-top:140px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:40px;height:40px;border-radius:12px;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px">{{ g.icon }}</span><span style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0;font:800 20px 'Merriweather Sans',sans-serif">{{ g.t }}</h2><span style="font:400 13px Roboto;color:#5A6472">{{ g.sub }}</span></span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:12px">
+            <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="3">
+              <article style="display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3,0 8px 24px rgba(29,36,51,.10)">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                  <span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:600 11px 'Roboto Mono',monospace;color:#5A6472">{{ n.id }}</span><span style="font:700 15px/1.3 Roboto">{{ n.name }}</span></span>
+                  <span style="flex:none;padding:3px 9px;border-radius:999px;background:{{ n.tBg }};color:{{ n.tFg }};font:700 11px Roboto">{{ n.type }}</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;padding:12px 14px;border-radius:12px;background:#F6F6F9">
+                  <span style="font:700 13px/1.35 Roboto;color:#1D2433">{{ n.title }}</span>
+                  <span style="font:400 13px/1.45 Roboto;color:#3F4654">{{ n.body }}</span>
+                  <sc-if value="{{ n.hasCta }}" hint-placeholder-val="{{ true }}"><span style="align-self:flex-start;margin-top:2px;padding:3px 10px;border-radius:6px;background:#7D3EE3;color:#fff;font:700 11px Roboto">{{ n.cta }}</span></sc-if><sc-if value="{{ n.noCta }}" hint-placeholder-val="{{ false }}"><span style="font:italic 400 11px Roboto;color:#5A6472">Só informativo, sem botão</span></sc-if>
+                </div>
+                <dl style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font:400 12px/1.4 Roboto">
+                  <dt style="color:#5A6472">Gatilho</dt><dd style="margin:0;color:#1D2433">{{ n.trigger }}</dd>
+                  <dt style="color:#5A6472">Quando</dt><dd style="margin:0;color:#1D2433">{{ n.when }}</dd>
+                  <dt style="color:#5A6472">Destino</dt><dd style="margin:0;color:#1D2433">{{ n.dest }}</dd>
+                </dl>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;padding-top:10px;border-top:1px solid #F0F0F4"><sc-for list="{{ n.chans }}" as="c" hint-placeholder-count="2"><span style="display:flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};font:600 11px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:14px">{{ c.icon }}</span>{{ c.t }}</span></sc-for></div>
+              </article>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: "", ch: "", ty: "" };
+  CH = { email: ["E-mail", "mail", "#EEF2FF", "#3730A3"], push: ["Push (app)", "smartphone", "#F1EBFD", "#5B21B6"], wpp: ["WhatsApp", "chat", "#DCFCE7", "#166534"], inapp: ["Notificação no app", "notifications", "#FFF4E0", "#8A5300"] };
+  CATS = [
+    ["conta", "Conta e acesso", "person", "Cadastro, login e segurança", [
+      ["CTA-01", "Boas-vindas", "Conta criada", "Na hora", "Sua conta Achecar está pronta", "Você ganhou 3 perguntas grátis no Copiloto e 10% na primeira consulta.", "Começar", "Home", "e", ["email", "inapp"]],
+      ["CTA-02", "Código de verificação do cadastro", "Cadastro com e-mail", "Na hora · vale 10 min", "Seu código é 482 913", "Use este código para confirmar seu e-mail na Achecar.", "—", "Modal de login", "x", ["email"]],
+      ["CTA-03", "Código de acesso (login sem senha)", "Entrar com código", "Na hora · vale 10 min", "Código de acesso: 482 913", "Se não foi você, ignore esta mensagem.", "—", "Modal de login", "x", ["email", "wpp"]],
+      ["CTA-04", "Novo acesso detectado", "Login em aparelho ou cidade nova", "Na hora", "Novo acesso na sua conta", "Entraram na sua conta em um iPhone em São Paulo, às 14:32. Foi você?", "Revisar acessos", "Minha Conta › Sessões", "x", ["email", "push"]],
+      ["CTA-05", "Código para redefinir senha", "Esqueci a senha", "Na hora · vale 10 min", "Redefina sua senha", "Seu código é 482 913. Ele vale por 10 minutos.", "—", "Modal de senha", "x", ["email"]],
+      ["CTA-06", "Senha alterada", "Senha trocada ou redefinida", "Na hora", "Sua senha foi alterada", "Se não foi você, fale com o atendimento agora.", "Falar com o atendimento", "WhatsApp do atendimento", "x", ["email", "push"]],
+      ["CTA-07", "E-mail alterado", "Troca de e-mail confirmada", "Na hora (envia para o e-mail antigo e o novo)", "Seu e-mail mudou", "A partir de agora usamos ana@email.com para falar com você.", "Não fui eu", "Atendimento", "x", ["email"]],
+      ["CTA-08", "Perfil incompleto", "Cadastro sem CPF ou celular após 3 dias", "D+3, D+10", "Falta pouco para completar seu perfil", "Com CPF e celular, sua nota fiscal sai certinha e você recupera a conta mais rápido.", "Completar perfil", "Minha Conta › Perfil", "o", ["email", "inapp"]],
+      ["CTA-09", "Saída de outros aparelhos", "Usuário encerrou sessões", "Na hora", "Você saiu dos outros aparelhos", "Só este aparelho continua conectado.", "—", "—", "x", ["inapp"]],
+      ["CTA-10", "Exclusão de conta", "Pedido de exclusão", "Na hora e D+7 (conclusão)", "Recebemos seu pedido de exclusão", "Sua conta será apagada em 7 dias. Mudou de ideia? Entre antes disso.", "Cancelar exclusão", "Login", "x", ["email"]],
+      ["CTA-11", "Seus dados estão prontos (LGPD)", "Pedido de cópia dos dados", "Quando o arquivo ficar pronto", "Sua cópia de dados está pronta", "O link para baixar vale por 48 horas.", "Baixar arquivo", "Minha Conta › Privacidade", "x", ["email"]]]],
+    ["checkout", "Compra da consulta", "shopping_bag", "Do carrinho ao pagamento", [
+      ["CHK-01", "Pix gerado", "Pedido com Pix", "Na hora", "Seu Pix está pronto", "Pague R$ 71,91 até 15:42 para liberar a consulta da placa ABC1D23.", "Copiar código Pix", "Checkout › Pix", "x", ["email", "push"]],
+      ["CHK-02", "Pix perto de expirar", "Pix não pago", "5 min antes de expirar", "Seu Pix vence em 5 minutos", "Depois disso é preciso gerar outro código.", "Pagar agora", "Checkout › Pix", "x", ["push"]],
+      ["CHK-03", "Pix expirado", "Pix não pago no prazo", "Na expiração", "Seu Pix expirou", "Gere um novo código em segundos. O preço continua o mesmo.", "Gerar novo Pix", "Checkout", "x", ["email", "push"]],
+      ["CHK-04", "Pagamento aprovado", "Pagamento confirmado", "Na hora", "Pagamento aprovado", "Estamos buscando as informações da placa ABC1D23 em mais de 15 fontes.", "Acompanhar", "Minha Conta › Consulta", "x", ["email", "push", "inapp"]],
+      ["CHK-05", "Pagamento recusado", "Cartão recusado", "Na hora", "Não conseguimos aprovar o pagamento", "Tente outro cartão ou pague com Pix com 5% de desconto.", "Tentar de novo", "Checkout", "x", ["email", "inapp"]],
+      ["CHK-06", "Consulta abandonada", "Placa validada sem compra", "1 h, D+1", "A consulta da ABC1D23 ficou para trás", "Leilão, sinistro, roubo e débitos em um relatório só. Use 10% na primeira consulta.", "Continuar consulta", "Checkout", "o", ["email", "push"]],
+      ["CHK-07", "Nota fiscal emitida", "NF gerada", "Até D+1", "Sua nota fiscal está disponível", "Pedido #48213 · Consulta veicular completa.", "Ver nota fiscal", "Minha Conta › Pagamentos", "x", ["email"]],
+      ["CHK-08", "Reembolso", "Estorno aprovado", "Na aprovação", "Seu reembolso foi aprovado", "R$ 79,90 voltam para o seu cartão em até 2 faturas.", "Ver detalhes", "Minha Conta › Pagamentos", "x", ["email"]]]],
+    ["consulta", "Consulta veicular", "manage_search", "Relatório e acompanhamento da placa", [
+      ["CON-01", "Relatório pronto", "Todas as fontes responderam", "Na hora", "O relatório da ABC1D23 está pronto", "Encontramos 2 pontos de atenção: leilão em 2020 e 1 restrição. O Copiloto já fez um resumo.", "Ver relatório", "Relatório", "x", ["email", "push", "wpp"]],
+      ["CON-02", "Relatório parcial", "Fonte fora do ar", "Na hora e ao completar", "Seu relatório está quase completo", "Uma base estadual não respondeu. Atualizamos sozinhos e avisamos você.", "Ver o que já chegou", "Relatório", "x", ["email", "push"]],
+      ["CON-03", "Relatório completo após falha", "Fonte voltou", "Quando completar", "Seu relatório foi atualizado", "Os dados do Detran-SP chegaram. Nenhum ponto novo de atenção.", "Ver atualização", "Relatório", "x", ["email", "push"]],
+      ["CON-04", "Consulta não concluída", "Falha geral", "Na hora", "Não conseguimos concluir sua consulta", "Você pode tentar de novo sem pagar outra vez ou pedir reembolso.", "Escolher opção", "Minha Conta › Consulta", "x", ["email", "push"]],
+      ["CON-05", "Novidade numa placa consultada", "Nova restrição, leilão ou sinistro", "Na detecção", "Algo mudou na placa ABC1D23", "Apareceu uma restrição RENAJUD depois da sua consulta.", "Ver o que mudou", "Relatório", "o", ["email", "push"]],
+      ["CON-06", "Relatório compartilhado aberto", "Link de compartilhamento acessado", "No 1º acesso", "Seu relatório foi aberto", "Alguém abriu o link que você compartilhou da placa ABC1D23.", "Ver relatório", "Relatório", "o", ["push"]],
+      ["CON-07", "Avalie sua consulta", "Relatório visto", "D+1", "O relatório ajudou na sua decisão?", "Leva 10 segundos e melhora as próximas consultas.", "Avaliar", "Pesquisa NPS", "o", ["email", "push"]]]],
+    ["garagem", "Minha Garagem e Meu Carro", "garage_home", "Carro cadastrado pelo usuário", [
+      ["GAR-01", "Carro adicionado", "Placa adicionada à Garagem", "Na hora", "Seu Onix está na Garagem", "A partir de agora acompanhamos o valor FIPE e as revisões dele.", "Ver meu carro", "Meu Carro", "e", ["inapp", "email"]],
+      ["GAR-02", "FIPE mudou", "Nova tabela FIPE do mês", "Mensal, na publicação", "Seu Onix vale R$ 64.280 em outubro", "Caiu 1,2% em relação a setembro.", "Ver histórico", "Meu Carro › Valor", "o", ["email", "push"]],
+      ["GAR-03", "Revisão chegando", "Faltam 1.000 km ou 30 dias", "Na regra", "Revisão dos 40 mil km chegando", "Faltam cerca de 1.000 km. Custo estimado: R$ 950.", "Ver plano de revisões", "Meu Carro › Revisões", "o", ["push", "wpp"]],
+      ["GAR-04", "Atualize a quilometragem", "Km sem atualizar há 60 dias", "D+60", "Quanto seu Onix rodou?", "Atualizar a quilometragem deixa o valor e as revisões mais certos.", "Atualizar km", "Meu Carro", "o", ["push", "inapp"]],
+      ["GAR-05", "Recall do modelo", "Recall publicado para o modelo/ano", "Na publicação", "Recall para o seu Onix 2022", "A Chevrolet chamou o modelo para revisar o airbag do motorista. É gratuito.", "Ver detalhes", "Meu Carro › Recall", "o", ["email", "push", "wpp"]],
+      ["GAR-06", "IPVA vencendo", "Calendário do estado", "10 dias antes e no dia", "IPVA do seu Onix vence dia 15", "Placa final 3 em SP. Valor estimado: R$ 2.571.", "Ver valores", "Meu Carro › Custos", "o", ["email", "push"]],
+      ["GAR-07", "Licenciamento vencendo", "Calendário do estado", "15 dias antes", "Licenciamento do seu Onix vence este mês", "Sem o licenciamento em dia, o carro pode ser apreendido.", "Ver como pagar", "Meu Carro › Custos", "o", ["email", "push"]],
+      ["GAR-08", "Hora de vender?", "FIPE em queda por 3 meses", "Na regra", "Seu Onix perdeu R$ 2.100 em 3 meses", "Veja quanto ele vale hoje no mercado e compare com outros modelos.", "Ver quanto vale", "Quanto Vale", "o", ["email", "push"]]]],
+    ["copiloto", "Copiloto", "auto_awesome", "Assistente com IA", [
+      ["COP-01", "Resposta pronta", "Pergunta respondida com o app em segundo plano", "Na hora", "O Copiloto respondeu", "\"Qual desvaloriza menos?\" Toque para ver a resposta.", "Ver resposta", "Copiloto", "o", ["push"]],
+      ["COP-02", "Última pergunta grátis", "Usou 2 de 3", "Na hora", "Resta 1 pergunta grátis", "Na consulta veicular paga, as perguntas sobre o carro são livres.", "Consultar placa", "Consulta Placa", "o", ["inapp"]],
+      ["COP-03", "Perguntas grátis esgotadas", "Usou 3 de 3", "Na hora", "Suas perguntas grátis acabaram", "Faça uma consulta e pergunte à vontade sobre o relatório do carro.", "Consultar placa", "Consulta Placa", "o", ["inapp", "email"]],
+      ["COP-04", "Leitura do relatório pronta", "Resumo do Copiloto gerado", "Junto com CON-01", "O Copiloto leu o relatório", "3 pontos que pesam na compra deste carro, em linguagem simples.", "Ler resumo", "Relatório › Copiloto", "x", ["inapp"]]]],
+    ["quanto", "Quanto Vale e Calculadora", "calculate", "Avaliação e custo de manter", [
+      ["QV-01", "Avaliação pronta", "Questionário concluído", "Na hora", "Seu carro vale cerca de R$ 66.900", "Buscamos em OLX, Webmotors, Localiza e mais lojas.", "Ver avaliação", "Quanto Vale › Resultado", "x", ["inapp", "email"]],
+      ["QV-02", "Valor estimado mudou", "Nova FIPE ou mercado", "Mensal", "A avaliação do seu carro mudou", "Agora ele vale cerca de R$ 65.700 (−1,8%).", "Ver nova avaliação", "Quanto Vale", "o", ["email"]],
+      ["CALC-01", "Cálculo salvo", "Cálculo concluído logado", "Na hora", "Seu cálculo do Tracker está salvo", "R$ 2.340 por mês com a sua rotina. Compare com outros carros quando quiser.", "Comparar", "Calculadora", "o", ["inapp"]],
+      ["CALC-02", "Custo mensal mudou", "Combustível ou seguro médio variou 5%+", "Na regra", "Ficou mais caro manter o Tracker", "A gasolina subiu em São Paulo: +R$ 38 por mês no seu cálculo.", "Ver cálculo", "Calculadora", "o", ["email", "push"]]]],
+    ["mercado", "Mercado, lançamentos e blog", "rocket_launch", "Conteúdo e novidades", [
+      ["MER-01", "Lançamento chegou", "Modelo acompanhado lançado", "No lançamento", "O novo Kicks chegou às lojas", "Preço a partir de R$ 149.990. Veja versões e ficha técnica.", "Ver lançamento", "Lançamento", "o", ["email", "push"]],
+      ["MER-02", "Preço divulgado", "Montadora divulgou preço", "Na divulgação", "Saiu o preço do Fastback Hybrid", "A partir de R$ 179.990 na versão de entrada.", "Ver preços", "Lançamento", "o", ["push"]],
+      ["MER-03", "Pré-venda aberta", "Pré-venda iniciada", "Na abertura", "Pré-venda aberta: BYD Dolphin Mini 2026", "Entregas previstas para dezembro.", "Ver detalhes", "Lançamento", "o", ["push"]],
+      ["MER-04", "Resumo do mês", "Fechamento de vendas e FIPE", "Mensal, dia 5", "Os mais vendidos de outubro", "Strada lidera de novo; Onix volta ao top 3. FIPE média caiu 0,4%.", "Ver ranking", "Blog › Mercado", "o", ["email"]],
+      ["MER-05", "Newsletter do blog", "Seleção semanal", "Semanal, sábado 9h", "5 matérias para ler no fim de semana", "Comparativo SUVs até R$ 150 mil, recall do mês e mais.", "Ler agora", "Blog", "o", ["email"]]]],
+    ["ofertas", "Ofertas e relacionamento", "local_offer", "Cupons e retenção", [
+      ["OFE-01", "Cupom de primeira consulta", "Conta sem compra após 2 dias", "D+2", "10% na sua primeira consulta", "Use o cupom PRIMEIRA10 até domingo.", "Consultar placa", "Consulta Placa", "o", ["email", "push"]],
+      ["OFE-02", "Cupom expirando", "Cupom ativo perto do fim", "24 h antes", "Seu cupom vence amanhã", "PRIMEIRA10 vale até 23:59 de domingo.", "Usar cupom", "Checkout", "o", ["email", "push", "wpp"]],
+      ["OFE-03", "Consulta com desconto para recompra", "2ª consulta em 30 dias", "Após a 1ª consulta", "Vai olhar outro carro?", "A próxima consulta sai com 15% de desconto nos próximos 30 dias.", "Consultar outra placa", "Consulta Placa", "o", ["email"]],
+      ["OFE-04", "Reativação", "Sem acesso há 90 dias", "D+90", "Sentimos sua falta", "Veja quanto o seu carro vale hoje e o que mudou no mercado.", "Ver meu carro", "Meu Carro", "o", ["email", "push"]],
+      ["OFE-05", "Baixe o app", "Usuário só na web após 2 acessos", "No 3º acesso", "Leve a Achecar no bolso", "Consulte placas e receba alertas do seu carro direto no celular.", "Baixar app", "App Store / Google Play", "o", ["email", "inapp"]]]]
+  ];
+  TY = { x: ["Essencial", "#F3F4F6", "#1D2433"], e: ["Transacional", "#EEF2FF", "#3730A3"], o: ["Opcional", "#F1EBFD", "#5B21B6"] };
+  renderVals() {
+    const s = this.state, q = s.q.trim().toLowerCase();
+    const all = this.CATS.flatMap((c) => c[4]);
+    const keep = (n) => (!s.ch || n[9].includes(s.ch)) && (!s.ty || n[8] === s.ty) && (!q || n.slice(1, 8).join(" ").toLowerCase().includes(q));
+    const groups = this.CATS.map(([id, t, icon, sub, list]) => ({ id: "cat-" + id, t, icon, sub, items: list.filter(keep).map((n) => { const T = this.TY[n[8]]; return { id: n[0], name: n[1], trigger: n[2], when: n[3], title: n[4], body: n[5], cta: n[6], hasCta: n[6] !== "—", noCta: n[6] === "—", dest: n[7], type: T[0], tBg: T[1], tFg: T[2], chans: n[9].map((k) => { const c = this.CH[k]; return { t: c[0], icon: c[1], bg: c[2], fg: c[3] }; }) }; }) })).filter((g) => g.items.length);
+    const pill = (on) => ({ bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", fg: on ? "#4C1D95" : "#1D2433" });
+    return {
+      q: s.q, setQ: (e) => this.setState({ q: e.target.value }),
+      stats: [[all.length, "notificações"], [this.CATS.length, "categorias"], [all.filter((n) => n[8] === "x").length, "essenciais"], [all.filter((n) => n[9].includes("wpp")).length, "com WhatsApp"]].map(([n, t]) => ({ n: String(n), t })),
+      chanF: Object.entries(this.CH).map(([k, c]) => ({ t: c[0], icon: c[1], on: s.ch === k, ...pill(s.ch === k), go: () => this.setState({ ch: s.ch === k ? "" : k }) })),
+      typeF: Object.entries(this.TY).map(([k, c]) => ({ t: c[0], on: s.ty === k, ...pill(s.ty === k), go: () => this.setState({ ty: s.ty === k ? "" : k }) })),
+      catNav: this.CATS.map(([id, t, icon, , list]) => ({ t, icon, n: String(list.filter(keep).length), go: () => { const el = document.getElementById("cat-" + id); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 130, behavior: "smooth" }); } })),
+      groups, empty: !groups.length
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    input::placeholder{color:#5A6472}
+    [data-catnav]::-webkit-scrollbar{display:none}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" active="blog" hint-size="100%,81px"></dc-import></div>
+
+  <section data-screen-label="Todas as matérias · topo" style="background:#fff;padding:40px clamp(16px, calc(2.2vw + 7px), 32px) 0;display:flex;justify-content:center;border-bottom:1px solid #EEEEF2">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:640px">
+          <nav aria-label="Você está em" style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#5A6472"><a href="Blog.dc.html" style="color:#5A6472" style-hover="color:#7D3EE3">Blog</a><span aria-hidden="true">/</span><span style="color:#1D2433">Todas as matérias</span></nav>
+          <h1 style="margin:0;font:800 36px/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">Todas as matérias</h1>
+        </div>
+        <label style="position:relative;display:block;width:320px;max-width:100%;height:48px;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px {{ searchRing }};cursor:text;transition:box-shadow .15s" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">
+          <span style="position:absolute;left:14px;top:12px;font-family:'Material Symbols Rounded';font-size:24px;line-height:1;color:#5A6472;pointer-events:none">search</span>
+          <input value="{{ q }}" onChange="{{ onQ }}" onFocus="{{ focusOn }}" onBlur="{{ focusOff }}" placeholder="Buscar: IPVA, SUV, recall…" aria-label="Buscar no blog" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px 0 48px;border:0;border-radius:8px;background:transparent;font:400 15px Roboto;color:#1D2433;outline:none;box-shadow:{{ searchFocus }}">
+        </label>
+      </div>
+      <nav data-catnav="" aria-label="Editorias" style="display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin:0 -8px">
+        <sc-for list="{{ catNav }}" as="c" hint-placeholder-count="9">
+          <button onClick="{{ c.pick }}" aria-current="{{ c.cur }}" style="flex:none;display:flex;align-items:center;gap:6px;height:48px;padding:0 12px;border:0;border-bottom:2px solid {{ c.line }};background:transparent;color:{{ c.fg }};font:500 14px Roboto;cursor:pointer;white-space:nowrap" style-hover="color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ c.icon }}</span>{{ c.label }}</button>
+        </sc-for>
+      </nav>
+    </div>
+  </section>
+
+  <main style="flex:1;padding:32px clamp(16px, calc(2.2vw + 7px), 32px) 80px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:56px">
+
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:56px">
+          <section data-screen-label="Manchete" style="display:grid;grid-template-columns:{{ bpG0 }};gap:28px">
+            <a href="{{ lead.href }}" style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:14px;color:#1D2433" style-hover="color:#1D2433">
+              <div style="aspect-ratio:16/9;border-radius:20px;overflow:hidden;background-color:{{ lead.bgc }};background-image:{{ lead.bg }};background-size:{{ lead.bgs }};background-position:center;background-repeat:no-repeat"></div>
+              <div style="display:flex;align-items:center;gap:8px"><span style="padding:4px 10px;border-radius:999px;background:#F3EDFD;color:#7D3EE3;font:700 12px Roboto">{{ lead.fmtLabel }}</span><span style="font:700 12px Roboto;letter-spacing:.06em;color:#5A6472">{{ lead.catUp }}</span></div>
+              <span style="font:800 32px/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">{{ lead.title }}</span>
+              <span style="font:400 17px/1.55 Roboto;color:#3F4654;text-wrap:pretty">{{ lead.dek }}</span>
+              <span style="font:400 13px Roboto;color:#5A6472">Redação Achecar · {{ lead.date }} · {{ lead.min }} min de leitura</span>
+            </a>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="font:700 12px Roboto;letter-spacing:.08em;color:#5A6472;padding-bottom:8px;border-bottom:2px solid #1D2433">ÚLTIMAS</span>
+              <sc-for list="{{ latest }}" as="p" hint-placeholder-count="5">
+                <a href="{{ p.href }}" style="display:flex;gap:14px;padding:14px 0;border-bottom:1px solid #E6E6EE;color:#1D2433" style-hover="color:#7D3EE3">
+                  <div style="flex:none;width:96px;height:72px;border-radius:10px;background-color:{{ p.bgc }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat"></div>
+                  <span style="min-width:0;display:flex;flex-direction:column;gap:4px">
+                    <span style="font:700 11px Roboto;letter-spacing:.06em;color:#7D3EE3">{{ p.catUp }}</span>
+                    <span style="font:700 14px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                    <span style="font:400 12px Roboto;color:#5A6472">{{ p.date }}</span>
+                  </span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+
+          <section data-screen-label="Ferramentas" style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif">Leu? Agora confira com dados.</h2><span style="font:400 14px Roboto;color:#5A6472">Ferramentas da Achecar que completam cada matéria.</span></div>
+            <div style="display:grid;grid-template-columns:{{ bpG1 }};gap:16px">
+              <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+                <a href="{{ t.href }}" style="display:flex;align-items:center;gap:14px;padding:18px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;color:#1D2433;transition:box-shadow .15s" style-hover="color:#1D2433;box-shadow:inset 0 0 0 1px #7D3EE3, 0 8px 24px rgba(29,36,51,.08)">
+                  <span style="flex:none;width:44px;height:44px;border-radius:12px;background:{{ t.ibg }};color:{{ t.ic }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:24px">{{ t.icon }}</span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">{{ t.t }}</span><span style="font:400 13px Roboto;color:#5A6472">{{ t.d }}</span></span>
+                  <span style="font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472">chevron_right</span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+
+          <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="4">
+            <section style="display:flex;flex-direction:column;gap:20px">
+              <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding-bottom:12px;border-bottom:2px solid #1D2433">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="width:40px;height:40px;border-radius:12px;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px">{{ sec.icon }}</span>
+                  <span style="display:flex;flex-direction:column;gap:2px"><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif">{{ sec.label }}</h2><span style="font:400 13px Roboto;color:#5A6472">{{ sec.desc }}</span></span>
+                </div>
+                <button onClick="{{ sec.more }}" style="flex:none;display:flex;align-items:center;gap:2px;padding:6px 0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer" style-hover="color:#5F29AE">Ver tudo<span style="font-family:'Material Symbols Rounded';font-size:18px">arrow_forward</span></button>
+              </div>
+              <div style="display:grid;grid-template-columns:{{ bpG2 }};gap:24px">
+                <sc-for list="{{ sec.posts }}" as="p" hint-placeholder-count="4">
+                  <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:10px;color:#1D2433" style-hover="color:#7D3EE3">
+                    <div style="position:relative;aspect-ratio:4/3;border-radius:16px;background-color:{{ p.bgc }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat">
+                      <span style="position:absolute;left:10px;top:10px;padding:4px 9px;border-radius:999px;background:#fff;color:#1D2433;font:700 11px Roboto;box-shadow:0 1px 4px rgba(29,36,51,.12)">{{ p.fmtLabel }}</span>
+                    </div>
+                    <span style="font:700 16px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                    <span style="font:400 13px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ p.dek }}</span>
+                    <span style="font:400 12px Roboto;color:#5A6472">{{ p.date }} · {{ p.min }} min</span>
+                  </a>
+                </sc-for>
+              </div>
+            </section>
+          </sc-for>
+
+          <section data-screen-label="Escolhas e mais lidos" style="display:grid;grid-template-columns:{{ bpG3 }};gap:28px">
+            <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:16px;padding:28px;border-radius:24px;background:#1D2433;color:#fff">
+              <span style="font:700 12px Roboto;letter-spacing:.08em;color:#C9AEFF">ESCOLHAS DA REDAÇÃO</span>
+              <div style="display:grid;grid-template-columns:{{ bpG4 }};gap:20px">
+                <sc-for list="{{ picks }}" as="p" hint-placeholder-count="3">
+                  <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:10px;color:#fff" style-hover="color:#C9AEFF">
+                    <div style="aspect-ratio:4/3;border-radius:12px;background-color:{{ p.bgcDark }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat"></div>
+                    <span style="font:700 11px Roboto;letter-spacing:.06em;color:#C9AEFF">{{ p.catUp }}</span>
+                    <span style="font:700 15px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="font:700 12px Roboto;letter-spacing:.08em;color:#5A6472;padding-bottom:8px;border-bottom:2px solid #1D2433">MAIS LIDOS DA SEMANA</span>
+              <sc-for list="{{ top }}" as="p" hint-placeholder-count="5">
+                <a href="{{ p.href }}" style="display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #E6E6EE;color:#1D2433" style-hover="color:#7D3EE3">
+                  <span style="flex:none;width:28px;font:800 26px/1 'Merriweather Sans',sans-serif;color:#7D3EE3">{{ p.rank }}</span>
+                  <span style="font:700 14px/1.4 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Resultados" style="display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding-bottom:12px;border-bottom:2px solid #1D2433">
+            <span style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 26px 'Merriweather Sans',sans-serif">{{ listTitle }}</h2><span style="font:400 14px Roboto;color:#5A6472">{{ listSub }}</span></span>
+            <div role="radiogroup" aria-label="Formato" style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ fmtChips }}" as="f" hint-placeholder-count="5">
+                <button role="radio" aria-checked="{{ f.on }}" onClick="{{ f.pick }}" style="height:34px;padding:0 12px;border:0;border-radius:999px;background:{{ f.bg }};color:{{ f.fg }};box-shadow:inset 0 0 0 1px {{ f.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">{{ f.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <sc-if value="{{ hasList }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:{{ bpG5 }};gap:24px">
+              <sc-for list="{{ list }}" as="p" hint-placeholder-count="8">
+                <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:10px;color:#1D2433" style-hover="color:#7D3EE3">
+                  <div style="position:relative;aspect-ratio:4/3;border-radius:16px;background-color:{{ p.bgc }};background-image:{{ p.bg }};background-size:{{ p.bgs }};background-position:center;background-repeat:no-repeat">
+                    <span style="position:absolute;left:10px;top:10px;padding:4px 9px;border-radius:999px;background:#fff;color:#1D2433;font:700 11px Roboto;box-shadow:0 1px 4px rgba(29,36,51,.12)">{{ p.fmtLabel }}</span>
+                  </div>
+                  <span style="font:700 11px Roboto;letter-spacing:.06em;color:#7D3EE3">{{ p.catUp }}</span>
+                  <span style="font:700 16px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                  <span style="font:400 13px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ p.dek }}</span>
+                  <span style="font:400 12px Roboto;color:#5A6472">{{ p.date }} · {{ p.min }} min</span>
+                </a>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ noList }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:48px 24px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+              <span style="font-family:'Material Symbols Rounded';font-size:32px;color:#5A6472">search_off</span>
+              <span style="font:700 16px Roboto">Nenhuma matéria encontrada</span>
+              <a href="{{ copAsk }}" style="font:500 14px Roboto">Perguntar ao Copiloto</a>
+              <button onClick="{{ clear }}" style="height:40px;padding:0 16px;border:0;border-radius:8px;background:#F3EDFD;color:#7D3EE3;font:700 14px Roboto;cursor:pointer" style-hover="background:#EAE2FF">Limpar filtros</button>
+            </div>
+          </sc-if>
+        </section>
+      </sc-if>
+
+      <section data-screen-label="Copiloto" style="display:grid;grid-template-columns:{{ bpG6 }};gap:28px;align-items:center;padding:36px 40px;border-radius:24px;background:radial-gradient(60% 120% at 100% 0%,rgba(125,62,227,.6),transparent 70%),#301461;color:#fff">
+        <div style="display:flex;gap:20px;align-items:center">
+          <img src="assets/home/copiloto-mascote.webp" alt="" style="flex:none;width:88px;height:88px;object-fit:contain">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font:700 12px Roboto;letter-spacing:.08em;color:#E0D2FF">COPILOTO</span>
+            <span style="font:800 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">Ficou com dúvida? Pergunte sobre o seu carro.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ asks }}" as="a" hint-placeholder-count="3">
+            <a href="{{ a.href }}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:#fff;font:500 15px Roboto" style-hover="color:#fff;background:rgba(255,255,255,.18)"><span style="font-family:'Material Symbols Rounded';font-size:20px">chat_bubble</span><span style="flex:1">{{ a.t }}</span><span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></a>
+          </sc-for>
+        </div>
+      </section>
+
+      <section data-screen-label="Newsletter" style="display:grid;grid-template-columns:{{ bpG7 }};gap:32px;padding:36px 40px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">NEWSLETTER · TODA SEXTA</span>
+          <span style="font:800 26px/1.25 'Merriweather Sans',sans-serif">O que importa da semana, em 5 minutos.</span>
+          <span style="font:400 15px/1.55 Roboto;color:#5A6472;text-wrap:pretty">Lançamentos, a variação da FIPE dos carros mais buscados e um guia prático. Mais de 5.000 leitores já recebem.</span>
+        </div>
+        <sc-if value="{{ nlForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ nlSubmit }}" style="display:flex;flex-direction:column;gap:12px;justify-content:center">
+            <label style="position:relative;display:block;height:56px;border-radius:8px;box-shadow:inset 0 0 0 1px {{ nlRing }};cursor:text" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">
+              <span style="position:absolute;left:16px;top:8px;font:500 12px Roboto;color:#5A6472;pointer-events:none">Seu e-mail</span>
+              <input type="email" value="{{ nlEmail }}" onChange="{{ onNlEmail }}" autocomplete="email" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 16px 6px;border:0;border-radius:8px;background:transparent;font:400 15px Roboto;color:#1D2433" style-focus="outline:none;box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+            </label>
+            <sc-if value="{{ nlErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 13px Roboto;color:#C62828">{{ nlErr }}</span></sc-if>
+            <button type="submit" style="height:48px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#5F29AE">Assinar grátis</button>
+            <span style="font:400 12px/1.5 Roboto;color:#5A6472">Sem spam. Cancele quando quiser. <a href="Politica de Privacidade.dc.html">Privacidade</a></span>
+          </form>
+        </sc-if>
+        <sc-if value="{{ nlDone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:8px;padding:24px;border-radius:16px;background:#F3EDFD">
+            <span style="font-family:'Material Symbols Rounded';font-size:30px;color:#7D3EE3">mark_email_read</span>
+            <span style="font:700 17px Roboto">Pronto, até sexta.</span>
+            <span style="font:400 14px Roboto;color:#3F4654">Enviamos a confirmação para {{ nlEmail }}.</span>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  _bpOn = (window.addEventListener("resize", () => this.setState({ vw: window.innerWidth })), 0);
+  bpCols = () => { const vw = this.state.vw || window.innerWidth, T = this.props.bpTablet768 ?? 768, D = this.props.bpDesktop1024 ?? 1024, o = {};
+    [[3,2,1],[4,2,1],[4,2,1],[3,2,1],[3,3,1],[4,2,1],[2,2,1],[2,2,1]].forEach(([d, t, m], i) => { o["bpG" + i] = "repeat(" + (vw >= D ? d : vw >= T ? t : m) + ",minmax(0,1fr))"; }); return o; };
+  state = { D: null, q: "", cat: "", fmt: "", focus: false, nlEmail: "", nlErr: "", nlDone: false };
+  componentDidMount() {
+    import("./blog-data.js").then((D) => this.setState({ D }));
+    const c = new URLSearchParams(location.search).get("editoria"); if (c) this.setState({ cat: c });
+  }
+  card = (p) => {
+    const D = this.state.D, cat = D.CATS.find((c) => c.id === p.cat) || {};
+    return { ...p, href: "Artigo.dc.html?a=" + p.id, catLabel: cat.label, catUp: (cat.label || "").toUpperCase(), fmtLabel: D.FORMATS[p.fmt],
+      bg: "url(" + p.img + ")", bgs: p.cutout ? "82% auto" : "cover", bgc: p.cutout ? "#EEEAF7" : "#E6E6EE", bgcDark: p.cutout ? "#2B3346" : "#2B3346" };
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() { return { ...this._rv(), ...this.bpCols() }; }
+  _rv() {
+    const s = this.state, D = s.D, q = s.q.trim().toLowerCase();
+    const base = {
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }), focusOn: () => this.setState({ focus: true }), focusOff: () => this.setState({ focus: false }),
+      searchRing: s.focus ? "#7D3EE3" : "#D4D4D8", searchFocus: s.focus ? "0 0 0 3px rgba(125,61,227,.35)" : "none",
+      nlForm: !s.nlDone, nlDone: s.nlDone, nlEmail: s.nlEmail, nlErr: s.nlErr, nlRing: s.nlErr ? "#C62828" : "#D4D4D8",
+      onNlEmail: (e) => this.setState({ nlEmail: e.target.value, nlErr: "" }),
+      nlSubmit: (e) => { e.preventDefault(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.nlEmail.trim())) return this.setState({ nlErr: "Digite um e-mail válido." }); this.setState({ nlDone: true }); },
+      asks: ["Qual SUV até R$ 150 mil desvaloriza menos?", "Vale a pena trocar meu carro por um elétrico?", "Quanto vou gastar por mês com um Onix 2022?"].map((t) => ({ t, href: "Copiloto.dc.html?q=" + encodeURIComponent(t) })),
+      copAsk: "Copiloto.dc.html?q=" + encodeURIComponent(s.q || "Me indique uma matéria"),
+      clear: () => this.setState({ q: "", cat: "", fmt: "" })
+    };
+    if (!D) return { ...base, isHome: false, isList: true, catNav: [], latest: [], sections: [], picks: [], top: [], tools: [], lead: {}, list: [], fmtChips: [] };
+    const all = D.POSTS.map(this.card), filtering = !!(s.cat || q);
+    const catNav = [{ id: "", label: "Todas", icon: "apps" }].concat(D.CATS).map((c) => { const on = s.cat === c.id && !q; return { ...c, cur: on ? "page" : "false", fg: on ? "#7D3EE3" : "#1D2433", line: on ? "#7D3EE3" : "transparent", pick: () => this.setState({ cat: c.id, q: "", fmt: "" }) }; });
+    const lead = all.find((p) => p.lead) || all[0];
+    const sections = ["compra", "avaliacoes", "bolso", "eletricos"].map((id) => { const c = D.CATS.find((x) => x.id === id); return { ...c, posts: all.filter((p) => p.cat === id && p.id !== lead.id).slice(0, 4), more: () => this.setState({ cat: id, fmt: "" }) }; });
+    let list = all.filter((p) => (!s.cat || p.cat === s.cat) && (!q || (p.title + " " + p.dek).toLowerCase().includes(q)));
+    const fmts = [...new Set(list.map((p) => p.fmt))];
+    if (s.fmt) list = list.filter((p) => p.fmt === s.fmt);
+    const curCat = D.CATS.find((c) => c.id === s.cat);
+    return {
+      ...base, isHome: false, isList: true, catNav, lead,
+      latest: all.filter((p) => p.id !== lead.id).slice(0, 5),
+      tools: [
+        { icon: "pin", t: "Consultar placa", d: "Leilão, sinistro, débitos e recall", href: "Consulta Placa.dc.html", ibg: "#FFF1EF", ic: "#E63E2F" },
+        { icon: "sell", t: "Tabela FIPE", d: "Preço médio e histórico do modelo", href: "Precos e Valorizacao.dc.html", ibg: "#F3EDFD", ic: "#7D3EE3" },
+        { icon: "savings", t: "Quanto vale", d: "Valor do seu carro em 1 minuto", href: "Quanto Vale.dc.html", ibg: "#F3EDFD", ic: "#7D3EE3" },
+        { icon: "compare_arrows", t: "Comparador", d: "Até 3 carros lado a lado", href: "Comparativo.dc.html", ibg: "#F3EDFD", ic: "#7D3EE3" }
+      ],
+      sections, picks: all.filter((p) => p.pick && p.id !== lead.id).slice(0, 3),
+      top: ["ipva-eletrico", "golpes-venda", "desvalorizacao", "consulta-o-que-mostra", "oleo-troca"].map((id, i) => ({ ...all.find((p) => p.id === id), rank: String(i + 1) })),
+      listTitle: q ? "Resultados para “" + s.q.trim() + "”" : curCat ? curCat.label : "Todas as matérias",
+      listSub: (curCat && !q ? curCat.desc + " · " : "") + list.length + (list.length === 1 ? " matéria" : " matérias"),
+      fmtChips: [{ id: "", label: "Todos" }].concat(fmts.map((f) => ({ id: f, label: D.FORMATS[f] }))).map((f) => { const on = s.fmt === f.id; return { ...f, on, bg: on ? "#1D2433" : "#fff", fg: on ? "#fff" : "#1D2433", ring: on ? "#1D2433" : "#D4D4D8", pick: () => this.setState({ fmt: f.id }) }; }),
+      list, hasList: list.length > 0, noList: list.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>

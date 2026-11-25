@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hide-cta="{{ true }}" hint-size="100%,81px"></dc-import></div>
+  <main data-screen-label="Esqueci a senha" style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px 80px">
+    <div style="width:100%;max-width:440px;padding:36px 32px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08);box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
+      <a href="{{ loginHref }}" style="align-self:flex-start;display:flex;align-items:center;gap:4px;font:500 14px Roboto" style-hover="color:#5F29AE"><span style="font-family:'Material Symbols Rounded';font-size:18px">arrow_back</span>Voltar para o login</a>
+      <sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:20px">
+          <span style="width:48px;height:48px;border-radius:12px;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:26px">lock_reset</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h1 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Precisando de uma nova senha?</h1>
+            <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Informe o e-mail da sua conta e enviaremos um link para você criar outra.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="position:relative;display:block;height:56px;border-radius:8px;box-shadow:inset 0 0 0 1px {{ ring }};cursor:text" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">
+              <span style="position:absolute;left:16px;top:8px;font:500 12px Roboto;color:#5A6472;pointer-events:none">E-mail</span>
+              <input type="email" value="{{ email }}" onChange="{{ onEmail }}" autocomplete="email" autofocus="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 16px 6px;border:0;border-radius:8px;background:transparent;font:400 16px Roboto;color:#1D2433" style-focus="outline:none;box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+            </label>
+            <sc-if value="{{ err }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 13px Roboto;color:#C62828">{{ err }}</span></sc-if>
+          </div>
+          <button type="submit" style="height:52px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 16px Roboto;cursor:pointer" style-hover="background:#5F29AE">Enviar link de recuperação</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ isSent }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px">
+          <span style="width:48px;height:48px;border-radius:12px;background:#E8F5EC;color:#15803D;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:26px">mark_email_read</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h1 style="margin:0;font:800 26px/1.25 'Merriweather Sans',sans-serif">Confira seu e-mail.</h1>
+            <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Se existir uma conta com <b style="color:#1D2433">{{ email }}</b>, você vai receber um link para criar uma nova senha. O link vale por 30 minutos.</p>
+          </div>
+          <div style="padding:14px 16px;border-radius:12px;background:#F6F6F9;font:400 13px/1.5 Roboto;color:#3F4654">Não chegou? Olhe a caixa de spam e as abas Promoções ou Atualizações.</div>
+          <button onClick="{{ resend }}" disabled="{{ cooling }}" style="height:48px;border:0;border-radius:8px;background:{{ rsBg }};color:{{ rsFg }};font:700 15px Roboto;cursor:{{ rsCur }}" style-hover="background:{{ rsHov }}">{{ rsTxt }}</button>
+          <button onClick="{{ change }}" style="align-self:center;padding:4px;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer" style-hover="color:#5F29AE;text-decoration:underline">Usar outro e-mail</button>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.24)">{{ toast }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  state = { email: new URLSearchParams(location.search).get("email") || "", err: "", sent: false, left: 0, toast: "" };
+  componentWillUnmount() { clearInterval(this.t); clearTimeout(this.tt); }
+  cool = () => { clearInterval(this.t); this.setState({ left: 30 }); this.t = setInterval(() => this.setState((s) => { if (s.left <= 1) clearInterval(this.t); return { left: s.left - 1 }; }), 1000); };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, cooling = s.left > 0;
+    return {
+      isForm: !s.sent, isSent: s.sent, email: s.email, err: s.err, ring: s.err ? "#C62828" : "#D4D4D8",
+      loginHref: "Login.dc.html" + (s.email ? "?email=" + encodeURIComponent(s.email) : ""),
+      onEmail: (e) => this.setState({ email: e.target.value, err: "" }),
+      submit: (e) => { e.preventDefault(); if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim())) return this.setState({ err: "Digite um e-mail válido. Ex.: nome@email.com" }); this.setState({ sent: true }); this.cool(); },
+      cooling, rsTxt: cooling ? "Reenviar em " + s.left + "s" : "Reenviar link", rsBg: cooling ? "#E6E6EE" : "#F3EDFD", rsFg: cooling ? "#5A6472" : "#7D3EE3", rsCur: cooling ? "not-allowed" : "pointer", rsHov: cooling ? "#E6E6EE" : "#EAE2FF",
+      resend: () => { if (cooling) return; this.cool(); this.setState({ toast: "Enviamos um novo link." }); clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: "" }), 2600); },
+      change: () => { clearInterval(this.t); this.setState({ sent: false, left: 0 }); },
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

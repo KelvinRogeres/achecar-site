@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/fig-assets.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}
+    [data-hdr] div[style*="height: 80px"]{padding-left:max(24px,calc((100% - 1152px) / 2))!important;padding-right:max(24px,calc((100% - 1152px) / 2))!important;box-sizing:border-box!important;gap:24px}
+    @keyframes acRing{to{rotate:360deg}}
+    @media (prefers-reduced-motion:reduce){[data-plate-ring] *{animation:none!important}}
+    @keyframes cpA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18%,-14%) scale(1.15)}}
+    @keyframes cpB{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-22%,10%) scale(.9)}}
+    @keyframes cpC{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(12%,18%) scale(1.2)}}
+    @media (prefers-reduced-motion:reduce){[data-cpfx] *{animation:none!important}}
+    input::placeholder{color:rgba(255,255,255,.55);letter-spacing:.06em}
+    @keyframes rkShoot{0%{transform:translateX(0)}35%{transform:translateX(-4px)}60%{transform:translateX(44px);opacity:0}61%{transform:translateX(-44px);opacity:0}100%{transform:translateX(0);opacity:1}}
+    @keyframes rkLine{0%{transform:translateX(30px) scaleX(.2);opacity:0}30%{opacity:.9}100%{transform:translateX(-40px) scaleX(1);opacity:0}}
+    @media (max-width:599px){[data-rk-line]{display:none}}
+[data-rk]:hover [data-rk-arrow],[data-rk]:focus-visible [data-rk-arrow]{animation:rkShoot .7s cubic-bezier(.5,0,.2,1) infinite}
+    [data-rk]:hover [data-rk-line],[data-rk]:focus-visible [data-rk-line]{animation:rkLine .45s linear infinite}
+    @media (prefers-reduced-motion:reduce){[data-rk] *{animation:none!important}}
+  @keyframes nfIn{0%{opacity:0;transform:translateY(-28px) scale(.94)}100%{opacity:1;transform:none}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+<style>[data-plate-in]::placeholder{color:rgba(255,255,255,.5);font:500 14px Roboto,sans-serif;letter-spacing:.06em}</style>
+  <script src="mobile-nohover.js"></script>
+<style>[data-keep-center][style],[data-keep-center] [style]{text-align:center!important}</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:#F6F6F9;min-height:100vh;display:flex;flex-direction:column">
+
+  <div style="position:sticky;top:0;z-index:40;width:100%">
+    <dc-import name="Header Achecar" login-style="{{ loginStyle }}" hint-size="100%,81px"></dc-import>
+  </div>
+
+  <section data-screen-label="01 Hero" style="position:relative;background:{{ heroBg }};min-height:clamp(440px, calc(30vw + 300px), 620px);display:flex;align-items:center;justify-content:center;padding:clamp(32px, calc(3vw + 20px), 56px) clamp(16px, calc(2.2vw + 7px), 32px);box-sizing:border-box">
+    <div style="width:100%;max-width:1120px;display:flex;justify-content:flex-end">
+      <div style="width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;color:#fff">
+        <div style="font:500 13px Roboto;color:rgba(255,255,255,.85)">Achecar Inteligência Veicular</div>
+        <h1 style="margin:0;font:800 clamp(28px, calc(5vw + 10px), 40px)/1.2 'Merriweather Sans',sans-serif;letter-spacing:-.01em;text-wrap:balance">Descubra <span style="background:linear-gradient(90deg,#A57BF0 0%,#7D3EE3 35%,#FF5040 75%,#FF8A3D 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent">TODO</span> o histórico do carro usado antes de comprar.</h1>
+        <p style="margin:0;font:400 15px/1.5 Roboto;color:rgba(255,255,255,.78);max-width:520px;text-wrap:pretty">Histórico de leilão, sinistro, roubo, passagem por seguradora, quilometragem, débitos e muito mais. Em minutos.</p>
+        <div data-plate-ring="1" style="position:relative;margin-top:16px;width:100%;max-width:440px;border-radius:18px;padding:2px;box-sizing:border-box;isolation:isolate">
+          <div aria-hidden="true" style="position:absolute;inset:-6px;border-radius:24px;overflow:hidden;z-index:-2;filter:blur(14px);opacity:.75"><div style="position:absolute;left:50%;top:50%;width:200%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(from 0deg,#7D3EE3,#A57BF0,#FF5040,#FF8A3D,#FF5040,#7D3EE3);animation:acRing 4s linear infinite"></div></div>
+          <div aria-hidden="true" style="position:absolute;inset:0;border-radius:18px;overflow:hidden;z-index:-1"><div style="position:absolute;left:50%;top:50%;width:200%;aspect-ratio:1;translate:-50% -50%;background:conic-gradient(from 0deg,#7D3EE3,#A57BF0,#FF5040,#FF8A3D,#FF5040,#7D3EE3);animation:acRing 4s linear infinite"></div></div>
+        <form onSubmit="{{ onSubmitPlate }}" style="width:100%;box-sizing:border-box;display:flex;flex-direction:{{ plateDir }};gap:10px;padding:10px;border-radius:16px;background:#0E0B16">
+          <label style="position:relative;flex:1 1 auto;min-width:0;width:100%;height:56px;display:block;cursor:text">
+            <sc-if value="{{ plateIcon }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position:absolute;left:14px;top:50%;translate:0 -50%;display:flex;align-items:center;gap:6px;pointer-events:none;z-index:1"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#A57BF0">directions_car</span><span style="width:1px;height:20px;background:rgba(255,255,255,.16)"></span></span></sc-if>
+            <input data-plate-in="" value="{{ plate }}" onChange="{{ onPlate }}" maxlength="7" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Placa do veículo" placeholder="{{ platePh }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:{{ plateInPad }};border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#1C1B24;color:#fff;font:700 17px 'Roboto Mono',monospace;letter-spacing:.14em;text-transform:uppercase;outline:none;cursor:text;transition:border-color .15s ease-out,box-shadow .15s ease-out,background .15s ease-out" style-hover="border-color:rgba(255,255,255,.32);background:#22212B" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.35);background:#22212B">
+          </label>
+          <button type="submit" aria-label="Consultar placa" data-rk="" style="position:relative;overflow:hidden;width:{{ plateBtnW }};padding:{{ plateBtnPad }};height:56px;flex:none;border:0;border-radius:12px;background:linear-gradient(135deg,#FF5040,#7D3EE3);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s ease-out,filter .15s ease-out" style-hover="filter:brightness(1.1)" style-active="transform:scale(.94)">
+            <span ref="{{ rkRef }}" aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:rotate .25s cubic-bezier(.2,.8,.2,1);pointer-events:none">
+            <span data-rk-line="" style="position:absolute;left:14px;top:18px;width:14px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:0s;pointer-events:none"></span>
+            <span data-rk-line="" style="position:absolute;left:8px;top:25px;width:18px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:.15s;pointer-events:none"></span>
+            <span data-rk-line="" style="position:absolute;left:14px;top:32px;width:12px;height:2px;border-radius:2px;background:rgba(255,255,255,.85);opacity:0;transform-origin:right center;animation-delay:.3s;pointer-events:none"></span>
+            <span style="position:relative;display:flex;align-items:center;gap:6px;pointer-events:none"><sc-if value="{{ plateLbl }}" hint-placeholder-val="{{ false }}"><span style="font:700 15px Roboto;letter-spacing:.01em;white-space:nowrap">Consultar</span></sc-if><span data-rk-arrow="" style="position:relative;font-family:'Material Symbols Rounded';font-size:22px;line-height:1">arrow_forward</span></span>
+            </span>
+          </button>
+        </form>
+        </div>
+        <sc-if value="{{ plateMsg }}" hint-placeholder-val="{{ false }}">
+          <div style="font:400 13px Roboto;color:rgba(255,255,255,.75)">{{ plateMsg }}</div>
+        </sc-if>
+        <div style="display:flex;gap:28px;margin-top:4px">
+          <a href="Insights Consulta v5.dc.html?demo=1" style="display:flex;align-items:center;gap:4px;color:#fff;font:500 13px Roboto">Demonstrativo da consulta <span style="font-family:'Material Symbols Rounded';font-size:16px">north_east</span></a>
+          <a href="Versoes.dc.html" style="display:flex;align-items:center;gap:4px;color:#fff;font:500 13px Roboto">Ficha do seu carro <span style="font-family:'Material Symbols Rounded';font-size:16px">north_east</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="copiloto" data-screen-label="02 Copiloto" style="display:flex;flex-direction:column;align-items:center;padding:clamp(32px, calc(9vw), 72px) clamp(16px, calc(2.2vw + 7px), 32px) 0;gap:28px">
+    <div onMouseEnter="{{ pauseCycle }}" onMouseLeave="{{ resumeCycle }}" style="position:relative;overflow:hidden;width:100%;max-width:1120px;box-sizing:border-box;border-radius:24px;background:#2A1660;padding:clamp(28px, calc(4vw + 14px), 44px) clamp(16px, calc(8vw - 13px), 48px) clamp(24px, calc(3vw + 13px), 36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 80px)/3 + 1px))),1fr));gap:clamp(24px, calc(4vw + 10px), 40px);color:#fff">
+      {{ copilotBg }}
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(12px, calc(1.5vw + 7px), 18px)">
+        <div style="display:flex;align-items:center;gap:8px;align-self:flex-start;padding:5px 12px 5px 6px;border-radius:999px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.18);font:700 10px Roboto;letter-spacing:.08em">
+          <img src="assets/home/copiloto-mascote.webp" alt="" style="width:20px;height:18px;object-fit:contain">COPILOTO ACHECAR
+        </div>
+        <h2 style="margin:0;font:800 clamp(26px, calc(2.5vw + 17px), 36px)/1.2 'Merriweather Sans',sans-serif">O Copiloto explica.<br><span style="color:#C9AEFF">Você decide.</span></h2>
+        <p style="margin:0;font:400 clamp(14px, calc(.3vw + 13px), 15px)/1.55 Roboto;color:rgba(255,255,255,.82);max-width:440px;text-wrap:pretty">Presente nas ferramentas da Achecar, ele ajuda a definir um preço de venda, entender a FIPE, calcular o custo do carro, comparar modelos e ler sua consulta em linguagem simples.</p>
+        <div style="display:flex;flex-wrap:{{ chipWrap }};gap:8px;margin-top:auto;padding-top:clamp(4px, calc(5vw - 14px), 24px);overflow-x:auto;scrollbar-width:none;margin-left:{{ chipBleed }};margin-right:{{ chipBleed }};padding-left:{{ chipPadX }};padding-right:{{ chipPadX }}">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+            <button onClick="{{ t.select }}" aria-pressed="{{ t.active }}" style="position:relative;overflow:hidden;height:30px;flex:none;white-space:nowrap;padding:0 14px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:#fff;font:500 12px Roboto;cursor:pointer;transition:background .2s ease-out,border-color .2s ease-out"><span aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:{{ t.fillW }};background:#7D3EE3;transition:{{ t.fillT }}"></span><span style="position:relative">{{ t.label }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:12px;align-self:center;opacity:{{ panelOp }};transform:translateY({{ panelY }});transition:{{ panelT }}">
+        <div style="border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:14px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;font:600 10px Roboto;letter-spacing:.06em">
+            <span>{{ panel.eyebrow }}</span><span style="font-weight:400;letter-spacing:0;font-size:11px;color:rgba(255,255,255,.75)">{{ panel.tool }}</span>
+          </div>
+          <div style="background:#fff;border-radius:12px;padding:14px 16px;color:#1D2433;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 32px rgba(26,13,64,.18)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+              <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+                <span style="font:500 11px Roboto;color:#5A6472">{{ panel.headLabel }}</span>
+                <span style="font:800 20px/1.15 'Merriweather Sans',sans-serif;color:#1D2433;letter-spacing:-.01em">{{ panel.head }}<span style="font:500 12px Roboto;color:#7A8494;letter-spacing:0">{{ panel.headUnit }}</span></span>
+              </div>
+              <sc-if value="{{ panel.badge }}" hint-placeholder-val="{{ true }}">
+                <span style="flex:none;display:flex;align-items:center;gap:4px;height:24px;padding:0 9px;border-radius:999px;background:{{ panel.badge.bg }};color:{{ panel.badge.color }};font:600 11px Roboto"><span class="material-symbols-rounded" style="font-size:14px">{{ panel.badge.icon }}</span>{{ panel.badge.text }}</span>
+              </sc-if>
+            </div>
+            <div style="height:106px;flex:none;display:flex;flex-direction:column;justify-content:center;overflow:hidden">
+            <sc-if value="{{ panel.isRange }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative;height:70px;margin:0 6px">
+                <div style="position:absolute;left:0;right:0;top:14px;height:8px;border-radius:999px;background:#F0EEF5"></div>
+                <div style="position:absolute;top:14px;height:8px;border-radius:999px;background:linear-gradient(90deg,#DCCBFB,#B08AF2);left:{{ panel.bandL }};width:{{ panel.bandW }}"></div>
+                <sc-for list="{{ panel.marks }}" as="m" hint-placeholder-count="3">
+                  <div style="position:absolute;top:0;left:{{ m.left }};transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px">
+                    <div style="height:36px;display:flex;align-items:center"><div style="width:{{ m.dot }};height:{{ m.dot }};border-radius:50%;background:{{ m.color }};box-shadow:0 0 0 3px #fff,0 2px 6px rgba(29,36,51,.25)"></div></div>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:1px;white-space:nowrap;margin-top:-8px">
+                      <span style="font:700 12px Roboto;color:{{ m.color }}">{{ m.v }}</span>
+                      <span style="font:400 10px Roboto;color:#7A8494">{{ m.k }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ panel.isTrend }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:end;height:90px">
+                <sc-for list="{{ panel.bars }}" as="b" hint-placeholder-count="6">
+                  <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%">
+                    <span style="font:600 10px Roboto;color:{{ b.vColor }};white-space:nowrap">{{ b.v }}</span>
+                    <div style="width:100%;height:52px;flex:none;display:flex;align-items:flex-end;justify-content:center"><div style="width:100%;max-width:28px;height:{{ b.h }};flex:none;border-radius:4px 4px 2px 2px;background:{{ b.bg }}"></div></div>
+                    <span style="font:400 10px Roboto;color:#7A8494">{{ b.m }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ panel.isStack }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;gap:2px;height:10px;border-radius:999px;overflow:hidden;flex:none">
+                  <sc-for list="{{ panel.segs }}" as="g" hint-placeholder-count="4">
+                    <div style="flex:0 0 {{ g.pct }};background:{{ g.color }}"></div>
+                  </sc-for>
+                </div>
+                <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:3px">
+                  <sc-for list="{{ panel.segs }}" as="g" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:8px;min-width:0">
+                      <span style="width:8px;height:8px;border-radius:2px;flex:none;background:{{ g.color }}"></span>
+                      <span style="flex:1;min-width:0;font:400 12px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ g.k }}</span>
+                      <span style="font:600 12px Roboto;color:#1D2433;white-space:nowrap">{{ g.v }}</span>
+                      <span style="font:400 11px Roboto;color:#7A8494;width:30px;text-align:right">{{ g.pctLabel }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ panel.isCompare }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:7px">
+                <sc-for list="{{ panel.groups }}" as="gr" hint-placeholder-count="2">
+                  <div style="display:flex;flex-direction:column;gap:3px">
+                    <span style="font:500 11px Roboto;color:#5A6472">{{ gr.k }}</span>
+                    <sc-for list="{{ gr.rows }}" as="r" hint-placeholder-count="2">
+                      <div style="display:grid;grid-template-columns:44px minmax(0,1fr) 76px;gap:10px;align-items:center">
+                        <span style="font:500 11px Roboto;color:{{ r.nameColor }}">{{ r.name }}</span>
+                        <div style="height:8px;border-radius:999px;background:#F0EEF5;overflow:hidden"><div style="height:100%;width:{{ r.w }};border-radius:999px;background:{{ r.color }}"></div></div>
+                        <span style="font:600 12px Roboto;color:#1D2433;text-align:right;white-space:nowrap">{{ r.v }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ panel.isChecks }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column">
+                <sc-for list="{{ panel.checks }}" as="ck" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:10px;padding:3px 0;border-top:1px solid #F0EEF5">
+                    <span class="material-symbols-rounded" style="font-size:18px;color:{{ ck.color }};font-variation-settings:'FILL' 1">{{ ck.icon }}</span>
+                    <span style="flex:1;font:500 12px Roboto;color:#1D2433">{{ ck.k }}</span>
+                    <span style="font:500 12px Roboto;color:{{ ck.vColor }}">{{ ck.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            </div>
+            <div style="display:flex;gap:8px;align-items:flex-start;padding:8px 12px;border-radius:10px;background:#F6F3FD">
+              <span class="material-symbols-rounded" style="font-size:16px;color:#7D3EE3;margin-top:1px">lightbulb</span>
+              <span style="font:400 12px/1.45 Roboto;color:#1D2433;text-wrap:pretty;min-height:35px">{{ panel.note }}</span>
+            </div>
+          </div>
+        </div>
+        <div style="align-self:flex-end;font:400 10px Roboto;color:rgba(255,255,255,.6)">Valores ilustrativos</div>
+      </div>
+    </div>
+
+    <div style="width:100%;max-width:1120px;display:flex;align-items:center;gap:16px;font:500 11px Roboto;letter-spacing:.08em;color:#5A6472">
+      <div style="flex:1;height:1px;background:#E6E6EE"></div>FERRAMENTAS DO COPILOTO<div style="flex:1;height:1px;background:#E6E6EE"></div>
+    </div>
+
+    <div style="width:100%;max-width:1120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+      <a href="Quanto Vale.dc.html" aria-label="Tabela FIPE · Quero saber agora" style="position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:368/640;transition:transform .15s ease-out,box-shadow .15s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,36,51,.12)">
+        <img src="assets/home/card-tabela-fipe.webp" alt="Tabela FIPE: quanto vale um carro hoje?" style="display:block;width:100%;height:100%;object-fit:cover">
+      </a>
+      <a href="Precos e Valorizacao.dc.html" aria-label="Mercado · Ver dados de mercado" style="position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:368/640;transition:transform .15s ease-out,box-shadow .15s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,36,51,.12)">
+        <img src="assets/home/card-mercado.webp" alt="Mercado: vendas, preços e consumo, em números." style="display:block;width:100%;height:100%;object-fit:cover">
+      </a>
+      <a href="Comparativo.dc.html" aria-label="Comparador · Comparar carros" style="position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:368/640;transition:transform .15s ease-out,box-shadow .15s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,36,51,.12)">
+        <img src="assets/home/card-comparador.webp" alt="Comparador: em dúvida entre dois? Compare lado a lado." style="display:block;width:100%;height:100%;object-fit:cover">
+      </a>
+    </div>
+  </section>
+
+  <section ref="{{ garageRef }}" data-screen-label="03 Garagem" style="position:relative;overflow:hidden;margin-top:72px;background-color:#F6F6F9;background-image:repeating-linear-gradient(180deg,transparent 0 9px,#ECECF1 9px 10px);display:flex;flex-direction:column;align-items:center;padding:clamp(40px, calc(4vw + 26px), 72px) clamp(16px, calc(2.2vw + 7px), 32px) clamp(40px, calc(4vw + 26px), 72px);gap:16px">
+    <div aria-hidden="true" style="position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden">
+      <div style="display:flex;flex-direction:column;filter:drop-shadow(0 12px 16px rgba(29,36,51,.12))">
+        <sc-for list="{{ slats }}" as="s" hint-placeholder-count="0">
+          <div style="flex:none;height:{{ s.h }};transition:{{ s.t }};background:linear-gradient(180deg,#F4F4F7 0 1px,#E9E9EF 1px,#D9D9E2 29px,#C4C4CF 29px 31px,#E4E4EB 31px);background-size:100% 32px;background-position:bottom"></div>
+        </sc-for>
+        <div style="flex:none;position:relative;overflow:hidden;height:{{ railH }};transition:{{ railT }};background:linear-gradient(180deg,#D4D4DD,#C6C6D1);border-top:1px solid #B8B8C4">
+          <div style="position:absolute;left:50%;top:7px;transform:translateX(-50%);width:96px;height:8px;border-radius:999px;background:#A3A3B1;box-shadow:inset 0 1px 0 rgba(0,0,0,.15)"></div>
+        </div>
+      </div>
+      <div style="position:absolute;left:0;right:0;top:0;height:18px;background:linear-gradient(180deg,#B4B4C1,#DADAE2);box-shadow:0 3px 8px rgba(29,36,51,.2);opacity:{{ drumOp }};transition:{{ drumT }}"></div>
+    </div>
+    <div style="width:100%;max-width:1120px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2 style="margin:0;font:800 clamp(28px, calc(2vw + 21px), 34px)/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Garagem.<br>Todos os carros<sc-if value="{{ isMob }}" hint-placeholder-val="{{ false }}"><br></sc-if> do Brasil.</h2>
+        <a href="Minha Conta.dc.html?tela=carros" style="align-self:flex-start;height:32px;padding:0 12px;border-radius:6px;background:#0A0A0A;color:#fff;display:flex;align-items:center;font:700 12px Roboto" style-hover="background:#262626;color:#fff">Ver a Garagem completa</a>
+      </div>
+      <div style="position:relative;width:180px;height:160px;margin-right:24px">
+        <img src="assets/home/garagem-3d.webp" alt="Garagem Achecar" style="position:absolute;right:0;bottom:0;width:140px">
+        <div style="position:absolute;right:-24px;top:0;display:flex;align-items:center;gap:6px;padding:6px 10px 6px 6px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(29,36,51,.12)">
+          <span style="width:18px;height:18px;border-radius:4px;background:#7D3EE3;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:12px">garage</span>
+          <span style="display:flex;flex-direction:column"><span style="font:700 9px Roboto">Mais de 5.000 versões</span><span style="font:400 8px Roboto;color:#5A6472">Ficha, preço e custo</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="width:100%;max-width:1120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 32px)/3 + 1px))),1fr));gap:16px">
+      <div style="position:relative;border-radius:20px;overflow:hidden;min-height:440px;background:#DDDDE3 url(assets/home/lancamentos.jpg) center 70% / cover no-repeat;padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:600 10px Roboto;letter-spacing:.08em;color:#7D3EE3">LANÇAMENTOS DO MÊS</span>
+          <span style="font:700 26px/1.3 'Merriweather Sans',sans-serif">Os carros que chegam<br>ao Brasil em setembro.</span>
+        </div>
+        <a href="Lancamentos.dc.html" style="align-self:flex-start;height:48px;padding:0 20px;border-radius:8px;background:#7D3EE3;color:#fff;display:flex;align-items:center;font:700 14px Roboto" style-hover="background:#6A2FCB;color:#fff">Ver lançamentos</a>
+      </div>
+      <div style="position:relative;border-radius:20px;overflow:hidden;min-height:440px;background:#fff;padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box">
+        <div style="display:flex;flex-direction:column;gap:8px;position:relative;z-index:1">
+          <span style="font:600 10px Roboto;letter-spacing:.08em;color:#7D3EE3">MAIS VENDIDOS DO MÊS</span>
+          <span style="font:700 26px/1.3 'Merriweather Sans',sans-serif">O carro que o Brasil<br>mais comprou.</span>
+        </div>
+        <div style="position:absolute;right:-60px;bottom:24px;width:440px">
+          <img src="assets/home/polo-frente.webp" alt="Volkswagen Polo" style="width:100%;display:block">
+        </div>
+        <a href="Garagem.dc.html" style="position:relative;z-index:1;align-self:flex-start;height:48px;padding:0 20px;border-radius:8px;background:#7D3EE3;color:#fff;display:flex;align-items:center;font:700 14px Roboto" style-hover="background:#6A2FCB;color:#fff">Ver o ranking</a>
+      </div>
+    </div>
+
+    <div style="width:100%;max-width:1120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 48px)/3 + 1px))),1fr));gap:24px;margin-top:40px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 18px 'Merriweather Sans',sans-serif">Marcas</span><a href="Garagem v2.dc.html#montadoras" style="display:flex;align-items:center;gap:2px;font:500 12px Roboto">Ver todas <span style="font-family:'Material Symbols Rounded';font-size:14px">arrow_forward</span></a></div>
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ brands }}" as="b" hint-placeholder-count="15">
+            <a href="{{ b.href }}" title="{{ b.name }}" style="aspect-ratio:1 / 1;min-width:0;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;transition:box-shadow .15s ease-out" style-hover="box-shadow:0 2px 8px rgba(29,36,51,.12)">
+              <x-import component-from-global-scope="AchecarDesignSystem_c352d1.MarcaSMbolo" brand="{{ b.key }}" tone="dark" style="width:48px;height:48px;flex:none;scale:{{ brandScale }}" hint-size="48px,48px"></x-import>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:700 18px 'Merriweather Sans',sans-serif">Categorias</span><a href="Garagem v2.dc.html" style="display:flex;align-items:center;gap:2px;font:500 12px Roboto">Ver todas <span style="font-family:'Material Symbols Rounded';font-size:14px">arrow_forward</span></a></div>
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="13">
+            <a href="{{ c.href }}" title="{{ c.label }}" style="aspect-ratio:1 / 1;min-width:0;box-sizing:border-box;padding:6px 4px;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1D2433;transition:box-shadow .15s ease-out" style-hover="box-shadow:0 2px 8px rgba(29,36,51,.12);color:#1D2433">
+              <span role="img" aria-hidden="true" style="width:84%;flex:1;min-height:0;background:url({{ c.img }}) center / contain no-repeat"></span>
+              <span style="max-width:100%;font:500 11px/1.2 Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ c.label }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" data-screen-label="04 Blog" style="background:#fff;display:flex;justify-content:center;padding:clamp(40px, calc(5vw + 22px), 80px) clamp(16px, calc(2.2vw + 7px), 32px)">
+    <div style="width:100%;max-width:1120px;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px"><h2 style="margin:0;font:800 26px 'Merriweather Sans',sans-serif">Blog</h2><a href="Blog.dc.html" style="display:flex;align-items:center;gap:2px;font:500 12px Roboto">Ver todos os artigos do blog <span style="font-family:'Material Symbols Rounded';font-size:14px">arrow_forward</span></a></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 96px)/3 + 1px))),1fr));gap:48px">
+        <a href="Artigo.dc.html?a=compra-no-escuro" style="display:flex;flex-direction:column;gap:10px;color:#1D2433" style-hover="color:#1D2433">
+          <img src="assets/home/blog-destaque.webp" alt="" style="width:100%;aspect-ratio:16/9.3;object-fit:cover;border-radius:16px">
+          <span style="font:700 10px Roboto;letter-spacing:.06em;color:#7D3EE3;margin-top:6px">GUIA DE COMPRA</span>
+          <span style="font:700 20px/1.35 'Merriweather Sans',sans-serif;text-wrap:pretty">Compra no escuro: o que checar antes de fechar negócio</span>
+          <span style="font:400 13px/1.5 Roboto;color:#5A6472">Placa, documento, histórico de leilão e sinistro: o passo a passo para não levar surpresa junto com o carro.</span>
+          <span style="font:400 11px Roboto;color:#5A6472">8 min de leitura · 22 set 2026</span>
+        </a>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+            <a href="{{ p.href }}" style="display:flex;gap:20px;padding:0 0 20px;margin-bottom:20px;border-bottom:{{ p.border }};color:#1D2433" style-hover="color:#7D3EE3">
+              <div style="width:176px;height:120px;border-radius:12px;flex:none;background:#E6E6EE url({{ p.img }}) center / cover no-repeat"></div>
+              <span style="display:flex;flex-direction:column;gap:6px;padding-top:6px">
+                <span style="font:700 10px Roboto;letter-spacing:.06em;color:#7D3EE3">{{ p.cat }}</span>
+                <span style="font:700 15px/1.4 'Merriweather Sans',sans-serif;text-wrap:pretty">{{ p.title }}</span>
+                <span style="font:400 11px Roboto;color:#5A6472">{{ p.meta }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="app" data-screen-label="05 App" style="position:relative;overflow:hidden;background:{{ appBg }};display:flex;justify-content:center;padding:clamp(48px, calc(6vw + 26px), 96px) clamp(16px, calc(2.2vw + 7px), 32px) 0;color:#fff">
+    <div style="width:100%;max-width:1120px;display:flex;align-items:flex-end;justify-content:space-between;gap:{{ appGap }};flex-wrap:wrap">
+      <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:{{ appColGap }};padding-bottom:{{ appPadB }};max-width:520px">
+        <div style="align-self:flex-start;display:flex;align-items:center;gap:8px;padding:4px 14px 4px 4px;border-radius:999px;border:1px solid rgba(255,255,255,.3);font:500 11px Roboto">
+          <span style="padding:4px 8px;border-radius:999px;background:#2A2830;font:700 9px 'Roboto Mono';letter-spacing:.04em">ACHECAR10</span>10% de desconto na primeira consulta pelo app
+        </div>
+        <h2 style="margin:0;font:800 clamp(26px, calc(2vw + 19px), 34px)/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">A consulta no bolso. E um aviso quando fica pronta.</h2>
+        <div style="display:grid;grid-template-columns:{{ appFeatCols }};gap:8px">
+          <sc-for list="{{ appFeatures }}" as="f" hint-placeholder-count="3">
+            <div style="border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.03);padding:12px;display:flex;flex-direction:{{ appFeatDir }};align-items:{{ appFeatAlign }};gap:12px;min-height:{{ appFeatMinH }}">
+              <span style="width:28px;height:28px;flex:none;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:16px">{{ f.icon }}</span>
+              <span style="font:400 12px/1.45 Roboto;color:rgba(255,255,255,.85)">{{ f.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <div style="width:{{ storeW1 }};height:{{ storeH }};overflow:hidden;flex:none;border-radius:8px"><div style="transform-origin:0 0;scale:{{ storeScale }}"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOSeloDeLoja" store="app_store" hint-size="168px,56px"></x-import></div></div>
+              <div style="width:{{ storeW2 }};height:{{ storeH }};overflow:hidden;flex:none;border-radius:8px"><div style="transform-origin:0 0;scale:{{ storeScale }}"><x-import component-from-global-scope="AchecarDesignSystem_c352d1.AOSeloDeLoja" store="google_play" hint-size="189px,56px"></x-import></div></div>
+            </div>
+      </div>
+      <div style="position:relative;flex:0 1 460px;min-width:0;max-width:100%;height:{{ appPhoneH }};display:flex;justify-content:{{ appPhoneJustify }}">
+        <img src="assets/home/copiloto-oculos.webp" alt="Mascote do Copiloto" style="position:absolute;left:{{ appMascL }};top:{{ appMascT }};width:{{ appMascW }};z-index:2">
+        <div style="position:relative;width:{{ appPhoneW }};height:{{ appPhoneH }};box-sizing:border-box;border:10px solid #1A1A1E;border-bottom:0;border-radius:54px 54px 0 0;background:#000 url(assets/home/app-foto.webp) 30% 40% / cover;overflow:hidden;box-shadow:0 0 0 2px #3A3A40">
+          <div style="position:absolute;left:50%;top:14px;transform:translateX(-50%);width:116px;height:34px;border-radius:999px;background:#000"></div>
+          <div data-keep-center="" style="position:absolute;inset:{{ appClockTop }} 0 auto;text-align:center;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.25)">
+            <div style="font:500 16px Roboto">sexta, 26 de setembro</div>
+            <div style="font:700 {{ appClockSize }}/1 'Merriweather Sans',sans-serif;margin-top:4px">9:41</div>
+          </div>
+          <div ref="{{ notifRef }}" style="position:absolute;left:12px;right:12px;bottom:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px">
+            {{ notifStack }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="06 FAQ" style="background:#F6F6F9;display:flex;justify-content:center;padding:clamp(40px, calc(5vw + 22px), 80px) clamp(16px, calc(2.2vw + 7px), 32px)">
+    <div style="width:100%;max-width:1120px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 120px)/4 + 1px))),1fr));gap:40px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <h2 style="margin:0;font:800 30px/1.2 'Merriweather Sans',sans-serif">Perguntas<br>frequentes.</h2>
+        <a href="Central de Ajuda.dc.html" style="display:flex;align-items:center;gap:2px;font:500 12px Roboto">Ver a central de ajuda <span style="font-family:'Material Symbols Rounded';font-size:14px">arrow_forward</span></a>
+      </div>
+      <div style="grid-column:span 2;min-width:0;background:#fff;border:1px solid #E6E6EE;border-radius:12px;overflow:hidden">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+          <div style="border-top:{{ q.border }}">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;border:0;background:transparent;cursor:pointer;text-align:left;font:700 13px Roboto;color:#1D2433">
+              {{ q.q }}<span style="font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472;flex:none">{{ q.chev }}</span>
+            </button>
+            <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:0 20px 20px;font:400 13px/1.6 Roboto;color:#5A6472;text-wrap:pretty">{{ q.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="07 Footer" style="background:#0A0A0A;color:#fff;padding:62px clamp(16px, calc(2.2vw + 7px), 32px) 46px;font-family:Roboto,sans-serif">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column">
+      <form onSubmit="{{ onSubmitPlate }}" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:28px 32px;border-radius:20px;background:#1A1A1C">
+        <div style="flex:1 1 340px;display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font:700 20px/28px 'Merriweather Sans',sans-serif">Consulte a placa antes de fechar negócio.</span>
+          <span style="font:400 14px/20px Roboto;color:#C4C4CC">Mais de 140 informações de mais de 15 fontes oficiais e privadas. O relatório fica na sua conta e não expira.</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 5px 5px 20px;border-radius:12px;background:#2A2A2E;width:245px;box-sizing:border-box">
+          <input value="{{ plate }}" onChange="{{ onPlate }}" maxlength="7" placeholder="ABC1D23" aria-label="Placa do veículo" style="flex:1;min-width:0;height:40px;border:0;background:transparent;color:#fff;font:500 14px 'Roboto Mono',monospace;letter-spacing:.06em;outline:none">
+          <button type="submit" style="height:40px;padding:0 16px;border:0;border-radius:8px;background:#fff;color:#0A0A0A;font:700 14px Roboto;cursor:pointer" style-hover="background:#E4E4E7">Consultar</button>
+        </div>
+      </form>
+
+      <sc-if value="{{ footOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:{{ footCols }};column-gap:24px;row-gap:40px;padding-top:48px">
+          <div style="display:flex;flex-direction:column;gap:20px;min-width:0;grid-column:{{ footBrandSpan }}">
+            <img src="assets/footer/logo-achecar.png" alt="Achecar" style="width:160px;height:auto;display:block">
+            <p style="margin:0;max-width:350px;font:400 12px/16px Roboto;color:#E4E4E7;text-wrap:pretty">A Achecar é uma plataforma brasileira de informações sobre veículos. Pela placa, reúne dados de fontes oficiais e privadas em um relatório claro. Também oferece ferramentas gratuitas: Tabela FIPE, Comparador, dados de mercado e a Garagem Achecar.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="https://apps.apple.com/br/app/achecar-consulte-a-placa/id6786428056" target="_blank" rel="noopener" aria-label="Baixar na App Store"><img src="assets/footer/loja-appstore.png" alt="" style="height:49px;width:auto;display:block"></a>
+              <a href="https://play.google.com/store/apps/details?id=com.achecar.app" target="_blank" rel="noopener" aria-label="Disponível no Google Play"><img src="assets/footer/loja-googleplay.png" alt="" style="height:49px;width:auto;display:block"></a>
+            </div>
+            <div style="display:flex;align-items:center;gap:20px">
+              <span style="font:400 12px Roboto;color:#E4E4E7">Siga a Achecar</span>
+              <div style="display:flex;gap:24px">
+                <a href="https://www.facebook.com/achecar.com.br" target="_blank" rel="noopener" aria-label="Facebook" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-facebook.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.instagram.com/achecar.com.br" target="_blank" rel="noopener" aria-label="Instagram" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-instagram.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.linkedin.com/company/achecar/" target="_blank" rel="noopener" aria-label="Linkedin" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-linkedin.png" alt="" style="width:32px;height:32px;display:block"></a>
+                <a href="https://www.youtube.com/@achecar-com-br" target="_blank" rel="noopener" aria-label="Youtube" style="opacity:.92" style-hover="opacity:1"><img src="assets/footer/soc-youtube.png" alt="" style="width:32px;height:32px;display:block"></a>
+              </div>
+            </div>
+          </div>
+          <nav aria-label="Consulta Achecar" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Consulta Achecar</span>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Consultar placa</a>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">O que vem no relatório</a>
+            <a href="Insights Consulta v5.dc.html?demo=1" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Exemplo de relatório</a>
+            <a href="Consulta Placa.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Preço e formas de pagamento</a>
+            <a href="Minha Conta.dc.html?tela=consultas" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Minhas consultas</a>
+          </nav>
+          <nav aria-label="Garagem" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Garagem</span>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Buscar carros</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Montadoras</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Categorias</a>
+            <a href="Garagem.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Mais vendidos</a>
+            <a href="Lancamentos.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Lançamentos</a>
+            <a href="Minha Conta.dc.html?tela=carros" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Minha Garagem</a>
+          </nav>
+          <nav aria-label="Copiloto" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Copiloto</span>
+            <a href="Copiloto.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Pergunte ao Copiloto</a>
+            <a href="Precos e Valorizacao.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Tabela FIPE</a>
+            <a href="Quanto Vale.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Quanto vale meu carro</a>
+            <a href="Comparativo.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Comparador</a>
+            <a href="Versoes.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Calculadora de custo</a>
+          </nav>
+          <nav aria-label="Achecar" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+            <span style="font:700 16px/24px Roboto;color:#fff">Achecar</span>
+            <a href="#" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Sobre a Achecar</a>
+            <a href="Blog.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Blog</a>
+            <a href="Central de Ajuda.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Central de ajuda</a>
+            <a href="Home Achecar.dc.html#app" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Baixe o app</a>
+            <a href="Parceiros.dc.html" style="font:400 16px/24px Roboto;color:#E4E4E7" style-hover="color:#fff;text-decoration:underline">Programa de afiliados</a>
+          </nav>
+        </div>
+
+        <div style="margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;padding:24px 32px;border:1px solid #2A2A2E;border-radius:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font:700 16px/22px Roboto">Precisa de ajuda?</span>
+            <span style="font:400 12px/16px Roboto;color:#C4C4CC">Atendimento de segunda a sexta, das 8h às 17h, exceto feriados.</span>
+          </div>
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <a href="Central de Ajuda.dc.html" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">Central de ajuda</a>
+            <a href="tel:08000004770" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">0800 000 4770</a>
+            <a href="https://www.achecar.com.br/fale-conosco" target="_blank" rel="noopener" style="font:700 14px Roboto;color:#fff" style-hover="color:#fff;text-decoration:underline">Enviar e-mail</a>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a href="https://www.reclameaqui.com.br/empresa/achecar/" target="_blank" rel="noopener" aria-label="Achecar no Reclame Aqui"><img src="assets/footer/selo-reclameaqui.png" alt="Verificada por Reclame Aqui" style="height:72px;width:auto;display:block"></a>
+            <img src="assets/footer/selo-siteconfiavel.png" alt="Site Confiável" style="height:72px;width:auto;display:block">
+            <img src="assets/footer/selo-lgpd.png" alt="LGPD · Lei Geral de Proteção de Dados" style="height:72px;width:auto;display:block">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <span style="font:400 12px Roboto;color:#C4C4CC">Pagamento com Pix ou cartão de crédito à vista</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <img src="assets/footer/pg-pix.png" alt="Pix" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-visa.png" alt="Visa" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-mastercard.png" alt="Mastercard" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-elo.png" alt="Elo" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-amex.png" alt="Amex" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-hipercard.png" alt="Hipercard" style="height:43px;width:auto;display:block">
+              <img src="assets/footer/pg-diners.png" alt="Diners" style="height:43px;width:auto;display:block">
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:{{ footRuleMt }};display:flex;align-items:center;gap:16px">
+        <div style="flex:1;height:1px;background:#262629"></div>
+        <button onClick="{{ toggleFoot }}" aria-expanded="{{ footOpen }}" style="display:flex;align-items:center;gap:4px;height:36px;padding:0 16px;border-radius:999px;border:1px solid #333336;background:#141416;color:#fff;font:700 14px Roboto;cursor:pointer" style-hover="background:#1F1F22">{{ footToggleLabel }}<span style="font-family:'Material Symbols Rounded';font-size:18px">{{ footChev }}</span></button>
+        <div style="flex:1;height:1px;background:#262629"></div>
+      </div>
+
+      <div style="margin-top:40px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px 24px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font:400 12px/16px Roboto;color:#fff">© 2026 Achecar. Todos os direitos reservados. [Razão social] · CNPJ [a definir]</span>
+          <span style="font:400 12px/16px Roboto;color:#A1A1AA">A Consulta Achecar reúne dados de fontes oficiais e privadas e não substitui a vistoria cautelar.</span>
+        </div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap">
+          <a href="Termos de Uso.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Termos de uso</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Política de privacidade</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Política de cookies</a>
+          <a href="Politica de Privacidade.dc.html" style="font:400 12px Roboto;color:#fff;text-decoration:underline" style-hover="color:#C9AEFF">Preferências de cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;login&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Drawer&quot;,&quot;Modal&quot;],&quot;default&quot;:&quot;Drawer&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Login&quot;,&quot;label&quot;:&quot;Login de visitante&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 0, open: { 0: true, 1: true }, plate: "", plateMsg: "", vw: window.innerWidth };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  onScroll = () => { const c = window.scrollY > 320; if (c !== this.state.copCollapsed) this.setState({ copCollapsed: c }); };
+  rootRef = React.createRef();
+  rkRef = React.createRef();
+  onRkMove = (e) => {
+    if (window.innerWidth < 600 || e.pointerType === "touch") return;
+    const el = this.rkRef.current; if (!el) return;
+    cancelAnimationFrame(this.rkRaf);
+    this.rkRaf = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      if (Math.hypot(dx, dy) < 30) { el.style.rotate = "0deg"; return; }
+      let a = Math.atan2(dy, dx) * 180 / Math.PI;
+      const prev = this.rkAng ?? 0; while (a - prev > 180) a -= 360; while (a - prev < -180) a += 360;
+      this.rkAng = a; el.style.rotate = a + "deg";
+    });
+  };
+  copilotBg = (() => {
+    const e = React.createElement;
+    const blob = (k, s) => e("div", { key: k, style: Object.assign({ position: "absolute", borderRadius: "50%", filter: "blur(60px)", willChange: "transform" }, s) });
+    return e("div", { "data-cpfx": "1", "aria-hidden": true, style: { position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0 } }, [
+      blob("a", { left: "-15%", top: "-30%", width: "70%", height: "110%", background: "#4A1FA0", animation: "cpA 16s ease-in-out infinite" }),
+      blob("b", { left: "20%", top: "45%", width: "55%", height: "90%", background: "rgba(255,110,70,.85)", animation: "cpB 13s ease-in-out infinite" }),
+      blob("c", { right: "-15%", top: "30%", width: "50%", height: "95%", background: "rgba(176,130,255,.9)", animation: "cpC 18s ease-in-out infinite" })
+    ]);
+  })();
+  CYCLE = 5000;
+  startCycle = () => {
+    clearTimeout(this.cyc); cancelAnimationFrame(this.cycRaf);
+    this.setState({ prog: false, panelIn: false });
+    this.cycRaf = requestAnimationFrame(() => { this.cycRaf = requestAnimationFrame(() => this.setState({ prog: !this.paused, panelIn: true })); });
+    if (!this.paused) this.cyc = setTimeout(() => this.goTab((this.state.tab + 1) % 5), this.CYCLE);
+  };
+  goTab = (i) => this.setState({ tab: i }, this.startCycle);
+  pauseCycle = () => { this.paused = true; clearTimeout(this.cyc); this.setState({ prog: false }); };
+  resumeCycle = () => { this.paused = false; this.startCycle(); };
+  garageRef = React.createRef();
+  fixLabels = () => {
+    const root = this.rootRef.current; if (!root) return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n; while ((n = w.nextNode())) if (n.nodeValue.trim() === "Rótulo do botão") n.nodeValue = "Consultar placa";
+  };
+  NF = [
+    { icon: "task_alt", title: "Sua consulta está pronta", body: "Placa ABC1D23 · Chevrolet Onix 2022. Toque para ver o resultado." },
+    { icon: "trending_down", title: "FIPE do seu Onix", body: "Caiu 1,2% em setembro: R$ 64.280." },
+    { icon: "build", title: "Revisão chegando", body: "Faltam 2.300 km para a revisão dos 40 mil km." },
+    { icon: "auto_awesome", title: "Copiloto respondeu", body: "O Onix 1.0 gasta cerca de R$ 412 por mês com combustível." }
+  ];
+  notifRef = React.createRef();
+  nfStack() {
+    const E = React.createElement, H = 86, list = this.state.nf || [{ id: 1, i: 1, t: "agora" }, { id: 0, i: 0, t: "2 h" }];
+    return E("div", { style: { position: "relative", height: H * 3 - 8 } }, list.map((n, k) => { const d = this.NF[n.i % this.NF.length], out = k > 2;
+      return E("div", { key: n.id, style: { position: "absolute", left: 0, right: 0, top: 0, height: H - 8, transform: "translateY(" + (out ? H * 2 + 24 : k * H) + "px) scale(" + (out ? 0.9 : 1) + ")", opacity: out ? 0 : 1, transition: "transform .7s cubic-bezier(.22,1,.36,1), opacity .5s ease", willChange: "transform, opacity" } },
+        E("div", { style: { height: "100%", boxSizing: "border-box", display: "flex", alignItems: "center", gap: 10, padding: "0 13px", borderRadius: 18, background: "rgba(60,50,45,.55)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", border: "1px solid rgba(255,255,255,.18)", color: "#fff", transformOrigin: "50% 0", animation: n.fresh ? "nfIn .7s cubic-bezier(.22,1,.36,1) both" : "none" } },
+          E("span", { style: { width: 32, height: 32, borderRadius: 8, background: "#7D3EE3", flex: "none", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Material Symbols Rounded'", fontSize: 18 } }, d.icon),
+          E("span", { style: { display: "flex", flexDirection: "column", gap: 1, flex: 1, minWidth: 0 } },
+            E("span", { style: { display: "flex", justifyContent: "space-between", font: "500 10px Roboto", color: "rgba(255,255,255,.75)" } }, E("span", null, "ACHECAR"), E("span", null, n.t)),
+            E("span", { style: { font: "700 13px Roboto", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" } }, d.title),
+            E("span", { style: { font: "400 11px/1.35 Roboto", color: "rgba(255,255,255,.85)", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" } }, d.body)))); }));
+  }
+  nfStart = () => {
+    if (this.nfT || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let seq = 0; this.setState({ nf: [] }); 
+    const push = () => { if (document.hidden) return; const id = ++seq, i = (id - 1) % this.NF.length; this.setState((s) => ({ nf: [{ id, i, t: "agora", fresh: true }, ...(s.nf || []).map((x, k) => ({ ...x, fresh: false, t: k === 0 ? "1 min" : (k + 1) + " min" }))].slice(0, 4) })); };
+    setTimeout(push, 400); this.nfT = setInterval(push, 3200);
+  };
+  componentDidMount() {
+    this.nfIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { this.nfStart(); this.nfIO.disconnect(); } }), { threshold: 0.4 }); setTimeout(() => this.notifRef.current && this.nfIO.observe(this.notifRef.current), 300);
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) window.addEventListener("mousemove", this.onRkMove, { passive: true });
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.mo = new MutationObserver(this.fixLabels);
+    if (this.rootRef.current) this.mo.observe(this.rootRef.current, { childList: true, subtree: true, characterData: true });
+    this.fixLabels();
+    this.rm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.startCycle();
+    const g = this.garageRef.current;
+    if (g) this.setState({ slatCount: Math.ceil(g.offsetHeight / 32) + 1 });
+    if (!g || matchMedia("(prefers-reduced-motion: reduce)").matches) { this.setState({ doorP: 1, reduced: true }); return; }
+    this.doorTick = () => {
+      this.doorRaf = 0;
+      const r = g.getBoundingClientRect(), vh = window.innerHeight;
+      const p = Math.max(0, Math.min(1, (vh * 0.9 - r.top) / (vh * 0.65)));
+      if (Math.abs(p - (this.state.doorP ?? -1)) > 0.002) this.setState({ doorP: p });
+    };
+    this.onDoorScroll = () => { if (!this.doorRaf) this.doorRaf = requestAnimationFrame(this.doorTick); };
+    window.addEventListener("scroll", this.onDoorScroll, { passive: true });
+    window.addEventListener("resize", this.onDoorScroll);
+    this.doorTick();
+  }
+  componentWillUnmount() { clearInterval(this.nfT); this.nfIO && this.nfIO.disconnect(); window.removeEventListener("mousemove", this.onRkMove); cancelAnimationFrame(this.rkRaf); clearTimeout(this.cyc); cancelAnimationFrame(this.cycRaf); window.removeEventListener("resize", this.onResize); window.removeEventListener("scroll", this.onScroll); this.mo && this.mo.disconnect(); if (this.onDoorScroll) { window.removeEventListener("scroll", this.onDoorScroll); window.removeEventListener("resize", this.onDoorScroll); cancelAnimationFrame(this.doorRaf); } }
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const { tab, open, plate, plateMsg } = this.state;
+    const P = "#7D3EE3", INK = "#1D2433", CORAL = "#FF5040";
+    const GREEN = "#15803D";
+    const pos = (v, a, b) => ((v - a) / (b - a) * 100).toFixed(1) + "%";
+    const brl = (n) => "R$ " + n.toLocaleString("pt-BR");
+    const rMin = 78000, rMax = 90000;
+    const trend = [["mai", 91200], ["jun", 90650], ["jul", 90100], ["ago", 89800], ["set", 89390], ["out", 88320]];
+    const cost = [["Financiamento", 1240, "#7D3EE3"], ["Seguro", 410, "#A57BF0"], ["IPVA", 295, "#C9AEFF"], ["Manutenção", 235, "#E3D6FB"]];
+    const costT = cost.reduce((a, x) => a + x[1], 0);
+    const cmp = (k, a, b, max, fmt) => ({ k, rows: [{ name: "Onix", nameColor: P, w: pos(a, 0, max), v: fmt(a), color: P }, { name: "HB20", nameColor: "#5A6472", w: pos(b, 0, max), v: fmt(b), color: "#B7BDC7" }] });
+    const ok = (k) => ({ k, v: "Nenhum registro", icon: "check_circle", color: GREEN, vColor: "#5A6472" });
+    const panels = [
+      { label: "Quanto vale meu carro", eyebrow: "VAI VENDER", tool: "Quanto vale meu carro", isRange: true,
+        headLabel: "Preço sugerido para anunciar", head: "R$ 84.500", headUnit: "",
+        badge: { text: "4,3% abaixo da FIPE", icon: "south_east", bg: "#F3EEFE", color: P },
+        bandL: pos(79900, rMin, rMax), bandW: pos(88320 - 79900 + rMin, rMin, rMax),
+        marks: [{ k: "Mais baixo", v: "R$ 79.900", left: pos(79900, rMin, rMax), color: INK, dot: "10px" },
+                { k: "Sugerido", v: "R$ 84.500", left: pos(84500, rMin, rMax), color: P, dot: "16px" },
+                { k: "FIPE", v: "R$ 88.320", left: pos(88320, rMin, rMax), color: INK, dot: "10px" }],
+        note: "Anúncios perto do valor sugerido costumam vender mais rápido nesta faixa." },
+      { label: "Tabela FIPE", eyebrow: "PESQUISANDO PREÇO", tool: "Tabela FIPE", isTrend: true,
+        headLabel: "Onix 1.0 · 2026 · outubro", head: "R$ 88.320", headUnit: "",
+        badge: { text: "1,2% no mês", icon: "trending_down", bg: "#FFF0EE", color: "#C2311F" },
+        bars: trend.map(([m, v], i, a) => { const last = i === a.length - 1; return { m, v: (v / 1000).toFixed(1).replace(".", ",") + " mil", h: pos(v, 87000, 91500), bg: last ? P : "#E3D6FB", vColor: last ? P : "#7A8494" }; }),
+        note: "Queda de 3,2% em seis meses. Use a tendência como argumento na negociação." },
+      { label: "Calculadora de custo", eyebrow: "FAZENDO AS CONTAS", tool: "Calculadora de custo", isStack: true,
+        headLabel: "Custo total estimado", head: brl(costT), headUnit: " /mês", badge: null,
+        segs: cost.map(([k, v, color]) => ({ k, v: brl(v), color, pct: (v / costT * 100).toFixed(1) + "%", pctLabel: Math.round(v / costT * 100) + "%" })),
+        note: "O financiamento responde por 57% do custo. Uma entrada maior reduz a parcela." },
+      { label: "Comparador", eyebrow: "EM DÚVIDA ENTRE DOIS", tool: "Comparador", isCompare: true,
+        headLabel: "Onix 1.0 x HB20 1.0 · 2026", head: "Onix", headUnit: " leva vantagem em 2 de 2",
+        badge: null,
+        groups: [cmp("Consumo na cidade", 13.1, 12.6, 14, (n) => n.toFixed(1).replace(".", ",") + " km/l"),
+                 cmp("Preço FIPE", 88320, 89990, 92000, brl)],
+        note: "O Onix faz 0,5 km/l a mais e custa R$ 1.670 a menos." },
+      { label: "Consulta Achecar", eyebrow: "COM A CONSULTA EM MÃOS", tool: "Consulta Achecar", isChecks: true,
+        headLabel: "Resumo da consulta · ABC1D23", head: "1 pendência", headUnit: " em 4 blocos",
+        badge: { text: "Atenção", icon: "error", bg: "#FFF0EE", color: "#C2311F" },
+        checks: [ok("Leilão"), ok("Sinistro"), ok("Roubo e furto"), { k: "Débitos", v: "1 multa · R$ 195,23", icon: "error", color: CORAL, vColor: "#C2311F" }],
+        note: "Sem leilão, sinistro ou roubo. Desconte a multa em aberto do valor de compra." }
+    ];
+    const faqData = [
+      ["O que é a Consulta Achecar?", "É um relatório sobre o histórico de um carro a partir da placa. Mostra passagem por leilão, sinistro, roubo e furto, débitos e multas, restrições como gravame (restrição financeira que impede a transferência até a quitação) e recall (convocação da montadora para reparo). São mais de 140 informações de mais de 15 fontes oficiais e privadas."],
+      ["Quanto custa a consulta?", "De R$ 95,88 por R$ 79,90*, em pagamento único, sem assinatura, no Pix ou no cartão à vista. Na primeira consulta pelo site, o cupom PRIMEIRA10 dá 10% de desconto. *Valores sujeitos a alteração."],
+      ["Quanto tempo leva para o relatório ficar pronto?", "O relatório fica pronto em minutos e é salvo na sua conta. Avisamos assim que ele estiver disponível."],
+      ["Eu pago antes de saber qual é o carro?", "Não. Você confirma o veículo antes de pagar."],
+      ["A consulta substitui a vistoria cautelar?", "Não. A Consulta Achecar reúne dados de fontes oficiais e privadas e não substitui a vistoria cautelar."],
+      ["O que é grátis na Achecar?", "Tabela FIPE, Comparador, dados de mercado, Calculadora de custo e a Garagem Achecar são gratuitos."]
+    ];
+    const catNames = [["SUV", "SUV"], ["Sed", "Sedã"], ["Picape", "Picape"], ["Microcarro", "Microcarro"], ["Crossover", "Crossover"], ["Minivan", "Minivan"], ["Hatch", "Hatch"], ["Superesportivo", "Superesportivo"], ["Convers", "Conversível"]];
+    const postsData = [
+      ["SEGURANÇA", "Golpes na venda de carros usados: como se proteger", "6 min de leitura · 18 set 2026", "assets/home/blog-golpes.jpg", "golpes-venda"],
+      ["CONSULTA ACHECAR", "Por que consultar o histórico do veículo antes da compra", "5 min de leitura · 12 set 2026", "assets/home/blog-consulta.webp", "consulta-o-que-mostra"],
+      ["CUSTOS", "IPVA de carro elétrico: quais estados oferecem benefícios?", "7 min de leitura · 5 set 2026", "assets/home/blog-ipva.webp", "ipva-eletrico"]
+    ];
+    return {
+      rootRef: this.rootRef, rkRef: this.rkRef,
+      garageRef: this.garageRef,
+      ...(() => {
+        const n = this.state.slatCount || 40, p = this.state.doorP ?? 0;
+        const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        const k = e * (n + 1), cl = (v) => Math.max(0, Math.min(1, v));
+        return {
+          slats: Array.from({ length: n }, (_, i) => ({ h: (32 * (1 - cl(k - i))).toFixed(1) + "px", t: "none" })),
+          railH: (22 * (1 - cl(k - n))).toFixed(1) + "px", railT: "none",
+          drumOp: cl((1 - p) * 12), drumT: "none"
+        };
+      })(),
+      copW: this.state.copCollapsed ? "60px" : "268px",
+      copMascotLeft: this.state.copCollapsed ? "-2px" : "6px",
+      copTextOpacity: this.state.copCollapsed ? 0 : 1,
+      copDotRight: this.state.copCollapsed ? "2px" : "14px",
+      fluidProps: { style: { width: "100%" } },
+      footOpen: this.state.footOpen !== false,
+      toggleFoot: () => this.setState((s) => ({ footOpen: s.footOpen === false })),
+      footToggleLabel: this.state.footOpen === false ? "Expandir" : "Recolher",
+      footChev: this.state.footOpen === false ? "expand_more" : "expand_less",
+      footRuleMt: this.state.footOpen === false ? "40px" : "64px",
+      heroBg: this.state.vw < 768 ? "radial-gradient(90% 60% at 100% 0%,rgba(125,62,227,.55),transparent 70%),radial-gradient(80% 50% at 0% 100%,rgba(48,20,97,.9),transparent 70%),linear-gradient(180deg,#0A0A0F 0%,#1A0F33 100%)" : "linear-gradient(90deg,rgba(5,5,7,0) 35%,rgba(5,5,7,.75) 62%),#050507 url(assets/home/hero-car.jpg) left center / cover no-repeat",
+      plateDir: "row", plateBtnW: this.state.vw < 600 ? "128px" : "52px", plateBtnPad: "0", plateIcon: this.state.vw >= 600, plateInPad: this.state.vw < 600 ? "0 12px 0 14px" : "0 16px 0 56px", plateLbl: this.state.vw < 600,
+      chipWrap: this.state.vw < 600 ? "nowrap" : "wrap", chipBleed: this.state.vw < 600 ? "-16px" : "0", chipPadX: this.state.vw < 600 ? "16px" : "0",
+      brandScale: this.state.vw < 600 ? "0.62" : "0.92",
+      isMob: this.state.vw < 600,
+      appGap: this.state.vw < 600 ? "32px" : "48px", appColGap: this.state.vw < 600 ? "20px" : "24px", appPadB: this.state.vw < 600 ? "0" : "96px",
+      appFeatCols: this.state.vw < 600 ? "minmax(0,1fr)" : "repeat(3,minmax(0,1fr))", appFeatDir: this.state.vw < 600 ? "row" : "column", appFeatAlign: this.state.vw < 600 ? "center" : "stretch", appFeatMinH: this.state.vw < 600 ? "0" : "120px",
+      appPhoneH: this.state.vw < 600 ? "440px" : "560px", appPhoneW: this.state.vw < 600 ? "300px" : "min(100%,380px)", appPhoneJustify: this.state.vw < 600 ? "center" : "flex-end",
+      appMascL: this.state.vw < 600 ? "-4px" : "-24px", appMascT: this.state.vw < 600 ? "120px" : "180px", appMascW: this.state.vw < 600 ? "96px" : "140px",
+      appClockTop: this.state.vw < 600 ? "56px" : "72px", appClockSize: this.state.vw < 600 ? "72px" : "92px",
+      storeScale: this.state.vw < 600 ? 0.75 : 0.85, storeW1: this.state.vw < 600 ? "126px" : "143px", storeW2: this.state.vw < 600 ? "142px" : "161px", storeH: this.state.vw < 600 ? "42px" : "48px",
+      appBg: this.state.vw < 768 ? "radial-gradient(120% 55% at 50% 100%,rgba(125,62,227,.70) 0%,rgba(125,62,227,.28) 45%,transparent 75%),radial-gradient(90% 40% at 100% 0%,rgba(165,123,240,.22),transparent 70%),linear-gradient(180deg,#0E0C14 0%,#150F26 55%,#1E1238 100%)" : "radial-gradient(45% 90% at 88% 40%,rgba(125,62,227,.75),transparent 70%),radial-gradient(40% 60% at 10% 100%,rgba(165,123,240,.16),transparent 70%),linear-gradient(90deg,#0E0C14 0%,#130E22 100%)",
+      loginStyle: this.props.login ?? "Drawer",
+      platePh: this.state.vw < 600 ? "DIGITE A PLACA" : "DIGITE A PLACA DO VEÍCULO",
+      footCols: this.state.vw >= (this.props.bpDesktop1024 ?? 1024) ? "minmax(0,1fr) repeat(4,minmax(0,165px))" : "repeat(auto-fit,minmax(170px,1fr))",
+      footBrandSpan: this.state.vw >= (this.props.bpDesktop1024 ?? 1024) ? "auto" : "1 / -1",
+      headerComp: "AchecarDesignSystem_c352d1." + (this.state.vw < (this.props.bpDesktop1100 ?? 1100) ? "HeaderAchecarMobile" : "HeaderAchecar"),
+      plate, plateMsg,
+      onPlate: (e) => this.setState({ plate: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""), plateMsg: "" }),
+      onSubmitPlate: (e) => { e.preventDefault(); const ok = /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(plate); if (!ok) return this.setState({ plateMsg: "Digite uma placa válida · ABC1D23" }); location.href = "Consulta Placa.dc.html?placa=" + plate; },
+      tabs: panels.map((p, i) => ({ label: p.label, active: i === tab, select: () => this.goTab(i), bg: i === tab ? "rgba(125,62,227,.4)" : "rgba(0,0,0,.18)", border: i === tab ? "#7D3EE3" : "rgba(255,255,255,.45)", fillW: i === tab && (this.state.prog || this.paused) ? "100%" : "0%", fillT: i === tab && this.state.prog ? "width " + this.CYCLE + "ms linear" : "none" })),
+      copilotBg: this.copilotBg,
+      pauseCycle: this.pauseCycle, resumeCycle: this.resumeCycle,
+      panelOp: this.state.panelIn === false ? 0 : 1, panelY: this.state.panelIn === false ? "8px" : "0px", panelT: this.state.panelIn === false || this.rm ? "none" : "opacity .3s ease-out, transform .3s ease-out",
+      panel: panels[tab],
+      brands: ["volkswagen", "fiat", "chevrolet", "byd", "hyundai", "toyota", "ferrari", "audi", "jeep", "honda", "renault", "nissan", "chery", "porsche", "bmw"].map((key) => ({ key, name: key.charAt(0).toUpperCase() + key.slice(1), href: "Marca.dc.html?m=" + key })),
+      cats: [["Sedã", "seda"], ["SUV", "suv"], ["Hatch", "hatch"], ["Picape", "picape"], ["Coupê", "coupe"], ["Conversível", "conversivel"], ["Perua", "perua"], ["Minivan", "minivan"], ["Jipe", "jipe"], ["Van", "van"], ["Utilitário", "utilitario"], ["Furgão", "furgao"], ["Outros", "outros"]].map(([label, k]) => ({ label, img: "assets/categorias/v2/" + k + ".png", href: "Garagem v2.dc.html?cat=" + encodeURIComponent(label) })),
+      posts: postsData.map(([cat, title, meta, img, id], i) => ({ cat, title, meta, img, href: "Artigo.dc.html?a=" + id, border: i < 2 ? "1px solid #E6E6EE" : "0" })),
+      appFeatures: [{ icon: "notifications", text: "Avisamos quando a consulta fica pronta, mesmo com o app fechado." }, { icon: "bookmark", text: "Seus relatórios ficam salvos para abrir quando quiser." }, { icon: "search", text: "Consulte a placa na hora, de onde estiver." }],
+      notifRef: this.notifRef, notifStack: this.nfStack(),
+      faqs: faqData.map(([q, a], i) => ({ q, a, open: !!open[i], chev: open[i] ? "expand_less" : "expand_more", border: i ? "1px solid #E6E6EE" : "0", toggle: () => this.setState((s) => ({ open: { ...s.open, [i]: !s.open[i] } })) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

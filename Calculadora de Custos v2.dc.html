@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE}
+    input::placeholder{color:#7A8494}
+    input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    @keyframes ccCar{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}} @keyframes ccIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div data-screen-label="Calculadora de custos" style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+  <div style="position:sticky;top:0;z-index:40;width:100%"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+
+  <sc-if value="{{ heroOn }}" hint-placeholder-val="{{ true }}">
+  <section data-screen-label="Palco" style="position:relative;overflow:hidden;background:#1D2433 url(assets/calc/palco-estudio.png) center 70% / cover no-repeat;color:#fff">
+    <div style="position:relative;max-width:1152px;margin:0 auto;padding:48px clamp(16px, calc(2.2vw + 7px), 32px);box-sizing:border-box;display:grid;grid-template-columns:{{ heroCols }};gap:32px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <span style="font:700 12px Roboto;letter-spacing:.1em;color:#E0D2FF">CALCULADORA DE CUSTOS</span>
+        <h1 style="margin:0;font:800 clamp(30px,4vw,44px)/1.12 'Merriweather Sans',sans-serif;text-wrap:balance">Esse carro cabe no seu orçamento?</h1>
+        <p style="margin:0;max-width:520px;font:400 17px/1.55 Roboto;color:#C9CDD6;text-wrap:pretty">Escolha o carro, conte como você usa e veja quanto reservar por mês para mantê-lo. Depois, compare com outros modelos.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:6px">
+          <span style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.1);font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#C9AEFF">schedule</span>Cerca de 2 minutos</span>
+          <span style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.1);font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#C9AEFF">tune</span>Você ajusta cada valor</span>
+          <span style="display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.1);font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;color:#C9AEFF">compare_arrows</span>Compare até 3 carros</span>
+        </div>
+      </div>
+      <sc-if value="{{ heroArt }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:relative;height:260px">
+          <span role="img" aria-label="" style="position:absolute;left:30%;top:6%;width:44%;height:88%;background:url(assets/calc/icone-reserva.png) center / contain no-repeat;filter:drop-shadow(0 16px 18px rgba(0,0,0,.4))"></span>
+          <span role="img" aria-label="" style="position:absolute;left:4%;top:4%;width:26%;height:44%;transform:rotate(-8deg);background:url(assets/calc/icone-combustivel.png) center / contain no-repeat;filter:drop-shadow(0 16px 18px rgba(0,0,0,.4))"></span>
+          <span role="img" aria-label="" style="position:absolute;right:2%;top:0;width:24%;height:42%;transform:rotate(8deg);background:url(assets/calc/icone-seguro.png) center / contain no-repeat;filter:drop-shadow(0 16px 18px rgba(0,0,0,.4))"></span>
+          <span role="img" aria-label="" style="position:absolute;left:8%;bottom:0;width:24%;height:42%;background:url(assets/calc/icone-pneu.png) center / contain no-repeat;filter:drop-shadow(0 16px 18px rgba(0,0,0,.4))"></span>
+          <span role="img" aria-label="" style="position:absolute;right:6%;bottom:2%;width:24%;height:44%;transform:rotate(-6deg);background:url(assets/calc/icone-ipva.png) center / contain no-repeat;filter:drop-shadow(0 16px 18px rgba(0,0,0,.4))"></span>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+  </sc-if>
+  <section data-screen-label="Etapas" style="padding:24px clamp(16px, calc(2.2vw + 7px), 32px) 24px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:20px">
+      <ol aria-label="Etapas" style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+          <li style="min-width:0"><button type="button" onClick="{{ st.go }}" disabled="{{ st.off }}" aria-current="{{ st.cur }}" style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:0;border:0;background:transparent;text-align:left;cursor:{{ st.cursor }}" style-hover="opacity:.85">
+            <span style="display:block;width:100%;height:4px;border-radius:2px;background:{{ st.bar }};transition:background .2s ease-out"></span>
+            <span style="display:flex;align-items:center;gap:6px;font:{{ st.w }} 13px Roboto;color:{{ st.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ st.icon }}</span>{{ st.t }}</span>
+          </button></li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <main style="flex:1;padding:0 clamp(16px, calc(2.2vw + 7px), 32px) 96px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:1152px;display:grid;grid-template-columns:{{ mainCols }};gap:24px;align-items:start">
+      <div style="min-width:0;display:flex;flex-direction:column;gap:16px">
+
+        <sc-if value="{{ addingBanner }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:#F1EBFD;color:#4C1D95;font:500 14px/1.4 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px">add_circle</span><span style="flex:1">Escolha o {{ addingOrd }} carro. Cidade, quilometragem e tipo de uso continuam os mesmos.</span><button type="button" onClick="{{ cancelAdd }}" style="height:36px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#4C1D95;font:700 13px Roboto;cursor:pointer" style-hover="background:#E3D8FC">Cancelar</button></div>
+        </sc-if>
+
+        <sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+          <section data-screen-label="1 Veículo" style="padding:28px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:20px;animation:ccIn .3s ease-out both">
+            <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif">Qual carro você quer calcular?</h2><span style="font:400 14px Roboto;color:#5A6472">Pela placa é mais rápido. Sem placa, escolha a versão.</span></div>
+            <div role="tablist" aria-label="Como escolher" style="display:flex;padding:4px;border-radius:999px;background:#EEEEF2;align-self:flex-start">
+              <sc-for list="{{ modeTabs }}" as="m" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ m.on }}" onClick="{{ m.go }}" style="display:flex;align-items:center;gap:6px;height:40px;padding:0 18px;border:0;border-radius:999px;background:{{ m.bg }};color:{{ m.fg }};box-shadow:{{ m.sh }};font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:18px">{{ m.icon }}</span>{{ m.t }}</button></sc-for>
+            </div>
+
+            <sc-if value="{{ modePlaca }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ findPlate }}" style="display:flex;gap:10px;flex-wrap:wrap">
+                <label style="position:relative;flex:1 1 260px;display:block;height:56px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px {{ plateBd }};cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:14px;top:8px;font:500 11px Roboto;color:#5A6472;pointer-events:none">Placa</span><input value="{{ plate }}" onChange="{{ setPlate }}" maxlength="8" placeholder="ABC1D23" aria-label="Placa" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 14px 6px;border:0;border-radius:10px;background:transparent;font:700 17px 'Roboto Mono',monospace;letter-spacing:.12em;color:#1D2433;outline:none;cursor:text;text-transform:uppercase" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input></label>
+                <button type="submit" style="flex:none;display:flex;align-items:center;gap:8px;height:56px;padding:0 24px;border:0;border-radius:10px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#5F29AE" style-active="background:#4C1D95">{{ plateBtn }}</button>
+              </form>
+              <span style="font:400 13px Roboto;color:{{ plateHelpC }}">{{ plateHelp }}</span>
+            </sc-if>
+
+            <sc-if value="{{ showSelects }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+                <sc-for list="{{ sels }}" as="f" hint-placeholder-count="4">
+                  <label style="position:relative;display:block;height:56px;border-radius:10px;background:{{ f.bg }};box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:{{ f.cursor }};transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px {{ f.hov }}"><span style="position:absolute;left:14px;top:8px;font:500 11px Roboto;color:#5A6472;pointer-events:none">{{ f.label }}</span><select value="{{ f.value }}" onChange="{{ f.change }}" disabled="{{ f.disabled }}" aria-label="{{ f.label }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 40px 6px 14px;border:0;border-radius:10px;background:transparent;font:500 15px Roboto;color:{{ f.fg }};appearance:none;-webkit-appearance:none;outline:none;cursor:{{ f.cursor }}" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"><sc-for list="{{ f.opts }}" as="o" hint-placeholder-count="0"><option value="{{ o.v }}">{{ o.t }}</option></sc-for></select><span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:'Material Symbols Rounded';font-size:22px;color:#5A6472;pointer-events:none">expand_more</span></label>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ carReady }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:20px;border-radius:16px;background:#F7F4FF;box-shadow:inset 0 0 0 1px #DCCFF8;animation:ccIn .3s ease-out both">
+                <span style="flex:none;width:180px;max-width:100%;aspect-ratio:16/9;background:{{ car.img }}"></span>
+                <div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:6px">
+                  <span style="font:700 12px Roboto;letter-spacing:.06em;color:#7D3EE3">{{ car.fuelTag }}</span>
+                  <span style="font:800 20px/1.25 'Merriweather Sans',sans-serif">{{ car.name }}</span>
+                  <span style="font:400 14px Roboto;color:#5A6472">{{ car.sub }} · FIPE {{ car.fipeTxt }}</span>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:4px">
+                <span style="font:700 17px/1.35 'Merriweather Sans',sans-serif">Vamos calcular quanto ele custaria por mês para você?</span>
+                <button type="button" onClick="{{ next0 }}" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:10px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#5F29AE" style-active="background:#4C1D95">{{ next0Txt }}<span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></button>
+              </div>
+            </sc-if>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+          <section data-screen-label="2 Rotina" style="padding:28px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:24px;animation:ccIn .3s ease-out both">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px"><div style="display:flex;flex-direction:column;gap:4px;min-width:0"><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif">Como você vai usar o carro?</h2><span style="font:400 14px Roboto;color:#5A6472">Consumo, manutenção e pneus do modelo já estão preenchidos. Só falta a sua rotina.</span></div><img src="assets/calc/etapa-rotina.png" alt="" style="flex:none;width:{{ illoW }};height:auto;margin:-12px -8px -12px 0"></div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font:700 15px Roboto">Em qual cidade você vai usar o carro?</span>
+              <div style="position:relative">
+                <label style="position:relative;display:block;height:56px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:44px;top:8px;font:500 11px Roboto;color:#5A6472;pointer-events:none">Cidade</span><span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:'Material Symbols Rounded';font-size:20px;color:#5A6472;pointer-events:none">location_on</span><input value="{{ cityQ }}" onChange="{{ setCityQ }}" onFocus="{{ cityFocus }}" onBlur="{{ cityBlur }}" placeholder="Digite sua cidade" autocomplete="off" aria-label="Cidade" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 14px 6px 44px;border:0;border-radius:10px;background:transparent;font:500 15px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input></label>
+                <sc-if value="{{ cityOpen }}" hint-placeholder-val="{{ false }}">
+                  <div role="listbox" aria-label="Cidades" style="position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;max-height:260px;overflow:auto;padding:6px;border-radius:12px;background:#fff;box-shadow:0 12px 32px rgba(26,13,64,.14),inset 0 0 0 1px #E6E6EE">
+                    <sc-for list="{{ cityList }}" as="c" hint-placeholder-count="4"><button type="button" role="option" onMouseDown="{{ c.go }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;height:44px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:#1D2433;font:500 14px Roboto;text-align:left;cursor:pointer" style-hover="background:#F7F4FF;color:#4C1D95">{{ c.t }}<span style="font:400 12px Roboto;color:#5A6472">{{ c.uf }}</span></button></sc-for>
+                    <sc-if value="{{ cityNone }}" hint-placeholder-val="{{ false }}"><span style="display:block;padding:12px;font:400 13px Roboto;color:#5A6472">Nenhuma cidade encontrada. Tente outra grafia.</span></sc-if>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="display:flex;align-items:center;gap:10px;font:700 15px Roboto"><img src="assets/calc/etapa-quilometragem.png" alt="" style="width:56px;height:auto">Quantos quilômetros você roda por mês?</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                <label style="position:relative;flex:0 1 200px;display:block;height:52px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><input type="number" inputmode="numeric" value="{{ kmVal }}" onChange="{{ setKm }}" aria-label="Quilômetros por mês" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 54px 0 14px;border:0;border-radius:10px;background:transparent;font:700 16px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font:500 13px Roboto;color:#5A6472;pointer-events:none">km/mês</span></label>
+                <sc-for list="{{ kmChips }}" as="k" hint-placeholder-count="4"><button type="button" onClick="{{ k.go }}" aria-pressed="{{ k.on }}" style="height:40px;padding:0 14px;border-radius:999px;border:1.5px solid {{ k.bd }};background:{{ k.bg }};color:{{ k.fg }};font:600 13px Roboto;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3">{{ k.t }}</button></sc-for>
+                <button type="button" onClick="{{ toggleKmHelp }}" aria-expanded="{{ kmHelp }}" style="height:40px;padding:0 14px;border-radius:999px;border:1.5px dashed #B9A3EE;background:#fff;color:#5B21B6;font:600 13px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF">Não sei</button>
+              </div>
+              <sc-if value="{{ kmHelp }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:12px;background:#F7F4FF;box-shadow:inset 0 0 0 1px #DCCFF8;animation:ccIn .25s ease-out both">
+                  <span style="font:700 14px Roboto;color:#1D2433">Quantos quilômetros você costuma percorrer por dia?</span>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                    <label style="position:relative;flex:0 1 160px;display:block;height:48px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><input type="number" inputmode="numeric" value="{{ kmDay }}" onChange="{{ setKmDay }}" aria-label="Quilômetros por dia" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 54px 0 14px;border:0;border-radius:10px;background:transparent;font:700 15px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font:500 13px Roboto;color:#5A6472;pointer-events:none">km/dia</span></label>
+                    <sc-for list="{{ dayOpts }}" as="d" hint-placeholder-count="2"><button type="button" onClick="{{ d.go }}" aria-pressed="{{ d.on }}" style="height:40px;padding:0 14px;border-radius:999px;border:1.5px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3">{{ d.t }}</button></sc-for>
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><span style="font:400 14px Roboto;color:#4C1D95">Dá cerca de <b>{{ kmEstTxt }}</b> por mês.</span><button type="button" onClick="{{ useKmEst }}" style="height:40px;padding:0 16px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 13px Roboto;cursor:pointer" style-hover="background:#5F29AE">Usar esse valor</button></div>
+                </div>
+              </sc-if>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font:700 15px Roboto">Seu uso é mais na cidade ou na estrada?</span>
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                <sc-for list="{{ usoOpts }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.go }}" aria-pressed="{{ o.on }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:22px;color:{{ o.ic }}">{{ o.icon }}</span><span style="font:700 14px Roboto">{{ o.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ o.d }}</span></button></sc-for>
+              </div>
+            </div>
+
+            <sc-if value="{{ needsRecarga }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:700 15px Roboto">Onde você pretende recarregar?</span>
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                  <sc-for list="{{ recOpts }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.go }}" aria-pressed="{{ o.on }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:22px;color:{{ o.ic }}">{{ o.icon }}</span><span style="font:700 14px Roboto">{{ o.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ o.d }}</span></button></sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:4px">
+              <button type="button" onClick="{{ back }}" style="display:flex;align-items:center;gap:6px;height:48px;padding:0 16px;border:0;border-radius:10px;background:transparent;color:#5A6472;font:600 14px Roboto;cursor:pointer" style-hover="background:#F4F4F6;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_back</span>Voltar</button>
+              <button type="button" onClick="{{ next1 }}" disabled="{{ next1Off }}" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:10px;background:{{ next1Bg }};color:{{ next1Fg }};font:700 15px Roboto;cursor:{{ next1Cur }};transition:background .15s ease-out" style-hover="filter:brightness(.95)">Continuar<span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></button>
+            </div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+          <section data-screen-label="3 Forma de compra" style="padding:28px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:24px;animation:ccIn .3s ease-out both">
+            <div style="display:flex;flex-direction:column;gap:4px"><h2 style="margin:0;font:800 22px 'Merriweather Sans',sans-serif;display:flex;align-items:center;gap:12px"><img src="assets/calc/etapa-compra.png" alt="" style="width:72px;height:auto;margin:-8px 0">Como você vai ter esse carro?</h2><span style="font:400 14px Roboto;color:#5A6472">Isso só muda a conta. Se tiver parcela, ela entra no orçamento do mês; o preço de compra nunca vira gasto mensal.</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+              <sc-for list="{{ payOpts }}" as="o" hint-placeholder-count="4"><button type="button" onClick="{{ o.go }}" aria-pressed="{{ o.on }}" style="display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:14px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3"><span style="flex:none;width:40px;height:40px;border-radius:10px;background:{{ o.ibg }};color:{{ o.ic }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px">{{ o.icon }}</span><span style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:700 15px Roboto">{{ o.t }}</span><span style="font:400 13px/1.4 Roboto;color:#5A6472">{{ o.d }}</span></span></button></sc-for>
+            </div>
+
+            <sc-if value="{{ payAvista }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:10px;padding:14px 16px;border-radius:12px;background:#F6F6F9;font:400 14px/1.45 Roboto;color:#3F4654"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">info</span>O valor de compra ({{ car.fipeTxt }} pela FIPE) aparece separado no resultado, como desembolso inicial.</div></sc-if>
+
+            <sc-if value="{{ payFin }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <span style="font:700 14px Roboto">Qual o valor da parcela?</span>
+                <label style="position:relative;max-width:280px;display:block;height:52px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font:500 14px Roboto;color:#5A6472;pointer-events:none">R$</span><input type="text" inputmode="numeric" value="{{ parcelaVal }}" onChange="{{ setParcela }}" placeholder="Ex.: 2.000,00" aria-label="Valor da parcela" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 64px 0 40px;border:0;border-radius:10px;background:transparent;font:700 16px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font:500 13px Roboto;color:#5A6472;pointer-events:none">/mês</span></label>
+                <button type="button" onClick="{{ goSim }}" style="align-self:flex-start;padding:4px 0;border:0;background:transparent;color:#7D3EE3;font:700 13px Roboto;cursor:pointer" style-hover="color:#5F29AE;text-decoration:underline">Ainda não sei a parcela? Simular financiamento</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ paySim }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:14px;background:#F6F6F9">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px">
+                  <sc-for list="{{ simFields }}" as="f" hint-placeholder-count="3">
+                    <label style="position:relative;display:block;height:56px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:14px;top:8px;font:500 11px Roboto;color:#5A6472;pointer-events:none">{{ f.label }}</span><input type="text" inputmode="numeric" value="{{ f.value }}" onChange="{{ f.change }}" aria-label="{{ f.label }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:22px 52px 6px 14px;border:0;border-radius:10px;background:transparent;font:700 15px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:14px;top:30px;font:500 12px Roboto;color:#5A6472;pointer-events:none">{{ f.unit }}</span></label>
+                  </sc-for>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px Roboto">Prazo</span><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ prazoOpts }}" as="p" hint-placeholder-count="4"><button type="button" onClick="{{ p.go }}" aria-pressed="{{ p.on }}" style="height:40px;padding:0 16px;border-radius:999px;border:1.5px solid {{ p.bd }};background:{{ p.bg }};color:{{ p.fg }};font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3">{{ p.t }}</button></sc-for></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid #E6E6EE"><span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 13px Roboto;color:#5A6472">Parcela ilustrativa</span><span style="font:800 22px 'Merriweather Sans',sans-serif">{{ simParcelaTxt }}</span></span><span style="max-width:340px;font:400 12px/1.45 Roboto;color:#5A6472">Simulação com taxa de {{ taxaTxt }} ao mês, sem IOF e seguros. Não é proposta de crédito.</span></div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ payTenho }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:700 14px Roboto">Você ainda paga parcelas desse carro?</span>
+                <div style="display:flex;gap:8px"><sc-for list="{{ tenhoOpts }}" as="o" hint-placeholder-count="2"><button type="button" onClick="{{ o.go }}" aria-pressed="{{ o.on }}" style="height:44px;padding:0 20px;border-radius:999px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};font:600 14px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3">{{ o.t }}</button></sc-for></div>
+                <sc-if value="{{ tenhoPaga }}" hint-placeholder-val="{{ false }}"><label style="position:relative;max-width:280px;display:block;height:52px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font:500 14px Roboto;color:#5A6472;pointer-events:none">R$</span><input type="text" inputmode="numeric" value="{{ parcelaVal }}" onChange="{{ setParcela }}" placeholder="Valor da parcela" aria-label="Valor da parcela" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 64px 0 40px;border:0;border-radius:10px;background:transparent;font:700 16px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);font:500 13px Roboto;color:#5A6472;pointer-events:none">/mês</span></label></sc-if>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ recInPay }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <span style="font:700 15px Roboto">Onde você pretende recarregar este carro?</span>
+                <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+                  <sc-for list="{{ recOpts }}" as="o" hint-placeholder-count="3"><button type="button" onClick="{{ o.go }}" aria-pressed="{{ o.on }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:14px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};color:#1D2433;text-align:left;cursor:pointer;transition:border-color .15s ease-out, background .15s ease-out" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:22px;color:{{ o.ic }}">{{ o.icon }}</span><span style="font:700 14px Roboto">{{ o.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ o.d }}</span></button></sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px;border-radius:14px;box-shadow:inset 0 0 0 1px #E6E6EE">
+              <span style="display:flex;align-items:center;gap:12px;min-width:0"><span style="flex:none;width:40px;height:40px;border-radius:10px;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px">shield</span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Você pretende contratar seguro?</span><span style="font:400 13px Roboto;color:#5A6472">{{ segHelp }}</span></span></span>
+              <button type="button" role="switch" aria-checked="{{ segOn }}" aria-label="Incluir seguro" onClick="{{ toggleSeg }}" style="flex:none;position:relative;width:52px;height:32px;border:0;border-radius:999px;background:{{ segTrack }};cursor:pointer;transition:background .15s ease-out" style-hover="filter:brightness(.95)"><span style="position:absolute;top:4px;left:{{ segKnob }};width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .15s ease-out"></span></button>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <button type="button" onClick="{{ back }}" style="display:flex;align-items:center;gap:6px;height:48px;padding:0 16px;border:0;border-radius:10px;background:transparent;color:#5A6472;font:600 14px Roboto;cursor:pointer" style-hover="background:#F4F4F6;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_back</span>Voltar</button>
+              <button type="button" onClick="{{ next2 }}" style="display:flex;align-items:center;gap:8px;height:52px;padding:0 24px;border:0;border-radius:10px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#5F29AE" style-active="background:#4C1D95">{{ next2Txt }}<span style="font-family:'Material Symbols Rounded';font-size:20px">arrow_forward</span></button>
+            </div>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+          <section data-screen-label="4 Resultado" style="display:flex;flex-direction:column;gap:16px;animation:ccIn .3s ease-out both">
+            <sc-if value="{{ multi }}" hint-placeholder-val="{{ false }}">
+              <div role="tablist" aria-label="Veículos" style="display:flex;gap:8px;flex-wrap:wrap">
+                <sc-for list="{{ carTabs }}" as="t" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{ t.on }}" onClick="{{ t.go }}" style="display:flex;align-items:center;gap:10px;height:48px;padding:0 14px 0 6px;border-radius:12px;border:1.5px solid {{ t.bd }};background:{{ t.bg }};color:#1D2433;font:600 13px Roboto;cursor:pointer;transition:border-color .15s ease-out" style-hover="border-color:#7D3EE3"><span style="width:56px;height:34px;background:{{ t.img }}"></span>{{ t.t }}</button></sc-for>
+              </div>
+            </sc-if>
+            <div style="border-radius:24px;overflow:hidden;background:#1D2433 url(assets/calc/palco-estudio.png) center 80% / cover no-repeat;color:#fff;display:grid;grid-template-columns:{{ resCols }}">
+              <div style="display:flex;flex-direction:column;gap:22px;padding:32px 32px 28px">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#E0D2FF">{{ r.carName }}</span><span style="display:flex;align-items:center;gap:5px;height:24px;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.1);font:600 11px Roboto;color:#E4E4E7"><span style="font-family:'Material Symbols Rounded';font-size:14px">science</span>Estimativa demonstrativa</span></div>
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <span style="font:400 16px Roboto;color:#C9CDD6">Você precisaria reservar cerca de</span>
+                  <span style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font:800 clamp(48px,6vw,68px)/0.95 'Merriweather Sans',sans-serif;letter-spacing:-.02em">{{ r.totalTxt }}</span><span style="font:500 18px Roboto;color:#C9CDD6">por mês</span></span>
+                  <span style="font:400 13px/1.5 Roboto;color:#A9B0BC">{{ r.yearTxt }} por ano, somando gastos do mês e reserva para despesas periódicas.</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;height:10px;border-radius:5px;overflow:hidden;gap:3px;background:rgba(255,255,255,.08)"><span style="flex:{{ r.mF }};background:#FF5040"></span><span style="flex:{{ r.rF }};background:#C9AEFF"></span></div>
+                  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+                    <div style="display:flex;flex-direction:column;gap:3px"><span style="display:flex;align-items:center;gap:6px;font:600 12px Roboto;color:#FFB4AC"><span style="width:8px;height:8px;border-radius:50%;background:#FF5040"></span>Gastos do mês</span><span style="font:800 22px 'Merriweather Sans',sans-serif">{{ r.mensalTxt }}</span><span style="font:400 12px Roboto;color:#A9B0BC">{{ r.mensalSub }}</span></div>
+                    <div style="display:flex;flex-direction:column;gap:3px"><span style="display:flex;align-items:center;gap:6px;font:600 12px Roboto;color:#E0D2FF"><span style="width:8px;height:8px;border-radius:50%;background:#C9AEFF"></span>Reserva para o ano</span><span style="font:800 22px 'Merriweather Sans',sans-serif">{{ r.reservaTxt }}</span><span style="font:400 12px Roboto;color:#A9B0BC">{{ r.reservaSub }}</span></div>
+                  </div>
+                </div>
+                <sc-if value="{{ r.hasCompra }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);font:400 13px/1.4 Roboto;color:#E4E4E7"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#C9AEFF">payments</span><span>Compra à vista de <b style="color:#fff">{{ r.compraTxt }}</b> fica fora da conta mensal.</span></div></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:24px 24px 24px 8px;min-width:0">
+                <div style="position:relative;width:100%;aspect-ratio:2400/1000">
+                  <span aria-hidden="true" style="position:absolute;left:8%;right:8%;bottom:12%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.7),rgba(0,0,0,0));filter:blur(4px)"></span>
+                  <sc-if value="{{ r.lat }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="{{ r.carName }}" style="position:absolute;inset:0;background:url('{{ r.lat }}') center / contain no-repeat;filter:drop-shadow(0 6px 6px rgba(0,0,0,.45))"></span></sc-if>
+                  <sc-for list="{{ r.spots }}" as="p" hint-placeholder-count="0"><span style="position:absolute;left:{{ p.x }};top:{{ p.y }};transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:#fff;color:#4C1D95;display:flex;align-items:center;justify-content:center;font:800 13px Roboto;box-shadow:0 0 0 4px {{ p.ring }},0 6px 16px rgba(0,0,0,.4)">{{ p.n }}</span></sc-for>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
+                  <sc-for list="{{ r.spots }}" as="p" hint-placeholder-count="0"><div style="display:flex;align-items:center;gap:8px;padding:8px 10px 8px 8px;border-radius:12px;background:rgba(11,13,18,.5);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)"><span style="position:relative;flex:none;width:34px;height:34px;background:url('{{ p.img }}') center / contain no-repeat"><span style="position:absolute;left:-4px;top:-4px;width:16px;height:16px;border-radius:50%;background:#fff;color:#4C1D95;font:800 10px/16px Roboto;text-align:center">{{ p.n }}</span></span><span style="display:flex;flex-direction:column;min-width:0;line-height:1.2"><span style="font:500 11px Roboto;color:#C9CDD6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.t }}</span><span style="font:800 14px 'Merriweather Sans',sans-serif">{{ p.v }}</span></span></div></sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding:8px 0;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 24px 12px"><h2 style="margin:0;font:800 18px 'Merriweather Sans',sans-serif">De onde sai esse número</h2><sc-if value="{{ r.hasOv }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ restore }}" style="display:flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:0;border-radius:8px;background:#F1EBFD;color:#4C1D95;font:700 13px Roboto;cursor:pointer" style-hover="background:#E3D8FC"><span style="font-family:'Material Symbols Rounded';font-size:18px">restart_alt</span>Restaurar médias</button></sc-if></div>
+              <sc-for list="{{ r.groups }}" as="g" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column">
+                  <div style="display:flex;justify-content:space-between;gap:12px;padding:12px 24px 6px;font:700 11px Roboto;letter-spacing:.08em;color:#5A6472"><span>{{ g.t }}</span><span>{{ g.totalTxt }}</span></div>
+                  <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
+                    <div style="border-top:1px solid #F0F0F4">
+                      <div style="display:flex;align-items:center;gap:14px;padding:12px 24px;min-height:56px;box-sizing:border-box">
+                        <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="" style="display:block;flex:none;width:44px;height:44px;;background:url('{{ c.img }}') center / contain no-repeat"></span></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ false }}"><span style="flex:none;width:44px;height:44px;border-radius:12px;background:#F6F6F9;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px">{{ c.icon }}</span></sc-if>
+                        <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="display:flex;align-items:center;gap:8px;font:700 14px Roboto">{{ c.t }}<sc-if value="{{ c.ov }}" hint-placeholder-val="{{ false }}"><span style="padding:1px 7px;border-radius:999px;background:#FFF4E0;color:#8A5300;font:700 10px Roboto">Ajustado</span></sc-if></span><span style="font:400 12px Roboto;color:#5A6472">{{ c.d }}</span></span>
+                        <span style="flex:none;font:700 15px Roboto">{{ c.vTxt }}</span>
+                        <button type="button" onClick="{{ c.toggle }}" aria-expanded="{{ c.open }}" aria-label="Ver cálculo de {{ c.t }}" style="flex:none;width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:#5A6472;font-family:'Material Symbols Rounded';font-size:22px;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F4F4F6;color:#7D3EE3">{{ c.chev }}</button>
+                      </div>
+                      <sc-if value="{{ c.open }}" hint-placeholder-val="{{ false }}">
+                        <div style="margin:0 24px 14px 74px;padding:14px;border-radius:12px;background:#F7F4FF;display:flex;flex-direction:column;gap:12px;animation:ccIn .2s ease-out both">
+                          <span style="display:flex;gap:8px;font:400 13px/1.5 Roboto;color:#3F4654"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">calculate</span>{{ c.formula }}</span>
+                          <sc-if value="{{ c.isOutros }}" hint-placeholder-val="{{ false }}">
+                            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px">
+                              <sc-for list="{{ outrosFields }}" as="o" hint-placeholder-count="3"><label style="position:relative;display:block;height:52px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:12px;top:7px;font:500 11px Roboto;color:#5A6472;pointer-events:none">{{ o.label }}</span><input type="text" inputmode="numeric" value="{{ o.value }}" onChange="{{ o.change }}" placeholder="0" aria-label="{{ o.label }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:20px 12px 6px;border:0;border-radius:10px;background:transparent;font:700 14px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input></label></sc-for>
+                            </div>
+                          </sc-if>
+                          <sc-if value="{{ c.adjustable }}" hint-placeholder-val="{{ false }}">
+                            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span style="font:600 13px Roboto;color:#1D2433">Ajustar valor</span><label style="position:relative;flex:0 1 180px;display:block;height:44px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1.5px #D5D8DE;cursor:text" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3"><span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font:500 13px Roboto;color:#5A6472;pointer-events:none">R$</span><input type="text" inputmode="numeric" value="{{ c.ovVal }}" onChange="{{ c.setOv }}" placeholder="{{ c.ph }}" aria-label="Ajustar {{ c.t }}" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 52px 0 36px;border:0;border-radius:10px;background:transparent;font:700 14px Roboto;color:#1D2433;outline:none;cursor:text" style-focus="box-shadow:inset 0 0 0 1.5px #7D3EE3,0 0 0 3px rgba(125,61,227,.35)"></input><span style="position:absolute;right:12px;top:50%;transform:translateY(-50%);font:500 12px Roboto;color:#5A6472;pointer-events:none">{{ c.unit }}</span></label><span style="font:400 12px Roboto;color:#5A6472">{{ c.adjHelp }}</span></div>
+                          </sc-if>
+                        </div>
+                      </sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(290px,calc((100% - 48px)/4 + 1px))),1fr));gap:16px">
+              <div style="padding:20px 24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:10px">
+                <span style="display:flex;align-items:center;gap:8px;font:700 15px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">tune</span>Premissas usadas</span>
+                <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px"><sc-for list="{{ r.premissas }}" as="p" hint-placeholder-count="5"><li style="display:flex;justify-content:space-between;gap:12px;font:400 13px Roboto;color:#5A6472"><span>{{ p.k }}</span><span style="font-weight:600;color:#1D2433;text-align:right">{{ p.v }}</span></li></sc-for></ul>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:6px"><button type="button" onClick="{{ editRotina }}" style="height:36px;padding:0 12px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3;color:#4C1D95">Mudar rotina</button><button type="button" onClick="{{ editPay }}" style="height:36px;padding:0 12px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:600 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3;color:#4C1D95">Mudar forma de compra</button></div>
+              </div>
+              <div style="padding:20px 24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:8px">
+                <span style="display:flex;align-items:center;gap:8px;font:700 15px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">trending_down</span>Desvalorização (à parte)</span>
+                <span style="font:800 22px 'Merriweather Sans',sans-serif">{{ r.deprecTxt }}<span style="font:500 14px Roboto;color:#5A6472"> /mês</span></span>
+                <span style="font:400 13px/1.5 Roboto;color:#5A6472">Não é uma conta a pagar: é quanto o carro tende a perder de valor de revenda, cerca de 11% ao ano. Por isso fica fora da reserva mensal.</span>
+              </div>
+            </div>
+
+            <div style="padding:24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+                <span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">COMPARAR</span><h2 style="margin:0;font:800 20px 'Merriweather Sans',sans-serif">{{ cmpTitle }}</h2></span>
+                <sc-if value="{{ canAdd }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ addCar }}" style="display:flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:10px;border:1.5px solid #7D3EE3;background:#fff;color:#4C1D95;font:700 14px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF" style-active="background:#EDE4FD"><span style="font-family:'Material Symbols Rounded';font-size:20px">add</span>Adicionar outro carro</button></sc-if>
+              </div>
+              <sc-if value="{{ notMulti }}" hint-placeholder-val="{{ true }}"><span style="font:400 14px/1.5 Roboto;color:#5A6472">Compare até 3 carros. A sua rotina é reaproveitada; forma de compra, seguro e recarga você ajusta em cada um.</span></sc-if>
+              <sc-if value="{{ multi }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:{{ vsCols }};gap:14px">
+                  <sc-for list="{{ vs }}" as="v" hint-placeholder-count="2">
+                    <div style="position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 {{ v.bw }} {{ v.bd }}">
+                      <div style="position:relative;background:#1D2433 url(assets/calc/palco-estudio.png) center bottom / cover no-repeat;aspect-ratio:2400/1250;display:flex;align-items:flex-end">
+                        <span role="img" aria-label="{{ v.t }}" style="display:block;position:absolute;left:4%;right:4%;bottom:4%;width:92%;height:auto;aspect-ratio:2400/1000;filter:drop-shadow(0 14px 14px rgba(0,0,0,.45));background:url('{{ v.lat }}') center / contain no-repeat"></span>
+                        <sc-if value="{{ v.lead }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:#fff;color:#166534;font:700 12px Roboto"><img src="assets/calc/trofeu.png" alt="" style="width:26px;height:26px">Mais econômico</span></sc-if>
+                        <button type="button" onClick="{{ v.remove }}" aria-label="Remover {{ v.t }}" style="position:absolute;right:10px;top:10px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-family:'Material Symbols Rounded';font-size:18px;cursor:pointer" style-hover="background:rgba(255,255,255,.28)">close</button>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:12px;padding:16px 18px 18px">
+                        <span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">{{ v.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ v.pay }}</span></span>
+                        <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap"><span style="font:800 26px 'Merriweather Sans',sans-serif">{{ v.totalTxt }}<span style="font:500 13px Roboto;color:#5A6472"> /mês</span></span><span style="font:700 12px Roboto;color:{{ v.diffC }}">{{ v.diffTxt }}</span></span>
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:{{ v.scoreBg }}"><span style="font:800 22px 'Merriweather Sans',sans-serif;color:{{ v.scoreC }}">{{ v.wins }}</span><span style="font:500 13px/1.3 Roboto;color:#1D2433">{{ v.winsTxt }}</span></div>
+                        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column">
+                          <sc-for list="{{ v.rows }}" as="w" hint-placeholder-count="0"><li style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #F0F0F4"><span role="img" aria-label="" style="display:block;width:26px;height:26px;;background:url('{{ w.img }}') center / contain no-repeat"></span><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:400 13px Roboto;color:#5A6472">{{ w.k }}</span><span style="flex:none;white-space:nowrap;display:flex;align-items:center;gap:4px;padding:{{ w.pad }};border-radius:999px;background:{{ w.bg }};font:{{ w.w }} 13px Roboto;color:{{ w.fg }}"><sc-if value="{{ w.win }}" hint-placeholder-val="{{ false }}"><span style="font-family:'Material Symbols Rounded';font-size:15px;color:#15803D">emoji_events</span></sc-if>{{ w.v }}</span></li></sc-for>
+                        </ul>
+                        <span style="display:flex;justify-content:space-between;gap:8px;padding-top:10px;border-top:1px dashed #E6E6EE;font:400 12px Roboto;color:#5A6472"><span>Custo de uso, sem parcela</span><span style="font-weight:700;color:#1D2433">{{ v.usoTxt }}</span></span>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ hasSim }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:16px">
+                <span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 12px Roboto;letter-spacing:.08em;color:#7D3EE3">CARROS PARECIDOS</span><h2 style="margin:0;font:800 20px 'Merriweather Sans',sans-serif">Na mesma faixa de preço, com a sua rotina</h2></span>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px">
+                  <sc-for list="{{ simCars }}" as="c" hint-placeholder-count="3">
+                    <div style="display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3,0 8px 24px rgba(29,36,51,.12)">
+                      <span style="display:block;width:100%;aspect-ratio:16/9;border-radius:10px;background:#F6F6F9;position:relative"><span style="position:absolute;inset:6%;background:{{ c.img }}"></span></span>
+                      <span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">{{ c.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ c.sub }}</span></span>
+                      <span style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap"><span style="font:800 18px 'Merriweather Sans',sans-serif">{{ c.totalTxt }}<span style="font:500 12px Roboto;color:#5A6472"> /mês</span></span><span style="padding:2px 8px;border-radius:999px;background:{{ c.diffBg }};color:{{ c.diffC }};font:700 12px Roboto">{{ c.diffTxt }}</span></span>
+                      <button type="button" onClick="{{ c.go }}" disabled="{{ c.full }}" style="display:flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:8px;border:1.5px solid #7D3EE3;background:#fff;color:#4C1D95;font:700 13px Roboto;cursor:pointer;transition:background .15s ease-out" style-hover="background:#F7F4FF" style-active="background:#EDE4FD"><span style="font-family:'Material Symbols Rounded';font-size:18px">compare_arrows</span>{{ c.btn }}</button>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </section>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ showAside }}" hint-placeholder-val="{{ false }}">
+        <aside aria-label="Resumo" style="position:sticky;top:105px;display:flex;flex-direction:column;gap:12px">
+          <div style="padding:20px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;display:flex;flex-direction:column;gap:14px">
+            <span style="font:700 11px Roboto;letter-spacing:.08em;color:#5A6472">SEU CARRO</span>
+            <span style="display:block;width:100%;aspect-ratio:16/9;background:{{ car.img }}"></span>
+            <span style="display:flex;flex-direction:column;gap:2px"><span style="font:800 16px/1.3 'Merriweather Sans',sans-serif">{{ car.name }}</span><span style="font:400 13px Roboto;color:#5A6472">{{ car.sub }}</span></span>
+            <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px;border-top:1px solid #F0F0F4">
+              <sc-for list="{{ asideRows }}" as="a" hint-placeholder-count="3"><span style="display:flex;justify-content:space-between;gap:12px;font:400 13px Roboto;color:#5A6472"><span>{{ a.k }}</span><span style="font-weight:600;color:#1D2433;text-align:right">{{ a.v }}</span></span></sc-for>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;padding:14px 16px;border-radius:14px;background:#F1EBFD;font:400 13px/1.45 Roboto;color:#4C1D95"><span style="font-family:'Material Symbols Rounded';font-size:18px">auto_awesome</span>Consumo, manutenção, pneus e seguro médio já vêm preenchidos pelo modelo.</div>
+        </aside>
+      </sc-if>
+    </div>
+  </main>
+  <section data-screen-label="Como funciona" style="padding:88px clamp(16px, calc(2.2vw + 7px), 32px) 72px;background:#fff;display:flex;justify-content:center;overflow:hidden">
+    <div style="width:100%;max-width:1152px;display:flex;flex-direction:column;gap:56px">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
+        <span style="font:700 12px Roboto;letter-spacing:.1em;color:#7D3EE3">COMO FUNCIONA</span>
+        <h2 style="margin:0;max-width:640px;font:800 clamp(28px,3.6vw,40px)/1.15 'Merriweather Sans',sans-serif;text-wrap:balance">Quatro paradas até saber se o carro cabe no bolso.</h2>
+      </div>
+      <ol style="position:relative;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:{{ howCols }};gap:32px 24px">
+        <sc-if value="{{ howRoad }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position:absolute;left:12%;right:12%;top:96px;height:0;border-top:3px dashed #D9CCF7"></span></sc-if>
+        <sc-for list="{{ howSteps }}" as="hs" hint-placeholder-count="0">
+          <li style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px">
+            <span style="position:relative;width:192px;height:192px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#FFFFFF 0%,#F1EBFD 62%,#E6DCFB 100%);box-shadow:0 18px 40px rgba(125,62,227,.16),inset 0 0 0 1px #E6DCFB;display:flex;align-items:center;justify-content:center">
+              <span role="img" aria-label="" style="display:block;width:{{ hs.iw }};height:150px;background:url('{{ hs.img }}') center / contain no-repeat;filter:drop-shadow(0 10px 12px rgba(48,20,97,.18))"></span>
+              <span style="position:absolute;left:-6px;top:6px;width:44px;height:44px;border-radius:50%;background:#7D3EE3;color:#fff;display:flex;align-items:center;justify-content:center;font:800 16px 'Merriweather Sans',sans-serif;box-shadow:0 0 0 6px #fff">{{ hs.n }}</span>
+            </span>
+            <span style="font:800 19px/1.25 'Merriweather Sans',sans-serif">{{ hs.t }}</span>
+            <span style="max-width:240px;font:400 14px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ hs.d }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+  <section data-screen-label="O que entra na conta" style="position:relative;padding:72px clamp(16px, calc(2.2vw + 7px), 32px);background:#1D2433 url(assets/calc/palco-estudio.png) center bottom / cover no-repeat;color:#fff;display:flex;justify-content:center;overflow:hidden">
+    <div style="width:100%;max-width:1152px;display:grid;grid-template-columns:{{ exCols }};gap:40px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font:700 12px Roboto;letter-spacing:.1em;color:#E0D2FF">O QUE ENTRA NA CONTA</span>
+        <h2 style="margin:0;font:800 clamp(26px,3vw,34px)/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">O que vence todo mês e o que pega você de surpresa.</h2>
+        <p style="margin:0;font:400 16px/1.6 Roboto;color:#C9CDD6;text-wrap:pretty">IPVA, seguro, revisões e pneus não vencem todo mês, mas pesam no ano. A calculadora divide esses valores em 12 para você saber quanto separar, sem contar nenhuma despesa duas vezes.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:4px">
+          <span style="display:flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:rgba(255,80,64,.16);box-shadow:inset 0 0 0 1px rgba(255,80,64,.5);font:600 13px Roboto"><span style="width:8px;height:8px;border-radius:50%;background:#FF5040"></span>Todo mês</span>
+          <span style="display:flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:rgba(201,174,255,.16);box-shadow:inset 0 0 0 1px rgba(201,174,255,.5);font:600 13px Roboto"><span style="width:8px;height:8px;border-radius:50%;background:#C9AEFF"></span>Reserva para o ano</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="position:relative;width:100%;aspect-ratio:2400/1000">
+          <span aria-hidden="true" style="position:absolute;left:8%;right:8%;bottom:12%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.65),rgba(0,0,0,0));filter:blur(4px)"></span>
+          <span role="img" aria-label="Chevrolet Onix" style="position:absolute;inset:0;background:url(assets/calc/lateral-onix.png) center / contain no-repeat;filter:drop-shadow(0 6px 6px rgba(0,0,0,.45))"></span>
+          <sc-for list="{{ exSpots }}" as="p" hint-placeholder-count="0">
+            <span style="position:absolute;left:{{ p.x }};top:{{ p.y }};transform:translate(-50%,-50%);display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:#fff;color:#1D2433;box-shadow:0 0 0 2px {{ p.ring }},0 10px 22px rgba(0,0,0,.35);font:700 12px Roboto;white-space:nowrap"><span role="img" aria-label="" style="display:block;width:26px;height:26px;background:url('{{ p.img }}') center / contain no-repeat"></span>{{ p.t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div style="display:flex;justify-content:center;padding:20px 24px;background:#FFF8EB;color:#7A4A00;font:400 13px/1.5 Roboto;text-align:center"><span style="max-width:860px">Valores são estimativas com médias de mercado. Seguro não é cotação e a parcela simulada não é proposta de crédito. Você pode trocar cada número pelos seus.</span></div>
+  <dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  CAT = [
+    { id: "chevrolet", t: "Chevrolet", models: [
+      { id: "onix", t: "Onix", img: "onix", vers: [{ t: "1.0 LT", fuel: "flex", kc: 13.1, kr: 15.4, fipe: 92450, seg: 4200, rev: 850, tire: 2200, life: 45000 }, { t: "1.0 Turbo LTZ", fuel: "flex", kc: 12.4, kr: 15.0, fipe: 108900, seg: 4900, rev: 950, tire: 2600, life: 45000 }] },
+      { id: "tracker", t: "Tracker", img: "tracker", vers: [{ t: "1.0 Turbo LT", fuel: "flex", kc: 11.3, kr: 13.6, fipe: 128900, seg: 5900, rev: 1100, tire: 3200, life: 50000 }, { t: "1.2 Turbo Premier", fuel: "flex", kc: 10.9, kr: 13.1, fipe: 159900, seg: 7100, rev: 1250, tire: 3600, life: 50000 }] }] },
+    { id: "hyundai", t: "Hyundai", models: [
+      { id: "hb20", t: "HB20", img: "hb20", vers: [{ t: "1.0 Sense", fuel: "flex", kc: 13.3, kr: 15.5, fipe: 87900, seg: 4100, rev: 820, tire: 2100, life: 45000 }, { t: "1.0 Turbo Platinum", fuel: "flex", kc: 12.0, kr: 14.6, fipe: 112900, seg: 5000, rev: 980, tire: 2600, life: 45000 }] },
+      { id: "creta", t: "Creta", img: "creta", vers: [{ t: "1.0 Turbo Limited", fuel: "flex", kc: 11.6, kr: 13.8, fipe: 139900, seg: 6300, rev: 1150, tire: 3300, life: 50000 }] }] },
+    { id: "volkswagen", t: "Volkswagen", models: [
+      { id: "polo", t: "Polo", img: "polo", vers: [{ t: "1.0 MPI", fuel: "flex", kc: 13.4, kr: 15.6, fipe: 92450, seg: 4300, rev: 880, tire: 2200, life: 45000 }, { t: "1.0 TSI Highline", fuel: "flex", kc: 12.2, kr: 14.8, fipe: 118900, seg: 5200, rev: 1000, tire: 2700, life: 45000 }] },
+      { id: "tcross", t: "T-Cross", img: "tcross", vers: [{ t: "200 TSI", fuel: "flex", kc: 11.2, kr: 13.4, fipe: 139900, seg: 6200, rev: 1150, tire: 3300, life: 50000 }] }] },
+    { id: "toyota", t: "Toyota", models: [
+      { id: "corolla-cross", t: "Corolla Cross", img: "corolla-cross", vers: [{ t: "2.0 XRE", fuel: "flex", kc: 10.3, kr: 12.4, fipe: 168300, seg: 7400, rev: 1300, tire: 3800, life: 50000 }, { t: "1.8 Hybrid XRX", fuel: "hev", kc: 17.8, kr: 15.6, fipe: 199900, seg: 8600, rev: 1200, tire: 3800, life: 50000 }] },
+      { id: "corolla", t: "Corolla", img: "corolla", vers: [{ t: "2.0 XEi", fuel: "flex", kc: 11.6, kr: 14.0, fipe: 158900, seg: 7000, rev: 1250, tire: 3400, life: 50000 }, { t: "1.8 Altis Hybrid", fuel: "hev", kc: 17.6, kr: 15.1, fipe: 189900, seg: 8200, rev: 1200, tire: 3400, life: 50000 }] }] },
+    { id: "byd", t: "BYD", models: [
+      { id: "dolphin", t: "Dolphin", img: "byd-dolphin", vers: [{ t: "EV GS", fuel: "ev", kwh: 13.6, fipe: 149800, seg: 6900, rev: 600, tire: 3000, life: 40000 }] }] },
+    { id: "jeep", t: "Jeep", models: [
+      { id: "compass", t: "Compass", img: "compass", vers: [{ t: "1.3 T270 Longitude", fuel: "flex", kc: 10.1, kr: 12.3, fipe: 176200, seg: 7600, rev: 1350, tire: 3900, life: 50000 }, { t: "1.3 4xe Plug-in", fuel: "phev", kc: 14.0, kr: 13.0, kwh: 22, fipe: 269900, seg: 11500, rev: 1500, tire: 4200, life: 50000 }] }] }
+  ];
+  YEARS = [2026, 2025, 2024, 2023, 2022];
+  CITIES = [["São Paulo", "SP", 6.19, 4, 1.18], ["Campinas", "SP", 6.09, 4, 1.05], ["Rio de Janeiro", "RJ", 6.39, 4, 1.22], ["Belo Horizonte", "MG", 6.09, 4, 1], ["Curitiba", "PR", 6.29, 1.9, 0.95], ["Porto Alegre", "RS", 6.35, 3, 0.97], ["Florianópolis", "SC", 6.25, 2, 0.9], ["Salvador", "BA", 6.49, 2.5, 1.05], ["Recife", "PE", 6.59, 2.4, 1.06], ["Fortaleza", "CE", 6.45, 3, 1.02], ["Brasília", "DF", 6.29, 3.5, 1], ["Goiânia", "GO", 6.19, 3.75, 0.96]];
+  KWH = { casa: 0.95, posto: 2.2, ambos: 1.58 };
+  SHARE = { casa: 0.7, posto: 0.45, ambos: 0.6 };
+  blank = () => ({ sel: { mk: "", md: "", yr: "", vr: "" }, pay: "avista", parcela: "", tenhoPaga: false, preco: "", entrada: "", prazo: 48, taxa: 1.69, seg: true, recarga: "casa", ov: {}, outros: { est: "", ped: "", lav: "" } });
+  state = { step: 0, max: 0, mode: "placa", plate: "", plateSt: "", cars: [this.blank()], ai: 0, adding: false, city: 0, cityQ: "São Paulo, SP", cityOpen: false, km: 1000, kmHelp: false, kmDay: 30, dayMode: 22, uso: "misto", open: {}, vw: window.innerWidth };
+  onR = () => this.setState({ vw: window.innerWidth });
+  componentDidMount() { window.addEventListener("resize", this.onR); }
+  componentWillUnmount() { window.removeEventListener("resize", this.onR); clearTimeout(this.pt); }
+  brl = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
+  mask = (raw) => { const d = String(raw).replace(/\D/g, "").slice(0, 10); return d ? (parseInt(d, 10) / 100).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : ""; };
+  num = (x) => { const n = parseFloat(String(x).replace(/\.(?=\d{3}(\D|$))/g, "").replace(",", ".")); return isFinite(n) ? n : 0; };
+  resolve = (sel) => { const mk = this.CAT.find((m) => m.id === sel.mk), md = mk && mk.models.find((m) => m.id === sel.md), v = md && sel.vr !== "" ? md.vers[+sel.vr] : null; return { mk, md, v, yr: +sel.yr || 0 }; };
+  upd = (patch) => this.setState((s) => { const cars = s.cars.slice(); cars[s.ai] = { ...cars[s.ai], ...(typeof patch === "function" ? patch(cars[s.ai]) : patch) }; return { cars }; });
+  calc = (e, s) => {
+    const { mk, md, v, yr } = this.resolve(e.sel); if (!v) return null;
+    const C = this.CITIES[s.city] || this.CITIES[0], age = Math.max(0, 2026 - yr), fipe = Math.round(v.fipe * Math.max(0.6, 1 - 0.08 * age)), km = Math.max(0, +s.km || 0);
+    const w = { cidade: [1, 0], estrada: [0, 1], misto: [0.5, 0.5] }[s.uso], kml = v.kc ? 1 / (w[0] / v.kc + w[1] / v.kr) : 0, gas = C[2], kp = this.KWH[e.recarga];
+    let en = 0, enF = "";
+    if (v.fuel === "ev") { en = km * v.kwh / 100 * kp; enF = km.toLocaleString("pt-BR") + " km × " + v.kwh + " kWh/100 km × R$ " + kp.toFixed(2).replace(".", ",") + "/kWh"; }
+    else if (v.fuel === "phev") { const sh = this.SHARE[e.recarga], el = km * sh * v.kwh / 100 * kp, fu = km * (1 - sh) / kml * gas; en = el + fu; enF = Math.round(sh * 100) + "% dos km na tomada (" + this.brl(el) + ") + " + Math.round((1 - sh) * 100) + "% na gasolina a " + kml.toFixed(1).replace(".", ",") + " km/l (" + this.brl(fu) + "). Cada km é contado uma vez só."; }
+    else { en = km / kml * gas; enF = km.toLocaleString("pt-BR") + " km ÷ " + kml.toFixed(1).replace(".", ",") + " km/l × R$ " + gas.toFixed(2).replace(".", ",") + "/l (gasolina em " + C[0] + ")"; }
+    const segA = e.seg ? v.seg * C[4] * Math.max(0.7, 1 - 0.03 * age) : 0, ipvaA = fipe * C[3] / 100, lic = 160;
+    const revN = Math.max(km / 10000, 1 / 12), man = revN * v.rev, pn = km / v.life * v.tire;
+    let parc = 0, parcF = "";
+    if (e.pay === "financiar" || (e.pay === "tenho" && e.tenhoPaga)) { parc = this.num(e.parcela); parcF = "Parcela informada por você."; }
+    if (e.pay === "simular") { const P = Math.max(0, (this.num(e.preco) || fipe) - this.num(e.entrada)), i = this.num(e.taxa) / 100, n = e.prazo; parc = i ? P * i / (1 - Math.pow(1 + i, -n)) : P / n; parcF = this.brl(P) + " financiados em " + n + "x a " + String(e.taxa).replace(".", ",") + "% a.m. (Tabela Price, ilustrativo)."; }
+    const out = this.num(e.outros.est) + this.num(e.outros.ped) + this.num(e.outros.lav);
+    const ev = v.fuel === "ev";
+    const cats = [
+      { id: "en", t: ev ? "Energia" : v.fuel === "phev" ? "Energia e combustível" : "Combustível", icon: ev ? "ev_station" : "local_gas_station", g: "m", v: en, f: enF, d: "Todo mês, conforme você roda", adj: true },
+      { id: "parc", t: "Parcela do financiamento", icon: "account_balance", g: "m", v: parc, f: parcF, d: e.pay === "simular" ? "Simulação ilustrativa" : "Valor informado", adj: false, hide: !parc },
+      { id: "out", t: "Outros gastos", icon: "local_parking", g: "m", v: out, f: "Estacionamento, pedágio e lavagem. Some o que você costuma gastar por mês.", d: out ? "Informado por você" : "Opcional: toque para adicionar", adj: false, outros: true },
+      { id: "seg", t: "Seguro", icon: "shield", g: "r", v: segA / 12, f: e.seg ? "Média anual de " + this.brl(segA) + " para o perfil em " + C[0] + " ÷ 12. Não é cotação." : "Você escolheu não incluir seguro.", d: e.seg ? "Média anual ÷ 12" : "Não incluído", adj: e.seg },
+      { id: "ipva", t: "IPVA e licenciamento", icon: "receipt_long", g: "r", v: (ipvaA + lic) / 12, f: "IPVA de " + String(C[3]).replace(".", ",") + "% sobre " + this.brl(fipe) + " (" + C[1] + ") = " + this.brl(ipvaA) + " + licenciamento " + this.brl(lic) + ", ÷ 12.", d: "Valores anuais ÷ 12", adj: true },
+      { id: "man", t: "Manutenção", icon: "build", g: "r", v: man, f: "Revisão de " + this.brl(v.rev) + " a cada 10.000 km ou 12 meses. Com " + km.toLocaleString("pt-BR") + " km/mês, dá " + revN.toFixed(2).replace(".", ",") + " revisão por mês.", d: "Reserva pelas revisões do plano", adj: true },
+      { id: "pn", t: "Pneus", icon: "tire_repair", g: "r", v: pn, f: "Jogo de " + this.brl(v.tire) + " dura cerca de " + v.life.toLocaleString("pt-BR") + " km. " + km.toLocaleString("pt-BR") + " km ÷ " + v.life.toLocaleString("pt-BR") + " × " + this.brl(v.tire) + ".", d: "Reserva proporcional ao desgaste", adj: true }
+    ].filter((c) => !c.hide).map((c) => { const o = e.ov[c.id]; return o !== undefined && o !== "" ? { ...c, v: this.num(o), ovd: true, base: c.v } : { ...c, base: c.v }; });
+    const sum = (g) => cats.filter((c) => c.g === g).reduce((a, c) => a + c.v, 0), mensal = sum("m"), reserva = sum("r"), get = (id) => (cats.find((c) => c.id === id) || { v: 0 }).v;
+    return { mk, md, v, yr, fipe, age, C, kml, cats, mensal, reserva, total: mensal + reserva, parc, uso: mensal + reserva - parc, deprec: fipe * 0.11 / 12, get, name: mk.t + " " + md.t + " " + v.t, short: md.t + " " + v.t, lat: this.LAT(md), img: "url('assets/carros/" + md.img + ".webp') center/contain no-repeat" };
+  };
+  LAT = (md) => "assets/calc/lateral-" + (md.img === "byd-dolphin" ? "dolphin" : md.img) + ".png";
+  CI = (id, fuel) => ({ en: fuel === "ev" || fuel === "phev" ? "energia" : "combustivel", seg: "seguro", ipva: "ipva", man: "manutencao", pn: "pneu", parc: "reserva" }[id]);
+  FUEL = { flex: "FLEX", hev: "HÍBRIDO", phev: "HÍBRIDO PLUG-IN", ev: "ELÉTRICO" };
+  PAYT = { avista: "À vista", financiar: "Financiado", simular: "Financiamento simulado", tenho: "Já tenho" };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, e = s.cars[s.ai], wide = s.vw >= (this.props.bpDesktop1024 ?? 1024), R = this.resolve(e.sel), sel = e.sel;
+    const go = (n) => () => { this.setState({ step: n, max: Math.max(s.max, n) }, () => requestAnimationFrame(() => { const el = document.querySelector('[data-screen-label="Etapas"]'); window.scrollTo({ top: el ? Math.max(0, el.getBoundingClientRect().top + scrollY - 90) : 0, behavior: "smooth" }); })); };
+    const ready = !!R.v && !!sel.yr, cityOk = s.cityQ === (this.CITIES[s.city][0] + ", " + this.CITIES[s.city][1]);
+    const pill = (on) => ({ bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", fg: on ? "#4C1D95" : "#1D2433", ic: on ? "#7D3EE3" : "#5A6472" });
+    const opt = (list, cur, set) => list.map(([v, t, icon, d]) => ({ t, icon, d, on: cur === v, ...pill(cur === v), go: () => set(v) }));
+    const car = R.v ? { name: R.mk.t + " " + R.md.t, sub: R.v.t + (sel.yr ? " · " + sel.yr : ""), fuelTag: this.FUEL[R.v.fuel], img: "url('assets/carros/" + R.md.img + ".webp') center/contain no-repeat", fipeTxt: this.brl(R.v.fipe * Math.max(0.6, 1 - 0.08 * Math.max(0, 2026 - (+sel.yr || 2026)))) } : { name: "", sub: "", fuelTag: "", img: "none", fipeTxt: "" };
+    const setSel = (k) => (ev) => { const val = ev.target.value; this.upd((c) => { const n = { ...c.sel, [k]: val }; if (k === "mk") { n.md = ""; n.vr = ""; n.yr = ""; } if (k === "md") { n.vr = ""; n.yr = ""; } return { sel: n }; }); };
+    const ph = (t) => [{ v: "", t }];
+    const sels = [
+      { label: "Montadora", value: sel.mk, opts: ph("Escolha").concat(this.CAT.map((m) => ({ v: m.id, t: m.t }))), change: setSel("mk"), disabled: false },
+      { label: "Modelo", value: sel.md, opts: ph(R.mk ? "Escolha" : "Escolha a montadora").concat(R.mk ? R.mk.models.map((m) => ({ v: m.id, t: m.t })) : []), change: setSel("md"), disabled: !R.mk },
+      { label: "Ano", value: sel.yr, opts: ph(R.md ? "Escolha" : "—").concat(R.md ? this.YEARS.map((y) => ({ v: String(y), t: String(y) })) : []), change: setSel("yr"), disabled: !R.md },
+      { label: "Versão", value: sel.vr, opts: ph(R.md ? "Escolha" : "—").concat(R.md ? R.md.vers.map((v, i) => ({ v: String(i), t: v.t })) : []), change: setSel("vr"), disabled: !R.md }
+    ].map((f) => ({ ...f, bg: f.disabled ? "#F6F6F9" : "#fff", fg: f.disabled ? "#7A8494" : "#1D2433", cursor: f.disabled ? "not-allowed" : "pointer", hov: f.disabled ? "#D5D8DE" : "#7D3EE3" }));
+    const plateValid = /^[A-Z]{3}\d[A-Z0-9]\d{2}$/.test(s.plate.replace("-", ""));
+    const findPlate = (ev) => { ev.preventDefault(); if (!plateValid) { this.setState({ plateSt: "err" }); return; } this.setState({ plateSt: "busy" }); clearTimeout(this.pt); this.pt = setTimeout(() => { const flat = []; this.CAT.forEach((m) => m.models.forEach((md) => md.vers.forEach((v, i) => flat.push([m.id, md.id, i])))); let h = 0; for (const ch of s.plate) h = (h * 31 + ch.charCodeAt(0)) >>> 0; const [mk, md, vr] = s.plate.replace("-", "") === "ABC1D23" ? ["chevrolet", "onix", 1] : flat[h % flat.length]; this.upd({ sel: { mk, md, vr: String(vr), yr: String(this.YEARS[h % 4 + 1]) } }); this.setState({ plateSt: "ok" }); }, 700); };
+    const steps = [["Veículo", "directions_car"], ["Sua rotina", "route"], ["Forma de compra", "key"], ["Resultado", "insights"]].map(([t, icon], i) => { const cur = s.step === i, done = i < s.step, can = i <= s.max && (i === 0 || ready); return { t, icon, cur, off: !can, cursor: can ? "pointer" : "default", bar: cur || done ? "#7D3EE3" : i <= s.max ? "#C9AEFF" : "#E6E6EE", fg: cur ? "#4C1D95" : done ? "#1D2433" : "#5A6472", w: cur ? 700 : 500, go: can ? go(i) : () => {} }; });
+    const km = +s.km || 0, needsRec = R.v && (R.v.fuel === "ev" || R.v.fuel === "phev");
+    const cityList = this.CITIES.map((c, i) => ({ t: c[0], uf: c[1], i })).filter((c) => !s.cityQ || cityOk || (c.t + " " + c.uf).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(s.cityQ.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(",")[0].trim())).map((c) => ({ ...c, go: (ev) => { ev.preventDefault(); this.setState({ city: c.i, cityQ: c.t + ", " + c.uf, cityOpen: false }); } }));
+    const kmEst = Math.round((+s.kmDay || 0) * s.dayMode / 10) * 10;
+    const simP = this.calc({ ...e, pay: "simular" }, s);
+    const r0 = this.calc(e, s);
+    const fin = s.cars.map((c) => this.calc(c, s)).map((x, i) => ({ x, i })).filter((o) => o.x);
+    let r = { lat: "", spots: [], carName: "", totalTxt: "", mensalTxt: "", reservaTxt: "", mensalSub: "", reservaSub: "", hasCompra: false, compraTxt: "", groups: [], premissas: [], deprecTxt: "", hasOv: false };
+    if (r0) {
+      const items = (g) => r0.cats.filter((c) => c.g === g).map((c) => { const open = !!s.open[c.id]; const ci = this.CI(c.id, r0.v.fuel); return { t: c.t, icon: c.icon, hasImg: !!ci, noImg: !ci, img: ci ? "assets/calc/icone-" + ci + ".png" : "", d: c.d, vTxt: this.brl(c.v), ov: !!c.ovd, open, chev: open ? "expand_less" : "expand_more", toggle: () => this.setState((x) => ({ open: { ...x.open, [c.id]: !x.open[c.id] } })), formula: c.f, adjustable: c.adj, isOutros: !!c.outros, ovVal: e.ov[c.id] ?? "", ph: String(Math.round(c.base)), unit: "/mês", adjHelp: c.id === "seg" ? "Tem uma cotação? Use o valor mensal dela." : "Média: " + this.brl(c.base) + "/mês", setOv: (ev) => { const val = this.mask(ev.target.value); this.upd((cc) => ({ ov: { ...cc.ov, [c.id]: val } })); } }; });
+      const lab = (g) => r0.cats.filter((c) => c.g === g && c.v > 0).map((c) => c.t.split(" ")[0].toLowerCase()).join(", ");
+      r = { carName: r0.name.toUpperCase() + " · " + r0.yr, totalTxt: this.brl(r0.total), mensalTxt: this.brl(r0.mensal), reservaTxt: this.brl(r0.reserva), mensalSub: lab("m") || "—", reservaSub: lab("r") || "—", hasCompra: e.pay === "avista", compraTxt: this.brl(r0.fipe),
+        groups: [{ t: "GASTOS MENSAIS", totalTxt: this.brl(r0.mensal), items: items("m") }, { t: "RESERVA PARA DESPESAS PERIÓDICAS", totalTxt: this.brl(r0.reserva), items: items("r") }],
+        premissas: [{ k: "Cidade", v: r0.C[0] + ", " + r0.C[1] }, { k: "Quilometragem", v: km.toLocaleString("pt-BR") + " km/mês" }, { k: "Uso", v: { cidade: "Mais na cidade", estrada: "Mais na estrada", misto: "Misto" }[s.uso] }, ...(r0.v.fuel === "ev" ? [] : [{ k: "Gasolina", v: "R$ " + r0.C[2].toFixed(2).replace(".", ",") + "/l" }]), ...(needsRec ? [{ k: "Energia", v: "R$ " + this.KWH[e.recarga].toFixed(2).replace(".", ",") + "/kWh" }] : []), { k: "FIPE usada", v: this.brl(r0.fipe) }, { k: "Forma de compra", v: this.PAYT[e.pay] }],
+        lat: r0.lat, spots: (() => { const ev = r0.v.fuel === "ev"; const P = { en: [ev ? "26%" : "79%", "41%", "64px", "-70%"], ipva: ["47%", "20%", "36px", "-50%"], man: ["12%", "47%", "92px", "-25%"], seg: ["60%", "56%", "26px", "-50%"], pn: ["22%", "70%", "40px", "-30%"] }; return r0.cats.filter((c) => P[c.id] && c.v > 0).map((c, k) => ({ n: String(k + 1), ring: c.g === "m" ? "#FF5040" : "#C9AEFF", x: P[c.id][0], y: P[c.id][1], stem: P[c.id][2], tx: P[c.id][3], t: c.t.split(" e ")[0], v: this.brl(c.v), img: "assets/calc/icone-" + this.CI(c.id, r0.v.fuel) + ".png" })); })(),
+        yearTxt: this.brl(r0.total * 12), mF: Math.max(1, Math.round(r0.mensal)), rF: Math.max(1, Math.round(r0.reserva)),
+        deprecTxt: this.brl(r0.deprec), hasOv: Object.values(e.ov).some((x) => x !== "" && x !== undefined) };
+    }
+    const multi = s.step === 3 && fin.length >= 2;
+    const cmpCols = "minmax(150px,1.2fr) repeat(" + fin.length + ",minmax(130px,1fr))";
+    const row = (k, f, strong) => { const vals = fin.map((o) => f(o.x)), mn = Math.min(...vals), allEq = vals.every((x) => Math.round(x) === Math.round(vals[0])); return { k, w: strong ? 700 : 500, bg: strong ? "#FAFAFC" : "#fff", cells: vals.map((v) => { const win = !allEq && Math.round(v) === Math.round(mn); return { t: this.brl(v), win, bg: win ? "#DCFCE7" : "transparent", fg: win ? "#166534" : "#1D2433", w: win || strong ? 700 : 400, pad: win ? "3px 10px 3px 8px" : "3px 0" }; }) }; };
+    const minT = fin.length ? Math.min(...fin.map((o) => o.x.total)) : 0;
+    const cmpRows = multi ? [row("Total mensal estimado", (x) => x.total, true), { k: "Diferença por mês / ano", w: 500, bg: "#fff", cells: fin.map((o) => { const d = o.x.total - minT; return { t: d < 1 ? "Mais barato" : "+" + this.brl(d) + " · +" + this.brl(d * 12) + "/ano", win: false, bg: "transparent", fg: d < 1 ? "#166534" : "#B91C1C", w: 600, pad: "3px 0" }; }) },
+      row("Combustível ou energia", (x) => x.get("en")), row("Seguro", (x) => x.get("seg")), row("Manutenção", (x) => x.get("man")), row("Pneus", (x) => x.get("pn")), row("IPVA e licenciamento", (x) => x.get("ipva")), row("Parcela", (x) => x.parc), row("Custo de uso (sem parcela)", (x) => x.uso, true), row("Total com financiamento", (x) => x.total, true)] : [];
+    return {
+      ...(() => { if (!r0 || s.step !== 3) return { hasSim: false, simCars: [] }; const inCmp = new Set(s.cars.map((c) => c.sel.md)); const pool = []; this.CAT.forEach((m) => m.models.forEach((md) => { if (inCmp.has(md.id)) return; md.vers.forEach((v, i) => pool.push({ mk: m, md, v, i })); })); const ref = r0.v.fipe; const best = {}; pool.forEach((p) => { const d = Math.abs(p.v.fipe - ref) / ref; if (d > 0.4) return; if (!best[p.md.id] || d < best[p.md.id].d) best[p.md.id] = { ...p, d }; }); const list = Object.values(best).sort((a, b) => a.d - b.d).slice(0, 3);
+        return { hasSim: list.length > 0, simCars: list.map((p) => { const ent = { ...this.blank(), sel: { mk: p.mk.id, md: p.md.id, yr: e.sel.yr, vr: String(p.i) }, pay: e.pay === "tenho" ? "avista" : e.pay, prazo: e.prazo, taxa: e.taxa, seg: e.seg, recarga: e.recarga }; const x = this.calc(ent, s), diff = x.total - r0.total, full = s.cars.length >= 3; return { t: p.mk.t + " " + p.md.t, sub: p.v.t + " · " + this.FUEL[p.v.fuel].toLowerCase(), img: x.img, totalTxt: this.brl(x.total), diffTxt: Math.abs(diff) < 1 ? "Mesmo custo" : (diff < 0 ? "−" : "+") + this.brl(Math.abs(diff)) + "/mês", diffC: diff < 0 ? "#15803D" : diff > 0 ? "#B91C1C" : "#5A6472", diffBg: diff < 0 ? "#F0FDF4" : diff > 0 ? "#FEF2F2" : "#F6F6F9", full, btn: full ? "Comparação cheia" : "Comparar", go: full ? () => {} : () => { this.setState((st) => ({ cars: [...st.cars, ent], ai: st.cars.length, open: {} })); window.scrollTo({ top: 0, behavior: "smooth" }); } }; }) }; })(),
+      resCols: s.vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,0.85fr) minmax(0,1.15fr)" : "minmax(0,1fr)",
+      heroCols: s.vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,1.1fr) minmax(0,0.9fr)" : "minmax(0,1fr)", heroArt: s.vw >= (this.props.bpDesktop900 ?? 900),
+      heroOn: s.step < 3, heroTitle: ready ? car.name + " " + R.v.t : "Esse carro cabe no seu orçamento?", heroSub: ready ? "FIPE " + car.fipeTxt + " · " + car.fuelTag.toLowerCase() + ". Agora conte como você usa." : "Escolha o carro, conte como você usa e veja quanto reservar por mês para mantê-lo.",
+      stageCar: ready ? React.createElement("img", { key: R.md.id + sel.vr, src: this.LAT(R.md), alt: car.name, style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", filter: "drop-shadow(0 28px 26px rgba(0,0,0,.5))", animation: "ccCar .7s cubic-bezier(.22,1,.36,1) both" } }) : React.createElement("div", { key: "empty", style: { position: "absolute", left: "20%", right: "20%", bottom: "12%", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, color: "#E0D2FF", font: "500 14px Roboto" } }, React.createElement("span", { style: { fontFamily: "'Material Symbols Rounded'", fontSize: 40, color: "#C9AEFF" } }, "directions_car"), "O seu carro aparece aqui"),
+      illoW: s.vw >= (this.props.bpTablet640 ?? 640) ? "150px" : "0px", spotsOn: s.vw >= (this.props.bpTablet760 ?? 760), spotsList: s.vw < (this.props.bpTablet760 ?? 760),
+      vsCols: s.vw >= (this.props.bpDesktop900 ?? 900) ? "repeat(" + fin.length + ",minmax(0,1fr))" : "minmax(0,1fr)",
+      vs: multi ? (() => { const K = [["en", "Combustível/energia"], ["seg", "Seguro"], ["ipva", "IPVA e licenc."], ["man", "Manutenção"], ["pn", "Pneus"], ["parc", "Parcela"]]; const val = (x, k) => (k === "parc" ? x.parc : x.get(k)); const rowsK = K.filter(([k]) => fin.some((o) => val(o.x, k) > 0)); const wins = fin.map(() => 0); const best = {}; rowsK.forEach(([k]) => { const vals = fin.map((o) => Math.round(val(o.x, k))); if (vals.every((x) => x === vals[0])) return; const mn = Math.min(...vals); best[k] = mn; vals.forEach((x, i) => { if (x === mn) wins[i]++; }); }); const contested = Object.keys(best).length, top = Math.max(...wins), minT2 = Math.min(...fin.map((o) => o.x.total));
+        return fin.map((o, i) => { const lead = Math.round(o.x.total) === Math.round(minT2), d = o.x.total - minT2, ce = s.cars[o.i]; return { t: o.x.short, lat: o.x.lat, pay: this.PAYT[ce.pay] + (ce.seg ? " · com seguro" : " · sem seguro"), totalTxt: this.brl(o.x.total), diffTxt: d < 1 ? "Menor custo" : "+" + this.brl(d) + "/mês · +" + this.brl(d * 12) + "/ano", diffC: d < 1 ? "#166534" : "#B91C1C", lead, bd: lead ? "#22C55E" : "#E6E6EE", bw: lead ? "2px" : "1px", wins: String(wins[i]), winsTxt: "de " + contested + " categorias com o menor custo", scoreBg: wins[i] === top && top > 0 ? "#F0FDF4" : "#F6F6F9", scoreC: wins[i] === top && top > 0 ? "#166534" : "#1D2433", usoTxt: this.brl(o.x.uso) + "/mês",
+          remove: () => this.setState((x) => { const cars = x.cars.filter((_, k) => k !== o.i); return { cars: cars.length ? cars : [this.blank()], ai: 0, step: cars.length ? 3 : 0 }; }),
+          rows: rowsK.map(([k, lbl]) => { const v = val(o.x, k), win = best[k] !== undefined && Math.round(v) === best[k]; return { k: lbl, v: this.brl(v), img: "assets/calc/icone-" + this.CI(k, o.x.v.fuel) + ".png", win, bg: win ? "#DCFCE7" : "transparent", fg: win ? "#166534" : "#1D2433", w: win ? 700 : 500, pad: win ? "2px 8px 2px 6px" : "2px 0" }; }) }; }); })() : [],
+      howRoad: s.vw >= (this.props.bpDesktop1000 ?? 1000), exCols: s.vw >= (this.props.bpTablet768 ?? 768) ? "minmax(0,0.9fr) minmax(0,1.1fr)" : "minmax(0,1fr)",
+      ...(() => { const ex = this.calc({ ...this.blank(), sel: { mk: "chevrolet", md: "onix", yr: "2025", vr: "0" } }, { ...s, city: 0, km: 1000, uso: "misto" }); const C = { en: "#FF5040", seg: "#7D3EE3", ipva: "#9B6BEA", man: "#B794F6", pn: "#D9CCF7" }; const L = { en: "Combustível", seg: "Seguro", ipva: "IPVA e licenc.", man: "Manutenção", pn: "Pneus" }; const P = { en: ["79%", "34%"], seg: ["58%", "58%"], ipva: ["47%", "14%"], man: ["14%", "40%"], pn: ["22%", "88%"] }; const cs = ex.cats.filter((c) => C[c.id]);
+        return { exName: "Onix 1.0 LT · 1.000 km/mês em São Paulo", exTotal: this.brl(ex.total), exBars: cs.map((c) => ({ t: L[c.id], v: this.brl(c.v), c: C[c.id], f: Math.max(1, Math.round(c.v)) })), exSpots: cs.map((c) => ({ x: P[c.id][0], y: P[c.id][1], t: L[c.id], img: "assets/calc/icone-" + this.CI(c.id, "flex") + ".png", ring: c.id === "en" ? "#FF5040" : "#C9AEFF" })) }; })(),
+      howCols: s.vw >= (this.props.bpDesktop1024 ?? 1024) ? "repeat(4,minmax(0,1fr))" : s.vw >= (this.props.bpMobile560 ?? 560) ? "repeat(2,minmax(0,1fr))" : "minmax(0,1fr)",
+      howSteps: [["1", "assets/calc/lateral-onix.png", "Escolha o carro", "Pela placa ou por montadora, modelo, ano e versão."], ["2", "assets/calc/etapa-rotina.png", "Conte sua rotina", "Cidade, quilômetros por mês e se o uso é mais na cidade ou na estrada."], ["3", "assets/calc/etapa-compra.png", "Diga como vai ter o carro", "À vista, financiado, simulação ou se você já tem o carro."], ["4", "assets/calc/trofeu.png", "Veja e compare", "Confira cada conta, ajuste o que quiser e compare com até 3 carros."]].map(([n, img, t, d], i) => ({ n, img, t, d, iw: i === 0 ? "176px" : "150px" })),
+      howCats: [["combustivel", "Combustível ou energia", "Pelo seu uso"], ["seguro", "Seguro", "Média anual ÷ 12"], ["ipva", "IPVA e licenciamento", "Pelo estado ÷ 12"], ["manutencao", "Manutenção", "Plano de revisões"], ["pneu", "Pneus", "Pelo desgaste"], ["reserva", "Parcela", "Se houver"]].map(([k, t, d]) => ({ img: "assets/calc/icone-" + k + ".png", t, d })),
+      steps, mainCols: wide && s.step < 3 && ready ? "minmax(0,1fr) 320px" : "minmax(0,1fr)", showAside: wide && s.step < 3 && ready,
+      s0: s.step === 0, s1: s.step === 1, s2: s.step === 2, s3: s.step === 3,
+      addingBanner: s.adding && s.step === 0, addingOrd: ["", "2º", "3º"][s.ai] || "próximo", cancelAdd: () => this.setState((x) => { const cars = x.cars.slice(0, -1); return { cars, ai: cars.length - 1, adding: false, step: 3 }; }),
+      modeTabs: [["placa", "Pela placa", "pin"], ["manual", "Sem placa", "list"]].map(([v, t, icon]) => { const on = s.mode === v; return { t, icon, on, bg: on ? "#fff" : "transparent", fg: on ? "#4C1D95" : "#5A6472", sh: on ? "0 1px 3px rgba(29,36,51,.15)" : "none", go: () => this.setState({ mode: v }) }; }),
+      modePlaca: s.mode === "placa", showSelects: s.mode === "manual" || s.plateSt === "ok",
+      plate: s.plate, setPlate: (ev) => this.setState({ plate: ev.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7), plateSt: "" }), findPlate,
+      plateBtn: s.plateSt === "busy" ? "Buscando…" : "Buscar", plateBd: s.plateSt === "err" ? "#DC2626" : "#D5D8DE",
+      plateHelp: s.plateSt === "err" ? "Digite uma placa válida: ABC1234 ou ABC1D23." : s.plateSt === "ok" ? "Encontramos o carro. Confira e corrija a versão ou o ano se precisar." : "Placa antiga (ABC1234) ou Mercosul (ABC1D23). Identificação simulada.",
+      plateHelpC: s.plateSt === "err" ? "#B91C1C" : s.plateSt === "ok" ? "#15803D" : "#5A6472",
+      sels, carReady: ready, car, next0: s.adding ? go(2) : go(1), next0Txt: s.adding ? "Continuar" : "Calcular agora",
+      cityQ: s.cityQ, setCityQ: (ev) => this.setState({ cityQ: ev.target.value, cityOpen: true }), cityFocus: (ev) => { ev.target.select(); this.setState({ cityOpen: true }); }, cityBlur: () => setTimeout(() => this.setState((x) => ({ cityOpen: false, cityQ: this.CITIES[x.city][0] + ", " + this.CITIES[x.city][1] })), 120),
+      cityOpen: s.cityOpen, cityList, cityNone: !cityList.length,
+      kmVal: s.km, setKm: (ev) => this.setState({ km: ev.target.value }),
+      kmChips: [500, 1000, 1500, 2000].map((v) => ({ t: v.toLocaleString("pt-BR") + " km", on: km === v, ...pill(km === v), go: () => this.setState({ km: v, kmHelp: false }) })),
+      kmHelp: s.kmHelp, toggleKmHelp: () => this.setState((x) => ({ kmHelp: !x.kmHelp })), kmDay: s.kmDay, setKmDay: (ev) => this.setState({ kmDay: ev.target.value }),
+      dayOpts: [[22, "Só dias úteis"], [30, "Todos os dias"]].map(([v, t]) => ({ t, on: s.dayMode === v, ...pill(s.dayMode === v), go: () => this.setState({ dayMode: v }) })),
+      kmEstTxt: kmEst.toLocaleString("pt-BR") + " km", useKmEst: () => this.setState({ km: kmEst, kmHelp: false }),
+      usoOpts: opt([["cidade", "Mais na cidade", "location_city", "Trânsito e paradas"], ["misto", "Misto", "alt_route", "Metade de cada"], ["estrada", "Mais na estrada", "road", "Viagens e rodovias"]], s.uso, (v) => this.setState({ uso: v })),
+      needsRecarga: needsRec && s.ai === 0, recInPay: needsRec && s.ai > 0, recOpts: opt([["casa", "Em casa", "home", "Tarifa residencial"], ["posto", "Em postos", "ev_station", "Recarga rápida"], ["ambos", "Nos dois", "sync_alt", "Média entre os dois"]], e.recarga, (v) => this.upd({ recarga: v })),
+      back: go(s.step - 1), next1: km > 0 ? go(2) : () => {}, next1Off: !(km > 0), next1Bg: km > 0 ? "#7D3EE3" : "#E6E6EE", next1Fg: km > 0 ? "#fff" : "#5A6472", next1Cur: km > 0 ? "pointer" : "not-allowed",
+      payOpts: [["avista", "Vou comprar à vista", "payments", "Compra fica separada do custo mensal"], ["financiar", "Vou financiar", "account_balance", "Informe a parcela, se já souber"], ["simular", "Quero simular", "calculate", "Preço, entrada e prazo"], ["tenho", "Já tenho esse carro", "garage_home", "Calcular só os gastos de uso"]].map(([v, t, icon, d]) => { const on = e.pay === v; return { t, icon, d, on, bd: on ? "#7D3EE3" : "#E6E6EE", bg: on ? "#F7F4FF" : "#fff", ibg: on ? "#EDE4FD" : "#F6F6F9", ic: on ? "#7D3EE3" : "#5A6472", go: () => this.upd({ pay: v }) }; }),
+      payAvista: e.pay === "avista", payFin: e.pay === "financiar", paySim: e.pay === "simular", payTenho: e.pay === "tenho",
+      parcelaVal: e.parcela, setParcela: (ev) => this.upd({ parcela: this.mask(ev.target.value) }), goSim: () => this.upd({ pay: "simular" }),
+      simFields: [["Preço do carro", "preco", "R$", simP ? this.mask(String(simP.fipe * 100)) : ""], ["Entrada", "entrada", "R$", "0"], ["Taxa ao mês", "taxa", "%", "1,69"]].map(([label, k, unit, p]) => ({ label, unit, value: e[k] === "" && k === "preco" ? p : e[k], change: (ev) => this.upd({ [k]: k === "taxa" ? ev.target.value.replace(/[^\d,]/g, "") : this.mask(ev.target.value) }) })),
+      prazoOpts: [24, 36, 48, 60].map((n) => ({ t: n + "x", on: e.prazo === n, ...pill(e.prazo === n), go: () => this.upd({ prazo: n }) })),
+      simParcelaTxt: simP ? this.brl(simP.parc) + "/mês" : "—", taxaTxt: String(e.taxa).replace(".", ",") + "%",
+      tenhoOpts: [[true, "Sim"], [false, "Não"]].map(([v, t]) => ({ t, on: e.tenhoPaga === v, ...pill(e.tenhoPaga === v), go: () => this.upd({ tenhoPaga: v }) })), tenhoPaga: e.tenhoPaga,
+      segOn: e.seg, toggleSeg: () => this.upd((c) => ({ seg: !c.seg })), segTrack: e.seg ? "#7D3EE3" : "#C9CDD6", segKnob: e.seg ? "24px" : "4px", segHelp: e.seg ? "Incluído com uma média do mercado. Você ajusta depois." : "Não vamos somar seguro na estimativa.",
+      next2: () => { const fin2 = () => { this.setState({ step: 3, max: 3, adding: false }); window.scrollTo({ top: 0, behavior: "smooth" }); }; let lg = false; try { lg = !!(JSON.parse(localStorage.getItem("achecar-session") || "null") || {}).logged; } catch (x) {} if (lg) return fin2(); if (window.achecarLogin) window.achecarLogin("Login.dc.html?next=" + encodeURIComponent("Calculadora de Custos v2.dc.html"), fin2); else location.href = "Login.dc.html?next=" + encodeURIComponent("Calculadora de Custos v2.dc.html"); },
+      next2Txt: (() => { try { return (JSON.parse(localStorage.getItem("achecar-session") || "null") || {}).logged ? "Ver quanto ele custa" : "Entrar e ver quanto ele custa"; } catch (x) { return "Ver quanto ele custa"; } })(), r, restore: () => this.upd({ ov: {} }), editRotina: go(1), editPay: go(2), 
+      outrosFields: [["Estacionamento", "est"], ["Pedágios", "ped"], ["Lavagem", "lav"]].map(([label, k]) => ({ label: label + " (R$/mês)", value: e.outros[k], change: (ev) => { const val = this.mask(ev.target.value); this.upd((c) => ({ outros: { ...c.outros, [k]: val } })); } })),
+      multi, notMulti: !multi, canAdd: s.cars.length < 3, cmpTitle: multi ? "Lado a lado, por mês" : "Quanto muda se você escolher outro?",
+      addCar: () => { this.setState((x) => { const b = this.blank(); return { cars: [...x.cars, b], ai: x.cars.length, adding: true, step: 0, plate: "", plateSt: "", open: {} }; }); window.scrollTo({ top: 0, behavior: "smooth" }); },
+      carTabs: fin.map((o) => ({ t: o.x.short, img: o.x.img, on: o.i === s.ai, bd: o.i === s.ai ? "#7D3EE3" : "#E6E6EE", bg: o.i === s.ai ? "#F7F4FF" : "#fff", go: () => this.setState({ ai: o.i, open: {} }) })),
+      cmpCols, cmpMin: (180 + fin.length * 150) + "px", cmpHead: fin.map((o) => ({ t: o.x.short, img: o.x.img, pay: this.PAYT[s.cars[o.i].pay] + (s.cars[o.i].seg ? " · com seguro" : " · sem seguro"), remove: () => this.setState((x) => { const cars = x.cars.filter((_, k) => k !== o.i); return { cars: cars.length ? cars : [this.blank()], ai: 0, step: cars.length ? 3 : 0 }; }) })), cmpRows,
+      asideRows: s.step >= 1 ? [{ k: "FIPE", v: car.fipeTxt }, { k: "Cidade", v: this.CITIES[s.city][0] }, { k: "Rodagem", v: km.toLocaleString("pt-BR") + " km/mês" }] : [{ k: "FIPE", v: car.fipeTxt }, { k: "Combustível", v: R.v ? this.FUEL[R.v.fuel].toLowerCase() : "" }]
+    };
+  }
+}
+</script>
+</body>
+</html>

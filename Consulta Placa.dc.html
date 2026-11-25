@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/fig-assets.css">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased}
+    a{color:#7D3EE3;text-decoration:none} a:hover{color:#6A2FCB}
+    input::placeholder{color:#5A6472}
+    @keyframes cpSpin{to{transform:rotate(360deg)}}
+    @keyframes cpIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @keyframes cpPulse{0%,100%{opacity:1}50%{opacity:.45}}
+    @media (prefers-reduced-motion:reduce){[data-cp] *{animation:none!important;transition:none!important}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div data-cp="" style="min-height:100vh;display:flex;flex-direction:column;background:#F6F6F9">
+
+<sc-if value="{{ fullChrome }}" hint-placeholder-val="{{ true }}"><div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hide-cta="{{ true }}" hint-size="100%,81px"></dc-import></div></sc-if>
+<sc-if value="{{ slimChrome }}" hint-placeholder-val="{{ false }}"><header style="position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #E6E6EE"><div style="max-width:1152px;margin:0 auto;padding:0 clamp(16px, calc(2.2vw + 7px), 32px);height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+<a href="Home Achecar.dc.html" aria-label="Achecar · início" style="display:flex;align-items:center;gap:8px"><img src="assets/logo/achecar-logo.svg" alt="Achecar" width="156" height="32" style="display:block;height:32px;width:auto"></a>
+<sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}"><ol aria-label="Etapas" style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-for list="{{ steps }}" as="st" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px"><span style="display:flex;align-items:center;gap:8px;font:{{ st.weight }} 14px Roboto;color:{{ st.color }};white-space:nowrap"><span style="min-width:24px;height:20px;padding:0 6px;border-radius:999px;box-sizing:border-box;background:{{ st.bg }};color:{{ st.num }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ st.mark }}</span>{{ st.label }}</span><sc-if value="{{ st.line }}" hint-placeholder-val="{{ true }}"><span style="width:32px;height:1px;background:#D5D8DE"></span></sc-if></li></sc-for></ol></sc-if>
+<span style="display:flex;align-items:center;gap:6px;font:500 14px Roboto;color:#1D2433;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">lock</span>Compra segura</span>
+</div></header></sc-if>
+
+<main style="flex:1">
+
+
+
+<sc-if value="{{ stGratis }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="02 Resultado gratuito" style="padding:24px clamp(16px, calc(2.2vw + 7px), 32px) 72px">
+  <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+    <nav aria-label="Você está em" style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#5A6472"><a href="Home Achecar.dc.html" style="color:#5A6472">Início</a><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">chevron_right</span><span style="color:#1D2433">Consulta gratuita</span></nav>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:6px"><h1 style="margin:0;font:800 32px/1.2 'Merriweather Sans',sans-serif">Resultado gratuito da placa {{ car.plate }}</h1><span style="font:400 15px Roboto;color:#5A6472">Dados básicos do veículo, sem custo. O histórico completo está na Consulta Achecar.</span></div>
+      <button type="button" onClick="{{ trocarPlaca }}" style="height:40px;padding:0 16px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;">search</span>Pesquisar outra placa</button>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ cols }};gap:24px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:24px;min-width:0;order:0">
+                  <div style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;overflow:hidden;display:grid;grid-template-columns:{{ carCols }}">
+            <div style="position:relative;min-height:{{ carImgH }};background:linear-gradient(180deg,#F6F6F9 0%,#EEEEF4 100%)">
+              <span style="position:absolute;left:16px;top:16px;display:inline-flex;flex-direction:column;width:92px;border-radius:5px;overflow:hidden;background:#fff;border:1.5px solid #1D2433;box-shadow:0 2px 8px rgba(29,36,51,.12)"><span style="height:10px;background:#1E40AF;color:#fff;font:700 6px/10px Roboto;letter-spacing:.14em;text-align:center">BRASIL</span><span style="font:700 16px/1.4 'Roboto Mono',monospace;text-align:center;letter-spacing:.04em;color:#1D2433">{{ car.plate }}</span></span>
+              <span role="img" aria-label="{{ car.full }}" style="position:absolute;left:8%;right:6%;top:44px;bottom:12px;background:url({{ carImg }}) center bottom / contain no-repeat;filter:drop-shadow(0 10px 12px rgba(29,36,51,.18))"></span>
+            </div>
+            <div style="padding:24px;display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:0">
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:500 12px Roboto;letter-spacing:.04em;color:#5A6472">{{ car.brandUp }}</span><span style="font:800 24px/1.25 'Merriweather Sans',sans-serif;color:#1D2433">{{ car.model }}</span></div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ carChips }}" as="c" hint-placeholder-count="3"><span style="height:26px;padding:0 10px;border-radius:999px;background:#F6F6F9;display:flex;align-items:center;gap:4px;font:500 12px Roboto;color:#1D2433;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;color:#5A6472">{{ c.icon }}</span>{{ c.label }}</span></sc-for></div>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:1px solid #EEEEF2">
+                <span style="display:flex;flex-direction:column;gap:2px"><span style="font:500 13px Roboto;color:#5A6472">Quanto vale o carro?</span><span style="font:800 26px 'Merriweather Sans',sans-serif;color:#1D2433;white-space:nowrap">{{ car.fipe }}</span></span>
+                <span style="padding:4px 8px;border-radius:6px;background:#F5F4FE;color:#5F29AE;font:500 11px Roboto;white-space:nowrap">Tabela FIPE · {{ car.fipeRef }}</span>
+              </div>
+            </div>
+          </div>
+          <article style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font:800 20px/1.3 'Merriweather Sans',sans-serif;">Dados do veículo</span><span style="padding:4px 10px;border-radius:999px;background:#DCFCE7;color:#15803D;font:700 12px Roboto">Grátis</span></div>
+          <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));column-gap:32px">
+            <sc-for list="{{ dados }}" as="d" hint-placeholder-count="12"><div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #EEEEF2"><dt style="font:400 14px Roboto;color:#5A6472">{{ d.k }}</dt><dd style="margin:0;font:500 14px Roboto;color:#1D2433;text-align:right">{{ d.v }}</dd></div></sc-for>
+          </dl>
+          <span style="display:flex;align-items:center;gap:6px;font:400 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">shield_person</span>Placa, chassi e motor completos aparecem só no relatório pago, para proteger o dono do carro.</span>
+        </article>
+
+        <article style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:24px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:center"><span style="width:44px;height:44px;flex:none;border-radius:12px;background:#FF5040;display:flex;align-items:flex-end;justify-content:center;overflow:hidden"><img src="assets/home/copiloto-mascote.webp" alt="" style="width:38px;display:block"></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:800 20px/1.3 'Merriweather Sans',sans-serif;font-size:17px">Pergunte ao Copiloto sobre o {{ car.full }}</span><span style="font:400 13px Roboto;color:#5A6472">1 pergunta grátis sobre o modelo. O histórico desta placa está na consulta completa.</span></span></div>
+          <sc-if value="{{ askLocked }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 14px;border-radius:12px;background:#F5F4FE"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">lock</span><span style="flex:1 1 220px;font:400 13px/1.45 Roboto;color:#1D2433">Entre na sua conta para perguntar. É grátis e leva menos de 1 minuto.</span><button type="button" onClick="{{ askLogin }}" style="height:36px;padding:0 14px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 13px Roboto;cursor:pointer;white-space:nowrap" style-hover="background:#5F29AE">Entrar ou criar conta</button></div></sc-if>
+          <sc-if value="{{ askAnswer }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px;animation:cpIn .25s ease-out both"><span style="align-self:flex-end;max-width:80%;padding:10px 14px;border-radius:14px 14px 4px 14px;background:#7D3EE3;color:#fff;font:400 14px/1.45 Roboto">{{ askQ }}</span><span style="max-width:88%;padding:12px 14px;border-radius:14px 14px 14px 4px;background:#F6F6F9;font:400 14px/1.5 Roboto">{{ askAnswer }}</span></div></sc-if>
+          <sc-if value="{{ askTyping }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;padding:10px 14px;border-radius:14px;background:#F6F6F9;font:400 13px Roboto;color:#5A6472;animation:cpPulse 1s ease-in-out infinite">O Copiloto está escrevendo…</span></sc-if>
+          <sc-if value="{{ canAsk }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ askChips }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.ask }}" style="height:34px;padding:0 14px;border-radius:999px;border:1px solid #E6E6EE;background:#fff;color:#1D2433;font:500 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3;background:#F5F4FE">{{ c.label }}</button></sc-for></div>
+            <form onSubmit="{{ askSubmit }}" style="display:flex;gap:8px"><input value="{{ askDraft }}" onChange="{{ onAsk }}" placeholder="Pergunte sobre o {{ car.full }}…" aria-label="Pergunta ao Copiloto" style="flex:1;min-width:0;height:44px;box-sizing:border-box;padding:0 14px;border-radius:8px;border:1.5px solid #D5D8DE;font:400 14px Roboto;outline:none" style-focus="border-color:#7D3EE3"><button type="submit" style="height:44px;padding:0 16px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;display:flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap" style-hover="background:#6A2FCB">{{ askSendLbl }}<span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">{{ askSendIcon }}</span></button></form>
+          </sc-if>
+          <sc-if value="{{ askUsed }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px;border-radius:10px;background:#F5F4FE"><span style="font:400 13px/1.45 Roboto;color:#1D2433">Você usou a pergunta grátis. Com a consulta, o Copiloto lê o histórico desta placa para você.</span><button type="button" onClick="{{ goCheckout }}" style="height:36px;padding:0 14px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 13px Roboto;cursor:pointer;white-space:nowrap">Ver relatório completo</button></div></sc-if>
+        </article>
+
+        <article style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 20px/1.3 'Merriweather Sans',sans-serif;">O que só a consulta completa mostra</span><span style="font:400 14px/1.5 Roboto;color:#5A6472">Buscamos em mais de 15 fontes oficiais e privadas. O resultado sai em minutos e fica salvo na sua conta.</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+            <sc-for list="{{ locked }}" as="l" hint-placeholder-count="9"><div style="padding:14px;border-radius:12px;background:#F6F6F9;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="width:36px;height:36px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">{{ l.icon }}</span></span><span style="display:flex;align-items:center;gap:3px;font:500 11px Roboto;color:#5A6472;white-space:nowrap"><span style="font-family:'Material Symbols Rounded';font-size:13px;line-height:1;">lock</span>Na consulta completa</span></div><span style="font:700 14px Roboto">{{ l.t }}</span><span style="font:400 12px/1.45 Roboto;color:#5A6472">{{ l.d }}</span></div></sc-for>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><button type="button" onClick="{{ goCheckout }}" style="height:48px;padding:0 20px;border:0;border-radius:8px;background:#FF5040;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#E63E2F">Ver relatório completo · {{ totalTxt }}</button><a href="Relatorio.dc.html" style="font:700 14px Roboto">Ver um exemplo de relatório →</a></div>
+          <span style="font:400 12px/1.45 Roboto;color:#5A6472">*Quilometragem, débitos e multas, fotos, laudos e locadora dependem da disponibilidade nos parceiros. A consulta não substitui a vistoria cautelar.</span>
+        </article>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;position:{{ asidePos }};top:100px;order:1">
+        <div style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 24px rgba(29,36,51,.08)">
+          <span style="font:700 16px Roboto">Consulta Achecar</span>
+          <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap"><span style="font:400 14px Roboto;color:#5A6472;text-decoration:line-through">R$ 95,88</span><span style="font:800 30px 'Merriweather Sans',sans-serif;color:#FF5040">R$ 79,90</span><span style="padding:3px 8px;border-radius:999px;background:#DCFCE7;color:#15803D;font:700 11px Roboto">Economize R$ 15,98</span></div>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px"><sc-for list="{{ incl }}" as="i" hint-placeholder-count="5"><li style="display:flex;gap:8px;font:400 13px/1.45 Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#15803D;flex:none">check</span>{{ i }}</li></sc-for></ul>
+          <button type="button" onClick="{{ goCheckout }}" style="height:52px;border:0;border-radius:8px;background:#FF5040;color:#fff;font:700 16px Roboto;cursor:pointer" style-hover="background:#E63E2F">Ver relatório completo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ stCheckout }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="03 Checkout" style="display:grid;grid-template-columns:{{ coSplit }};min-height:calc(100vh - 81px);background:#fff">
+  <div style="background:#fff;min-width:0">
+    <form onSubmit="{{ pay }}" novalidate="" style="max-width:608px;box-sizing:content-box;margin-left:auto;margin-right:{{ coGutterL }};padding:56px 24px 72px;display:flex;flex-direction:column;gap:32px">
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><ol aria-label="Etapas" style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-for list="{{ steps }}" as="st" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px"><span style="display:flex;align-items:center;gap:8px;font:{{ st.weight }} 14px Roboto;color:{{ st.color }};white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;box-sizing:border-box;border:1.5px solid {{ st.ring }};background:{{ st.bg }};color:{{ st.num }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ st.mark }}</span>{{ st.label }}</span><sc-if value="{{ st.line }}" hint-placeholder-val="{{ true }}"><span style="width:32px;height:1px;background:#D5D8DE"></span></sc-if></li></sc-for></ol></sc-if>
+      <h1 style="margin:0;font:800 44px/1.15 'Merriweather Sans',sans-serif;color:#1D2433">Finalize sua consulta</h1>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><h2 style="margin:0;font:700 26px/1.25 'Merriweather Sans',sans-serif;color:#1D2433">Contato</h2><sc-if value="{{ notLogged }}" hint-placeholder-val="{{ true }}"><a href="{{ loginHref }}" style="font:500 14px Roboto;color:#7D3EE3;white-space:nowrap">Já tem conta? Entrar</a></sc-if></div>
+        <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">E-mail</span>
+<input value="{{ v_email }}" onChange="{{ on_email }}" onBlur="{{ bl_email }}" placeholder="seunome@email.com" type="email" autocomplete="email" inputmode="email" aria-invalid="{{ inv_email }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_email }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_email }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_email }}</span></sc-if>
+<sc-if value="{{ nerr_email }}" hint-placeholder-val="{{ true }}"><span style="font:400 12px/1.6 Roboto;color:#5A6472">Enviamos o recibo e avisamos por aqui quando o relatório ficar pronto. Sua conta é criada com este e-mail.</span></sc-if>
+</label>
+        <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Nome completo</span>
+<input value="{{ v_nome }}" onChange="{{ on_nome }}" onBlur="{{ bl_nome }}" placeholder="Como está no documento" autocomplete="name" aria-invalid="{{ inv_nome }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_nome }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_nome }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_nome }}</span></sc-if>
+
+</label>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+          <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">CPF</span>
+<input value="{{ v_cpf }}" onChange="{{ on_cpf }}" onBlur="{{ bl_cpf }}" placeholder="000.000.000-00" inputmode="numeric" aria-invalid="{{ inv_cpf }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_cpf }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_cpf }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_cpf }}</span></sc-if>
+
+</label>
+          <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Celular</span>
+<input value="{{ v_cel }}" onChange="{{ on_cel }}" onBlur="{{ bl_cel }}" placeholder="(00) 9 9999-9999" inputmode="tel" autocomplete="tel" aria-invalid="{{ inv_cel }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_cel }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_cel }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_cel }}</span></sc-if>
+
+</label>
+        </div>
+      </div>
+      <div style="height:1px;background:#E6E6EE;margin:-8px 0"></div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><h2 style="margin:0;font:700 26px/1.25 'Merriweather Sans',sans-serif;color:#1D2433">Endereço</h2><button type="button" onClick="{{ toggleManual }}" style="padding:0;border:0;background:transparent;font:500 14px Roboto;color:#7D3EE3;cursor:pointer;white-space:nowrap">{{ manualLabel }}</button></div>
+        <sc-if value="{{ notManual }}" hint-placeholder-val="{{ true }}">
+          <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">CEP</span>
+<input value="{{ v_cep }}" onChange="{{ on_cep }}" onBlur="{{ bl_cep }}" placeholder="00000-000" inputmode="numeric" autocomplete="postal-code" aria-invalid="{{ inv_cep }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_cep }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_cep }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_cep }}</span></sc-if>
+
+</label>
+          <sc-if value="{{ cepLoading }}" hint-placeholder-val="{{ false }}"><span style="margin-top:-8px;display:flex;align-items:center;gap:8px;font:400 13px Roboto;color:#5A6472"><span style="width:14px;height:14px;border-radius:50%;border:2px solid #E6E6EE;border-top-color:#7D3EE3;box-sizing:border-box;animation:cpSpin .8s linear infinite"></span>Buscando endereço…</span></sc-if>
+          <sc-if value="{{ cepAddr }}" hint-placeholder-val="{{ false }}"><span style="margin-top:-8px;display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">location_on</span>{{ cepAddr }}</span></sc-if>
+        </sc-if>
+        <sc-if value="{{ manual }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px">
+            <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Rua</span>
+<input value="{{ v_rua }}" onChange="{{ on_rua }}" onBlur="{{ bl_rua }}" placeholder="Nome da rua" autocomplete="address-line1" aria-invalid="{{ inv_rua }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_rua }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_rua }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_rua }}</span></sc-if>
+
+</label>
+            <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Número</span>
+<input value="{{ v_nro }}" onChange="{{ on_nro }}" onBlur="{{ bl_nro }}" placeholder="123" inputmode="numeric" aria-invalid="{{ inv_nro }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_nro }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_nro }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_nro }}</span></sc-if>
+
+</label>
+            <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Bairro</span>
+<input value="{{ v_bairro }}" onChange="{{ on_bairro }}" onBlur="{{ bl_bairro }}" placeholder="Bairro"  aria-invalid="{{ inv_bairro }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_bairro }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_bairro }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_bairro }}</span></sc-if>
+
+</label>
+            <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Cidade/UF</span>
+<input value="{{ v_uf }}" onChange="{{ on_uf }}" onBlur="{{ bl_uf }}" placeholder="São Paulo, SP" autocomplete="address-level2" aria-invalid="{{ inv_uf }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_uf }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_uf }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_uf }}</span></sc-if>
+
+</label>
+          </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><h2 style="margin:0;font:700 26px/1.25 'Merriweather Sans',sans-serif;color:#1D2433">Pagamento</h2></div>
+        <div role="radiogroup" aria-label="Forma de pagamento" style="display:flex;flex-direction:column;gap:12px">
+          <div style="border-radius:12px;border:{{ pixBw }} solid {{ pixBd }};background:{{ pixBg }};transition:border-color .15s ease-out,background .15s ease-out">
+            <button type="button" role="radio" aria-checked="{{ isPix }}" onClick="{{ setPix }}" style="width:100%;display:flex;flex-direction:column;gap:14px;padding:20px;border:0;background:transparent;text-align:left;cursor:pointer">
+              <span style="display:flex;align-items:center;gap:12px;width:100%"><span style="width:20px;height:20px;flex:none;box-sizing:border-box;border-radius:50%;border:2px solid {{ pixRing }};background:#fff;display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:50%;background:{{ pixDot }}"></span></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:500 16px Roboto;color:#1D2433">Pix</span><span style="font:400 14px/1.45 Roboto;color:#5A6472">Aprovação na hora: a consulta começa assim que o Pix é confirmado.</span></span><span style="padding:4px 10px;border-radius:999px;background:#DCFCE7;color:#15803D;font:700 12px Roboto;white-space:nowrap">Mais rápido</span></span>
+              <sc-if value="{{ isPix }}" hint-placeholder-val="{{ true }}"><span style="font:400 14px Roboto;color:#1D2433">Na próxima tela você vê o QR Code e o Pix copia e cola.</span></sc-if>
+            </button>
+          </div>
+          <div style="border-radius:12px;border:{{ cardBw }} solid {{ cardBd }};background:{{ cardBg }};transition:border-color .15s ease-out,background .15s ease-out">
+            <button type="button" role="radio" aria-checked="{{ isCard }}" onClick="{{ setCard }}" style="width:100%;display:flex;align-items:center;gap:12px;padding:20px;border:0;background:transparent;text-align:left;cursor:pointer"><span style="width:20px;height:20px;flex:none;box-sizing:border-box;border-radius:50%;border:2px solid {{ cardRing }};background:#fff;display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:50%;background:{{ cardDot }}"></span></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px"><span style="font:500 16px Roboto;color:#1D2433">Cartão de crédito</span><span style="font:400 14px Roboto;color:#5A6472">À vista, sem parcelamento.</span></span></button>
+            <sc-if value="{{ isCard }}" hint-placeholder-val="{{ false }}"><div style="padding:0 20px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;animation:cpIn .2s ease-out both">
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0;grid-column:1 / -1;">
+<span style="font:500 14px Roboto;color:#1D2433">Número do cartão</span>
+<input value="{{ v_num }}" onChange="{{ on_num }}" onBlur="{{ bl_num }}" placeholder="0000 0000 0000 0000" inputmode="numeric" autocomplete="cc-number" aria-invalid="{{ inv_num }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_num }};background:#fff;font:400 16px 'Roboto Mono',monospace;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_num }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_num }}</span></sc-if>
+
+</label>
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Validade</span>
+<input value="{{ v_exp }}" onChange="{{ on_exp }}" onBlur="{{ bl_exp }}" placeholder="MM/AA" inputmode="numeric" autocomplete="cc-exp" aria-invalid="{{ inv_exp }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_exp }};background:#fff;font:400 16px 'Roboto Mono',monospace;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_exp }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_exp }}</span></sc-if>
+
+</label>
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+<span style="font:500 14px Roboto;color:#1D2433">Código de segurança</span>
+<input value="{{ v_cvv }}" onChange="{{ on_cvv }}" onBlur="{{ bl_cvv }}" placeholder="CVV" inputmode="numeric" autocomplete="cc-csc" aria-invalid="{{ inv_cvv }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_cvv }};background:#fff;font:400 16px 'Roboto Mono',monospace;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_cvv }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_cvv }}</span></sc-if>
+
+</label>
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0;grid-column:1 / -1;">
+<span style="font:500 14px Roboto;color:#1D2433">Nome impresso no cartão</span>
+<input value="{{ v_hold }}" onChange="{{ on_hold }}" onBlur="{{ bl_hold }}" placeholder="Como está no cartão" autocomplete="cc-name" aria-invalid="{{ inv_hold }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_hold }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_hold }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_hold }}</span></sc-if>
+
+</label>
+              <button type="button" role="checkbox" aria-checked="{{ sameCpf }}" onClick="{{ toggleSameCpf }}" style="grid-column:1 / -1;display:flex;align-items:center;gap:10px;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;font:400 14px Roboto;color:#1D2433"><span style="width:18px;height:18px;flex:none;box-sizing:border-box;border-radius:4px;border:1.5px solid {{ sameBd }};background:{{ sameBg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:14px">{{ sameMark }}</span>O titular do cartão usa o mesmo CPF do contato</button>
+              <sc-if value="{{ notSameCpf }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:8px;min-width:0;grid-column:1 / -1;">
+<span style="font:500 14px Roboto;color:#1D2433">CPF do titular</span>
+<input value="{{ v_hcpf }}" onChange="{{ on_hcpf }}" onBlur="{{ bl_hcpf }}" placeholder="000.000.000-00" inputmode="numeric" aria-invalid="{{ inv_hcpf }}" style="height:48px;box-sizing:border-box;padding:0 16px;border-radius:8px;border:1px solid {{ bd_hcpf }};background:#fff;font:400 16px Roboto;color:#1D2433;outline:none;min-width:0;transition:border-color .15s ease-out" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)">
+<sc-if value="{{ err_hcpf }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:flex;align-items:center;gap:4px;font:400 12px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:14px;line-height:1;">error</span>{{ err_hcpf }}</span></sc-if>
+
+</label></sc-if>
+            </div></sc-if>
+          </div>
+        </div>
+      </div>
+      <sc-if value="{{ payErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="display:flex;gap:10px;padding:14px 16px;border-radius:12px;background:#FEF2F2;border:1px solid #FECACA;font:400 14px/1.45 Roboto;color:#991B1B;animation:cpIn .2s ease-out both"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#DC2626">error</span><span>{{ payErr }}</span></div></sc-if>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+        <button type="submit" disabled="{{ paying }}" style="height:48px;border:0;border-radius:8px;background:#15803D;color:#fff;font:700 16px Roboto;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background .15s ease-out" style-hover="background:#16A34A"><sc-if value="{{ paying }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;box-sizing:border-box;animation:cpSpin .8s linear infinite"></span></sc-if>{{ payLabel }}</button>
+        <sc-if value="{{ isCard }}" hint-placeholder-val="{{ false }}"><span style="display:flex;align-items:center;justify-content:center;gap:6px;font:400 12px Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">encrypted</span>Pagamento criptografado. A Achecar não guarda os dados do seu cartão.</span></sc-if>
+      </div>
+    </form>
+  </div>
+  <div style="background:#F6F6F9;min-width:0">
+    <aside aria-label="Resumo do pedido" style="max-width:416px;margin-left:{{ coGutterR }};padding:56px 24px 72px;display:flex;flex-direction:column;gap:20px;position:{{ asidePos }};top:81px">
+      <div style="display:flex;gap:16px;align-items:flex-start"><span aria-hidden="true" style="width:72px;height:72px;flex:none;box-sizing:border-box;border-radius:10px;border:1px solid #E6E6EE;background:#fff url({{ carImg }}) center / 86% auto no-repeat"></span><span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-top:2px"><span style="font:700 16px Roboto;color:#1D2433">Consulta Achecar</span><span style="font:400 13px Roboto;color:#5A6472">{{ car.plate }} · {{ car.full }}</span><button type="button" onClick="{{ trocarPlaca }}" style="align-self:flex-start;padding:0;border:0;background:transparent;color:#7D3EE3;font:500 13px Roboto;cursor:pointer">Trocar placa</button></span></div>
+      <div style="padding:20px;border-radius:12px;border:1px solid #E6E6EE;background:#fff;display:flex;flex-direction:column;gap:12px"><span style="font:500 14px Roboto;color:#1D2433">O que está incluído</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px"><sc-for list="{{ incl }}" as="i" hint-placeholder-count="5"><li style="display:flex;gap:10px;font:400 14px/1.45 Roboto;color:#1D2433"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#15803D;flex:none">check</span>{{ i }}</li></sc-for></ul></div>
+      <sc-if value="{{ cupomClosed }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ openCupom }}" style="align-self:flex-start;display:flex;align-items:center;gap:8px;padding:0;border:0;background:transparent;color:#7D3EE3;font:500 14px Roboto;cursor:pointer"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#1D2433">local_activity</span>Tenho um cupom de desconto</button></sc-if>
+      <sc-if value="{{ cupomOpen }}" hint-placeholder-val="{{ false }}"><form onSubmit="{{ applyCupom }}" style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;gap:8px"><input ref="{{ cupomRef }}" value="{{ cupom }}" onChange="{{ onCupom }}" placeholder="Digite o cupom" aria-label="Cupom" style="flex:1;min-width:0;height:44px;box-sizing:border-box;padding:0 12px;border-radius:8px;border:1px solid {{ cupomBd }};background:#fff;font:500 14px 'Roboto Mono',monospace;text-transform:uppercase;outline:none" style-focus="border-color:#7D3EE3"><button type="submit" style="height:44px;padding:0 14px;border-radius:8px;border:1.5px solid #7D3EE3;background:#fff;color:#7D3EE3;font:700 14px Roboto;cursor:pointer" style-hover="background:#F5F4FE">Aplicar</button></div><sc-if value="{{ cupomErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font:400 12px Roboto;color:#B91C1C">{{ cupomErr }}</span></sc-if></form></sc-if>
+      <sc-if value="{{ cupomOk }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:8px;background:#fff;border:1px solid #E6E6EE;font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#7D3EE3">local_activity</span><span style="flex:1">Cupom <strong>{{ cupomCode }}</strong> aplicado · − {{ cupomOff }}</span><button type="button" onClick="{{ removeCupom }}" style="padding:0;border:0;background:transparent;color:#7D3EE3;font:700 13px Roboto;cursor:pointer">Remover</button></div></sc-if>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid #E6E6EE;font:400 15px Roboto;color:#5A6472"><span>Consulta Achecar</span><span>R$ 95,88</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font:700 22px 'Merriweather Sans',sans-serif;color:#1D2433">Total</span><span style="display:flex;align-items:center;gap:12px"><span style="padding:4px 10px;border-radius:999px;background:#DCFCE7;color:#15803D;font:700 12px Roboto;white-space:nowrap">Economize {{ saveTxt }}</span><span style="font:800 36px 'Merriweather Sans',sans-serif;color:#1D2433;white-space:nowrap">{{ totalTxt }}</span></span></div>
+        <span style="font:400 13px/1.55 Roboto;color:#5A6472">Pagamento único no Pix ou no cartão à vista. *Valores sujeitos a alteração.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px"><img src="assets/selos/selo-a.svg" alt="Selo de verificação" style="width:100%;height:auto;display:block"><img src="assets/selos/selo-b.svg" alt="Selo de verificação" style="width:100%;height:auto;display:block"><img src="assets/selos/selo-c.svg" alt="Selo de verificação" style="width:100%;height:auto;display:block"></div>
+      <div style="display:flex;gap:14px;padding:20px;border-radius:12px;background:#DCFCE7"><span style="font-family:'Material Symbols Rounded';font-size:26px;line-height:1;color:#15803D">verified_user</span><span style="display:flex;flex-direction:column;gap:6px"><span style="font:700 16px Roboto;color:#1D2433">Consulta garantida</span><span style="font:400 14px/1.45 Roboto;color:#1D2433">Se a consulta não for concluída, você não perde: tentamos de novo sem custo, ou você escolhe crédito ou estorno do valor.</span></span></div>
+      <nav style="display:flex;gap:20px;flex-wrap:wrap;font:400 13px Roboto"><a href="Termos de Uso.dc.html" style="color:#5A6472">Termos de uso</a><a href="Politica de Privacidade.dc.html" style="color:#5A6472">Privacidade</a><a href="Central de Ajuda.dc.html" style="color:#5A6472">Ajuda</a></nav>
+    </aside>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ stPix }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="04 Pix" style="padding:32px clamp(16px, calc(2.2vw + 7px), 32px) 72px">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><ol aria-label="Etapas" style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-for list="{{ steps }}" as="st" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px"><span style="display:flex;align-items:center;gap:8px;font:{{ st.weight }} 14px Roboto;color:{{ st.color }};white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;box-sizing:border-box;border:1.5px solid {{ st.ring }};background:{{ st.bg }};color:{{ st.num }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ st.mark }}</span>{{ st.label }}</span><sc-if value="{{ st.line }}" hint-placeholder-val="{{ true }}"><span style="width:32px;height:1px;background:#D5D8DE"></span></sc-if></li></sc-for></ol></sc-if>
+    <div style="display:grid;grid-template-columns:{{ coCols }};gap:32px;align-items:start">
+      <div style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:32px;display:flex;flex-direction:column;gap:24px;min-width:0;animation:cpIn .25s ease-out both">
+        <div style="display:flex;flex-direction:column;gap:6px"><h1 style="margin:0;font:800 28px/1.2 'Merriweather Sans',sans-serif">Pague {{ totalTxt }} com Pix</h1><span style="font:400 15px/1.5 Roboto;color:#5A6472">Abra o app do seu banco, escolha Pix e leia o QR Code ou use o Pix copia e cola.</span></div>
+        <sc-if value="{{ pixLive }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:28px;align-items:center;flex-wrap:wrap">
+            <div style="position:relative;width:216px;height:216px;flex:none;padding:12px;box-sizing:border-box;border-radius:12px;border:1px solid #E6E6EE;background:#fff"><span role="img" aria-label="QR Code do Pix" style="display:block;width:100%;height:100%;background:url({{ qrUrl }}) center / contain no-repeat;image-rendering:pixelated"></span></div>
+            <div style="flex:1;min-width:240px;display:flex;flex-direction:column;gap:12px">
+              <span style="font:700 14px Roboto">Pix copia e cola</span>
+              <span style="padding:12px 14px;border-radius:8px;background:#F6F6F9;font:400 13px/1.5 'Roboto Mono',monospace;color:#1D2433;word-break:break-all">{{ pixCodeShort }}</span>
+              <button type="button" onClick="{{ copyPix }}" style="height:48px;border:0;border-radius:8px;background:{{ copyBg }};color:#fff;font:700 15px Roboto;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:background .15s ease-out"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;">{{ copyIcon }}</span>{{ copyLabel }}</button>
+              <span style="display:flex;align-items:center;gap:6px;font:400 13px Roboto;color:{{ timerColor }}"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">schedule</span>O código vale por mais <strong style="font-variant-numeric:tabular-nums">{{ timer }}</strong></span>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px;border-radius:12px;background:#F5F4FE"><span style="width:20px;height:20px;flex:none;margin-top:2px;border-radius:50%;border:2.5px solid #D7C7EE;border-top-color:#7D3EE3;box-sizing:border-box;animation:cpSpin 1s linear infinite"></span><span style="display:flex;flex-direction:column;gap:4px"><span style="font:700 15px Roboto">{{ waitTitle }}</span><span style="font:400 13px/1.5 Roboto;color:#5A6472">Esta página atualiza sozinha. Pode fechar: avisamos por e-mail quando o pagamento for confirmado e quando o relatório ficar pronto.</span></span></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" onClick="{{ jaPaguei }}" disabled="{{ checking }}" style="height:48px;padding:0 20px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#6A2FCB">{{ jaLabel }}</button><button type="button" onClick="{{ pixToCard }}" style="height:48px;padding:0 20px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 15px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3">Pagar com cartão</button></div>
+        </sc-if>
+        <sc-if value="{{ pixExpired }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:24px;border-radius:12px;background:#FFFBEB;border:1px solid #FDE68A;animation:cpIn .2s ease-out both"><span style="font-family:'Material Symbols Rounded';font-size:28px;line-height:1;color:#B45309">timer_off</span><span style="font:700 17px Roboto;color:#78350F">O código Pix expirou</span><span style="font:400 14px/1.5 Roboto;color:#78350F">Nenhum valor foi cobrado. Gere um novo código para pagar, ou pague com cartão.</span><div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:4px"><button type="button" onClick="{{ newPix }}" style="height:44px;padding:0 18px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 14px Roboto;cursor:pointer" style-hover="background:#6A2FCB">Gerar novo código</button><button type="button" onClick="{{ pixToCard }}" style="height:44px;padding:0 18px;border-radius:8px;border:1.5px solid #D5D8DE;background:#fff;color:#1D2433;font:700 14px Roboto;cursor:pointer">Pagar com cartão</button></div></div>
+        </sc-if>
+      </div>
+      <aside aria-label="Resumo" style="background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:20px;display:flex;flex-direction:column;gap:14px;position:{{ asidePos }};top:96px">
+        <span style="font:700 11px Roboto;letter-spacing:.08em;color:#5A6472">RESUMO</span>
+        <div style="display:flex;gap:12px;align-items:center"><span aria-hidden="true" style="width:72px;height:48px;flex:none;border-radius:8px;background:#F6F6F9 url({{ carImg }}) center / 90% auto no-repeat"></span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Consulta Achecar</span><span style="font:400 13px Roboto;color:#5A6472">{{ car.plate }} · {{ car.full }}</span></span></div>
+        <div style="height:1px;background:#EEEEF2"></div>
+        <div style="display:flex;justify-content:space-between;font:400 14px Roboto"><span style="color:#5A6472">Pedido</span><span style="font-weight:500">nº {{ orderNo }}</span></div>
+        <div style="display:flex;justify-content:space-between;font:400 14px Roboto"><span style="color:#5A6472">Consulta</span><span>{{ totalTxt }}</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:700 16px Roboto">Total</span><span style="font:800 22px 'Merriweather Sans',sans-serif;color:#FF5040">{{ totalTxt }}</span></div>
+        <div style="display:flex;gap:12px;padding:14px 16px;border-radius:12px;background:#F0FDF4;border:1px solid #BBF7D0"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#15803D;font-variation-settings:'FILL' 1">verified_user</span><span style="display:flex;flex-direction:column;gap:2px"><span style="font:700 14px Roboto;color:#14532D">Consulta garantida</span><span style="font:400 13px/1.45 Roboto;color:#14532D">Se a consulta não for concluída, você não perde: tentamos de novo sem custo, ou você escolhe crédito ou estorno do valor.</span></span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ stProc }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="05 Processando" style="padding:32px clamp(16px, calc(2.2vw + 7px), 32px) 72px">
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:24px">
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><ol aria-label="Etapas" style="list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:10px;flex-wrap:wrap"><sc-for list="{{ steps }}" as="st" hint-placeholder-count="3"><li style="display:flex;align-items:center;gap:10px"><span style="display:flex;align-items:center;gap:8px;font:{{ st.weight }} 14px Roboto;color:{{ st.color }};white-space:nowrap"><span style="width:24px;height:24px;border-radius:50%;box-sizing:border-box;border:1.5px solid {{ st.ring }};background:{{ st.bg }};color:{{ st.num }};display:flex;align-items:center;justify-content:center;font:700 12px Roboto">{{ st.mark }}</span>{{ st.label }}</span><sc-if value="{{ st.line }}" hint-placeholder-val="{{ true }}"><span style="width:32px;height:1px;background:#D5D8DE"></span></sc-if></li></sc-for></ol></sc-if>
+    <div style="background:#fff;border-radius:20px;border:1px solid #E6E6EE;overflow:hidden;display:grid;grid-template-columns:{{ procHeroCols }}">
+      <div style="position:relative;min-height:220px;background:linear-gradient(180deg,#F6F6F9 0%,#ECECF3 100%)">
+        <span style="position:absolute;left:20px;top:20px;display:inline-flex;flex-direction:column;width:96px;border-radius:5px;overflow:hidden;background:#fff;border:1.5px solid #1D2433;box-shadow:0 2px 6px rgba(29,36,51,.08)"><span style="height:11px;background:#1E40AF;color:#fff;font:700 6px/11px Roboto;letter-spacing:.12em;text-align:center">BRASIL</span><span style="font:700 17px/1.35 'Roboto Mono',monospace;text-align:center;letter-spacing:.04em;color:#1D2433">{{ car.plate }}</span></span>
+        <span role="img" aria-label="{{ car.full }}" style="position:absolute;left:8%;right:8%;top:56px;bottom:20px;background:url({{ carImg }}) center bottom / contain no-repeat;filter:drop-shadow(0 14px 14px rgba(29,36,51,.16))"></span>
+      </div>
+      <div style="padding:32px 36px;display:flex;flex-direction:column;gap:20px;min-width:0;justify-content:center">
+        <span role="status" style="align-self:flex-start;display:flex;align-items:center;gap:6px;height:28px;padding:0 12px 0 8px;border-radius:999px;background:#F0FDF4;color:#14532D;font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:#15803D;font-variation-settings:'FILL' 1">check_circle</span>Pagamento aprovado</span>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font:500 13px Roboto;letter-spacing:.04em;color:#5A6472">{{ car.brandUp }} · {{ car.year }}</span>
+          <h1 style="margin:0;font:800 30px/1.2 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">{{ procTitle }}</h1>
+          <span style="font:400 15px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ procSub }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:500 14px Roboto;color:#1D2433">{{ procCount }}</span><span style="font:700 14px Roboto;color:{{ procBar }}">{{ procPct }}</span></div>
+          <div style="height:8px;border-radius:999px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ procPct }};border-radius:999px;background:{{ procBar }};transition:width .5s ease-out"></span></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><sc-if value="{{ procDone }}" hint-placeholder-val="{{ false }}"><a href="{{ reportHref }}" style="height:48px;padding:0 22px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;display:flex;align-items:center;gap:6px" style-hover="background:#6A2FCB;color:#fff">Ver relatório<span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1">arrow_forward</span></a></sc-if><a href="{{ mcHref }}" style="height:48px;padding:0 20px;border-radius:8px;border:1.5px solid {{ mcBd }};background:#fff;color:{{ mcColor }};font:700 15px Roboto;display:flex;align-items:center" style-hover="border-color:#7D3EE3;background:#FAF7FF">{{ mcLabel }}</a></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ coCols }};gap:24px;align-items:start">
+      <div style="background:#fff;border-radius:20px;border:1px solid #E6E6EE;padding:8px 28px;min-width:0">
+        <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column"><sc-for list="{{ stages }}" as="g" hint-placeholder-count="7"><li style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:{{ g.line }}">
+          <span style="width:32px;height:32px;flex:none;border-radius:50%;background:{{ g.iconBg }};color:{{ g.iconColor }};display:flex;align-items:center;justify-content:center;position:relative"><sc-if value="{{ g.cur }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:0;border-radius:50%;border:2.5px solid #E3D8FC;border-top-color:#7D3EE3;box-sizing:border-box;animation:cpSpin .9s linear infinite"></span></sc-if><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;font-weight:600">{{ g.icon }}</span></span>
+          <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:{{ g.weight }} 15px Roboto;color:{{ g.color }}">{{ g.label }}</span><span style="font:400 13px/1.4 Roboto;color:#5A6472">{{ g.desc }}</span></span>
+          <span style="flex:none;font:500 13px Roboto;color:{{ g.stColor }};white-space:nowrap">{{ g.status }}</span>
+        </li></sc-for></ol>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="background:#fff;border-radius:20px;border:1px solid #E6E6EE;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font:700 16px Roboto;color:#1D2433">Seu pedido</span>
+          <dl style="margin:0;display:flex;flex-direction:column;gap:12px"><sc-for list="{{ orderInfo }}" as="o" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;gap:12px;font:400 14px Roboto"><dt style="color:#5A6472">{{ o.k }}</dt><dd style="margin:0;font-weight:500;color:#1D2433;text-align:right">{{ o.v }}</dd></div></sc-for></dl>
+          <div style="display:flex;gap:10px;padding-top:16px;border-top:1px solid #EEEEF2;font:400 13px/1.5 Roboto;color:#5A6472"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">mail</span><span>Recibo enviado para <strong style="color:#1D2433;font-weight:500;word-break:break-all">{{ emailShown }}</strong>.{{ acctNote }} Avisamos por lá quando o relatório ficar pronto.</span></div>
+        </div>
+        <div style="background:#fff;border-radius:20px;border:1px solid #E6E6EE;padding:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font:700 16px Roboto;color:#1D2433">Aviso no celular</span>
+          <span style="font:400 13px/1.5 Roboto;color:#5A6472">Com o app, você recebe uma notificação assim que o relatório ficar pronto.</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><img src="assets/footer/loja-appstore.png" alt="App Store" style="height:36px"><img src="assets/footer/loja-googleplay.png" alt="Google Play" style="height:36px"></div>
+        </div>
+        <a href="https://wa.me/message/QO5K56VNJCP5F1" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:16px;border:1px solid #E6E6EE;background:#fff;color:#1D2433" style-hover="border-color:#7D3EE3;background:#FAF7FF;color:#1D2433"><span style="width:36px;height:36px;flex:none;border-radius:50%;background:#F1EBFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;line-height:1">support_agent</span><span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:500 14px Roboto">Precisa de ajuda?</span><span style="font:400 12px Roboto;color:#5A6472">WhatsApp, seg. a sex., 8h às 17h</span></span><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#5A6472">chevron_right</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</sc-if>
+</main>
+
+<sc-if value="{{ fullChrome }}" hint-placeholder-val="{{ true }}"><dc-import name="Footer Achecar" hint-size="100%,640px"></dc-import></sc-if>
+<sc-if value="{{ slimChrome }}" hint-placeholder-val="{{ false }}"><footer style="padding:24px;border-top:1px solid #E6E6EE;background:#fff;display:flex;flex-direction:column;align-items:center;gap:8px"><span style="font:400 12px Roboto;color:#5A6472">© 2026 Achecar · A Consulta Achecar não substitui a vistoria cautelar.</span></footer></sc-if>
+
+<sc-if value="{{ plateModal }}" hint-placeholder-val="{{ false }}">
+<div role="presentation" onClick="{{ closePlate }}" style="position:fixed;inset:0;z-index:90;background:rgba(18,13,38,.62);display:flex;align-items:center;justify-content:center;padding:24px">
+  <form role="dialog" aria-modal="true" aria-label="Pesquisar outra placa" onClick="{{ stop }}" onSubmit="{{ submitPlate }}" style="position:relative;box-shadow:0 24px 64px rgba(18,13,38,.18);width:100%;max-width:560px;background:#fff;border-radius:16px;border:1px solid #E6E6EE;padding:40px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;animation:cpIn .25s ease-out both">
+    <div style="display:flex;flex-direction:column;gap:8px"><button type="button" onClick="{{ closePlate }}" aria-label="Fechar" style="position:absolute;right:14px;top:14px;width:36px;height:36px;border:0;border-radius:50%;background:transparent;cursor:pointer;font-family:'Material Symbols Rounded';font-size:22px;color:#404040" style-hover="background:#F1F1F5">close</button><span style="font:700 11px Roboto;letter-spacing:.08em;color:#7D3EE3">CONSULTA GRATUITA</span><h2 style="margin:0;font:800 26px/1.2 'Merriweather Sans',sans-serif;text-wrap:balance">Pesquisar outra placa</h2><span style="font:400 15px/1.5 Roboto;color:#5A6472">Você vê os dados básicos de graça e confirma o veículo antes de pagar.</span></div>
+    <label style="display:flex;flex-direction:column;gap:6px"><span style="font:700 13px Roboto">Placa</span><input ref="{{ plateRef }}" value="{{ plate }}" onChange="{{ onPlate }}" placeholder="ABC1D23" maxlength="8" autocomplete="off" aria-invalid="{{ plateInv }}" style="height:60px;box-sizing:border-box;padding:0 16px;border-radius:10px;border:1.5px solid {{ plateBd }};font:700 26px 'Roboto Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#1D2433;outline:none" style-focus="border-color:#7D3EE3;box-shadow:0 0 0 3px rgba(125,61,227,.25)"></label>
+    <sc-if value="{{ plateErr }}" hint-placeholder-val="{{ false }}"><span role="alert" style="margin-top:-12px;display:flex;align-items:center;gap:4px;font:400 13px Roboto;color:#B91C1C"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;">error</span>{{ plateErr }}</span></sc-if>
+    <button type="submit" disabled="{{ searching }}" style="height:52px;border:0;border-radius:8px;background:#FF5040;color:#fff;font:700 16px Roboto;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer" style-hover="background:#E63E2F"><sc-if value="{{ searching }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;box-sizing:border-box;animation:cpSpin .8s linear infinite"></span></sc-if>{{ searchLabel }}</button>
+    <span style="font:400 13px Roboto;color:#5A6472;text-align:center">Grátis · menos de 1 minuto · sem cartão</span>
+  </form>
+</div>
+</sc-if>
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}"><div role="status" style="position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:95;padding:12px 18px;border-radius:12px;background:#1D2433;color:#fff;font:500 14px Roboto;box-shadow:0 8px 24px rgba(29,36,51,.25);animation:cpIn .2s ease-out both">{{ toast }}</div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;pixTimer&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;30 min&quot;,&quot;20 s (demo)&quot;],&quot;default&quot;:&quot;30 min&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;autoConfirm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  DB = {
+    ABC1D23: { plate: "ABC1D23", brand: "Chevrolet", short: "Onix", model: "Onix LTZ 1.0 Turbo", year: "2022/2022", fuel: "Flex", color: "Branco", city: "São Paulo/SP", pot: "116 cv", cambio: "Automático de 6 marchas", chassi: "9BG*********4521", fipe: "R$ 70.630", img: "onix" },
+    QRS4T56: { plate: "QRS4T56", brand: "Hyundai", short: "HB20", model: "HB20 Platinum 1.0 Turbo", year: "2023/2023", fuel: "Flex", color: "Prata", city: "Campinas/SP", pot: "120 cv", cambio: "Automático de 6 marchas", chassi: "9BH*********8830", fipe: "R$ 89.990", img: "hb20" },
+    JKL2M34: { plate: "JKL2M34", brand: "Hyundai", short: "Creta", model: "Creta Limited 1.0 Turbo", year: "2024/2024", fuel: "Flex", color: "Cinza", city: "Curitiba/PR", pot: "120 cv", cambio: "Automático de 6 marchas", chassi: "9BH*********1107", fipe: "R$ 132.400", img: "creta" }
+  };
+  fallback = (p) => ({ plate: p, brand: "Volkswagen", short: "Polo", model: "Polo Highline 1.0 TSI", year: "2022/2023", fuel: "Flex", color: "Vermelho", city: "Belo Horizonte/MG", pot: "128 cv", cambio: "Automático de 6 marchas", chassi: "9BW*********" + p.slice(-4), fipe: "R$ 98.450", img: "polo" });
+  INCL = ["Mais de 140 informações de mais de 15 fontes oficiais e privadas", "Leilão, sinistro, roubo e furto, débitos, gravame e recall", "Resumo do Copiloto em linguagem simples", "Relatório salvo na sua conta, no site e no app", "Nova tentativa sem custo se a consulta falhar"];
+  LOCKED = [["gavel", "Leilão", "Se o carro passou por leilão, quando e em que condição"], ["car_crash", "Sinistro e indenização", "Indenização parcial ou integral registrada por seguradora"], ["local_police", "Roubo e furto", "Registros de furto, roubo e recuperação"], ["account_balance", "Gravame e financiamento", "Financiamento ativo ou já baixado"], ["receipt_long", "Débitos e multas", "Licenciamento, IPVA e multas em aberto, com valores"], ["block", "Restrições", "Restrições estaduais, nacionais e judiciais (RENAJUD)"], ["speed", "Quilometragem", "Leituras registradas e sinais de adulteração"], ["build", "Recall", "Campanhas do fabricante pendentes para esta unidade"], ["group", "Proprietários e uso", "Quantidade de donos, UF e uso em locadora"]];
+  STAGE_D = ["Placa, chassi e dados de fábrica", "Situação no Detran, gravame e bloqueios", "IPVA, licenciamento e multas em aberto", "Registros de leilão, seguradoras e boletins", "Histórico de km e tipo de uso", "Valor FIPE, anúncios e ficha técnica", "O que importa, em linguagem simples"];
+  STAGE_I = ["directions_car", "assignment", "receipt_long", "gavel", "speed", "sell", "auto_awesome"];
+  STAGES = ["Veículo identificado", "Cadastro e restrições", "Débitos e multas", "Leilão, sinistro e roubo", "Quilometragem e uso", "Mercado e ficha técnica", "Resumo do Copiloto"];
+  PRICE = 7990; ANCHOR = 9588;
+  plateRef = React.createRef(); cupomRef = React.createRef();
+  constructor(p) {
+    super(p);
+    const q = new URLSearchParams(location.search);
+    const plate = (q.get("placa") || "").toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7);
+    const valid = /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(plate) && !plate.startsWith("ZZZ");
+    const et = q.get("etapa");
+    const sess = this.readSession();
+    this.state = {
+      step: et === "checkout" ? "checkout" : "gratis", plate: valid ? plate : "", plateErr: "", searching: false, plateModal: false,
+      car: this.lookup(valid ? plate : "ABC1D23"),
+      f: { email: (sess && sess.logged && sess.email) || "", nome: (sess && sess.logged && sess.name) || "", cpf: "", cel: "", cep: "", num: "", exp: "", cvv: "", hold: "", hcpf: "", rua: "", nro: "", bairro: "", uf: "" }, manualAddr: false,
+      touched: {}, submitted: false, method: "pix", sameCpf: true, paying: false, payErr: "",
+      cupomState: "closed", cupom: "", cupomErr: "", cupomCode: "",
+      cepAddr: "", cepLoading: false,
+      orderNo: "", pixLeft: 0, copied: false, checking: false, proc: 0, paidWith: "", paidAt: "",
+      askDraft: "", askQ: "", askAnswer: "", askTyping: false,
+      vw: window.innerWidth, toast: "", session: sess
+    };
+  }
+  readSession = () => { try { return JSON.parse(localStorage.getItem("achecar-session") || "null"); } catch (e) { return null; } };
+  lookup = (p) => this.DB[p] || this.fallback(p);
+  onResize = () => this.setState({ vw: window.innerWidth });
+  syncS = () => this.setState({ session: this.readSession() });
+  componentDidMount() {
+    window.addEventListener("resize", this.onResize); window.addEventListener("achecar-session", this.syncS);
+    window.addEventListener("keydown", this.onKey);
+    this.syncUrl();
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this.onResize); window.removeEventListener("achecar-session", this.syncS); window.removeEventListener("keydown", this.onKey); this.clearAll(); }
+  onKey = (e) => { if (e.key === "Escape" && this.state.plateModal) this.setState({ plateModal: false }); };
+  clearAll = () => { clearInterval(this.pixT); clearInterval(this.procT); clearTimeout(this.t); clearTimeout(this.toastT); clearTimeout(this.autoT); clearTimeout(this.cepT); clearTimeout(this.askT); };
+  syncUrl = () => { const s = this.state, q = new URLSearchParams(); if (s.car) q.set("placa", s.car.plate); if (s.step !== "placa" && s.step !== "gratis") q.set("etapa", { checkout: "checkout", pix: "pix", proc: "pedido" }[s.step]); try { history.replaceState(null, "", location.pathname + (q.toString() ? "?" + q : "")); } catch (e) {} };
+  go = (step, extra) => { this.setState({ step, ...(extra || {}) }, () => { this.syncUrl(); window.scrollTo({ top: 0, behavior: "smooth" }); }); };
+  toast = (m) => { clearTimeout(this.toastT); this.setState({ toast: m }); this.toastT = setTimeout(() => this.setState({ toast: "" }), 2600); };
+  fmt = (c) => "R$ " + (c / 100).toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  total = () => (this.state.cupomCode ? Math.round(this.PRICE * 0.9) : this.PRICE);
+  digits = (v) => (v || "").replace(/\D/g, "");
+  mask = {
+    cpf: (v) => { const d = this.digits(v).slice(0, 11); return d.replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2"); },
+    cel: (v) => { const d = this.digits(v).slice(0, 11); if (d.length <= 2) return d.length ? "(" + d : ""; if (d.length <= 3) return "(" + d.slice(0, 2) + ") " + d.slice(2); if (d.length <= 7) return "(" + d.slice(0, 2) + ") " + d.slice(2, 3) + " " + d.slice(3); return "(" + d.slice(0, 2) + ") " + d.slice(2, 3) + " " + d.slice(3, 7) + "-" + d.slice(7); },
+    cep: (v) => { const d = this.digits(v).slice(0, 8); return d.length > 5 ? d.slice(0, 5) + "-" + d.slice(5) : d; },
+    num: (v) => this.digits(v).slice(0, 16).replace(/(\d{4})(?=\d)/g, "$1 "),
+    exp: (v) => { const d = this.digits(v).slice(0, 4); return d.length > 2 ? d.slice(0, 2) + "/" + d.slice(2) : d; },
+    cvv: (v) => this.digits(v).slice(0, 4),
+    hcpf: (v) => this.mask.cpf(v)
+  };
+  cpfOk = (v) => { const d = this.digits(v); if (d.length !== 11 || /^(\d)\1+$/.test(d)) return false; const calc = (n) => { let s = 0; for (let i = 0; i < n; i++) s += +d[i] * (n + 1 - i); const r = (s * 10) % 11; return r === 10 ? 0 : r; }; return calc(9) === +d[9] && calc(10) === +d[10]; };
+  errors = () => {
+    const f = this.state.f, e = {}, card = this.state.method === "card";
+    if (!/^\S+@\S+\.\S{2,}$/.test(f.email.trim())) e.email = f.email.trim() ? "Confira o e-mail · voce@email.com" : "Digite seu e-mail.";
+    if (f.nome.trim().split(/\s+/).filter((x) => x.length > 1).length < 2) e.nome = f.nome.trim() ? "Digite nome e sobrenome." : "Digite seu nome completo.";
+    if (!this.cpfOk(f.cpf)) e.cpf = this.digits(f.cpf).length ? "CPF inválido. Confira os números." : "Digite seu CPF.";
+    if (f.cel && this.digits(f.cel).length < 10) e.cel = "Celular incompleto.";
+    if (f.cep && this.digits(f.cep).length !== 8) e.cep = "CEP incompleto.";
+    if (card) {
+      if (this.digits(f.num).length < 15) e.num = "Número do cartão incompleto.";
+      const m = f.exp.match(/^(\d{2})\/(\d{2})$/); if (!m || +m[1] < 1 || +m[1] > 12 || (+m[2] < 26 || (+m[2] === 26 && +m[1] < 10))) e.exp = m ? "Cartão vencido ou data inválida." : "Use o formato MM/AA.";
+      if (this.digits(f.cvv).length < 3) e.cvv = "3 ou 4 dígitos no verso.";
+      if (f.hold.trim().length < 3) e.hold = "Digite o nome como está no cartão.";
+      if (!this.state.sameCpf && !this.cpfOk(f.hcpf)) e.hcpf = "CPF do titular inválido.";
+    }
+    return e;
+  };
+  setF = (k, v) => {
+    const val = this.mask[k] ? this.mask[k](v) : v;
+    this.setState((s) => ({ f: { ...s.f, [k]: val }, payErr: "" }));
+    if (k === "cep") { clearTimeout(this.cepT); if (this.digits(val).length === 8) { this.setState({ cepLoading: true, cepAddr: "" }); this.cepT = setTimeout(() => this.setState({ cepLoading: false, cepAddr: "Rua das Palmeiras · Centro, " + (this.state.car ? this.state.car.city.replace("/", ", ") : "São Paulo, SP") }), 700); } else this.setState({ cepAddr: "", cepLoading: false }); }
+  };
+  makeQr = (seed) => {
+    const N = 29; let h = 0; for (const ch of seed) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+    const rnd = () => { h ^= h << 13; h >>>= 0; h ^= h >> 17; h ^= h << 5; h >>>= 0; return h / 4294967296; };
+    const g = Array.from({ length: N }, () => Array(N).fill(0));
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) g[y][x] = rnd() > 0.52 ? 1 : 0;
+    const finder = (ox, oy) => { for (let y = -1; y < 8; y++) for (let x = -1; x < 8; x++) { const X = ox + x, Y = oy + y; if (X < 0 || Y < 0 || X >= N || Y >= N) continue; const edge = x === -1 || y === -1 || x === 7 || y === 7; const ring = x === 0 || y === 0 || x === 6 || y === 6; const core = x >= 2 && x <= 4 && y >= 2 && y <= 4; g[Y][X] = edge ? 0 : ring || core ? 1 : 0; } };
+    finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
+    for (let i = 8; i < N - 8; i++) { g[6][i] = i % 2 ? 0 : 1; g[i][6] = i % 2 ? 0 : 1; }
+    let p = ""; for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) if (g[y][x]) p += "M" + x + " " + y + "h1v1h-1z";
+    return "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + N + " " + N + '" shape-rendering="crispEdges"><path fill="#1D2433" d="' + p + '"/></svg>');
+  };
+  startPix = () => {
+    clearInterval(this.pixT); clearTimeout(this.autoT);
+    const fast = (this.props.pixTimer ?? "30 min") !== "30 min";
+    this.setState({ pixLeft: fast ? 20 : 30 * 60, copied: false, checking: false });
+    this.pixT = setInterval(() => this.setState((s) => { const n = s.pixLeft - 1; if (n <= 0) { clearInterval(this.pixT); clearTimeout(this.autoT); } return { pixLeft: Math.max(0, n) }; }), 1000);
+    if (this.props.autoConfirm ?? true) this.autoT = setTimeout(() => this.state.step === "pix" && this.state.pixLeft > 0 && this.confirmPaid("Pix"), 18000);
+  };
+  confirmPaid = (via) => {
+    clearInterval(this.pixT); clearTimeout(this.autoT);
+    const now = new Date(), pad = (x) => String(x).padStart(2, "0");
+    const f = this.state.f, wasGuest = !(this.state.session && this.state.session.logged);
+    if (wasGuest) { localStorage.setItem("achecar-session", JSON.stringify({ logged: true, name: f.nome.trim() || "Ana Souza", email: f.email.trim() || "ana@email.com" })); window.dispatchEvent(new Event("achecar-session")); }
+    this.setState({ newAccount: wasGuest });
+    this.go("proc", { proc: 0, paidWith: via, paidAt: pad(now.getDate()) + "/" + pad(now.getMonth() + 1) + "/" + now.getFullYear() + ", " + pad(now.getHours()) + ":" + pad(now.getMinutes()), checking: false });
+    clearInterval(this.procT);
+    this.procT = setInterval(() => this.setState((s) => { const n = s.proc + 1; if (n >= this.STAGES.length) { clearInterval(this.procT); this.saveOrder(); } return { proc: Math.min(n, this.STAGES.length) }; }), 1500);
+  };
+  saveOrder = () => {
+    const c = this.state.car; let list = []; try { list = JSON.parse(localStorage.getItem("achecar-orders") || "[]"); } catch (e) {}
+    list = list.filter((o) => o.plate !== c.plate);
+    list.unshift({ plate: c.plate, vehicle: c.brand + " " + c.short + " " + c.year.split("/")[0] + " · " + c.plate, meta: "Concluída em " + this.state.paidAt, status: "completed" });
+    localStorage.setItem("achecar-orders", JSON.stringify(list.slice(0, 10)));
+  };
+  ANSWERS = {
+    "É econômico?": (c) => "Na cidade, o " + c.short + " faz em média 11 a 13 km/l com gasolina e 8 a 9 km/l com etanol. Está entre os mais econômicos da categoria.",
+    "Problemas comuns": (c) => "Os relatos mais comuns do " + c.short + " são ruídos na suspensão dianteira e desgaste precoce das pastilhas. Nada grave, mas vale olhar na vistoria.",
+    "É caro de manter?": (c) => "As revisões do " + c.short + " custam entre R$ 600 e R$ 1.100 até os 60 mil km. O seguro fica na média dos hatches e sedãs compactos."
+  };
+  ask = (q) => {
+    if (!q.trim() || this.state.askQ) return;
+    const c = this.state.car, key = Object.keys(this.ANSWERS).find((k) => q.startsWith(k.slice(0, 12)));
+    this.setState({ askQ: q.trim(), askDraft: "", askTyping: true });
+    this.askT = setTimeout(() => this.setState({ askTyping: false, askAnswer: key ? this.ANSWERS[key](c) : "Boa pergunta. Sobre o modelo " + c.short + " em geral: é uma escolha popular, com peças fáceis de achar. Para saber desta unidade (leilão, sinistro, donos), só com a consulta completa." }), 1100);
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, f = s.f, car = s.car || this.fallback("RIO4F56"), wide = s.vw >= (this.props.bpDesktop1024 ?? 1024);
+    const logged = !!(s.session && s.session.logged);
+    const askGate = (q) => { if (logged) { if (q && q.trim()) this.ask(q); return; } const done = () => { let ses = null; try { ses = JSON.parse(localStorage.getItem("achecar-session") || "null"); } catch (er) {} this.setState({ session: ses }, () => { if (ses && ses.logged && q && q.trim()) this.ask(q); }); }; if (window.achecarLogin) window.achecarLogin("Login.dc.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search), done); else location.href = "Login.dc.html?next=" + encodeURIComponent(location.pathname.split("/").pop() + location.search); };
+    const errs = this.errors(), show = (k) => (s.submitted || s.touched[k]) && errs[k] ? errs[k] : "";
+    const FV = {};
+    ["email", "nome", "cpf", "cel", "cep", "num", "exp", "cvv", "hold", "hcpf", "rua", "nro", "bairro", "uf"].forEach((k) => { const e = show(k); Object.assign(FV, { ["v_" + k]: f[k], ["on_" + k]: (ev) => this.setF(k, ev.target.value), ["bl_" + k]: () => this.setState((st) => ({ touched: { ...st.touched, [k]: true } })), ["err_" + k]: e, ["nerr_" + k]: !e, ["inv_" + k]: !!e, ["bd_" + k]: e ? "#DC2626" : "#D5D8DE" }); });
+    const idx = { checkout: 1, pix: 1, proc: 2 }[s.step] ?? 0;
+    const procDone = s.proc >= this.STAGES.length, total = this.total();
+    const fullName = car.brand + " " + car.model.split(" ").slice(0, 2).join(" ") + " " + car.year;
+    const pixCode = "00020101021226800014br.gov.bcb.pix2558pix.achecar.com/qr/cobv/" + (s.orderNo || "0000").replace("-", "") + "f442f29d0ca845bf5204000053039865406" + (total / 100).toFixed(2) + "5802BR5907ACHECAR6009SAO PAULO62070503***6304B1F2";
+    const mm = Math.floor(s.pixLeft / 60), ss = s.pixLeft % 60;
+    const methodPix = s.method === "pix";
+    return {
+      ...FV,
+      fullChrome: s.step === "gratis", slimChrome: s.step !== "gratis", plateModal: s.plateModal, closePlate: () => this.setState({ plateModal: false }), stop: (e) => e.stopPropagation(),
+      stPlaca: s.step === "placa", stGratis: s.step === "gratis", stCheckout: s.step === "checkout", stPix: s.step === "pix", stProc: s.step === "proc",
+      wide, narrow: !wide,
+      steps: ["Veículo", "Pagamento", "Relatório"].map((label, i) => { const done = i < idx || (i === 2 && procDone), cur = i === idx && !done; return { label, line: i < 2, mark: done ? "✓" : String(i + 1), weight: cur ? 700 : 500, color: done || cur ? "#1D2433" : "#5A6472", ring: "transparent", bg: done || cur ? "#7D3EE3" : "#EEEEF2", num: done || cur ? "#fff" : "#5A6472" }; }),
+      plate: s.plate, plateRef: this.plateRef, plateErr: s.plateErr, plateInv: !!s.plateErr, plateBd: s.plateErr ? "#DC2626" : "#D5D8DE",
+      onPlate: (e) => this.setState({ plate: e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7), plateErr: "" }),
+      searching: s.searching, searchLabel: s.searching ? "Buscando a placa…" : "Consultar grátis",
+      submitPlate: (e) => { e.preventDefault(); const p = s.plate; if (!/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(p)) return this.setState({ plateErr: "Digite uma placa válida · ABC1D23 ou ABC1234" }); this.setState({ searching: true }); this.t = setTimeout(() => { if (p.startsWith("ZZZ")) return this.setState({ searching: false, plateErr: "Não encontramos um veículo com esta placa. Confira as letras e os números." }); this.go("gratis", { searching: false, plateModal: false, car: this.lookup(p), askQ: "", askAnswer: "", plate: "" }); }, 1000); },
+      car: { ...car, full: fullName, fipeRef: "set/2026", brandUp: car.brand.toUpperCase() }, carChips: [{ icon: "calendar_today", label: car.year }, { icon: "palette", label: car.color }, { icon: "local_gas_station", label: car.fuel }], carImg: "assets/carros/" + car.img + ".webp",
+      cols: wide ? "minmax(0,1fr) 360px" : "minmax(0,1fr)", coCols: wide ? "minmax(0,1fr) 380px" : "minmax(0,1fr)", asidePos: wide ? "sticky" : "static", carCols: (s.vw || window.innerWidth) >= 720 ? "minmax(0,300px) minmax(0,1fr)" : "minmax(0,1fr)", carImgH: (s.vw || window.innerWidth) >= 720 ? "200px" : "168px",
+      formOrder: 0, sumOrder: 1, coSplit: wide ? "minmax(0,55fr) minmax(0,45fr)" : "minmax(0,1fr)", coGutterL: wide ? "40px" : "auto", coGutterR: wide ? "40px" : "auto",
+      manual: !!s.manualAddr, notManual: !s.manualAddr, manualLabel: s.manualAddr ? "Buscar pelo CEP" : "Digitar manualmente", toggleManual: () => this.setState({ manualAddr: !s.manualAddr }),
+      dados: [["Marca", car.brand], ["Modelo", car.model], ["Ano", car.year], ["Cor", car.color], ["Combustível", car.fuel], ["Câmbio", car.cambio], ["Potência", car.pot], ["Município", car.city], ["Procedência", "Nacional"], ["Categoria", "Particular"], ["Espécie", "Passageiro"], ["Chassi", car.chassi]].map(([k, v]) => ({ k, v })),
+      locked: this.LOCKED.map(([icon, t, d]) => ({ icon, t, d })),
+      incl: this.INCL,
+      askChips: ["É econômico?", "Problemas comuns do " + car.short + "?", "É caro de manter?"].map((label) => ({ label, ask: () => askGate(label) })),
+      askLocked: !logged, askSendIcon: logged ? "send" : "lock", askSendLbl: logged ? "Enviar" : "Entrar e enviar",
+      askDraft: s.askDraft, onAsk: (e) => this.setState({ askDraft: e.target.value }), askSubmit: (e) => { e.preventDefault(); askGate(s.askDraft); }, askLogin: () => askGate(""),
+      askQ: s.askQ, askAnswer: s.askAnswer, askTyping: s.askTyping, canAsk: !s.askQ, askUsed: !!s.askAnswer,
+      goCheckout: () => { location.href = "Checkout.dc.html?placa=" + (this.state.car && this.state.car.plate || ""); },
+      trocarPlaca: () => { this.setState({ plateModal: true, plate: "", plateErr: "", searching: false }); setTimeout(() => this.plateRef.current && this.plateRef.current.focus(), 60); },
+      logged, notLogged: !logged, loginHref: "Login.dc.html?next=" + encodeURIComponent("Consulta Placa.dc.html?placa=" + car.plate + "&etapa=checkout") + "&back=" + encodeURIComponent("Consulta Placa.dc.html?placa=" + car.plate + "&etapa=checkout"),
+      cepAddr: s.cepAddr, cepLoading: s.cepLoading,
+      isPix: methodPix, isCard: !methodPix, setPix: () => this.setState({ method: "pix", payErr: "" }), setCard: () => this.setState({ method: "card", payErr: "" }),
+      pixBw: methodPix ? "2px" : "1px", cardBw: !methodPix ? "2px" : "1px", pixBd: methodPix ? "#7D3EE3" : "#E6E6EE", pixBg: methodPix ? "#F5F4FE" : "#fff", pixRing: methodPix ? "#7D3EE3" : "#5A6472", pixDot: methodPix ? "#7D3EE3" : "transparent",
+      cardBd: !methodPix ? "#7D3EE3" : "#E6E6EE", cardBg: !methodPix ? "#F5F4FE" : "#fff", cardRing: !methodPix ? "#7D3EE3" : "#5A6472", cardDot: !methodPix ? "#7D3EE3" : "transparent",
+      sameCpf: s.sameCpf, notSameCpf: !s.sameCpf, toggleSameCpf: () => this.setState({ sameCpf: !s.sameCpf }), sameBd: s.sameCpf ? "#7D3EE3" : "#5A6472", sameBg: s.sameCpf ? "#7D3EE3" : "#fff", sameMark: s.sameCpf ? "check" : "",
+      paying: s.paying, notPaying: !s.paying, payErr: s.payErr,
+      payLabel: s.paying ? (methodPix ? "Gerando o Pix…" : "Processando o pagamento…") : "Pagar " + this.fmt(total) + (methodPix ? " com Pix" : ""),
+      pay: (e) => {
+        e.preventDefault(); const er = this.errors();
+        if (Object.keys(er).length) { this.setState({ submitted: true, payErr: "Confira os campos destacados para continuar." }); const k = Object.keys(er)[0]; setTimeout(() => { const el = document.querySelector('[aria-invalid="true"]'); el && el.focus(); }, 30); return; }
+        this.setState({ paying: true, payErr: "" });
+        this.t = setTimeout(() => {
+          if (!methodPix && this.digits(f.num).endsWith("0002")) return this.setState({ paying: false, payErr: "Cartão recusado pelo banco. Confira os dados, use outro cartão ou pague com Pix." });
+          const no = String(4800 + Math.floor(Math.random() * 99)) + "-" + String(1000 + Math.floor(Math.random() * 8999));
+          this.setState({ paying: false, orderNo: no });
+          if (methodPix) { this.go("pix"); this.startPix(); } else this.confirmPaid("Cartão de crédito");
+        }, 1300);
+      },
+      cupomClosed: s.cupomState === "closed" && !s.cupomCode, cupomOpen: s.cupomState === "open" && !s.cupomCode, cupomOk: !!s.cupomCode, cupomCode: s.cupomCode,
+      openCupom: () => this.setState({ cupomState: "open" }, () => setTimeout(() => this.cupomRef.current && this.cupomRef.current.focus(), 30)),
+      cupom: s.cupom, cupomRef: this.cupomRef, onCupom: (e) => this.setState({ cupom: e.target.value.toUpperCase(), cupomErr: "" }), cupomErr: s.cupomErr, cupomBd: s.cupomErr ? "#DC2626" : "#D5D8DE",
+      applyCupom: (e) => { e.preventDefault(); const c = s.cupom.trim(); if (!c) return this.setState({ cupomErr: "Digite o cupom." }); if (c !== "ACHECAR10" && c !== "PRIMEIRA10") return this.setState({ cupomErr: "Cupom inválido ou expirado." }); this.setState({ cupomCode: c, cupomState: "closed" }); this.toast("Cupom aplicado: 10% de desconto"); },
+      removeCupom: () => this.setState({ cupomCode: "", cupom: "", cupomState: "closed" }),
+      cupomOff: this.fmt(this.PRICE - total), saveTxt: this.fmt(this.ANCHOR - total), totalTxt: this.fmt(total),
+      orderNo: s.orderNo || "—", qrUrl: this.makeQr(s.orderNo + car.plate), pixCodeShort: pixCode.slice(0, 74) + "…",
+      pixLive: s.pixLeft > 0, pixExpired: s.step === "pix" && s.pixLeft <= 0,
+      timer: String(mm).padStart(2, "0") + ":" + String(ss).padStart(2, "0"), timerColor: s.pixLeft < 120 ? "#B45309" : "#5A6472",
+      copyBg: s.copied ? "#15803D" : "#7D3EE3", copyIcon: s.copied ? "check" : "content_copy", copyLabel: s.copied ? "Código copiado" : "Copiar código Pix",
+      copyPix: () => { try { navigator.clipboard && navigator.clipboard.writeText(pixCode); } catch (e) {} this.setState({ copied: true }); this.toast("Código Pix copiado. Cole no app do seu banco."); setTimeout(() => this.setState({ copied: false }), 3000); },
+      checking: s.checking, jaLabel: s.checking ? "Confirmando…" : "Já paguei", waitTitle: s.checking ? "Confirmando o pagamento com o banco…" : "Aguardando o pagamento",
+      jaPaguei: () => { this.setState({ checking: true }); this.t = setTimeout(() => this.confirmPaid("Pix"), 1500); },
+      pixToCard: () => { clearInterval(this.pixT); clearTimeout(this.autoT); this.go("checkout", { method: "card", pixLeft: 0 }); },
+      newPix: () => { this.setState({ orderNo: String(4800 + Math.floor(Math.random() * 99)) + "-" + String(1000 + Math.floor(Math.random() * 8999)) }); this.startPix(); },
+      emailShown: f.email || "ana@email.com",
+      orderInfo: [{ k: "Pedido", v: "nº " + (s.orderNo || "—") }, { k: "Data", v: s.paidAt }, { k: "Pagamento", v: s.paidWith + " · " + this.fmt(total) }],
+      procTitle: procDone ? "Relatório pronto" : "Processando a consulta " + car.plate,
+      procSub: procDone ? "Ele fica salvo em Minhas consultas e não expira." : "Você pode fechar esta página: avisamos por e-mail quando o relatório ficar pronto, e ele aparece em Minhas consultas.",
+      procPct: Math.round((s.proc / this.STAGES.length) * 100) + "%", procBar: procDone ? "#15803D" : "#7D3EE3", procDone,
+      procHeroCols: wide ? "minmax(0,42fr) minmax(0,58fr)" : "minmax(0,1fr)", procCount: procDone ? "7 de 7 etapas concluídas" : "Etapa " + (s.proc + 1) + " de " + this.STAGES.length,
+      stages: this.STAGES.map((label, i) => { const done = i < s.proc, cur = i === s.proc && !procDone; return { label, desc: this.STAGE_D[i], done, cur, wait: !done && !cur, weight: cur || done ? 500 : 400, color: done || cur ? "#1D2433" : "#5A6472", icon: done ? "check" : this.STAGE_I[i], iconBg: done ? "#DCFCE7" : cur ? "#F1EBFD" : "#F4F4F6", iconColor: done ? "#15803D" : cur ? "#7D3EE3" : "#8A93A0", status: done ? "Concluído" : cur ? "Analisando…" : "Na fila", stColor: done ? "#15803D" : cur ? "#7D3EE3" : "#8A93A0", line: i < this.STAGES.length - 1 ? "1px solid #F0F0F4" : "0" }; }),
+      reportHref: "Insights Consulta v5.dc.html?placa=" + car.plate, guest: !!s.newAccount, acctNote: s.newAccount ? " Sua conta foi criada." : "", mcLabel: "Ir para Minhas consultas", mcHref: "Minha Conta.dc.html?tela=consultas", mcBd: procDone ? "#D5D8DE" : "#7D3EE3", mcColor: procDone ? "#1D2433" : "#7D3EE3",
+      toast: s.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

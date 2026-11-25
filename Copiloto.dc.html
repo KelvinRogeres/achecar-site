@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="preload" as="image" href="assets/home/copiloto-mascote.webp">
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css">
+  <style>
+    @keyframes cpDot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+    @keyframes cpThink{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes cpIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    @media (prefers-reduced-motion:reduce){[data-cp] *{animation:none!important;transition:none!important}}
+  </style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div data-cp="1" style="font-family:Roboto,sans-serif;color:#1D2433">
+  <sc-if value="{{ isDemo }}" hint-placeholder-val="{{ false }}">
+    <div style="min-height:300vh;background:#F6F6F9;padding:40px 24px;box-sizing:border-box">
+      <div style="position:sticky;top:24px;max-width:480px;display:flex;flex-direction:column;gap:6px;padding:16px 20px;border-radius:16px;background:#fff;border:1px solid #E5E5E5">
+        <span style="font:700 16px 'Merriweather Sans',sans-serif">Copiloto · {{ demoMode }}</span>
+        <span style="font:500 13px Roboto;color:#7D3EE3">{{ demoBp }}</span>
+        <span style="font:400 14px/1.5 Roboto;color:#5A6472">{{ demoHint }}</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <button onClick="{{ toggle }}" aria-label="Pergunte ao Copiloto" aria-expanded="{{ open }}" title="Pergunte ao Copiloto" style="position:fixed;right:{{ fabInset }};bottom:{{ fabInset }};z-index:45;height:{{ fabH }};width:{{ fabW }};padding:0;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE,0 4px 12px rgba(77,26,153,.22),0 12px 32px rgba(77,26,153,.14);cursor:pointer;overflow:visible;opacity:{{ fabOpacity }};pointer-events:{{ fabPE }};transition:width .24s cubic-bezier(.2,.8,.2,1),opacity .2s ease-out,transform .15s ease-out;font-family:Roboto,sans-serif" style-hover="transform:translateY(-2px)" style-active="transform:scale(.97)">
+    <span style="position:absolute;left:{{ mascotLeft }};bottom:6px;width:62px;height:62px;display:flex;align-items:flex-end;justify-content:center;transition:left .24s cubic-bezier(.2,.8,.2,1);pointer-events:none">
+      <img src="assets/home/copiloto-mascote.webp" alt="" style="width:48px;height:auto;display:block;filter:drop-shadow(0 4px 6px rgba(29,36,51,.18))">
+    </span>
+    <span style="position:absolute;left:74px;top:0;bottom:0;right:20px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:2px;white-space:nowrap;opacity:{{ textOpacity }};transition:opacity .15s ease-out;pointer-events:none">
+      <span style="font:700 15px/1.2 'Merriweather Sans',sans-serif;color:#1D2433">{{ title }}</span>
+      <span style="font:400 12px/1.3 Roboto;color:#5A6472">{{ subtitle }}</span>
+    </span>
+    <sc-if value="{{ hasBadge }}" hint-placeholder-val="{{ false }}">
+      <span aria-label="{{ badgeAria }}" style="position:absolute;top:-4px;right:{{ badgeRight }};min-width:20px;height:20px;padding:0 6px;box-sizing:border-box;border-radius:999px;background:#FF5040;color:#fff;border:2px solid #fff;font:700 11px/16px Roboto;text-align:center;transition:right .24s cubic-bezier(.2,.8,.2,1)">{{ badge }}</span>
+    </sc-if>
+    <sc-if value="{{ showOnline }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;top:6px;right:{{ dotRight }};width:10px;height:10px;border-radius:50%;background:#15803D;border:2px solid #fff;transition:right .24s cubic-bezier(.2,.8,.2,1)"></span>
+    </sc-if>
+  </button>
+
+  <div onClick="{{ close }}" aria-hidden="true" style="position:fixed;inset:0;z-index:58;background:{{ scrimBg }};opacity:{{ scrimOpacity }};pointer-events:{{ panelPE }};transition:opacity .22s ease-out"></div>
+
+  <aside role="dialog" aria-modal="true" aria-label="Copiloto Achecar" style="position:fixed;top:0;right:0;bottom:0;z-index:59;width:{{ panelW }};max-width:100vw;background:#fff;box-shadow:-12px 0 40px rgba(18,13,38,.16);display:flex;flex-direction:column;transform:{{ panelX }};visibility:{{ panelVis }};transition:transform .28s cubic-bezier(.2,.8,.2,1),visibility .28s">
+    <header style="flex:none;display:flex;align-items:center;gap:12px;padding:16px 16px 16px 20px;border-bottom:1px solid #EEEEF2">
+      <sc-if value="{{ inChat }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ goHome }}" aria-label="Voltar ao início do Copiloto" title="Voltar" style="width:40px;height:40px;flex:none;margin-left:-8px;border:0;border-radius:999px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;color:#404040" style-hover="background:#F1F1F5">arrow_back</button>
+      </sc-if>
+      <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+        <span style="font:700 16px/1.2 'Merriweather Sans',sans-serif">Copiloto Achecar</span>
+        <span style="display:flex;align-items:center;gap:6px;font:400 12px Roboto;color:#5A6472"><span style="width:8px;height:8px;border-radius:50%;background:#15803D"></span>Online · responde em segundos</span>
+      </span>
+      <sc-if value="{{ inChat }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ newChat }}" aria-label="Nova conversa" title="Nova conversa" style="width:40px;height:40px;border:0;border-radius:999px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:22px;color:#5A6472" style-hover="background:#F1F1F5">edit_square</button>
+      </sc-if>
+      <button onClick="{{ close }}" aria-label="Fechar Copiloto" style="width:40px;height:40px;border:0;border-radius:999px;background:#F1F1F5;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;color:#404040" style-hover="background:#E6E6EE">close</button>
+    </header>
+
+    <sc-if value="{{ gate }}" hint-placeholder-val="{{ false }}">
+      <div style="flex:1;overflow:auto;padding:40px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px">
+        <img src="assets/home/copiloto-mascote.webp" alt="" style="width:120px;height:auto;display:block">
+        <span style="font:700 24px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">Entre para conversar com o Copiloto</span>
+        <span style="max-width:340px;font:400 15px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Com a conta, ele conhece os carros da sua Garagem e guarda suas conversas. É grátis e leva menos de 1 minuto.</span>
+        <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px;margin-top:8px">
+          <a href="{{ loginHref }}" style="height:48px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;display:flex;align-items:center;justify-content:center" style-hover="background:#6A2FCB;color:#fff">Entrar</a>
+          <a href="{{ loginHref }}" style="height:48px;border-radius:8px;border:1.5px solid #D5D8DE;color:#1D2433;font:700 15px Roboto;display:flex;align-items:center;justify-content:center;box-sizing:border-box" style-hover="background:#F6F6F9;color:#1D2433">Criar conta grátis</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;text-align:left;width:100%;max-width:340px">
+          <span style="font:700 12px Roboto;letter-spacing:.06em;color:#5A6472">O QUE ELE FAZ</span>
+          <span style="display:flex;gap:10px;align-items:center;font:400 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">payments</span>Diz quanto vale o seu carro na FIPE</span>
+          <span style="display:flex;gap:10px;align-items:center;font:400 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">compare_arrows</span>Compara modelos lado a lado</span>
+          <span style="display:flex;gap:10px;align-items:center;font:400 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;color:#7D3EE3">build</span>Lembra revisões e recalls</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ app }}" hint-placeholder-val="{{ true }}">
+      <div style="flex:none;display:flex;align-items:center;gap:8px;padding:10px 20px;border-bottom:1px solid #EEEEF2;background:#FAFAFC">
+        <span style="font:400 13px Roboto;color:#5A6472;white-space:nowrap;flex:none">Falando sobre</span>
+        <div style="position:relative;flex:none">
+          <button onClick="{{ toggleCars }}" aria-haspopup="listbox" aria-expanded="{{ carsOpen }}" style="white-space:nowrap;display:flex;align-items:center;gap:6px;height:32px;padding:0 10px 0 12px;border-radius:999px;border:1px solid #D9CCF6;background:#fff;color:#1D2433;font:700 13px Roboto;cursor:pointer" style-hover="border-color:#7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">directions_car</span>{{ carLabel }}<span style="font-family:'Material Symbols Rounded';font-size:18px;color:#5A6472">expand_more</span></button>
+          <sc-if value="{{ carsOpen }}" hint-placeholder-val="{{ false }}">
+            <div role="listbox" style="position:absolute;top:38px;left:0;z-index:3;width:240px;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(29,36,51,.14);padding:6px;display:flex;flex-direction:column">
+              <sc-for list="{{ carOpts }}" as="o" hint-placeholder-count="3">
+                <button role="option" aria-selected="{{ o.on }}" onClick="{{ o.pick }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;padding:10px 12px;border:0;border-radius:8px;background:{{ o.bg }};font:{{ o.weight }} 14px Roboto;color:#1D2433;cursor:pointer" style-hover="background:#F6F6F9">{{ o.label }}<span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3;opacity:{{ o.check }}">check</span></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div ref="{{ scrollRef }}" style="flex:1;min-height:0;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:16px">
+        <sc-if value="{{ welcome }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:28px;padding-top:8px">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <span style="font:700 22px/1.3 'Merriweather Sans',sans-serif;text-wrap:balance">{{ greeting }}</span>
+              <span style="font:400 15px/1.5 Roboto;color:#5A6472">{{ greetingSub }}</span>
+            </div>
+            <sc-if value="{{ hasAlerts }}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="1">
+                <button onClick="{{ a.ask }}" style="display:flex;gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:10px;border:0;background:{{ a.bg }};cursor:pointer" style-hover="filter:brightness(.98)">
+                  <span style="font-family:'Material Symbols Rounded';font-size:20px;color:{{ a.color }}">{{ a.icon }}</span>
+                  <span style="flex:1;min-width:0;font:500 14px/1.35 Roboto;color:#1D2433">{{ a.title }}</span>
+                  <span style="font-family:'Material Symbols Rounded';font-size:18px;color:#5A6472">chevron_right</span>
+                </button>
+              </sc-for>
+            </sc-if>
+            <div style="display:flex;flex-direction:column">
+              <sc-for list="{{ suggestions }}" as="q" hint-placeholder-count="3">
+                <button onClick="{{ q.ask }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:12px 4px;border:0;border-bottom:1px solid #EEEEF2;background:transparent;font:400 15px/1.4 Roboto;color:#1D2433;cursor:pointer" style-hover="color:#7D3EE3">{{ q.label }}<span style="font-family:'Material Symbols Rounded';font-size:18px;color:#7D3EE3">arrow_forward</span></button>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font:500 13px Roboto;color:#5A6472;padding:0 4px 6px">Recentes</span>
+              <sc-if value="{{ canResume }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ resume }}" style="display:flex;align-items:center;gap:8px;padding:8px 4px;border:0;border-radius:8px;background:transparent;text-align:left;cursor:pointer" style-hover="background:#F6F6F9"><span style="flex:1;min-width:0;font:700 14px Roboto;color:#7D3EE3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ resumeTitle }}</span><span style="font:400 12px Roboto;color:#7D3EE3">Continuar</span></button>
+              </sc-if>
+              <sc-for list="{{ history }}" as="h" hint-placeholder-count="2">
+                <button onClick="{{ h.load }}" style="display:flex;align-items:center;gap:8px;padding:8px 4px;border:0;border-radius:8px;background:transparent;text-align:left;cursor:pointer" style-hover="background:#F6F6F9"><span style="flex:1;min-width:0;font:400 14px Roboto;color:#1D2433;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ h.title }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ h.when }}</span></button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-for list="{{ messages }}" as="m" hint-placeholder-count="0">
+          <div style="display:flex;justify-content:{{ m.justify }};animation:cpIn .2s ease-out">
+            <div style="max-width:85%;display:flex;flex-direction:column;gap:8px">
+              <div style="padding:12px 14px;border-radius:{{ m.radius }};background:{{ m.bg }};color:{{ m.color }};font:400 15px/1.5 Roboto;white-space:pre-line;text-wrap:pretty">{{ m.text }}</div>
+              <sc-if value="{{ m.hasQuota }}" hint-placeholder-val="{{ false }}">
+                <span style="padding-left:4px;font:400 11px/1.4 Roboto;color:{{ m.quotaColor }}">{{ m.quotaLabel }}</span>
+              </sc-if>
+              <sc-if value="{{ m.hasFollow }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ m.follow }}" as="f" hint-placeholder-count="2">
+                    <button onClick="{{ f.ask }}" style="padding:7px 12px;border-radius:999px;border:1px solid #D9CCF6;background:#fff;color:#7D3EE3;font:500 13px Roboto;cursor:pointer" style-hover="background:#F3EDFD">{{ f.label }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+
+        <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+          <div aria-label="Copiloto digitando" style="align-self:flex-start;display:flex;gap:4px;padding:14px 16px;border-radius:4px 16px 16px 16px;background:#F3F4F6">
+            <span style="width:6px;height:6px;border-radius:50%;background:#7A8494;animation:cpDot 1s infinite"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:#7A8494;animation:cpDot 1s .15s infinite"></span>
+            <span style="width:6px;height:6px;border-radius:50%;background:#7A8494;animation:cpDot 1s .3s infinite"></span>
+          </div>
+        </sc-if>
+      </div>
+
+      <form onSubmit="{{ send }}" style="flex:none;padding:12px 16px 16px;border-top:1px solid #EEEEF2;background:#fff;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="flex:1;min-width:0;height:48px;box-sizing:border-box;display:flex;align-items:center;gap:8px;padding:4px 4px 4px 16px;border-radius:999px;border:1.5px solid #D5D8DE;background:#fff;transition:border-color .15s ease-out" style-focus-within="border-color:#7D3EE3">
+            <input ref="{{ inputRef }}" value="{{ draft }}" onChange="{{ onDraft }}" placeholder="{{ placeholder }}" aria-label="Pergunte ao Copiloto" disabled="{{ outOfQuota }}" style="flex:1;min-width:0;height:40px;border:0;outline:none;background:transparent;font:400 15px Roboto;color:#1D2433">
+            <button type="submit" aria-label="Enviar" disabled="{{ cantSend }}" style="width:40px;height:40px;flex:none;border:0;border-radius:999px;background:{{ sendBg }};color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;transition:background .15s ease-out">arrow_upward</button>
+          </div>
+          <button type="button" onClick="{{ close }}" aria-label="Recolher Copiloto" title="Recolher Copiloto" style="position:relative;width:48px;height:48px;flex:none;padding:0;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE,0 4px 12px rgba(77,26,153,.22);cursor:pointer;transition:transform .15s ease-out" style-hover="transform:translateY(-2px)" style-active="transform:scale(.95)">
+            <img src="assets/home/copiloto-mascote.webp" alt="" style="position:absolute;left:5px;bottom:5px;width:38px;height:auto;display:block;filter:drop-shadow(0 3px 5px rgba(29,36,51,.18));animation:{{ mascotAnim }};pointer-events:none">
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 4px;font:400 11px/1.4 Roboto;color:#5A6472">
+          <span style="min-width:0;text-wrap:pretty">O Copiloto usa IA e pode errar. Confira dados importantes no relatório.</span>
+        </div>
+      </form>
+    </sc-if>
+  </aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;},&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;720px&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;expanded&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;auto&quot;,&quot;tsType&quot;:&quot;\&quot;auto\&quot; | \&quot;expanded\&quot; | \&quot;compact\&quot;&quot;,&quot;section&quot;:&quot;Botão&quot;},&quot;badge&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;min&quot;:0,&quot;max&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Botão&quot;},&quot;subtitle&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Botão&quot;},&quot;logged&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contexto&quot;},&quot;car&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Onix&quot;,&quot;HB20&quot;,&quot;&quot;],&quot;default&quot;:&quot;Onix&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contexto&quot;},&quot;page&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;consulta&quot;,&quot;relatorio&quot;,&quot;garagem&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contexto&quot;},&quot;userName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Ana&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contexto&quot;},&quot;startOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Painel&quot;},&quot;panelWidth&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:480,&quot;min&quot;:360,&quot;max&quot;:640,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Painel&quot;},&quot;loginHref&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;title&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  CARS = { Onix: "Onix LTZ 2022", HB20: "HB20 Platinum 2023" };
+  QUOTA = 3;
+  state = { open: !!this.props.startOpen, collapsed: false, seen: false, carsOpen: false, car: null, msgs: [], draft: "", typing: false, used: (() => { try { return +(localStorage.getItem("achecar-copiloto-uso") || 0); } catch (e) { return 0; } })(), vw: window.innerWidth };
+  scrollRef = React.createRef();
+  inputRef = React.createRef();
+  isDemo = /Copiloto\.dc\.html$/.test(decodeURIComponent(location.pathname));
+  lastY = 0;
+  onScroll = () => {
+    const y = window.scrollY, dy = y - this.lastY; this.lastY = y;
+    let c = this.state.collapsed;
+    if (y < 120) c = false; else if (dy > 4) c = true; else if (dy < -4) c = false;
+    if (c !== this.state.collapsed) this.setState({ collapsed: c });
+  };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  onKey = (e) => { if (e.key === "Escape" && this.state.open) this.close(); };
+  componentDidMount() {
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onResize);
+    window.addEventListener("keydown", this.onKey);
+    this.onScroll();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    window.removeEventListener("resize", this.onResize);
+    window.removeEventListener("keydown", this.onKey);
+    clearTimeout(this.t);
+  }
+  componentDidUpdate(pp, ps) {
+    pp = pp || {}; ps = ps || this.state;
+    if ((ps.msgs || []).length !== this.state.msgs.length || ps.typing !== this.state.typing) {
+      const el = this.scrollRef.current; if (el) el.scrollTop = el.scrollHeight;
+    }
+    if (pp.startOpen !== this.props.startOpen) this.setState({ open: !!this.props.startOpen });
+  }
+  close = () => this.setState({ open: false, carsOpen: false });
+  curCar = () => this.state.car ?? (this.props.car ?? "Onix");
+  reply = (q) => {
+    const car = this.curCar(), name = car ? this.CARS[car] || car : "";
+    const t = q.toLowerCase();
+    if (/vale|fipe|preço|preco/.test(t)) return car
+      ? { text: `Pela Tabela FIPE de outubro, o ${name} vale R$ 70.630, 1,2% abaixo de setembro.\n\nCom 38.000 km, a faixa de venda para particular fica entre R$ 67 mil e R$ 72 mil. Na troca em loja, conte com 10% a 15% a menos.`, follow: ["Como vender mais rápido?", "Ver histórico da FIPE"] }
+      : { text: "Me diga o modelo e o ano, ou adicione o carro à sua Garagem, que eu busco o valor na Tabela FIPE.", follow: ["Adicionar carro pela placa"] };
+    if (/óleo|oleo|revis/.test(t)) return { text: `A montadora recomenda a troca de óleo do ${car || "carro"} a cada 10.000 km ou 12 meses, o que vier primeiro.\n\nCom 38.000 km, a próxima troca é aos 40.000 km, junto com a revisão de 40 mil (cerca de R$ 890 na concessionária).`, follow: ["O que entra na revisão de 40 mil?"] };
+    if (/recall/.test(t)) return { text: `Encontrei 1 recall aberto para o ${name || "seu carro"}: verificação do cinto de segurança traseiro. O reparo é gratuito e leva cerca de 1 hora na concessionária.`, follow: ["Onde agendar?", "Isso afeta a venda?"] };
+    if (/compar|hb20|trocar|versus|vs/.test(t)) return { text: `${car || "Onix"} × HB20, versões turbo 2023:\n\n· Preço FIPE: R$ 70.630 × R$ 89.990\n· Consumo cidade: 12,6 × 12,3 km/l\n· Porta-malas: 275 × 300 litros\n\nO HB20 tem mais espaço; o ${car || "Onix"} sai mais barato para manter.`, follow: ["Custo por mês de cada um", "Qual desvaloriza menos?"] };
+    if (/custo|mês|mes|gasto/.test(t)) return { text: `Rodando 1.000 km por mês, o ${car || "carro"} custa cerca de R$ 1.180/mês: R$ 480 de combustível, R$ 390 de seguro, R$ 190 de IPVA e R$ 120 de manutenção.`, follow: ["Como economizar no seguro?"] };
+    if (/placa|adicionar/.test(t)) return { text: "Digite a placa no campo da Home ou em Minha Garagem. Em segundos eu puxo a ficha e o valor FIPE, grátis.", follow: [] };
+    return { text: "Boa pergunta. Ainda estou aprendendo sobre esse assunto. Posso ajudar com valor FIPE, comparação de modelos, custo de manutenção e recalls.", follow: ["Quanto vale meu carro?", "Comparar modelos"] };
+  };
+  ask = (q) => {
+    if (!q || !q.trim() || this.state.typing || this.state.used >= this.QUOTA) return;
+    this.setState((s) => ({ msgs: [...s.msgs, { role: "user", text: q.trim() }], draft: "", typing: true, used: (() => { const n = s.used + 1; try { localStorage.setItem("achecar-copiloto-uso", String(n)); } catch (e) {} return n; })(), open: true, carsOpen: false, home: false }));
+    clearTimeout(this.t);
+    this.t = setTimeout(() => this.setState((s) => ({ typing: false, msgs: [...s.msgs, { role: "bot", ...this.reply(q), left: this.QUOTA - s.used }] })), 1100);
+  };
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const p = this.props, s = this.state;
+    const variant = p.variant ?? "auto";
+    const logged = p.logged ?? true;
+    const page = p.page ?? "home";
+    const car = this.curCar();
+    const compact = variant === "compact" || (variant === "auto" && s.collapsed);
+    const alertsDef = logged && car ? [
+      { icon: "trending_down", title: `FIPE do ${car} caiu 1,2%`, desc: "Agora R$ 70.630. Veja se é hora de vender.", q: "Quanto vale meu carro?", color: "#C2410C", bg: "#FFF7ED", border: "#FED7AA" },
+      { icon: "chat", title: "Nova resposta do Copiloto", desc: "Sobre a revisão de 40 mil km do seu " + car + ".", q: "Quando trocar o óleo?", color: "#7D3EE3", bg: "#FBF9FF", border: "#E4D7FA" }
+    ] : [];
+    const badgeN = s.seen ? 0 : (p.badge ?? alertsDef.length);
+    const known = logged && car;
+    const PAGES = {
+      home: { sub: known ? `Ele já conhece o seu ${car}` : "Tire dúvidas sobre carros", greet: known ? `Já estou com os dados do seu ${this.CARS[car] || car}: ficha, FIPE e histórico.` : "Pergunte sobre qualquer carro. Para respostas sobre o seu, escolha um carro acima.", sugg: known ? [`Quanto vale meu ${car} hoje?`, "Quando trocar o óleo?", `Tem recall para o ${car}?`, `Vale trocar o ${car} por um HB20?`] : ["Qual carro até R$ 80 mil gasta menos?", "Onix ou HB20: qual comprar?", "O que olhar num carro usado?", "Quanto custa manter um SUV?"] },
+      consulta: { sub: "Tire dúvidas antes de consultar", greet: "Posso explicar o que vem no relatório e como ler cada verificação antes de você pagar.", sugg: ["O que vem no relatório?", "Leilão é sempre ruim?", "Quanto tempo demora a consulta?", "O relatório expira?"] },
+      relatorio: { sub: "Entenda cada item do relatório", greet: "Estou com o relatório da placa ABC1D23 aberto. Pergunte sobre qualquer apontamento.", sugg: ["O que significa o recall aberto?", "Esse débito impede a venda?", "A quilometragem parece real?", "Vale a pena comprar esse carro?"] },
+      garagem: { sub: known ? `Compare e calcule com o seu ${car}` : "Compare, calcule e decida", greet: known ? `Vamos comparar? Já tenho a ficha do seu ${this.CARS[car] || car}.` : "Escolha um carro acima para comparar, calcular custos e ver o valor na FIPE.", sugg: [`Qual o custo por mês do ${car || "carro"}?`, `Comparar ${car || "Onix"} com o HB20`, "Qual desvaloriza menos?", "Quando trocar o óleo?"] }
+    };
+    const ctx = PAGES[page] || PAGES.home;
+    const subtitle = p.subtitle || ctx.sub;
+    const sugg = ctx.sugg;
+    const mk = (q) => () => this.ask(q);
+    const hasChat = s.msgs.length > 0 || s.typing;
+    const inChat = hasChat && !s.home;
+    const firstQ = s.msgs.find((m) => m.role === "user");
+    const left = this.QUOTA - s.used;
+    const narrow = s.vw < (this.props.bpMobile560 ?? 560);
+    const bpProp = p.breakpoint ?? "auto";
+    const bp = bpProp !== "auto" ? bpProp : s.vw < (this.props.bpTablet600 ?? 600) ? "mobile" : s.vw < (this.props.bpDesktop1024 ?? 1024) ? "tablet" : "desktop";
+    const carOpts = [...Object.keys(this.CARS), ""].map((k) => ({ label: k ? this.CARS[k] : "Nenhum carro", on: k === car, bg: k === car ? "#F3EDFD" : "transparent", weight: k === car ? 700 : 400, check: k === car ? 1 : 0, pick: () => this.setState({ car: k, carsOpen: false }) }));
+    return {
+      toggle: () => this.setState((st) => ({ open: !st.open, seen: true })), close: this.close, open: s.open,
+      title: p.title || "Pergunte ao Copiloto", subtitle,
+      fabW: compact ? "60px" : "272px", mascotLeft: compact ? "-2px" : "6px", textOpacity: compact ? 0 : 1,
+      fabOpacity: s.open ? 0 : 1, fabPE: s.open ? "none" : "auto",
+      hasBadge: badgeN > 0, badge: badgeN > 9 ? "9+" : String(badgeN), badgeAria: badgeN + " novidades", badgeRight: compact ? "-6px" : "4px",
+      showOnline: badgeN === 0, dotRight: compact ? "2px" : "14px",
+      scrimOpacity: s.open ? 1 : 0, panelPE: s.open ? "auto" : "none",
+      fabInset: bp === "mobile" ? "16px" : "24px", fabH: "60px", scrimBg: bp === "mobile" ? "rgba(18,13,38,.48)" : "rgba(18,13,38,.32)",
+      panelW: bp === "mobile" ? (narrow ? "100vw" : "390px") : bp === "tablet" ? "400px" : (p.panelWidth ?? 480) + "px", panelX: s.open ? "translateX(0)" : "translateX(105%)", panelVis: s.open ? "visible" : "hidden",
+      gate: !logged, app: logged, loginHref: p.loginHref ?? "Login.dc.html",
+      inChat, newChat: () => { clearTimeout(this.t); this.setState({ msgs: [], typing: false, home: false }); },
+      goHome: () => this.setState({ home: true, carsOpen: false }), resume: () => this.setState({ home: false }),
+      canResume: hasChat && s.home, resumeTitle: firstQ ? firstQ.text : "Conversa atual",
+      carsOpen: s.carsOpen, toggleCars: () => this.setState({ carsOpen: !s.carsOpen }), carLabel: car ? this.CARS[car] || car : "Nenhum carro", carOpts,
+      scrollRef: this.scrollRef, inputRef: this.inputRef,
+      welcome: !inChat, hasAlerts: alertsDef.length > 0,
+      alerts: alertsDef.slice(0, 1).map((a, i) => ({ ...a, isNew: !s.seen || i === 0, ask: mk(a.q) })),
+      greeting: (p.userName ? `Oi, ${p.userName}! ` : "Oi! ") + "Como posso ajudar?",
+      greetingSub: ctx.greet,
+      isDemo: this.isDemo, demoBp: { desktop: "Desktop · painel " + (p.panelWidth ?? 480) + "px", tablet: "Tablet · painel 400px", mobile: "Mobile · tela cheia" }[bp], demoHint: compact ? "Recolhido · role para cima para expandir" : "Expandido · role para baixo para recolher", demoMode: variant === "auto" ? "Modo auto" : variant === "compact" ? "Modo compacto" : "Modo expandido",
+      suggestions: sugg.slice(0, 3).map((q) => ({ label: q, ask: mk(q) })),
+      tools: [["payments", "Tabela FIPE", "Quanto vale meu carro?"], ["compare_arrows", "Comparador", "Comparar com o HB20"], ["calculate", "Custo por mês", "Qual o custo por mês?"]].map(([icon, label, q]) => ({ icon, label, ask: mk(q) })),
+      history: [["Revisão de 40 mil km do Onix", "Ontem"], ["Onix × Polo: qual desvaloriza menos", "28 set"]].map(([title, when]) => ({ title, when, load: () => this.setState({ home: false, msgs: [{ role: "user", text: title }, { role: "bot", ...this.reply(title) }] }) })),
+      messages: s.msgs.map((m) => {
+        const u = m.role === "user";
+        const follow = (m.follow || []).map((f) => ({ label: f, ask: mk(f) }));
+        const hasQuota = !u && m.left != null;
+        return { hasQuota, quotaLabel: hasQuota ? m.left + " de " + this.QUOTA + " perguntas restantes hoje" : "", quotaColor: m.left <= 3 ? "#B91C1C" : "#5A6472", text: m.text, justify: u ? "flex-end" : "flex-start", bg: u ? "#7D3EE3" : "#F3F4F6", color: u ? "#fff" : "#1D2433", radius: u ? "16px 4px 16px 16px" : "4px 16px 16px 16px", hasFollow: !u && follow.length > 0, follow };
+      }),
+      typing: s.typing, mascotAnim: s.typing ? "cpThink .9s ease-in-out infinite" : "none",
+      draft: s.draft, onDraft: (e) => this.setState({ draft: e.target.value }),
+      send: (e) => { e.preventDefault(); this.ask(s.draft); },
+      outOfQuota: left <= 0, cantSend: !s.draft.trim() || s.typing || left <= 0,
+      sendBg: s.draft.trim() && !s.typing && left > 0 ? "#7D3EE3" : "#C9C9D4",
+      placeholder: left <= 0 ? "Limite de hoje atingido. Volta amanhã." : car ? `Pergunte sobre o seu ${car}…` : "Pergunte sobre qualquer carro…",
+      quotaLabel: left + " de " + this.QUOTA + " perguntas hoje", quotaColor: left <= 3 ? "#B91C1C" : "#5A6472"
+    };
+  }
+}
+</script>
+</body>
+</html>

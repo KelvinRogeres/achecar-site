@@ -1,0 +1,976 @@
+[
+ {
+  "file": "v2-con-01-relatorio-pronto",
+  "id": "CON-01 · v2",
+  "name": "Relatório pronto (nova direção)",
+  "type": "Essencial",
+  "goal": "Avisar que o relatório está pronto e mostrar o resumo antes do clique.",
+  "subject": "O relatório do seu {{modelo}} chegou",
+  "pre": "{{qtd_alertas}} pontos de atenção e {{qtd_ok}} verificações limpas. O Copiloto já resumiu para você.",
+  "cta": "Abrir relatório completo",
+  "vars": [
+   "nome",
+   "modelo",
+   "veiculo_nome",
+   "placa",
+   "url_imagem_carro_lateral",
+   "qtd_alertas",
+   "qtd_ok",
+   "alertas[].titulo",
+   "alertas[].descricao",
+   "copiloto_resumo",
+   "url_relatorio"
+  ],
+  "todo": [
+   "Gerar a imagem lateral do carro por modelo (já temos 10 modelos)."
+  ],
+  "sign": "Boa negociação!",
+  "size": 16
+ },
+ {
+  "file": "v2-gar-02-fipe-mudou",
+  "id": "GAR-02 · v2",
+  "name": "FIPE mudou (nova direção)",
+  "type": "Opcional · informativo",
+  "mkt": true,
+  "goal": "Mostrar o valor do mês com contexto de 6 meses.",
+  "subject": "Seu {{modelo}} vale {{fipe_atual}} em {{mes_referencia}}",
+  "pre": "{{variacao_texto}} no mês. Veja a curva dos últimos 6 meses.",
+  "cta": "Ver histórico completo",
+  "vars": [
+   "nome",
+   "modelo",
+   "veiculo_nome",
+   "placa",
+   "url_imagem_carro_lateral",
+   "fipe_atual",
+   "mes_referencia",
+   "variacao_percentual",
+   "variacao_valor",
+   "variacao_texto",
+   "fipe_m1..m6",
+   "barra_m1..m6 (altura em px, 24 a 96)",
+   "url_meu_carro",
+   "url_quanto_vale"
+  ],
+  "todo": [
+   "Calcular alturas das barras no envio."
+  ],
+  "sign": "A gente cuida dos lembretes, você cuida do carro.",
+  "size": 16
+ },
+ {
+  "file": "v2-chk-04-pagamento-aprovado",
+  "id": "CHK-04 · v2",
+  "name": "Pagamento aprovado (nova direção)",
+  "type": "Essencial",
+  "goal": "Confirmar o pagamento como comprovante e mostrar o andamento da consulta.",
+  "subject": "Pagamento aprovado. Já estamos consultando a placa {{placa}}",
+  "pre": "Seu comprovante está aqui. O relatório chega em outro e-mail.",
+  "cta": "Acompanhar consulta",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "numero_pedido",
+   "data_pagamento",
+   "forma_pagamento",
+   "valor_desconto",
+   "valor_total",
+   "url_consulta_status"
+  ],
+  "todo": [
+   "Confirmar tempo médio do relatório."
+  ],
+  "sign": "Qualquer dúvida sobre o pedido, é só chamar.",
+  "size": 15
+ },
+ {
+  "file": "cta-01-boas-vindas",
+  "id": "CTA-01",
+  "name": "Boas-vindas",
+  "type": "Transacional",
+  "goal": "Confirmar a criação da conta e levar ao primeiro uso.",
+  "subject": "Sua conta Achecar está pronta",
+  "pre": "3 perguntas grátis no Copiloto e 10% na sua primeira consulta veicular.",
+  "cta": "Consultar uma placa",
+  "vars": [
+   "nome",
+   "cupom_primeira_consulta",
+   "url_consulta",
+   "url_garagem",
+   "url_copiloto",
+   "url_comparativo"
+  ],
+  "todo": [
+   "Confirmar código e validade do cupom de primeira consulta."
+  ],
+  "size": 17
+ },
+ {
+  "file": "cta-02-codigo-verificacao",
+  "id": "CTA-02",
+  "name": "Código de verificação",
+  "type": "Essencial",
+  "goal": "Entregar o código para confirmar o e-mail ou entrar sem senha.",
+  "subject": "{{codigo}} é o seu código Achecar",
+  "pre": "Digite este código para continuar. Se não foi você, ignore este e-mail.",
+  "cta": "Sem botão (código)",
+  "vars": [
+   "nome",
+   "codigo",
+   "codigo_validade_min"
+  ],
+  "todo": [
+   "Confirmar validade do código."
+  ],
+  "size": 13
+ },
+ {
+  "file": "cta-03-codigo-acesso",
+  "id": "CTA-03",
+  "name": "Código de acesso (login sem senha)",
+  "type": "Essencial",
+  "goal": "Digite os 6 dígitos na tela de login da Achecar.",
+  "subject": "{{codigo}} é o seu código para entrar",
+  "pre": "Use este código para entrar na sua conta Achecar. Se não foi você, ignore.",
+  "cta": "Sem botão (código)",
+  "vars": [
+   "nome",
+   "codigo",
+   "codigo_validade_min"
+  ],
+  "todo": [
+   "Confirmar validade do código."
+  ],
+  "mkt": false,
+  "size": 13
+ },
+ {
+  "file": "cta-04-novo-acesso",
+  "id": "CTA-04",
+  "name": "Novo acesso detectado",
+  "type": "Essencial",
+  "goal": "Registramos um acesso à sua conta em um aparelho ou local diferente do habitual.",
+  "subject": "Novo acesso na sua conta Achecar",
+  "pre": "Entraram na sua conta em {{dispositivo}}, {{cidade}}. Foi você?",
+  "cta": "Revisar acessos",
+  "vars": [
+   "nome",
+   "dispositivo",
+   "cidade",
+   "data_hora_acesso",
+   "url_sessoes"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 15
+ },
+ {
+  "file": "cta-05-redefinir-senha",
+  "id": "CTA-05",
+  "name": "Código para redefinir senha",
+  "type": "Essencial",
+  "goal": "Permitir criar uma nova senha sem a atual.",
+  "subject": "Código para redefinir sua senha: {{codigo}}",
+  "pre": "Use este código na Achecar para criar uma nova senha. Não foi você? Sua senha continua a mesma.",
+  "cta": "Sem botão (código)",
+  "vars": [
+   "nome",
+   "codigo",
+   "codigo_validade_min",
+   "url_atendimento_whatsapp"
+  ],
+  "todo": [
+   "Confirmar validade do código.",
+   "Confirmar o número oficial do WhatsApp do atendimento."
+  ],
+  "size": 13
+ },
+ {
+  "file": "cta-06-senha-alterada",
+  "id": "CTA-06",
+  "name": "Senha alterada",
+  "type": "Essencial",
+  "goal": "A partir de agora, use a nova senha para entrar na Achecar.",
+  "subject": "Sua senha da Achecar foi alterada",
+  "pre": "A troca foi feita em {{data_hora}}. Se não foi você, fale com o atendimento agora.",
+  "cta": "Falar com o atendimento",
+  "vars": [
+   "nome",
+   "data_hora",
+   "dispositivo",
+   "url_atendimento_whatsapp"
+  ],
+  "todo": [
+   "Confirmar número oficial do WhatsApp."
+  ],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "cta-07-email-alterado",
+  "id": "CTA-07",
+  "name": "E-mail alterado",
+  "type": "Essencial",
+  "goal": "Enviamos este aviso para o endereço antigo e para o novo.",
+  "subject": "O e-mail da sua conta Achecar mudou",
+  "pre": "A partir de agora usamos {{email_novo}}. Não foi você? Avise o atendimento.",
+  "cta": "Não fui eu",
+  "vars": [
+   "nome",
+   "email_antigo",
+   "email_novo",
+   "data_hora",
+   "url_atendimento_whatsapp"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "cta-08-perfil-incompleto",
+  "id": "CTA-08",
+  "name": "Perfil incompleto",
+  "type": "Opcional · informativo",
+  "goal": "Leva menos de um minuto e deixa sua conta mais segura.",
+  "subject": "Falta pouco para completar seu perfil",
+  "pre": "Com CPF e celular, sua nota fiscal sai certa e você recupera a conta mais rápido.",
+  "cta": "Completar perfil",
+  "vars": [
+   "nome",
+   "perfil_percentual",
+   "url_perfil"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "cta-10-exclusao-conta",
+  "id": "CTA-10",
+  "name": "Exclusão de conta",
+  "type": "Essencial",
+  "goal": "Depois disso, consultas, relatórios, carros da Garagem e conversas com o Copiloto serão apagados e não poderão ser recuperados.",
+  "subject": "Recebemos seu pedido de exclusão de conta",
+  "pre": "Sua conta será apagada em {{data_exclusao}}. Mudou de ideia? Entre antes disso.",
+  "cta": "Cancelar exclusão",
+  "vars": [
+   "nome",
+   "data_exclusao",
+   "url_login"
+  ],
+  "todo": [
+   "Confirmar prazo de carência da exclusão.",
+   "Validar texto legal com o jurídico."
+  ],
+  "mkt": false,
+  "size": 13
+ },
+ {
+  "file": "cta-11-dados-lgpd",
+  "id": "CTA-11",
+  "name": "Cópia dos dados pronta (LGPD)",
+  "type": "Essencial",
+  "goal": "Reunimos as informações da sua conta em um arquivo para você baixar.",
+  "subject": "Sua cópia de dados da Achecar está pronta",
+  "pre": "O link para baixar vale até {{link_expira_em}}.",
+  "cta": "Baixar meus dados",
+  "vars": [
+   "nome",
+   "data_pedido",
+   "link_expira_em",
+   "url_download_dados"
+  ],
+  "todo": [
+   "Confirmar validade do link."
+  ],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "chk-01-pix-gerado",
+  "id": "CHK-01",
+  "name": "Pix gerado",
+  "type": "Essencial",
+  "goal": "Lembrar o pagamento pendente e facilitar o Pix.",
+  "subject": "Seu Pix está pronto: pague até {{pix_expira_em}}",
+  "pre": "Consulta da placa {{placa}} · {{valor_total}}. Assim que o pagamento cair, começamos a consulta.",
+  "cta": "Pagar com Pix",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "valor_desconto_pix",
+   "valor_total",
+   "pix_expira_em",
+   "pix_copia_cola",
+   "numero_pedido",
+   "url_pedido"
+  ],
+  "todo": [
+   "Confirmar prazo de expiração do Pix."
+  ],
+  "size": 18
+ },
+ {
+  "file": "chk-03-pix-expirado",
+  "id": "CHK-03",
+  "name": "Pix expirado",
+  "type": "Essencial",
+  "goal": "O código para a consulta da placa {{placa}} passou do prazo. É só gerar outro.",
+  "subject": "Seu Pix expirou. Gere outro em segundos",
+  "pre": "A consulta da placa {{placa}} ainda está esperando por você.",
+  "cta": "Gerar novo Pix",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "valor_total",
+   "url_checkout"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "chk-04-pagamento-aprovado",
+  "id": "CHK-04",
+  "name": "Pagamento aprovado",
+  "type": "Essencial",
+  "goal": "Confirmar o pagamento e informar que a consulta começou.",
+  "subject": "Pagamento aprovado: estamos consultando a placa {{placa}}",
+  "pre": "Você recebe outro e-mail quando o relatório ficar pronto.",
+  "cta": "Acompanhar consulta",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "forma_pagamento",
+   "data_pagamento",
+   "valor_total",
+   "numero_pedido",
+   "url_consulta_status"
+  ],
+  "todo": [
+   "Confirmar tempo médio até o relatório ficar pronto."
+  ],
+  "size": 16
+ },
+ {
+  "file": "chk-05-pagamento-recusado",
+  "id": "CHK-05",
+  "name": "Pagamento recusado",
+  "type": "Essencial",
+  "goal": "O emissor do cartão recusou a transação. Nenhum valor foi cobrado.",
+  "subject": "Não conseguimos aprovar seu pagamento",
+  "pre": "Tente outro cartão ou pague com Pix com 5% de desconto.",
+  "cta": "Tentar de novo",
+  "vars": [
+   "nome",
+   "placa",
+   "cartao_final",
+   "motivo_recusa",
+   "url_checkout"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 17
+ },
+ {
+  "file": "chk-06-consulta-abandonada",
+  "id": "CHK-06",
+  "name": "Consulta abandonada",
+  "type": "Opcional · informativo",
+  "goal": "Você começou a consultar a placa {{placa}} ({{veiculo_nome}}) e não terminou.",
+  "subject": "A consulta da placa {{placa}} ficou para trás",
+  "pre": "Leilão, sinistro, roubo e furto, débitos e recall em um relatório só.",
+  "cta": "Continuar consulta",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "url_checkout"
+  ],
+  "todo": [
+   "Definir se este e-mail leva cupom."
+  ],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "chk-07-nota-fiscal",
+  "id": "CHK-07",
+  "name": "Nota fiscal emitida",
+  "type": "Essencial",
+  "goal": "Guarde este e-mail ou acesse a nota quando quiser em Minha conta.",
+  "subject": "Sua nota fiscal do pedido #{{numero_pedido}}",
+  "pre": "Consulta veicular completa · {{valor_total}}. A nota também fica na sua conta.",
+  "cta": "Ver nota fiscal",
+  "vars": [
+   "nome",
+   "numero_pedido",
+   "valor_total",
+   "numero_nf",
+   "url_nota_fiscal"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 15
+ },
+ {
+  "file": "chk-08-reembolso",
+  "id": "CHK-08",
+  "name": "Reembolso aprovado",
+  "type": "Essencial",
+  "goal": "Devolvemos o valor pago pela consulta.",
+  "subject": "Seu reembolso foi aprovado",
+  "pre": "{{valor_reembolso}} voltam para você. Veja o prazo para cada forma de pagamento.",
+  "cta": "Ver detalhes",
+  "vars": [
+   "nome",
+   "numero_pedido",
+   "valor_reembolso",
+   "forma_pagamento",
+   "prazo_reembolso",
+   "url_pagamentos"
+  ],
+  "todo": [
+   "Confirmar prazos de estorno por forma de pagamento."
+  ],
+  "mkt": false,
+  "size": 15
+ },
+ {
+  "file": "con-01-relatorio-pronto",
+  "id": "CON-01",
+  "name": "Relatório pronto",
+  "type": "Essencial",
+  "goal": "Avisar que o relatório está pronto e destacar os pontos de atenção.",
+  "subject": "O relatório da placa {{placa}} está pronto",
+  "pre": "{{qtd_alertas}} pontos de atenção encontrados. O Copiloto já preparou um resumo.",
+  "cta": "Ver relatório completo",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "ano_modelo",
+   "qtd_alertas",
+   "qtd_ok",
+   "alertas[].titulo",
+   "alertas[].descricao",
+   "url_relatorio",
+   "url_relatorio_copiloto"
+  ],
+  "todo": [
+   "Definir quantos alertas aparecem no e-mail (sugestão: até 3)."
+  ],
+  "size": 15
+ },
+ {
+  "file": "con-02-relatorio-parcial",
+  "id": "CON-02",
+  "name": "Relatório parcial",
+  "type": "Essencial",
+  "goal": "A maior parte das informações da placa {{placa}} já chegou. {{qtd_fontes_pendentes}} fonte(s) ainda não responderam.",
+  "subject": "Seu relatório da placa {{placa}} está quase completo",
+  "pre": "Uma base ainda não respondeu. Atualizamos sozinhos e avisamos você.",
+  "cta": "Ver o que já chegou",
+  "vars": [
+   "nome",
+   "placa",
+   "qtd_fontes_pendentes",
+   "fontes_pendentes",
+   "qtd_ok",
+   "url_relatorio"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "con-03-relatorio-atualizado",
+  "id": "CON-03",
+  "name": "Relatório completo após falha",
+  "type": "Essencial",
+  "goal": "Os dados de {{fontes_atualizadas}} chegaram para a placa {{placa}}.",
+  "subject": "Relatório da placa {{placa}} atualizado",
+  "pre": "As informações que faltavam chegaram. Veja se algo mudou.",
+  "cta": "Ver atualização",
+  "vars": [
+   "nome",
+   "placa",
+   "fontes_atualizadas",
+   "qtd_alertas_novos",
+   "url_relatorio"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 13
+ },
+ {
+  "file": "con-04-consulta-nao-concluida",
+  "id": "CON-04",
+  "name": "Consulta não concluída",
+  "type": "Essencial",
+  "goal": "As bases não responderam a tempo para a placa {{placa}}. Você não perde o valor pago.",
+  "subject": "Não conseguimos concluir sua consulta da placa {{placa}}",
+  "pre": "Você pode tentar de novo sem pagar outra vez ou pedir reembolso.",
+  "cta": "Escolher opção",
+  "vars": [
+   "nome",
+   "placa",
+   "url_consulta_status"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "con-05-novidade-placa",
+  "id": "CON-05",
+  "name": "Novidade numa placa consultada",
+  "type": "Opcional · informativo",
+  "goal": "Encontramos uma informação nova depois da sua consulta de {{data_consulta}}.",
+  "subject": "Algo mudou na placa {{placa}}",
+  "pre": "{{tipo_novidade}} apareceu depois da sua consulta.",
+  "cta": "Ver o que mudou",
+  "vars": [
+   "nome",
+   "placa",
+   "veiculo_nome",
+   "data_consulta",
+   "tipo_novidade",
+   "data_novidade",
+   "url_relatorio"
+  ],
+  "todo": [
+   "Definir por quanto tempo uma placa consultada é monitorada."
+  ],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "con-07-avalie",
+  "id": "CON-07",
+  "name": "Avalie sua consulta",
+  "type": "Opcional · informativo",
+  "goal": "Conte como foi. Leva 10 segundos.",
+  "subject": "O relatório da placa {{placa}} ajudou?",
+  "pre": "Leva 10 segundos e melhora as próximas consultas.",
+  "cta": "Avaliar",
+  "vars": [
+   "nome",
+   "placa",
+   "url_avaliacao"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 13
+ },
+ {
+  "file": "gar-01-carro-adicionado",
+  "id": "GAR-01",
+  "name": "Carro adicionado",
+  "type": "Transacional",
+  "goal": "A partir de agora, você acompanha tudo dele em um só lugar.",
+  "subject": "Seu {{modelo}} está na Garagem",
+  "pre": "A partir de agora acompanhamos o valor FIPE e as revisões dele.",
+  "cta": "Ver meu carro",
+  "vars": [
+   "nome",
+   "modelo",
+   "veiculo_nome",
+   "placa",
+   "fipe_atual",
+   "url_meu_carro"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 17
+ },
+ {
+  "file": "gar-02-fipe-mudou",
+  "id": "GAR-02",
+  "name": "Valor FIPE do seu carro mudou",
+  "type": "Opcional · informativo",
+  "mkt": true,
+  "goal": "Mostrar a variação mensal da FIPE do carro da Garagem.",
+  "subject": "Seu {{modelo}} vale {{fipe_atual}} em {{mes_referencia}}",
+  "pre": "{{variacao_texto}} em relação ao mês passado. Veja o histórico do valor.",
+  "cta": "Ver histórico do valor",
+  "vars": [
+   "nome",
+   "modelo",
+   "veiculo_nome",
+   "placa",
+   "mes_referencia",
+   "fipe_atual",
+   "fipe_anterior",
+   "variacao_percentual",
+   "variacao_valor",
+   "variacao_texto",
+   "url_meu_carro",
+   "url_quanto_vale"
+  ],
+  "todo": [
+   "Definir regra de envio (toda variação ou só acima de X%)."
+  ],
+  "size": 15
+ },
+ {
+  "file": "gar-05-recall",
+  "id": "GAR-05",
+  "name": "Recall do modelo",
+  "type": "Opcional · informativo",
+  "goal": "A {{montadora}} publicou um chamado de recall que inclui o seu carro.",
+  "subject": "Recall para o seu {{modelo}} {{ano_modelo}}",
+  "pre": "{{montadora}} chamou o modelo para {{recall_resumo}}. O reparo é gratuito.",
+  "cta": "Ver detalhes do recall",
+  "vars": [
+   "nome",
+   "modelo",
+   "ano_modelo",
+   "montadora",
+   "veiculo_nome",
+   "recall_resumo",
+   "recall_data",
+   "url_recall"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "gar-06-ipva",
+  "id": "GAR-06",
+  "name": "IPVA vencendo",
+  "type": "Opcional · informativo",
+  "goal": "Pelo calendário de {{uf}} para placa final {{placa_final}}.",
+  "subject": "IPVA do seu {{modelo}} vence em {{data_vencimento}}",
+  "pre": "Placa final {{placa_final}} em {{uf}}. Valor estimado: {{valor_ipva}}.",
+  "cta": "Ver valores",
+  "vars": [
+   "nome",
+   "modelo",
+   "data_vencimento",
+   "placa_final",
+   "uf",
+   "valor_ipva",
+   "ano_exercicio",
+   "url_custos"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "gar-07-licenciamento",
+  "id": "GAR-07",
+  "name": "Licenciamento vencendo",
+  "type": "Opcional · informativo",
+  "goal": "Pelo calendário de {{uf}} para placa final {{placa_final}}.",
+  "subject": "Licenciamento do seu {{modelo}} vence em {{data_vencimento}}",
+  "pre": "Sem o licenciamento em dia, o carro pode ser retido numa fiscalização.",
+  "cta": "Ver como pagar",
+  "vars": [
+   "nome",
+   "modelo",
+   "data_vencimento",
+   "uf",
+   "placa_final",
+   "ano_exercicio",
+   "url_custos"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 13
+ },
+ {
+  "file": "gar-08-hora-de-vender",
+  "id": "GAR-08",
+  "name": "Hora de vender?",
+  "type": "Opcional · informativo",
+  "goal": "A FIPE caiu três meses seguidos. Se você pensa em trocar, vale olhar o mercado agora.",
+  "subject": "Seu {{modelo}} perdeu {{perda_valor}} em 3 meses",
+  "pre": "Veja quanto ele vale hoje no mercado e compare com outros modelos.",
+  "cta": "Ver quanto vale",
+  "vars": [
+   "nome",
+   "modelo",
+   "perda_valor",
+   "fipe_3m",
+   "fipe_atual",
+   "url_quanto_vale",
+   "url_comparativo"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "cop-03-perguntas-esgotadas",
+  "id": "COP-03",
+  "name": "Perguntas grátis esgotadas",
+  "type": "Opcional · informativo",
+  "goal": "Gostou do Copiloto? Numa consulta veicular paga, as perguntas sobre o relatório do carro são livres.",
+  "subject": "Suas perguntas grátis do Copiloto acabaram",
+  "pre": "Numa consulta veicular paga, você pergunta à vontade sobre o relatório do carro.",
+  "cta": "Consultar uma placa",
+  "vars": [
+   "nome",
+   "url_consulta"
+  ],
+  "todo": [
+   "Confirmar se as perguntas grátis renovam e quando."
+  ],
+  "mkt": true,
+  "size": 13
+ },
+ {
+  "file": "qv-01-avaliacao-pronta",
+  "id": "QV-01",
+  "name": "Avaliação pronta (Quanto Vale)",
+  "type": "Transacional",
+  "goal": "Comparamos anúncios parecidos com o seu nas principais lojas e na Tabela FIPE.",
+  "subject": "Seu {{modelo}} vale cerca de {{valor_estimado}}",
+  "pre": "Comparamos anúncios parecidos nas principais lojas para chegar nesse valor.",
+  "cta": "Ver avaliação",
+  "vars": [
+   "nome",
+   "modelo",
+   "valor_estimado",
+   "faixa_min",
+   "faixa_max",
+   "fipe_atual",
+   "km",
+   "url_quanto_vale_resultado"
+  ],
+  "todo": [],
+  "mkt": false,
+  "size": 14
+ },
+ {
+  "file": "qv-02-valor-mudou",
+  "id": "QV-02",
+  "name": "Valor estimado mudou",
+  "type": "Opcional · informativo",
+  "goal": "O mercado e a Tabela FIPE mudaram desde a sua última avaliação.",
+  "subject": "A avaliação do seu {{modelo}} mudou",
+  "pre": "Agora ele vale cerca de {{valor_estimado}} ({{variacao_percentual}}).",
+  "cta": "Ver nova avaliação",
+  "vars": [
+   "nome",
+   "modelo",
+   "valor_estimado",
+   "valor_anterior",
+   "variacao_percentual",
+   "url_quanto_vale_resultado"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "calc-02-custo-mudou",
+  "id": "CALC-02",
+  "name": "Custo mensal mudou",
+  "type": "Opcional · informativo",
+  "goal": "{{motivo_variacao}} mudou o seu cálculo mensal.",
+  "subject": "Manter o {{modelo}} ficou {{variacao_texto}}",
+  "pre": "{{motivo_variacao}}: {{variacao_valor}} por mês no seu cálculo.",
+  "cta": "Ver cálculo",
+  "vars": [
+   "nome",
+   "modelo",
+   "variacao_texto",
+   "motivo_variacao",
+   "custo_anterior",
+   "custo_atual",
+   "variacao_valor",
+   "url_calculadora"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "mer-01-lancamento",
+  "id": "MER-01",
+  "name": "Lançamento chegou",
+  "type": "Opcional · informativo",
+  "goal": "O modelo que você acompanha já está nas concessionárias.",
+  "subject": "O {{modelo_lancamento}} chegou às lojas",
+  "pre": "Preço a partir de {{preco_inicial}}. Veja versões e ficha técnica.",
+  "cta": "Ver lançamento",
+  "vars": [
+   "nome",
+   "modelo_lancamento",
+   "preco_inicial",
+   "qtd_versoes",
+   "motorizacao",
+   "url_lancamento"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "mer-04-resumo-mes",
+  "id": "MER-04",
+  "name": "Resumo do mês",
+  "type": "Opcional · informativo",
+  "goal": "{{destaque_mes}}",
+  "subject": "Os mais vendidos de {{mes_referencia}}",
+  "pre": "{{destaque_mes}}. Veja o ranking e a variação da Tabela FIPE.",
+  "cta": "Ver ranking completo",
+  "vars": [
+   "nome",
+   "mes_referencia",
+   "destaque_mes",
+   "top1_modelo",
+   "top1_vendas",
+   "top2_modelo",
+   "top2_vendas",
+   "top3_modelo",
+   "top3_vendas",
+   "fipe_variacao_media",
+   "url_blog_mercado"
+  ],
+  "todo": [
+   "Fonte oficial dos emplacamentos (ex.: Fenabrave)."
+  ],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "mer-05-newsletter",
+  "id": "MER-05",
+  "name": "Newsletter do blog",
+  "type": "Opcional · informativo",
+  "goal": "As matérias da semana escolhidas pela redação.",
+  "subject": "{{newsletter_titulo}}",
+  "pre": "{{newsletter_preheader}}",
+  "cta": "Ler no blog",
+  "vars": [
+   "nome",
+   "newsletter_titulo",
+   "newsletter_preheader",
+   "materia1_titulo",
+   "materia1_resumo",
+   "materia1_url",
+   "materia2_titulo",
+   "materia2_resumo",
+   "materia2_url",
+   "materia3_titulo",
+   "materia3_resumo",
+   "materia3_url",
+   "url_blog"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "ofe-01-cupom-primeira",
+  "id": "OFE-01",
+  "name": "Cupom de primeira consulta",
+  "type": "Opcional · informativo",
+  "goal": "Antes de fechar negócio, confira o histórico completo do carro.",
+  "subject": "{{nome}}, 10% na sua primeira consulta",
+  "pre": "Use o cupom {{cupom_primeira_consulta}} até {{cupom_validade}}.",
+  "cta": "Consultar uma placa",
+  "vars": [
+   "nome",
+   "cupom_primeira_consulta",
+   "cupom_validade",
+   "url_consulta"
+  ],
+  "todo": [
+   "Confirmar código e validade do cupom."
+  ],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "ofe-02-cupom-vencendo",
+  "id": "OFE-02",
+  "name": "Cupom vencendo",
+  "type": "Opcional · informativo",
+  "goal": "Ainda dá tempo de usar {{cupom_desconto}} de desconto na consulta veicular.",
+  "subject": "Seu cupom {{cupom}} vence amanhã",
+  "pre": "{{cupom_desconto}} de desconto na consulta veicular até {{cupom_validade}}.",
+  "cta": "Usar cupom",
+  "vars": [
+   "nome",
+   "cupom",
+   "cupom_desconto",
+   "cupom_validade",
+   "url_consulta"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 14
+ },
+ {
+  "file": "ofe-03-recompra",
+  "id": "OFE-03",
+  "name": "Desconto para recompra",
+  "type": "Opcional · informativo",
+  "goal": "Quem compra carro costuma comparar mais de um. Sua próxima consulta sai com desconto.",
+  "subject": "Vai olhar outro carro? A próxima consulta tem desconto",
+  "pre": "{{cupom_desconto}} na próxima consulta até {{cupom_validade}}.",
+  "cta": "Consultar outra placa",
+  "vars": [
+   "nome",
+   "cupom",
+   "cupom_desconto",
+   "cupom_validade",
+   "url_consulta"
+  ],
+  "todo": [
+   "Confirmar percentual e prazo do desconto de recompra."
+  ],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "ofe-04-reativacao",
+  "id": "OFE-04",
+  "name": "Reativação",
+  "type": "Opcional · informativo",
+  "goal": "Acompanhe o valor do seu carro, os lançamentos e os mais vendidos do mês.",
+  "subject": "{{nome}}, veja quanto seu carro vale hoje",
+  "pre": "Muita coisa mudou no mercado desde a sua última visita.",
+  "cta": "Ver meu carro",
+  "vars": [
+   "nome",
+   "url_quanto_vale",
+   "url_lancamentos",
+   "url_calculadora",
+   "url_meu_carro"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 15
+ },
+ {
+  "file": "ofe-05-baixe-app",
+  "id": "OFE-05",
+  "name": "Baixe o app",
+  "type": "Opcional · informativo",
+  "goal": "Consulte placas na hora e receba os avisos do seu carro no celular.",
+  "subject": "Leve a Achecar no bolso",
+  "pre": "Consulte placas e receba alertas do seu carro direto no celular.",
+  "cta": "Baixar o app",
+  "vars": [
+   "nome",
+   "url_app",
+   "url_app_store",
+   "url_google_play"
+  ],
+  "todo": [],
+  "mkt": true,
+  "size": 16
+ }
+]

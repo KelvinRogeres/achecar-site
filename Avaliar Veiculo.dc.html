@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <script src="motion.js"></script>
+  <link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fonts.css"><link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/fig-tokens.css"><link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/tokens/semantic.css"><link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/components/fig-assets.css"><link rel="stylesheet" href="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/styles.css">
+  <script src="_ds/achecar-design-system-2-0-c352d177-15d3-4f15-a854-a6a2a9d7f8be/_ds_bundle.js"></script>
+  <style>body{margin:0;background:#F6F6F9;font-family:Roboto,sans-serif;color:#1D2433;-webkit-font-smoothing:antialiased} a{color:#7D3EE3;text-decoration:none} a:hover{color:#5F29AE} input::placeholder,textarea::placeholder{color:#7A8494} @keyframes avIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}</style>
+  <script src="bp-preview.js"></script>
+<style id="ac-mobile-left">@media (max-width: 599px){[style*="text-align: center"]:not(button):not(input){text-align:left!important}[style*="flex-direction: column"][style*="align-items: center"]:not(button):not(a):not(label){align-items:flex-start!important}[style*="flex-direction: column"][style*="align-items: center"]>p,[style*="flex-direction: column"][style*="align-items: center"]>h1,[style*="flex-direction: column"][style*="align-items: center"]>h2{margin-left:0!important;margin-right:0!important}}</style>
+  <script src="mobile-nohover.js"></script>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <div style="position:sticky;top:0;z-index:40"><dc-import name="Header Achecar" hint-size="100%,81px"></dc-import></div>
+  <main style="flex:1;width:100%;box-sizing:border-box;padding:24px clamp(16px, calc(2.2vw + 7px), 32px) 0">
+    <div style="max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:20px">
+      <nav aria-label="Você está em" style="display:flex;align-items:center;gap:8px;font:400 13px Roboto;color:#5A6472"><a href="Home Achecar.dc.html" style="font-weight:500">Início</a><span>/</span><span>Avaliar um carro</span></nav>
+
+      <sc-if value="{{ gate }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Avaliar · Login" style="display:flex;flex-direction:column;gap:24px;padding:40px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08);animation:avIn .25s ease-out both">
+          <span style="width:56px;height:56px;border-radius:16px;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:30px;line-height:1;font-variation-settings:'FILL' 1">reviews</span>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h1 style="margin:0;font:800 30px/1.2 'Merriweather Sans',sans-serif">Entre para avaliar um carro.</h1>
+            <p style="margin:0;max-width:560px;font:400 16px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Pedimos login para que cada avaliação venha de uma pessoa real. No site, seu nome aparece abreviado, como "Ana S.".</p>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+            <li style="display:flex;gap:10px;align-items:flex-start;padding:14px;border-radius:12px;background:#F6F6F9;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">star</span>Perguntas de 1 a 5 estrelas sobre conforto, desempenho, custos e mais</li>
+            <li style="display:flex;gap:10px;align-items:flex-start;padding:14px;border-radius:12px;background:#F6F6F9;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">schedule</span>Leva cerca de 4 minutos</li>
+            <li style="display:flex;gap:10px;align-items:flex-start;padding:14px;border-radius:12px;background:#F6F6F9;font:400 14px/1.45 Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#7D3EE3">bookmark</span>Pode parar e continuar depois, de onde parou</li>
+          </ul>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <button type="button" onClick="{{ login }}" style="height:48px;padding:0 24px;border:0;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;cursor:pointer" style-hover="background:#5F29AE">Entrar para avaliar</button>
+            <a href="{{ signupHref }}" style="height:48px;padding:0 20px;border-radius:8px;box-shadow:inset 0 0 0 1px #D5D8DE;background:#fff;color:#1D2433;font:700 15px Roboto;display:flex;align-items:center" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3">Criar conta grátis</a>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ inFlow }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:{{ flowCols }};gap:24px;align-items:start">
+          <sc-if value="{{ showSide }}" hint-placeholder-val="{{ true }}">
+            <aside aria-label="Etapas da avaliação" style="position:sticky;top:105px;display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+              <sc-if value="{{ showCarPill }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:14px;background:#F6F6F9">
+                  <span aria-hidden="true" style="width:56px;height:36px;flex:none;border-radius:10px;background:#fff url({{ car.img }}) center / 52px auto no-repeat"></span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1px"><span style="font:700 13px Roboto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ car.name }} {{ year }}</span><span style="font:400 11px Roboto;color:#5A6472;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ verShow }}</span></span>
+                  <button type="button" onClick="{{ changeCar }}" style="height:28px;padding:0 8px;border:0;border-radius:8px;background:transparent;color:#7D3EE3;font:500 12px Roboto;cursor:pointer" style-hover="background:#EAE2FF">Trocar</button>
+                </div>
+              </sc-if>
+              <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px">
+                <sc-for list="{{ stages }}" as="sg" hint-placeholder-count="9">
+                  <li><button type="button" onClick="{{ sg.go }}" aria-current="{{ sg.cur }}" style="width:100%;display:flex;align-items:center;gap:10px;height:40px;padding:0 10px;border:0;border-radius:10px;background:{{ sg.bg }};color:{{ sg.color }};font:{{ sg.weight }} 14px Roboto;text-align:left;cursor:{{ sg.cursor }}" style-hover="background:{{ sg.hov }}">
+                    <span aria-hidden="true" style="width:24px;height:24px;flex:none;border-radius:50%;background:{{ sg.dotBg }};color:{{ sg.dotInk }};box-shadow:inset 0 0 0 1.5px {{ sg.dotRing }};display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:15px;line-height:1">{{ sg.icon }}</span>
+                    <span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ sg.t }}</span>
+                    <span style="font:400 12px Roboto;color:#7A8494">{{ sg.count }}</span>
+                  </button></li>
+                </sc-for>
+              </ol>
+            </aside>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;height:{{ cardH }};min-height:560px;border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08);overflow:hidden">
+            <div role="progressbar" aria-label="Progresso da avaliação" aria-valuenow="{{ progNow }}" aria-valuemin="0" aria-valuemax="100" style="height:4px;flex:none;background:#EEEEF2"><div style="height:100%;width:{{ progW }};background:#7D3EE3;transition:width .3s ease-out"></div></div>
+            <sc-if value="{{ showHead }}" hint-placeholder-val="{{ true }}">
+            <div style="flex:none;display:flex;flex-direction:column;gap:8px;padding:{{ headPad }}">
+              <span style="font:500 13px Roboto;color:#7D3EE3">{{ stepCount }}</span>
+              <h1 style="margin:0;font:800 28px/1.25 'Merriweather Sans',sans-serif;text-wrap:balance">{{ stepName }}</h1>
+              <p style="margin:0;font:400 15px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ stepSub }}</p>
+            </div>
+            </sc-if>
+            <div style="flex:1;min-height:0;overflow-y:auto;padding:{{ bodyPad }}">
+          <sc-if value="{{ isCarStep }}" hint-placeholder-val="{{ true }}">
+            <section data-screen-label="Avaliar · Carro" style="display:flex;flex-direction:column;gap:20px;animation:avIn .25s ease-out both">
+              <sc-if value="{{ isModelo }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:20px">
+              <label style="position:relative;display:block;height:52px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-within="box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+                <span aria-hidden="true" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472;pointer-events:none">search</span>
+                <input value="{{ q }}" onChange="{{ setQ }}" placeholder="Busque por marca ou modelo" aria-label="Buscar carro" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px 0 48px;border:0;border-radius:12px;outline:none;background:transparent;font:400 16px Roboto;color:#1D2433;cursor:text">
+              </label>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px">
+                <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="8">
+                  <button type="button" onClick="{{ t.pick }}" aria-pressed="{{ t.on }}" style="display:flex;flex-direction:column;gap:8px;padding:12px;border:0;border-radius:16px;background:{{ t.bg }};box-shadow:{{ t.ring }};cursor:pointer;text-align:left;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3">
+                    <span aria-hidden="true" style="height:72px;border-radius:10px;background:#F6F6F9 url({{ t.img }}) center / 88% auto no-repeat"></span>
+                    <span style="display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Roboto;color:#5A6472">{{ t.brand }}</span><span style="font:700 15px Roboto;color:#1D2433">{{ t.model }}</span></span>
+                  </button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ noTiles }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;padding:20px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;font:400 14px Roboto;color:#5A6472">Não achamos esse carro. Tente só a marca ou só o modelo.</p>
+              </sc-if>
+              </div></sc-if>
+              <sc-if value="{{ isAno }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:14px;animation:avIn .2s ease-out both">
+                  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px">
+                    <sc-for list="{{ years }}" as="y" hint-placeholder-count="5">
+                      <button type="button" onClick="{{ y.pick }}" aria-pressed="{{ y.on }}" style="height:64px;padding:0 16px;border:0;border-radius:14px;background:{{ y.bg }};color:{{ y.color }};box-shadow:inset 0 0 0 1px {{ y.ring }};font:700 18px Roboto;cursor:pointer;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3">{{ y.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isVersao }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:14px;animation:avIn .2s ease-out both">
+                  <div role="radiogroup" aria-label="Versão" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+                    <sc-for list="{{ verList }}" as="vr" hint-placeholder-count="4">
+                      <button type="button" role="radio" aria-checked="{{ vr.on }}" onClick="{{ vr.pick }}" style="display:flex;gap:12px;align-items:flex-start;padding:16px;border:0;border-radius:14px;background:{{ vr.bg }};box-shadow:inset 0 0 0 1px {{ vr.ring }};cursor:pointer;text-align:left" style-hover="box-shadow:inset 0 0 0 1.5px #7D3EE3">
+                        <span aria-hidden="true" style="width:18px;height:18px;flex:none;margin-top:1px;box-sizing:border-box;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 {{ vr.dotW }} {{ vr.dotRing }}"></span>
+                        <span style="display:flex;flex-direction:column;gap:4px;align-items:flex-start"><span style="font:700 14px Roboto;color:#1D2433">{{ vr.t }}</span><span style="font:400 12px Roboto;color:#5A6472">{{ vr.d }}</span><span style="height:20px;padding:0 8px;border-radius:999px;background:#EEEEF2;color:#3F4654;font:500 11px/20px Roboto">{{ vr.fuel }}</span></span>
+                      </button>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-if>
+            </section>
+          </sc-if>
+
+          <sc-if value="{{ isGroup }}" hint-placeholder-val="{{ false }}">
+            <section data-screen-label="Avaliar · Pergunta" style="min-height:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 0">
+              <sc-for list="{{ questions }}" as="qq" hint-placeholder-count="1">
+                <div style="width:100%;max-width:600px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;animation:avIn .25s ease-out both">
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+                    <span style="display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;background:#F3EDFD;color:#7D3EE3;font:500 13px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ grp.icon }}</span>{{ stepCount }}</span>
+                    <h1 style="margin:0;font:800 30px/1.25 'Merriweather Sans',sans-serif;color:#1D2433;text-wrap:balance">{{ qq.title }}</h1>
+                    <p style="margin:0;font:400 16px/1.5 Roboto;color:#5A6472;text-wrap:pretty">{{ qq.help }}</p>
+                  </div>
+                  <div style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:10px;padding:20px 20px 16px;box-sizing:border-box;border-radius:20px;background:#FAFAFC;box-shadow:inset 0 0 0 1px #EEEEF2">
+                    <div role="radiogroup" aria-label="{{ qq.title }}" style="display:flex;justify-content:space-between">
+                      <sc-for list="{{ qq.stars }}" as="st" hint-placeholder-count="5">
+                        <button type="button" role="radio" aria-checked="{{ st.on }}" aria-label="{{ st.label }}" title="{{ st.label }}" onClick="{{ st.set }}" style="width:64px;height:64px;padding:0;border:0;border-radius:16px;background:transparent;cursor:pointer;font-family:'Material Symbols Rounded';font-size:52px;line-height:1;color:{{ st.color }};font-variation-settings:'FILL' {{ st.fill }};transition:transform .12s ease-out, color .12s ease-out, background .12s ease-out" style-hover="transform:scale(1.1);color:#F59E0B;background:#FFF4DC">star</button>
+                      </sc-for>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;gap:16px;padding:0 6px;font:500 13px Roboto;color:#5A6472"><span>{{ qq.lo }}</span><span>{{ qq.hi }}</span></div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+                    <span style="min-height:22px;font:700 17px Roboto;color:{{ qq.levelColor }}">{{ qq.level }}</span>
+                    <button type="button" onClick="{{ qq.toggleNs }}" aria-pressed="{{ qq.ns }}" style="height:36px;padding:0 14px;border:0;border-radius:999px;background:{{ qq.nsBg }};color:{{ qq.nsColor }};font:500 13px Roboto;cursor:pointer" style-hover="background:#EAE2FF;color:#5F29AE">Não sei avaliar</button>
+                  </div>
+                </div>
+              </sc-for>
+            </section>
+          </sc-if>
+          <sc-if value="{{ isComent }}" hint-placeholder-val="{{ false }}">
+            <section data-screen-label="Avaliar · Comentário" style="display:flex;flex-direction:column;gap:16px;animation:avIn .25s ease-out both">
+              <div style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:#F3EDFD">
+                <span aria-hidden="true" style="width:64px;height:40px;flex:none;border-radius:10px;background:#fff url({{ car.img }}) center / 60px auto no-repeat"></span>
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><span style="font:400 12px Roboto;color:#5A6472">Sua nota para o {{ car.model }}</span><span style="display:flex;align-items:center;gap:6px"><span style="font:800 22px/1 'Merriweather Sans',sans-serif">{{ overallTxt }}</span><span style="display:flex;gap:0"><sc-for list="{{ overallStars }}" as="st" hint-placeholder-count="5"><span style="font-family:'Material Symbols Rounded';font-size:18px;line-height:1;color:{{ st.color }};font-variation-settings:'FILL' {{ st.fill }}">{{ st.icon }}</span></sc-for></span></span></span>
+                <span style="font:400 13px/1.4 Roboto;color:#3F4654;max-width:220px;text-wrap:pretty">Agora conte em palavras o que as estrelas não mostram.</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px"><span style="font:700 15px Roboto">Resuma sua experiência em uma frase</span><span style="font:400 12px Roboto;color:#7A8494">{{ titleCount }}</span></div>
+                <label style="position:relative;display:block;height:52px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-within="box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35)">
+                  <input value="{{ title }}" onChange="{{ setTitle }}" maxlength="80" placeholder="Ex.: Econômico e fácil de manter, mas apertado atrás" aria-label="Resumo da avaliação" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:0 16px;border:0;border-radius:12px;outline:none;background:transparent;font:500 16px Roboto;color:#1D2433;cursor:text">
+                </label>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+                  <div style="display:flex;flex-direction:column;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #D7EEDF;overflow:hidden">
+                    <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F0F9F3"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#15803D;font-variation-settings:'FILL' 1">thumb_up</span><span style="flex:1;font:700 15px Roboto;color:#1D2433">O que você mais gosta</span><span style="font:400 12px Roboto;color:#7A8494">{{ prosCount }}</span></div>
+                    <div style="display:flex;flex-direction:column;gap:12px;padding:14px 16px 16px">
+                      <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ prosTags }}" as="c" hint-placeholder-count="6"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="display:flex;align-items:center;gap:4px;height:32px;padding:0 12px;border:0;border-radius:999px;background:{{ c.bg }};color:{{ c.color }};box-shadow:inset 0 0 0 1px {{ c.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px {{ c.hov }}"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ c.icon }}</span>{{ c.label }}</button></sc-for></div>
+                      <label style="position:relative;display:block;height:96px;border-radius:10px;background:#FAFAFC;box-shadow:inset 0 0 0 1px #E6E6EE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-within="box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35);background:#fff">
+                        <textarea value="{{ pros }}" onChange="{{ setPros }}" maxlength="500" placeholder="Toque nas sugestões ou escreva com suas palavras…" aria-label="O que você mais gosta" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:10px 12px;border:0;border-radius:10px;outline:none;resize:none;background:transparent;font:400 15px/1.5 Roboto;color:#1D2433;cursor:text"></textarea>
+                      </label>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #F3E3C2;overflow:hidden">
+                    <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;background:#FFF8EB"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1;color:#B45309;font-variation-settings:'FILL' 1">thumb_down</span><span style="flex:1;font:700 15px Roboto;color:#1D2433">O que poderia ser melhor</span><span style="font:400 12px Roboto;color:#7A8494">{{ consCount }}</span></div>
+                    <div style="display:flex;flex-direction:column;gap:12px;padding:14px 16px 16px">
+                      <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ consTags }}" as="c" hint-placeholder-count="6"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="display:flex;align-items:center;gap:4px;height:32px;padding:0 12px;border:0;border-radius:999px;background:{{ c.bg }};color:{{ c.color }};box-shadow:inset 0 0 0 1px {{ c.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px {{ c.hov }}"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1">{{ c.icon }}</span>{{ c.label }}</button></sc-for></div>
+                      <label style="position:relative;display:block;height:96px;border-radius:10px;background:#FAFAFC;box-shadow:inset 0 0 0 1px #E6E6EE;cursor:text;transition:box-shadow .15s ease-out" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3" style-focus-within="box-shadow:inset 0 0 0 1px #7D3EE3, 0 0 0 3px rgba(125,61,227,.35);background:#fff">
+                        <textarea value="{{ cons }}" onChange="{{ setCons }}" maxlength="500" placeholder="Toque nas sugestões ou escreva com suas palavras…" aria-label="O que poderia ser melhor" style="position:absolute;inset:0;width:100%;height:100%;box-sizing:border-box;padding:10px 12px;border:0;border-radius:10px;outline:none;resize:none;background:transparent;font:400 15px/1.5 Roboto;color:#1D2433;cursor:text"></textarea>
+                      </label>
+                    </div>
+                  </div>
+              </div>
+              <div style="display:flex;flex-direction:column;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+                <button type="button" onClick="{{ toggleEx }}" aria-expanded="{{ exOpen }}" style="display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border:0;background:transparent;text-align:left;cursor:pointer;color:#1D2433" style-hover="background:#FAFAFC">
+                  <span style="width:36px;height:36px;flex:none;border-radius:10px;background:#F3EDFD;color:#7D3EE3;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:20px;line-height:1">person</span>
+                  <span style="flex:1;display:flex;flex-direction:column;gap:2px"><span style="font:700 15px Roboto">Sobre você e o carro <span style="font:400 13px Roboto;color:#7A8494">· opcional</span></span><span style="font:400 13px Roboto;color:#5A6472">{{ exSummary }}</span></span>
+                  <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#5A6472">{{ exIcon }}</span>
+                </button>
+                <sc-if value="{{ exOpen }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;flex-direction:column;gap:16px;padding:4px 16px 18px;border-top:1px solid #EEEEF2">
+                    <div style="display:flex;flex-direction:column;gap:8px;padding-top:12px"><span style="font:700 13px Roboto">Sua relação com o carro</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ rels }}" as="c" hint-placeholder-count="4"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:0;border-radius:999px;background:{{ c.bg }};color:#1D2433;box-shadow:inset 0 0 0 1px {{ c.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3"><span style="font-family:'Material Symbols Rounded';font-size:16px;line-height:1;color:#7D3EE3">{{ c.icon }}</span>{{ c.label }}</button></sc-for></div></div>
+                    <sc-if value="{{ showTempo }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px Roboto">Há quanto tempo</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ tempos }}" as="c" hint-placeholder-count="4"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="height:36px;padding:0 14px;border:0;border-radius:999px;background:{{ c.bg }};color:{{ c.color }};box-shadow:inset 0 0 0 1px {{ c.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">{{ c.label }}</button></sc-for></div></div></sc-if>
+                    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:700 13px Roboto">Onde você mais roda</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ usos }}" as="c" hint-placeholder-count="3"><button type="button" onClick="{{ c.pick }}" aria-pressed="{{ c.on }}" style="height:36px;padding:0 14px;border:0;border-radius:999px;background:{{ c.bg }};color:{{ c.color }};box-shadow:inset 0 0 0 1px {{ c.ring }};font:500 13px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">{{ c.label }}</button></sc-for></div></div>
+                  </div>
+                </sc-if>
+              </div>
+            </section>
+          </sc-if>
+          <sc-if value="{{ isRev }}" hint-placeholder-val="{{ false }}">
+            <section data-screen-label="Avaliar · Revisão" style="display:flex;flex-direction:column;gap:16px;animation:avIn .25s ease-out both">
+              <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:24px;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08)">
+                <span aria-hidden="true" style="width:160px;height:96px;flex:none;border-radius:14px;background:#F3EDFD url({{ car.img }}) center / 90% auto no-repeat"></span>
+                <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:6px">
+                  <span style="font:400 13px Roboto;color:#5A6472">{{ metaLine }}</span>
+                  <span style="font:800 22px/1.2 'Merriweather Sans',sans-serif">{{ car.model }} {{ verShow }}</span>
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <span style="font:800 32px/1 'Merriweather Sans',sans-serif">{{ overallTxt }}</span>
+                    <span style="display:flex;gap:1px"><sc-for list="{{ overallStars }}" as="st" hint-placeholder-count="5"><span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:{{ st.color }};font-variation-settings:'FILL' {{ st.fill }}">{{ st.icon }}</span></sc-for></span>
+                    <span style="font:400 13px Roboto;color:#5A6472">{{ answeredTxt }}</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;background:#fff;border-radius:16px;box-shadow:inset 0 0 0 1px #E6E6EE;overflow:hidden">
+                <sc-for list="{{ summary }}" as="g" hint-placeholder-count="5">
+                  <div style="display:grid;grid-template-columns:28px minmax(0,1fr) minmax(80px,180px) 40px auto;gap:14px;align-items:center;padding:14px 18px;border-top:1px solid {{ g.line }}">
+                    <span style="font-family:'Material Symbols Rounded';font-size:22px;line-height:1;color:#7D3EE3">{{ g.icon }}</span>
+                    <span style="font:500 15px Roboto">{{ g.title }}</span>
+                    <span style="height:6px;border-radius:999px;background:#EEEEF2;overflow:hidden"><span style="display:block;height:100%;width:{{ g.w }};border-radius:999px;background:#F59E0B"></span></span>
+                    <span style="font:700 15px Roboto;text-align:right">{{ g.avg }}</span>
+                    <button type="button" onClick="{{ g.edit }}" style="height:32px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#7D3EE3;font:500 13px Roboto;cursor:pointer" style-hover="background:#F3EDFD">Editar</button>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{ hasText }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><span style="font:700 16px Roboto">{{ titleShow }}</span><button type="button" onClick="{{ editComent }}" style="height:32px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#7D3EE3;font:500 13px Roboto;cursor:pointer" style-hover="background:#F3EDFD">Editar</button></div>
+                  <sc-if value="{{ hasPros }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font:400 14px/1.5 Roboto;color:#3F4654"><strong style="color:#15803D">Gosto: </strong>{{ pros }}</p></sc-if>
+                  <sc-if value="{{ hasCons }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font:400 14px/1.5 Roboto;color:#3F4654"><strong style="color:#B45309">Poderia melhorar: </strong>{{ cons }}</p></sc-if>
+                </div>
+              </sc-if>
+              <label style="position:relative;display:flex;gap:12px;align-items:flex-start;padding:16px 18px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px {{ agreeRing }};cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3">
+                <input type="checkbox" checked="{{ agree }}" onChange="{{ toggleAgree }}" aria-label="Confirmo que é minha experiência real" style="position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer">
+                <span aria-hidden="true" style="width:22px;height:22px;flex:none;border-radius:6px;background:{{ agreeBg }};box-shadow:inset 0 0 0 1.5px {{ agreeBox }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:18px;line-height:1;pointer-events:none">{{ agreeIcon }}</span>
+                <span style="font:400 14px/1.5 Roboto;color:#1D2433;pointer-events:none">Confirmo que esta avaliação é sobre a minha experiência real e sigo as <a href="Termos de Uso.dc.html" style="position:relative;z-index:1;pointer-events:auto">regras de avaliação</a>. Ela passa por moderação antes de aparecer.</span>
+              </label>
+            </section>
+          </sc-if>
+
+            </div>
+            <sc-if value="{{ hasErr }}" hint-placeholder-val="{{ false }}">
+              <div role="alert" style="flex:none;display:flex;gap:10px;align-items:center;margin:0 24px 12px;padding:10px 14px;border-radius:12px;background:#FEF2F2;color:#B91C1C;font:500 14px Roboto"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">error</span>{{ err }}</div>
+            </sc-if>
+            <div style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 24px;border-top:1px solid #EEEEF2;background:#FAFAFC">
+              <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ back }}" style="height:48px;padding:0 16px;border:0;border-radius:8px;background:transparent;color:#1D2433;font:700 15px Roboto;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="background:#EEEEF2"><span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">arrow_back</span>Voltar</button>
+              </sc-if>
+              <sc-if value="{{ noBack }}" hint-placeholder-val="{{ true }}"><span style="font:400 13px Roboto;color:#5A6472">Seu progresso fica salvo.</span></sc-if>
+              <button type="button" onClick="{{ next }}" aria-disabled="{{ nextDis }}" style="height:48px;padding:0 24px;border:0;border-radius:8px;background:{{ nextBg }};color:{{ nextInk }};font:700 15px Roboto;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="filter:brightness(.92)">{{ nextLabel }}<span style="font-family:'Material Symbols Rounded';font-size:20px;line-height:1">{{ nextIcon }}</span></button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isOk }}" hint-placeholder-val="{{ false }}">
+        <section data-screen-label="Avaliar · Enviada" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:48px clamp(16px, calc(2.2vw + 7px), 32px);border-radius:24px;background:#fff;box-shadow:inset 0 0 0 1px #E6E6EE, 0 12px 32px rgba(26,13,64,.08);text-align:center;animation:avIn .3s ease-out both">
+          <span style="width:64px;height:64px;border-radius:50%;background:#E8F5EC;color:#15803D;display:flex;align-items:center;justify-content:center;font-family:'Material Symbols Rounded';font-size:36px;line-height:1;font-variation-settings:'FILL' 1">check_circle</span>
+          <h1 style="margin:0;font:800 28px/1.2 'Merriweather Sans',sans-serif">Avaliação enviada. Obrigado!</h1>
+          <p style="margin:0;max-width:480px;font:400 16px/1.5 Roboto;color:#5A6472;text-wrap:pretty">Sua nota {{ doneScore }} para o {{ doneCar }} passa por moderação e aparece na página do carro em até 48 horas. Avisamos nas suas notificações.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+            <a href="{{ doneHref }}" style="height:48px;padding:0 22px;border-radius:8px;background:#7D3EE3;color:#fff;font:700 15px Roboto;display:flex;align-items:center" style-hover="background:#5F29AE;color:#fff">Ver página do carro</a>
+            <button type="button" onClick="{{ again }}" style="height:48px;padding:0 20px;border:0;border-radius:8px;background:#fff;box-shadow:inset 0 0 0 1px #D5D8DE;color:#1D2433;font:700 15px Roboto;cursor:pointer" style-hover="box-shadow:inset 0 0 0 1px #7D3EE3;color:#7D3EE3">Avaliar outro carro</button>
+          </div>
+        </section>
+      </sc-if>
+    </div>
+  </main>
+  <div style="margin-top:48px"><dc-import name="Footer Achecar" hint-size="100%,420px"></dc-import></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;visualizar&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Mobile 360&quot;,&quot;Mobile 390&quot;,&quot;Mobile 412&quot;,&quot;Tablet 768&quot;,&quot;Tablet 1024&quot;,&quot;Desktop 1280&quot;,&quot;Desktop 1440&quot;,&quot;Desktop 1920&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Breakpoints&quot;,&quot;label&quot;:&quot;Visualizar em&quot;}}">
+class Component extends DCLogic {
+  CARS = [
+    ["onix", "Chevrolet", "Onix", [2026, 2025, 2024, 2023, 2022, 2021, 2020]], ["hb20", "Hyundai", "HB20", [2026, 2025, 2024, 2023, 2022, 2021, 2020]],
+    ["polo", "Volkswagen", "Polo", [2026, 2025, 2024, 2023, 2022, 2021]], ["argo", "Fiat", "Argo", [2026, 2025, 2024, 2023, 2022, 2021, 2020]],
+    ["mobi", "Fiat", "Mobi", [2026, 2025, 2024, 2023, 2022, 2021, 2020]], ["strada", "Fiat", "Strada", [2026, 2025, 2024, 2023, 2022, 2021]],
+    ["tracker", "Chevrolet", "Tracker", [2026, 2025, 2024, 2023, 2022, 2021]], ["creta", "Hyundai", "Creta", [2026, 2025, 2024, 2023, 2022]],
+    ["tcross", "Volkswagen", "T-Cross", [2026, 2025, 2024, 2023, 2022, 2021, 2020]], ["pulse", "Fiat", "Pulse", [2026, 2025, 2024, 2023, 2022]],
+    ["renegade", "Jeep", "Renegade", [2026, 2025, 2024, 2023, 2022, 2021, 2020]], ["compass", "Jeep", "Compass", [2026, 2025, 2024, 2023, 2022, 2021]],
+    ["fastback", "Fiat", "Fastback", [2026, 2025, 2024, 2023]], ["corolla", "Toyota", "Corolla", [2026, 2025, 2024, 2023, 2022, 2021, 2020]],
+    ["corolla-cross", "Toyota", "Corolla Cross", [2026, 2025, 2024, 2023, 2022, 2021]], ["virtus", "Volkswagen", "Virtus", [2026, 2025, 2024, 2023, 2022, 2021]],
+    ["toro", "Fiat", "Toro", [2026, 2025, 2024, 2023, 2022, 2021]], ["byd-dolphin", "BYD", "Dolphin", [2026, 2025, 2024, 2023]],
+    ["s10", "Chevrolet", "S10", [2026, 2025, 2024, 2023, 2022]], ["sw4", "Toyota", "SW4", [2026, 2025, 2024, 2023, 2022]]
+  ].map(([id, brand, model, years]) => ({ id, brand, model, years, name: model, img: "assets/carros/" + id + ".webp" }));
+  GROUPS = [
+    { id: "conforto", title: "Conforto e espaço", icon: "airline_seat_recline_extra", desc: "Como é ficar dentro do carro no dia a dia e em viagens.", qs: [
+      ["c1", "Os bancos são confortáveis?", "Pense em trajetos de mais de 1 hora.", "Cansa rápido", "Muito confortável"],
+      ["c2", "Dois adultos viajam bem no banco de trás?", "Pense em pessoas de cerca de 1,75 m.", "Apertado", "Sobra espaço"],
+      ["c3", "O porta-malas dá conta do seu dia a dia?", "Compras do mês, malas, carrinho de bebê.", "Não cabe o básico", "Cabe tudo"],
+      ["c4", "O carro é silencioso na estrada?", "Barulho de motor, vento e pneus a 100 km/h.", "Muito barulho", "Bem silencioso"]] },
+    { id: "desempenho", title: "Desempenho e direção", icon: "speed", desc: "Como o carro anda, freia e responde ao volante.", qs: [
+      ["d1", "O motor tem força para subir ladeiras e ultrapassar?", "Pense no carro com passageiros ou com bagagem.", "Falta fôlego", "Sobra força"],
+      ["d2", "O câmbio troca as marchas de forma suave?", "E responde rápido quando você acelera.", "Trancos e demora", "Suave e rápido"],
+      ["d3", "Você se sente seguro em curvas e freadas?", "Principalmente em velocidade de estrada.", "Inseguro", "Muito firme"],
+      ["d4", "É fácil manobrar e estacionar?", "Direção leve, espaço para virar, sensores e câmera.", "Difícil", "Muito fácil"]] },
+    { id: "custos", title: "Consumo e custos", icon: "payments", desc: "Quanto o carro pesa no bolso depois da compra.", skipTest: true, qs: [
+      ["k1", "O consumo é o que a montadora promete?", "Compare com os números divulgados para este carro.", "Gasta bem mais", "Igual ou melhor"],
+      ["k2", "O preço das revisões é justo?", "Na concessionária ou em oficina de confiança.", "Muito caro", "Justo"],
+      ["k3", "As peças são fáceis de achar e têm preço justo?", "Pneus, pastilhas de freio e outras peças de reposição.", "Caras e difíceis", "Baratas e fáceis"],
+      ["k4", "O seguro tem um preço razoável?", "Para o seu perfil e a sua região.", "Muito caro", "Em conta"]] },
+    { id: "tecnologia", title: "Tecnologia e segurança", icon: "verified_user", desc: "Itens que ajudam a dirigir e a se proteger.", qs: [
+      ["t1", "A multimídia é fácil de usar?", "Tela, conexão com o celular (CarPlay e Android Auto) e Bluetooth.", "Trava e confunde", "Rápida e fácil"],
+      ["t2", "O carro tem bons itens de segurança?", "Airbags, alertas, frenagem automática, câmera.", "Só o mínimo", "Muito completo"],
+      ["t3", "Você enxerga bem ao redor ao dirigir?", "Retrovisores, colunas e pontos cegos.", "Muitos pontos cegos", "Enxerga tudo"],
+      ["t4", "Os faróis iluminam bem à noite?", "Alcance e abertura da luz na estrada.", "Iluminam pouco", "Iluminam muito bem"]] },
+    { id: "confiabilidade", title: "Confiabilidade", icon: "build", desc: "Como o carro se comporta com o passar do tempo.", skipTest: true, qs: [
+      ["r1", "O carro deu poucos defeitos?", "Desde que você começou a usar.", "Muitos defeitos", "Nenhum problema"],
+      ["r2", "O acabamento continua bom com o tempo?", "Sem rangidos nem desgaste de bancos e plásticos.", "Range e desgasta", "Como novo"],
+      ["r3", "A concessionária atende bem?", "Em revisões, garantia e recall.", "Péssimo", "Excelente"]] },
+    { id: "geral", title: "No geral", icon: "thumb_up", desc: "Para fechar, sua visão geral sobre o carro.", qs: [
+      ["g1", "O carro vale o que custa?", "Pense no que ele entrega pelo preço que você pagou.", "Não vale", "Vale muito"],
+      ["g2", "Você recomendaria este carro a um amigo?", "Alguém com uma rotina parecida com a sua.", "Não recomendo", "Recomendo muito"]] }
+  ];
+  VERS = {"onix":[["1.0","1.0 aspirado · manual"],["LT 1.0","1.0 aspirado · manual"],["1.0 Turbo","1.0 turbo 116 cv · manual"],["Plus 1.0 Turbo","1.0 turbo · automático"],["LTZ 1.0 Turbo","1.0 turbo · automático"],["RS 1.0 Turbo","1.0 turbo · automático"],["Premier 1.0 Turbo","1.0 turbo · automático"],["Premier Plus","1.0 turbo · automático"]],"hb20":[["Comfort 1.0","80 cv · manual"],["Limited 1.0","80 cv · manual"],["Limited 1.0 TGDI","120 cv · automático"],["Platinum 1.0 TGDI","120 cv · automático"]],"polo":[["Track 1.0 MPI","84 cv · manual"],["Sense 170 TSI","116 cv · automático"],["Highline 170 TSI","116 cv · automático"]],"argo":[["1.0","75 cv · manual"],["Drive 1.3","107 cv · manual"],["Trekking 1.3 CVT","107 cv · automático"]],"mobi":[["Like 1.0","75 cv · manual"],["Trekking 1.0","75 cv · manual"]],"virtus":[["Sense 1.0 TSI","116 cv · automático"],["Highline 1.0 TSI","116 cv · automático"],["Exclusive 1.4 TSI","150 cv · automático"]],"corolla":[["GLi 2.0","177 cv · manual"],["XEi 2.0","177 cv · manual"],["Altis Hybrid","122 cv · manual"]],"tcross":[["Sense 200 TSI","128 cv · automático"],["Comfortline 200 TSI","128 cv · automático"],["Highline 250 TSI","150 cv · automático"],["Extreme 250 TSI","150 cv · automático"]],"tracker":[["1.0 Turbo AT","116 cv · automático"],["LT 1.0 Turbo","116 cv · automático"],["LTZ 1.0 Turbo","116 cv · automático"],["Premier 1.2 Turbo","141 cv · automático"],["RS 1.2 Turbo","141 cv · automático"]],"creta":[["Action 1.0 Turbo","120 cv · automático"],["Limited 1.0 Turbo","120 cv · automático"],["Ultimate 1.6 Turbo","193 cv · automático"]],"pulse":[["Drive 1.3","107 cv · manual"],["Audace 1.0 Turbo","130 cv · automático"],["Abarth 1.3 Turbo","185 cv · automático"]],"compass":[["Sport 1.3 T270","185 cv · automático"],["Longitude 1.3 T270","185 cv · automático"],["Limited 1.3 T270","185 cv · automático"]],"tiguan":[["R-Line 350 TSI 4Motion","220 cv · automático"]],"trailblazer":[["LT 2.8 Diesel 4x4","207 cv · automático"],["Premier 2.8 Diesel 4x4","207 cv · automático"]],"tiggo8":[["Max Drive 1.6 TGDI","187 cv · automático"],["PHEV 1.5 Turbo híbrido","323 cv · automático"]],"commander":[["Longitude T270 7L","176 cv · automático"],["Limited T270 MHEV","176 cv · automático"],["Overland T270 MHEV","176 cv · automático"],["Overland 2.2T Diesel 4x4","200 cv · automático"]],"sw4":[["SRX 2.8 Diesel 4x4 7L","204 cv · automático"]],"strada":[["Endurance 1.3","107 cv · manual"],["Freedom 1.3","107 cv · manual"],["Volcano 1.3 CVT","107 cv · automático"],["Ranch 1.0 Turbo","130 cv · automático"]],"renegade":[["Sport 1.3 T270","185 cv · automático"],["Longitude 1.3 T270","185 cv · automático"],["Trailhawk 1.3 T270 4x4","185 cv · automático"]],"fastback":[["Audace 1.0 Turbo","130 cv · automático"],["Impetus 1.0 Turbo","130 cv · automático"],["Abarth 1.3 Turbo","185 cv · automático"]],"corolla-cross":[["XR 2.0","175 cv · automático"],["XRE 2.0","175 cv · automático"],["XRX Hybrid","122 cv · automático"]],"toro":[["Endurance 1.3 Turbo","176 cv · automático"],["Freedom 1.3 Turbo","176 cv · automático"],["Volcano 2.2 Diesel","200 cv · automático"],["Ultra 2.2 Diesel","200 cv · automático"]],"byd-dolphin":[["GS","elétrico 95 cv"],["Plus","elétrico 204 cv"]],"s10":[["LS 2.8 Diesel","200 cv · manual"],["LT 2.8 Diesel","207 cv · automático"],["LTZ 2.8 Diesel","207 cv · automático"],["High Country 2.8 Diesel","207 cv · automático"]]};
+  LV = ["Muito ruim", "Ruim", "Regular", "Bom", "Excelente"];
+  KEY = "achecar-avaliacao-rascunho";
+  BASE = { step: "modelo", maxStep: "modelo", car: "", year: 0, ver: "", rel: "", tempo: "", uso: "", ans: {}, title: "", pros: "", cons: "", agree: false };
+  Q = new URLSearchParams(location.search);
+  readSes = () => { try { const s = JSON.parse(localStorage.getItem("achecar-session") || "null"); return !!(s && s.logged); } catch (e) { return false; } };
+  FUELS = { flex: "Flex", gasolina: "Gasolina", diesel: "Diesel", hibrido: "Híbrido", eletrico: "Elétrico" };
+  CAR_FUEL = { "byd-dolphin": "eletrico", s10: "diesel", sw4: "diesel" };
+  fuelOf = (car, ver) => { const v = (this.VERS[car] || []).find((x) => x[0] === ver), t = v ? (v[0] + " " + v[1]).toLowerCase() : ""; if (/elétric/.test(t)) return "eletrico"; if (/hybrid|híbrid/.test(t)) return "hibrido"; if (/diesel/.test(t)) return "diesel"; if (/gasolina/.test(t)) return "gasolina"; return this.CAR_FUEL[car] || "flex"; };
+  OV = {
+    eletrico: { c4: ["c4", "O carro é silencioso ao rodar?", "Pense no ruído de pneus e de vento.", "Muito barulho", "Bem silencioso"], d2: ["d2", "A frenagem regenerativa é natural?", "É quando o carro desacelera sozinho ao tirar o pé do acelerador.", "Estranha", "Natural"], k1: ["k1", "A autonomia é a que a montadora promete?", "Quantos km você roda com a bateria cheia.", "Bem menor", "Igual ou maior"] },
+    hibrido: { k1: ["k1", "O consumo é o que a montadora promete?", "Principalmente na cidade, onde o motor elétrico mais ajuda.", "Gasta bem mais", "Igual ou melhor"], d2: ["d2", "A troca entre o motor elétrico e o a combustão é suave?", "Você sente trancos quando um motor entra no lugar do outro?", "Trancos perceptíveis", "Imperceptível"] },
+    diesel: { k1: ["k1", "O consumo de diesel é o que a montadora promete?", "Compare com os números divulgados para este carro.", "Gasta bem mais", "Igual ou melhor"], c4: ["c4", "O motor é silencioso e vibra pouco?", "Parado com o motor ligado e na estrada.", "Muito barulho", "Quase não se ouve"] },
+    flex: { k1: ["k1", "O consumo é o que a montadora promete?", "Com etanol e com gasolina, comparado aos números divulgados.", "Gasta bem mais", "Igual ou melhor"] }
+  };
+  EXTRA = {
+    eletrico: { custos: [["e1", "É fácil e rápido recarregar?", "Na tomada de casa, no carregador de parede ou em eletroposto.", "Demorado e difícil", "Rápido e fácil"], ["e2", "Você economiza com a recarga?", "Compare com o que gastaria de combustível num carro parecido.", "Pouca economia", "Muita economia"], ["e3", "Há pontos de recarga suficientes onde você roda?", "No dia a dia e nas viagens.", "Quase não tem", "Tem em todo lugar"]] },
+    hibrido: { confiabilidade: [["h1", "Você se sente tranquilo com a bateria híbrida?", "Pense em garantia, desgaste e custo de troca.", "Me preocupa", "Muito tranquilo"]] },
+    diesel: { custos: [["s1", "Os custos extras do diesel são razoáveis?", "Arla 32, filtros e outras manutenções do motor diesel.", "Muito caro", "Em conta"]] },
+    flex: { desempenho: [["f1", "O carro anda bem com etanol?", "Partida em dia frio e força, comparadas à gasolina.", "Perde muito", "Igual à gasolina"]] }
+  };
+  groupsFor = (fuel) => this.GROUPS.map((g) => ({ ...g, title: fuel === "eletrico" && g.id === "custos" ? "Autonomia e custos" : g.title, qs: [...g.qs.map((q) => (this.OV[fuel] || {})[q[0]] || q), ...((this.EXTRA[fuel] || {})[g.id] || [])] }));
+  groupsOn = () => this.groupsFor(this.fuelOf(this.state.car, this.state.ver));
+  steps0 = (st) => { const s = st || this.state; return ["modelo", "ano", "versao", ...this.groupsFor(this.fuelOf(s.car, s.ver)).flatMap((g) => g.qs.map((q) => "q:" + q[0])), "coment", "rev"]; };
+  steps = () => this.steps0();
+  state = (() => {
+    let d = null; try { d = JSON.parse(localStorage.getItem(this.KEY) || "null"); } catch (e) {}
+    const st = { ...this.BASE, ...(d || {}), q: "", err: "", done: null, logged: this.readSes(), vw: window.innerWidth };
+    const qc = this.Q.get("carro");
+    if (qc && this.CARS.some((c) => c.id === qc) && st.car !== qc) { const qv = this.Q.get("versao") || "", vl = this.VERS[qc] || []; Object.assign(st, this.BASE, { car: qc, year: +this.Q.get("ano") || 0, ver: vl.some((x) => x[0] === qv) ? qv : "" }); st.step = st.year && st.ver ? "q:c1" : st.year ? "versao" : "ano"; }
+    if (!this.steps0(st).includes(st.step)) st.step = "modelo";
+    return st;
+  })();
+  componentDidMount() { this.onRs = () => this.setState({ vw: window.innerWidth }); window.addEventListener("resize", this.onRs); this.onSes = () => this.setState({ logged: this.readSes() }); window.addEventListener("achecar-session", this.onSes); window.addEventListener("storage", this.onSes); }
+  componentWillUnmount() { window.removeEventListener("achecar-session", this.onSes); window.removeEventListener("storage", this.onSes); }
+  componentDidUpdate() { const s = this.state; if (s.done) return; const d = {}; Object.keys(this.BASE).forEach((k) => (d[k] = s[k])); try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch (e) {} }
+  auto = (patch, to) => { this.setState({ ...patch, err: "" }); clearTimeout(this.autoT); this.autoT = setTimeout(() => this.go(to), 260); };
+  go = (step) => { const st = this.steps(); this.setState((s0) => ({ step, err: "", maxStep: st.indexOf(step) > st.indexOf(s0.maxStep || "modelo") ? step : s0.maxStep })); clearTimeout(this.autoT); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  chip = (on) => ({ on, bg: on ? "#F3EDFD" : "#fff", color: on ? "#7D3EE3" : "#1D2433", ring: on ? "#7D3EE3" : "#D5D8DE", weight: on ? 700 : 500 });
+  avg = (ids) => { const v = ids.map((id) => this.state.ans[id]).filter((x) => x > 0); return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 0; };
+  dec = (n) => n.toFixed(1).replace(".", ",");
+  renderVals() { const v = this.props.visualizar; if (v !== undefined && v !== this._bpV) { this._bpV = v; const go = () => window.acBpPreview ? window.acBpPreview(v) : setTimeout(go, 200); setTimeout(go, 0); } return this._rv0(); }
+  _rv0() {
+    const s = this.state, steps = this.steps(), idx = Math.max(0, steps.indexOf(s.step)), step = steps[idx];
+    const car = this.CARS.find((c) => c.id === s.car) || null, qid = step.startsWith("q:") ? step.slice(2) : "", G = this.groupsOn(), grp = qid ? G.find((g) => g.qs.some((q) => q[0] === qid)) : null, qi = grp ? grp.qs.findIndex((q) => q[0] === qid) : -1, nextStep = steps[idx + 1];
+    const qNum = qid ? G.flatMap((g) => g.qs).findIndex((q) => q[0] === qid) + 1 : 0, qTot = G.reduce((n, g) => n + g.qs.length, 0);
+    const here = "Avaliar Veiculo.dc.html" + location.search;
+    const set = (k) => (e) => this.setState({ [k]: e.target.value, err: "" });
+    const allIds = this.groupsOn().flatMap((g) => g.qs.map((q) => q[0]));
+    const overall = this.avg(allIds), answered = allIds.filter((id) => s.ans[id] > 0).length;
+    const missing = qid && s.ans[qid] === undefined ? 1 : 0;
+    const ok = { modelo: !!car, ano: !!s.year, versao: !!s.ver, coment: true, rev: s.agree }[step] ?? missing === 0;
+    const errMsg = { modelo: "Escolha o carro que você quer avaliar.", ano: "Escolha o ano-modelo para continuar.", versao: "Escolha a versão. Se não souber, marque Não sei a versão.", rev: "Marque a confirmação para publicar." }[step] || "Escolha uma nota. Se não souber, toque em Não sei avaliar.";
+    const term = s.q.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const tiles = this.CARS.filter((c) => !term || (c.brand + " " + c.model).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(term)).map((c) => { const on = c.id === s.car; return { ...c, on, bg: on ? "#FAF7FF" : "#fff", ring: on ? "inset 0 0 0 1.5px #7D3EE3, 0 8px 24px rgba(29,36,51,.12)" : "inset 0 0 0 1px #E6E6EE", pick: () => this.auto({ car: c.id, year: c.id === s.car ? s.year : 0, ver: c.id === s.car ? s.ver : "" }, "ano") }; });
+    const relDef = [["dono", "Sou dono atual", "key", "Uso o carro hoje."], ["exdono", "Já fui dono", "history", "Tive o carro por um tempo."], ["uso", "Uso com frequência", "group", "Da família, alugado ou de app."], ["test", "Fiz um test-drive", "speed", "Dirigi poucas vezes."]];
+    const starsOf = (val, setter, label) => [1, 2, 3, 4, 5].map((i) => { const on = val >= i; return { on: val === i, label: i + " de 5 · " + this.LV[i - 1], color: on ? "#F59E0B" : "#C4C7CF", fill: on ? 1 : 0, set: () => setter(i) }; });
+    const setAns = (id, v) => { this.setState((st) => { const ans = { ...st.ans }; if (v === undefined) delete ans[id]; else ans[id] = v; return { ans, err: "" }; }); if (v !== undefined && nextStep) { clearTimeout(this.autoT); this.autoT = setTimeout(() => this.go(nextStep), 380); } };
+    const isOk = !!s.done, wide = (s.vw || 1200) >= (this.props.bpDesktop1024 ?? 1024);
+    const stageDef = [{ t: "Carro", icon: "directions_car", first: "modelo", ids: ["modelo", "ano", "versao"] }, ...G.map((g) => ({ t: g.title, icon: g.icon, first: "q:" + g.qs[0][0], ids: g.qs.map((q) => "q:" + q[0]), qids: g.qs.map((q) => q[0]) })), { t: "Comentário", icon: "chat", first: "coment", ids: ["coment"] }, { t: "Revisão", icon: "fact_check", first: "rev", ids: ["rev"] }];
+    const curStage = stageDef.findIndex((x) => x.ids.includes(step)), maxReach = Math.max(idx, steps.indexOf(s.maxStep || "modelo"));
+    const stages = stageDef.map((x, i) => { const cur = i === curStage, done = i < curStage || (!cur && steps.indexOf(x.ids[x.ids.length - 1]) < maxReach), reach = steps.indexOf(x.first) <= maxReach, ans = x.qids ? x.qids.filter((id) => s.ans[id] !== undefined).length : 0;
+      return { t: x.t, cur, icon: done && !cur ? "check" : x.icon, count: x.qids ? ans + "/" + x.qids.length : "", bg: cur ? "#F3EDFD" : "transparent", hov: reach ? (cur ? "#EAE2FF" : "#F6F6F9") : "transparent", color: reach || cur ? "#1D2433" : "#A0A6B1", weight: cur ? 700 : 500, cursor: reach ? "pointer" : "default", dotBg: cur ? "#7D3EE3" : done ? "#E8F5EC" : "#fff", dotInk: cur ? "#fff" : done ? "#15803D" : "#A0A6B1", dotRing: cur ? "#7D3EE3" : done ? "#E8F5EC" : "#D5D8DE", go: () => { if (reach && !cur) this.go(x.first); } }; });
+    return {
+      flowCols: wide ? "260px minmax(0,1fr)" : "minmax(0,1fr)", showSide: wide, cardH: wide ? "calc(100vh - 150px)" : "calc(100vh - 120px)", headPad: wide ? "28px 32px 12px" : "20px 20px 8px", bodyPad: wide ? "12px 32px 24px" : "8px 20px 20px", stages,
+      showHead: !qid, stepSub: qid ? (grp.qs[qi] || [])[2] : { modelo: "Avalie qualquer carro que você já dirigiu, seu ou não.", ano: "É o ano-modelo que aparece no documento do carro.", versao: "Motor, câmbio e itens mudam muito a experiência de dirigir.", coment: "Tudo aqui é opcional, mas ajuda muito quem está pesquisando.", rev: "Confira suas notas antes de publicar." }[step],
+      gate: !s.logged && !isOk, inFlow: s.logged && !isOk, isOk,
+      login: () => { const url = "Login.dc.html?next=" + encodeURIComponent(here); if (window.achecarLogin) window.achecarLogin(url, () => this.setState({ logged: this.readSes() })); else location.href = url; },
+      signupHref: "Login.dc.html?modo=criar&next=" + encodeURIComponent(here),
+      stepCount: qid ? grp.title + " · Pergunta " + qNum + " de " + qTot : { modelo: "Carro · 1 de 3", ano: "Carro · 2 de 3", versao: "Carro · 3 de 3", coment: "Quase lá", rev: "Último passo" }[step], stepName: qid ? grp.qs[qi][1] : { modelo: "Qual carro você quer avaliar?", ano: "De que ano é o seu " + (car ? car.model : "carro") + "?", versao: "Qual a versão do " + (car ? car.model : "carro") + "?", coment: "Quer deixar um comentário?", rev: "Revise e publique" }[step],
+      progW: Math.round(((idx + 1) / steps.length) * 100) + "%", progNow: Math.round(((idx + 1) / steps.length) * 100),
+      car: car || { img: "", name: "", model: "", brand: "" }, year: s.year, showCarPill: !!car && step !== "modelo", changeCar: () => this.go("modelo"),
+      isCarStep: ["modelo", "ano", "versao"].includes(step), isModelo: step === "modelo", isAno: step === "ano", isVersao: step === "versao", isRel: step === "coment", isGroup: !!grp, isComent: step === "coment", isRev: step === "rev",
+      q: s.q, setQ: set("q"), tiles, noTiles: tiles.length === 0, carPicked: !!car,
+      years: car ? car.years.map((y) => ({ label: String(y), ...this.chip(s.year === y), pick: () => this.auto({ year: y }, "versao") })) : [],
+      yearPicked: !!(car && s.year), verList: car ? [...(this.VERS[car.id] || []), ["Não sei a versão", "Avalio pelo que lembro do carro"]].map(([t, d]) => { const on = s.ver === t; return { t, d, on, fuel: this.FUELS[this.fuelOf(car.id, t)], bg: on ? "#FAF7FF" : "#fff", ring: on ? "#7D3EE3" : "#E6E6EE", dotW: on ? "5px" : "1.5px", dotRing: on ? "#7D3EE3" : "#A0A6B1", pick: () => this.auto({ ver: t }, "q:c1") }; }) : [],
+      verShow: s.ver && s.ver !== "Não sei a versão" ? s.ver : "",
+      rels: relDef.map(([k, label, icon, desc]) => { const on = s.rel === k; return { label, icon, desc, on, bg: on ? "#FAF7FF" : "#fff", ring: on ? "#7D3EE3" : "#E6E6EE", iconBg: on ? "#EAE2FF" : "#F3EDFD", pick: () => this.setState({ rel: s.rel === k ? "" : k, err: "" }) }; }),
+      showTempo: !!s.rel && s.rel !== "test", isTest: s.rel === "test",
+      tempos: ["Menos de 6 meses", "6 meses a 1 ano", "1 a 3 anos", "Mais de 3 anos"].map((t) => ({ label: t, ...this.chip(s.tempo === t), pick: () => this.setState({ tempo: s.tempo === t ? "" : t, err: "" }) })),
+      usos: ["Mais na cidade", "Mais na estrada", "Cidade e estrada"].map((t) => ({ label: t, ...this.chip(s.uso === t), pick: () => this.setState({ uso: s.uso === t ? "" : t, err: "" }) })),
+      grp: grp || { icon: "", desc: "" },
+      questions: grp ? grp.qs.filter((q) => q[0] === qid).map(([id, title, help, lo, hi]) => { const v = s.ans[id], ns = v === 0; return {
+        title, help, lo, hi, ns, stars: starsOf(v || 0, (i) => setAns(id, i)),
+        level: v > 0 ? this.LV[v - 1] : ns ? "Não sei avaliar" : "Toque em uma nota para seguir", levelColor: v > 0 ? "#1D2433" : "#7A8494",
+        ring: s.err && v === undefined ? "#DC2626" : "#E6E6EE",
+        nsBg: ns ? "#7D3EE3" : "#F3EDFD", nsColor: ns ? "#fff" : "#7D3EE3", toggleNs: () => setAns(id, ns ? undefined : 0) }; }) : [],
+      ...(() => {
+        const tg = (key, list, icon, on1) => list.map((label) => { const txt = s[key] || "", on = txt.toLowerCase().includes(label.toLowerCase()); return { label, on, icon: on ? "check" : "add", bg: on ? on1[0] : "#fff", color: on ? on1[1] : "#3F4654", ring: on ? on1[1] : "#D5D8DE", hov: on1[1], pick: () => { const parts = txt.split(".").map((p) => p.trim()).filter(Boolean); const nt = on ? parts.filter((p) => p.toLowerCase() !== label.toLowerCase()).map((p) => p + ".").join(" ") : [...parts, label].map((p) => p + ".").join(" "); this.setState({ [key]: nt, err: "" }); } }; });
+        const relN = (relDef.find((r) => r[0] === s.rel) || [])[1];
+        return {
+          prosTags: tg("pros", ["Econômico", "Confortável", "Espaçoso", "Bom de dirigir", "Fácil de manter", "Silencioso", "Seguro", "Boa multimídia"], "", ["#F0F9F3", "#15803D"]),
+          consTags: tg("cons", ["Consumo alto", "Apertado atrás", "Porta-malas pequeno", "Barulho na estrada", "Revisão cara", "Acabamento simples", "Peças caras", "Multimídia lenta"], "", ["#FFF8EB", "#B45309"]),
+          prosCount: (s.pros || "").length + "/500", consCount: (s.cons || "").length + "/500", titleCount: (s.title || "").length + "/80",
+          exOpen: !!s.exOpen, exIcon: s.exOpen ? "expand_less" : "expand_more", toggleEx: () => this.setState({ exOpen: !s.exOpen }),
+          exSummary: [relN, s.tempo, s.uso].filter(Boolean).join(" · ") || "Relação com o carro, tempo de uso e onde roda"
+        };
+      })(),
+      title: s.title, pros: s.pros, cons: s.cons, setTitle: set("title"), setPros: set("pros"), setCons: set("cons"),
+      metaLine: [car && car.brand, s.year, (relDef.find((r) => r[0] === s.rel) || ["", ""])[1]].filter(Boolean).join(" · "),
+      overallTxt: overall ? this.dec(overall) : "—", answeredTxt: answered + (answered === 1 ? " resposta" : " respostas"),
+      overallStars: [1, 2, 3, 4, 5].map((i) => ({ icon: overall >= i - 0.25 ? "star" : overall >= i - 0.75 ? "star_half" : "star", fill: overall >= i - 0.75 ? 1 : 0, color: overall >= i - 0.75 ? "#F59E0B" : "#C4C7CF" })),
+      summary: this.groupsOn().map((g, i) => { const a = this.avg(g.qs.map((q) => q[0])); return { title: g.title, icon: g.icon, avg: a ? this.dec(a) : "—", w: (a / 5) * 100 + "%", line: i ? "#EEEEF2" : "transparent", edit: () => this.go("q:" + g.qs[0][0]) }; }),
+      hasText: !!(s.title.trim() || s.pros.trim() || s.cons.trim()), titleShow: s.title.trim() || "Seu comentário", hasPros: !!s.pros.trim(), hasCons: !!s.cons.trim(), editComent: () => this.go("coment"),
+      agree: s.agree, toggleAgree: () => this.setState({ agree: !s.agree, err: "" }), agreeBg: s.agree ? "#7D3EE3" : "#fff", agreeBox: s.agree ? "#7D3EE3" : "#A0A6B1", agreeIcon: s.agree ? "check" : "", agreeRing: s.err && !s.agree ? "#DC2626" : "#E6E6EE",
+      hasErr: !!s.err, err: s.err,
+      canBack: idx > 0, noBack: idx === 0, back: () => this.go(steps[idx - 1]),
+      nextDis: !ok, nextBg: ok ? "#7D3EE3" : "#D9CCF5", nextInk: "#fff",
+      nextLabel: step === "rev" ? "Publicar avaliação" : step === "coment" && !(s.title.trim() || s.pros.trim() || s.cons.trim() || s.rel || s.uso || s.tempo) ? "Pular" : "Continuar", nextIcon: step === "rev" ? "send" : "arrow_forward", hint: qid ? "Toque em uma nota para seguir" : "",
+      next: () => {
+        if (!ok) return this.setState({ err: errMsg });
+        if (step !== "rev") return this.go(steps[idx + 1]);
+        const rec = { car: s.car, year: s.year, ver: s.ver, rel: s.rel, tempo: s.tempo, uso: s.uso, ans: s.ans, title: s.title, pros: s.pros, cons: s.cons, nota: +overall.toFixed(1), at: Date.now() };
+        try { const all = JSON.parse(localStorage.getItem("achecar-avaliacoes") || "[]").filter((r) => r.car !== s.car); all.push(rec); localStorage.setItem("achecar-avaliacoes", JSON.stringify(all)); localStorage.removeItem(this.KEY); } catch (e) {}
+        this.setState({ done: { car: car.model + (s.ver && s.ver !== "Não sei a versão" ? " " + s.ver : "") + " " + s.year, score: overall ? this.dec(overall) : "" } }); window.scrollTo({ top: 0, behavior: "smooth" });
+      },
+      doneCar: s.done ? s.done.car : "", doneHref: "Versoes.dc.html?id=" + (car ? car.id + "&modelo=" + encodeURIComponent(car.model) + "&marca=" + encodeURIComponent(car.brand) : "onix") + "#g-aval", doneScore: s.done && s.done.score ? s.done.score : "",
+      again: () => { try { localStorage.removeItem(this.KEY); } catch (e) {} this.setState({ ...this.BASE, ans: {}, q: "", err: "", done: null }); window.scrollTo({ top: 0, behavior: "smooth" }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
